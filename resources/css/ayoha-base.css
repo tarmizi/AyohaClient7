@@ -1,0 +1,2146 @@
+/* =========================================================
+   AYOHA — FINAL CONSOLIDATED CSS (Clean + Non-duplicate)
+   Notes:
+   - Semua keyframes disatukan (tak repeat).
+   - Duplicate rules digabung + scope diperketat untuk elak collision.
+   - “Scrolling optimization” kekal guna body/.ayohaScrolling toggle.
+   ========================================================= */
+
+
+/* =========================
+   0) GLOBAL (optional)
+   ========================= */
+:root{
+  --ayoha-purple-1:#7c3aed;
+  --ayoha-purple-2:#5b21b6;
+  --ayoha-pink:#ff00de;
+  --ayoha-violet:#d600ff;
+
+  --ink:#111827;
+  --muted:#6b7280;
+
+  --shadow-lg:0 14px 30px rgba(17,24,39,.12);
+  --glass:rgba(255,255,255,.72);
+}
+
+/* =========================================================
+   1) KEYFRAMES (ALL IN ONE PLACE)
+   ========================================================= */
+@keyframes ayohaPopIn{
+  0%{ transform:scale(.5) translateY(20px); opacity:0; }
+  100%{ transform:scale(1) translateY(0); opacity:1; }
+}
+@keyframes ayohaExplode{
+  0%{ transform:translate(-50%,-50%) scale(0); opacity:1; }
+  100%{ transform:translate(var(--tx),var(--ty)) scale(1) rotate(720deg); opacity:0; }
+}
+@keyframes ayohaCoinJump{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-5px); }
+}
+@keyframes ayohaConfettiFall{
+  0%{ top:-10%; transform:translateX(0) rotate(0deg); opacity:1; }
+  20%{ transform:translateX(-15px) rotate(45deg); }
+  40%{ transform:translateX(15px) rotate(90deg); }
+  60%{ transform:translateX(-15px) rotate(180deg); }
+  80%{ transform:translateX(15px) rotate(270deg); opacity:1; }
+  100%{ top:110%; transform:translateX(-15px) rotate(360deg); opacity:0; }
+}
+@keyframes shine-effect{
+  0%{ left:-150%; }
+  20%{ left:150%; }
+  100%{ left:150%; }
+}
+@keyframes pop-in{
+  0%{ transform:scale(0); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
+@keyframes floating{
+  0%{ transform:translate(0,0); }
+  50%{ transform:translate(0,-8px); }
+  100%{ transform:translate(0,0); }
+}
+@keyframes pop-confetti{
+  0%{ transform:translate(-50%,-50%) rotate(0deg) scale(.5); opacity:1; }
+  80%{ opacity:1; }
+  100%{ transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(1); opacity:0; }
+}
+@keyframes stop-confetti{
+  0%{ opacity:1; }
+  100%{ opacity:0; visibility:hidden; }
+}
+@keyframes ayohaPulse{
+  0%{ box-shadow:0 0 0 0 rgba(236,72,153,.55); }
+  70%{ box-shadow:0 0 0 10px rgba(236,72,153,0); }
+  100%{ box-shadow:0 0 0 0 rgba(236,72,153,0); }
+}
+@keyframes ayohaShimmer{
+  0%{ transform:translateX(-65%) rotate(10deg); opacity:0; }
+  20%{ opacity:.9; }
+  55%{ transform:translateX(65%) rotate(10deg); opacity:0; }
+  100%{ opacity:0; }
+}
+@keyframes ayohaTipPop{
+  0%,100%{ transform:translateY(0); opacity:.9; }
+  50%{ transform:translateY(-1px); opacity:1; }
+}
+@keyframes ayohaTrophyPop{
+  0%{ transform:scale(.75) translateY(6px) rotate(-6deg); opacity:0; }
+  55%{ transform:scale(1.12) translateY(-2px) rotate(3deg); opacity:1; }
+  80%{ transform:scale(.98) translateY(0) rotate(-1deg); }
+  100%{ transform:scale(1) translateY(0) rotate(0); opacity:1; }
+}
+@keyframes ayohaIconGlow{
+  0%,100%{ opacity:.15; transform:scale(.98); }
+  50%{ opacity:.55; transform:scale(1.06); }
+}
+@keyframes ayohaSparkle{
+  0%,100%{ opacity:.15; transform:translateY(0); }
+  50%{ opacity:.55; transform:translateY(-1px); }
+}
+@keyframes pulse-animation{
+  0%{ transform:scale(1); box-shadow:0 5px 20px rgba(138,43,226,.4); }
+  50%{ transform:scale(1.03); box-shadow:0 8px 30px rgba(138,43,226,.6); }
+  100%{ transform:scale(1); box-shadow:0 5px 20px rgba(138,43,226,.4); }
+}
+
+
+/* =========================================================
+   2) REWARD POPUP + CONFETTI FALL + WELCOME TOAST
+   ========================================================= */
+#ayohaRewardWrapper{
+  position:fixed; inset:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  z-index:10000;
+  display:flex; justify-content:center; align-items:center;
+  overflow:hidden;
+}
+.ayoha-reward-card{
+  background:rgba(255,255,255,.98);
+  border:1px solid rgba(124,58,237,.10);
+  box-shadow:0 20px 50px rgba(124,58,237,.25);
+  padding:20px 30px;
+  border-radius:24px;
+  text-align:center;
+  transform:scale(.5);
+  opacity:0;
+  animation:ayohaPopIn .5s cubic-bezier(.175,.885,.32,1.275) forwards;
+}
+.ayoha-reward-title{
+  font-family:system-ui,sans-serif;
+  font-size:14px;
+  font-weight:600;
+  color:#6b7280;
+  margin-bottom:5px;
+}
+.ayoha-reward-points{
+  font-family:system-ui,sans-serif;
+  font-size:32px;
+  font-weight:900;
+  background:linear-gradient(135deg,#fbbf24,#d97706);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  display:flex; align-items:center; justify-content:center;
+  gap:8px;
+}
+.ayoha-reward-sub{
+  font-size:12px;
+  color:#9ca3af;
+  margin-top:5px;
+  font-weight:500;
+}
+.ayoha-confetti-p{
+  position:absolute;
+  width:10px; height:10px;
+  background:#f00;
+  top:50%; left:50%;
+  border-radius:4px;
+}
+.ayoha-coin-icon{
+  display:inline-block;
+  animation:ayohaCoinJump 1s ease-in-out infinite;
+}
+
+/* Full-screen confetti fall */
+#ayohaConfettiWrapper{
+  position:fixed; inset:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  z-index:9999;
+  overflow:hidden;
+}
+.ayoha-confetti-piece{
+  position:absolute;
+  width:8px; height:12px;
+  background-color:#f00;
+  top:-20px;
+  opacity:0;
+  border-radius:2px;
+  animation:ayohaConfettiFall 2.2s ease-in-out forwards;
+}
+
+/* Welcome toast */
+.ayoha-welcome-toast{
+  position:fixed;
+  top:20%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(.8);
+  background:rgba(255,255,255,.95);
+  padding:12px 24px;
+  border-radius:50px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  font-family:system-ui,sans-serif;
+  font-weight:800;
+  color:var(--ayoha-purple-1);
+  z-index:10000;
+  opacity:0;
+  transition:all .4s cubic-bezier(.175,.885,.32,1.275);
+  display:flex; align-items:center; gap:8px;
+  white-space:nowrap;
+}
+.ayoha-welcome-toast.show{
+  opacity:1;
+  top:15%;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+
+/* =========================================================
+   3) ARRIVAL PILL (2-line clamp)
+   ========================================================= */
+.ayohaArrivalPillWrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:10px 16px 14px;
+  box-sizing:border-box;
+}
+.ayohaArrivalPill{
+  width:100%;
+  max-width:420px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+  color:#2e1065;
+  font:800 12.8px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:.15px;
+  box-sizing:border-box;
+}
+.ayohaArrivalPillIcon{
+  width:18px; height:18px; border-radius:999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:linear-gradient(180deg, rgba(124,58,237,1), rgba(168,85,247,1));
+  color:#fff;
+  box-shadow:0 10px 22px rgba(124,58,237,.35);
+  font-size:12px; font-weight:900; line-height:1;
+  flex:0 0 auto;
+}
+.ayohaArrivalPillText{
+  flex:1 1 auto;
+  min-width:0;
+  white-space:normal;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+.ayohaArrivalPillPts{
+  display:inline-flex;
+  align-items:center;
+  margin-left:4px;
+  padding:2px 8px;
+  border-radius:999px;
+  background:rgba(124,58,237,.12);
+  border:1px solid rgba(124,58,237,.18);
+  color:#5b21b6;
+  font-weight:900;
+}
+.ayohaHeroSection,
+.ayohaHeroHeader,
+.ayohaHeroTop{ overflow:visible !important; }
+
+
+/* =========================================================
+   4) GOLD BADGE SHINE + MASCOT FLOAT + CONFETTI EXPLOSION
+   ========================================================= */
+.gold-badge-wrapper{
+  position:relative;
+  display:inline-block;
+  border-radius:50%;
+  overflow:hidden;
+  transform:translateZ(0);
+  box-shadow:0 4px 15px rgba(255,215,0,.4);
+  animation:pop-in .6s cubic-bezier(.175,.885,.32,1.275) forwards;
+}
+.gold-badge-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.8) 50%, rgba(255,255,255,0) 100%);
+  transform:skewX(-25deg);
+  animation:shine-effect 3s infinite;
+}
+
+.ayoha-floating-mascot{ animation:floating 3s ease-in-out infinite; }
+
+.celebration-container{ position:relative; width:120px; height:131px; }
+
+.mascot-float{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  display:block;
+  filter:drop-shadow(0 5px 10px rgba(0,0,0,.3));
+  animation:pop-in .6s cubic-bezier(.175,.885,.32,1.275) forwards;
+  transform:scale(0);
+  opacity:0;
+}
+
+/* explosion */
+.confetti-explosion{
+  position:absolute;
+  top:50%; left:50%;
+  width:0; height:0;
+  z-index:1;
+  animation:stop-confetti 1s ease-out forwards;
+  animation-delay:5s;
+}
+.confetti-piece{
+  position:absolute;
+  display:block;
+  width:8px; height:12px;
+  opacity:0;
+}
+.c-gold{ background-color:#FFD700; }
+.c-purple{ background-color:#9C27B0; }
+.c-teal{ background-color:#00BCD4; }
+.c-blue{ background-color:#2196F3; }
+
+.cf-1{ --tx:-60px; --ty:-70px; --r:120deg; animation:pop-confetti 1.2s ease-out infinite .1s; }
+.cf-2{ --tx:0px;   --ty:-90px; --r:-90deg; animation:pop-confetti 1.2s ease-out infinite .3s; }
+.cf-3{ --tx:60px;  --ty:-70px; --r:45deg;  animation:pop-confetti 1.2s ease-out infinite .2s; }
+.cf-4{ --tx:-80px; --ty:0px;   --r:180deg; animation:pop-confetti 1.2s ease-out infinite .5s; }
+.cf-5{ --tx:80px;  --ty:0px;   --r:-45deg; animation:pop-confetti 1.2s ease-out infinite .4s; }
+.cf-6{ --tx:-60px; --ty:60px;  --r:90deg;  animation:pop-confetti 1.2s ease-out infinite .1s; }
+.cf-7{ --tx:0px;   --ty:80px;  --r:200deg; animation:pop-confetti 1.2s ease-out infinite .3s; }
+.cf-8{ --tx:60px;  --ty:60px;  --r:-70deg; animation:pop-confetti 1.2s ease-out infinite .2s; }
+
+.cf-small{ width:5px; height:5px; border-radius:50%; }
+.cf-9{  --tx:-40px; --ty:-100px; --r:0deg; animation:pop-confetti 1.5s ease-out infinite .6s; }
+.cf-10{ --tx:40px;  --ty:-100px; --r:0deg; animation:pop-confetti 1.5s ease-out infinite .7s; }
+.cf-11{ --tx:-90px; --ty:-30px;  --r:0deg; animation:pop-confetti 1.5s ease-out infinite .5s; }
+.cf-12{ --tx:90px;  --ty:-30px;  --r:0deg; animation:pop-confetti 1.5s ease-out infinite .6s; }
+
+
+/* =========================================================
+   5) HERO TOP DOCK (radius + segmented buttons)
+   ========================================================= */
+.ayohaHeroDockRowTop{
+  position:relative;
+  width:100%;
+  box-sizing:border-box;
+  padding:10px 12px;
+  pointer-events:auto;
+  z-index:25;
+}
+.ayohaHeroDockPanelTop{
+  width:100%;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(124,58,237,.18);
+  box-shadow:0 14px 30px rgba(17,24,39,.12);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  overflow:hidden;
+}
+.ayohaDockLeftTop{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  height:32px;
+  padding:0 8px;
+  color:#4c1d95;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.15px;
+  white-space:nowrap;
+}
+.ayohaDockLeftTop .lbl{ opacity:.75; }
+.ayohaDockLeftTop .val{ font-weight:950; }
+
+.ayohaDockRightTop{
+  margin-left:auto;
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px;
+  border-radius:999px;
+  background:rgba(124,58,237,.06);
+  border:1px solid rgba(124,58,237,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+  position:relative;
+}
+.ayohaDockRightTop:before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:1px;
+  height:22px;
+  background:rgba(124,58,237,.18);
+}
+
+.ayohaViewSegBtnTop{
+  appearance:none;
+  border:1px solid rgba(124,58,237,.10);
+  background:transparent;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  height:32px;
+  padding:0 12px;
+  border-radius:999px;
+  color:#4c1d95;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.15px;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
+}
+.ayohaViewSegBtnTop .ico{
+  width:16px; height:16px;
+  display:inline-flex;
+  align-items:center; justify-content:center;
+}
+.ayohaViewSegBtnTop svg{ width:16px; height:16px; fill:currentColor; }
+
+.ayohaViewSegBtnTop.isActive{
+  color:#fff;
+  border-color:rgba(255,255,255,.22);
+  background:linear-gradient(90deg,var(--ayoha-purple-1), var(--ayoha-pink));
+  box-shadow:0 10px 18px rgba(124,58,237,.22), inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.ayohaViewSegBtnTop:active,
+.ayohaDockLeftTop:active{ transform:scale(.98); }
+
+@media (max-width:480px){
+  .ayohaViewSegBtnTop .txt{ display:none; }
+  .ayohaViewSegBtnTop.isActive .txt{
+    display:inline;
+    font-size:11px;
+    line-height:1;
+    letter-spacing:-.15px;
+  }
+  .ayohaDockRightTop{ gap:4px; padding:3px; }
+  .ayohaViewSegBtnTop{ padding:0 10px; gap:6px; }
+  .ayohaViewSegBtnTop.isActive{ padding:0 12px; }
+}
+
+
+/* =========================================================
+   6) BOTTOM SEARCH DOCK
+   ========================================================= */
+.ayohaSearchWrap{
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  box-sizing:border-box;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(124,58,237,.12);
+}
+.ayohaSearchBar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid rgba(124,58,237,.22);
+  box-shadow:0 18px 42px rgba(17,24,39,.16), 0 6px 14px rgba(17,24,39,.10);
+  -webkit-tap-highlight-color:transparent;
+}
+.ayohaSearchBar:focus-within{
+  border-color:rgba(124,58,237,.45);
+  box-shadow:0 22px 50px rgba(124,58,237,.18), 0 10px 20px rgba(17,24,39,.12);
+}
+.ayohaSearchIco{
+  width:18px; height:18px;
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  color:rgba(91,33,182,.95);
+}
+.ayohaSearchIco svg{ width:18px; height:18px; fill:currentColor; }
+.ayohaSearchInput{
+  flex:1; min-width:0;
+  border:0; outline:0;
+  background:transparent;
+  font:800 13px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+  color:var(--ink);
+}
+.ayohaSearchInput::placeholder{
+  color:#6b7280;
+  opacity:1;
+  font-weight:700;
+}
+.ayohaIconBtn{
+  width:36px; height:36px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  background:rgba(124,58,237,.08);
+  border:1px solid rgba(124,58,237,.18);
+  color:#5b21b6;
+  box-shadow:0 10px 18px rgba(17,24,39,.10), inset 0 1px 0 rgba(255,255,255,.85);
+  padding:0;
+  cursor:pointer;
+}
+.ayohaIconBtn svg{ width:18px; height:18px; fill:currentColor; }
+.ayohaIconBtn:active{
+  transform:scale(.98);
+  box-shadow:0 8px 14px rgba(17,24,39,.12), inset 0 1px 0 rgba(255,255,255,.80);
+}
+.ayohaIconBtnQr{ color:#6d28d9; }
+.ayohaIconBtnFilter{ color:#7c3aed; }
+@media (max-width:360px){
+  .ayohaSearchWrap{ padding:9px 12px calc(9px + env(safe-area-inset-bottom)); }
+  .ayohaSearchBar{ padding:10px 11px; gap:8px; }
+  .ayohaIconBtn{ width:34px; height:34px; }
+}
+
+
+/* =========================================================
+   7) SMALL CTA + OVERLAY HINT
+   ========================================================= */
+.ayohaBtnCheckInNow{
+  display:inline-flex;
+  width:fit-content;
+  margin:9px auto 6px;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  text-align:center;
+  padding:7px 11px;
+  border-radius:999px;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.2px;
+  background:linear-gradient(90deg,var(--ayoha-purple-1), var(--ayoha-pink));
+  color:#fff;
+  border:1px solid rgba(255,255,255,.20);
+}
+.ayohaBtnCheckInNow .ico{
+  width:16px; height:16px;
+  display:inline-flex;
+  align-items:center; justify-content:center;
+}
+.ayohaBtnCheckInNow .ico svg{ width:16px; height:16px; fill:#fff; display:block; }
+
+.ayohaHubOverlayHint{
+  font:800 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(255,255,255,.92);
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  width:fit-content;
+  padding:1px 11px;
+  border-radius:999px;
+  margin:0 !important;
+  transform:translateY(-10px);
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   8) TODAY CHECK-IN PILL (green / red)
+   ========================================================= */
+.ayohaPillCheckin,
+.ayohaPillCheckin0{
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:6;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  font:800 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+  box-shadow:0 10px 22px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.75);
+}
+.ayohaPillCheckin{
+  background:linear-gradient(180deg, rgba(236,253,245,.95), rgba(209,250,229,.92));
+  border:1px solid rgba(16,185,129,.28);
+  color:rgba(6,95,70,.95);
+}
+.ayohaPillCheckin0{
+  background:linear-gradient(180deg, rgba(254,242,242,.95), rgba(254,226,226,.92));
+  border:1px solid rgba(239,68,68,.28);
+  color:rgba(153,27,27,.95);
+}
+.ayohaPillCheckin:before,
+.ayohaPillCheckin0:before{
+  content:"";
+  width:8px; height:8px;
+  border-radius:999px;
+}
+.ayohaPillCheckin:before{
+  background:#10b981;
+  box-shadow:0 0 0 3px rgba(16,185,129,.18);
+}
+.ayohaPillCheckin0:before{
+  background:#ef4444;
+  box-shadow:0 0 0 3px rgba(239,68,68,.18);
+}
+@media (max-width:360px){
+  .ayohaPillCheckin,
+  .ayohaPillCheckin0{ font-size:11px; padding:5px 9px; top:10px; right:10px; }
+}
+
+
+/* =========================================================
+   9) HUB LIST (Sencha list) + CARD + HERO + MINI CARD
+   ========================================================= */
+.ayohaHubList .x-list-item,
+.ayohaHubList .x-list-item-body{ background:transparent !important; }
+
+.ayohaHubRow{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:0 0 26px 0;
+  box-sizing:border-box;
+  position:relative;
+}
+.ayohaHubRow:after{
+  content:"";
+  position:absolute;
+  left:7%;
+  right:7%;
+  bottom:10px;
+  height:1px;
+  background:linear-gradient(90deg,
+    rgba(124,58,237,0) 0%,
+    rgba(124,58,237,.16) 20%,
+    rgba(255,0,222,.12) 50%,
+    rgba(124,58,237,.16) 80%,
+    rgba(124,58,237,0) 100%
+  );
+  opacity:.9;
+}
+
+.ayohaHubCard{
+  width:95vw;
+  max-width:95vw;
+  border-radius:18px;
+  overflow:hidden;
+  display:block;
+  border:1px solid rgba(124,58,237,.12);
+}
+.ayohaHubCard:active{
+  transform:scale(.995);
+  box-shadow:0 8px 18px rgba(17,24,39,.10);
+}
+
+.ayohaHubHero{
+  position:relative;
+  height:clamp(210px, 70vw, 280px);
+  background-size:cover;
+  background-position:50% 18% !important;
+  background-repeat:no-repeat;
+}
+.ayohaHubHero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:radial-gradient(
+    65% 55% at 50% 55%,
+    rgba(0,0,0,.35) 0%,
+    rgba(0,0,0,.20) 45%,
+    rgba(0,0,0,0) 75%
+  );
+}
+
+.ayohaHubOverlay{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:62px;
+  padding:10px 14px 12px;
+  box-sizing:border-box;
+  background:rgba(0,0,0,.50);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  z-index:2;
+}
+.ayohaHubTagline{ font-size:clamp(12px, 3vw, 14px); line-height:1.2; opacity:.95; }
+.ayohaHubCta{
+  font-size:clamp(16px, 4.2vw, 22px);
+  font-weight:900;
+  text-align:center;
+  width:100%;
+  line-height:1.15;
+  margin-top:9px;
+  margin-bottom:0;
+  transform:none !important;
+}
+.ayohaHubFee{
+  font-size:clamp(12px, 3vw, 14px);
+  font-weight:600;
+  opacity:.80;
+  text-align:center;
+  width:100%;
+  line-height:1.1;
+  margin-bottom:9px;
+  transform:none !important;
+}
+
+/* mini card */
+.ayohaMiniCard{
+  position:absolute;
+  outline:1px solid rgba(255,255,255,.14);
+  outline-offset:-3px;
+  left:50%;
+  width:min(52vw, 240px) !important;
+  height:min(calc(52vw * .63), 151px) !important;
+  border-radius:14px;
+  overflow:hidden;
+  background-size:cover !important;
+  background-position:center;
+  background-repeat:no-repeat;
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -1px 0 rgba(0,0,0,.12),
+    0 8px 14px rgba(0,0,0,.18);
+  z-index:3 !important;
+  display:flex;
+  flex-direction:column;
+  transform-origin:center;
+}
+.ayohaMiniCard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  background:linear-gradient(135deg,
+    rgba(255,255,255,.16) 0%,
+    rgba(255,255,255,.08) 22%,
+    rgba(255,255,255,0) 55%
+  );
+  opacity:.85;
+}
+.ayohaMiniCard:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,.06) 0%,
+    rgba(0,0,0,.10) 60%,
+    rgba(0,0,0,.16) 100%
+  );
+}
+.ayohaMiniTop,
+.ayohaMiniMid,
+.ayohaMiniBottom{ position:relative; z-index:3; }
+
+.ayohaMiniTop{
+  padding:6px 10px 4px !important;
+  min-height:26px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow:hidden;
+  font-weight:900 !important;
+  color:#fff !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+}
+.ayohaMiniTop img{ max-height:18px !important; width:auto !important; display:block; }
+.ayohaMiniTop *{
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.ayohaMiniMid{ padding:8px 10px 4px !important; overflow:hidden; }
+.ayohaMiniType{
+  font-size:10px !important;
+  font-weight:700 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.92) !important;
+  text-shadow:0 2px 6px rgba(0,0,0,.30) !important;
+}
+.ayohaMiniNo{
+  font-size:10px !important;
+  font-weight:600 !important;
+  letter-spacing:.08em !important;
+  color:rgba(255,255,255,.92) !important;
+  margin-top:3px !important;
+  text-shadow:0 2px 6px rgba(0,0,0,.30) !important;
+}
+.ayohaMiniName{
+  font-size:9px !important;
+  font-weight:700 !important;
+  letter-spacing:.04em !important;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.85) !important;
+  margin-top:4px !important;
+  text-shadow:0 2px 6px rgba(0,0,0,.30) !important;
+}
+.ayohaMiniBottom{
+  margin-top:auto;
+  padding:6px 10px 10px !important;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+}
+.ayohaMiniCol{ flex:1; min-width:0; }
+.ayohaMiniCol.right{ text-align:right; }
+.ayohaMiniBottom .k{
+  font-size:7px !important;
+  font-weight:600 !important;
+  letter-spacing:.10em !important;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.60) !important;
+  text-shadow:0 2px 6px rgba(0,0,0,.30) !important;
+}
+.ayohaMiniBottom .v{
+  font-size:8px !important;
+  font-weight:700 !important;
+  color:rgba(255,255,255,.88) !important;
+  margin-top:2px !important;
+  text-shadow:0 2px 6px rgba(0,0,0,.30) !important;
+}
+
+/* lock card above overlay */
+.ayohaHubHero .ayohaMiniCard{
+  top:auto !important;
+  bottom:62px !important;
+  left:50% !important;
+  transform:translateX(-50%) rotate(-1deg) !important;
+}
+
+/* contain optimization (ok) */
+.ayohaHubCard,
+.ayohaHubHero,
+.ayohaMiniCard{ contain:layout paint style; }
+
+/* info section */
+.ayohaHubInfo{ background:#fff; padding:14px; }
+.ayohaHubInfoTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.ayohaHubName{
+  font-weight:900;
+  font-size:clamp(16px, 4.5vw, 20px);
+  letter-spacing:.2px;
+}
+.ayohaHubType{ font-size:12px; color:#666; white-space:nowrap; }
+.ayohaHubAddr{ font-size:13px; color:#444; }
+.ayohaHubRating{
+  margin-top:10px;
+  font-size:13px;
+  color:#333;
+  display:flex;
+  align-items:center;
+  gap:1px;
+  flex-wrap:wrap;
+}
+.ayohaHubReviews{ color:#3366cc; text-decoration:none; font-weight:700; }
+
+
+/* =========================================================
+   10) SCROLLING PERFORMANCE MODE
+   (toggle by adding class .ayohaScrolling to a parent element)
+   ========================================================= */
+.ayohaScrolling .ayohaMiniCard:before,
+.ayohaScrolling .ayohaMiniCard:after,
+.ayohaScrolling .ayohaHubHero:before{ display:none !important; }
+
+.ayohaScrolling .ayohaHubCard{ box-shadow:0 6px 14px rgba(0,0,0,.16) !important; }
+.ayohaScrolling .ayohaMiniCard{
+  box-shadow:0 10px 18px rgba(0,0,0,.20) !important;
+  transform:translate(-50%,-50%) !important;
+}
+.ayohaScrolling .ayohaHubCard{ overflow:visible !important; }
+.ayohaScrolling .ayohaCheckInPill,
+.ayohaScrolling .ayohaMiniCard{ backdrop-filter:none !important; }
+
+
+/* =========================================================
+   11) SENCHA LIST RESET + ACTIVITY ITEM
+   ========================================================= */
+.x-list .x-list-item .x-list-item-body{
+  padding:0 !important;
+  border:0 !important;
+}
+.x-list .x-list-item .x-innerhtml{ padding:0 !important; border:0 !important; }
+.x-list .x-list-item{
+  padding:0 !important;
+  margin:6px 0 !important;
+  border:0 !important;
+  background:transparent !important;
+}
+.x-list .x-list-item:before,
+.x-list .x-list-item:after{ display:none !important; }
+
+.ayohaActItem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 12px !important;
+  border-radius:16px;
+  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:2px solid rgba(124,58,237,.14);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+.ayohaActIconWrap{
+  width:38px; height:38px;
+  border-radius:999px;
+  background:rgba(124,58,237,.10);
+  border:1px solid rgba(124,58,237,.16);
+  display:flex; align-items:center; justify-content:center;
+  flex:0 0 auto;
+}
+.ayohaActIconWrap .ayohaBadge{
+  position:static !important;
+  width:28px; height:28px;
+  border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+}
+.ayohaActText{ flex:1; min-width:0; }
+.ayohaActLabel{
+  font-size:13px;
+  font-weight:800;
+  color:var(--ink);
+  opacity:.85;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.ayohaActSub{
+  margin-top:2px;
+  font-size:11px;
+  color:#6b7280;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.ayohaActValue{
+  font-size:15px;
+  font-weight:900;
+  color:var(--ink);
+  white-space:nowrap;
+  text-align:right;
+}
+.ayohaActValue.muted{ opacity:.85; font-weight:800; }
+
+
+/* =========================================================
+   12) PILL SUCCESS (mint)
+   ========================================================= */
+.ayohaPillSuccess{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(236,253,245,.95), rgba(209,250,229,.92));
+  border:1px solid rgba(16,185,129,.28);
+  color:rgba(6,95,70,.95);
+  font:800 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+  box-shadow:0 10px 22px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.75);
+}
+.ayohaPillSuccess:before{
+  content:"";
+  width:8px; height:8px;
+  border-radius:999px;
+  background:#10b981;
+  box-shadow:0 0 0 3px rgba(16,185,129,.18);
+}
+@media (max-width:360px){
+  .ayohaPillSuccess{ font-size:11px; padding:5px 9px; }
+}
+
+
+/* =========================================================
+   13) HERO MERCHANT STRIP (logo + name + tagline)
+   ========================================================= */
+.ayohaHeroMerchant{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+  max-width:92%;
+}
+.ayohaHeroMerchantLogo{
+  width:86px;
+  height:86px;
+  flex:0 0 86px;
+  border-radius:14px;
+  background:#fff;
+  border:2px solid rgba(255,255,255,.6);
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin:0 auto 8px auto;
+}
+.ayohaHeroMerchantLogo img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  display:block;
+  border-radius:10px;
+}
+.ayohaHeroMerchantText{ min-width:0; }
+.ayohaHeroMerchantName{
+  color:#fff;
+  text-align:center;
+  font:900 16px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.2px;
+  white-space:normal;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+  transform:none;
+}
+.ayohaHeroMerchantTagline{
+  margin-top:4px;
+  color:rgba(255,255,255,.9);
+  text-align:center;
+  font:700 11px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  white-space:normal;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  width:100%;
+  max-width:90%;
+  margin:0 auto;
+  transform:none;
+}
+.ayohaHeroMerchantCheckInCount{
+  margin-top:4px;
+  color:rgba(255,255,255,.78);
+  text-align:center;
+  font:700 10px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  width:100%;
+  transform:none;
+}
+
+
+/* =========================================================
+   14) MERCHANT CHECK-IN STATUS CARD (ayohaM*)
+   ========================================================= */
+.ayohaMCard{
+  border-radius:22px;
+  padding:14px 14px 5px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:1px solid rgba(124,58,237,.14);
+  box-shadow:var(--shadow-lg);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+.ayohaMGlow{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top right, rgba(124,58,237,0.15), transparent 70%);
+  z-index:-1;
+  pointer-events:none;
+}
+.ayohaMStars{ opacity:.5; }
+
+.ayohaMContent{ position:relative; z-index:2; }
+
+.ayohaMHead{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:0 0 0 5px;
+  width:100%;
+  box-sizing:border-box;
+}
+.ayohaMHead > div{
+  text-align:left;
+  min-width:0;
+  padding:0;
+}
+
+.ayohaMIcon{
+  width:60px !important;
+  height:60px !important;
+  min-width:60px;
+  flex-shrink:0;
+  padding:5px 5px 18px 5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,#fcd34d,#fbbf24);
+  box-shadow:0 4px 10px rgba(251,191,36,.3), inset 0 2px 3px rgba(255,255,255,.4);
+  border:1px solid #f59e0b;
+  position:relative;
+}
+.ayohaMIcon svg{ width:30px !important; height:30px !important; display:block; }
+
+.ayohaMTrophy{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 3px rgba(180,83,9,.2));
+  transform:translateY(-2px);
+}
+.ayohaMTrophyText{
+  position:absolute;
+  bottom:4px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:system-ui,-apple-system,sans-serif;
+  font-size:8.5px;
+  font-weight:800;
+  color:#92400e;
+  white-space:nowrap;
+  letter-spacing:-.2px;
+  z-index:2;
+}
+
+.ayohaMPinDot{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:rgba(236,72,153,.95);
+  animation:ayohaPulse 1.8s infinite;
+}
+.ayohaMPinDot:after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+
+.ayohaMTitle{
+  font:900 16px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  letter-spacing:-.2px;
+  margin-bottom:8px;
+  white-space:nowrap;
+}
+.ayohaMSub{
+  margin-top:0;
+  font:650 12px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.75);
+  width:100%;
+  box-sizing:border-box;
+  letter-spacing:-.2px;
+}
+
+.ayohaMProgressWrap{
+  margin-top:12px;
+  padding:0 15px;
+  box-sizing:border-box;
+}
+.ayohaMProgTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.62);
+}
+.ayohaMProgTop b{ color:var(--ink); }
+.ayohaMBar{
+  margin-top:10px;
+  height:11px;
+  border-radius:999px;
+  background:rgba(17,24,39,.10);
+  overflow:hidden;
+  width:100%;
+}
+.ayohaMFill{
+  height:100%;
+  width:0%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 10px 18px rgba(155,0,255,.18);
+  transition:width .35s ease;
+}
+
+.ayohaMActions{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  padding:0 10px;
+  box-sizing:border-box;
+}
+.ayohaMBtn{
+  flex:1;
+  border:0;
+  cursor:pointer;
+  border-radius:16px;
+  padding:12px 10px;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#fff;
+  background:linear-gradient(180deg,var(--ayoha-purple-1), var(--ayoha-purple-2));
+  box-shadow:0 14px 26px rgba(124,58,237,.28);
+  position:relative;
+  overflow:hidden;
+}
+.ayohaMBtn:before{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  transform:translateX(-65%) rotate(10deg);
+  animation:ayohaShimmer 2.8s infinite;
+  pointer-events:none;
+}
+.ayohaMBtnGhost{
+  flex:1;
+  cursor:pointer;
+  border-radius:16px;
+  padding:10px 10px;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(124,58,237,.18);
+  color:#6d28d9;
+  box-shadow:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  font-size:13px;
+}
+.ayohaMBtnGhost:active{
+  background-color:#f3f4f6 !important;
+  transform:scale(.98);
+}
+
+/* chips */
+.ayohaMChips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.ayohaMChip{
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(124,58,237,.14);
+  color:#5b21b6;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  box-shadow:0 10px 18px rgba(17,24,39,.06);
+}
+
+/* hint + last */
+.ayohaMHint{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:16px;
+  background:rgba(124,58,237,.08);
+  border:1px solid rgba(124,58,237,.12);
+  font:850 12px/1.25 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.70);
+}
+.ayohaMLast{
+  margin-top:8px;
+  font:900 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.60);
+}
+.ayohaMLast b{ color:var(--ink); }
+
+/* state badge */
+.ayohaMStateBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(124,58,237,.14);
+  color:#5b21b6;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  box-shadow:0 10px 18px rgba(17,24,39,.06);
+}
+
+/* max state */
+.ayohaMMax .ayohaMSub2{
+  display:block;
+  text-align:center;
+  margin-top:2px;
+  font-weight:900;
+  color:#6d28d9;
+  padding-left:0;
+  letter-spacing:-.1px;
+}
+.ayohaMMax .ayohaMIcon{
+  background:linear-gradient(180deg,#fff7ed,#fde68a);
+  border:1px solid rgba(245,158,11,.45);
+  box-shadow:0 14px 26px rgba(245,158,11,.18);
+}
+.ayohaMMax .ayohaMTrophy{
+  width:30px !important;
+  height:30px !important;
+  display:block;
+  transform-origin:50% 85%;
+  animation:ayohaTrophyPop .8s cubic-bezier(.2,.9,.2,1) both;
+  filter:drop-shadow(0 10px 14px rgba(245,158,11,.22));
+}
+.ayohaMMax .ayohaMIcon:after{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  border-radius:22px;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,
+    rgba(255,183,74,.55) 0 28%,
+    rgba(255,183,74,0) 60%);
+  opacity:0;
+  animation:ayohaIconGlow 1.6s ease-in-out infinite;
+}
+.ayohaMMax .ayohaMIcon:before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.95) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 78% 28%, rgba(255,255,255,.90) 0 1px, transparent 3px),
+    radial-gradient(circle at 62% 78%, rgba(255,255,255,.85) 0 1.1px, transparent 3px),
+    radial-gradient(circle at 28% 72%, rgba(255,255,255,.75) 0 1px, transparent 3px);
+  opacity:0;
+  animation:ayohaSparkle 1.2s ease-in-out infinite;
+}
+.ayohaMMax .ayohaMPinDot{ background:#22c55e; }
+
+/* tip */
+.ayohaMTip{
+  margin-top:10px;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:linear-gradient(90deg, rgba(124,58,237,.10), rgba(236,72,153,.08));
+  border:1px dashed rgba(124,58,237,.22);
+  box-shadow:0 10px 18px rgba(17,24,39,.06);
+}
+.ayohaMTipSpark{
+  width:22px; height:22px;
+  border-radius:10px;
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  background:rgba(255,255,255,.85);
+  border:1px solid rgba(124,58,237,.16);
+  flex:0 0 22px;
+  animation:ayohaTipPop 1.6s ease-in-out infinite;
+}
+.ayohaMTipText{
+  font:850 12px/1.25 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.72);
+}
+
+@media (max-width:360px){
+  .ayohaMActions{ flex-direction:column; }
+}
+
+
+/* =========================================================
+   15) CHECK-IN PILL (left top) — zero/active
+   ========================================================= */
+.ayohaCheckInPill{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:4;
+  padding:6px 10px 6px 28px;
+  border-radius:999px;
+  backdrop-filter:blur(6px);
+  color:#fff;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:.2px;
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 8px 18px rgba(0,0,0,.22);
+}
+.ayohaCheckInPill:before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:50%;
+  transform:translateY(-50%);
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);
+}
+.ayohaCheckInPill.zero{
+  background:linear-gradient(135deg, rgba(239,68,68,.92), rgba(220,38,38,.88));
+  box-shadow:0 10px 22px rgba(239,68,68,.28), 0 8px 18px rgba(0,0,0,.22);
+}
+.ayohaCheckInPill.zero:before{
+  content:"!";
+  display:flex;
+  align-items:center; justify-content:center;
+  font-size:11px;
+  font-weight:1000;
+  background:rgba(255,255,255,.25);
+}
+.ayohaCheckInPill.active{
+  background:linear-gradient(135deg, rgba(214,0,255,.92), rgba(155,0,255,.90), rgba(255,0,222,.72));
+  box-shadow:0 10px 22px rgba(214,0,255,.26), 0 10px 22px rgba(255,0,222,.18), 0 8px 18px rgba(0,0,0,.22);
+}
+.ayohaCheckInPill.active:before{
+  content:"✓";
+  display:flex;
+  align-items:center; justify-content:center;
+  font-size:12px;
+  font-weight:1000;
+  background:rgba(255,255,255,.20);
+}
+
+
+/* =========================================================
+   16) EMPTY CARD (no inset border)
+   ========================================================= */
+.ayoha-emptyCard{
+  border-radius:22px;
+  padding:14px 14px 12px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%) !important;
+  border:1.8px solid rgba(124,58,237,.26);
+  box-shadow:
+    0 18px 34px rgba(17,24,39,.10),
+    0 10px 22px rgba(155,0,255,.14),
+    0 16px 30px rgba(255,59,212,.10);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+.ayoha-emptyCard:before,
+.ayoha-emptyCard:after,
+.ayoha-emptyCardBorderBold:before,
+.ayoha-emptyCardBorderBold:after{ content:none !important; }
+.ayoha-emptyCardBorderBold{ border:1.8px solid rgba(124,58,237,.26) !important; }
+
+.ayoha-emptyTop,
+.ayoha-ctaRow{ position:relative; z-index:2; }
+
+.ayoha-emptyTop{ display:flex; gap:10px; align-items:flex-start; }
+.ayoha-mapIcon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(124,58,237,.14);
+  display:flex; align-items:center; justify-content:center;
+  flex:0 0 54px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 18px rgba(17,24,39,.10);
+}
+.ayoha-mapIcon svg{ width:34px !important; height:34px !important; display:block; }
+.ayoha-pinDot{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:rgba(236,72,153,.95);
+  animation:ayohaPulse 1.8s infinite;
+}
+.ayoha-pinDot:after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+.ayoha-emptyText{ flex:1; min-width:0; }
+.ayoha-emptyTitle{
+  font-weight:900;
+  font-size:18px;
+  line-height:1.1;
+  letter-spacing:-.2px;
+  color:var(--ink);
+  margin-top:2px;
+}
+.ayoha-emptySub{
+  margin-top:6px;
+  font-weight:650;
+  font-size:13px;
+  line-height:1.35;
+  color:rgba(17,24,39,.70);
+}
+.ayoha-ctaRow{ margin-top:12px; }
+.ayoha-ctaBtn{
+  width:100%;
+  border:0;
+  cursor:pointer;
+  border-radius:16px;
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:-.2px;
+  background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 14px 26px rgba(155,0,255,.22);
+  position:relative;
+  overflow:hidden;
+}
+.ayoha-ctaLeft{ display:inline-flex; align-items:center; gap:8px; }
+.ayoha-ctaLeft svg{ width:18px; height:18px; display:block; }
+.ayoha-ptsBadge{
+  margin-left:auto;
+  background:linear-gradient(180deg,#ffd27a,#ffb74a);
+  color:#3b1d00;
+  font-weight:900;
+  font-size:12px;
+  border-radius:999px;
+  padding:6px 10px;
+  box-shadow:0 10px 18px rgba(255,183,74,.28);
+  border:1px solid rgba(255,183,74,.55);
+  flex:0 0 auto;
+}
+
+
+/* =========================================================
+   17) RECENT CHECK-INS (horizontal dataview)
+   ========================================================= */
+.rcTitle{
+  font:900 18px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  padding:8px 12px 6px;
+}
+.ayohaRecentDV .x-dataview-inner{
+  white-space:nowrap;
+  padding:8px 10px 14px;
+}
+.ayohaRecentItem{
+  display:inline-block;
+  vertical-align:top;
+  margin-right:12px;
+}
+.rcCard{
+  width:140px;
+  height:145px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(17,24,39,.06);
+  position:relative;
+  padding:10px 10px 12px;
+}
+.rcBadge{
+  position:absolute;
+  top:8px;
+  right:8px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#ffd27a,#ffb74a);
+  color:#3b1d00;
+  font:900 11px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  box-shadow:0 6px 14px rgba(255,183,74,.35);
+}
+.rcLogoWrap{
+  width:76px;
+  height:76px;
+  border-radius:16px;
+  background:rgba(124,58,237,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:8px auto 10px;
+  overflow:hidden;
+}
+.rcLogo{ width:58px; height:58px; object-fit:contain; display:block; }
+.rcName{
+  font:900 13px/1.15 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  text-align:center;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:32px;
+}
+.rcTime{
+  margin-top:-12px;
+  font:700 10px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.55);
+  text-align:center;
+}
+
+
+/* =========================================================
+   18) HAPPENING LIST + AVATAR + BADGES
+   ========================================================= */
+.ayohaHappeningCard{
+  background:#fff;
+  border-radius:18px;
+  padding:14px 14px 10px 14px;
+  margin:12px;
+  box-shadow:0 10px 26px rgba(168,85,247,.18);
+}
+.ayohaHappeningHeader{ margin-bottom:10px; }
+.ayohaHTitle{ font-size:18px; font-weight:900; color:#5b21b6; line-height:1.1; }
+.ayohaHSub{ font-size:12px; color:#8b8796; margin-top:4px; }
+.ayohaSeeAllBtn.x-button{
+  border:0 !important;
+  background:linear-gradient(180deg,#d600ff,#9b00ff) !important;
+  color:#fff !important;
+  border-radius:999px !important;
+  padding:6px 12px !important;
+  font-weight:800 !important;
+  font-size:12px !important;
+  min-height:auto !important;
+}
+.ayohaSeeAllBtn .x-button-label{ padding:0 !important; }
+.ayohaHappeningList{ padding-top:2px; }
+.ayohaHappeningList .x-dataview-container{
+  display:flex;
+  align-items:flex-start;
+  flex-wrap:nowrap;
+}
+.ayohaHItem{ width:86px; margin-right:14px; text-align:center; }
+
+.ayohaAvatarWrap{ position:relative; width:64px; height:64px; margin:0 auto 6px auto; }
+.ayohaAvatar{
+  width:64px; height:64px;
+  border-radius:999px;
+  object-fit:cover;
+  border:3px solid #efe8ff;
+  box-shadow:0 8px 18px rgba(0,0,0,.10);
+}
+
+/* shared badge */
+.ayohaBadge{
+  position:absolute;
+  right:-2px;
+  bottom:-2px;
+  width:24px;
+  height:24px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 14px rgba(0,0,0,.16);
+  border:2px solid #fff;
+  overflow:hidden;
+}
+.ayohaBadge svg{ display:block; }
+
+.ayohaBadgePin{ background:linear-gradient(180deg,#b56cff,#7c3aed); }
+.ayohaBadgeCard{ background:linear-gradient(180deg,#f7c948,#f59e0b); }
+.ayohaBadgeStamp{ background:linear-gradient(180deg,#d946ef,#7c3aed); }
+.ayohaBadgePoint{ background:linear-gradient(180deg,#22c55e,#16a34a); }
+.ayohaBadgeEvent{ background:linear-gradient(180deg,#60a5fa,#2563eb); }
+.ayohaBadgeStore{ background:linear-gradient(180deg,#fbbf24,#f97316); }
+.ayohaBadgeContest{ background:linear-gradient(180deg,#fb7185,#dc2626); }
+.ayohaBadgeCheckout{
+  background:linear-gradient(180deg,#ff00de,#7c3aed);
+  box-shadow:0 8px 18px rgba(124,58,237,.28);
+}
+
+.ayohaName{
+  font-size:13px;
+  font-weight:800;
+  color:var(--ink);
+  line-height:1.1;
+  max-width:86px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.ayohaActivity{
+  margin-top:3px;
+  font-size:11px;
+  color:var(--ink);
+  line-height:1.2;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  word-break:break-word;
+  min-height:calc(12px * 1.2 * 2);
+}
+.ayohaTime{
+  font-size:11px;
+  color:#8b8796;
+  margin-top:1px;
+}
+
+
+/* =========================================================
+   19) HEADER CARD (ayohaHdrCard)
+   ========================================================= */
+.ayohaHdrCard{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 12px;
+  background:rgba(255,255,255,1);
+  border-left:1px solid rgba(214,0,255,.16);
+  border-right:1px solid rgba(214,0,255,.16);
+  border-bottom:1px solid rgba(255,255,255,1);
+  backdrop-filter:blur(6px);
+}
+.ayohaHdrIcon{
+  width:36px; height:36px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff;
+  background:linear-gradient(135deg,#d600ff,#9b00ff);
+  margin-right:10px;
+  flex:0 0 auto;
+}
+.ayohaHdrText{ flex:1; min-width:0; }
+.ayohaHdrTitle{
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.2px;
+  color:#3b0050;
+  line-height:1.05;
+}
+.ayohaHdrSub{
+  margin-top:3px;
+  font-size:11px;
+  font-weight:700;
+  color:rgba(59,0,80,.62);
+  line-height:1.1;
+}
+.ayohaHdrRight{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.ayohaHdrBadge{
+  font-size:11px; font-weight:900;
+  padding:5px 10px;
+  border-radius:999px;
+  color:#fff;
+  background:linear-gradient(135deg,#ff00de,#c800ff);
+  box-shadow:0 10px 18px rgba(200,0,255,.18);
+}
+.ayohaHdrChevron{
+  font-size:18px;
+  font-weight:900;
+  color:rgba(59,0,80,.40);
+  margin-top:-1px;
+}
+
+
+/* =========================================================
+   20) PERKS LIST TIGHT + TABS
+   ========================================================= */
+.perks-list-tight .x-list-inner{ padding:0 !important; }
+.perks-list-tight .x-list-item{
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  background:transparent !important;
+}
+.perks-list-tight .x-list-item .x-innerhtml{
+  padding:0 !important;
+  margin:0 !important;
+}
+.perks-list-tight .myContent{ margin:0 !important; }
+.perks-list-tight .x-list-item + .x-list-item .myContent{
+  border-top:3px solid #E5E7EB;
+}
+
+.perk-tabs{ display:flex; gap:7px; }
+.perk-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  white-space:nowrap;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;
+  color:#9CA3AF;
+  font-size:10px;
+  padding:4px 6px;
+  cursor:pointer;
+}
+.perk-label{ font-size:11px; }
+.perk-count{ font-size:10px; opacity:.85; }
+.perk-btn.discount{ padding:4px 6px; }
+.perk-btn.small{ padding:4px 10px; font-size:11px; }
+.perk-btn.active{ background:#000; color:#fff; }
+
+
+/* =========================================================
+   21) SWEETALERT2 (Check-in + Confirmation) — Scoped
+   ========================================================= */
+/* z-index safety */
+.swal-container{ z-index:2000; }
+.swal2-container{ z-index:2000; }
+body.x-masked .x-mask{ z-index:20000; }
+
+/* CHECKIN swal */
+.ayoha-checkin-swal.swal2-popup{
+  border-radius:24px;
+  padding:0;
+  width:360px;
+  overflow:visible !important;
+}
+.ayoha-checkin-swal .swal2-title{ display:none; }
+.ayoha-checkin-swal .swal2-html-container{
+  padding:0;
+  margin:0;
+  padding-top:60px;
+}
+.ayoha-checkin-swal .swal2-actions{
+  background:transparent;
+  padding:0 25px 25px 25px;
+  margin-top:0;
+  width:100%;
+  box-sizing:border-box;
+  flex-direction:column;
+}
+.swal-button--confirm-custom{
+  background:linear-gradient(to right, #a855f7, #7e22ce) !important;
+  color:#fff !important;
+  border-radius:50px !important;
+  font-size:18px !important;
+  font-weight:700 !important;
+  padding:14px 0 !important;
+  width:100% !important;
+  box-shadow:0 5px 15px rgba(168,85,247,.4) !important;
+  border:none !important;
+  margin:5px 0 !important;
+  animation:pulse-animation 1s infinite;
+}
+.swal-button--confirm-custom:hover{
+  background:linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+.swal-button--cancel-custom{
+  background:transparent !important;
+  color:#888 !important;
+  font-size:16px !important;
+  font-weight:500 !important;
+  box-shadow:none !important;
+  margin:5px 0 !important;
+}
+.swal-button--cancel-custom:hover{ color:#333 !important; }
+
+/* content */
+.checkin-popup{ text-align:center; padding:0; position:relative; }
+.checkin-icon-top{
+  width:90px;
+  height:90px;
+  background-color:#a855f7;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  top:-105px;
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid #fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  font-size:42px;
+  color:#fff;
+}
+.checkin-header{ font-size:14px; color:#888; font-weight:500; }
+.checkin-title{ font-size:20px; font-weight:800; color:#333; margin:5px 0; }
+.checkin-stamp{
+  width:130px;
+  height:100px;
+  border:3px dashed #bcaaa4;
+  background:#fff;
+  padding:1px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
+}
+.stamp-icon{
+  font-size:55px;
+  filter:grayscale(30%);
+  opacity:.8;
+  transform:rotate(-20deg);
+}
+.checkin-subtitle{
+  font-size:14px;
+  font-weight:800;
+  margin-top:5px;
+  margin-bottom:2px;
+  color:#444;
+}
+.checkin-subtitle-small{
+  font-size:12px;
+  color:#999;
+  margin-bottom:20px;
+  display:block;
+}
+.checkin-info{
+  background:#f3e5f5;
+  border-radius:15px;
+  padding:28px;
+  margin:30px 0;
+  font-size:12px;
+  line-height:1.5;
+  color:#555;
+  width:100% !important;
+}
+.checkin-info strong{ color:#8E44AD; font-weight:700; }
+.checkin-divider{
+  border:none;
+  height:2px;
+  background:#eeeeee;
+  margin:0 0 25px 0;
+}
+
+/* CONFIRMATION swal */
+.ayoha-confirmation-swal.swal2-popup{
+  border-radius:24px;
+  padding:0;
+  width:360px;
+  overflow:visible !important;
+}
+.ayoha-confirmation-swal .swal2-title{ display:none; }
+.ayoha-confirmation-swal .swal2-html-container{
+  padding:0;
+  margin:0;
+  padding-top:60px;
+}
+.ayoha-confirmation-swal .swal2-actions{
+  background:transparent;
+  padding:0 25px 25px 25px;
+  margin-top:0;
+  width:100%;
+  box-sizing:border-box;
+  flex-direction:column;
+}
+.swal-button--awesome{
+  background:linear-gradient(to right, #a855f7, #7e22ce) !important;
+  color:#fff !important;
+  border-radius:50px !important;
+  font-size:18px !important;
+  font-weight:700 !important;
+  padding:14px 0 !important;
+  width:100% !important;
+  box-shadow:0 5px 15px rgba(168,85,247,.4) !important;
+  border:none !important;
+  margin:5px 0 !important;
+}
+.swal-button--awesome:hover{
+  background:linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+.swal-button--continue-shopping{
+  background:transparent !important;
+  color:#888 !important;
+  font-size:16px !important;
+  font-weight:500 !important;
+  box-shadow:none !important;
+  margin:5px 0 !important;
+}
+.swal-button--continue-shopping:hover{ color:#333 !important; }
+
+.confirmation-popup{
+  text-align:center;
+  padding:0 25px;
+  position:relative;
+}
+.confirmation-icon-top{
+  width:90px;
+  height:90px;
+  background:linear-gradient(to bottom right, #a855f7, #7e22ce);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  top:-105px;
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid #fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.coins-icon,
+.successMark-icon{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+}
+.confirmation-title{
+  font-size:26px;
+  font-weight:800;
+  color:#333;
+  margin:5px 0 0 0;
+}
+.confirmation-subtitle{
+  font-size:14px;
+  color:#888;
+  font-weight:500;
+  margin-bottom:25px;
+}
+.points-display{
+  background:#f5f0fb;
+  border-radius:15px;
+  padding:25px 20px;
+  margin:20px 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.points-value{
+  font-size:48px;
+  font-weight:900;
+  color:#a855f7;
+  line-height:1;
+}
+.points-label{
+  font-size:16px;
+  color:#7e22ce;
+  margin-top:5px;
+  font-weight:600;
+}
+
+/* Scoped progress bar to avoid collision */
+.ayoha-confirmation-swal .progress-bar-container{
+  width:100%;
+  height:8px;
+  background:#e0e0e0;
+  border-radius:5px;
+  overflow:hidden;
+  margin-bottom:30px;
+}
+.ayoha-confirmation-swal .progress-bar{
+  height:100%;
+  background:linear-gradient(to right, #b36aff, #8a33dd);
+  border-radius:5px;
+  transition:width .5s ease-in-out;
+}
+.checkins-progress-text{
+  font-size:14px;
+  color:#666;
+  margin-top:20px;
+  margin-bottom:10px;
+}
+
+
+/* =========================================================
+   22) MISC / UTIL
+   ========================================================= */
+input.largerCheckbox{ width:30px; height:30px; }
+input.MediumCheckbox{ width:20px; height:20px; }
+
+.stamp-horizontal-item.x-dataview-item{
+  display:inline-block;
+  vertical-align:top;
+}
+
+/* group list spacing */
+.gapped-grouped-list .x-list-header-wrap:not(:first-child){ margin-top:25px; }
+.gapped-grouped-list .x-list-header{
+  padding:5px 10px;
+  font-size:14px;
+  min-height:auto;
+  margin-left:0;
+  margin-right:0;
+  border-radius:12px 12px 0 0;
+}
+.gapped-grouped-list .x-list-item{
+  margin-left:0;
+  margin-right:0;
+}
+.gapped-grouped-list .x-list-item:last-child .myContent{
+  border-radius:0 0 8px 8px;
+}
+
+/* checkbox / donut */
+#membershipStatusDonut{ background-color:transparent !important; }
+
+
+/* =========================================================
+   23) OPTIONAL: “Scanned merchant panel” (kept minimal)
+   (Bahagian SVG data-url anda sebelum ini terpotong; jadi saya
+    kekalkan style container sahaja untuk elak CSS rosak)
+   ========================================================= */
+.scanned-merchant-panel{
+  background:linear-gradient(160deg,#8e44ad 0%, #c0392b 100%);
+  padding:20px 15px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+.qr-verified-chip,
+.scanned-info-chip{
+  background:rgba(255,255,255,.2);
+  color:#fff;
+  padding:5px 15px;
+  border-radius:20px;
+  font-size:.8em;
+  font-weight:800;
+  text-align:center;
+  margin:0 auto 15px auto;
+  width:fit-content;
+}
+.scanned-info-chip{ margin:15px auto; }
+.merchant-header{ margin-bottom:20px; align-items:center; }
+.merchant-icon-container{
+  width:60px;
+  height:60px;
+  background:#fff;
+  border-radius:50%;
+  margin-right:15px;
+}

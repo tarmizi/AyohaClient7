@@ -1,0 +1,36 @@
+﻿Ext.define('BuskartApp.model.DashboardAyohaUser.DashboardAyohaUserModel', {
+    extend: 'Ext.data.Model',
+    config: {
+        fields: [
+            'ThisWeekCountsStamp',
+                 'ThisWeekCountsPoint',
+                 'TotalCountStamp',
+                 'TotalCountPoint',
+                 'TotalMembershipCard',
+                 'AyohaPoint',
+                 'TotalCampaign',
+                  'LatestStamp',
+                 'LatestStampDate',
+                 'LatestPoint',
+                 'LatestPointDate',
+                 'TypeCRDB',
+                 'PointType',
+                 'EnterpriseNameStampCard',
+                 'EnterpriseNamePointCard',
+                 'LatestStampCampaignCode',
+                 'LatestPointCampaignCode',
+                 'PNUnread',
+                 'ThisWeekCountsStampRedeem',
+                 'ThisWeekCountsPointRedeem',
+                 'TotalItemQuantityCart',
+                  'AyohaTaAndWin_TapBalance',
+                 'AyohaMember_Rank',
+                 'BadgeCount_Stamp',
+                 'BadgeCount_Point',
+                 'BadgeCount_Discount',
+                 'BadgeCount_Contest',
+                  'BadgeCount_Event',
+                 'BadgeCount_Voucher',
+        ]
+    }
+});

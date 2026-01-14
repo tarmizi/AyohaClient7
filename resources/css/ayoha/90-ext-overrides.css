@@ -1,0 +1,8 @@
+/* Sencha/Ext small polish (optional) */
+.x-panel-body,
+.x-container-body{
+  background: transparent;
+}
+
+/* Reduce tap highlight */
+.x-btn, .x-component, .x-list-item{ -webkit-tap-highlight-color: transparent; }

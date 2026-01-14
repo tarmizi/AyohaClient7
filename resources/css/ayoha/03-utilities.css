@@ -1,0 +1,15 @@
+.u-row{ display:flex; align-items:center; }
+.u-row-between{ display:flex; align-items:center; justify-content:space-between; }
+.u-gap-8{ gap:8px; }
+.u-gap-10{ gap:10px; }
+.u-center{ display:flex; align-items:center; justify-content:center; }
+.u-2line{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.u-tap{
+  -webkit-tap-highlight-color: transparent;
+  user-select:none;
+}

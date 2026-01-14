@@ -1,0 +1,193 @@
+/* .ayohaCard{
+  border-radius:var(--radius-xl);
+  padding:14px 14px 12px;
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:1px solid var(--border-soft);
+  box-shadow:var(--shadow-md);
+}
+
+.ayohaCardSoft{
+  background: var(--surface);
+  border:1px solid rgba(209,213,219,.75);
+  box-shadow: var(--shadow-sm);
+}
+
+
+.ayohaCardAyohaShadow{
+  box-shadow: 0 14px 28px rgba(124,58,237,.16), 0 8px 16px rgba(255,0,222,.08);
+}
+ */
+
+
+
+
+.ayoha-emptyCard{
+  border-radius:22px;
+  padding:14px 14px 12px;
+  position:relative;
+  overflow:hidden;
+
+  background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%) !important;
+
+  /* ✅ border biasa */
+  border:1.8px solid rgba(124,58,237,.26);
+
+  /* ✅ ayoha theme shadow (lebih kuat bawah) */
+  box-shadow:
+    0 18px 34px rgba(17,24,39,.10),               /* main soft */
+    0 10px 22px rgba(155,0,255,.14),              /* purple glow bawah */
+    0 16px 30px rgba(255,59,212,.10);             /* pink glow bawah */
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ✅ force buang apa-apa pseudo border lama */
+.ayoha-emptyCard:before,
+.ayoha-emptyCard:after,
+.ayoha-emptyCardBorderBold:before,
+.ayoha-emptyCardBorderBold:after{
+  content:none !important;
+}
+
+/* (Optional) kalau masih ada class lama, biar dia tak kacau */
+.ayoha-emptyCardBorderBold{
+  border:1.8px solid rgba(124,58,237,.26) !important;
+}
+
+/* Keep content above border layer */
+.ayoha-emptyTop,
+.ayoha-ctaRow{
+  position:relative;
+  z-index:2;
+}
+
+/* =========================================================
+   Top row layout
+========================================================= */
+.ayoha-emptyTop{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+/* Left icon tile */
+.ayoha-mapIcon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(124,58,237,.14);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 54px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 18px rgba(17,24,39,.10);
+}
+
+/* ✅ prevent SVG in tile from scaling huge */
+.ayoha-mapIcon svg{
+  width:34px !important;
+  height:34px !important;
+  display:block;
+}
+
+/* pin dot pulse */
+.ayoha-pinDot{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:rgba(236,72,153,.95);
+  box-shadow:0 0 0 0 rgba(236,72,153,.55);
+  animation: ayohaPulse 1.8s infinite;
+}
+.ayoha-pinDot:after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+@keyframes ayohaPulse{
+  0%{ box-shadow:0 0 0 0 rgba(236,72,153,.55); }
+  70%{ box-shadow:0 0 0 10px rgba(236,72,153,0); }
+  100%{ box-shadow:0 0 0 0 rgba(236,72,153,0); }
+}
+
+/* =========================================================
+   Text
+========================================================= */
+.ayoha-emptyText{ flex:1; min-width:0; }
+
+.ayoha-emptyTitle{
+  font-weight:900;
+  font-size:18px;
+  line-height:1.1;
+  letter-spacing:-.2px;
+  color:#111827;
+  margin-top:2px;
+}
+
+.ayoha-emptySub{
+  margin-top:6px;
+  font-weight:650;
+  font-size:13px;
+  line-height:1.35;
+  color:rgba(17,24,39,.70);
+}
+
+/* =========================================================
+   CTA button
+========================================================= */
+.ayoha-ctaRow{ margin-top:12px; }
+
+.ayoha-ctaBtn{
+  width:100%;
+  border:0;
+  cursor:pointer;
+  border-radius:16px;
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:-.2px;
+  background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 14px 26px rgba(155,0,255,.22);
+  position:relative;
+  overflow:hidden;
+}
+
+.ayoha-ctaLeft{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.ayoha-ctaLeft svg{
+  width:18px;
+  height:18px;
+  display:block;
+}
+
+.ayoha-ptsBadge{
+  margin-left:auto;
+  background:linear-gradient(180deg,#ffd27a,#ffb74a);
+  color:#3b1d00;
+  font-weight:900;
+  font-size:12px;
+  border-radius:999px;
+  padding:6px 10px;
+  box-shadow:0 10px 18px rgba(255,183,74,.28);
+  border:1px solid rgba(255,183,74,.55);
+  flex:0 0 auto;
+}

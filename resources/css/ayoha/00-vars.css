@@ -1,0 +1,30 @@
+:root{
+  --ayoha-purple:#7c3aed;
+  --ayoha-pink:#ff00de;
+  --ayoha-violet:#c800ff;
+
+  --ayoha-grad: linear-gradient(135deg, rgba(255,0,222,.95), rgba(200,0,255,.95));
+  --ayoha-grad-soft: linear-gradient(180deg, rgba(255,0,222,.10), rgba(200,0,255,.08));
+
+  --text-900:#111827;
+  --text-700:#374151;
+  --text-600:#4b5563;
+  --text-500:#6b7280;
+
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface-soft:#f7f5ff;
+
+  --border:#d1d5db;
+  --border-soft: rgba(124,58,237,.14);
+
+  --shadow-sm: 0 6px 14px rgba(17,24,39,.10);
+  --shadow-md: 0 14px 30px rgba(17,24,39,.12);
+  --shadow-ayoha: 0 14px 28px rgba(124,58,237,.18);
+
+  --radius-xl: 22px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+
+  --ring: 0 0 0 3px rgba(124,58,237,.18);
+}

@@ -1,0 +1,43 @@
+﻿Ext.define('BuskartApp.model.MembershipCard.MembershipCardMembershipsModel', {
+    extend: 'Ext.data.Model',
+    config: {
+        fields: [
+                 'ID',
+      'MembershipCardCode',
+      'EnterpriseAccNo',
+      'MembershipCardFee',
+      'MembershipCardType',
+      'RowStatus',
+      'ExpiredDate',
+      'MembershipCardBackgroundImg',
+      'CreatedDate',
+      'CreatedBy',
+      'StartDate',
+      'MembershipCardName',
+      'MembershipCardFeePaymentCycle',
+      'StrExpiredDate',
+      'isValidLifeTime',
+      'ModifiedBy',
+      'ModifiedDate',
+       'isRequiredApproval',
+      'MembershipCardBackgroundImgName_back',
+      'MembershipCardBackgroundImg_back',
+      'MembershipDate',
+      'MembershipByMethod',
+      'MembrshipApprovalDate',
+      'MembershipApprovalBy',
+      'ReferalSubscriberAccNo',
+      'IsRequiredMembershipFee',
+      'MembershipApprovalStatus',
+      'MembershipFeePaymentMethod',
+      'MembershipPaymentLink',
+      'MembershipPaymentPaidProof',
+      'MembershipPaymentCode',
+        'MembershipPaymentPaidProofName',
+      'ReceivedAmount',
+         'Remarks',
+      'MembershipRejectedDate',  
+
+        ]
+    }
+});
