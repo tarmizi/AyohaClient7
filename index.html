@@ -6,8 +6,5543 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
 
     <title>BuskartApp</title>
-    <link href="resources/css/login/Login.css" rel="stylesheet" />
-    <link rel="stylesheet" href="resources/css/ayoha/00-vars.css" />
+
+    <style>
+ /* --- CONTAINER --- */
+#ayohaRewardWrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; /* User masih boleh tekan button lain */
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- THE REWARD CARD (Pop Up) --- */
+.ayoha-reward-card {
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    box-shadow: 0 20px 50px rgba(124, 58, 237, 0.25);
+    padding: 20px 30px;
+    border-radius: 24px;
+    text-align: center;
+    transform: scale(0.5);
+    opacity: 0;
+    animation: ayohaPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* --- TEXT STYLES --- */
+.ayoha-reward-title {
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.ayoha-reward-points {
+    font-family: system-ui, sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    /* Gradient Gold Text */
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.ayoha-reward-sub {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* --- CONFETTI PIECES --- */
+.ayoha-confetti-p {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #f00;
+    top: 50%; left: 50%;
+    border-radius: 4px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes ayohaPopIn {
+    0% { transform: scale(0.5) translateY(20px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes ayohaExplode {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1) rotate(720deg); opacity: 0; }
+}
+
+/* Coin Bounce Animation */
+.ayoha-coin-icon {
+    display: inline-block;
+    animation: ayohaCoinJump 1s ease-in-out infinite;
+}
+@keyframes ayohaCoinJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+    </style>
+
+<style>
+  /* Container untuk confetti (supaya tak ganggu layout) */
+#ayohaConfettiWrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; /* Supaya user boleh click button di belakang confetti */
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Kepingan Confetti */
+.ayoha-confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background-color: #f00; /* Warna default */
+    top: -20px;
+    opacity: 0;
+    border-radius: 2px;
+}
+
+/* Animasi Jatuh & Goyang */
+@keyframes ayohaConfettiFall {
+    0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 1; }
+    20% { transform: translateX(-15px) rotate(45deg); }
+    40% { transform: translateX(15px) rotate(90deg); }
+    60% { transform: translateX(-15px) rotate(180deg); }
+    80% { transform: translateX(15px) rotate(270deg); opacity: 1; }
+    100% { top: 110%; transform: translateX(-15px) rotate(360deg); opacity: 0; }
+}
+
+/* Pop-up Message "Welcome Back" */
+.ayoha-welcome-toast {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    font-family: system-ui, sans-serif;
+    font-weight: 800;
+    color: #7c3aed;
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.ayoha-welcome-toast.show {
+    opacity: 1;
+    top: 15%; /* Naik sikit bila muncul */
+    transform: translate(-50%, -50%) scale(1);
+}
+</style>
+
+<style>
+/* Letak wrapper supaya pill auto-center & ada spacing elok */
+.ayohaArrivalPillWrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:10px 16px 14px;   /* ✅ jarak dari "You've Arrived" & tepi screen */
+  box-sizing:border-box;
+}
+
+/* Pill: bagi max width dan center cantik */
+.ayohaArrivalPill{
+  width:100%;
+  max-width:420px;          /* ✅ adjust ikut taste */
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  padding:10px 14px;
+  border-radius:999px;
+
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(255,255,255,.55);
+
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+  color:#2e1065;
+
+  font:800 12.8px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:.15px;
+
+  box-sizing:border-box;
+}
+
+/* Icon kekal */
+.ayohaArrivalPillIcon{
+  width:18px;height:18px;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg, rgba(124,58,237,1), rgba(168,85,247,1));
+  color:#fff;
+  box-shadow:0 10px 22px rgba(124,58,237,.35);
+  font-size:12px;font-weight:900;line-height:1;
+  flex:0 0 auto;
+}
+
+/* ✅ Penting: bagi flex shrink elok + clamp 2 line (tak jadi ellipsis cepat) */
+.ayohaArrivalPillText{
+  flex:1 1 auto;
+  min-width:0;              /* ✅ bagi flex text boleh shrink properly */
+
+  white-space:normal;       /* ✅ boleh wrap */
+  overflow:hidden;
+
+  display:-webkit-box;
+  -webkit-line-clamp:2;     /* ✅ max 2 line, world-class */
+  -webkit-box-orient:vertical;
+}
+
+/* chip point */
+.ayohaArrivalPillPts{
+  display:inline-flex;
+  align-items:center;
+  margin-left:4px;
+  padding:2px 8px;
+  border-radius:999px;
+  background:rgba(124,58,237,.12);
+  border:1px solid rgba(124,58,237,.18);
+  color:#5b21b6;
+  font-weight:900;
+}
+
+/* Optional: kalau parent hero ada overflow hidden, bagi ruang */
+.ayohaHeroSection,
+.ayohaHeroHeader,
+.ayohaHeroTop{
+  overflow:visible !important;
+}
+
+
+</style>
+
+
+
+
+    <style>
+      /* Container untuk Badge */
+.gold-badge-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%; /* Pastikan ia bulat ikut bentuk badge */
+  overflow: hidden;   /* Penting: Supaya kilauan tak "tumpah" keluar */
+  transform: translateZ(0); /* Hardware acceleration untuk mobile smooth */
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); /* Glow kuning lembut di belakang */
+}
+
+/* Layer Kilauan (The Shine) */
+.gold-badge-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%; /* Mula dari luar kiri */
+  width: 100%;
+  height: 100%;
+  
+  /* Buat garisan cahaya putih yang pudar */
+  background: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  
+  transform: skewX(-25deg); /* Sengetkan cahaya supaya nampak natural */
+  animation: shine-effect 3s infinite; /* Ulang setiap 3 saat */
+}
+
+/* Keyframes untuk gerakkan cahaya */
+@keyframes shine-effect {
+  0% {
+    left: -150%;
+  }
+  20% {
+    left: 150%; /* Cahaya melintas laju dalam 0.6 saat (20% dari 3s) */
+  }
+  100% {
+    left: 150%; /* Tunggu diam (pause) sebelum ulang balik */
+  }
+}
+.gold-badge-wrapper {
+  /* ...kod yang atas tadi... */
+  animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.ayoha-floating-mascot {
+    /* Maskot terapung naik turun dalam masa 3 saat */
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0px); }
+    50% { transform: translate(0, -8px); } /* Naik 8px */
+    100% { transform: translate(0, 0px); }
+}
+
+/* Wrapper utama untuk memastikan semua duduk setempat */
+.celebration-container {
+    position: relative;
+    width: 120px;
+    height: 131px;
+}
+
+.mascot-float {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+    
+    /* Animasi sekali sahaja (forwards bermaksud dia kekal saiz akhir) */
+    animation: mascot-entry 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    /* Mula-mula kita sorokkan dia */
+    transform: scale(0); 
+    opacity: 0;
+}
+
+@keyframes mascot-entry {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1); /* Kembali saiz asal */
+        opacity: 1;
+    }
+}
+
+
+/* --- CONFETTI SETUP --- */
+
+/* Titik tengah letupan (di belakang maskot) */
+.confetti-explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    z-index: 1; /* Duduk di belakang maskot */
+    animation: stop-confetti 1s ease-out forwards;
+    animation-delay: 5s;
+}
+
+/* Bentuk asas kepingan konfeti */
+.confetti-piece {
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 12px;
+    opacity: 0; /* Mula-mula halimunan */
+}
+
+/* Warna-warna konfeti (ikut tema app: Emas, Ungu, Teal) */
+.c-gold   { background-color: #FFD700; }
+.c-purple { background-color: #9C27B0; }
+.c-teal   { background-color: #00BCD4; }
+.c-blue   { background-color: #2196F3; }
+
+/* Animasi Letupan: Bergerak dari tengah ke luar, berpusing, dan pudar */
+@keyframes pop-confetti {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+        opacity: 1; /* Muncul tiba-tiba */
+    }
+    80% {
+        opacity: 1; /* Kekal terang sekejap */
+    }
+    100% {
+        /* Variable (--tx, --ty, --r) akan ditentukan pada setiap kepingan di bawah */
+        transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(1);
+        opacity: 0; /* Pudar dan hilang */
+    }
+}
+
+/* --- POSISI SETIAP KEPINGAN (Manual tapi padu) --- */
+/* Kita buat 12 kepingan. Setiap satu ada arah berbeza. */
+
+.cf-1 { --tx: -60px; --ty: -70px; --r: 120deg; animation: pop-confetti 1.2s ease-out infinite 0.1s; }
+.cf-2 { --tx:   0px; --ty: -90px; --r: -90deg; animation: pop-confetti 1.2s ease-out infinite 0.3s; }
+.cf-3 { --tx:  60px; --ty: -70px; --r:  45deg; animation: pop-confetti 1.2s ease-out infinite 0.2s; }
+.cf-4 { --tx: -80px; --ty:    0px; --r: 180deg; animation: pop-confetti 1.2s ease-out infinite 0.5s; }
+.cf-5 { --tx:  80px; --ty:    0px; --r: -45deg; animation: pop-confetti 1.2s ease-out infinite 0.4s; }
+.cf-6 { --tx: -60px; --ty:  60px; --r:  90deg; animation: pop-confetti 1.2s ease-out infinite 0.1s; }
+.cf-7 { --tx:   0px; --ty:  80px; --r: 200deg; animation: pop-confetti 1.2s ease-out infinite 0.3s; }
+.cf-8 { --tx:  60px; --ty:  60px; --r: -70deg; animation: pop-confetti 1.2s ease-out infinite 0.2s; }
+
+/* Kepingan kecil tambahan untuk variasi */
+.cf-small { width: 5px; height: 5px; border-radius: 50%; }
+.cf-9  { --tx: -40px; --ty: -100px; --r: 0deg; animation: pop-confetti 1.5s ease-out infinite 0.6s; }
+.cf-10 { --tx:  40px; --ty: -100px; --r: 0deg; animation: pop-confetti 1.5s ease-out infinite 0.7s; }
+.cf-11 { --tx: -90px; --ty:  -30px; --r: 0deg; animation: pop-confetti 1.5s ease-out infinite 0.5s; }
+.cf-12 { --tx:  90px; --ty:  -30px; --r: 0deg; animation: pop-confetti 1.5s ease-out infinite 0.6s; }
+
+/* Nota: Saya set 'infinite' supaya anda boleh nampak efeknya berulang.
+   Untuk production, anda boleh buang 'infinite' supaya ia meletup SEKALI sahaja bila page load. */
+
+   @keyframes stop-confetti {
+    0% {
+        opacity: 1; /* Masih nampak */
+    }
+    100% {
+        opacity: 0; /* Pudar habis */
+        visibility: hidden; /* Sorok terus supaya tak kacau performance */
+    }
+}
+    </style>
+<style>
+/* Row wrapper (duduk dalam container docked top) */
+.ayohaHeroDockRowTop{
+  position:relative;              /* ✅ bukan absolute supaya tak kacau layout */
+  width:100%;
+  box-sizing:border-box;
+  padding: 10px 12px;              /* ✅ naik sikit + kemas */
+  pointer-events:auto;
+  z-index:25;
+}
+
+/* Panel putih */
+.ayohaHeroDockPanelTop{
+  width:100%;
+  box-sizing:border-box;
+
+  display:flex;                   /* ✅ */
+  align-items:center;
+  gap:10px;
+
+  padding:7px 10px;
+  border-radius:999px;
+
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(124,58,237,.18);
+  box-shadow: 0 14px 30px rgba(17,24,39,.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  overflow:hidden;                /* ✅ elak terkeluar */
+}
+
+/* LEFT radius label (label sahaja) */
+.ayohaDockLeftTop{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  height:32px;
+  padding:0 8px;
+
+  color:#4c1d95;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.15px;
+  white-space:nowrap;
+}
+.ayohaDockLeftTop .lbl{ opacity:.75; }
+.ayohaDockLeftTop .val{ font-weight:950; }
+
+/* ✅ RIGHT segmented group — tolak ke kanan */
+.ayohaDockRightTop{
+  margin-left:auto;               /* ✅ INI kunci dia */
+  flex:0 0 auto;
+
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  padding:4px;
+  border-radius:999px;
+
+  background: rgba(124,58,237,.06);
+  border: 1px solid rgba(124,58,237,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+  position:relative;
+}
+
+/* Divider (antara radius & segmented) */
+.ayohaDockRightTop:before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:1px;
+  height:22px;
+  background: rgba(124,58,237,.18);
+}
+
+/* Seg buttons */
+.ayohaViewSegBtnTop{
+  appearance:none;
+  border:1px solid rgba(124,58,237,.10);
+  background: transparent;
+  cursor:pointer;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  height:32px;
+  padding:0 12px;
+  border-radius:999px;
+
+  color:#4c1d95;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.15px;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+.ayohaViewSegBtnTop .ico{
+  width:16px;height:16px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.ayohaViewSegBtnTop svg{ width:16px;height:16px; fill: currentColor; }
+
+.ayohaViewSegBtnTop.isActive{
+  color:#fff;
+  border-color: rgba(255,255,255,.22);
+  background: linear-gradient(90deg, #7c3aed, #ff00de);
+  box-shadow: 0 10px 18px rgba(124,58,237,.22), inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.ayohaViewSegBtnTop:active,
+.ayohaDockLeftTop:active{ transform: scale(.98); }
+
+/* ===== Mobile: show label for ACTIVE only ===== */
+@media (max-width: 480px){
+  /* hide all labels by default */
+  .ayohaViewSegBtnTop .txt{ display:none; }
+
+  /* show label only for active button */
+  .ayohaViewSegBtnTop.isActive .txt{
+    display:inline;
+    font-size:11px;
+    line-height:1;
+    letter-spacing:-.15px;
+  }
+
+  /* tighten segmented group */
+  .ayohaDockRightTop{
+    gap:4px;
+    padding:3px;
+  }
+
+  /* make buttons compact */
+  .ayohaViewSegBtnTop{
+    height:32px;
+    padding:0 10px;     /* compact */
+    gap:6px;
+  }
+
+  /* active button gets a bit more space for text */
+  .ayohaViewSegBtnTop.isActive{
+    padding:0 12px;
+  }
+}
+
+</style>
+
+
+<style>
+ /* =========================
+   Ayoha Bottom Search Dock
+   World-app level (high contrast + frosted dock)
+   ========================= */
+
+/* ✅ Dock / wrapper (make it clearly separated from content) */
+.ayohaSearchWrap{
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+
+  /* frosted dock */
+  background: rgba(255,255,255,.72);
+ 
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(124,58,237,.12);
+}
+
+/* ✅ Search bar (solid, elevated, readable) */
+.ayohaSearchBar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding: 11px 12px;
+  border-radius: 999px;
+
+  background: #ffffff; /* solid = better contrast */
+  border: 1px solid rgba(124,58,237,.22);
+
+  /* clear elevation */
+  box-shadow:
+    0 18px 42px rgba(17,24,39,.16),
+    0 6px 14px rgba(17,24,39,.10);
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ✅ Focus ring (premium feel) */
+.ayohaSearchBar:focus-within{
+  border-color: rgba(124,58,237,.45);
+  box-shadow:
+    0 22px 50px rgba(124,58,237,.18),
+    0 10px 20px rgba(17,24,39,.12);
+}
+
+/* Left search icon */
+.ayohaSearchIco{
+  width:18px;height:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  color: rgba(91,33,182,.95);
+}
+.ayohaSearchIco svg{ width:18px;height:18px; fill: currentColor; }
+
+/* Input */
+.ayohaSearchInput{
+  flex:1;
+  min-width:0;
+
+  border:0;
+  outline:0;
+  background:transparent;
+
+  font: 800 13px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+  color:#111827;
+}
+.ayohaSearchInput::placeholder{
+  color:#6b7280; /* ✅ more readable */
+  opacity:1;
+  font-weight:700;
+}
+
+/* ✅ Icon buttons (ring + slight fill so they don't disappear) */
+.ayohaIconBtn{
+  width:36px;
+  height:36px;
+  border-radius:999px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  background: rgba(124,58,237,.08);
+  border: 1px solid rgba(124,58,237,.18);
+
+  color:#5b21b6;
+
+  box-shadow:
+    0 10px 18px rgba(17,24,39,.10),
+    inset 0 1px 0 rgba(255,255,255,.85);
+
+  padding:0;
+  cursor:pointer;
+}
+.ayohaIconBtn svg{ width:18px;height:18px; fill: currentColor; }
+
+.ayohaIconBtn:active{
+  transform: scale(.98);
+  box-shadow:
+    0 8px 14px rgba(17,24,39,.12),
+    inset 0 1px 0 rgba(255,255,255,.80);
+}
+
+/* Optional: subtle difference */
+.ayohaIconBtnQr{ color:#6d28d9; }
+.ayohaIconBtnFilter{ color:#7c3aed; }
+
+@media (max-width: 360px){
+  .ayohaSearchWrap{
+    padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
+  }
+  .ayohaSearchBar{ padding: 10px 11px; gap:8px; }
+  .ayohaIconBtn{ width:34px; height:34px; }
+}
+
+</style>
+
+<style>
+
+/* Button: auto width ikut text, ada max width */
+.ayohaBtnCheckInNow{
+
+  display:inline-flex;
+  width: fit-content;   /* ✅ ikut content */
+  margin: 9px auto 6px; /* ✅ center + spacing */
+
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+text-align: center;
+                  
+  /* max-width: 72%;              */
+  padding: 7px 11px;         
+  border-radius:999px;
+
+ 
+
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.2px;
+
+
+
+
+
+  /* Ayoha theme gradient */
+  background: linear-gradient(90deg, #7c3aed, #ff00de);
+  color:#fff;
+  border: 1px solid rgba(255,255,255,.20);
+}
+
+/* Icon size */
+.ayohaBtnCheckInNow .ico{
+  width:16px;
+  height:16px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.ayohaBtnCheckInNow .ico svg{
+  width:16px;
+  height:16px;
+  fill:#fff;
+  display:block;
+}
+
+.ayohaHubOverlayHint{
+  font: 800 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: fit-content;        /* ikut content */
+  padding: 1px 11px;
+  border-radius: 999px;      /* nampak kemas/premium */
+
+  margin: 0 !important;      /* pastikan tak jatuh bawah */
+  transform: translateY(-10px); /* ✅ naikkan hint sahaja (try -4/-8 ikut sedap) */
+  pointer-events: none;      /* hint tak ganggu tap */
+}
+
+</style>
+
+
+
+
+<style>
+ /* ===== Today's Check-In pill (ikut theme +10 points) ===== */
+ .ayohaPillCheckin{
+  position:absolute;
+  top:12px;               /* ✅ top right */
+  right:12px;
+  bottom:auto;            /* ✅ cancel bottom */
+  z-index:6;
+
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  padding:6px 10px;
+  border-radius:999px;
+
+  background:linear-gradient(180deg, rgba(236,253,245,.95), rgba(209,250,229,.92));
+  border:1px solid rgba(16,185,129,.28);
+
+  color:rgba(6,95,70,.95);
+  font:800 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+/* dot indicator */
+.ayohaPillCheckin:before{
+  content:"";
+  width:8px;height:8px;
+  border-radius:999px;
+  background:#10b981;
+  box-shadow:0 0 0 3px rgba(16,185,129,.18);
+}
+
+@media (max-width: 360px){
+  .ayohaPillCheckin{ font-size:11px; padding:5px 9px; top:10px; right:10px; }
+}
+
+/* ===== Today's Check-In = 0 (soft red) ===== */
+.ayohaPillCheckin0{
+  position:absolute;
+  top:12px;
+  right:12px;
+  bottom:auto;
+  z-index:6;
+
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  padding:6px 10px;
+  border-radius:999px;
+
+  /* soft red glass */
+  background:linear-gradient(180deg, rgba(254,242,242,.95), rgba(254,226,226,.92));
+  border:1px solid rgba(239,68,68,.28);
+
+  color:rgba(153,27,27,.95);
+  font:800 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+/* dot indicator (red) */
+.ayohaPillCheckin0:before{
+  content:"";
+  width:8px;height:8px;
+  border-radius:999px;
+  background:#ef4444;
+  box-shadow:0 0 0 3px rgba(239,68,68,.18);
+}
+
+@media (max-width: 360px){
+  .ayohaPillCheckin0{ font-size:11px; padding:5px 9px; top:10px; right:10px; }
+}
+
+</style>
+
+<style>
+  /* ===== Center each list item row ===== */
+.ayohaHubList .x-list-item,
+.ayohaHubList .x-list-item-body{
+  background: transparent !important;
+}
+
+
+
+/* ===== Row wrapper + smooth separator line ===== */
+.ayohaHubRow{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding: 0 0 26px 0;       /* ✅ ruang untuk line */
+  box-sizing:border-box;
+  position:relative;
+}
+
+/* ✅ smooth separator (line lembut) */
+.ayohaHubRow:after{
+  content:"";
+  position:absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 10px;              /* ✅ line duduk bawah card */
+  height: 1px;
+
+  background: linear-gradient(90deg,
+    rgba(124,58,237,0) 0%,
+    rgba(124,58,237,.16) 20%,
+    rgba(255,0,222,.12) 50%,
+    rgba(124,58,237,.16) 80%,
+    rgba(124,58,237,0) 100%
+  );
+  opacity: .9;
+}
+
+/* ===== Card look ===== */
+.ayohaHubCard{
+  width:95vw;
+  max-width:95vw;
+  border-radius:18px;
+  overflow:hidden;
+  display:block;
+
+  /* background:#fff; */
+  border:1px solid rgba(124,58,237,.12);
+  /* box-shadow: 0 10px 24px rgba(17,24,39,.10); */
+}
+
+/* optional: lift sikit bila tap */
+.ayohaHubCard:active{
+  transform: scale(.995);
+  box-shadow: 0 8px 18px rgba(17,24,39,.10);
+}
+
+
+
+
+/* ===== Hero / Background Image ===== */
+/* .ayohaHubHero{
+  position:relative;
+  height: clamp(210px, 70vw, 280px); 
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+} */
+.ayohaHubHero{
+  position:relative;
+  height: clamp(210px, 70vw, 280px);
+  background-size: cover;
+  background-position: 50% 18% !important;  /* ✅ focus muka */
+  background-repeat:no-repeat;
+}
+/* ===== Overlay text bottom ===== */
+/*ORIGINAL .ayohaHubOverlay{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  background: rgba(0,0,0,.50);
+  color:#fff;
+  padding: 12px 14px;
+} */
+
+
+/* ORIGINAL 2
+.ayohaHubOverlay{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  background: rgba(0,0,0,.50);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center; 
+} */
+
+.ayohaHubOverlay{
+  position:absolute;
+  left:0; right:0; bottom:0;
+
+  height:62px;                 /* ✅ static height (ubah ikut sedap) */
+  padding:10px 14px 12px;      /* ✅ ruang dalam overlay */
+  box-sizing:border-box;
+
+  background: rgba(0,0,0,.50);
+  color:#fff;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;      /* ✅ content auto center dalam height fixed */
+  gap:6px;                     /* ✅ spacing smooth antara button & hint */
+}
+.ayohaHubTagline{
+  font-size: clamp(12px, 3vw, 14px);
+  line-height:1.2;
+  opacity:.95;
+}
+.ayohaHubCta{
+  font-size: clamp(16px, 4.2vw, 22px);
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+  line-height: 1.15;
+
+  margin-top: 9px;     /* smooth top */
+  margin-bottom: 0px;  /* ✅ jarak ke fee */
+  transform: none !important;
+}
+
+.ayohaHubFee{
+  font-size: clamp(12px, 3vw, 14px);
+  font-weight: 600;
+  opacity: .80;
+  text-align: center;
+  width: 100%;
+  line-height: 1.1;
+
+  margin-bottom: 9px;
+  transform: none !important;
+}
+
+
+
+
+
+
+
+/* ===== Mini Membership Card (floating) ===== */
+
+
+/* Top (logo + name) jangan bagi jadi tinggi */
+.ayohaMiniTop{
+  padding: 6px 10px 4px !important;
+  min-height: 26px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow:hidden;
+  font-weight: 900 !important;   /* ✅ bold */
+  color: #ffffff !important;     /* ✅ putih */
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.ayohaMiniTop img{
+  max-height: 18px !important;
+  width:auto !important;
+  display:block;
+}
+
+/* kalau nama merchant panjang, ellipsis */
+.ayohaMiniTop *{
+  max-width: 100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* Mid section kecilkan supaya fit */
+.ayohaMiniMid{
+  padding: 8px 10px 4px !important;
+  overflow:hidden;
+}
+.ayohaMiniType{
+  font-size: 10px !important;
+  font-weight: 700 !important;         /* ✅ kurang dari 900 */
+  letter-spacing: .12em !important;    /* ✅ premium tracking */
+  text-transform: uppercase;
+  color: rgba(255,255,255,.92) !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,.30) !important;
+}
+
+
+.ayohaMiniNo{
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .08em !important;
+  color: rgba(255,255,255,.92) !important;
+  margin-top: 3px !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,.30) !important;
+}
+
+
+.ayohaMiniName{
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85) !important;
+  margin-top: 4px !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,.30) !important;
+}
+
+
+/* ✅ bottom row jadi 2 column: left & right */
+.ayohaMiniBottom{
+  margin-top:auto;
+  padding: 6px 10px 10px !important;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+}
+
+/* left & right column */
+.ayohaMiniCol{
+  flex:1;
+  min-width:0;
+}
+
+.ayohaMiniCol.right{
+  text-align:right;            /* ✅ valid until to right */
+}
+
+/* ✅ premium label + value */
+.ayohaMiniBottom .k{
+  font-size: 7px !important;
+  font-weight: 600 !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.60) !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,.30) !important;
+}
+
+.ayohaMiniBottom .v{
+  font-size: 8px !important;
+  font-weight: 700 !important;
+  color: rgba(255,255,255,.88) !important;
+  margin-top: 2px !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,.30) !important;
+}
+
+
+
+
+
+
+/* ===== Mini Membership Card (Premium- tahap 2) ===== */
+/* .ayohaMiniCard{
+  position:absolute;
+  outline: 1px solid rgba(255,255,255,.14);
+  outline-offset: -3px;
+
+  left:50%;
+  top: calc(50% + 28px);
+  transform: translate(-50%, -50%) rotate(-1deg);
+  transform-origin: center;
+
+  width: min(52vw, 240px) !important;
+  height: min(calc(52vw * .63), 151px) !important;
+
+  border-radius:14px;
+  overflow:hidden;
+
+  background-size: cover !important;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  border:1px solid rgba(255,255,255,.45);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(0,0,0,.14),
+    0 10px 18px rgba(0,0,0,.22);
+
+  z-index:3 !important;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.ayohaMiniCard:before{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  pointer-events:none;
+  z-index:2;
+
+  background: linear-gradient(135deg,
+    rgba(255,255,255,.22) 0%,
+    rgba(255,255,255,.10) 26%,
+    rgba(255,255,255,0) 55%
+  );
+  transform: rotate(10deg);
+}
+
+.ayohaMiniCard:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+
+  background: linear-gradient(180deg,
+    rgba(0,0,0,.06) 0%,
+    rgba(0,0,0,.10) 60%,
+    rgba(0,0,0,.16) 100%
+  );
+} */
+
+
+
+
+/* ===== Mini Membership Card (Premium- tahap 3) ===== */
+.ayohaMiniCard{
+  position:absolute;
+  outline: 1px solid rgba(255,255,255,.14);
+  outline-offset: -3px;
+
+  left:50%;
+  top: calc(50% + 28px);
+
+  /* ✅ Tahap 3: buang rotate (rotate boleh tambah jank) */
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+
+  width: min(52vw, 240px) !important;
+  height: min(calc(52vw * .63), 151px) !important;
+
+  border-radius:14px;
+  overflow:hidden;
+
+  background-size: cover !important;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  border:1px solid rgba(255,255,255,.42);
+
+  /* ✅ Tahap 3: shadow ringan (single outer) + subtle inset */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -1px 0 rgba(0,0,0,.12),
+    0 8px 14px rgba(0,0,0,.18);
+
+  z-index:3 !important;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ✅ Tahap 3: Shine ringan (no huge area, no rotate) */
+.ayohaMiniCard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+
+  background: linear-gradient(135deg,
+    rgba(255,255,255,.16) 0%,
+    rgba(255,255,255,.08) 22%,
+    rgba(255,255,255,0) 55%
+  );
+  opacity:.85;
+}
+
+/* ✅ Tahap 3: Overlay linear saja (murah render) */
+.ayohaMiniCard:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+
+  background: linear-gradient(180deg,
+    rgba(0,0,0,.06) 0%,
+    rgba(0,0,0,.10) 60%,
+    rgba(0,0,0,.16) 100%
+  );
+}
+
+
+/* ✅ content sentiasa di atas */
+.ayohaMiniTop,
+.ayohaMiniMid,
+.ayohaMiniBottom{
+  position:relative;
+  z-index:3;
+}
+
+
+/* ===== Info section (white) ===== */
+.ayohaHubInfo{
+  background:#fff;
+  padding: 14px;
+}
+
+.ayohaHubInfoTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.ayohaHubName{
+  font-weight:900;
+  font-size: clamp(16px, 4.5vw, 20px);
+  letter-spacing:.2px;
+}
+
+.ayohaHubType{
+  font-size: 12px;
+  color:#666;
+  white-space:nowrap;
+}
+
+.ayohaHubAddr{
+  font-size: 13px;
+  color:#444;
+}
+
+.ayohaHubRating{
+  margin-top:10px;
+  font-size: 13px;
+  color:#333;
+  display:flex;
+  align-items:center;
+  gap:1px;
+  flex-wrap:wrap;
+}
+
+.ayohaHubReviews{  
+  color:#3366cc;
+  text-decoration:none;
+  font-weight:700;
+}
+/* 1cm ≈ 38px */
+
+/* ✅ spotlight fokus di belakang membership card */
+.ayohaHubHero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index: 0;
+
+  /* gelap sikit kawasan tengah (belakang card), tepi kekal natural */
+  background: radial-gradient(
+    65% 55% at 50% 55%,
+    rgba(0,0,0,.35) 0%,
+    rgba(0,0,0,.20) 45%,
+    rgba(0,0,0,0) 75%
+  );
+}
+
+/* pastikan elemen atas (card + overlay) berada di depan */
+.ayohaMiniCard{ z-index: 3 !important; }
+.ayohaHubOverlay{ z-index: 2; }
+
+
+
+.ayohaCheckInPill{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:4;
+
+  padding:6px 10px 6px 28px;   /* ✅ bagi ruang utk icon kiri */
+  border-radius:999px;
+  backdrop-filter: blur(6px);
+
+  color:#fff;
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:.2px;
+
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 8px 18px rgba(0,0,0,.22);
+}
+
+/* ✅ icon base */
+.ayohaCheckInPill:before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:50%;
+  transform:translateY(-50%);
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  background: rgba(255,255,255,.22);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
+}
+
+/* ===== 0 = merah + icon warning ===== */
+.ayohaCheckInPill.zero{
+  background: linear-gradient(135deg, rgba(239,68,68,.92), rgba(220,38,38,.88));
+  box-shadow: 0 10px 22px rgba(239,68,68,.28), 0 8px 18px rgba(0,0,0,.22);
+}
+.ayohaCheckInPill.zero:before{
+  content:"!";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:1000;
+  background: rgba(255,255,255,.25);
+}
+
+/* ===== 1+ = ayoha theme + icon check ===== */
+.ayohaCheckInPill.active{
+  background: linear-gradient(135deg,
+    rgba(214,0,255,.92),
+    rgba(155,0,255,.90),
+    rgba(255,0,222,.72)
+  );
+  box-shadow: 0 10px 22px rgba(214,0,255,.26), 0 10px 22px rgba(255,0,222,.18), 0 8px 18px rgba(0,0,0,.22);
+}
+.ayohaCheckInPill.active:before{
+  content:"✓";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:1000;
+  background: rgba(255,255,255,.20);
+}
+
+
+/* ✅ Lock card atas overlay (stabil across device) */
+.ayohaHubHero .ayohaMiniCard{
+  top: auto !important;
+  bottom: 62px !important;   /* adjust 64-90 ikut tinggi overlay */
+  left: 50% !important;
+  transform: translateX(-50%) rotate(-1deg) !important;
+}
+
+
+
+
+.ayohaHubCard,
+.ayohaHubHero,
+.ayohaMiniCard{
+  contain: layout paint style;
+}
+
+
+</style>
+
+
+<style>
+ /* 1) Stop semua repaint mahal */
+.ayohaScrolling .ayohaMiniCard:before,
+.ayohaScrolling .ayohaMiniCard:after,
+.ayohaScrolling .ayohaHubHero:before{
+  display:none !important;
+}
+
+/* 2) Kurangkan shadow (blur besar = lag) */
+.ayohaScrolling .ayohaHubCard{
+  box-shadow: 0 6px 14px rgba(0,0,0,.16) !important;
+}
+
+/* 3) Buang shadow besar pada mini card */
+.ayohaScrolling .ayohaMiniCard{
+  box-shadow: 0 10px 18px rgba(0,0,0,.20) !important;
+  transform: translate(-50%, -50%) !important;  /* buang rotate masa scroll */
+}
+
+/* 4) Clipping mahal: sementara scroll, jangan clip */
+.ayohaScrolling .ayohaHubCard{
+  overflow: visible !important;
+}
+
+/* 5) Kalau ada blur glass */
+.ayohaScrolling .ayohaCheckInPill,
+.ayohaScrolling .ayohaMiniCard{
+  backdrop-filter: none !important;
+}
+
+
+</style>
+
+
+
+
+    <style>
+
+
+
+
+
+
+/* body dalam list item pun kadang ada padding */
+.x-list .x-list-item .x-list-item-body{
+  padding:0 !important;
+  border:0 !important;
+}
+
+/* kalau guna innerhtml wrapper */
+.x-list .x-list-item .x-innerhtml{
+  padding:0 !important;
+}
+
+
+/* ✅ buang separator line list */
+.x-list .x-list-item{
+  padding:0 !important;
+  margin:6px 0px !important;  
+  border:0 !important;
+  background:transparent !important;
+}
+
+/* kadang ada pseudo element jadi divider */
+.x-list .x-list-item:before,
+.x-list .x-list-item:after{
+  display:none !important;
+}
+
+/* inner element pun kadang ada border */
+.x-list .x-list-item .x-innerhtml{
+  border:0 !important;
+}
+      .ayohaActItem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+    padding:8px 12px !important; 
+  border-radius:16px;
+
+  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:2px solid rgba(124,58,237,.14);
+  /* box-shadow:0 12px 26px rgba(17,24,39,.10); */
+
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+.ayohaActIconWrap{
+  width:38px;height:38px;
+  border-radius:999px;
+  background:rgba(124,58,237,.10);
+  border:1px solid rgba(124,58,237,.16);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 auto;
+}
+
+/* penting: kalau .ayohaBadge asal kau position absolute, kita paksa inline */
+.ayohaActIconWrap .ayohaBadge{
+  position:static !important;
+  width:28px;height:28px;
+  border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.ayohaActText{ flex:1; min-width:0; }
+.ayohaActLabel{
+  font-size:13px;
+  font-weight:800;
+  color:#111827;
+  opacity:.85;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.ayohaActSub{
+  margin-top:2px;
+  font-size:11px;
+  color:#6b7280;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.ayohaActValue{
+  font-size:15px;
+  font-weight:900;
+  color:#111827;
+  white-space:nowrap;
+  text-align:right;
+}
+.ayohaActValue.muted{ opacity:.85; font-weight:800; }
+
+/* optional warna badge ikut type */
+.ayohaBadgePin{background:linear-gradient(180deg,#a855f7,#7c3aed);}
+.ayohaBadgeCard{background:linear-gradient(180deg,#ff3bd4,#d600ff);}
+.ayohaBadgeStamp{background:linear-gradient(180deg,#fb7185,#f43f5e);}
+.ayohaBadgePoint{background:linear-gradient(180deg,#fbbf24,#f59e0b);}
+.ayohaBadgeEvent{background:linear-gradient(180deg,#34d399,#10b981);}
+.ayohaBadgeStore{background:linear-gradient(180deg,#60a5fa,#3b82f6);}
+.ayohaBadgeContest{background:linear-gradient(180deg,#f472b6,#ec4899);}
+.ayohaBadgeCheckout{
+  background: linear-gradient(180deg,#ff00de,#7c3aed);
+  box-shadow: 0 8px 18px rgba(124,58,237,.28);
+}
+
+
+    </style>
+
+<style>
+  /* Apple-clean success pill (soft mint, subtle shadow) */
+.ayohaPillSuccess{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  padding:6px 10px;
+  border-radius:999px;
+
+  background:linear-gradient(180deg, rgba(236,253,245,.95), rgba(209,250,229,.92));
+  border:1px solid rgba(16,185,129,.28);
+
+  color:rgba(6,95,70,.95);
+  font:800 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  letter-spacing:-.1px;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+/* Small dot indicator */
+.ayohaPillSuccess:before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:#10b981;
+  box-shadow:0 0 0 3px rgba(16,185,129,.18);
+}
+
+/* Optional: reduce visual noise on small screens */
+@media (max-width: 360px){
+  .ayohaPillSuccess{ font-size:11px; padding:5px 9px; }
+}
+
+</style>
+
+<style>
+    /* ===== Hero merchant strip (logo + name + tagline) ===== */
+.ayohaHeroMerchant{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:10px;            /* adjust ikut hero spacing */
+  max-width: 92%;
+}
+
+.ayohaHeroMerchantLogo {
+  /* 1. SIZE: Besarkan sikit supaya jadi focal point */
+  width: 86px;
+  height: 86px;
+  flex: 0 0 86px; /* Update flex basis ikut width */
+  
+  border-radius: 14px; /* Curve sikit lagi bucu dia */
+  background: rgba(255, 255, 255, 1);
+  
+  /* 2. BORDER: Tebalkan sikit (2px) supaya 'pop' */
+  border: 2px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Shadow lebih dramatik sikit */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* 3. ALIGNMENT: INI PALING PENTING UNTUK CENTER */
+  margin: 0 auto 8px auto; 
+  /* Atas: 0, Kanan: Auto, Bawah: 8px (jarak dengan teks), Kiri: Auto */
+}
+
+.ayohaHeroMerchantLogo img {
+  /* Saiz imej adjust ikut container baru */
+  width: 50px; 
+  height: 50px; 
+  object-fit: contain;
+  display: block;
+  border-radius: 10px; /* Optional: smoothkan bucu gambar */
+}
+
+.ayohaHeroMerchantText{
+  min-width:0;                 /* ✅ penting untuk ellipsis */
+}
+.ayohaHeroMerchantName {
+  color: #ffffff;
+  /* Tambah text-align center */
+  text-align: center; 
+  font: 900 16px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* Saya besarkan font sikit ke 16px */
+  letter-spacing: -.2px;
+
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  
+  /* FIX UTAMA: */
+  width: 100%; /* Pakai ruang penuh */
+  max-width: 100%; /* Buang had 80% supaya dia boleh center */
+  margin: 0 auto; /* Pastikan kotak ini duduk tengah */
+  transform: none; /* BUANG translateX(-5px) */
+}
+
+.ayohaHeroMerchantTagline {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, .9); /* Terangkan sikit warna */
+  /* Tambah text-align center */
+  text-align: center;
+  font: 700 11px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  
+  /* FIX UTAMA: */
+  width: 100%;
+  max-width: 90%; /* Kecilkan sikit dari nama kedai supaya nampak kemas */
+  margin: 0 auto; /* Centerkan kotak */
+  transform: none; /* BUANG translateX(-5px) */
+}
+
+.ayohaHeroMerchantCheckInCount {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, .78);
+  /* Tambah text-align center */
+  text-align: center;
+  font: 700 10px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* FIX UTAMA: */
+  width: 100%;
+  transform: none; /* BUANG translateX(-5px) */
+}
+
+</style>
+
+
+<style>
+    /* =========================================================
+   Ayoha Merchant Check-in Status (STATE 2 & 3) - FULL CSS
+   Depends on HTML classnames:
+   .ayohaMCard, .ayohaMGlow, .ayohaMStars, .ayohaMContent,
+   .ayohaMHead, .ayohaMIcon, .ayohaMPinDot,
+   .ayohaMTitle, .ayohaMSub,
+   .ayohaMProgressWrap, .ayohaMProgTop, .ayohaMBar, .ayohaMFill,
+   .ayohaMChips, .ayohaMChip,
+   .ayohaMHint, .ayohaMLast, .ayohaMActions,
+   .ayohaMBtn, .ayohaMBtnGhost,
+   .ayohaMStateBadge
+   ========================================================= */
+
+/* ===== Card Base (Ayoha theme: white + lavender + glow stars) ===== */
+.ayohaMCard{
+  border-radius:22px;
+  padding:14px 14px 5px;
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:1px solid rgba(124,58,237,.14);
+  box-shadow:0 14px 30px rgba(17,24,39,.12);
+
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+
+
+.ayohaMGlow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* Guna Gradient biasa, JANGAN guna filter:blur() pada div ini jika boleh */
+    background: radial-gradient(circle at top right, rgba(124,58,237,0.15), transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+
+/* Glow blobs */
+/* .ayohaMGlow{
+  position:absolute;
+  inset:-35%;
+  pointer-events:none;
+  z-index:0;
+  opacity:1;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255,80,216,.22) 0 120px, transparent 220px),
+    radial-gradient(circle at 78% 18%, rgba(124,58,237,.18) 0 140px, transparent 250px),
+    radial-gradient(circle at 45% 88%, rgba(255,210,230,.18) 0 160px, transparent 280px);
+} */
+
+/* Shining stars */
+
+
+.ayohaMStars {
+    /* Kalau stars ni guna background-image yang besar, ia akan slow */
+    /* Cadangan: Gunakan opacity rendah atau display:none untuk test */
+    opacity: 0.5;
+}
+/* .ayohaMStars{
+  position:absolute;
+  inset:-20%;
+  pointer-events:none;
+  z-index:1;
+  opacity:.55;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.95) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 18% 62%, rgba(255,255,255,.75) 0 1px, transparent 3px),
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,.88) 0 1.4px, transparent 3px),
+    radial-gradient(circle at 48% 65%, rgba(255,255,255,.70) 0 1px, transparent 3px),
+    radial-gradient(circle at 62% 35%, rgba(255,255,255,.90) 0 1.3px, transparent 3px),
+    radial-gradient(circle at 74% 58%, rgba(255,255,255,.82) 0 1.1px, transparent 3px),
+    radial-gradient(circle at 86% 28%, rgba(255,255,255,.92) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 92% 72%, rgba(255,255,255,.70) 0 1px, transparent 3px),
+    radial-gradient(circle at 58% 12%, rgba(255,255,255,.85) 0 2px, transparent 4px),
+    radial-gradient(circle at 82% 88%, rgba(255,255,255,.80) 0 1.8px, transparent 4px);
+  animation: ayohaTwinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes ayohaTwinkle{
+  0%,100%{ opacity:.45; transform:translateY(0); }
+  50%{ opacity:.70; transform:translateY(-1px); }
+} */
+
+/* Ensure content above overlays */
+.ayohaMContent{
+  position:relative;
+  z-index:2;
+}
+
+/* ===== Header ===== */
+.ayohaMHead{
+  /* padding: 0 10px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px; */
+
+
+
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  /* Padding kiri dan kanan 20px untuk jarak yang seimbang dari tepi kad */
+  /* padding: 0 20px; */
+ /*  padding: 0 10px 0 10px; /* Atas | Kanan | Bawah | Kiri */
+
+  padding: 0 0 0 5px; 
+  
+  width: 100%; /* Pastikan bekas ambil lebar penuh */
+  box-sizing: border-box;
+}
+/* Bekas untuk teks di dalam ayohaMHead */
+.ayohaMHead > div {
+  /* Tukar alignment teks ke kiri */
+  text-align: left;
+  /* flex: 1; */
+  min-width: 0;
+  /* Pastikan tiada padding tambahan yang tidak diperlukan */
+  padding: 0;
+
+ 
+}
+/* .ayohaMIcon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(124,58,237,.12);
+  box-shadow:0 10px 18px rgba(17,24,39,.10);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 54px;
+
+  position:relative;
+  overflow:hidden;
+} */
+
+
+.ayohaMIcon {
+ /* PENTING: Tetapkan width dan height yang sama supaya jadi petak */
+ width: 60px !important; 
+  height: 60px !important;
+  
+  /* Pastikan ia tidak mengecil atau membesar */
+  min-width: 60px;
+  flex-shrink: 0; 
+  
+  /* Padding: Atas | Kanan | Bawah (Luas sikit utk teks) | Kiri */
+  padding: 5px 5px 18px 5px; 
+
+  /* Susun atur dalaman */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  
+  /* Style Latar Belakang (Kekalkan) */
+  background: linear-gradient(135deg, #fcd34d, #fbbf24);
+  box-shadow: 0 4px 10px rgba(251, 191, 36, 0.3), inset 0 2px 3px rgba(255, 255, 255, 0.4);
+  border: 1px solid #f59e0b;
+  
+  position: relative; /* Wajib untuk teks 'absolute' di dalam */
+}
+.ayohaMTrophyText {
+  position: absolute;
+  bottom: 4px; /* Letak di bahagian bawah kotak */
+  left: 50%;
+  transform: translateX(-50%); /* Centerkan secara horizontal */
+  
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 9px; /* Saiz kecil supaya muat */
+  font-weight: 800; /* Tulisan tebal */
+  
+  /* Warna coklat gelap/amber untuk kontras yang cantik di atas kuning */
+  color: #92400e; 
+  
+  white-space: nowrap; /* Pastikan teks satu baris */
+  letter-spacing: -0.3px; /* Rapatkan sedikit huruf */
+  text-shadow: 0 1px 1px rgba(255,255,255,0.3); /* Sedikit highlight supaya timbul */
+}
+.ayohaMIcon svg{
+  width:30px !important;
+  height:30px !important;
+  display:block;
+}
+
+.ayohaMPinDot{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:10px;
+  height:10px;
+  border-radius:999px;
+
+  background:rgba(236,72,153,.95);
+  box-shadow:0 0 0 0 rgba(236,72,153,.55);
+  animation: ayohaPulse 1.8s infinite;
+}
+.ayohaMPinDot:after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+@keyframes ayohaPulse{
+  0%{ box-shadow:0 0 0 0 rgba(236,72,153,.55); }
+  70%{ box-shadow:0 0 0 10px rgba(236,72,153,0); }
+  100%{ box-shadow:0 0 0 0 rgba(236,72,153,0); }
+}
+
+/* Title + Subtitle */
+.ayohaMTitle{
+  font:900 16px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#111827;
+  letter-spacing:-.2px;
+  /* margin-top:-3px;
+  text-align: center; */
+  margin-bottom: 8px;
+  white-space: nowrap; /* OPTIONAL: Paksa tajuk jadi 1 baris */
+
+
+
+  
+}
+/* .ayohaMSub{
+  margin-top:6px;
+  font:650 12px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.70);
+} */
+
+/* ===== Progress (Per Merchant) ===== */
+/* ===== Progress (Per Merchant) ===== */
+.ayohaMProgressWrap {
+  margin-top: 12px;
+  
+  /* PENAMBAHBAIKAN: Tambah padding kiri & kanan */
+  /* 0 = atas/bawah, 20px = kiri/kanan */
+  padding: 0 15px; 
+  box-sizing: border-box;
+}
+
+.ayohaMProgTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  font: 900 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(17, 24, 39, .62);
+}
+
+.ayohaMProgTop b {
+  color: #111827;
+}
+
+.ayohaMBar {
+  margin-top: 10px;
+  height: 11px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, .10);
+  overflow: hidden;
+  width: 100%;
+  /* Bar ini akan automatik ikut lebar padding parent dia */
+}
+
+.ayohaMFill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a600ff, #ff3bd4);
+  box-shadow: 0 10px 18px rgba(155, 0, 255, .18);
+  transition: width .35s ease;
+}
+
+
+/* ===== Buttons ===== */
+.ayohaMActions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  
+  /* PENAMBAHBAIKAN: Tambah padding kiri & kanan sama macam progress bar */
+  padding: 0 10px;
+  box-sizing: border-box; 
+}
+
+.ayohaMBtn {
+  flex: 1;
+  border: 0;
+  cursor: pointer;
+  border-radius: 16px;
+  padding: 12px 10px; /* Saya ubah padding atas sikit (12px) supaya butang nampak tegap */
+
+  font: 900 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #fff;
+
+  background: linear-gradient(180deg, #7c3aed, #5b21b6);
+  box-shadow: 0 14px 26px rgba(124, 58, 237, .28);
+
+  position: relative;
+  overflow: hidden;
+}
+/* Ghost Button Style */
+.ayohaMBtnGhost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+}
+
+/* Efek bila user tekan butang ghost */
+.ayohaMBtnGhost:active {
+    background-color: #f3f4f6 !important; /* Jadi kelabu sikit bila tekan */
+    transform: scale(0.98); /* Kecil sikit tanda ditekan */
+}
+/* 
+.ayohaMProgTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.62);
+}
+.ayohaMProgTop b{ color:#111827; }
+
+.ayohaMBar{
+  margin-top:10px;
+  height:11px;
+  border-radius:999px;
+  background:rgba(17,24,39,.10);
+  overflow:hidden;
+}
+
+.ayohaMFill{
+  height:100%;
+  width:0%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 10px 18px rgba(155,0,255,.18);
+  transition:width .35s ease; 
+} */
+
+/* ===== Chips ===== */
+.ayohaMChips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.ayohaMChip{
+  padding:7px 10px;
+  border-radius:999px;
+
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(124,58,237,.14);
+  color:#5b21b6;
+
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  box-shadow:0 10px 18px rgba(17,24,39,.06);
+}
+
+/* ===== Hint + Last ===== */
+.ayohaMHint{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:16px;
+
+  background:rgba(124,58,237,.08);
+  border:1px solid rgba(124,58,237,.12);
+
+  font:850 12px/1.25 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.70);
+}
+
+.ayohaMLast{
+  margin-top:8px;
+  font:900 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.60);
+}
+.ayohaMLast b{ color:#111827; }
+
+/* ===== Buttons ===== */
+/* .ayohaMActions{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+} */
+
+.ayohaMBtn{
+  flex:1;
+  border:0;
+  cursor:pointer;
+  border-radius:16px;
+  padding:10px 10px;
+
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#fff;
+
+  /* background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 14px 26px rgba(155,0,255,.22); */
+  background:linear-gradient(180deg,#7c3aed,#5b21b6);
+  box-shadow:0 14px 26px rgba(124,58,237,.28);
+
+  position:relative;
+  overflow:hidden;
+}
+
+
+
+.ayohaCheckOutBtn{
+  flex:1;
+  border:0;
+  cursor:pointer;
+  border-radius:10px;
+  padding:20px 10px;  
+
+  font:900 16px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#fff;
+
+  /* background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 14px 26px rgba(155,0,255,.22); */
+  background:linear-gradient(180deg,#7c3aed,#5b21b6);
+  box-shadow:0 14px 26px rgba(124,58,237,.28);
+
+  position:relative;
+  overflow:hidden;
+}
+
+
+
+
+.ayohaMBtn:before{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  transform:translateX(-65%) rotate(10deg);
+  animation: ayohaShimmer 2.8s infinite;
+  pointer-events:none;
+}
+
+@keyframes ayohaShimmer{
+  0%{ transform:translateX(-65%) rotate(10deg); opacity:0; }
+  20%{ opacity:.9; }
+  55%{ transform:translateX(65%) rotate(10deg); opacity:0; }
+  100%{ opacity:0; }
+}
+
+.ayohaMBtnGhost{
+  flex:1;
+  cursor:pointer;
+  border-radius:16px;
+  padding:10px 10px;
+
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(124,58,237,.18);
+  color:#6d28d9;
+  box-shadow:none;
+}
+
+/* ===== State badge (used in STATE 3) ===== */
+.ayohaMStateBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  padding:6px 10px;
+  border-radius:999px;
+
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(124,58,237,.14);
+  color:#5b21b6;
+
+  font:900 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  box-shadow:0 10px 18px rgba(17,24,39,.06);
+}
+
+/* Small screens: stack actions */
+@media (max-width: 360px){
+  .ayohaMActions{ flex-direction:column; }
+}
+
+
+.ayohaMSub {
+ /* Reset margin-top sebab kita dah guna margin-bottom pada title */
+ margin-top: 0;
+
+/* TAMBAH LINE-HEIGHT: Jarak antara baris ayat lebih luas */
+/* Tukar 1.35 kepada 1.5 supaya lebih mudah dibaca bila ada 2 baris */
+font: 650 12px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+color: rgba(17, 24, 39, .75); /* Gelapkan sedikit warna teks supaya lebih jelas */
+width: 100%;
+box-sizing: border-box;
+  /* OPTIONAL: Letter-spacing negatif sikit untuk muatkan lebih banyak huruf */
+  letter-spacing: -0.2px;
+
+
+
+
+  
+
+
+  /* Tidak perlu text-align di sini jika parent dah set left */
+  /* margin-top: 6px;
+  font: 650 12px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(17, 24, 39, .70);
+  width: 100%;
+  box-sizing: border-box; */
+  /* Tambah padding-right jika perlu untuk mengelakkan maskot, contohnya: */
+  /* padding-right: 60px; */
+}
+
+
+/* MAX state: make subtitle line 2 softer + friendly */
+.ayohaMMax .ayohaMSub2 {
+  display: block;          /* jadikan 1 baris sendiri */
+  
+  /* PEMBETULAN UTAMA: Tukar 'left' ke 'center' */
+  text-align: center;      
+  
+  margin-top: 2px;         /* jarak sikit dari ayat atas */
+  font-weight: 900;
+  color: #6d28d9;
+  padding-left: 0;
+  letter-spacing: -.1px;
+}
+
+/* MAX state: optionally change icon background to feel "completed" */
+.ayohaMMax .ayohaMIcon{
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(255,183,74,.28);
+}
+
+</style>
+
+
+
+<style>
+    /* Not a button: slim tip bar */
+.ayohaMTip{
+  margin-top:10px;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+
+  padding:10px 12px;
+  border-radius:14px;
+
+  background:linear-gradient(90deg, rgba(124,58,237,.10), rgba(236,72,153,.08));
+  border:1px dashed rgba(124,58,237,.22);
+
+  box-shadow:0 10px 18px rgba(17,24,39,.06);
+}
+
+.ayohaMTipSpark{
+  width:22px;
+  height:22px;
+  border-radius:10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(255,255,255,.85);
+  border:1px solid rgba(124,58,237,.16);
+  flex:0 0 22px;
+
+  animation: ayohaTipPop 1.6s ease-in-out infinite;
+}
+
+.ayohaMTipText{
+  font:850 12px/1.25 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.72);
+}
+
+@keyframes ayohaTipPop{
+  0%,100%{ transform:translateY(0); opacity:.9; }
+  50%{ transform:translateY(-1px); opacity:1; }
+}
+
+</style>
+
+<style>
+    /* ===== MAX state: Trophy animation ===== */
+.ayohaMMax .ayohaMIcon{
+  /* nice “completed” background */
+  background:linear-gradient(180deg,#fff7ed,#fde68a);
+  border:1px solid rgba(245,158,11,.45);
+  box-shadow:0 14px 26px rgba(245,158,11,.18);
+}
+
+/* animate the trophy itself (0.8s pop) */
+.ayohaMMax .ayohaMTrophy{
+  width:30px !important;
+  height:30px !important;
+  display:block;
+  transform-origin:50% 85%;
+  animation: ayohaTrophyPop .8s cubic-bezier(.2,.9,.2,1) both;
+  filter: drop-shadow(0 10px 14px rgba(245,158,11,.22));
+}
+.ayohaMTrophy {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(180, 83, 9, 0.2));
+  
+  /* Tolak sikit ke atas supaya tak kena teks bawah */
+  transform: translateY(-2px); 
+}
+.ayohaMTrophyText {
+  position: absolute;
+  bottom: 4px; /* Duduk rapat di bawah */
+  left: 50%;
+  transform: translateX(-50%); /* Center kiri-kanan */
+  
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8.5px; /* Kecilkan sikit font supaya muat dalam lebar 60px */
+  font-weight: 800;
+  color: #92400e; 
+  white-space: nowrap; /* Teks sebaris */
+  letter-spacing: -0.2px;
+  z-index: 2;
+}
+/* trophy colors (premium gold) */
+.ayohaMMax .ayohaMTrophy .tCup{ fill:#f59e0b; }
+.ayohaMMax .ayohaMTrophy .tHandle{ fill:#d97706; }
+.ayohaMMax .ayohaMTrophy .tStem{ fill:#d97706; }
+.ayohaMMax .ayohaMTrophy .tBase{ fill:#b45309; }
+.ayohaMMax .ayohaMTrophy .tHi{ fill:#ffffff; opacity:.28; }
+
+/* glow pulse around the icon container */
+.ayohaMMax .ayohaMIcon:after{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  border-radius:22px;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,
+    rgba(255,183,74,.55) 0 28%,
+    rgba(255,183,74,0) 60%);
+  opacity:0;
+  animation: ayohaIconGlow 1.6s ease-in-out infinite;
+}
+
+/* tiny sparkles */
+.ayohaMMax .ayohaMIcon:before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.95) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 78% 28%, rgba(255,255,255,.90) 0 1px, transparent 3px),
+    radial-gradient(circle at 62% 78%, rgba(255,255,255,.85) 0 1.1px, transparent 3px),
+    radial-gradient(circle at 28% 72%, rgba(255,255,255,.75) 0 1px, transparent 3px);
+  opacity:.0;
+  animation: ayohaSparkle 1.2s ease-in-out infinite;
+}
+
+@keyframes ayohaTrophyPop{
+  0%{ transform:scale(.75) translateY(6px) rotate(-6deg); opacity:0; }
+  55%{ transform:scale(1.12) translateY(-2px) rotate(3deg); opacity:1; }
+  80%{ transform:scale(.98) translateY(0) rotate(-1deg); }
+  100%{ transform:scale(1) translateY(0) rotate(0); opacity:1; }
+}
+
+@keyframes ayohaIconGlow{
+  0%,100%{ opacity:.15; transform:scale(.98); }
+  50%{ opacity:.55; transform:scale(1.06); }
+}
+
+@keyframes ayohaSparkle{
+  0%,100%{ opacity:.15; transform:translateY(0); }
+  50%{ opacity:.55; transform:translateY(-1px); }
+}
+
+/* OPTIONAL: indicate completed dot green */
+.ayohaMMax .ayohaMPinDot{
+  background:#22c55e;
+}
+
+</style>
+
+
+
+
+
+
+<style>
+/* =========================================================
+   AYOHA EMPTY CARD — CLEAN PREMIUM BORDER (NO INSET BORDER)
+   - No glow / no flare / no stars
+   - Outer gradient border only (fallback border included)
+========================================================= */
+
+.ayoha-emptyCard{
+  border-radius:22px;
+  padding:14px 14px 12px;
+  position:relative;
+  overflow:hidden;
+
+  background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%) !important;
+
+  /* ✅ border biasa */
+  border:1.8px solid rgba(124,58,237,.26);
+
+  /* ✅ ayoha theme shadow (lebih kuat bawah) */
+  box-shadow:
+    0 18px 34px rgba(17,24,39,.10),               /* main soft */
+    0 10px 22px rgba(155,0,255,.14),              /* purple glow bawah */
+    0 16px 30px rgba(255,59,212,.10);             /* pink glow bawah */
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ✅ force buang apa-apa pseudo border lama */
+.ayoha-emptyCard:before,
+.ayoha-emptyCard:after,
+.ayoha-emptyCardBorderBold:before,
+.ayoha-emptyCardBorderBold:after{
+  content:none !important;
+}
+
+/* (Optional) kalau masih ada class lama, biar dia tak kacau */
+.ayoha-emptyCardBorderBold{
+  border:1.8px solid rgba(124,58,237,.26) !important;
+}
+
+/* Keep content above border layer */
+.ayoha-emptyTop,
+.ayoha-ctaRow{
+  position:relative;
+  z-index:2;
+}
+
+/* =========================================================
+   Top row layout
+========================================================= */
+.ayoha-emptyTop{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+/* Left icon tile */
+.ayoha-mapIcon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(124,58,237,.14);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 54px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 18px rgba(17,24,39,.10);
+}
+
+/* ✅ prevent SVG in tile from scaling huge */
+.ayoha-mapIcon svg{
+  width:34px !important;
+  height:34px !important;
+  display:block;
+}
+
+/* pin dot pulse */
+.ayoha-pinDot{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:rgba(236,72,153,.95);
+  box-shadow:0 0 0 0 rgba(236,72,153,.55);
+  animation: ayohaPulse 1.8s infinite;
+}
+.ayoha-pinDot:after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+@keyframes ayohaPulse{
+  0%{ box-shadow:0 0 0 0 rgba(236,72,153,.55); }
+  70%{ box-shadow:0 0 0 10px rgba(236,72,153,0); }
+  100%{ box-shadow:0 0 0 0 rgba(236,72,153,0); }
+}
+
+/* =========================================================
+   Text
+========================================================= */
+.ayoha-emptyText{ flex:1; min-width:0; }
+
+.ayoha-emptyTitle{
+  font-weight:900;
+  font-size:18px;
+  line-height:1.1;
+  letter-spacing:-.2px;
+  color:#111827;
+  margin-top:2px;
+}
+
+.ayoha-emptySub{
+  margin-top:6px;
+  font-weight:650;
+  font-size:13px;
+  line-height:1.35;
+  color:rgba(17,24,39,.70);
+}
+
+/* =========================================================
+   CTA button
+========================================================= */
+.ayoha-ctaRow{ margin-top:12px; }
+
+.ayoha-ctaBtn{
+  width:100%;
+  border:0;
+  cursor:pointer;
+  border-radius:16px;
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:-.2px;
+  background:linear-gradient(90deg,#a600ff,#ff3bd4);
+  box-shadow:0 14px 26px rgba(155,0,255,.22);
+  position:relative;
+  overflow:hidden;
+}
+
+.ayoha-ctaLeft{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.ayoha-ctaLeft svg{
+  width:18px;
+  height:18px;
+  display:block;
+}
+
+.ayoha-ptsBadge{
+  margin-left:auto;
+  background:linear-gradient(180deg,#ffd27a,#ffb74a);
+  color:#3b1d00;
+  font-weight:900;
+  font-size:12px;
+  border-radius:999px;
+  padding:6px 10px;
+  box-shadow:0 10px 18px rgba(255,183,74,.28);
+  border:1px solid rgba(255,183,74,.55);
+  flex:0 0 auto;
+}
+
+
+
+</style>
+
+
+
+    <style>
+        /* Recent Check-Ins */
+.rcTitle{
+  font:900 18px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#111827;
+  padding:8px 12px 6px;
+}
+
+/* make dataview inner in one row */
+.ayohaRecentDV .x-dataview-inner{
+  white-space:nowrap;
+  padding:8px 10px 14px;
+}
+.ayohaRecentItem{
+  display:inline-block;
+  vertical-align:top;
+  margin-right:12px;
+}
+
+/* card */
+.rcCard{
+  width:140px;
+  height:145px;
+  border-radius:18px;
+  background:#fff;
+  /* box-shadow:0 10px 22px rgba(17,24,39,.12); */
+  border:1px solid rgba(17,24,39,.06);
+  position:relative;
+  padding:10px 10px 12px;
+}
+
+/* badge */
+.rcBadge{
+  position:absolute;
+  top:8px;
+  right:8px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#ffd27a,#ffb74a);
+  color:#3b1d00;
+  font:900 11px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  box-shadow:0 6px 14px rgba(255,183,74,.35);
+}
+
+/* logo */
+.rcLogoWrap{
+  width:76px;
+  height:76px;
+  border-radius:16px;
+  background:rgba(124,58,237,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:8px auto 10px;
+  overflow:hidden;
+}
+.rcLogo{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  display:block;
+}
+
+/* text */
+.rcName{
+  font:900 13px/1.15 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#111827;
+  text-align:center;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:32px;
+}
+.rcTime{
+  margin-top:-12px;
+  font:700 10px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:rgba(17,24,39,.55);
+  text-align:center;
+}
+
+    </style>
+<style>
+ .ayohaHappeningCard{
+  background:#fff;
+  border-radius:18px;
+  padding:14px 14px 10px 14px;
+  margin:12px;
+  box-shadow:0 10px 26px rgba(168,85,247,.18);
+}
+
+.ayohaHappeningHeader{ margin-bottom:10px; }
+
+.ayohaHTitle{
+  font-size:18px;
+  font-weight:900;
+  color:#5b21b6;
+  line-height:1.1;
+}
+.ayohaHSub{
+  font-size:12px;
+  color:#8b8796;
+  margin-top:4px;
+}
+
+.ayohaSeeAllBtn.x-button{
+  border:0 !important;
+  background:linear-gradient(180deg,#d600ff,#9b00ff) !important;
+  color:#fff !important;
+  border-radius:999px !important;
+  padding:6px 12px !important;
+  font-weight:800 !important;
+  font-size:12px !important;
+  min-height:auto !important;
+}
+.ayohaSeeAllBtn .x-button-label{ padding:0 !important; }
+
+.ayohaHappeningList{
+  padding-top:2px;
+}
+.ayohaHappeningList .x-dataview-container{
+  display:flex;
+  align-items:flex-start;
+  flex-wrap:nowrap;
+}
+
+.ayohaHItem{
+  width:86px;
+  margin-right:14px;
+  text-align:center;
+}
+
+.ayohaAvatarWrap{
+  position:relative;
+  width:64px;
+  height:64px;
+  margin:0 auto 6px auto;
+}
+
+.ayohaAvatar{
+  width:64px;
+  height:64px;
+  border-radius:999px;
+  object-fit:cover;
+  border:3px solid #efe8ff; /* soft purple ring */
+  box-shadow:0 8px 18px rgba(0,0,0,.10);
+}
+
+/* =========================
+   BADGE BASE (shared)
+   ========================= */
+.ayohaBadge{
+  position:absolute;
+  right:-2px;
+  bottom:-2px;
+  width:24px;
+  height:24px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 14px rgba(0,0,0,.16);
+  border:2px solid #fff;
+  overflow:hidden; /* supaya svg kemas */
+}
+.ayohaBadge svg{ display:block; } /* avoid svg baseline gap */
+
+/* =========================
+   EXISTING BADGES
+   ========================= */
+
+/* PIN badge */
+.ayohaBadgePin{
+  background:linear-gradient(180deg,#b56cff,#7c3aed);
+}
+
+/* CARD badge */
+.ayohaBadgeCard{
+  background:linear-gradient(180deg,#f7c948,#f59e0b);
+}
+.ayohaCardIcon{
+  width:12px; height:9px;
+  border-radius:2px;
+  background:rgba(255,255,255,.95);
+  position:relative;
+}
+.ayohaCardIcon:after{
+  content:'';
+  position:absolute;
+  left:2px; right:2px; top:3px;
+  height:1px;
+  background:rgba(0,0,0,.12);
+}
+.ayohaPlusMini{
+  position:absolute;
+  right:5px;
+  top:-5px;
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  background:#fff;
+  color:#111;
+  font-weight:900;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
+}
+
+/* =========================
+   NEW BADGES
+   badge: stamp | point | event | store | contest
+   ========================= */
+
+/* 1) Stamp Collected (purple stamp vibe) */
+.ayohaBadgeStamp{
+  background:linear-gradient(180deg,#d946ef,#7c3aed);
+}
+
+/* 2) Point Collected (green reward) */
+.ayohaBadgePoint{
+  background:linear-gradient(180deg,#22c55e,#16a34a);
+}
+
+/* 3) Event Respond (blue calendar/check) */
+.ayohaBadgeEvent{
+  background:linear-gradient(180deg,#60a5fa,#2563eb);
+}
+
+/* 4) Ayoha Store (orange shop) */
+.ayohaBadgeStore{
+  background:linear-gradient(180deg,#fbbf24,#f97316);
+}
+
+/* 5) Contest Status (red trophy) */
+.ayohaBadgeContest{
+  background:linear-gradient(180deg,#fb7185,#dc2626);
+}
+
+/* =========================
+   TEXT
+   ========================= */
+.ayohaName{
+   
+  font-size:13px;
+  font-weight:800;
+  color:#111827;
+  line-height:1.1;
+  max-width:86px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}.ayohaActivity{
+    margin-top:3px;
+    font-size:11px;
+  color:#111827;
+  line-height:1.2;
+
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  word-break:break-word;
+
+  min-height: calc(12px * 1.2 * 2);  /* ✅ ensure semua item sama tinggi */
+}
+.ayohaTime{
+  font-size:11px;
+  color:#8b8796;
+  margin-top:1px;
+}
+
+</style>
+    <style>
+        .ayohaHdrCard{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px;
+  /* border-radius:18px 18px 0px 0px; */ 
+  /* background: rgba(255,255,255,.72); */
+  background: rgba(255,255,255);
+  /* box-shadow: 0 10px 24px rgba(157,0,255,.10); */
+  border-top: 1px none rgba(214,0,255,.16);
+  border-left: 1px solid rgba(214,0,255,.16);
+  border-right: 1px solid rgba(214,0,255,.16);
+  border-bottom: 1px solid  rgba(255,255,255);
+  backdrop-filter: blur(6px);
+}
+
+.ayohaHdrIcon{
+  width:36px; height:36px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  color:#ffffff;
+  background: linear-gradient(135deg,#d600ff,#9b00ff);
+  /* box-shadow: 0 10px 18px rgba(214,0,255,.22); */
+  margin-right:10px;
+  flex:0 0 auto;
+}
+
+.ayohaHdrText{ flex:1; min-width:0; }
+.ayohaHdrTitle{
+  font-size:15px; font-weight:900; letter-spacing:.2px;
+  color:#3b0050; line-height:1.05;
+}
+.ayohaHdrSub{
+  margin-top:3px;
+  font-size:11px; font-weight:700;
+  color: rgba(59,0,80,.62);
+  line-height:1.1;
+}
+
+.ayohaHdrRight{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.ayohaHdrBadge{
+  font-size:11px; font-weight:900;
+  padding:5px 10px; border-radius:999px;
+  color:#ffffff;
+  background: linear-gradient(135deg,#ff00de,#c800ff);
+  box-shadow: 0 10px 18px rgba(200,0,255,.18);
+}
+.ayohaHdrChevron{
+  font-size:18px; font-weight:900;
+  color: rgba(59,0,80,.40);
+  margin-top:-1px;
+}
+
+    </style>
+    <style>
+        .stamp-horizontal-item.x-dataview-item {
+    display: inline-block;
+    vertical-align: top;
+}
+    </style>
+
+<style>
+/* The Main Card Container */
+.checkin-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 380px; /* Typical mobile width */
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative; /* Essential for mascot positioning */
+            margin-top: 40px; /* Space for the mascot's head */
+        }
+
+        /* The Mascot Image */
+        .mascot-img {
+            position: absolute;
+            top: -50px; /* Moves the mascot up to break the border */
+            right: 0px;
+            width: 140px; /* Adjust based on your actual image size */
+            height: auto;
+            z-index: 10;
+        }
+
+        /* Header Section (Text + Badge) */
+        .card-header {
+            margin-bottom: 20px;
+            padding-right: 120px; /* Space so text doesn't hit the mascot */
+        }
+
+        .card-title {
+            color: #2c0e38; /* Dark purple/black text */
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+
+        /* The Green Pill Badge */
+        .points-badge {
+            display: inline-block;
+            background-color: #2e7d32; /* Green color */
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* The Action Button */
+        .btn-checkin {
+            width: 100%;
+            background-color: #aa00ff; /* The button purple */
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px; /* Space between text and icon */
+            box-shadow: 0 4px 6px rgba(170, 0, 255, 0.2);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-checkin:active {
+            transform: scale(0.98); /* Click effect */
+        }
+
+        /* The Location Icon (using a simple shape for pure CSS) */
+        .icon-pin {
+            width: 14px;
+            height: 14px;
+            border: 2px solid white;
+            border-radius: 50% 50% 50% 0;
+            background-color: white;
+            transform: rotate(-45deg);
+            margin-top: -4px; /* Slight alignment fix */
+        }
+        /* Optional: Use dot inside pin if preferred */
+        .icon-pin::after {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: #aa00ff;
+            border-radius: 50%;
+            position: relative;
+            top: 3px;
+            left: 3px;
+        }
+
+        /* Footer Text */
+        .last-visit {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        .last-visit strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+
+
+</style>
+
+    <style>
+     /* Buang padding container list */
+.perks-list-tight .x-list-inner {
+  padding: 0 !important;
+}
+
+/* Buang padding + border default item */
+.perks-list-tight .x-list-item {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* Ini yang biasanya masih ada padding – wajib override */
+.perks-list-tight .x-list-item .x-innerhtml {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Kad sendiri – pastikan memang tak ada margin tambahan */
+.perks-list-tight .myContent {
+  margin: 0 !important;
+}
+
+/* Line kecik antara card (1px) */
+.perks-list-tight .x-list-item + .x-list-item .myContent {
+  border-top: 3px solid #E5E7EB; /* warna line nipis */
+}
+
+    </style>
+    <style>
+        .perk-tabs{
+  display:flex;
+  gap:7px;          /* ❗ inilah jarak 3px antara setiap button */
+}
+        /* .perk-btn.stamp{
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     
+  color:#9CA3AF;         
+  font-size:10px;
+  cursor:pointer;
+} */
+/* Button tab */
+.perk-btn.stamp{
+  display: inline-flex;          /* 🔥 supaya label + count dalam satu row */
+  align-items: center;
+  justify-content: center;
+  gap: 4px;                      /* jarak kecil antara teks & (0) */
+  white-space: nowrap;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     
+  color:#9CA3AF;         
+  font-size:10px;           /* elak wrap ke line bawah */
+  padding:4px 6px;
+}
+
+/* Label */
+.perk-label{
+  font-size: 11px;
+}
+
+/* Count */
+.perk-count{
+  font-size: 10px;
+  opacity: .85;
+}
+.perk-btn.point{
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     /* grey/purple lembut */
+  color:#9CA3AF;          /* text grey */
+  font-size:10px;
+  cursor:pointer;
+}.perk-btn.voucher{
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     /* grey/purple lembut */
+  color:#9CA3AF;          /* text grey */
+  font-size:10px;
+  cursor:pointer;
+}.perk-btn.contest{
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     /* grey/purple lembut */
+  color:#9CA3AF;          /* text grey */
+  font-size:10px;
+  cursor:pointer;
+}.perk-btn.event{
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     /* grey/purple lembut */
+  color:#9CA3AF;          /* text grey */
+  font-size:10px;
+  cursor:pointer;
+}.perk-btn.discount{
+  padding:4px 6px;
+  border-radius:999px;
+  border:1px solid #eadcf7;
+  background:#f7f1ff;     /* grey/purple lembut */
+  color:#9CA3AF;          /* text grey */
+  font-size:10px;
+  cursor:pointer;
+}
+.perk-btn.active{
+  background:#000;        /* hitam */
+  color:#fff;             /* putih */
+}
+.perk-btn.small{
+  padding:4px 10px;   /* kurang lebar */
+  font-size:11px;     /* kalau nak text pun sikit kecil */
+}
+    </style>
+    <style>
+        #AyohaSearchStrong1 .pill{
+          position:relative;display:flex;align-items:center;width:100%;
+          padding:5px 44px 5px 44px;border-radius:999px;border:2px solid transparent;
+          background:
+            linear-gradient(#ffffff,#ffffff) padding-box,
+            linear-gradient(90deg,#ff00de,#c800ff) border-box;      /* Ayoha gradient ring */
+          /* White outline + deep shadow for separation from header */
+          box-shadow:0 0 0 3px rgba(255,255,255,.85),0 12px 28px rgba(0,0,0,.28);
+        }
+        #AyohaSearchStrong1 .ico{
+          position:absolute;left:14px;top:50%;transform:translateY(-50%);display:inline-flex;
+          width:28px;height:28px;border-radius:999px;
+          background:radial-gradient(rgba(200,0,255,.18),rgba(200,0,255,0)); /* soft halo */
+          align-items:center;justify-content:center;
+        }
+        #AyohaSearchStrong1 input[type="text"]{
+          flex:1;min-width:0;border:0;background:transparent;outline:none;height:28px;
+          font-weight:normal 12px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111827;
+        }
+        #AyohaSearchStrong1 input::placeholder{color:#4b5563;font-weight:normal;opacity:.9;}
+        #AyohaSearchStrong1 .clear{
+          position:absolute;right:8px;top:50%;transform:translateY(-50%);display:none;
+          width:32px;height:32px;border-radius:999px;border:0;cursor:pointer;
+          background:#111827;color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.25);
+        }
+        #AyohaSearchStrong1 .clear svg{display:block}
+      </style>
+         <style>
+  /* Container */
+#AyohaSearchStrong2 {
+  padding: 6px 10px 8px;
+  background: transparent;
+}
+
+/* 🌈 PILL – putih di dalam, border gradient Ayoha */
+#AyohaSearchStrong2 .search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+
+  /* putih di dalam, gradient di border */
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(90deg, #ff00de, #c800ff) border-box;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* Buang underline lama (kalau ada rule ::after sebelum ni) */
+#AyohaSearchStrong2 .search-wrapper::after {
+  content: none !important;
+}
+
+/* Icon di kiri */
+#AyohaSearchStrong2 .ico {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input text – transparent, ikut background putih pill */
+#AyohaSearchStrong2 input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding-left: 30px;   /* ruang untuk icon */
+  padding-right: 4px;
+  height: 22px;
+  font: normal 13px/1.2 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111827;
+}
+
+#AyohaSearchStrong2 input::placeholder {
+  color: #6b7280;
+  opacity: 0.95;
+}
+
+
+/* Buang default clear icon iOS kalau tak nak */
+#AyohaSearchStrong2 input[type="search"]::-webkit-search-decoration,
+#AyohaSearchStrong2 input[type="search"]::-webkit-search-cancel-button,
+#AyohaSearchStrong2 input[type="search"]::-webkit-search-results-button,
+#AyohaSearchStrong2 input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+          </style>
+    <style>
+        #membershipStatusDonut { background-color: transparent !important; }
+      </style>
+    
+<style>
+/* --- CSS for Check-In CONFIRMED Modal in Sencha --- */
+
+
+/* 1. Modal Head & Icon (for the coins icon) */
+.confirmation-modal-head.x-container {
+    position: relative;
+    height: 0;
+    width: 100%;
+    z-index: 10; /* Ensures head is above body */
+    /* Sencha will manage display/layout, just need positioning */
+}
+
+.confirmation-modal-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to bottom right, #a855f7, #7e22ce); /* Gradient background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Positions relative to .confirmation-modal-head */
+    top: -95px;         /* Pulls it up (half its 90px height + 20px) */
+    left: 50%;          /* Centers it horizontally */
+    transform: translateX(-50%); /* Corrects horizontal centering */
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1; /* Ensure it's above the modal content */
+}
+
+.confirmation-modal-icon .coins-icon {
+    width: 82px;
+    height: 82px;
+  /*  filter: brightness(0) invert(1);  Makes image white, if it's a dark icon */
+    /* Remove filter if your icon is already white or has desired color */
+}
+
+/* 2. Main Title and Subtitle */
+.confirmation-title-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+    text-align: center;
+    width: 80%;
+    /* Sencha will handle margin, but ensure it's not overridden */
+}
+
+.confirmation-subtitle-text {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    /* Sencha will handle margin */
+}
+
+/* 3. Points Display Area */
+.confirmation-points-display-container.x-container {
+    background-color: #f5f0fb; /* Light purple background */
+    border-radius: 15px;
+    padding: 25px 20px; /* Vertical and horizontal padding */
+    width: 90%; /* Adjust width to make it a bit narrower than the full modal */
+    box-sizing: border-box; /* Include padding in the width */
+    margin: 20px auto; /* Center horizontally with auto margins */
+}
+
+.confirmation-points-value {
+    font-size: 48px;
+    font-weight: 900;
+    color: #a855f7; /* Matching vibrant purple */
+    line-height: 1; /* Tighter line height for numbers */
+    text-align: center;
+    width: 100%;
+    display: block; /* Ensure it takes full width and stacks */
+}
+
+.confirmation-points-label {
+    font-size: 16px;
+    color: #7e22ce; /* Darker purple */
+    margin-top: 5px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+/* 4. Progress Bar */
+.confirmation-progress-text {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    width: 100%;
+    /* Sencha will handle margin */
+}
+
+.confirmation-progress-bar-wrapper.x-container {
+    height: 8px; /* Height of the bar */
+    background-color: #e0e0e0; /* Light gray background for empty part */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the inner bar stays within bounds */
+    /* Sencha will handle width and margin */
+}
+
+.confirmation-progress-bar div { /* Targeting the inner div for the actual bar */
+    height: 100%;
+    background: linear-gradient(to right, #b36aff, #8a33dd); /* Purple gradient */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth animation for width change */
+    /* Width will be set dynamically via style="width: X%;" on this div */
+}
+
+
+/* 5. Buttons */
+.confirmation-cta-button { /* "View my Ayoha Point!" */
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important; /* Will fill the Sencha container's width */
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px auto !important; /* Center the button */
+    cursor: pointer;
+}
+.confirmation-cta-button:hover {
+    background: linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+
+.confirmation-secondary-button { /* "Continue Shopping" */
+    background-color: transparent !important;
+    color: #888 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    margin: 5px auto !important; /* Center the text */
+    text-decoration: none; /* Ensure no underline */
+    cursor: pointer;
+    padding: 10px; /* Give it some clickable area */
+}
+.confirmation-secondary-button:hover {
+    color: #333 !important;
+}
+
+
+
+
+.checkin-progress-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 90%; /* Or the width of its parent */
+    margin: 20px auto;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #f0eef2; /* Light grey/lavender track */
+    border-radius: 5px;
+    overflow: hidden; /* Clips the inner bar to the rounded corners */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Starts at 0, will be set by JS */
+    background: linear-gradient(to right, #b36aff, #8a33dd); /* Purple gradient */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth animation */
+}
+</style>
+
+
+
+
+
+    <style>
+
+/* --- SweetAlert2 Custom Styling --- */
+
+/* Main modal window. 'ayoha-checkin-swal' is applied via customClass.popup */
+.ayoha-checkin-swal.swal2-popup {
+    border-radius: 24px;
+    padding: 0;
+    width: 360px;
+    overflow: visible !important; /* Allows the top icon to pop out */
+}
+
+/* Hide the default title */
+.ayoha-checkin-swal .swal2-title {
+    display: none;
+}
+
+/* Our custom HTML content will be inside this */
+.ayoha-checkin-swal .swal2-html-container {
+    padding: 0;
+    margin: 0;
+    padding-top: 60px; /* Make space for the icon */
+}
+
+/* Footer that holds the buttons */
+.ayoha-checkin-swal .swal2-actions {
+    background-color: transparent;
+    padding: 0 25px 25px 25px;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't break layout */
+}
+
+/* Make buttons stack vertically */
+.ayoha-checkin-swal .swal2-actions {
+    flex-direction: column;
+}
+.swal-button--confirm-custom {
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px 0 !important;
+    
+    /* --- ADD THIS LINE --- */
+    animation: pulse-animation 1s infinite; /* This applies your animation */
+}
+/* "Tap to Check-In" Button. Applied via customClass.confirmButton */
+/* .swal-button--confirm-custom {
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px 0 !important;
+} */
+.swal-button--confirm-custom:hover {
+    background: linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+
+/* "Maybe Later" Button. Applied via customClass.cancelButton */
+.swal-button--cancel-custom {
+    background-color: transparent !important;
+    color: #888 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    margin: 5px 0 !important;
+}
+.swal-button--cancel-custom:hover {
+    color: #333 !important;
+}
+
+
+/* --- Custom HTML Content Styling (Same as before) --- */
+.checkin-popup {
+    text-align: center;
+    padding: 0 0px;
+    position: relative; /* Needed for the icon positioning */
+}
+
+.checkin-icon-top {
+    width: 90px;
+    height: 90px;
+    background-color: #a855f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -105px; /* Positions it 45px above the modal top */
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 42px;
+    color: white;
+}
+
+.checkin-header {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+}
+
+.checkin-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0 5px 0;
+}
+
+.checkin-stamp {
+    width: 130px;
+    height: 100px;
+    border: 3px dashed #bcaaa4;
+    background-color: white;
+    padding: 1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.stamp-icon {
+    font-size: 55px;
+    filter: grayscale(30%);
+    opacity: 0.8;
+    transform: rotate(-20deg);
+}
+
+.checkin-subtitle {
+   font-size: 14px;
+   font-weight: bold;
+   margin-top: 5px;
+   margin-bottom: 2px;
+   color: #444;
+}
+
+.checkin-subtitle-small {
+   font-size: 12px;
+   color: #999;
+   margin-bottom: 20px;
+   display: block;
+}
+
+.checkin-info {
+    background-color: #f3e5f5;
+    border-radius: 15px;
+    padding: 28px 28px;
+    margin: 30px 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #555;
+    width: 100% !important;
+}
+.checkin-info strong {
+    color: #8E44AD;
+    font-weight: 700;
+}
+.checkin-divider {
+    border: none; /* Remove the default border */
+    height: 2px;  /* Make the line 1px tall */
+    background-color: #eeeeee; /* A light, smooth gray color */
+    margin: 0px 0px 25px 0px; /* Add 20px of space above and below the line */
+}
+@keyframes pulse-animation{
+      0%{ transform:scale(1); box-shadow:0 5px 20px rgba(138,43,226,.4) }
+      50%{ transform:scale(1.03); box-shadow:0 8px 30px rgba(138,43,226,.6) }
+      100%{ transform:scale(1); box-shadow:0 5px 20px rgba(138,43,226,.4) }
+    }
+
+    </style>
+  <!-- index.html -->
+<style>
+   /* --- New CSS for the Confirmation Popup --- */
+
+/* Main modal window for confirmation */
+.ayoha-confirmation-swal.swal2-popup {
+    border-radius: 24px;
+    padding: 0;
+    width: 360px;
+    overflow: visible !important;
+}
+
+/* Hide default elements as before */
+.ayoha-confirmation-swal .swal2-title {
+    display: none;
+}
+.ayoha-confirmation-swal .swal2-html-container {
+    padding: 0;
+    margin: 0;
+    padding-top: 60px; /* Space for the top icon */
+}
+.ayoha-confirmation-swal .swal2-actions {
+    background-color: transparent;
+    padding: 0 25px 25px 25px;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column; /* Stack buttons */
+}
+
+/* Custom styling for "Awesome!" button */
+.swal-button--awesome {
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px 0 !important;
+}
+.swal-button--awesome:hover {
+    background: linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+
+/* Custom styling for "Continue Shopping" button */
+.swal-button--continue-shopping {
+    background-color: transparent !important;
+    color: #888 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    margin: 5px 0 !important;
+}
+.swal-button--continue-shopping:hover {
+    color: #333 !important;
+}
+
+/* --- Internal Content Styling for Confirmation Popup --- */
+.confirmation-popup {
+    text-align: center;
+    padding: 0 25px;
+    position: relative;
+}
+
+/* Top icon for confirmation */
+.confirmation-icon-top {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to bottom right, #a855f7, #7e22ce); /* Gradient for the background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -105px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.coins-icon {
+    width: 82px; /* Adjust size as needed */
+    height: 82px;
+    /*filter: brightness(0) invert(1); Makes the image white if it's black/dark */
+    /* If your coin icon is already white, remove the filter */
+}
+.successMark-icon {
+    width: 82px; /* Adjust size as needed */
+    height: 82px;
+    border-radius: 50%;
+    /*filter: brightness(0) invert(1); Makes the image white if it's black/dark */
+    /* If your coin icon is already white, remove the filter */
+}
+
+.confirmation-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+    margin: 5px 0 0px 0;
+}
+
+.confirmation-subtitle {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.points-display {
+    background-color: #f5f0fb; /* Light purple background */
+    border-radius: 15px;
+    padding: 25px 20px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.points-value {
+    font-size: 48px;
+    font-weight: 900;
+    color: #a855f7; /* Matching purple */
+    line-height: 1; /* Tighter line height */
+}
+.points-label {
+    font-size: 16px;
+    color: #7e22ce; /* Darker purple */
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.checkins-progress-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0; /* Light gray background for empty part */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the inner bar stays within bounds */
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #b36aff, #8a33dd); /* Purple gradient */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth animation for progress change */
+}
+  </style>
+  
+    
+    
+    
+    <style>
+     
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            perspective: 1000px;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard syntax */
+        }
+
+        .carousel-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 60%;
+            height: 80%;
+            top: 10%;
+            left: 20%;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            transition: transform 0.5s ease, opacity 0.5s ease, z-index 0.5s ease;
+            border: 1px solid #ddd;
+        }
+
+        .carousel-item.active {
+            transform: translateZ(0) scale(1);
+            opacity: 1;
+            z-index: 3;
+        }
+
+        .carousel-item.prev {
+            transform: translateX(-45%) translateZ(-100px) scale(0.8);
+            opacity: 0.6;
+            z-index: 2;
+        }
+
+        .carousel-item.next {
+            transform: translateX(45%) translateZ(-100px) scale(0.8);
+            opacity: 0.6;
+            z-index: 2;
+        }
+
+        .carousel-item.hidden {
+            transform: scale(0.5);
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin: 0 10px;
+        }
+    </style>
+
+
+
+
+
+<style>
+
+/* Adds a vertical gap BETWEEN groups */
+.gapped-grouped-list .x-list-header-wrap:not(:first-child) {
+    margin-top: 25px; 
+}
+
+/* Styles the group header ITSELF (top of the card) */
+.gapped-grouped-list .x-list-header {
+    padding: 5px 10px;
+    font-size: 14px;
+    min-height: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 12px 12px 0 0; /* Top corners rounded */
+    
+  
+}
+
+/* Styles ALL items in the list (middle of the card) */
+.gapped-grouped-list .x-list-item {
+    margin-left: 0px;
+    margin-right: 0px;
+    
+    /* --- UPDATED box-shadow for right and bottom --- */
+    /* box-shadow: 0px 0px 10px rgba(0,0,0,0.3); */
+    
+    /* Remove default list borders */
+    /* border: none !important;  */
+}
+
+/* Styles the LAST item of each group (bottom of the card) */
+.gapped-grouped-list .x-list-item:last-child .myContent {
+    /* Round the bottom corners of the LAST item */
+    border-radius: 0 0 8px 8px; 
+}
+
+
+
+
+</style>
+
+<style>
+
+/* Main Panel Styling */
+.scanned-merchant-panel {
+    /* Purple gradient background */
+    background: linear-gradient(160deg, #8e44ad 0%, #c0392b 100%);
+    /* You can add a background-image for the confetti effect */
+    /* background-image: url('path/to/confetti.png'); */
+    padding: 20px 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Top and Bottom Chips */
+.qr-verified-chip, .scanned-info-chip {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto 15px auto;
+    width: fit-content;
+}
+.scanned-info-chip {
+    margin: 15px auto;
+}
+
+/* Merchant Header Section */
+.merchant-header {
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.merchant-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%238e44ad" d="M85.7,21.8c-5.3-5.3-12.3-8.2-19.8-8.2s-14.5,2.9-19.8,8.2L50,25.7l-3.9-3.9c-5.3-5.3-12.3-8.2-19.8-8.2S12,16.5,6.7,21.8C1.4,27.1,0,34.2,0,38.2c0,11.2,8.1,19,13.2,24.2L50,96.8l36.8-34.4c5.1-5.1,13.2-13,13.2-24.2C100,34.2,98.6,27.1,85.7,21.8z M87.5,58.8H12.5c-3.5,0-6.2-2.8-6.2-6.2v-25c0-3.5,2.8-6.2,6.2-6.2h75c3.5,0,6.2,2.8,6.2,6.2v25C93.8,56,91,58.8,87.5,58.8z"/></svg>');
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.merchant-name {
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.merchant-tagline {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1em;
+}
+
+/* Action Title */
+.action-title {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Action Buttons Styling */
+.action-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    height: 100px;
+}
+
+.action-button .x-button-label {
+    color: #444;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.action-button .x-button-icon {
+    color: #8e44ad; /* Icon Color */
+    font-size: 2em;
+}
+
+/* Footer Text */
+.footer-dev-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+</style>
+
+
+    <style>
+       /* outer list border/shadow */
+.list--flat,
+.list--flat .x-dock,
+.list--flat .x-dock-body,
+.list--flat .x-scroll-container{
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* per-item divider lines (different themes draw them differently) */
+.list--flat .x-list-item,
+.list--flat .x-list-item.x-list-item-tpl,
+.list--flat .x-list-item .x-inner{
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.list--flat .x-list-item .x-inner:before,
+.list--flat .x-list-item:before,
+.list--flat .x-list-item:after{
+  display: none !important;
+  content: none !important;
+}
+
+/* grouped header (if any) */
+.list--flat .x-list-header{ border:0 !important; background:transparent !important; }
+
+
+/* center + responsive width */
+.list--centered{
+  width: 92%;
+  max-width: 520px;          /* tune for your phone/tablet */
+  margin: 0 auto !important; /* center */
+}
+
+/* light page background for nicer contrast */
+.card-list .x-scroll-container{
+  background: #f6f7fb !important;
+  padding: 12px 8px 60px;    /* gutters so shadows aren't clipped */
+}
+    </style>
+    <style>
+        .tier-footer{padding:14px 16px;border-radius:16px;background:linear-gradient(180deg,#b833ff22,#ff41a822)}
+        .tier-head{display:flex;justify-content:space-between; font-size:11px; padding:0px 0px;color:#fff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+        .progress{
+          position:relative;height:25px;border-radius:999px;
+          background:rgba(255,255,255,.25); border:2px solid #fac;
+          box-shadow: inset 0 2px 4px rgba(0,0,0,.15); overflow:hidden;
+        }
+        .bar{
+          height:100%; width:0%;
+          background: linear-gradient(90deg,#ffe082,#ffd54f,#ffca28,#ffb300);
+          border-radius:inherit; transition:width .8s ease;
+        }
+        .label{
+          position:absolute; right:0px; top:50%; transform:translateY(-50%);
+          font-size:11px; padding:0 6px;color:#fff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+          background:rgba(255,255,255,0.1); border-radius:10px;
+        }
+        
+        </style>  
+
+
+
+
+
+    <style>
+   .shake-bag {
+  width: 100px;
+  height: auto;
+  animation: gentle-shake 1s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes gentle-shake {
+  0%   { transform: rotate(0deg) translateX(0); }
+  25%  { transform: rotate(-1.5deg) translateX(-1px); }
+  50%  { transform: rotate(1.5deg) translateX(1px); }
+  75%  { transform: rotate(-1deg) translateX(-0.5px); }
+  100% { transform: rotate(0deg) translateX(0); }
+}
+      </style>
+    <style>
+        .store-container {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            padding: 5px;
+        }
+    
+        .store-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 2px;
+        }
+    
+        .store-text {
+            font-size: 10px;
+            font-weight:bold;
+            color: #000; /* Adjust color as needed */
+        }
+    </style>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+</style>
+    <style>
+        .membership-card-container {
+            width: 90%;
+            max-width: 350px;
+            margin: 20px auto;
+            background: #fff;
+            border: 2px solid purple;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .membership-card-container:hover {
+            transform: scale(1.05);
+        }
+
+        .membership-card-container.selected {
+            background: purple;
+            color: white;
+        }
+
+        .membership-card-container.selected .membership-header {
+            background: purple;
+            color: white;
+        }
+
+        .membership-card-container.selected .membership-price {
+            color: white;
+        }
+
+        .membership-card-container.selected .membership-duration {
+            color: white;
+        }
+
+        .membership-header {
+            background: #f4f4f4;
+            color: black;
+            padding: 5px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .membership-body {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .membership-price {
+            font-size: 24px;
+            color: purple;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .membership-duration {
+            font-size: 16px;
+            color: gray;
+            margin: 5px 0;
+        }
+
+        .promo {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            animation: blink 2s infinite;
+        }
+
+        .show .promo {
+            display: block;
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .membership-price {
+                font-size: 24px;
+            }
+
+            .membership-duration {
+                font-size: 14px;
+            }
+
+            .promo {
+                font-size: 10px;
+            }
+        }
+    </style>
+
+
+
+
+  <style type="text/css">
+        /* .x-videoExt{height:100%;width:100%;background-color:#000}.x-videoExt > *{height:100%;width:100%;position:absolute;object-fit: fill;}.x-videoExt-ghost{-webkit-background-size:100% 100%;background:transparent url() center center no-repeat}audio{width:100%} */
+        #divVideo {
+    position: fixed; right: 0; bottom: 0;
+min-width: 100%; min-height: 100%;
+width: 500px; height: 500px;
+}
+video#preview_scan {
+position: fixed; right: 0; bottom: 0;
+min-width: 100%; min-height: 100%;
+width: auto; height: auto;z-index: -100;
+
+}
+    </style>
+    <style type="text/css">
+        video#preview_scan_eWallet {
+position: fixed; right: 0; bottom: 0;
+min-width: 100%; min-height: 100%;
+width: auto; height: auto;z-index: -100;
+
+}
+    </style>
+
+
+   
+    <style type="text/css">
+        .swal-container {
+            z-index: 2000;
+        }
+        .swal2-container {
+  z-index: 2000;
+}
+    </style>
+    <style type="text/css">
+        body.x-masked .x-mask {
+    z-index: 20000;
+}
+    </style>
+    <style type="text/css">
+        input.largerCheckbox {
+            width: 30px;
+            height: 30px;
+        }
+
+        input.MediumCheckbox {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+ <style>
+     #ip2 {
+    border-radius: 15px;
+    border: 1px solid #609;
+    padding: 20px; 
+    width: 300px;
+    height: 15px;    
+     color: black;
+}
+      #ip3 {
+    border-radius: 15px;
+    border: 1px solid #609;
+    padding: 20px; 
+    width: 300px;
+    height: 15px;    
+     color: black;
+}
+      #barchartAyohaMerchanReview {
+  width: 250px;
+  height: 140px;
+  background-color:transparent;
+  font-family: Arial;
+}
+ </style>
+
+
+
+    <style>
+        @keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(216,145,239, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(216,145,239, 0);
+  }
+}
+
+ @keyframes shadow-pulse-ayohatabcontest
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(255,165,0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(255,165,0, 0);
+  }
+}
+@keyframes shadow-pulse-big
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(216,145,239, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 70px rgba(216,145,239, 0);
+  }
+}
+
+
+
+.example-1
+{
+  /*float: left;
+  margin: 40px;*/
+  width: 230px;
+  height: 230px;
+  color:#fff;
+  background: #fff;
+    background: rgba(30, 144, 255, 0.6);
+   /*box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);*/
+  /*background: no-repeat;*/
+  border-radius: 50%;
+  animation: shadow-pulse 1s infinite;
+}
+.example-1ori
+{
+  /*float: left;
+  margin: 40px;*/
+  width: 130px;
+  height: 130px; 
+  color:#fff;
+  background: rgba(30, 144, 255, 0.6);
+  border-radius: 40%;
+  animation: shadow-pulse 1s infinite;
+}
+.example-2
+{
+  /*float: left;
+  margin: 40px;*/
+  width: 200px;
+  height: 130px;
+  color: #fff;
+  background: rgba(30, 144, 255, 0.6);
+  border-radius: 10%;
+  animation: shadow-pulse 1s infinite;
+}.getMoreMembershipCard
+{
+  /*float: left;
+  margin: 40px;*/
+  width: 200px;
+  height: 130px;
+  color: #fff;
+  background: rgba(30, 144, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  animation: shadow-pulse 1s infinite;
+}.example-3
+{
+  /*float: left;
+  margin: 40px;*/
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  /*margin:0px 0px 0px 30px;*/
+  background: rgba(255,165,0, 0.2);
+  border-radius: 50%;
+  animation: shadow-pulse-ayohatabcontest 1s infinite;
+}.example-5
+{
+  /*float: left;
+  margin: 40px;*/
+  width: 95px;
+  height: 30px;
+  color: #fff;
+  background: rgba(30, 144, 255, 0.6);
+  border-radius: 10%;
+  animation: shadow-pulse 1s infinite;
+}
+    </style>
+
+
+    <style>
+         .button3Deleteviewloyaltycard {
+            background-color: red;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            color: white;
+            border: 2px solid white;
+            border-radius: 7px;
+            width:55%;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+        }.button3viewloyaltycard {
+            /*background-color: #fac;*/
+            /* background-color: #fe21af;
+            background-image: linear-gradient(#ff00de75,  #fe21af); */
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);      
+            
+            color: white;
+            /*icon:url("/resources/icons/membershicardwhite.png");*/
+            border: 2px solid #fac;
+            border-radius: 25px;
+            width:100%;
+            padding: 10px;
+            font-size: 13px;
+            text-align: center;
+            font-weight:bold;
+        }.button3getMembershipCard {
+            /*background-color: #fac;*/
+            /* background-color: #fe21af;
+            background-image: linear-gradient(#ff00de75,  #fe21af);      */
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            /*icon:url("/resources/icons/membershicardwhite.png");*/
+            border: 2px solid white;
+            border-radius: 7px;
+            width:100%;
+            padding: 13px;
+            font-size: 14px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonMediaSocial {
+            background-color: transparent;
+            color: transparent;
+            border: 1px none #666;
+            /*border-radius: 25px;*/
+            /*width: 100px;
+            padding: 8px;
+            font-size: 14px;*/
+            width: 16px;
+            height:16px;
+            padding: 0px;         
+           
+            /*font-size: 12px;
+            text-align: center;*/
+        }
+    </style>
+
+
+    <style type="text/css">
+        .button {
+            position: relative;
+            background-color: #f44336;
+            border: none;
+            font-size: 14px;
+            color: #FFFFFF;
+            padding: 5px;
+            width: 80px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+
+        .buttonSave {
+            background-color: white;
+            color: red;
+            border: 1px solid #e7e7e7;
+            border-radius: 25px;
+            width: 80%;
+            padding: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            /*position: relative;*/
+            /*background-color: #f44336;
+            background-color: white;
+            border: none;
+            font-size: 18px;
+            color: #FFFFFF;
+            padding: 5px;
+            width: 80px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s;  Safari
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 25px;*/
+        }   .buttonsHtmlBgDeleteNotificationListTransparent {
+            background-color: transparent;
+            color: transparent;
+            border: 1px none #666;
+            /*border-radius: 25px;*/
+            /*width: 100px;
+            padding: 8px;
+            font-size: 14px;*/
+            width: 35px;
+            height: 30px;
+            padding: 0px;
+            /*font-size: 12px;
+            text-align: center;*/
+        }
+            .buttonsHtmlBgTransparent {
+            background-color: transparent;
+            color: transparent;
+            border: 1px none #666;
+            /*border-radius: 25px;*/
+            /*width: 100px;
+            padding: 8px;
+            font-size: 14px;*/
+            width: 35px;
+            height: 30px;
+            padding: 0px;
+            /*font-size: 12px;
+            text-align: center;*/
+        }  .buttonsHtmlBgTransparentMerchantLike {
+            background-color: transparent;
+            color: black;
+            border: 1px none #666;
+            /*border-radius: 25px;*/
+            /*width: 100px;
+            padding: 8px;
+            font-size: 14px;*/
+            width: 30px;
+            height: 30px;
+            padding: 0px;
+            font-size: 12px;
+            text-align: center;
+        }
+            .buttonSave:active {
+                background-color: #f44336;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+
+        .button:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s;
+        }
+
+        .button:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s;
+        }
+
+        .button:active {
+            background-color: #f44336;
+            color: #FFFFFF;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .button4 {
+            background-color: white;
+            color: purple;
+            border: 1px solid purple;
+            border-radius: 7px;
+            width: 80%;
+            padding: 11.5px 0px 11.5px 0px;
+            font-size: 11px;
+            text-align: center;
+        }
+        .buttonSigToCartSign{
+              background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 4px;           
+            /*width: 85%;*/
+            width:35px;
+            height:35px;
+              padding: 2px 0px 2px 0px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .buttonAddToCartSign{
+              background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 4px;           
+            /*width: 85%;*/
+            width:25px;
+            height:25px;
+              padding: 2px 0px 2px 0px;
+            font-size: 12px;
+            text-align: center;
+        }.buttonAddMinusToCartSign{
+              background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 4px;           
+            /*width: 85%;*/
+            width:30px;
+            height:30px;
+              padding: 4px 0px 4px 0px;
+            font-size: 16px;
+            text-align: center;
+        }.buttonBuyNow {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             /*background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);*/  
+                background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);                
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 7px;           
+            /*width: 85%;*/
+            width:120px;
+              padding: 5px 0px 5px 0px;
+            font-size: 13px;
+            text-align: center;
+        }
+         .buttonAddToCartLarge {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 7px;           
+            /*width: 85%;*/
+            width:160px;
+              padding: 8px 0px 8px 0px;
+            font-size: 12px;
+            text-align: center;
+        }
+       .buttonAddToCart {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 7px;           
+            /*width: 85%;*/
+            width:100px;
+              padding: 5px 0px 5px 0px;
+            font-size: 12px;
+            text-align: center;
+        } .buttonChatWithUs {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color: green;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            color: white;
+            border: 2px none #fac;
+            border-radius: 7px;           
+            /*width: 85%;*/
+            width:100px;
+              padding: 5px 0px 5px 0px;
+            font-size: 12px;
+            text-align: center;
+        }
+       .buttonAddToCartMain {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color:white;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            /*color: white;
+            border: 2px none #fac;*/
+             border: 2px none #fac;
+            border-radius: 7px;           
+            /*width: 85%;*/
+            width:40px;
+            height:35px;
+              padding: 0px 0px 5px 0px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .buttonMerchantBusinessTypeLink {
+            background-color: white;
+            color: purple;
+            border: 1px solid purple;
+            border-radius: 7px;           
+            /*width: 85%;*/
+            width:140px;
+            padding: 11.5px 1px 11.5px 1px;
+            font-size: 11px;
+            text-align: center;
+        }.buttonMerchantBusinessTypeLinkIsMember {
+            background-color: white;
+            color: purple;
+            border: 1px none purple;
+            border-radius: 10px;           
+            width: 85%;
+            /*width:200px;*/
+            padding: 11.5px 1px 11.5px 1px;
+            font-size: 14px;
+            font-weight:bold;
+            text-align: center;
+        }.buttonMerchantBusinessTypeLinkNoBusiness {
+            background-color: #F8F8F8;
+            color: #D3D3D3;
+            border: 1px solid 	#D0D0D0;
+            border-radius: 7px;
+            /*width: 85%;*/
+             width:140px;
+            padding: 11.5px 1px 11.5px 1px;
+            font-size: 11px;
+            text-align: center;
+        }
+          .buttonViewMyRanking {
+            background-color: white;
+            color: GrayText;
+            border: 2px solid purple;
+            border-radius: 15px;
+            width: 190px;
+            padding: 6px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .buttonStatusLog {
+            background-color: white;
+            color: purple;
+            border: 1px solid purple;
+            margin-top:10px;
+            border-radius: 7px;
+            width: 130px;
+            padding: 3px;
+            font-size: 10px;
+            text-align: center;
+        }
+          .buttonAyohaRedemptionHistoryStatus {
+            background-color: white;
+            color: purple;
+            border: 1px solid purple;
+            margin-top:10px;
+            border-radius: 7px;
+            width: 130px;
+            padding: 4px;
+            font-size: 10px;
+            text-align: center;
+        }
+          .buttonAyohaRedemptionHistoryCancel {
+            background-color: white;
+            color: purple;
+            border: 1px solid purple;
+            margin-top:10px;
+            border-radius: 7px;
+            width: 72px;
+            padding: 4px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .buttonViewMyRanking01 {
+            background-color: white;
+            color: purple;
+            border: 1px solid purple;
+            margin-top:10px;
+            border-radius: 7px;
+            width: 130px;
+            padding: 9px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .button3 {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 7px;
+            width: 90%;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+        }.buttonGetMemberhipCard {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 7px;
+            /*width: 90%;*/
+             width: 160px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+        }.buttonCheckOutAyohaShoppingCart {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none #fac;
+            border-radius: 20px;
+            width: 50%;
+            padding: 5px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonRedeemDashboard {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none #fac;
+            border-radius: 20px;
+            width: 45%;
+            padding: 12px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonAyohaPointRedemption_Redeem_Yes {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none #fac;
+            border-radius: 20px;
+            width: 80%;
+            padding: 12px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonAyohaPointRedemption_Redeem_No {
+            background-color: white;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            color: purple;
+            border: 2px solid #fac;
+            border-radius: 20px;
+            width: 80%;
+            padding: 12px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonLogin {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none #fac;
+            border-radius: 25px;
+            width: 80%;
+            padding: 16px;
+            font-size: 16px;
+            text-align: center;
+            font-weight:bold;
+            
+        }.buttonVoucherUsedItNow {
+            background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none #fac;
+            border-radius: 25px;
+            width: 60%;
+            padding: 6px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+            
+        }.buttonBackTransfer {
+           background-color: transparent;                  
+            color: white;
+            border: 1px none #fac;
+            border-radius: 25px;
+            width: 100px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bolder;
+        }.buttonSearchTransferEwallet {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 10px;
+            width: auto;
+            padding: 10px 40px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:normal;
+        }.buttonVisitAyohaMerchant {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 25px;
+            width: 150px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:normal;
+        }.buttonRecentlyUsedAddress {
+           background-color: transparent;        
+            color: blue;
+            border: 1px none purple;
+            border-radius: 25px;
+            width: 180px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonCreateAyohaEwalletAccount {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 5px;
+            width: 100%;
+            padding: 12px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonCheckOut {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px solid #fac;
+            border-radius: 5px;
+            width: 271px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonPayNow {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px none purple;
+            border-radius: 25px;
+            width: 140px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonSelectAnotherCard {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 1px none purple;
+            border-radius: 25px;
+            width: 55%;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonRegisterNow {
+            background-color: transparent;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            color: purple;
+            border: 1px none purple;
+            border-radius: 25px;
+            width: 80%;
+            padding: 14px;
+            font-size: 16px;
+            text-align: center;
+            font-weight:bold;
+        }.buttonForgotPassword {
+            background-color: transparent;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            color: grey;
+            border: 1px none purple;
+            border-radius: 25px;
+            width: 100%;
+            padding: 2px;
+            font-size: 14px;
+            text-align: center;
+            font-weight:normal;
+            font-family:Century Gothic;
+        }
+         .buttonForgotPasswordeWallet {
+            background-color: transparent;
+            /*background-image: linear-gradient(#ff00de75, #c800ffc9);*/          
+            color: white;
+            border: 1px none purple;
+            border-radius: 25px;
+            width: 100%;
+            padding: 2px;
+            font-size: 14px;
+            text-align: center;
+            font-weight:normal;
+            font-family:Century Gothic;
+        }
+         
+         .buttonAdvertisementCalendar {
+            background-color: white;
+            color: rebeccapurple;
+            border: 2px solid rebeccapurple;
+            border-radius: 25px;
+          width: 180px;
+              padding: 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+         .buttonStampCampaignModelButton {
+            background-color: transparent;
+            color: rebeccapurple;
+            border: 2px none rebeccapurple;
+            border-radius: 25px;
+            width: 100px;
+            padding: 2px;
+            font-size: 14px;
+            font-weight:bold;            
+            text-align: right;
+            margin:-5px 0px 0px 0px;
+        }
+          .buttonStampCampaignCreate {
+            background-color: white;
+            color: rebeccapurple;
+            border: 2px solid rebeccapurple;
+            border-radius: 25px;
+          width: 80%;
+              padding: 8px;
+            font-size: 12px;
+            text-align: center;
+        }.buttonSignUp {
+            /*background-color: white;
+            color: rebeccapurple;
+            border: 2px solid rebeccapurple;         
+            border-radius: 25px;
+             width: 90%;
+              padding: 14px;
+            font-size: 14px;
+            text-align: center;*/
+             background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 25px;
+            width: 90%;
+            padding: 14px;
+            font-size: 14px;
+            text-align: center;
+        }.buttonConfirmMembershipCard {
+            background-color: white;
+            color: rebeccapurple;
+            border: 2px solid rebeccapurple;
+            border-radius: 20px;
+            width: 200px;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+        }.buttonDeleteReview {
+          
+font:900 14px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:rgba(255,255,255,.90);
+  border:1px solid red;
+  color:red;
+            /* background-color: transparent;
+            color: rebeccapurple;
+            border: 2px solid rebeccapurple; */
+            border-radius: 10px;
+            width: 150px;
+            padding: 10px;
+           
+            text-align: center;
+        }.buttonPostReview {          
+              background:linear-gradient(180deg,#7c3aed,#5b21b6);
+  box-shadow:0 14px 26px rgba(124,58,237,.28);         
+            color: white;
+            border: 0;
+            border-radius: 10px;
+            width: 150px;
+            padding: 10px;            
+            text-align: center; 
+            font:900 14px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#fff;
+        }.buttonSendEmail {
+             background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px solid #fac;
+            border-radius: 25px;
+            width: 75%;
+            padding: 13px;
+            font-size: 14px;
+            text-align: center;
+        }.buttonRedeem {
+            background-color: red;
+            color: white;
+            border: 2px solid red;
+            border-radius: 10px;
+          width: 100px;
+              padding: 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+            .buttonStampCampaignDelete {
+            background-color: red;
+            color: white;
+            border: 2px solid rebeccapurple;
+            border-radius: 25px;
+          width: 80%;
+              padding: 8px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .buttonSaves {
+            background-color: white;
+            color: black;
+            border: 2px solid #e7e7e7;
+        }.buttonNoWhite {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color: white;        
+            color: black;
+            border: 2px solid #d3d3d3;
+            border-radius: 20px;           
+            /*width: 85%;*/
+            width:115px;
+              padding: 8px 0px 8px 0px;
+            font-size: 16px;
+            font-weight:bold;
+            text-align: center;
+        }.buttonYesPurple {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none white;
+            border-radius: 20px;           
+            /*width: 85%;*/
+            width:115px;
+              padding: 10px 0px 10px 0px;
+            font-size: 16px;
+            font-weight:bold;
+            color:black;
+            text-align: center;
+        }.buttonConfirmTransferMoneyPurple {
+            /*background-color: white;
+            color: purple;
+            border: 1px solid purple;*/
+             background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);          
+            color: white;
+            border: 2px none white;
+            border-radius: 20px;           
+            /*width: 85%;*/
+            width:300px;
+              padding: 12px 0px 12px 0px;
+            font-size: 16px;
+            font-weight:bold;          
+            text-align: center;
+        }.buttonCancelTransferMoneyPurple {
+            background-color: white;        
+            color: black;
+            border: 2px solid #d3d3d3;
+            border-radius: 20px;           
+            /*width: 85%;*/
+            width:165px;
+              padding: 8px 0px 8px 0px;
+            font-size: 16px;
+            font-weight:bold;
+            text-align: center;
+        }
+    </style>
+    <style type="text/css">
+        .blink_me {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        } .blink_star {
+            animation: blinker 3s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <style type="text/css">
+         .ballon_me {
+            animation: balloons 3s linear infinite;
+        }
+        @keyframes balloons {
+  0%,100%{ transform:translateY(0) rotate(-4deg); }
+  50%{ transform:translateY(-25px) rotate(4deg); }
+}
+
+    </style>
+    <style type="text/css">
+        .blink_me_sendNow {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+            -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+    </style>
+
+    <style type ="text/css">
+           @keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+.cardcontainer_img {
+	animation: zoominoutsinglefeatured 4s infinite ;
+}
+    </style>
+
+    <style type="text/css">
+        .buttonLoyaltyCardPointRedeem {
+            background-color: red;
+            color: white;
+            border: 1px solid red;
+            border-radius: 25px;
+            width: 60px;
+            padding: 3px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .buttonLoyaltyCardPointRedeemList {
+           background-color: #fac;
+            background-image: linear-gradient(#ff00de75, #c800ffc9);   
+            color: white;
+           border: 2px solid #fac;
+            border-radius: 25px;
+            width: 170px;
+            padding: 7px;
+            font-size: 13px;
+            text-align: center;
+            margin: 0px 10px 15px 0px;
+        }
+          .buttonLoyaltyCardPointRedeemListExpired {
+           background-color: white;
+            color: red;
+           border: 2px solid red;
+            border-radius: 25px;
+            width: 170px;
+            padding: 7px;
+            font-size: 13px;
+            text-align: center;
+            margin: 0px 10px 15px 0px;
+        }
+    </style>
+    <style type="text/css">
+        div.transboxLoyaltyCardPointContainer {
+            /*width:121px;
+              height:41px;*/
+            width: 100%;
+            margin: -6px 0px 0px 0px;
+            height: 100px;
+            /*background-color: #D25959;*/
+            background-color: white;
+            /*border: 1px solid white;*/
+            border: 3px solid #ECF0F1;
+            /*box-shadow: 5px 10px 18px #888888;*/
+            /*opacity: 0.7;*/
+            text-align: center;
+            border-radius: 60px 60px 60px 60px;
+            /*filter: alpha(opacity=50);*/ /* For IE8 and earlier */
+        }
+    </style>
+    <style type="text/css">
+        .btn--shockwave.is-active {
+            -webkit-animation: shockwaveJump 1s ease-out infinite;
+            animation: shockwaveJump 1s ease-out infinite;
+        }
+
+            .btn--shockwave.is-active:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-radius: 50%;
+                -webkit-animation: shockwave 1s .65s ease-out infinite;
+                animation: shockwave 1s .65s ease-out infinite;
+            }
+
+            .btn--shockwave.is-active:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-radius: 50%;
+                -webkit-animation: shockwave 1s .5s ease-out infinite;
+                animation: shockwave 1s .5s ease-out infinite;
+            }
+
+        @-webkit-keyframes shockwaveJump {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            40% {
+                -webkit-transform: scale(1.08);
+                transform: scale(1.08);
+            }
+
+            50% {
+                -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+            }
+
+            55% {
+                -webkit-transform: scale(1.02);
+                transform: scale(1.02);
+            }
+
+            60% {
+                -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shockwaveJump {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            40% {
+                -webkit-transform: scale(1.08);
+                transform: scale(1.08);
+            }
+
+            50% {
+                -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+            }
+
+            55% {
+                -webkit-transform: scale(1.02);
+                transform: scale(1.02);
+            }
+
+            60% {
+                -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+
+        @-webkit-keyframes shockwave {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), inset 0 0 1px rgba(0, 0, 0, 0.15);
+            }
+
+            95% {
+                box-shadow: 0 0 50px transparent, inset 0 0 30px transparent;
+            }
+
+            100% {
+                -webkit-transform: scale(2.25);
+                transform: scale(2.25);
+            }
+        }
+
+        @keyframes shockwave {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), inset 0 0 1px rgba(0, 0, 0, 0.15);
+            }
+
+            95% {
+                box-shadow: 0 0 50px transparent, inset 0 0 30px transparent;
+            }
+
+            100% {
+                -webkit-transform: scale(2.25);
+                transform: scale(2.25);
+            }
+        }
+
+        .btn--jump.is-active {
+            -webkit-animation: .4s jump ease infinite alternate;
+            animation: .4s jump ease infinite alternate;
+        }
+
+        @-webkit-keyframes jump {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            }
+
+            100% {
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        @keyframes jump {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            }
+
+            100% {
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+
+
+<style>
+   html, body {         
+            overscroll-behavior-y: none; /* Prevent pull-to-refresh */
+    overflow: hidden;            /* Hide all scrollbars */
+    height: 100%;
+    /* background-color: #C72CB4; */
+    background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);
+        }
+</style>
+
+<style>
+  .ayohaNotifWrap{
+  position:relative;
+  width:30px;
+  height:30px;
+  overflow:visible;
+}
+
+.ayohaNotifIcon{
+  width:22px;
+  height:22px;
+  display:block;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.ayohaNotifBadge{
+   position:absolute;
+ top:-4px;
+left:-4px;         /* ✅ pindah kiri */
+  right:auto;        /* ✅ pastikan right tak kacau */
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:999px;
+  background:#ff2d55;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  line-height:18px;
+  text-align:center;
+  z-index:9999;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+
+</style>
+   
+    <!-- <link href="resources/css/login/Login.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="resources/css/ayoha/00-vars.css" />
 <link rel="stylesheet" href="resources/css/ayoha/01-reset.css" />
 <link rel="stylesheet" href="resources/css/ayoha/02-base.css" />
 <link rel="stylesheet" href="resources/css/ayoha/03-utilities.css" />
@@ -20,9 +5555,17 @@
 <link rel="stylesheet" href="resources/css/ayoha/30-lists.css" />
 <link rel="stylesheet" href="resources/css/ayoha/40-modals.css" />
 <link rel="stylesheet" href="resources/css/ayoha/90-ext-overrides.css" />
+<link rel="stylesheet" href="resources/css/ayoha/91-chekinCard.css" />
+
+<link rel="stylesheet" href="resources/css/ayoha/92-merchantListContentCard.css" />
+<link rel="stylesheet" href="resources/css/ayoha/92-merchantListSearchInput.css" />
+<link rel="stylesheet" href="resources/css/ayoha/92-merchantListTopListStyle.css" /> -->
+
  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> 
 <script src="app/GlobalComponentStyler.js"></script>
+<script src="app/Dashboard_SuccessCheckInController.js"></script>
+
 
 
 

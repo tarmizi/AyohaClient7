@@ -1,7 +1,6 @@
 Ext.define('BuskartApp.model.Merchantperk.Merchantperk_ViewModel', {
     extend: 'Ext.data.Model',
-    config: {
-        fields: [
+    fields:[
             'ItemType',
                  'PrimaryCode',
                  'SecondaryCode',
@@ -52,16 +51,19 @@ Ext.define('BuskartApp.model.Merchantperk.Merchantperk_ViewModel', {
             //       }
             //   },
 
-                {
-      name: 'ModifiedName',
-      depends: ['Name'],
-      calculate: function (data) {
-        var str = data.Name;
-        if (!str) return 'No Name';
-        str = String(str);
-        return (str.length > 18) ? (str.substring(0, 15) + '...') : str;
-      }
-    },
+  // ✅ computed: guna calculate + depends (lebih reliable dari convert)
+        {
+            name: 'ModifiedName',
+            depends: ['Name'],
+            persist: false,
+            calculate: function (data) {
+                var str = data.Name;
+                if (str) {
+                    return (str.length > 18) ? (str.substring(0, 15) + '...') : str;
+                }
+                return 'No Name';
+            }
+        },
 
     {
       name: 'ModifiedImagePath_Dashboard',
@@ -485,7 +487,7 @@ Ext.define('BuskartApp.model.Merchantperk.Merchantperk_ViewModel', {
                     }
                 }
         ]
-    }
+   
 });
 
 

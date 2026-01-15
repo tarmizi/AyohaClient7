@@ -1039,7 +1039,7 @@ function CoreFunction_DashboardMerchantDetailPage_EnterprisesCoverMediaLoadByEnt
 
 
 
-function CoreFunction_DasboardMerchantDetailPage_CalculateRating(EnterpriseAccNo) {
+function CoreFunction_DasboardMerchantDetailPage_CalculateRatingORI(EnterpriseAccNo) {
    
 
 
@@ -1382,6 +1382,75 @@ globalFloatPanelMerchantDetailPage_CountReviewer=TotalVoter;
 
 
 }
+
+
+function CoreFunction_DasboardMerchantDetailPage_CalculateRating(EnterpriseAccNo) {
+
+  Ext.create('Ext.util.DelayedTask', function () {
+
+    Config_apiPostJson(
+      '/AyohaMerchantReview/AyohaMerchantReviewCalculateRating',
+      { EnterpriseAccNo: EnterpriseAccNo },
+
+      function (data) {
+        if (!data || data.success !== "true") {
+          Ext.Viewport.unmask();
+          return;
+        }
+
+        if (data.total > 0) {
+          var r = data.results[0];
+
+          FiveStar   = r.FiveStar;
+          FourStar   = r.FourStar;
+          ThreeStar  = r.ThreeStar;
+          TwoStar    = r.TwoStar;
+          OneStar    = r.OneStar;
+          TotalStar  = r.TotalStar;
+          TotalVoter = r.TotalVoter;
+
+          VoteFiveStar  = r.VoteFiveStar;
+          VoteFourStar  = r.VoteFourStar;
+          VoteThreeStar = r.VoteThreeStar;
+          VoteTwoStar   = r.VoteTwoStar;
+          VoteOneStar   = r.VoteOneStar;
+
+          var TotalAvg = (VoteFiveStar + VoteFourStar + VoteThreeStar + VoteTwoStar + VoteOneStar) / TotalVoter;
+
+          globalFloatPanelMerchantDetailPage_CountStar = TotalAvg;
+          globalFloatPanelMerchantDetailPage_CountReviewer = TotalVoter;
+
+          Ext.getCmp('htmlDashboard_MerchantDetailPage_ReviewAndRateCount')
+            .setHtml('<div onclick="FloatPanelMerchantDetailPage_OpenMerchantReview();" style="color:black;text-align:center;font-size:14px;width:100%;font-weight:bold;margin:0;">' +
+              (TotalAvg ? TotalAvg.toFixed(1) : '0.0') +
+            '</div>');
+
+          Ext.getCmp('htmlDashboard_MerchantDetailPage_ReviewByCount')
+            .setHtml('<div onclick="FloatPanelMerchantDetailPage_OpenMerchantReview();" style="width:100%;text-align:right;background:transparent;font-family:Arial,sans-serif;font-size:8px;color:black;font-weight:bold;overflow:hidden;">' +
+              '<img src="resources/icons/myaccountwhite01.png" style="width:7px;height:7px;">&nbsp;' + TotalVoter + ' Reviews</div>');
+
+          // ✅ semua logic star kau (if RateReviews ...) kekalkan
+        }
+
+        Ext.Viewport.unmask();
+      },
+
+      function () {
+        Ext.Viewport.unmask();
+      }
+    );
+
+  }).delay(500);
+}
+
+
+
+
+
+
+
+
+
 
 
 

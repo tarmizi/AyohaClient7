@@ -11,3 +11,612 @@
 .ayohaSheetEnter{
   animation: ayoha-pop .22s cubic-bezier(.2,0,.2,1) both;
 }
+
+/* 1. Modal Head & Icon (for the coins icon) */
+.confirmation-modal-head.x-container {
+    position: relative;
+    height: 0;
+    width: 100%;
+    z-index: 10; /* Ensures head is above body */
+    /* Sencha will manage display/layout, just need positioning */
+}
+
+.confirmation-modal-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to bottom right, #a855f7, #7e22ce); /* Gradient background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Positions relative to .confirmation-modal-head */
+    top: -95px;         /* Pulls it up (half its 90px height + 20px) */
+    left: 50%;          /* Centers it horizontally */
+    transform: translateX(-50%); /* Corrects horizontal centering */
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1; /* Ensure it's above the modal content */
+}
+
+.confirmation-modal-icon .coins-icon {
+    width: 82px;
+    height: 82px;
+  /*  filter: brightness(0) invert(1);  Makes image white, if it's a dark icon */
+    /* Remove filter if your icon is already white or has desired color */
+}
+
+/* 2. Main Title and Subtitle */
+.confirmation-title-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+    text-align: center;
+    width: 80%;
+    /* Sencha will handle margin, but ensure it's not overridden */
+}
+
+.confirmation-subtitle-text {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    /* Sencha will handle margin */
+}
+
+/* 3. Points Display Area */
+.confirmation-points-display-container.x-container {
+    background-color: #f5f0fb; /* Light purple background */
+    border-radius: 15px;
+    padding: 25px 20px; /* Vertical and horizontal padding */
+    width: 90%; /* Adjust width to make it a bit narrower than the full modal */
+    box-sizing: border-box; /* Include padding in the width */
+    margin: 20px auto; /* Center horizontally with auto margins */
+}
+
+.confirmation-points-value {
+    font-size: 48px;
+    font-weight: 900;
+    color: #a855f7; /* Matching vibrant purple */
+    line-height: 1; /* Tighter line height for numbers */
+    text-align: center;
+    width: 100%;
+    display: block; /* Ensure it takes full width and stacks */
+}
+
+.confirmation-points-label {
+    font-size: 16px;
+    color: #7e22ce; /* Darker purple */
+    margin-top: 5px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+/* 4. Progress Bar */
+.confirmation-progress-text {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    width: 100%;
+    /* Sencha will handle margin */
+}
+
+.confirmation-progress-bar-wrapper.x-container {
+    height: 8px; /* Height of the bar */
+    background-color: #e0e0e0; /* Light gray background for empty part */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the inner bar stays within bounds */
+    /* Sencha will handle width and margin */
+}
+
+.confirmation-progress-bar div { /* Targeting the inner div for the actual bar */
+    height: 100%;
+    background: linear-gradient(to right, #b36aff, #8a33dd); /* Purple gradient */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth animation for width change */
+    /* Width will be set dynamically via style="width: X%;" on this div */
+}
+
+
+/* 5. Buttons */
+.confirmation-cta-button { /* "View my Ayoha Point!" */
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important; /* Will fill the Sencha container's width */
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px auto !important; /* Center the button */
+    cursor: pointer;
+}
+.confirmation-cta-button:hover {
+    background: linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+
+.confirmation-secondary-button { /* "Continue Shopping" */
+    background-color: transparent !important;
+    color: #888 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    margin: 5px auto !important; /* Center the text */
+    text-decoration: none; /* Ensure no underline */
+    cursor: pointer;
+    padding: 10px; /* Give it some clickable area */
+}
+.confirmation-secondary-button:hover {
+    color: #333 !important;
+}
+
+
+
+
+.checkin-progress-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 90%; /* Or the width of its parent */
+    margin: 20px auto;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #f0eef2; /* Light grey/lavender track */
+    border-radius: 5px;
+    overflow: hidden; /* Clips the inner bar to the rounded corners */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Starts at 0, will be set by JS */
+    background: linear-gradient(to right, #b36aff, #8a33dd); /* Purple gradient */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth animation */
+}
+
+
+
+
+/* --- SweetAlert2 Custom Styling --- */
+
+/* Main modal window. 'ayoha-checkin-swal' is applied via customClass.popup */
+.ayoha-checkin-swal.swal2-popup {
+    border-radius: 24px;
+    padding: 0;
+    width: 360px;
+    overflow: visible !important; /* Allows the top icon to pop out */
+}
+
+/* Hide the default title */
+.ayoha-checkin-swal .swal2-title {
+    display: none;
+}
+
+/* Our custom HTML content will be inside this */
+.ayoha-checkin-swal .swal2-html-container {
+    padding: 0;
+    margin: 0;
+    padding-top: 60px; /* Make space for the icon */
+}
+
+/* Footer that holds the buttons */
+.ayoha-checkin-swal .swal2-actions {
+    background-color: transparent;
+    padding: 0 25px 25px 25px;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't break layout */
+}
+
+/* Make buttons stack vertically */
+.ayoha-checkin-swal .swal2-actions {
+    flex-direction: column;
+}
+.swal-button--confirm-custom {
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px 0 !important;
+    
+    /* --- ADD THIS LINE --- */
+    animation: pulse-animation 1s infinite; /* This applies your animation */
+}
+/* "Tap to Check-In" Button. Applied via customClass.confirmButton */
+/* .swal-button--confirm-custom {
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px 0 !important;
+} */
+.swal-button--confirm-custom:hover {
+    background: linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+
+/* "Maybe Later" Button. Applied via customClass.cancelButton */
+.swal-button--cancel-custom {
+    background-color: transparent !important;
+    color: #888 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    margin: 5px 0 !important;
+}
+.swal-button--cancel-custom:hover {
+    color: #333 !important;
+}
+
+
+/* --- Custom HTML Content Styling (Same as before) --- */
+.checkin-popup {
+    text-align: center;
+    padding: 0 0px;
+    position: relative; /* Needed for the icon positioning */
+}
+
+.checkin-icon-top {
+    width: 90px;
+    height: 90px;
+    background-color: #a855f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -105px; /* Positions it 45px above the modal top */
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 42px;
+    color: white;
+}
+
+.checkin-header {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+}
+
+.checkin-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0 5px 0;
+}
+
+.checkin-stamp {
+    width: 130px;
+    height: 100px;
+    border: 3px dashed #bcaaa4;
+    background-color: white;
+    padding: 1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.stamp-icon {
+    font-size: 55px;
+    filter: grayscale(30%);
+    opacity: 0.8;
+    transform: rotate(-20deg);
+}
+
+.checkin-subtitle {
+   font-size: 14px;
+   font-weight: bold;
+   margin-top: 5px;
+   margin-bottom: 2px;
+   color: #444;
+}
+
+.checkin-subtitle-small {
+   font-size: 12px;
+   color: #999;
+   margin-bottom: 20px;
+   display: block;
+}
+
+.checkin-info {
+    background-color: #f3e5f5;
+    border-radius: 15px;
+    padding: 28px 28px;
+    margin: 30px 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #555;
+    width: 100% !important;
+}
+.checkin-info strong {
+    color: #8E44AD;
+    font-weight: 700;
+}
+.checkin-divider {
+    border: none; /* Remove the default border */
+    height: 2px;  /* Make the line 1px tall */
+    background-color: #eeeeee; /* A light, smooth gray color */
+    margin: 0px 0px 25px 0px; /* Add 20px of space above and below the line */
+}
+@keyframes pulse-animation{
+      0%{ transform:scale(1); box-shadow:0 5px 20px rgba(138,43,226,.4) }
+      50%{ transform:scale(1.03); box-shadow:0 8px 30px rgba(138,43,226,.6) }
+      100%{ transform:scale(1); box-shadow:0 5px 20px rgba(138,43,226,.4) }
+    }
+
+
+
+
+
+    
+/* Main modal window for confirmation */
+.ayoha-confirmation-swal.swal2-popup {
+    border-radius: 24px;
+    padding: 0;
+    width: 360px;
+    overflow: visible !important;
+}
+
+/* Hide default elements as before */
+.ayoha-confirmation-swal .swal2-title {
+    display: none;
+}
+.ayoha-confirmation-swal .swal2-html-container {
+    padding: 0;
+    margin: 0;
+    padding-top: 60px; /* Space for the top icon */
+}
+.ayoha-confirmation-swal .swal2-actions {
+    background-color: transparent;
+    padding: 0 25px 25px 25px;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column; /* Stack buttons */
+}
+
+/* Custom styling for "Awesome!" button */
+.swal-button--awesome {
+    background: linear-gradient(to right, #a855f7, #7e22ce) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    padding: 14px 0 !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4) !important;
+    border: none !important;
+    margin: 5px 0 !important;
+}
+.swal-button--awesome:hover {
+    background: linear-gradient(to right, #b36aff, #8a33dd) !important;
+}
+
+/* Custom styling for "Continue Shopping" button */
+.swal-button--continue-shopping {
+    background-color: transparent !important;
+    color: #888 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    margin: 5px 0 !important;
+}
+.swal-button--continue-shopping:hover {
+    color: #333 !important;
+}
+
+/* --- Internal Content Styling for Confirmation Popup --- */
+.confirmation-popup {
+    text-align: center;
+    padding: 0 25px;
+    position: relative;
+}
+
+/* Top icon for confirmation */
+.confirmation-icon-top {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to bottom right, #a855f7, #7e22ce); /* Gradient for the background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -105px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.coins-icon {
+    width: 82px; /* Adjust size as needed */
+    height: 82px;
+    /*filter: brightness(0) invert(1); Makes the image white if it's black/dark */
+    /* If your coin icon is already white, remove the filter */
+}
+.successMark-icon {
+    width: 82px; /* Adjust size as needed */
+    height: 82px;
+    border-radius: 50%;
+    /*filter: brightness(0) invert(1); Makes the image white if it's black/dark */
+    /* If your coin icon is already white, remove the filter */
+}
+
+.confirmation-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+    margin: 5px 0 0px 0;
+}
+
+.confirmation-subtitle {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.points-display {
+    background-color: #f5f0fb; /* Light purple background */
+    border-radius: 15px;
+    padding: 25px 20px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.points-value {
+    font-size: 48px;
+    font-weight: 900;
+    color: #a855f7; /* Matching purple */
+    line-height: 1; /* Tighter line height */
+}
+.points-label {
+    font-size: 16px;
+    color: #7e22ce; /* Darker purple */
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.checkins-progress-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0; /* Light gray background for empty part */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the inner bar stays within bounds */
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #b36aff, #8a33dd); /* Purple gradient */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth animation for progress change */
+}
+
+
+
+
+/* Main Panel Styling */
+.scanned-merchant-panel {
+    /* Purple gradient background */
+    background: linear-gradient(160deg, #8e44ad 0%, #c0392b 100%);
+    /* You can add a background-image for the confetti effect */
+    /* background-image: url('path/to/confetti.png'); */
+    padding: 20px 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Top and Bottom Chips */
+.qr-verified-chip, .scanned-info-chip {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto 15px auto;
+    width: fit-content;
+}
+.scanned-info-chip {
+    margin: 15px auto;
+}
+
+/* Merchant Header Section */
+.merchant-header {
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.merchant-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%238e44ad" d="M85.7,21.8c-5.3-5.3-12.3-8.2-19.8-8.2s-14.5,2.9-19.8,8.2L50,25.7l-3.9-3.9c-5.3-5.3-12.3-8.2-19.8-8.2S12,16.5,6.7,21.8C1.4,27.1,0,34.2,0,38.2c0,11.2,8.1,19,13.2,24.2L50,96.8l36.8-34.4c5.1-5.1,13.2-13,13.2-24.2C100,34.2,98.6,27.1,85.7,21.8z M87.5,58.8H12.5c-3.5,0-6.2-2.8-6.2-6.2v-25c0-3.5,2.8-6.2,6.2-6.2h75c3.5,0,6.2,2.8,6.2,6.2v25C93.8,56,91,58.8,87.5,58.8z"/></svg>');
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.merchant-name {
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.merchant-tagline {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1em;
+}
+
+/* Action Title */
+.action-title {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Action Buttons Styling */
+.action-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    height: 100px;
+}
+
+.action-button .x-button-label {
+    color: #444;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.action-button .x-button-icon {
+    color: #8e44ad; /* Icon Color */
+    font-size: 2em;
+}
+
+/* Footer Text */
+.footer-dev-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 10px;
+}

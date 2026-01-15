@@ -3234,3 +3234,28 @@ function animatedContainer(containerName) {
         }
     });
 }
+
+
+
+
+
+
+function Config_apiPostJson(endpoint, payload, onOk, onErr) {
+  Ext.Ajax.request({
+    url: GetAPIurl() + endpoint,
+    method: 'POST',
+    jsonData: payload,
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+
+    success: function (response) {
+      var raw = (response.responseText || '').trim();
+      var data = raw ? Ext.decode(raw) : null;
+
+      if (onOk) onOk(data, response);
+    },
+
+    failure: function (response) {
+      if (onErr) onErr(response);
+    }
+  });
+}

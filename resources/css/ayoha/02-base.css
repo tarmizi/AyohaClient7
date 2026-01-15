@@ -128,3 +128,20 @@ left:-4px;         /* ✅ pindah kiri */
   color:rgba(17,24,39,.55);
   text-align:center;
 }
+
+
+.ayohaHeroMerchantCheckInCount {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, .78);
+  /* Tambah text-align center */
+  text-align: center;
+  font: 700 10px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* FIX UTAMA: */
+  width: 100%;
+  transform: none; /* BUANG translateX(-5px) */
+}
