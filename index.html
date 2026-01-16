@@ -1719,7 +1719,20 @@ text-align: center;
    .ayohaMBtn, .ayohaMBtnGhost,
    .ayohaMStateBadge
    ========================================================= */
-
+/* ✅ OUTER: shadow ikut radius & tak kena clip */
+/* card floating keluar */
+.ayohaFloatOut{
+  width: calc(100% - 24px);
+  max-width: 420px;
+  margin: -44px auto 14px;      /* ✅ negative margin buat dia keluar */
+  position: relative;
+  z-index: 20;                  /* ✅ duduk atas header */
+}
+/* optional: shadow lebih “lifted” */
+.ayohaFloatOut{
+  filter: drop-shadow(0 18px 36px rgba(17,24,39,.16))
+          drop-shadow(0 42px 90px rgba(124,58,237,.14));
+}
 /* ===== Card Base (Ayoha theme: white + lavender + glow stars) ===== */
 .ayohaMCard{
   border-radius:22px;
@@ -1728,9 +1741,8 @@ text-align: center;
   overflow:hidden;
 
   background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
-  border:1px solid rgba(124,58,237,.14);
-  box-shadow:0 14px 30px rgba(17,24,39,.12);
-
+  border:1px none rgba(124,58,237,.14);
+  box-shadow:none;                 /* shadow pindah ke wrapper */
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
 
@@ -2238,7 +2250,7 @@ box-sizing: border-box;
 
 
 /* MAX state: make subtitle line 2 softer + friendly */
-.ayohaMMax .ayohaMSub2 {
+.ayohaMMax{
   display: block;          /* jadikan 1 baris sendiri */
   
   /* PEMBETULAN UTAMA: Tukar 'left' ke 'center' */
@@ -5540,8 +5552,197 @@ left:-4px;         /* ✅ pindah kiri */
 }
 
 </style>
+
+
+<style>
+  .ayohaCardItem{
+  background:transparent;
+  width:100%;
+  height:auto;
+  display:inline-block;
+  vertical-align:top;
+  margin-right:12px;
+  margin-bottom:12px;
+}
+
+.ayohaCardWrap{
+  width:270px;
+  border-radius:22px;
+  overflow:visible;
+  position:relative;
+
+  /* world-class soft shadow */
+  filter:
+    drop-shadow(0 18px 34px rgba(17,24,39,.14))
+    drop-shadow(0 46px 90px rgba(124,58,237,.12));
+}
+
+.ayohaCardFace{
+  margin:0;
+  width:270px;
+  height:200px;
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -18px 30px rgba(0,0,0,.18);
+}
+
+.ayohaCardOverlay{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 18% 0%, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.28) 55%, rgba(0,0,0,.38) 100%);
+}
+
+.ayohaCardInnerRim{
+  position:absolute;
+  inset:10px;
+  border-radius:16px;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.18);
+}
+
+.ayohaCardContent{
+  position:relative;
+  z-index:2;
+  height:100%;
+}
+
+.ayohaCardTable{
+  border-collapse:collapse;
+  border-spacing:0;
+  border:none;
+  width:100%;
+  margin:0;
+}
+
+.ayohaCardTop{
+  background:transparent;
+  border:none;
+  padding:10px 12px;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+.ayohaCardMid{
+  border:none;
+  padding:0;
+}
+
+.ayohaCardType{
+  margin:10px 0 0 12px;
+  font-family:Playball,cursive;
+  font-size:18px;
+  color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.ayohaCardNo{
+  margin:6px 0 0 12px;
+  color:#fff;
+  font-family:Orbitron,sans-serif;
+  font-size:15px;
+  letter-spacing:.8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.ayohaCardName{
+  margin:6px 0 0 12px;
+  color:rgba(255,255,255,.88);
+  font-family:Orbitron,sans-serif;
+  font-size:10px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.ayohaCardColL, .ayohaCardColR{
+  border:none;
+  vertical-align:top;
+}
+
+.ayohaCardColL{
+  padding-left:12px;
+}
+
+.ayohaCardColR{
+  padding-right:12px;
+  text-align:right;
+}
+
+.ayohaCardColL .k, .ayohaCardColR .k{
+  margin-top:18px;
+  color:rgba(255,255,255,.82);
+  font-family:Orbitron,sans-serif;
+  font-size:8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.ayohaCardColL .v, .ayohaCardColR .v{
+  margin-top:4px;
+  color:#fff;
+  font-family:Orbitron,sans-serif;
+  font-size:8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.ayohaCardPriceRow{
+  width:270px;
+  margin:10px 0 0 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.ayohaCardPriceRow .price{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:16px;
+  font-weight:900;
+  color:#111827;
+  line-height:1;
+}
+
+.ayohaCardPriceRow .priceSub{
+  margin-top:4px;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  color:#6b7280;
+}
+
+.ayohaCardPriceRow .priceCta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(124,58,237,.10);
+  border:1px solid rgba(124,58,237,.18);
+  box-shadow:0 10px 22px -12px rgba(124,58,237,.35);
+}
+
+.priceCtaImg{
+  width:90px;
+  height:25px;
+  display:block;
+  filter:drop-shadow(0 8px 14px rgba(0,0,0,.12));
+}
+
+</style>
+
    
-    <!-- <link href="resources/css/login/Login.css" rel="stylesheet" /> -->
+   
     <!-- <link rel="stylesheet" href="resources/css/ayoha/00-vars.css" />
 <link rel="stylesheet" href="resources/css/ayoha/01-reset.css" />
 <link rel="stylesheet" href="resources/css/ayoha/02-base.css" />

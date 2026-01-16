@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.MembershipCard.MembershipCardModel', {
     extend: 'Ext.data.Model',
-    config: {
+   
         fields: [
                  'ID',
       'MembershipCardCode',
@@ -1008,8 +1008,13 @@ if(str){
             //     },
               
         ]
-    }
+    
 });
+
+
+
+
+
 
 function replaceAt(string, index, replace) {
     return string.substring(0, index) + replace + string.substring(index + 1);
