@@ -4153,14 +4153,15 @@ xtype: 'container',
 {
     xtype: 'container',
     width: '100%',
-   // height: 330,
-    height: 315,
+   // height: 390,
+  height: 330,
     id:'containerDashboard_MembershipCard_CheckIn',
     margin: '0 0 0 0',
      // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
      //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-     style: 'background-color:transparent',
-     //style: "background-color: white;",
+     //style: 'background-color:transparent',
+     
+     style: "background-color: white;",
      layout: {
          type: 'vbox',
          pack: 'start',
@@ -4217,9 +4218,9 @@ xtype: 'container',
             id: 'listDashboard_MembershipCard_CheckIn',
             margin: '0 0 0 0',
             xtype: 'dataview',
-            height: 240,
-            //height: 180,
-            style: "background-color: transparent;",
+            height: 260,
+           // height: 300,
+            style: "background-color: rgba(0, 0, 0, 0);",
             inline: {
                 wrap: false
             },
@@ -4229,49 +4230,39 @@ xtype: 'container',
             },
             width: '90%',
           
-
-
-
-            // itemTpl: new Ext.XTemplate(
-            
-            //         '<div  class="myContent" style="background-color:transparent;width:280px;height:auto;display:inline-block;vertical-align:top;margin-right:12px;margin-bottom:12px;">',
-            //             '<div id="membershipCard_{ID}" style="margin:0px 0px 0px 0px;width:270px;height:200px;background-color: #fac;background-image: url({MembershipCardBackgroundImg});background-size: 100% 100%;border-radius: 20px 20px 20px 20px;">' +
-            //             '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;margin:0px 0px 0px 0px;" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;{ModifiedHeaderHeight}" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:{ModifiedPaddingHeight} 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:5px 0px 0px 10px;width:100%;text-align:left;font-family:Playball, cursive;font-size:18px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-32px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">123 4567</div><br><div style="margin:-27px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:10px;font-weight:normal;border-top: 1px none white;padding:0px 0px">MEMBER NAME</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:16px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-23px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">After Approved</div><br><div style="margin:-18px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">After Approved</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:16px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-17px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedStrExpiredDate}</div></td></tr></tbody></table>' +
-            //             '</div>' + 
-            //             '<div style="margin:5px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">RM{MembershipCardFee}<br><div style="margin:-5px 0px 0px 0px;font-size:10px;font-weight:normal">Membership Fees</div></div><div style="width:100%;text-align:right;margin:-15px 0px 0px -20px"></div></div>' +
-            //             '<br><div style="margin:-12px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;margin:-20px 0px 0px 0px;"></div><div style="width:100%;text-align:right;margin:-42px 0px 0px -20px;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;"><div class="blink_me"><div style="margin:0px -40px 0px 0px;font-size:10px;font-weight:normal;"><img src="resources/icons/getItNow01.png" style="width:90px;height:25px;"></div></div></div></div>',
-            //         '</div>', 
-                 
-            // ),
-
-
-
-
-
 itemTpl: new Ext.XTemplate(
   '<div class="ayohaCardItem">',
 
     '<div class="ayohaCardWrap">',
 
-      // background-image kekal inline sebab dynamic
-      '<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size: 100% 100%;background-position: center center; background-repeat: no-repeat;">',
+      // ===== CARD FACE =====
+      '<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size:100% 100%;background-position:center center;background-repeat:no-repeat;">',
 
         '<div class="ayohaCardOverlay"></div>',
         '<div class="ayohaCardInnerRim"></div>',
 
         '<div class="ayohaCardContent">',
+
           '<table class="ayohaCardTable" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
-           '<tr><td class="ayohaCardTop" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr>',
-    //'<tr><td class="ayohaCardTop" colspan="3">{ModifiedEnterprisesLogoDesignOneTwo}{ModifiedEnterprisesNameDesignOneTwo}</td></tr>',
-            
             '<tbody>',
+
+              '<tr>',
+                '<td class="ayohaCardTop" colspan="3">',
+                  '<div class="ayohaTopRow">',
+                    '<div class="ayohaTopLogo">{ModifiedEnterprisesLogo}</div>',
+                    '<div class="ayohaTopName">{ModifiedEnterprisesName}</div>',
+                  '</div>',
+                '</td>',
+              '</tr>',
+
               '<tr>',
                 '<td class="ayohaCardMid" colspan="3">',
                   '<div class="ayohaCardType">{MembershipCardType}</div>',
                   '<div class="ayohaCardNo">123 4567</div>',
-                  '<div class="ayohaCardName">MEMBER NAME</div>',
+                  '<div class="ayohaCardName">YOUR NAME</div>',
                 '</td>',
               '</tr>',
+
               '<tr>',
                 '<td class="ayohaCardColL" colspan="2">',
                   '<div class="k">Member Since</div>',
@@ -4282,139 +4273,128 @@ itemTpl: new Ext.XTemplate(
                   '<div class="v">{ModifiedStrExpiredDate}</div>',
                 '</td>',
               '</tr>',
+
             '</tbody>',
           '</table>',
-        '</div>',
 
-      '</div>', // card face
-    '</div>',   // wrap
+        '</div>', // end ayohaCardContent
+      '</div>',   // end card face
 
-    '<div class="ayohaCardPriceRow">',
-      '<div class="priceLeft">',
-        '<div class="price">RM{MembershipCardFee}</div>',
-        '<div class="priceSub">Membership Fees</div>',
-      '</div>',
-      '<div class="priceCta blink_me">',
-        '<img src="resources/icons/getItNow01.png" class="priceCtaImg">',
-      '</div>',
-    '</div>',
 
-  '</div>'
+   
+// ===== PRICE ROW (FLEX SIDE-BY-SIDE) =====
+
+
+
+
+
+    '</div>', // ✅ end ayohaCardWrap (tutup selepas priceRow)
+  '</div>',    // end ayohaCardItem
+
+'<div class="ayohaCardPriceRow" style="width:100%; display:flex; align-items:center; margin-top:10px; box-sizing:border-box;">' ,
+
+  // Bahagian Kiri (Harga)
+  // Kita buang style pelik-pelik, biar simple
+  '<div class="priceLeft">' ,
+    '<div class="price">RM{MembershipCardFee}</div>' ,
+    '<div class="priceSub">Membership Fees</div>' ,
+  '</div>',
+
+  // Bahagian Kanan (Button)
+  // PENTING: "margin-left: auto" di sini akan memaksa kotak ini pergi sejauh mungkin ke kanan
+  '<div style="margin-left:auto;">' ,
+    '<button class="ayohaCtaGetItNow" ',
+      'onclick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">' ,
+        '<span class="ayohaCtaText">Get It Now!</span>' ,
+        '<span class="ayohaCtaArrow">→</span>' ,
+    '</button>',
+  '</div>' ,
+
+'</div>'
 ),
 
 
 
 
-
-
-
 // itemTpl: new Ext.XTemplate(
-//   '<div class="myContent" style="background:transparent;width:100%height:auto;display:inline-block;vertical-align:top;margin-right:12px;margin-bottom:12px;">' +
+//   '<div class="ayohaCardItem">',
+//     '<div class="ayohaCardWrap" style="width:100%;">', // Pastikan wrap ada width
 
-//     // ✅ CARD WRAP (floating feel)
-//     '<div style="width:270px;border-radius:22px;overflow:visible;position:relative;' +
-//       'filter: drop-shadow(0 18px 34px rgba(17,24,39,.14)) drop-shadow(0 46px 90px rgba(124,58,237,.12));">' +
+//       // 1. ===== CARD FACE =====
+//       '<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size:100% 100%;background-position:center center;background-repeat:no-repeat;">',
+//         '<div class="ayohaCardOverlay"></div>',
+//         '<div class="ayohaCardInnerRim"></div>',
+//         '<div class="ayohaCardContent">',
+//           '<table class="ayohaCardTable" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
+//             '<tbody>',
+//               '<tr>',
+//                 '<td class="ayohaCardTop" colspan="3">',
+//                   '<div class="ayohaTopRow">',
+//                     '<div class="ayohaTopLogo">{ModifiedEnterprisesLogo}</div>',
+//                     '<div class="ayohaTopName">{ModifiedEnterprisesName}</div>',
+//                   '</div>',
+//                 '</td>',
+//               '</tr>',
+//               '<tr>',
+//                 '<td class="ayohaCardMid" colspan="3">',
+//                   '<div class="ayohaCardType">{MembershipCardType}</div>',
+//                   '<div class="ayohaCardNo">123 4567</div>',
+//                   '<div class="ayohaCardName">YOUR NAME</div>',
+//                 '</td>',
+//               '</tr>',
+//               '<tr>',
+//                 '<td class="ayohaCardColL" colspan="2">',
+//                   '<div class="k">Member Since</div>',
+//                   '<div class="v">After Approved</div>',
+//                 '</td>',
+//                 '<td class="ayohaCardColR">',
+//                   '<div class="k">Valid Until</div>',
+//                   '<div class="v">{ModifiedStrExpiredDate}</div>',
+//                 '</td>',
+//               '</tr>',
+//             '</tbody>',
+//           '</table>',
+//         '</div>',
+//       '</div>',
 
-//       // ✅ MEMBERSHIP CARD (world-class border + overlay)
-//       '<div id="membershipCard_{ID}" style="' +
-//         'margin:0;width:270px;height:200px;position:relative;overflow:hidden;border-radius:22px;' +
-//         'background-image:url({MembershipCardBackgroundImg});background-size:cover;background-position:center;background-repeat:no-repeat;' +
+//     '</div>', // End Wrap
 
-//         // ✅ premium border + subtle glass rim
-//         'border:1px solid rgba(255,255,255,.28);' +
-//         'box-shadow: inset 0 1px 0 rgba(255,255,255,.30), inset 0 -18px 30px rgba(0,0,0,.18);' +
-//       '">' +
 
-//         // ✅ overlay (bagi text putih jelas + nampak premium)
-//         '<div style="position:absolute;inset:0;pointer-events:none;' +
-//           'background:' +
-//             'radial-gradient(120% 70% at 18% 0%, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 55%),' +
-//             'linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.28) 55%, rgba(0,0,0,.38) 100%);' +
-//         '"></div>' +
 
-//         // ✅ inner highlight border (macam double-stroke halus)
-//         '<div style="position:absolute;inset:10px;border-radius:16px;pointer-events:none;' +
-//           'border:1px solid rgba(255,255,255,.18);' +
-//         '"></div>' +
 
-//         // ✅ content layer
-//         '<div style="position:relative;z-index:2;height:100%;">' +
+//    // 2. ===== PRICE ROW (TEKNIK SPACER) =====
+//       '<div class="ayohaCardPriceRow" style="display:flex; align-items:center; width:100%; margin-top:10px; padding: 0 5px;">',
 
-//           '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;margin:0;" ' +
-//             'OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">' +
+//         // A. KIRI (HARGA)
+//         '<div class="priceLeft" style="flex: 0 0 auto;">', // Jangan kembang, ikut saiz text je
+//           '<div class="price">RM{MembershipCardFee}</div>',
+//           '<div class="priceSub">Membership Fees</div>',
+//         '</div>',
 
-//             '<tr><td style="' +
-//               'background:transparent;border:none;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//               'font-size:14px;font-weight:700;overflow:hidden;padding:10px 12px;text-align:left;vertical-align:middle;word-break:normal;width:100%;{ModifiedHeaderHeight};' +
-//               'color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);' +
-//             '" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr>' +
+//         // B. TENGAH (SPACER / DIV KOSONG) - INI YANG AKAN MENOLAK
+//         '<div style="flex:1;"></div>',
 
-//             '<tbody>' +
-//               '<tr>' +
-//                 '<td style="border:none;font-family:Arial,sans-serif;font-size:14px;overflow:hidden;' +
-//                   'padding:{ModifiedPaddingHeight} 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3">' +
+//         // C. KANAN (BUTTON)
+//         '<div style="flex: 0 0 auto;">', // Jangan kembang
+//           '<button class="ayohaCtaGetItNow" ',
+//             'onclick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
+//               '<span class="ayohaCtaText">Get It Now!</span>',
+//               '<span class="ayohaCtaArrow">→</span>',
+//           '</button>',
+//         '</div>',
 
-//                   // ✅ Title / Number / Labels (kemas + ada depth)
-//                   '<div style="margin:10px 0 0 12px;width:100%;text-align:left;' +
-//                     'font-family:Playball,cursive;font-size:18px;font-weight:400;color:#fff;' +
-//                     'text-shadow:0 2px 12px rgba(0,0,0,.35);">{MembershipCardType}</div>' +
+//       '</div>', // End Price Row
 
-//                   '<div style="margin:6px 0 0 12px;width:100%;text-align:left;' +
-//                     'color:#fff;font-family:Orbitron,sans-serif;font-size:15px;font-weight:500;' +
-//                     'letter-spacing:.8px;text-shadow:0 2px 12px rgba(0,0,0,.35);">123 4567</div>' +
 
-//                   '<div style="margin:6px 0 0 12px;width:100%;text-align:left;' +
-//                     'color:rgba(255,255,255,.88);font-family:Orbitron,sans-serif;font-size:10px;font-weight:500;' +
-//                     'text-shadow:0 2px 12px rgba(0,0,0,.35);">MEMBER NAME</div>' +
-//                 '</td>' +
-//                 '<td style="border:none;width:5%;"></td>' +
-//               '</tr>' +
 
-//               '<tr>' +
-//                 '<td style="border:none;" colspan="2">' +
-//                   '<div style="margin:18px 0 0 12px;color:rgba(255,255,255,.82);' +
-//                     'font-family:Orbitron,sans-serif;font-size:8px;text-shadow:0 2px 12px rgba(0,0,0,.35);">Member Since</div>' +
-//                   '<div style="margin:4px 0 0 12px;color:#fff;font-family:Orbitron,sans-serif;font-size:8px;' +
-//                     'text-shadow:0 2px 12px rgba(0,0,0,.35);">After Approved</div>' +
-//                 '</td>' +
 
-//                 '<td style="border:none;text-align:right;">' +
-//                   '<div style="margin:18px 12px 0 0;color:rgba(255,255,255,.82);' +
-//                     'font-family:Orbitron,sans-serif;font-size:8px;text-shadow:0 2px 12px rgba(0,0,0,.35);">Valid Until</div>' +
-//                   '<div style="margin:4px 12px 0 0;color:#fff;font-family:Orbitron,sans-serif;font-size:8px;' +
-//                     'text-shadow:0 2px 12px rgba(0,0,0,.35);">{ModifiedStrExpiredDate}</div>' +
-//                 '</td>' +
-//               '</tr>' +
-//             '</tbody>' +
+//   '</div>',  // End Item
 
-//           '</table>' +
 
-//         '</div>' + // end content layer
-//       '</div>' +   // end membershipCard
 
-//     '</div>' + // end card wrap
-
-//     // ✅ PRICE ROW (lebih clean & premium)
-//     '<div style="width:270px;margin:10px 0 0 0;display:flex;align-items:center;justify-content:space-between;">' +
-
-//       '<div style="text-align:left;">' +
-//         '<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//           'font-size:16px;font-weight:900;color:#111827;line-height:1;">RM{MembershipCardFee}</div>' +
-//         '<div style="margin-top:4px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//           'font-size:11px;font-weight:600;color:#6b7280;">Membership Fees</div>' +
-//       '</div>' +
-
-//       '<div class="blink_me" style="display:flex;align-items:center;justify-content:center;' +
-//         'padding:6px 10px;border-radius:999px;background:rgba(124,58,237,.10);' +
-//         'border:1px solid rgba(124,58,237,.18);' +
-//         'box-shadow:0 10px 22px -12px rgba(124,58,237,.35);">' +
-//         '<img src="resources/icons/getItNow01.png" style="width:90px;height:25px;display:block;filter:drop-shadow(0 8px 14px rgba(0,0,0,.12));">' +
-//       '</div>' +
-
-//     '</div>' +
-
-//   '</div>'
 // ),
+
+
 
 
 
