@@ -799,7 +799,7 @@ function getGreeting() {
     globalOpenMembershipCardList_Upgrade_From = "FloatPanel_MerchantDetailPage"
     
     // Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseLogo').setHtml('<div ><img src="' + globalFloatPanelMerchantDetailPage_EnterpriseLogo + '" width="30" height="30" alt="Company Name"></div>');
-    Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseInfo_Logo').setHtml('<div ><img src="' + globalFloatPanelMerchantDetailPage_EnterpriseLogo + '" width="100%" height="90" alt="Company Name"></div>');
+    Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseInfo_Logo').setHtml('<div ><img src="' + globalFloatPanelMerchantDetailPage_EnterpriseLogo + '" width="100%" height="85" alt="Company Name"></div>');
     
     Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseInfo_EnterpiseInfoExtended_EnterpriseName_TagLine').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:#4F4F4F;margin:0px 0px 0px 0px;padding:0px 6px;">' + globalFloatPanelMerchantDetailPage_EnterpriseName + '</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-27px 0px 0px 0px;padding:0px 6px;"><i>' + globalFloatPanelMerchantDetailPage_EnterpriseTagLine + '</i></div>');
     
@@ -809,7 +809,24 @@ function getGreeting() {
 
     //Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseName').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:5px 0px 0px 0px">' + globalFloatPanelMerchantDetailPage_EnterpriseName + '</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:-27px 0px 0px 0px">' + globalFloatPanelMerchantDetailPage_EnterpriseTagLine + '</div>');
 
-    Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseInfo_EnterpiseInfoExtended_EnterpriseFullAddress').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10.5px;font-weight:normal;color:black;padding:10px 6px;">📍' + globalFloatPanelMerchantDetailPage_NamaJalan + ',' + globalFloatPanelMerchantDetailPage_Postkod + ' ' + globalFloatPanelMerchantDetailPage_Bandar + ', '+ globalFloatPanelMerchantDetailPage_Negeri +'.</div>');
+   // Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseInfo_EnterpiseInfoExtended_EnterpriseFullAddress').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10.5px;font-weight:normal;color:black;padding:10px 6px;">📍' + globalFloatPanelMerchantDetailPage_NamaJalan + ',' + globalFloatPanelMerchantDetailPage_Postkod + ' ' + globalFloatPanelMerchantDetailPage_Bandar + ', '+ globalFloatPanelMerchantDetailPage_Negeri +'.</div>');
+
+
+ Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseInfo_EnterpiseInfoExtended_EnterpriseFullAddress').setHtml('<div style="width:99%;background:transparent;text-align:left;' +
+  'border:0;font-family:Century Gothic;font-size:10.5px;font-weight:normal;color:#111;' +
+  'padding:10px 6px;margin:0;' +
+  'line-height:1.2;letter-spacing:0;' +   // ✅ rapatkan jarak baris
+  'word-break:break-word;">' +            // ✅ elak overflow
+  '📍' + globalFloatPanelMerchantDetailPage_NamaJalan + ', ' +
+  globalFloatPanelMerchantDetailPage_Postkod + ' ' +
+  globalFloatPanelMerchantDetailPage_Bandar + ', ' +
+  globalFloatPanelMerchantDetailPage_Negeri + '.' +
+'</div>');
+
+
+
+
+
 
     var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var d = new Date();

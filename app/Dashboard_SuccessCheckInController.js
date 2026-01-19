@@ -701,6 +701,7 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadVIEWMerchantDashbo
            
               
                 Ext.getCmp('listDashboardStoreActivity').setStore(_DataStore_VIEWMerchantDashboard_StoreActivityStore);
+                SuccessCheckinController_DasboardEnterprisesOnlineStoreLoadByEnterpriseAccNoStore(globalFloatPanelMerchantDetailPage_EnterpriseAccNo)
              //  setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
                
             } else {
@@ -1131,6 +1132,51 @@ globalFloatPanelMerchantDetailPage_CountReviewer=TotalVoter;
 
 
 
+
+
+function SuccessCheckinController_DasboardEnterprisesOnlineStoreLoadByEnterpriseAccNoStore(EnterpriseAccNo) {
+
+
+
+   
+    _DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore.getProxy().setExtraParam('EnterpriseAccNo', EnterpriseAccNo);
+    _DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore.getProxy().setUrl(GetAPIurl() + '/EnterprisesOnlineStore/EnterprisesOnlineStoreLoadByEnterpriseAccNo');
+    _DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore.load();
+
+    _DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+               // alert('Store loaded successfully, total records: ' + records.length);
+    
+               Ext.getCmp('listDashboardeCommerce').setStore(_DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore);   
+                LoadingPanelHide();
+            } else {
+                console.error('Failed to load store data or no record found.');
+                LoadingPanelHide();
+            }
+        }
+    });
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function setScreenWidthListDynamic(count,jenis) {
 
     var ejasWidth=Math.max(
@@ -1176,7 +1222,7 @@ function setScreenWidthListDynamic(count,jenis) {
    
     if(count==1){
 
-        var w = ejasWidth-45;
+        var w = ejasWidth-60;
         var els = document.querySelectorAll('[id^="'+jenis+'"]');
         for (var i = 0; i < els.length; i++) {
           els[i].style.width = w + 'px';

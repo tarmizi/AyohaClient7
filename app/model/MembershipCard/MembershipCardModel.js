@@ -521,45 +521,69 @@ if(str){
             name: 'ModifiedEnterprisesName',
             convert: function (value, record) {
 
-                var _value;
-                var str = record.get('EnterprisesName');
-if(str){
-  
-    //  _value = '<div style="margin:-51px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str.toUpperCase() + '</div>';
-    //_value = '<div style="margin:0px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str.toUpperCase() + '</div>';
-      _value =  str.toUpperCase();
-    
-      return _value;
- 
-}else{
+var str = record.get('EnterprisesName');
+var displayText = 'NA'; // Default value jika tiada data
 
-    return 'NA';
+console.log("EnterprisesName:"+ str.length);
+// 1. Proses teks dahulu
+if (str) {
+    if (str.length >= 26) {
+        // Ambil 20 huruf pertama + .... dan huruf besar
+        displayText = str.substring(0, 20).toUpperCase() + '....';
+        console.log("EnterprisesName:"+ displayText);
+    } else {
+        // Huruf besar sahaja
+        displayText = str.toUpperCase();
+          console.log("EnterprisesName:"+ displayText);
+    }
 }
 
+// 2. Masukkan dalam HTML template (Hanya sekali tulis)
+// Nota: Pastikan 'NA' juga nak style yang sama. Jika tak nak, boleh ubah logic ini.
+// var _value = '<div style="margin:-51px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;text-align:left;vertical-align:top;color:white;width:100%;">' + 
+//              displayText + 
+//              '</div>';
+
+
+             var _value = '<div style="margin:0px 0px 0px 0px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;text-align:left;vertical-align:top;color:white;width:100%;">' + 
+             displayText + 
+             '</div>';
+
+return _value;
 
 
 
 
 
 
-
-
-                
+//                 var _value;
+//                 var str = record.get('EnterprisesName');
 // if(str){
-//   if (str.length <= 16) {
-//       _value = '<div style="margin:-51px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str.toUpperCase() + '</div>';
+  
+  
+//        if (str.length >= 26) {
+//          var str0 = str.substring(0, 20);
+//         _value = '<div style="margin:-51px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str0.toUpperCase() + '....</div>';
+      
+//         return _value;
+//     }else{
+//         _value = '<div style="margin:-51px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str.toUpperCase() + '</div>';
+      
     
 //       return _value;
-//   }
-//   if (str.length >= 17) {
-//       var str0 = str.substring(0, 16);
-//       var str1 = str.substring(16, str.length);
-//       _value = '<div style="margin:-53px 0px 0px 60px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str0.toUpperCase() + '-</div><br>' +
-//                '<div style="margin:-26px 0px 0px 68px;font-family:Arial, sans-serif;font-size:18px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str1.toUpperCase() + '</div>';
-//       return _value;
-//   }
+//     }
+   
+           
+ 
+// }else{
+
+//     return 'NA';
 // }
-               
+
+
+
+
+
 
 
 
