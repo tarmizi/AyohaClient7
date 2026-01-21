@@ -6166,6 +6166,16 @@ width: 100% !important;
 
 
 <style>
+/* OUTER: shadow */
+
+
+
+
+
+
+
+
+
   .ayohaSectionTitle{
   font-size:16px;
   font-weight:800;
@@ -6187,13 +6197,17 @@ width: 100% !important;
   padding:12px;
   background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
   border:1px solid rgba(124,58,237,.16);
-  box-shadow:0 10px 26px rgba(17,24,39,.10);
+  /* box-shadow:0 10px 26px rgba(17,24,39,.10); */
+  /* box-shadow:
+    0 2px 8px rgba(17,24,39,.06),
+    0 18px 44px -22px rgba(17,24,39,.20),
+    0 56px 120px -70px rgba(124,58,237,.16); */
   position:relative;
 }
 
 .ayohaFavCard.isTop{
   border:2px solid rgba(236,72,153,.30);
-  box-shadow:0 14px 34px rgba(17,24,39,.12);
+  /* box-shadow:0 14px 34px rgba(17,24,39,.12); */
 }
 
 .ayohaFavCard .badge{
@@ -6280,6 +6294,23 @@ width: 100% !important;
   font-weight:900;
   background:linear-gradient(90deg,#ff00de,#c800ff);
   color:#fff;
+}
+/* OUTER: shadow */
+.favCardWrap{
+  border-radius:22px;
+  overflow:visible;
+  box-shadow:
+    0 2px 8px rgba(17,24,39,.06),
+    0 18px 44px -22px rgba(17,24,39,.20),
+    0 56px 120px -70px rgba(124,58,237,.16);
+}
+
+/* INNER: bg + border (ikut curve) */
+.favCardInner{
+  border-radius:22px;
+  overflow:hidden;
+  background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:1px solid rgba(255,255,255,.65);
 }
 
 </style>
