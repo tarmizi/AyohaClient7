@@ -448,13 +448,6 @@ function CoreFunction_DashboardAyohaUser() {
                
              
 
-var r = _DataStore_VIEW_merchantperk_View_DashboardInitialLoadStore.first();
-console.log(r.get('Name'));
-console.log(r.get('ModifiedName'));
-console.log(r.get('ModifiedImagePath_Dashboard'));
-
-console.log('MODEL:', r.self.getName ? r.self.getName() : r.$className);
-console.log('FIELDS:', r.fields && r.fields.items ? r.fields.items.map(f => f.name) : 'no fields');
 
 
 
@@ -462,7 +455,7 @@ console.log('FIELDS:', r.fields && r.fields.items ? r.fields.items.map(f => f.na
                 
                 LoadingPanelHide();
             } else {
-                 alert(records.length)
+                
                 console.error('Failed to load store data or no record found.');
                 LoadingPanelHide();
             }
@@ -473,7 +466,43 @@ console.log('FIELDS:', r.fields && r.fields.items ? r.fields.items.map(f => f.na
 
 
 }
+function CoreFunction_DashboardLoadEnterprisesFavorite() {
+  
 
+
+
+    
+    _DataStore_EnterprisesFavorite_LoadFavoriteStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
+    _DataStore_EnterprisesFavorite_LoadFavoriteStore.getProxy().setUrl(GetAPIurl() + '/EnterprisesFavorite/EnterprisesFavorite_LoadFavorite');
+
+
+
+
+    _DataStore_EnterprisesFavorite_LoadFavoriteStore.load({
+        callback: function (records, operation, success) {
+           // alert(records.length)
+            if (success && records.length > 0) {
+               
+             
+
+
+
+
+                Ext.getCmp('DataView_FavoriteCheckins').setStore(_DataStore_EnterprisesFavorite_LoadFavoriteStore)
+                
+                LoadingPanelHide();
+            } else {
+                 //alert(records.length)
+                console.error('Failed to load store data or no record found.');
+                LoadingPanelHide();
+            }
+        }
+    });
+
+
+
+
+}
 
 function CoreFunction_DashboardEnterprises_LoadRecentlyCheckIn() {
   

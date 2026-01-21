@@ -524,7 +524,7 @@ if(str){
 var str = record.get('EnterprisesName');
 var displayText = 'NA'; // Default value jika tiada data
 
-console.log("EnterprisesName:"+ str.length);
+// console.log("EnterprisesName:"+ str.length);
 // 1. Proses teks dahulu
 if (str) {
     if (str.length >= 26) {

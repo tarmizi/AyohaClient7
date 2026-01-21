@@ -2433,20 +2433,18 @@ box-sizing: border-box;
 
 .ayoha-emptyCard{
   border-radius:22px;
-  padding:14px 14px 12px;
+  padding:14px 14px 18px;
   position:relative;
   overflow:hidden;
+  background: transparent;
+  /* background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%) !important; */
 
-  background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%) !important;
-
-  /* ✅ border biasa */
-  border:1.8px solid rgba(124,58,237,.26);
-
-  /* ✅ ayoha theme shadow (lebih kuat bawah) */
+ 
+  /* border:1.8px solid rgba(124,58,237,.26); 
   box-shadow:
-    0 18px 34px rgba(17,24,39,.10),               /* main soft */
-    0 10px 22px rgba(155,0,255,.14),              /* purple glow bawah */
-    0 16px 30px rgba(255,59,212,.10);             /* pink glow bawah */
+    0 18px 34px rgba(17,24,39,.10),              
+    0 10px 22px rgba(155,0,255,.14),            
+    0 16px 30px rgba(255,59,212,.10);             */
 
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
@@ -2460,9 +2458,9 @@ box-sizing: border-box;
 }
 
 /* (Optional) kalau masih ada class lama, biar dia tak kacau */
-.ayoha-emptyCardBorderBold{
+/* .ayoha-emptyCardBorderBold{
   border:1.8px solid rgba(124,58,237,.26) !important;
-}
+} */
 
 /* Keep content above border layer */
 .ayoha-emptyTop,
@@ -6160,6 +6158,131 @@ width: 100% !important;
 }
 
    </style>
+
+
+
+
+
+
+
+<style>
+  .ayohaSectionTitle{
+  font-size:16px;
+  font-weight:800;
+  color:#5b21b6;
+  padding:16px 16px 10px;
+}
+
+.ayohaFavSection{ background:transparent; }
+
+.ayohaFavList .x-dataview-inner{
+  display:flex;
+  gap:12px;
+  padding:0 16px 14px;
+}
+
+.ayohaFavCard{
+  width:220px;
+  border-radius:18px;
+  padding:12px;
+  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
+  border:1px solid rgba(124,58,237,.16);
+  box-shadow:0 10px 26px rgba(17,24,39,.10);
+  position:relative;
+}
+
+.ayohaFavCard.isTop{
+  border:2px solid rgba(236,72,153,.30);
+  box-shadow:0 14px 34px rgba(17,24,39,.12);
+}
+
+.ayohaFavCard .badge{
+  position:absolute;
+  top:10px; right:10px;
+  font-size:11px;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.85);
+  border:1px solid rgba(124,58,237,.16);
+}
+
+.ayohaFavCard .logoWrap{
+  width:64px; height:64px;
+  border-radius:16px;
+  background:#fff;
+  border:1px solid rgba(17,24,39,.10);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+.ayohaFavCard .logoWrap img{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.ayohaFavCard .name{
+  font-size:14px;
+  font-weight:900;
+  color:#111827;
+  line-height:1.1;
+  margin-bottom:4px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+
+.ayohaFavCard .meta{
+  font-size:12px;
+  font-weight:700;
+  color:#6b7280;
+  margin-bottom:10px;
+}
+
+.ayohaFavCard .row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.ayohaFavCard .pts{
+  font-size:12px;
+  font-weight:900;
+  color:#7c3aed;
+}
+
+.ayohaFavCard .cta{
+  font-size:12px;
+  font-weight:900;
+  padding:8px 12px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ff00de,#c800ff);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(124,58,237,.22);
+}
+
+/* Empty state */
+.ayohaFavEmpty{ padding:0 16px 14px; }
+.ayohaFavEmptyCard{
+  border-radius:18px;
+  padding:16px;
+  background:rgba(255,255,255,.75);
+  border:1px dashed rgba(124,58,237,.22);
+}
+.ayohaFavEmptyCard .t1{ font-weight:900; color:#111827; margin-bottom:4px; }
+.ayohaFavEmptyCard .t2{ font-weight:700; color:#6b7280; margin-bottom:10px; }
+.ayohaFavEmptyCard .btn{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:900;
+  background:linear-gradient(90deg,#ff00de,#c800ff);
+  color:#fff;
+}
+
+</style>
     <!-- <link rel="stylesheet" href="resources/css/ayoha/00-vars.css" />
 <link rel="stylesheet" href="resources/css/ayoha/01-reset.css" />
 <link rel="stylesheet" href="resources/css/ayoha/02-base.css" />

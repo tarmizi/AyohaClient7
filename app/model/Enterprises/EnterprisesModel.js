@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.Enterprises.EnterprisesModel', {
     extend: 'Ext.data.Model',
-    config: {
+ //   config: {
          fields: [
       'ID',
       'EnterpriseHQAccNo',
@@ -571,7 +571,7 @@
          'TotalReviews',
          'RateReviews'
       ]
-    }
+  //  }
 });
 
 
