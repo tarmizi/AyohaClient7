@@ -6314,6 +6314,187 @@ width: 100% !important;
 }
 
 </style>
+
+
+
+<style>
+  /* ===== RAIL ===== */
+.ayohaRewardRail{
+  padding: 10px 14px 14px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+}
+
+/* kalau container hbox: bagi spacing */
+.ayohaRewardRail .x-innerhtml,
+.ayohaRewardRail .x-inner{
+  display: flex;
+  gap: 12px;
+}
+
+/* ===== CARD ===== */
+.ayohaRCard{
+  width: 240px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,.08);
+  box-shadow: 0 10px 26px rgba(17,24,39,.10);
+  overflow: hidden;
+  scroll-snap-align: start;
+  transform: translateZ(0);
+}
+
+.ayohaRMedia{
+  position: relative;
+  height: 180px;           /* konsisten untuk semua card */
+  overflow: hidden;
+  background: #f7f7fb;
+}
+
+.ayohaRImg{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;       /* kemas untuk card */
+  object-position: center; /* default */
+}
+
+/* Jika banyak gambar jenis “product packshot” (macam cawan/phone),
+   lebih elok full tanpa crop: tukar cover -> contain pada class ini */
+.ayohaRImg.isContain{
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.ayohaRShade{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 64px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.18) 100%);
+  pointer-events:none;
+}
+
+/* ===== TYPE PILL ===== */
+.ayohaRType{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #111827;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(17,24,39,.10);
+  backdrop-filter: blur(8px);
+}
+
+/* type variants */
+.type-stamp { color:#5b21b6; background: rgba(245,243,255,.92); border-color: rgba(91,33,182,.18); }
+.type-point { color:#0f766e; background: rgba(236,253,245,.92); border-color: rgba(15,118,110,.18); }
+.type-contest{ color:#b45309; background: rgba(255,251,235,.92); border-color: rgba(180,83,9,.18); }
+
+/* ===== REQ CHIP ===== */
+.ayohaRReq{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 7px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #111827;
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(17,24,39,.10);
+}
+
+/* ===== BODY ===== */
+.ayohaRBody{
+  padding: 10px 12px 12px;
+  box-sizing: border-box;
+}
+
+.ayohaRTitle{
+  font-size: 14px;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.15;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 32px; /* stabilize height */
+}
+
+.ayohaRSub{
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(17,24,39,.62);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== MERCHANT ROW ===== */
+.ayohaRMerchant{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ayohaRMLogo{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,.10);
+  background: #fff;
+  flex: 0 0 auto;
+}
+.ayohaRMLogo img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.ayohaRMName{
+  font-size: 13px;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 168px;
+}
+.ayohaRMCat{
+  margin-top: 2px;
+  font-size: 11px;
+  color: rgba(17,24,39,.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 168px;
+}
+
+
+.ayohaRCard{
+  margin-right: 24px;
+}
+
+.ayohaRewardRail .ayohaRCard:last-child{
+  margin-right: 0;
+}
+
+
+</style>
     <!-- <link rel="stylesheet" href="resources/css/ayoha/00-vars.css" />
 <link rel="stylesheet" href="resources/css/ayoha/01-reset.css" />
 <link rel="stylesheet" href="resources/css/ayoha/02-base.css" />

@@ -6786,7 +6786,7 @@ style:'background-color: rgba(255, 255, 255, 0);',
   xtype: 'dataview',
   id: 'Dashboard_MyAccount_MembershipPerksList',
   margin: '13 0 0 0',
-  height: 90,
+  height: 290,
   width: '90%',
   style: 'background-color:rgba(255,255,255,0);border-radius:0;',
 
@@ -6804,34 +6804,75 @@ style:'background-color: rgba(255, 255, 255, 0);',
   // ✅ pastikan ada store (kalau kau set kemudian pun ok)
   //store: _DataStore_VIEW_merchantperk_View_LoadbySubscriberAccNoStore,
 
-  itemTpl: new Ext.XTemplate(
-    '<div class="perkCard" style="border:2px solid #E5E7EB;width:85px;display:inline-block;margin-right:12px;' +
-        'font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111827;' +
-        'border-radius:10px;overflow:hidden;background:#fff;">' +
+  // itemTpl: new Ext.XTemplate(
+  //   '<div class="perkCard" style="border:2px solid #E5E7EB;width:185px;display:inline-block;margin-right:12px;' +
+  //       'font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111827;' +
+  //       'border-radius:10px;overflow:hidden;background:#fff;">' +
 
-      '<div style="position:relative;width:100%;height:60px;overflow:visible;">' +
-        '{ModifiedImagePath_Dashboard}' +
+  //     '<div style="position:relative;width:100%;height:160px;overflow:visible;">' +
+  //       '{ModifiedImagePath_Dashboard}' +
 
-        '<div style="position:absolute;top:6px;left:6px;width:40px;{Modified_DashboardHeight};' +
-                    'background:{ModifiedCampaignColor};color:#fff;border-radius:10px;display:none;' +
-                    'flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;' +
-                    'font-weight:800;z-index:3;box-shadow:0 8px 18px rgba(0,0,0,.18);border:1px solid #fff;">' +
-          '<span style="font-size:8px;line-height:1;{ModifiedtagMargin};">{ItemType}</span>' +
-          '{ModifiedAmount_Dashboard}' +
+  //       '<div style="position:absolute;top:6px;left:6px;width:40px;{Modified_DashboardHeight};' +
+  //                   'background:{ModifiedCampaignColor};color:#fff;border-radius:10px;display:none;' +
+  //                   'flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;' +
+  //                   'font-weight:800;z-index:3;box-shadow:0 8px 18px rgba(0,0,0,.18);border:1px solid #fff;">' +
+  //         '<span style="font-size:8px;line-height:1;{ModifiedtagMargin};">{ItemType}</span>' +
+  //         '{ModifiedAmount_Dashboard}' +
+  //       '</div>' +
+  //     '</div>' +
+
+  //     '<div style="padding:5px 6px;">' +
+  //       '<div style="display:flex;align-items:flex-start;gap:10px;">' +
+  //         '<div style="flex:1 1 auto;">' +
+  //                     '<h3 style="margin:0;font-size:10px;font-weight:normal;color:#111827;">{ModifiedName}</h3>' +
+  //           // '<h3 style="margin:0;font-size:10px;font-weight:normal;color:#111827;">{ModifiedName}</h3>' +
+  //         '</div>' +
+  //       '</div>' +
+  //     '</div>' +
+
+  //   '</div>'
+  // ),
+
+
+
+  itemTpl:
+  '<div class="ayohaRCard" onclick="FloatPanel_RewardDetailShow(\'{RewardCode}\')">' +
+
+    '<div class="ayohaRMedia">' +
+    '{ModifiedImagePath_Dashboard}' +
+
+      // type pill (stamp/point/contest)
+     // '<div class="ayohaRType {ItemType}">{ItemType}</div>' +
+
+      // requirement chip (contoh: 11 stamps / 250 pts / Join contest)
+     // '<div class="ayohaRReq">{ModifiedItemTypeDetails}</div>' +
+      '{ModifiedItemTypeDetails}' +
+      // subtle fade for readability
+      '<div class="ayohaRShade"></div>' +
+    '</div>' +
+
+    '<div class="ayohaRBody">' +
+      '<div class="ayohaRTitle">{ModifiedName}</div>' +
+      '<div class="ayohaRSub">{RewardSubtitle}</div>' +
+
+      '<div class="ayohaRMerchant">' +
+        '<div class="ayohaRMLogo">' +
+          '<img src="{EnterpriseLogo}" onerror="this.src=\'resources/icons/defaultMerchant.png\'" />' +
+        '</div>' +
+        '<div class="ayohaRMInfo">' +
+          '<div class="ayohaRMName">{EnterpriseName}</div>' +
+          '<div class="ayohaRMCat">{EnterpriseTagLine}</div>' +
         '</div>' +
       '</div>' +
+    '</div>' +
 
-      '<div style="padding:5px 6px;">' +
-        '<div style="display:flex;align-items:flex-start;gap:10px;">' +
-          '<div style="flex:1 1 auto;">' +
-                      '<h3 style="margin:0;font-size:10px;font-weight:normal;color:#111827;">{ModifiedName}</h3>' +
-            // '<h3 style="margin:0;font-size:10px;font-weight:normal;color:#111827;">{ModifiedName}</h3>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
+  '</div>'
 
-    '</div>'
-  ),
+
+
+
+
+
 
 //   listeners: {
 //     // Modern biasanya ada itemtap

@@ -76,16 +76,27 @@ Ext.define('BuskartApp.model.Merchantperk.Merchantperk_ViewModel', {
           var v = ImagePath;
           v = v.replace("width:70px", "width:100%");
           v = v.replace("height:70px", "height:100%");
-          v = v.replace("font-size: 35px;", "font-size: 45px;");
-          v = v.replace("margin:7px 0px 0px 0px", "margin:-8px 0px 0px 0px");
-          v = v.replace("margin:-90px 0px 0px 0px", "margin:-120px 0px 0px 0px");
+          v = v.replace("font-size: 35px;", "font-size: 65px;");
+          v = v.replace("margin:7px 0px 0px 0px", "margin:58px 0px 0px 0px");
+          v = v.replace("margin:-90px 0px 0px 0px", "margin:10px 0px 0px 0px");
           v = v.replace('size="3"', 'size="4"');
           v = v.replace("border-radius: 50px", "border-radius: 0px");
           return v;
         }
 
-        return '<img src="' + ImagePath +
-          '" alt="" style="width:100%; height:100%; object-fit:cover; display:block;" />';
+        // return '<img src="' + ImagePath +
+        //   '" alt="" style="width:100%; height:100%; object-fit:cover; display:block;" />';
+
+  //         return '<img src="' + ImagePath +
+  // '" alt="" style="width:100%; height:auto; display:block;" />';
+
+  // return '<img src="' + ImagePath +
+  // '" style="width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block;" />';
+
+
+  return '<img src="' + ImagePath +
+  '" alt="" style="width:100%; height:100%; object-fit:contain; object-position:center; display:block; background:transparent;" />';
+
       }
     },
 
@@ -280,6 +291,38 @@ Ext.define('BuskartApp.model.Merchantperk.Merchantperk_ViewModel', {
                         return _value;
                     }
                 },
+
+
+                {
+                  name: 'ModifiedItemTypeDetails',
+                  convert: function (value, record) {
+       
+                      var _value;
+                      var str = record.get('ItemType');
+                      var Percentage =formatAmountRule( record.get('Percentage'));
+                      var Points = formatCompact(record.get('Points'));
+                    var Amount= formatAmountRule(record.get('Amount'));
+                     
+                      _value = 'none';
+                      if (str === "Discount") {
+                        _value = '<div style="position:absolute;top:15px;left:10px;width:50px;height:50px;border-radius:999px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1;font-size:12px;font-weight:900;border:2px solid #fff;z-index:99999;"><div style="font-size:12px;font-weight:900;margin-top:1px;">'+Percentage+'%</div><div style="font-size:8px;font-weight:800;opacity:.95;margin-top:2px;">Discount</div></div>';
+                      } if (str === "Voucher") {
+                        _value = '<div style="position:absolute;top:15px;left:10px;width:60px;height:60px;border-radius:999px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1;font-size:12px;font-weight:900;border:2px solid #fff;z-index:99999;"><div style="font-size:12px;font-weight:900;margin-top:1px;">RM'+Amount+'</div><div style="font-size:8px;font-weight:800;opacity:.95;margin-top:2px;">Voucher</div></div>';
+                      }if (str === "Point") {
+                          _value = '<div style="position:absolute;top:15px;left:10px;width:50px;height:50px;border-radius:999px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1;font-size:12px;font-weight:900;border:2px solid #fff;z-index:99999;"><div style="font-size:12px;font-weight:900;margin-top:1px;">'+Points+'</div><div style="font-size:8px;font-weight:800;opacity:.95;margin-top:2px;">Point</div></div>';
+                      }if (str === "Stamp") {
+                         // _value = '<div style="position:absolute;top:135px;left:0px;width:63px;height:30px;border-radius:0px 10px 10px 0px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border-top:2px solid #fff;border-left:2px none #fff;border-bottom:2px solid #fff;border-right:2px solid #fff;z-index:99999;">3/11</div>';
+                          _value = '<div style="position:absolute;top:25px;left:0px;width:63px;height:35px;border-radius:0px 10px 10px 0px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:900;border-top:2px solid #fff;border-left:2px none #fff;border-bottom:2px solid #fff;border-right:2px solid #fff;z-index:99999;"><div style="font-size:12px;font-weight:900;margin:2px 0px 0px 0px;">3/11</div><div style="font-size:8px;font-weight:800;opacity:.95;margin-top:-10px;">Stamp</div></div>';
+                    
+                        }if (str === "Contest") {
+                          _value = '<div style="position:absolute;top:25px;left:0px;width:73px;height:35px;border-radius:0px 10px 10px 0px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:700;border-top:2px solid #fff;border-left:2px none #fff;border-bottom:2px solid #fff;border-right:2px solid #fff;z-index:99999;"><div style="font-size:12px;font-weight:900;opacity:.95;">Contest</div></div>';
+                      }if (str === "Event") {
+                        _value = '<div style="position:absolute;top:25px;left:0px;width:73px;height:35px;border-radius:0px 10px 10px 0px;background: linear-gradient(135deg,#ff00de,#c800ff);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:700;border-top:2px solid #fff;border-left:2px none #fff;border-bottom:2px solid #fff;border-right:2px solid #fff;z-index:99999;"><div style="font-size:12px;font-weight:900;opacity:.95;">Event</div></div>';
+                      }
+       
+                      return _value;
+                  }
+              },
                 {
                   name: 'ModifiedCampaignName',
                   convert: function (value, record) {
@@ -672,3 +715,57 @@ document.addEventListener('click', function (e) {
       console.error('Invalid membeship payload:', err, btn.dataset.perk);
     }
   });
+
+
+
+
+
+
+  function formatCompact(num) {
+    if (num === null || num === undefined || num === '') return '';
+  
+    // allow string like "50,000"
+    const n = Number(String(num).replace(/,/g, '').trim());
+    if (!Number.isFinite(n)) return String(num);
+  
+    const sign = n < 0 ? '-' : '';
+    const abs = Math.abs(n);
+  
+    const fmt = (value, suffix) => {
+      // 1 decimal only when needed: 1k, 1.5k, 10k (no trailing .0)
+      let s = (Math.round(value * 10) / 10).toString();
+      if (s.includes('.')) s = s.replace(/\.0$/, '');
+      return sign + s + suffix;
+    };
+  
+    if (abs >= 1e9) return fmt(abs / 1e9, 'b');
+    if (abs >= 1e6) return fmt(abs / 1e6, 'm');
+    if (abs >= 1e3) return fmt(abs / 1e3, 'k');
+    return sign + abs.toString();
+  }
+
+
+
+
+  /**
+ * If amount >= 10: drop decimals (10.00 -> "10", 12.50 -> "12")
+ * If amount < 10: keep as-is (string preserved if given; number kept with 2dp)
+ */
+function formatAmountRule(amount) {
+  if (amount === null || amount === undefined || amount === '') return '';
+
+  const raw = String(amount).trim();
+  const n = Number(raw.replace(/,/g, ''));
+  if (!Number.isFinite(n)) return raw;
+
+  if (n >= 10) {
+    return String(Math.trunc(n)); // remove decimal part
+  }
+  return (Math.round(n * 10) / 10).toFixed(1);
+  // below 10: remain same
+  // if original already has decimals, return original (clean commas/spaces)
+  if (/\.\d+/.test(raw)) return raw.replace(/,/g, '');
+
+  // if it's a number like 2, return with 2dp (optional; remove if you want "2")
+  return n.toFixed(1);
+}
