@@ -1,7 +1,11 @@
 // Returns a theme color style string for use in ExtJS component 'style' property
 function ayohaThemeColor_Body() {
    // return "background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);";
-     // return "background: linear-gradient(90deg, #F3E8FF  100%, #FFF1F9 0%);";
+  
+   return "background-color:  white";
+  // return "background-color: #F6F7FB";
+     return "background-color: #FAF5FF;";
+    //  #F3F4F6
       return "background: linear-gradient(180deg, #FFF1F9 50%, #F3E8FF 50%);"
 }
 

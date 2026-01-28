@@ -22,18 +22,18 @@ var _DataStore_MembershipCardLoadBySubscriberAccNoDashboardMainStore = Ext.creat
             messageProperty: 'message'
         }
     },
-    listeners: {
-        load: function(store, records, successful, operation, eOpts) {
-            // After the store loads data successfully...
-            if (successful) {
-                // Add the special "Load More" record at the end.
-                // It only needs the 'isLoadMore' flag.
-                store.add({
-                    isLoadMore: true
-                });
-            }
-        }
-    }
+    // listeners: {
+    //     load: function(store, records, successful, operation, eOpts) {
+    //         // After the store loads data successfully...
+    //         if (successful) {
+    //             // Add the special "Load More" record at the end.
+    //             // It only needs the 'isLoadMore' flag.
+    //             store.add({
+    //                 isLoadMore: true
+    //             });
+    //         }
+    //     }
+    // }
 });
 
 

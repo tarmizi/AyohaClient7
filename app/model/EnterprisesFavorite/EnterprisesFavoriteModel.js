@@ -469,6 +469,26 @@ Ext.define('BuskartApp.model.EnterprisesFavorite.EnterprisesFavoriteModel', {
               }
           },
           {
+            name: 'ModifiedIsMemeber_FavoriteCheckIn',
+            convert: function (value, record) {
+                var _value;
+
+                // var MerchantLinkType = record.get('MerchantLinkType').split("-");
+                var isMember = record.get('isMember');
+                var ID = record.get('ID');
+               
+                if (isMember=="NO") {
+                    _value = '<div class="ayohaChip ayohaChipTopRight isNotMember">Not a member</div>';
+                  } else {
+                    _value = '<div class="ayohaChip ayohaChipTopRight isMemberOrange isPulse">Member</div>';
+                  }
+                  
+
+
+                return _value;
+            }
+        },
+          {
               name: 'ModifiedIsMemberDashboardMerchantList',
               convert: function (value, record) {
                   var _value;

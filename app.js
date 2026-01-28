@@ -46,7 +46,8 @@ Ext.application({
     'Master.BankAccountTypeModel', 'AyohaUserProfile.AyohaUserProfile_BankAccountModel','MembershipCardPaymentPlan.MembershipCardPaymentPlanModel','AyohaStoreOrder.AyohaStoreOrderPeding_MainDashboardModel',
     'AyohaStoreCart.AyohaStoreCartReOrderModel','AyohaeWalletTransaction.AyohaeWalletAllTransactionModel','Merchantperk.Merchantperk_ViewModel','MerchantLoyaltyCampaign.StampCardModel','MerchantLoyaltyCampaign.PointCardModel',
 'MerchantLoyaltyCampaign.DiscountCardModel','MerchantLoyaltyCampaign.ContestCardModel','MerchantLoyaltyCampaign.EventCardModel','DiscountCampaign.DiscountCampaignModel',
-'PointCampaignRedeem.PointCampaignRedeemModel','DashboardAyohaUser.SuccessCheckInModel','ViewMerchantDashboard.StoreActivityModel','EnterprisesFavorite.EnterprisesFavoriteModel'],
+'PointCampaignRedeem.PointCampaignRedeemModel','DashboardAyohaUser.SuccessCheckInModel','ViewMerchantDashboard.StoreActivityModel','EnterprisesFavorite.EnterprisesFavoriteModel',
+'MembershipLoyaltyProgramMaster.MembershipLoyaltyProgramMasterModel'],
 
     stores: ['Notifications.NotificationsCountTypeNNStore', 'Notifications.NotificationsCountTypeRStore', 'Enterprises.EnterprisesLoadByMerchantCategoryStore',
     'EnterpriseSubscriber.EnterpriseSubscribergetBySubcriberAccNoSearchReceiptStore','RedeemItem.RedeemItemgetByEnterpriseAccNoStore', 'LoyaltyStamp.LoyaltyStampLoadByEnterpriseAccNoStore', 'LoyaltyStamp.LoyaltyStampLoadBySubscriberAccNoAndEnterpriseAccNoStore',
@@ -96,7 +97,7 @@ Ext.application({
     'MembershipCard.MembershipCardLoadBySubscriberAccNoDashboardMainStore','Master.BankAccountTypeStore', 'AyohaeWallet.AyohaeWalletAccountRequestCashOutStore','AyohaRewardContest.AyohaRewardContestLoadBySubscriberAccNoAndContestCodeStore','MembershipCardPaymentPlan.MembershipCardPaymentPlanLoadByPaymentPlanCodeStore',
     'AyohaStoreOrder.AyohaStoreOrderPendingOrderMainDashbordStore','Merchantperk.VIEW_merchantperk_ViewStore','MembershipCard.MembershipCardLoadByMembershipCardCodeStore','MerchantLoyaltyCampaign.AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore','MerchantLoyaltyCampaign.MerchantLoyaltyCampaignStore',
 'Enterprises.EnterprisesLoadLastCheckInStore','DiscountCampaign.DiscountCampaing_LoadBySubscriberAccNoStore','PointCampaignRedeem.PointCampaignRedeemLoadByPointRedeemStatusStore','DashboardAyohaUser.SuccessCheckInStore',
-'ViewMerchantDashboard.StoreActivityStore','Enterprises.Enterprises_LoadRecentlyCheckIn','EnterprisesFavorite.EnterprisesFavoriteStore'],
+'ViewMerchantDashboard.StoreActivityStore','Enterprises.Enterprises_LoadRecentlyCheckIn','EnterprisesFavorite.EnterprisesFavoriteStore','MembershipLoyaltyProgramMaster.MembershipLoyaltyProgramMaster_LoadMasterStore'],
     //
     views: ['ImageCarousel','Config.AppState','MyAccount.Dashboard', 'MyAccount.FloatPanel_MyAccountMaster', 'Config.Configs', 'Config.QRcode', 'Main', 'LoginAyohaUser', 'Subscriber.FloatPanel_SubscriberMaster', 'AyohaNotification.FloatPanel_AyohaNotification',
         'AyohaNotification.FloatPanel_AyohaNotification_Notification', 'AyohaReward.FloatPanel_AyohaReward_PointTransactions', 'AyohaReward.FloatPanel_AyohaReward_ContestHistory',

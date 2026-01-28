@@ -53,6 +53,26 @@
       'CheckInCode',
       'JenisPerniagaan',
       {
+        name: 'ModifiedIsMemeber_RecentCheckIn',
+        convert: function (value, record) {
+            var _value;
+
+            // var MerchantLinkType = record.get('MerchantLinkType').split("-");
+            var isMember = record.get('isMember');
+          
+           
+            if (isMember=="NO") {
+                _value = '<div class="ayohaChip ayohaChipTopRight isNotMember">Not a member</div>';
+              } else {
+                _value = '<div class="ayohaChip ayohaChipTopRight isMemberOrange isPulse">Member</div>';
+              }
+              
+
+
+            return _value;
+        }
+    },
+      {
           name: 'ModifiedCountStar',
           convert: function (value, record) {
               var _value;

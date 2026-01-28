@@ -1,0 +1,23 @@
+{
+    "name": "Ayoha Reward",
+    "short_name": "Ayoha7",
+    "start_url": "/ayohaclient7/index.html",
+    "display": "standalone",   
+    "background_color": "linear-gradient(90deg, #491A7F 0%, #7027A5 50%, #9537C8 100%)",
+    "theme_color": "linear-gradient(90deg, #491A7F 0%, #7027A5 50%, #9537C8 100%)",
+    "orientation": "portrait",
+    "gcm_sender_id": "482941778795",
+    "icons": [
+      {
+        "src": "/ayohaclient7/resources/icons/Logo/LogoOrangeSimplifed.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/ayohaclient7/resources/icons/Logo/LogoOrangeSimplifed.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

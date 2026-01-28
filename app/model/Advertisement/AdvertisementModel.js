@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.Advertisement.AdvertisementModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
       'ID',
       'AdvertisementCode',
@@ -42,6 +42,12 @@
       'EnterpriseTwiter',
       'EnterpriseWebsite',
       'PICContactNo',
+      'DiscountText',
+      'NormalPrice',
+      'MemberPrice',
+      'AverageRating',
+      'TotalReviews',
+      'EnterpriseAddress',
           {
               name: 'AdvertisementStatusButton',
               convert: function (value, record) {
@@ -77,6 +83,6 @@
               }
           },
         ]
-    }
+   // }
 });
 

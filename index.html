@@ -4,8 +4,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+    <link rel="manifest" href="/ayohaclient7/manifest.json">
+    <link rel="icon" href="/ayohaclient7/resources/icons/Logo/favicon.ico" type="image/x-icon">
 
-    <title>BuskartApp</title>
+    <meta name="theme-color" content="#491A7F">
+    <meta content='yes' name='apple-mobile-web-app-capable' />
+    <meta content='yes' name='mobile-web-app-capable' />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Ayoha Reward</title>
 
     <style>
  /* --- CONTAINER --- */
@@ -5637,23 +5645,6 @@ width: 100% !important;
   /* shadow kekalkan */
   /* filter: drop-shadow(0 18px 34px rgba(17,24,39,.14)) drop-shadow(0 46px 90px rgba(124,58,237,.12)); */
 }
-/* .ayohaCardFace{
-  margin:0;
-  width:270px;
-  height:200px;
-  position:relative;
-  overflow:hidden;
-  border-radius:22px;
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  border:1px solid rgba(255,255,255,.28);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.30),
-    inset 0 -18px 30px rgba(0,0,0,.18);
-} */
 
 .ayohaCardOuter{
   width:270px;
@@ -5671,7 +5662,8 @@ width: 100% !important;
 
 .ayohaCardFace{
   width:100%;
-  height:100%;
+  /* height:100%; */
+  height: 220px;
   border-radius:inherit;
   overflow:hidden; /* ✅ clip content ikut radius */
 
@@ -5680,6 +5672,9 @@ width: 100% !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.18),
     inset 0 -22px 34px rgba(0,0,0,.26);
+}
+.ayohaCardContent{
+  height: 100%;
 }
 
 .ayohaCardFace:after{
@@ -5748,7 +5743,7 @@ width: 100% !important;
 .ayohaCardMid{ border:none; padding:0; }
 
 .ayohaCardType{
-  margin:6px 0 0 18px;
+  margin:-7px 0 0 18px;
   font-family:Playball,cursive;
   font-size:18px;
   color:#fff;
@@ -5782,7 +5777,7 @@ width: 100% !important;
 }
 
 .ayohaCardColL .k, .ayohaCardColR .k{
-  margin-top:12px;
+  margin-top:25px;
   color:rgba(255,255,255,.82);
   font-family:Orbitron,sans-serif;
   font-size:8px;
@@ -6342,7 +6337,7 @@ width: 100% !important;
   border-radius: 18px;
   background: #fff;
   border: 1px solid rgba(17,24,39,.08);
-  box-shadow: 0 10px 26px rgba(17,24,39,.10);
+  /* box-shadow: 0 10px 26px rgba(17,24,39,.10); */
   overflow: hidden;
   scroll-snap-align: start;
   transform: translateZ(0);
@@ -6495,6 +6490,675 @@ width: 100% !important;
 
 
 </style>
+
+
+
+
+
+<style>
+  /* ===== Membership Card Hubs (Premium) ===== */
+.mcHubItem{
+  width:280px;
+  height:auto;
+  display:inline-block;
+  vertical-align:top;
+  margin-right:12px;
+  margin-bottom:12px;
+}
+
+.mcCard{
+  width:270px;
+  height:160px;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+
+  /* tukar ke cover jika background tak ikut ratio card */
+  background-size:100% 100%;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  box-shadow:
+    0 2px 10px rgba(17,24,39,.08),
+    0 18px 44px -18px rgba(17,24,39,.22);
+  border:1px solid rgba(255,255,255,.35);
+}
+
+.mcOverlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.10) 0%,
+                           rgba(0,0,0,.25) 40%,
+                           rgba(0,0,0,.55) 100%);
+}
+
+.mcTop{
+  position:relative;
+  z-index:2;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:12px;
+}
+
+.mcLogo{
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(8px);
+}
+.mcLogo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.mcTitle{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight:900;
+  font-size:15px;
+  color:#fff;
+  max-width:190px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+
+.mcBadge{
+  margin-top:4px;
+  display:inline-flex;
+  align-items:center;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  color:#fff;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(8px);
+}
+
+.mcMid{
+  position:absolute;
+  left:12px;
+  bottom:54px;
+  z-index:2;
+}
+.mcNumber{
+  font-family: Orbitron, system-ui, Arial, sans-serif;
+  font-size:14px;
+  letter-spacing:.08em;
+  color:#fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+.mcLabel{
+  margin-top:3px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size:10px;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.85);
+}
+
+.mcBottom{
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-family: Orbitron, system-ui, Arial, sans-serif;
+}
+.mcMetaLabel{ font-size:9px; color:rgba(255,255,255,.75); }
+.mcMetaValue{ font-size:10px; color:#fff; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:120px; }
+.mcMetaRight{ text-align:right; }
+
+.mcFooter{
+  width:270px;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 10px 0;
+  box-sizing:border-box;
+}
+
+.mcPrice{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight:900;
+  font-size:16px;
+  color:#111827;
+  line-height:1.1;
+}
+.mcFeeLabel{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size:11px;
+  color:rgba(17,24,39,.62);
+  margin-top:2px;
+}
+
+.mcCta{
+  border:0;
+  cursor:pointer;
+  border-radius:999px;
+  padding:8px 14px;
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.02em;
+  background: linear-gradient(180deg, #FFE7A3 0%, #FFD36B 100%);
+  color:#7A3E00;
+  box-shadow: 0 10px 18px rgba(17,24,39,.12);
+}
+.mcCta:active{ transform: translateY(1px); }
+
+/* View More card */
+.mcMoreCard{
+  width:270px;
+  height:160px;
+  border-radius:22px;
+  border:2px dashed rgba(17,24,39,.25);
+  background:rgba(255,255,255,.55);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  cursor:pointer;
+  box-shadow:
+    0 2px 10px rgba(17,24,39,.06),
+    0 18px 44px -18px rgba(17,24,39,.18);
+}
+.mcMoreTitle{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight:900;
+  font-size:14px;
+  color:#111827;
+}
+.mcMoreSub{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size:12px;
+  color:rgba(17,24,39,.60);
+}
+.mcFooterGhost{ opacity:0; pointer-events:none; }
+
+</style>
+
+
+
+<style>
+.ayohaToggleWrap{
+  border-radius:999px;
+  padding:4px;
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(124,58,237,.22);
+  box-shadow: 0 10px 24px -14px rgba(17,24,39,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ayohaTogglePill{
+  height:36px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+
+  /* ✅ ini text asal anda (tak jadi uppercase) */
+  text-transform: none;
+
+  color: rgba(88,28,135,.88);
+  background: transparent;
+  user-select:none;
+}
+
+.ayohaTogglePill.isActive{
+  color:#fff;
+  background: linear-gradient(180deg, #8B5CF6 0%, #6D28D9 100%);
+  box-shadow: 0 10px 18px rgba(109,40,217,.22);
+}
+
+/* gap */
+.ayohaTogglePill + .ayohaTogglePill{ margin-left:4px; }
+
+</style>
+
+
+<style>
+ /* ===== Premium Member Chip (Orange) ===== */
+.ayohaChip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  height:28px;
+  padding:0 12px;
+  border-radius:999px;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.01em;
+
+  user-select:none;
+  white-space:nowrap;
+
+  position:relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Orange premium */
+.ayohaChip.isMemberOrange{
+  color:#3B1D00;
+  background: linear-gradient(180deg, #FFD7A3 0%, #FFB45A 100%);
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow:
+    0 10px 20px -14px rgba(255,140,0,.45),
+    0 2px 6px rgba(17,24,39,.10);
+}
+
+/* white dot */
+.ayohaChip.isMemberOrange::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:99px;
+  background: rgba(255,255,255,.98);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.20);
+  opacity:.95;
+}
+
+/* pulse ring (soft) */
+.ayohaChip.isPulse::after{
+  content:"";
+  position:absolute;
+  left:10px;              /* align with dot */
+  top:50%;
+  width:8px;
+  height:8px;
+  border-radius:99px;
+  transform: translateY(-50%);
+  background: transparent;
+  box-shadow: 0 0 0 0 rgba(255,255,255,.55);
+  animation: ayohaPulse 1.6s ease-out infinite;
+}
+
+@keyframes ayohaPulse{
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,.60); opacity:.85; }
+  70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); opacity:0; }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); opacity:0; }
+}
+
+/* crown icon */
+.ayohaChip .chipIcon{
+  font-size:12px;
+  line-height:1;
+  transform: translateY(-.5px);
+}
+
+
+
+.ayohaChip.isNotMember{
+  color: rgba(88,28,135,.92);
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(124,58,237,.22);
+  box-shadow: 0 10px 20px -16px rgba(17,24,39,.18);
+}
+.ayohaChip.isNotMember::before{
+  content:"";
+  width:8px;height:8px;border-radius:99px;
+  background: rgba(124,58,237,.55);
+  box-shadow: 0 0 0 3px rgba(124,58,237,.12);
+}
+
+
+
+
+
+/* pastikan card jadi reference */
+.ayohaFavCard{
+  position:relative;
+  padding-top: 44px; /* ruang untuk chip supaya tak overlap content */
+}
+
+/* chip duduk kanan atas */
+.ayohaChipTopRight{
+  position:absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+}
+
+
+</style>
+
+
+
+<style>
+  .ayohaChipsBar{
+  padding: 6px 14px 10px;
+}
+
+.ayohaChipItem{
+  display:inline-block;
+  margin-right: 10px;
+}
+
+.ayohaChipPill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  height:34px;
+  padding:0 14px;
+  border-radius:999px;
+
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(124,58,237,.18);
+  box-shadow: 0 10px 22px -16px rgba(17,24,39,.18);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  color: rgba(88,28,135,.92);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  user-select:none;
+}
+
+.ayohaChipPill .i{ font-size: 14px; line-height: 1; }
+.ayohaChipPill .t{ white-space: nowrap; }
+
+/* selected state from dataview */
+.x-selected .ayohaChipPill{
+  color:#fff;
+  background: linear-gradient(180deg, #8B5CF6 0%, #6D28D9 100%);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 12px 22px rgba(109,40,217,.22);
+}
+
+</style>
+
+<style>
+ .ayohaCampCard{
+  /* width:300px; */
+  height:92px;
+  width: 170px;        /* try 240 / 250 / 260 */
+  max-width: 170px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid rgba(124,58,237,.10);
+  box-shadow:0 10px 24px -18px rgba(17,24,39,.18);
+  display:flex;
+  align-items:center;
+  padding:12px;
+  box-sizing:border-box;
+}
+.ayohaCampItem{
+  display: inline-block;
+  margin-right: 12px;  /* try 10 / 12 / 14 */
+}
+.ayohaCampIco{
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(124,58,237,.08);
+  display:flex;align-items:center;justify-content:center;
+  margin-right:12px;
+}
+.ayohaCampIcoImg{ width:32px;height:32px; }
+
+.ayohaCampMid{ flex:1; min-width:0; }
+.ayohaCampTitle{
+  font-weight:900; font-size:14px;
+  color:#2b0b63;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ayohaCampSub{
+  margin-top:4px; font-size:12px;
+  color:rgba(17,24,39,.60);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+.ayohaCampRight{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+.ayohaCampCountPill{
+  height:26px; padding:0 10px; border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:900;color:#fff;
+  background:linear-gradient(180deg,#8B5CF6 0%,#6D28D9 100%);
+}
+.ayohaCampChev{ font-size:18px; color:rgba(88,28,135,.55); line-height:1; }
+
+</style>
+
+
+<style>
+  /* =========================
+   HORIZONTAL DATAVIEW GAP
+========================= */
+.ayohaDealView .x-dataview-item{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 12px;        /* GAP antara item */
+}
+
+.ayohaDealView .x-dataview-item:last-child{
+  margin-right: 0;
+}
+
+/* =========================
+   DEAL CARD
+========================= */
+.ayohaDealCard{
+  width: 320px;              /* <-- adjust lebar card */
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(124,58,237,.12);
+  box-shadow: 0 14px 34px -22px rgba(17,24,39,.22);
+  transform: translateZ(0);
+}
+
+/* Media (image area) */
+.dealMedia{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;       /* 1/1 untuk square */
+  background: #f6f7fb;
+  overflow: hidden;
+}
+
+.dealImg{
+  width: 100%;
+  height: 100%;
+  display:block;
+  object-fit: cover;
+  transform: scale(1.01);
+}
+
+.dealMediaGlow{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(120% 80% at 20% 0%,
+            rgba(168,85,247,.25) 0%,
+            rgba(255,255,255,0) 55%);
+  pointer-events:none;
+}
+
+/* Badge */
+.dealBadge{
+  position:absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(180deg, #F97316 0%, #EA580C 100%);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 10px 18px -12px rgba(234,88,12,.55);
+}
+.dealBadge:before{
+  content:"🏷️";
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Body */
+.dealBody{
+  padding: 12px 14px 14px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.dealTitle{
+  font-weight: 900;
+  font-size: 15px;
+  color: #1f2937;
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+  line-height: 1.25;
+  min-height: 38px;
+}
+
+/* Merchant row (recommended placement) */
+.dealMerchantRow{
+  margin-top: 10px;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.mLogo{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(124,58,237,.18);
+  box-shadow: 0 8px 16px -12px rgba(17,24,39,.25);
+  background:#fff;
+  flex: 0 0 auto;
+}
+.mMid{ flex:1; min-width:0; }
+.mName{
+  font-size: 12.5px;
+  font-weight: 900;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mLoc{
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: rgba(17,24,39,.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mRate{
+  display:flex;
+  align-items:center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(17,24,39,.75);
+  flex: 0 0 auto;
+}
+.mRate .cnt{
+  font-weight: 800;
+  color: rgba(17,24,39,.45);
+}
+
+/* Prices */
+.dealPrices{
+  margin-top: 12px;
+  display:flex;
+  align-items:flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dealNormal .k,
+.dealMember .k{
+  display:block;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(17,24,39,.50);
+  margin-bottom: 2px;
+  letter-spacing: .01em;
+}
+.dealNormal .v{
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(17,24,39,.45);
+  text-decoration: line-through;
+}
+.dealMember .v{
+  font-size: 18px;
+  font-weight: 1000;
+  color: #6D28D9;
+  letter-spacing: .01em;
+  display:flex;
+  align-items:center;
+  gap: 8px;
+}
+.memberLock{
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(109,40,217,.95);
+  background: rgba(109,40,217,.10);
+  border: 1px solid rgba(109,40,217,.16);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+/* CTA (guna div supaya tak ikut style button Material) */
+.dealCta{
+  margin-top: 12px;
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  font-weight: 1000;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(90deg, #8B5CF6 0%, #EC4899 100%);
+  box-shadow: 0 16px 28px -18px rgba(109,40,217,.55);
+  user-select:none;
+}
+.dealCta .arr{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.22);
+}
+.dealCta:active{ transform: scale(.99); }
+
+</style>
     <!-- <link rel="stylesheet" href="resources/css/ayoha/00-vars.css" />
 <link rel="stylesheet" href="resources/css/ayoha/01-reset.css" />
 <link rel="stylesheet" href="resources/css/ayoha/02-base.css" />
@@ -6537,7 +7201,50 @@ width: 100% !important;
 
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCVdOcmb7TGT3KhV2HGrnvgbk4lcIxMo7w&sensor=false&libraries=geometry,places,drawing" async defer></script>
     
+    <script type="text/javascript">
+      let deferredPrompt;
     
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent automatic prompt
+        e.preventDefault();
+        deferredPrompt = e;
+    
+        // Show custom prompt (e.g., a banner or modal)
+        showInstallBanner();
+      });
+    
+      function showInstallBanner() {
+        const banner = document.createElement('div');
+        banner.style.position = 'fixed';
+        banner.style.bottom = '0';
+        banner.style.left = '0';
+        banner.style.right = '0';
+        banner.style.background = '#ff00cc';
+        banner.style.color = 'white';
+        banner.style.padding = '16px';
+        banner.style.textAlign = 'center';
+        banner.style.zIndex = '9999';
+        banner.innerHTML = `
+          Install Ayoha Reward App for better experience!
+          <button id="installBtn" style="margin-left: 10px; padding: 8px 16px; background: white; color: #ff00cc; border: none; border-radius: 4px;">Install</button>
+        `;
+        document.body.appendChild(banner);
+    
+        document.getElementById('installBtn').addEventListener('click', () => {
+          banner.remove(); // Hide custom banner
+          deferredPrompt.prompt(); // Show browser install prompt
+    
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+          });
+        });
+      }
+    </script>
     
     
     

@@ -583,6 +583,82 @@ function CoreFunction_DashboardLoadByEnterpriseAccNoStorePerk() {
 
 
 
+function CoreFunction_DashboardMembershipLoyaltyProgramMaster_LoadMasterStore() {
+  
+
+
+
+    
+    _DataStore_MembershipLoyaltyProgramMaster_LoadMasterStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
+    _DataStore_MembershipLoyaltyProgramMaster_LoadMasterStore.getProxy().setUrl(GetAPIurl() + '/MembershipLoyaltyProgramMaster/MembershipLoyaltyProgramMasterLoadMaster');
+
+
+
+
+    _DataStore_MembershipLoyaltyProgramMaster_LoadMasterStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+              // alert('_DataStore_MembershipLoyaltyProgramMaster_LoadMasterStore loaded successfully, total records: ' + records.length);
+    
+             
+                Ext.getCmp('listDashboard_MembershipLoyaltyProgramReward').setStore(_DataStore_MembershipLoyaltyProgramMaster_LoadMasterStore)
+               
+               // disabled 20/12/2025 SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo();
+                //LoadingPanelHide();
+            } else {
+               // SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo();
+                //alert('Failed to load store data or no record found.');
+               // LoadingPanelHide();
+            }
+        }
+    });
+
+
+
+
+}
+
+
+
+function loadAdvertisementloadPremiumAdvertisment() {
+    AdvertismentTypeTag = 'PremiumAdvertisement';
+    _DataStore_AdvertisementloadPremiumAdvertisementStore.getProxy().setUrl(GetAPIurl() + '/Advertisement/AdvertisementloadPremiumAdvertisment');   
+    _DataStore_AdvertisementloadPremiumAdvertisementStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+            
+                Ext.getCmp('dvMembershipExclusiveDeal').setStore(_DataStore_AdvertisementloadPremiumAdvertisementStore)
+               
+                
+  
+           
+            } else {
+                console.error('Failed to load store data or no record found.');
+               
+            }
+        }
+    });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
+  
+
+
+
+  
+
+
+
 
 function CoreFunction_TabToMyMembershipCard() {
 

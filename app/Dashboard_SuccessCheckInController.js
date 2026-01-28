@@ -1222,7 +1222,8 @@ function setScreenWidthListDynamic(count,jenis) {
    
     if(count==1){
 
-        var w = ejasWidth-43;
+       // var w = ejasWidth-43;
+        var w = ejasWidth-30;
         var els = document.querySelectorAll('[id^="'+jenis+'"]');
         for (var i = 0; i < els.length; i++) {
           els[i].style.width = w + 'px';
