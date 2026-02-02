@@ -1,0 +1,187 @@
+/* =========================================================
+   AYOHA SWEETALERT2 (FINAL CLEAN CSS)
+   - No crop
+   - No scrollbar
+   - iOS glass blur
+   - Confetti from coin (inside card)
+   ========================================================= */
+
+/* 1) Ensure always above Ext */
+.swal2-container.ayohaRewardSwalContainer{
+  z-index: 999999 !important;
+
+  /* center properly */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  /* safe padding so card never touches viewport edge */
+  padding: 18px !important;
+  box-sizing: border-box !important;
+
+  /* prevent any outer scrolling */
+  overflow: hidden !important;
+}
+
+/* 2) iOS glass backdrop */
+.swal2-container .swal2-backdrop-show.ayohaRewardSwalBackdrop,
+.swal2-container.ayohaRewardSwalContainer.ayohaRewardSwalBackdrop{
+  background: rgba(10, 12, 18, 0.35) !important;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+/* 3) Popup must NOT clip content */
+.swal2-popup.ayohaRewardSwalPopup{
+  background: transparent !important;
+  padding: 0 !important;
+  overflow: visible !important;          /* ✅ important: prevent cropping */
+  box-shadow: none !important;
+  border: 0 !important;
+
+  width: auto !important;
+  max-width: none !important;            /* let card control size */
+  box-sizing: border-box !important;
+}
+
+/* 4) Html container: allow visible (no crop), but hide scrollbar */
+.swal2-html-container.ayohaRewardSwalHtml{
+  margin: 0 !important;
+  padding: 0 !important;
+
+  /* ✅ prevent cropping */
+  overflow: visible !important;
+
+  /* center the card */
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  /* ✅ no scrollbar without clipping */
+  scrollbar-width: none !important;       /* Firefox */
+  -ms-overflow-style: none !important;    /* IE/old Edge */
+  max-height: none !important;
+}
+.swal2-html-container.ayohaRewardSwalHtml::-webkit-scrollbar{
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 5) Card (iOS glass) */
+.ayohaSwalCard{
+  position: relative;
+
+  /* ✅ safe responsive width */
+  width: min(420px, calc(100vw - 48px)) !important; /* viewport minus padding */
+  margin: 0 auto !important;
+  padding: 18px;
+
+  border-radius: 26px;
+  overflow: hidden; /* keep confetti inside card */
+
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+
+  box-shadow:
+    0 26px 80px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.20);
+
+  box-sizing: border-box;
+}
+
+.ayohaSwalCard:before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(167,139,250,0.55), transparent 55%),
+    radial-gradient(circle at 75% 25%, rgba(96,165,250,0.35), transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(52,211,153,0.22), transparent 60%);
+  filter: blur(18px);
+  pointer-events:none;
+}
+
+/* 6) Text styles */
+.ayohaSwalTitle{
+  position: relative;
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.95);
+  text-align: center;
+}
+
+.ayohaSwalPoints{
+  position: relative;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,0.98);
+  text-align: center;
+  text-shadow: 0 6px 22px rgba(0,0,0,0.35);
+}
+
+.ayohaSwalCoin{
+  display: inline-block;
+  margin-right: 6px;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
+}
+
+.ayohaSwalSub{
+  position: relative;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.78);
+  text-align: center;
+}
+
+/* 7) Confirm button (customClass confirmButton) */
+.ayohaRewardSwalBtn{
+  border-radius: 14px !important;
+  padding: 12px 22px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  border: 0 !important;
+  background: linear-gradient(135deg, rgba(167,139,250,1), rgba(96,165,250,1)) !important;
+  box-shadow: 0 12px 26px rgba(96,165,250,0.25);
+}
+
+/* 8) Confetti wrap inside card (no overflow outside card) */
+.ayohaSwalConfettiWrap{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;              /* ✅ prevent causing scrollbars */
+}
+
+/* confetti pieces */
+.ayohaSwalConfetti{
+  position: absolute;
+  border-radius: 3px;
+  opacity: 0.98;
+  will-change: transform, opacity;
+  transform: translate(0,0) rotate(0deg);
+  animation: ayohaSwalExplode 1.45s cubic-bezier(.15,.9,.2,1) forwards;
+}
+.ayohaSwalConfetti.isDot{
+  border-radius: 999px;
+}
+
+@keyframes ayohaSwalExplode{
+  0%   { transform: translate(0px,0px) rotate(0deg) scale(1); opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.92); opacity: 0; }
+}
+
+/* 9) Hide Ext scroll indicators while swal open (optional) */
+.ayohaRewardOverlayOn .x-scroll-indicator,
+.ayohaRewardOverlayOn .x-scroll-indicator-y,
+.ayohaRewardOverlayOn .x-scrollbar,
+.ayohaRewardOverlayOn .x-scrollbar-y,
+.ayohaRewardOverlayOn .x-scrollbar-el{
+  opacity: 0 !important;
+}

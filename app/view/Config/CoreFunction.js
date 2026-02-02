@@ -2177,7 +2177,66 @@ function CoreFunction_DasboardAyohaStore_EnterprisesCheckIn() {
 
 
 
+/****************************************************
+ * AYOHA BROWSER BACK HOOK (GLOBAL - ONCE)
+ * - Bila overlay SHOW  -> push history state
+ * - Bila user tekan BACK browser -> popstate -> call hide(fromBack=true)
+ * - Bila overlay ditutup biasa (button/swipe) -> sync history.back() tapi lock supaya tak trigger popstate hide 2x
+ ****************************************************/
+var AyohaBrowserBack = (function () {
+  var inited = false;
+  var lock = false;
+  var stack = []; // { tag, onBack }
 
+  function init() {
+    if (inited) return;
+    inited = true;
+
+    window.addEventListener('popstate', function (e) {
+      // Kalau kita yang trigger history.back() masa close, skip callback
+      if (lock) {
+        lock = false;
+        return;
+      }
+
+      // User tekan BACK sebenar
+      var rec = stack.pop();
+      if (rec && typeof rec.onBack === 'function') {
+        rec.onBack(); // contoh: FloatPanel_ForgotPasswordHide(true)
+      }
+    });
+  }
+
+  function push(tag, onBackFn) {
+    init();
+    stack.push({ tag: tag, onBack: onBackFn });
+
+    // dummy state supaya BACK boleh detect
+    history.pushState({ ayohaOverlay: tag }, '');
+  }
+
+  function close(tag) {
+    init();
+    if (!stack.length) return;
+
+    // buang rekod (top matching) supaya stack konsisten
+    for (var i = stack.length - 1; i >= 0; i--) {
+      if (stack[i].tag === tag) {
+        stack.splice(i, 1);
+        break;
+      }
+    }
+
+    // sync balik history tanpa trigger onBack
+    lock = true;
+    history.back();
+  }
+
+  return {
+    push: push,
+    close: close
+  };
+})();
 
 
 

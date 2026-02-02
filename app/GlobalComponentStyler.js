@@ -62,3 +62,30 @@ function ayohaThemeColor_Hero(){
       return value;
     
   }
+
+
+  function ayohaThemeColor_Background_ForgotPassword(){
+    var value="background-color:White;";
+    //  var value="background: linear-gradient(90deg, #491A7F 0%, #7027A5 100%, #9537C8 50%);";
+      return value;
+  }
+
+
+
+
+
+
+
+     function AyohaLogoText(Title) {
+        Title = Ext.htmlEncode(Title || '');
+        return '<div style="width:100%;background-color:transparent;text-align:center;' +
+            'border:1px none white;font-family:Century Gothic;font-weight:700;font-size:16px;color:black">' +
+            Title + '</div>';
+    }
+
+    function AyohaSubLogoText (Title) {
+        Title = Ext.htmlEncode(Title || '');
+        return '<div style="width:100%;background-color:transparent;text-align:center;' +
+            'border:1px none white;font-family:Century Gothic;font-weight:700;font-size:10px;color:black">' +
+            Title + '</div>';
+    }

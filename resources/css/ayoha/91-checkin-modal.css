@@ -1,0 +1,207 @@
+/* backdrop wrapper center */
+.ayohaCheckinModal .ayohaCheckinCardWrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* card */
+  .ayohaCheckinModal .ayohaCheckinCard{
+    width: min(360px, 88vw);
+    background: #fff;
+    border-radius: 26px;
+    padding: 56px 24px 22px 24px; /* space utk icon */
+    box-shadow: 0 18px 60px rgba(17,24,39,.22);
+    position: relative;
+  }
+  
+  /* top icon bubble */
+  .ayohaCheckinModal .ayohaCheckinIconTop{
+    width: 92px;
+    height: 92px;
+    border-radius: 999px;
+    background: #a855f7;
+    border: 6px solid #fff;
+    box-shadow: 0 10px 30px rgba(17,24,39,.18);
+    position: absolute;
+    margin-top: -340px; /* center over card */
+    left: 50%;
+    transform: translateX(-50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 42px;
+  }
+  
+  /* texts */
+  .ayohaCheckinModal .ayohaCheckinHeader{
+    text-align:center;
+    font-size:14px;
+    color:#888;
+    font-weight:600;
+    margin-bottom: 6px;
+  }
+  .ayohaCheckinModal .ayohaCheckinTitle{
+    text-align:center;
+    font-size:22px;
+    font-weight:900;
+    color:#333;
+    margin-bottom: 10px;
+  }
+  .ayohaCheckinModal .ayohaCheckinDivider{
+    height:2px;
+    background:#eee;
+    border-radius:999px;
+    margin: 0 0 18px 0;
+  }
+  
+  /* stamp */
+  .ayohaCheckinModal .ayohaCheckinStamp{
+    width: 150px;
+    height: 110px;
+    border: 3px dashed #bcaaa4;
+    border-radius: 18px;
+    margin: 0 auto 10px auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+  }
+  .ayohaCheckinModal .ayohaCheckinStampImg img{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  
+  /* merchant */
+  .ayohaCheckinModal .ayohaCheckinMerchant{
+    text-align:center;
+    font-size:15px;
+    font-weight:900;
+    color:#444;
+    margin-top: 6px;
+  }
+  .ayohaCheckinModal .ayohaCheckinTagline{
+    text-align:center;
+    font-size:12px;
+    color:#999;
+    margin-bottom: 14px;
+  }
+  
+  /* info box */
+  .ayohaCheckinModal .ayohaCheckinInfo{
+    background:#f3e5f5;
+    border-radius: 18px;
+    padding: 18px 18px;
+    text-align:center;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color:#555;
+    margin: 12px 0 18px 0;
+  }
+  
+  /* CTA button */
+  .ayohaCheckinModal .ayohaCheckinBtn{
+    width: 100%;
+    height: 54px;
+    border-radius: 999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:900;
+    font-size: 18px;
+    letter-spacing:.2px;
+    background: linear-gradient(90deg, #a855f7, #7e22ce);
+    box-shadow: 0 12px 28px rgba(126,34,206,.35);
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+    animation: ayohaPulse 1.2s infinite;
+  }
+  
+  /* tap feedback */
+  .ayohaCheckinModal .ayohaCheckinBtn.isPressed{
+    transform: scale(.985);
+    filter: brightness(.96);
+  }
+  
+  /* maybe later */
+  .ayohaCheckinModal .ayohaCheckinMaybeLater{
+    margin-top: 14px;
+    text-align:center;
+    font-size:16px;
+    color:#888;
+    font-weight:600;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ayohaCheckinModal .ayohaCheckinMaybeLater:active{
+    color:#333;
+  }
+  
+
+
+
+  /* Root modal backdrop */
+.ayohaCheckinModal{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  /* Shell: IMPORTANT - relative + visible */
+  .ayohaCheckinModal .ayohaCheckinShell{
+    position: relative;
+    width: min(360px, 92vw);
+    overflow: visible;
+  }
+  
+  /* Bubble icon atas card */
+  .ayohaCheckinModal .ayohaCheckinIconTop{
+    width: 92px;
+    height: 92px;
+    border-radius: 999px;
+    background: #a855f7;
+    border: 6px solid #fff;
+    box-shadow: 0 10px 30px rgba(17,24,39,.18);
+  
+    position: absolute;
+    top: -46px;              /* ✅ ini yang buat dia pop keluar */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 42px;
+    color: #fff;
+  }
+  
+  /* Card utama */
+  .ayohaCheckinModal .ayohaCheckinCard{
+    width: 100%;
+    background: #fff;
+    border-radius: 26px;
+  
+    padding: 64px 24px 22px 24px; /* ✅ ruang untuk bubble */
+    box-shadow: 0 18px 60px rgba(17,24,39,.22);
+  
+    overflow: visible;
+    max-height: 86vh;            /* ✅ elak jadi terlalu panjang */
+    box-sizing: border-box;
+  }
+  
+  /* (optional) kalau content panjang, scroll dalam card */
+  .ayohaCheckinModal .ayohaCheckinCard .x-innerhtml{
+    overflow: visible;
+  }
+  @keyframes ayohaPulse{
+    0%{ transform:scale(1); box-shadow:0 12px 28px rgba(126,34,206,.30) }
+    50%{ transform:scale(1.02); box-shadow:0 16px 34px rgba(126,34,206,.42) }
+    100%{ transform:scale(1); box-shadow:0 12px 28px rgba(126,34,206,.30) }
+  }
+  

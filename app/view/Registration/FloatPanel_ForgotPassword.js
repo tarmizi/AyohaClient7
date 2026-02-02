@@ -4,7 +4,7 @@
     ],
 });
 
-var _FloatPanel_ForgotPassword;
+
 
 
 var _FloatPanel_ForgotPasswordisOpen = 'N';
@@ -19,25 +19,18 @@ var _FloatPanel_ForgotPasswordisOpen = 'N';
 
 
 
-function FloatPanel_ForgotPassword() {
 
-    _FloatPanel_ForgotPassword =
-     Ext.create('Ext.Panel', {
 
-         xtype: 'container',
-         height: '100%',
-         width: '100%',
+   var _FloatPanel_ForgotPassword =
+     Ext.create('Ext.Container', {
+
+          
          id: 'LoadingFloatPanel_ForgotPasswordID',
-         draggable: false,
-         requires: [
-      'Ext.util.DelayedTask'
-         ],
-
-
-         centered: true,
-         //bottom: 64,         
-         modal: true,
-         hideOnMaskTap: true,
+         floated: true,
+    centered: true,
+    height: '100%',
+    width: '100%',
+    closeAction: 'hide',
          layout: {
              type: 'fit'
          },
@@ -52,10 +45,7 @@ function FloatPanel_ForgotPassword() {
              easing: 'cubic-bezier(.7,0,.7,1)',
              duration: 250
          },
-         //style: 'border-bottom:1px solid;background-color:#353839;',
-        // style: 'border-bottom:1px none;background-color:white;',
-         style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-         //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
+         style: ayohaThemeColor_Background_ForgotPassword(),       
          listeners: {
              initialize: function (c) {
                  this.element.on({
@@ -70,7 +60,7 @@ function FloatPanel_ForgotPassword() {
 
                              }));
                              _FloatPanel_ForgotPasswordisOpen = 'N';
-                             RemovePages("FloatPanel_ForgotPasswordHide()");
+                           //  RemovePages("FloatPanel_ForgotPasswordHide()");
                          } if (e.direction == "right") {
                              _FloatPanel_ForgotPassword.hide(Ext.fx.Animation({
                                  type: 'slideOut',
@@ -80,7 +70,7 @@ function FloatPanel_ForgotPassword() {
 
                              }));
                              _FloatPanel_ForgotPasswordisOpen = 'N';
-                             RemovePages("FloatPanel_ForgotPasswordHide()");
+                           //  RemovePages("FloatPanel_ForgotPasswordHide()");
                          }
                       
                      }
@@ -173,7 +163,7 @@ function FloatPanel_ForgotPassword() {
                                                       xtype: 'button',
                                                       id: 'btnFloatPanel_ForgotPasswordBack',
                                                       height: 30,
-                                                      width: 35,
+                                                      width: 65,
                                                       // iconCls: 'list',
                                                       html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
                                                       ui: 'plain',
@@ -187,7 +177,7 @@ function FloatPanel_ForgotPassword() {
 
                                                           }));
                                                           _FloatPanel_ForgotPasswordisOpen = 'N';
-                                                          RemovePages("FloatPanel_ForgotPasswordHide()");
+                                                          //RemovePages("FloatPanel_ForgotPasswordHide()");
 
                                                       }
                                                   },
@@ -240,13 +230,13 @@ function FloatPanel_ForgotPassword() {
                                                     {
                                                         margin: '0 0 0 0',
                                                         id: 'htmlFloatPanel_ForgotPasswordTxt',
-                                                        html: '<font size=2 color=black><b>Ayoha-Reward</b></font>'
+                                                        html:AyohaLogoText('Ayoha-Reward')
                                                     },
 
                                                      {
-                                                         margin: '-10 0 0 0',
+                                                         margin: '-2 0 0 0',
                                                          id: 'htmlFloatPanel_ForgotPassword_bottomTagLineTxt',
-                                                         html: '<font size=1 color=black>We Double Your Reward!</font>'
+                                                        html:AyohaSubLogoText('Two rewards. One spend')
                                                      },
                                                     {
                                                         xtype: 'panel',
@@ -266,62 +256,133 @@ function FloatPanel_ForgotPassword() {
                                                       html: '<div style="width:80%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:grey;">Enter your email address below to retrive password</div>',
                                                   },
                                                   {
-                                                      xtype: 'panel',
-                                                      height: 40
+                                                      xtype: 'container',
+                                                      height: 20
                                                   },
 
-                {
-                //hidden: true,
-                    id: 'htmlFloatPanel_ForgotPasswordEmail',
-    margin: '-2 0 0 0',
-    width: '70%',
-    height: 20,
-    html: '<input type="text" id="input-FloatPanel_ForgotEmail" placeHolder="Email"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;">'
-
-
-},
- {
-     xtype: 'panel',
-     height: 20
- },
-                {
-                    xtype: 'button',
-                    width: '90%',
-                    // hidden: true,
-                    //  align: 'stretch',
-
-                    ui: 'plain',
-                    //  width: '80%',
-                   height: 60,
-                    margin: '0 0 0 0',
-                    id: 'btnFloatPanel_ForgotPassword_SendPassword',
-                    // width: '80%',
-                    //style: {
-                    //    background: '#FA8072',
-                    //},
-                    // padding: '10px',
-                    //  text: '<font size=3px color=black><center><b>Register</b></center></font>',
-                    text: '<button class="buttonSendEmail">Send Password</button>',
-
-                    handler: function () {
-                        //  FloatPanel_AyohaUserRegistration_Save();
 
 
 
-                        FloatPanel_ForgotPasswordSendEmail();
-
-
-
-
-
-
-
-
-
+                    {
+                        xtype: 'emailfield',
+                         id: 'htmlFloatPanel_ForgotPasswordEmail',
+                        width: '70%',
+                        placeholder: 'Email',
+                        clearable: true
                     },
+                    { xtype: 'container', height: 20 },
 
 
-                },
+
+
+
+
+
+//                 {
+//                 //hidden: true,
+//                     id: 'htmlFloatPanel_ForgotPasswordEmail',
+//     margin: '-2 0 0 0',
+//     width: '70%',
+//     height: 20,
+//     html: '<input type="text" id="input-FloatPanel_ForgotEmail" placeHolder="Email"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;">'
+
+
+// },
+//  {
+//      xtype: 'panel',
+//      height: 20
+//  },
+
+
+
+                {
+                    xtype: 'component',
+                    cls: 'ayohaPrimaryBtn',
+                    html: '<div class="btnText">Reset Password</div>',
+                  
+                    listeners: {
+                      element: 'element',     // ✅ attach event pada DOM element
+                      tap: function (e) {
+                        // ✅ stop event supaya tak “kena” mask/parent
+                        if (e.stopEvent) e.stopEvent();
+                  
+                        console.log('BTN TAP OK');
+                  
+                        // ✅ DOM yang betul
+                        var dom = e.currentTarget || (this.dom || (this.el && this.el.dom));
+                        if (!dom) return;
+                  
+                        // press effect
+                        dom.classList.add('isPressed');
+                        Ext.defer(function () {
+                          dom.classList.remove('isPressed');
+                        }, 120);
+                  
+                        // ripple
+                        var rect = dom.getBoundingClientRect();
+                        var size = Math.max(rect.width, rect.height);
+                  
+                        // Ext event: guna getX/getY (lebih reliable dari pageX)
+                        var x = (e.getX ? e.getX() : e.pageX) - rect.left - (size / 2);
+                        var y = (e.getY ? e.getY() : e.pageY) - rect.top - (size / 2);
+                  
+                        var ripple = document.createElement('span');
+                        ripple.className = 'ripple';
+                        ripple.style.width = ripple.style.height = size + 'px';
+                        ripple.style.left = x + 'px';
+                        ripple.style.top = y + 'px';
+                        dom.appendChild(ripple);
+                  
+                        Ext.defer(function () {
+                          if (ripple && ripple.parentNode) ripple.parentNode.removeChild(ripple);
+                        }, 600);
+                  
+                        alert('bb');
+                  
+                        // action sebenar
+                        // FloatPanel_ForgotPasswordSendEmail();
+                      },
+                  
+                      // ✅ fallback desktop
+                      click: function () {
+                        console.log('BTN CLICK OK');
+                      }
+                    }
+                  }
+
+
+
+
+                // {
+                // //     xtype: 'button',
+                // //     width: '90%',
+                // //     ui: 'plain',
+                // //    height: 60,
+                // //     margin: '0 0 0 0',
+                // //     id: 'btnFloatPanel_ForgotPassword_SendPassword',
+                //                       cls: 'ayohaPrimaryBtn',
+                //     html: '<div class="btnText">Reset Password</div>',
+                //  //   text: '<button class="buttonSendEmail">Send Password</button>',
+
+                //     handler: function () {
+                //         //  FloatPanel_AyohaUserRegistration_Save();
+
+
+
+                //         FloatPanel_ForgotPasswordSendEmail();
+
+
+
+
+
+
+
+
+
+                //     },
+
+
+                // },
 
               
 
@@ -402,31 +463,79 @@ function FloatPanel_ForgotPassword() {
 
 
      });
-    return _FloatPanel_ForgotPassword;
+   
 
 
 
 
+// function FloatPanel_ForgotPasswordShow() {
 
-}
+//     console.log(_FloatPanel_ForgotPasswordisOpen);
+//     Ext.Viewport.remove(_FloatPanel_ForgotPassword);
+//     this.overlay = Ext.Viewport.add(FloatPanel_ForgotPassword());
+//     this.overlay.show();
+//     _FloatPanel_ForgotPasswordisOpen = 'Y';
+   
+//     AddRoutePages("FloatPanel_ForgotPasswordHide()");
+// }
 
+
+// function FloatPanel_ForgotPasswordHide() {
+//     _FloatPanel_ForgotPassword.hide(); _FloatPanel_ForgotPasswordisOpen = 'N';
+//     RemovePages("FloatPanel_ForgotPasswordHide()");
+   
+// }
+
+
+
+
+/****************************************************
+ * SHOW / HIDE (KEKAL CARA ANDA)
+ * + tambah support browser BACK
+ ****************************************************/
 function FloatPanel_ForgotPasswordShow() {
 
-    console.log(_FloatPanel_ForgotPasswordisOpen);
-    Ext.Viewport.remove(_FloatPanel_ForgotPassword);
-    this.overlay = Ext.Viewport.add(FloatPanel_ForgotPassword());
-    this.overlay.show();
-    _FloatPanel_ForgotPasswordisOpen = 'Y';
-   
-    AddRoutePages("FloatPanel_ForgotPasswordHide()");
+  _FloatPanel_ForgotPassword.show();
+  _FloatPanel_ForgotPasswordisOpen = 'Y';
+
+  //AddRoutePages("FloatPanel_ForgotPasswordHide()");
+
+  // ✅ penting: push history state supaya BACK browser boleh close overlay
+  AyohaBrowserBack.push('FloatPanel_ForgotPassword', function () {
+    // bila user tekan BACK sebenar
+    FloatPanel_ForgotPasswordHide(true);
+  });
 }
 
 
-function FloatPanel_ForgotPasswordHide() {
-    _FloatPanel_ForgotPassword.hide(); _FloatPanel_ForgotPasswordisOpen = 'N';
-    RemovePages("FloatPanel_ForgotPasswordHide()");
-   
+/**
+ * @param {Boolean} fromBack  true bila dipanggil dari popstate (browser back)
+ * @param {Object}  animCfg   optional animation config (untuk swipe left/right)
+ */
+function FloatPanel_ForgotPasswordHide(fromBack, animCfg) {
+
+  // guard
+  if (_FloatPanel_ForgotPasswordisOpen !== 'Y') return;
+
+  // hide (optional custom animation)
+  if (animCfg) {
+    _FloatPanel_ForgotPassword.hide(Ext.fx.Animation(animCfg));
+  } else {
+    _FloatPanel_ForgotPassword.hide();
+  }
+
+  _FloatPanel_ForgotPasswordisOpen = 'N';
+ // RemovePages("FloatPanel_ForgotPasswordHide()");
+
+  // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+  if (fromBack !== true) {
+    AyohaBrowserBack.close('FloatPanel_ForgotPassword');
+  }
 }
+
+
+
+
 
 
 function FloatPanel_ForgotPassword_IsEmailExist() {
