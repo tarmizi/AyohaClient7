@@ -9,30 +9,17 @@ var FlatBillID_ID;
 
 
 function AddRoutePages(val) {
-   // console.log(val);
-    //var n = ArrappRoute.includes(Page);
+  return;
     var n = ArrappRouteisOpen.includes(val);
     if (n) {
         console.log(val);
     } else {
-        //ArrappRoute.push(Page);
-        //ArrappRouteisOpen.push(val);
-
-        // ArrappRoute.push(Page);
-        console.log(val);
+      
         ArrappRouteisOpen.push(val);
 
     }
 
 
-  //  alert(isFloatPanel_MembershipCardList_MyMembershipCardOpen);
-    // if(isFloatPanel_MembershipCardList_MyMembershipCardOpen=='Y'){
-    //     FloatPanel_ScannedMerchantHide()
-    // }
-    //FloatPanel_ScannedMerchantHide();
-    //console.log(ArrappRouteisOpen.length);
-
-    // console.log(ArrappRouteisOpen.length);
 
 }
 
@@ -74,10 +61,7 @@ function RoutePages() {
 
 //function RemovePages(Page,val) {
 function RemovePages(val) {
-    //var indexs = ArrappRoute.indexOf(Page);
-    //if (indexs > -1) {      
-    //    ArrappRoute.splice(indexs, 1);
-    //}
+   return;
 
     console.log(val);
 

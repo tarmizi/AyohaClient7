@@ -384,12 +384,12 @@ function CoreFunction_DashboardAyohaUser() {
   
   
   
-              Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_StampCardLoyaltyBadgeID', BadgeCount_Stamp); 
-              Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_PointCardLoyaltyBadgeID', BadgeCount_Point); 
-              Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_DiscountCardLoyaltyBadgeID', BadgeCount_Discount); 
-              Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_ContestCardLoyaltyBadgeID', BadgeCount_Contest); 
-              Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_EventCardLoyaltyBadgeID', BadgeCount_Event); 
-              Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_VoucherCardLoyaltyBadgeID', BadgeCount_Voucher); 
+            //   Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_StampCardLoyaltyBadgeID', BadgeCount_Stamp); 
+            //   Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_PointCardLoyaltyBadgeID', BadgeCount_Point); 
+            //   Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_DiscountCardLoyaltyBadgeID', BadgeCount_Discount); 
+            //   Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_ContestCardLoyaltyBadgeID', BadgeCount_Contest); 
+            //   Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_EventCardLoyaltyBadgeID', BadgeCount_Event); 
+            //   Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign('txtMyAccount_Dashboard_VoucherCardLoyaltyBadgeID', BadgeCount_Voucher); 
   
   
   
@@ -1003,7 +1003,7 @@ function CoreFunction_DashboardMerchantDetailPage_EnterprisesCoverMediaLoadByEnt
     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getProxy().setExtraParam('Today', day);
     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getProxy().setUrl(GetAPIurl() + '/EnterprisesCoverMedia/EnterprisesCoverMediaLoadByEnterpriseAccNo');
-    _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.load();
+   // _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.load();
     globalFloatPanelMerchantDetailPage_EnterpriseAccNo = EnterpriseAccNo;
     globalFloatPanelMerchantDetailPage_MembershipLoyaltyProgramPanel_Height = 0;
 
@@ -1011,7 +1011,7 @@ function CoreFunction_DashboardMerchantDetailPage_EnterprisesCoverMediaLoadByEnt
         callback: function (records, operation, success) {
             if (success && records.length > 0) {
                 console.log('Store loaded successfully, total records: ' + records.length);
-            FloatPanel_MerchantPageDetail.removeAll(true);
+          //  FloatPanel_MerchantPageDetail.removeAll(true);
               //  var Store = records[0]; // Access only the first record
                 var count = parseInt(_DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getCount());
                 //   alert("count: " + count);

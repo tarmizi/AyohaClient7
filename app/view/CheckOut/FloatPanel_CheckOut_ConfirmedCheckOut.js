@@ -13,9 +13,15 @@ var isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
 
 
 
-function FloatPanel_CheckOut_ConfirmedCheckOut() {
 
-    _FloatPanel_CheckOut_ConfirmedCheckOut =
+
+
+
+
+
+
+
+   var _FloatPanel_CheckOut_ConfirmedCheckOut =
     Ext.create('Ext.Container', {
         zIndex: 100,
         xtype: 'container',
@@ -25,9 +31,16 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
         name: 'nameFloatPanel_CheckOut_ConfirmedCheckOut',
         styleHtmlContent: true,
         centered: true,
+        floated: true,
+        // centered: true,
         
+         closeAction: 'hide',
+
+
+
+
         // --- START: Key Changes for Backdrop ---
-        modal: false, // Use Sencha's modal handling
+      //  modal: false, // Use Sencha's modal handling
         hideOnMaskTap: false, // Prevent closing on tap
         style: 'background-color:rgba(0, 0, 0, 0.5);', // Style for the BACKDROP
         layout: {
@@ -134,7 +147,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
                             {
                                 xtype: 'component',
                                 width: '100%', // Ensure it's full width for icon centering
-                                height:25,
+                                height:35,
                                // cls: 'confirmation-title-text', // New class for the main title
                                id:'htmlFloatPanel_CheckOut_ConfirmedCheckOut_PointEarned',
                                 html: '<div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-size:26px;font-weight:bold;color:purple;margin:0px 0px 0px 0px">+ 10 A.pts Earned</div>',
@@ -314,7 +327,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
                     xtype: 'container',
                     width: '100%', // Ensure it's full width for icon centering
                  // height:130,
-                   height:100,
+                   height:120,
                     style: 'background-color:transparent;',
                     layout: {
                         type: 'vbox',
@@ -323,13 +336,13 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
        
                     },
                     items:[
-                           {
-                        xtype: 'container', // Spacer container
-                        height: 10, // Space below progress bar before buttons
-                    },
+                    //        {
+                    //     xtype: 'container', // Spacer container
+                    //     height: 10, // Space below progress bar before buttons
+                    // },
                         {
                             width: '80%', // 80% width *of the white box*
-                            height: 50,
+                            height: 80,
                             html: '<div class="ayohaMActions"><button onclick="FloatPanel_CheckOut_ConfirmedCheckOutHide()" class="ayohaCheckOutBtn">Done</button></div>',
                         },
                     ]
@@ -344,8 +357,6 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
         ]
     });
 
-    return _FloatPanel_CheckOut_ConfirmedCheckOut;
-}
 
 
 
@@ -358,13 +369,28 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
 
 
   function FloatPanel_CheckOut_ConfirmedCheckOutShow(){
-    // (Re)create + show the modal
-    Ext.Viewport.remove(_FloatPanel_CheckOut_ConfirmedCheckOut);
-    const overlay = Ext.Viewport.add(FloatPanel_CheckOut_ConfirmedCheckOut());
-    overlay.show();
-  
-    AddRoutePages("FloatPanel_CheckOut_ConfirmedCheckOutHide()");
+   
+    
+
+
+
+
+    _FloatPanel_CheckOut_ConfirmedCheckOut.show();
     isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'Y';
+  
+    //AddRoutePages("FloatPanel_ForgotPasswordHide()");
+  
+    // ✅ penting: push history state supaya BACK browser boleh close overlay
+    AyohaBrowserBack.push('FloatPanel_CheckOut_ConfirmedCheckOut', function () {
+      // bila user tekan BACK sebenar
+      FloatPanel_CheckOut_ConfirmedCheckOutHide(true);
+    });
+
+
+
+
+
+  
     //AyohaScrollToTop_AutoFind('MainMaincontainerDashbord');
 
 
@@ -396,19 +422,51 @@ function FloatPanel_CheckOut_ConfirmedCheckOut() {
   
 
 
-function FloatPanel_CheckOut_ConfirmedCheckOutHide() {
-    // FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_AddCardHide();
+// function FloatPanel_CheckOut_ConfirmedCheckOutHide() {
+//     // FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_AddCardHide();
  
 
-    if (isFloatPanel_CheckOut_ConfirmedCheckOutOpen == "Y") {
-        _FloatPanel_CheckOut_ConfirmedCheckOut.hide(); isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
-       // Dashboard_LoadLastCheckIn();
-       // FloatPanelMerchantDetailPage_AyohaStore();
-        RemovePages("FloatPanel_CheckOut_ConfirmedCheckOutHide()");
-        FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
-    }
+//     if (isFloatPanel_CheckOut_ConfirmedCheckOutOpen == "Y") {
+//         _FloatPanel_CheckOut_ConfirmedCheckOut.hide(); isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
+//        // Dashboard_LoadLastCheckIn();
+//        // FloatPanelMerchantDetailPage_AyohaStore();
+//         RemovePages("FloatPanel_CheckOut_ConfirmedCheckOutHide()");
+//         FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
+//     }
   
+// }
+
+
+
+function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
+
+    if (isFloatPanel_CheckOut_ConfirmedCheckOutOpen == 'Y') {
+       
+
+
+
+
+
+        if (animCfg) {
+            _FloatPanel_CheckOut_ConfirmedCheckOut.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_CheckOut_ConfirmedCheckOut.hide();
+          }
+        
+          isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
+         // RemovePages("FloatPanel_ForgotPasswordHide()");
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_CheckOut_ConfirmedCheckOut');
+          }
+    }
+
 }
+
+
+
+
 
 
 function FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop(){

@@ -839,6 +839,11 @@ function FloatPanel_AyohaStoreShow_AyohaStore_CheckOut() {
 
 
 function Dashboard_updateBadge_AyohaMerchantLoyaltyCampaign(elementId, count) {
+
+
+return;
+
+
     // Find the badge element by its ID
     const badgeElement = document.getElementById(elementId);
 

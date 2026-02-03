@@ -2,7 +2,6 @@ Ext.define('BuskartApp.view.CheckOut.FloatPanel_CheckOut_NonMember', {
 
 });
 
-var _FloatPanel_CheckOut_NonMember;
 
 
 var isFloatPanel_CheckOut_NonMemberOpen = 'N';
@@ -17,26 +16,26 @@ var isFloatPanel_CheckOut_NonMemberOpen = 'N';
 
 
 
-function FloatPanel_CheckOut_NonMember() {
 
-    _FloatPanel_CheckOut_NonMember =
+
+
+
+
+   var _FloatPanel_CheckOut_NonMember =
      Ext.create('Ext.Container', {
 
-         xtype: 'container',
-//height: 0,
         height: 347,
          width: '100%',
          id: 'LoadingFloatPanel_CheckOut_NonMemberID',
-         draggable: false,
-
-
-
-         centered: true,
+         floated: true,
+   // centered: true,
+   
+    closeAction: 'hide',
          //bottom: 64,
          bottom:0,
          zIndex: 30,
          modal: true,
-         hideOnMaskTap: true,
+        // hideOnMaskTap: true,
          layout: {
              type: 'vbox'
          },
@@ -70,47 +69,47 @@ function FloatPanel_CheckOut_NonMember() {
         style:"background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%)",
       //   style: 'background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);border-radius:30px 30px 0px 0px',
          // style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-         listeners: {
-             initialize: function (c) {
-                 this.element.on({
-                     swipe: function (e, node, options) {
+        //  listeners: {
+        //      initialize: function (c) {
+        //          this.element.on({
+        //              swipe: function (e, node, options) {
 
-                         if (e.direction == "down") {
-                             _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation({
-                                // type: 'slideOut',
-                                // direction: 'down',
-                                // duration: 420,
-                                // easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+        //                  if (e.direction == "down") {
+        //                      _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation({
+        //                         // type: 'slideOut',
+        //                         // direction: 'down',
+        //                         // duration: 420,
+        //                         // easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
 
 
-                                type: 'slideOut',
-                                direction: 'down',
-                                duration: 420,                        // ✅ lebih slow & premium
-                                easing: 'cubic-bezier(.2,0,.2,1)',
-                                offset: 20  // (optional) kalau version Ext support
+        //                         type: 'slideOut',
+        //                         direction: 'down',
+        //                         duration: 420,                        // ✅ lebih slow & premium
+        //                         easing: 'cubic-bezier(.2,0,.2,1)',
+        //                         offset: 20  // (optional) kalau version Ext support
 
-                             }));
-                             isFloatPanel_CheckOut_NonMemberOpen = 'N';
-                             AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
-                         } 
+        //                      }));
+        //                      isFloatPanel_CheckOut_NonMemberOpen = 'N';
+        //                      AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
+        //                  } 
                          
                          
-                        //  if (e.direction == "right") {
-                        //      _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation({
-                        //          type: 'slideOut',
-                        //          direction: 'right',
-                        //          easing: 'cubic-bezier(.7,0,.7,1)',
-                        //          duration: 250
+        //                 //  if (e.direction == "right") {
+        //                 //      _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation({
+        //                 //          type: 'slideOut',
+        //                 //          direction: 'right',
+        //                 //          easing: 'cubic-bezier(.7,0,.7,1)',
+        //                 //          duration: 250
 
-                        //      }));
-                        //      isFloatPanel_CheckOut_NonMemberOpen = 'N';
-                        //      AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
-                        //  }
+        //                 //      }));
+        //                 //      isFloatPanel_CheckOut_NonMemberOpen = 'N';
+        //                 //      AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
+        //                 //  }
                         
-                     }
-                 });
-             }
-         },
+        //              }
+        //          });
+        //      }
+        //  },
 
          //  style: "background-color: #D25959;",
          items: {
@@ -387,53 +386,7 @@ xtype:'spacer'
                                     html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-weight:700;font-size:13px;color:#6B7280;">Kuala Sepetang</div>',
         
                                 },
-                                //    {
-                                //        width:'100%',
-                                //        margin:'0 0 0 0',
-                                //        height:40,
-                                //        style: 'background-color:transparent;',
-                                //        layout: {
-                                //            type: 'vbox',
-                                //            pack: 'bottom',
-                                //            align: 'left'
-                          
-                                //        }, 
-                                //        items:[
-                                //            {
-                                //                margin: '0 0 0 10',
-                                //                //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
-                                //                id:'htmlFloatPanel_CheckOut_NonMember_EnterpriseName',
-                                //                html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-weight:900;font-size:18px;color:#111827;">Ayu Kuala Sepetang</div>',
-                   
-                                //            }
-                                //        ]
-                                //    },
-                                //    {
-                                //        width:'100%',
-                                //        margin:'0 0 0 0',
-                                //        height:40,
-                                //        style: 'background-color:transparent;',
-                                //        layout: {
-                                //            type: 'vbox',
-                                //            pack: 'top',
-                                //           // align: 'left',
-                                //            align:'stretch'   // ✅ penting: stretch child jadi full width
-                          
-                                //        }, 
-                                //        items:[
-                                //            {
-                                              
-                                //                xtype:'component',
-                                //                margin:'0 0 0 10',
-                                //                width:'100%',              
-                                //               // style:'width:100%;',  // ✅ extra safety                                               
-                                //                //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
-                                //                id:'htmlFloatPanel_CheckOut_NonMember_EnterpriseLocation',
-                                //                html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-weight:700;font-size:13px;color:#6B7280;">Kuala Sepetang</div>',
-                   
-                                //            }
-                                //        ]
-                                //    },
+                             
 
                                ]
                            },
@@ -496,11 +449,9 @@ xtype:'spacer'
                        {
               
                            xtype: 'list',
-                         //  cls: 'ayohaHappeningList',
-                           width:'90%',
-                          // height:'100%',
+                           width:'100%',
                            id:'listFloatPanel_CheckOutNonMember',
-                          // store: storeHappeningNow,
+                           margin:'10 0 0 -20',
                            scrollable: {
                                direction: 'vertical',
                                directionLock: true,
@@ -509,7 +460,8 @@ xtype:'spacer'
                            disableSelection: true,
    style: 'background-color:rgba(255,255,255, 0);border-radius: 0px 0px 0px 0px;',
                            
-                           // itemCls: 'ayohaHItem',
+   cls: 'ayohaActList',
+   itemCls: 'ayohaActListItem',
                            itemTpl: new Ext.XTemplate(
                                '<div class="ayohaActItem">',
                              
@@ -638,12 +590,9 @@ xtype:'spacer'
    {
     xtype: 'container',
     width: '95%',
-    height: 90,
+    height: 80,
     style: 'background-color: transparent;',
-    //id: 'containerFloatPanel_CheckOutNonMemberEnterpriseLoveUs',
-
-    //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-    // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+  
     layout: {
         type: 'hbox',
         pack: 'start',
@@ -777,55 +726,12 @@ html: '<div ><img src="resources/icons/reviewstarunrate.png" width="20" height="
                         },
                     ]
                 },
-                 //{
-                 //    margin: '0 0 0 0',
-                 //    height: 15,
-                 //    id: 'htmlAyohaMerchantReview_TotalReviewsxx',
-                 //    html: '<div style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;0 Reviews</div>'
-                 //}
+                
             ]
         },
     ]
    },
-            //    {
-            //         // xtype: 'button',
-            //         xtype: 'container',
-            //         margin: '0 0 0 0',
-            //        docked:'bottom',
-            //      //   id: 'FloatPanel_CheckOut_NonMemberBorderBg',
-            //         //   style: 'background-image: url("resources/icons/mileageClaimBorder2.png"); background-size: 100% 100%;background-repeat:no-repeat',
-            //        // style: ' background-color:transparent;',
-            //         height: 100,
-            //         width: '100%',
-            //         style: 'border-top:2px solid rgba(124,58,237,.14);border-bottom:2px none #D25959;border-left:2px none #D25959;border-right:2px none #D25959;background-color:red;',
-            //         layout: {
-            //             type: 'vbox',
-            //             pack: 'start',
-            //             align: 'center'
-            //         },
-            //         items:[
-            //            {
-            //                width: '90%',
-            //                //height: 30,
-            //                html:
-            //              '<div class="ayohaMActions">' +
-            //                '<button class="ayohaCheckOutBtn" onclick="Ayoha_CheckInAgain &amp;&amp; Ayoha_CheckInAgain();">Confirm Check-Out</button>' +
-                          
-            //             '</div>' 
-                         
-                         
-                         
-            //              },
-            //              {
-            //                 margin: '8 0 0 0',
-            //                 //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
-            //                // id:'htmlFloatPanel_CheckOut_NonMember_EnterpriseName',
-            //                 html: '<div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-weight:900;font-size:12px;color:#111827;">You can check-in again anytime</div>',
-
-            //             }
-            //         ]
-            //    }
-
+          
 
                     ]
                
@@ -865,7 +771,7 @@ html: '<div ><img src="resources/icons/reviewstarunrate.png" width="20" height="
                          
                          },
                          {
-                            margin: '11 0 0 0',
+                            margin: '6 0 0 0',
                             //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
                            // id:'htmlFloatPanel_CheckOut_NonMember_EnterpriseName',
                             html: '<div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-weight:900;font-size:12px;color:#111827;">*You can check-in again anytime</div>',
@@ -894,22 +800,39 @@ html: '<div ><img src="resources/icons/reviewstarunrate.png" width="20" height="
 
 
      });
-    return _FloatPanel_CheckOut_NonMember;
+    
 
 
 
 
 
-}
 
 function FloatPanel_CheckOut_NonMemberShow() {
 
-    Ext.Viewport.remove(_FloatPanel_CheckOut_NonMember);
-    this.overlay = Ext.Viewport.add(FloatPanel_CheckOut_NonMember());
-    this.overlay.show();
+   
+
+
+
+
+
+
+
+    _FloatPanel_CheckOut_NonMember.show();
     isFloatPanel_CheckOut_NonMemberOpen = 'Y';
-    AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
-   // FloatPanel_CheckOut_NonMember_EnterprisesWorkingHourLoadByEnterpriseAccNoStore();
+  
+    //AddRoutePages("FloatPanel_ForgotPasswordHide()");
+  
+    // ✅ penting: push history state supaya BACK browser boleh close overlay
+    AyohaBrowserBack.push('FloatPanel_CheckOut_NonMember', function () {
+      // bila user tekan BACK sebenar
+      FloatPanel_CheckOut_NonMemberHide(true);
+    });
+
+
+
+
+
+
 
 
 
@@ -927,29 +850,33 @@ var negeri = (globalFloatPanelMerchantDetailPage_Negeri || '').replace(/\u00a0/g
 Ext.getCmp('htmlFloatPanel_CheckOut_NonMember_EnterpriseName').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-weight:900;font-size:18px;color:#111827;">'+globalFloatPanelMerchantDetailPage_EnterpriseName+'</div>')
 Ext.getCmp('htmlFloatPanel_CheckOut_NonMember_EnterpriseLocation').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-weight:700;font-size:12px;color:#6B7280;">'+bandar+', '+negeri+'</div>')
 
-// Ext.getCmp('htmlFloatPanel_CheckOut_NonMember_EnterpriseLocation').setHtml(
-//     '<span style="display:block;font-family:Century Gothic;font-weight:700;font-size:13px;color:#6B7280;margin:0;padding:0;">' +
-//     bandar + ', ' + negeri +
-//     '</span>'
-//   );
+
    SuccessCheckinController_DashboardSuccessCheckIn_LoadMerchantDashboard_CheckOutActivityStore();
 }
 
 
-// function FloatPanel_CheckOut_NonMemberShow_AyohaPointRedemptionHistory() {
-
-//     Ext.Viewport.remove(_FloatPanel_CheckOut_NonMember);
-//     this.overlay = Ext.Viewport.add(FloatPanel_CheckOut_NonMember());
-//     this.overlay.show();
-//     isFloatPanel_CheckOut_NonMemberOpen = 'Y';
-//     AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
-// }
-
-function FloatPanel_CheckOut_NonMemberHide() {
+function FloatPanel_CheckOut_NonMemberHide(fromBack, animCfg) {
 
     if (isFloatPanel_CheckOut_NonMemberOpen == 'Y') {
-        _FloatPanel_CheckOut_NonMember.hide(); isFloatPanel_CheckOut_NonMemberOpen = 'N';
-        RemovePages("FloatPanel_CheckOut_NonMemberHide()");
+       
+
+
+
+
+
+        if (animCfg) {
+            _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_CheckOut_NonMember.hide();
+          }
+        
+          isFloatPanel_CheckOut_NonMemberOpen = 'N';
+         // RemovePages("FloatPanel_ForgotPasswordHide()");
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_CheckOut_NonMember');
+          }
     }
 
 }
@@ -988,8 +915,8 @@ function FloatPanel_CheckOut_NonMember_EnterprisesWorkingHourLoadByEnterpriseAcc
 
 
 function FloatPanel_CheckOut_NonMember_CheckOut(){
-   LoadingPanelShow(getLoadingIcon(), 'Checking-Out...');
-   FloatPanel_CheckOut_NonMemberHide();
+  // LoadingPanelShow(getLoadingIcon(), 'Checking-Out...');
+   FloatPanel_CheckOut_NonMemberHide(false);
    
   // FloatPanel_CheckOut_ConfirmedCheckOu_DashboardAyohaGoTop();
    //return
@@ -1002,13 +929,23 @@ function FloatPanel_CheckOut_NonMember_CheckOut(){
         "CheckInPage": "CheckOut",
     };
     var _value = Ext.Ajax.request({
-        type: "POST",
+        // type: "POST",
+        // url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_InsertCheckOut',
+        // dataType: "json",
+        // data: JSON.stringify(objn),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
+
         url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_InsertCheckOut',
-        dataType: "json",
-        data: JSON.stringify(objn),
+        method: 'POST',                 // ✅ betul
+        jsonData: objn,                 // ✅ auto encode JSON + set body
         headers: {
-            "Content-Type": "application/json; charset=utf-8"
+          'Content-Type': 'application/json; charset=utf-8'
         },
+
+
+
         success: function (result, request) {
             data = Ext.decode(result.responseText.trim());
 

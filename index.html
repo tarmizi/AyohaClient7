@@ -1460,103 +1460,150 @@ text-align: center;
 
 
     <style>
+/* =========================================================
+   AYOHA SESSION ACTIVITY LIST (Ext JS Modern) - FULL CSS
+   Scope: .ayohaActList + .ayohaActListItem
+   ========================================================= */
 
-
-
-
-
-
-/* body dalam list item pun kadang ada padding */
-.x-list .x-list-item .x-list-item-body{
-  padding:0 !important;
-  border:0 !important;
+/* ✅ 1) List container padding (kalau nak card nampak kemas dlm panel) */
+.ayohaActList{
+  padding: 0 14px;
+  box-sizing: border-box;
 }
 
-/* kalau guna innerhtml wrapper */
-.x-list .x-list-item .x-innerhtml{
-  padding:0 !important;
+/* ✅ 2) Target list item wrapper (cover x-list-item & x-listitem) */
+.ayohaActList .ayohaActListItem{
+  padding: 0 !important;
+  margin: 3px 0 !important;          /* rapatkan gap */
+  border: 0 !important;
+  background: transparent !important;
+  width: 100% !important;
+  box-sizing: border-box;
+
+  /* kalau parent list item guna flex, paksa stretch */
+  flex: 1 1 auto !important;
+  align-self: stretch !important;
 }
 
-
-/* ✅ buang separator line list */
-.x-list .x-list-item{
-  padding:0 !important;
-  margin:6px 0px !important;  
-  border:0 !important;
-  background:transparent !important;
+/* ✅ 3) Paksa semua wrapper dalaman Ext jadi full width */
+.ayohaActList .ayohaActListItem > *{
+  width: 100% !important;
+  box-sizing: border-box;
 }
 
-/* kadang ada pseudo element jadi divider */
-.x-list .x-list-item:before,
-.x-list .x-list-item:after{
-  display:none !important;
+/* cover class common Ext utk inner html (ada theme guna salah satu) */
+.ayohaActList .ayohaActListItem .x-innerhtml,
+.ayohaActList .ayohaActListItem .x-innerHtml,
+.ayohaActList .ayohaActListItem [class*="x-innerhtml"],
+.ayohaActList .ayohaActListItem [class*="x-innerHtml"]{
+  padding: 0 !important;
+  border: 0 !important;
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box;
 }
 
-/* inner element pun kadang ada border */
-.x-list .x-list-item .x-innerhtml{
-  border:0 !important;
+/* ✅ 4) Buang divider line/pseudo element (cover banyak theme) */
+.ayohaActList [class*="x-list-item"]:before,
+.ayohaActList [class*="x-list-item"]:after,
+.ayohaActList [class*="x-listitem"]:before,
+.ayohaActList [class*="x-listitem"]:after{
+  display: none !important;
 }
-      .ayohaActItem{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-    padding:8px 12px !important; 
-  border-radius:16px;
 
-  background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%);
-  border:2px solid rgba(124,58,237,.14);
-  /* box-shadow:0 12px 26px rgba(17,24,39,.10); */
+/* =========================================================
+   CARD ROW (itemTpl classes)
+   ========================================================= */
 
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+.ayohaActItem{
+  width: 100% !important;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* ✅ jangan space-between */
+  gap: 12px;
+
+  padding: 8px 12px !important;
+  border-radius: 16px;
+
+  /* background: linear-gradient(180deg,#ffffff 0%, #f6efff 100%); */
+  background: transparent !important;
+  border: 2px none rgba(124,58,237,.14); /* boleh kekalkan border */
+  /* border: 2px solid rgba(124,58,237,.14); */
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
 
 .ayohaActIconWrap{
-  width:38px;height:38px;
-  border-radius:999px;
-  background:rgba(124,58,237,.10);
-  border:1px solid rgba(124,58,237,.16);
-  display:flex;align-items:center;justify-content:center;
-  flex:0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+
+  background: rgba(124,58,237,.10);
+  border: 1px solid rgba(124,58,237,.16);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
 }
 
-/* penting: kalau .ayohaBadge asal kau position absolute, kita paksa inline */
+/* badge inline (kalau asal badge absolute) */
 .ayohaActIconWrap .ayohaBadge{
-  position:static !important;
-  width:28px;height:28px;
-  border-radius:999px;
-  display:flex;align-items:center;justify-content:center;
+  position: static !important;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ayohaActText{ flex:1; min-width:0; }
+.ayohaActText{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .ayohaActLabel{
-  font-size:13px;
-  font-weight:800;
-  color:#111827;
-  opacity:.85;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+  opacity: .85;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .ayohaActSub{
-  margin-top:2px;
-  font-size:11px;
-  color:#6b7280;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #6b7280;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* ✅ Value melekat kanan & rapat */
 .ayohaActValue{
-  font-size:15px;
-  font-weight:900;
-  color:#111827;
-  white-space:nowrap;
-  text-align:right;
-}
-.ayohaActValue.muted{ opacity:.85; font-weight:800; }
+  margin-left: auto !important;
+  text-align: right;
+  white-space: nowrap;
 
-/* optional warna badge ikut type */
+  font-size: 15px;
+  font-weight: 900;
+  color: #111827;
+}
+
+.ayohaActValue.muted{
+  opacity: .85;
+  font-weight: 800;
+}
+
+/* Badge colors */
 .ayohaBadgePin{background:linear-gradient(180deg,#a855f7,#7c3aed);}
 .ayohaBadgeCard{background:linear-gradient(180deg,#ff3bd4,#d600ff);}
 .ayohaBadgeStamp{background:linear-gradient(180deg,#fb7185,#f43f5e);}
@@ -1569,6 +1616,27 @@ text-align: center;
   box-shadow: 0 8px 18px rgba(124,58,237,.28);
 }
 
+
+
+/* ✅ 1) Kecilkan gap antara item (wrapper) */
+.ayohaActList .ayohaActListItem{
+  margin: -20px 0 !important;     /* cuba 2px (kalau nak rapat lagi, 1px) */
+  padding: 0 !important;
+}
+
+/* ✅ 2) Kalau Ext bagi padding bawah/atas pada body/innerhtml, buang */
+.ayohaActList .ayohaActListItem .x-list-item-body,
+.ayohaActList .ayohaActListItem .x-innerhtml,
+.ayohaActList .ayohaActListItem .x-innerHtml{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ✅ 3) Kalau list inject "spacer" atau min-height, paksa auto */
+.ayohaActList .ayohaActListItem{
+  min-height: 0 !important;
+  height: auto !important;
+}
 
     </style>
 

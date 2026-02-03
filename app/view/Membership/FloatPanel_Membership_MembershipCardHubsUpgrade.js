@@ -1,8 +1,16 @@
+
+
+
+
+
+
+
+
 Ext.define('BuskartApp.view.Membership.FloatPanel_Membership_MembershipCardHubsUpgrade', {
 
 });
 
-var _FloatPanel_Membership_MembershipCardHubsUpgrade;
+
 
 
 var isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'N';
@@ -96,19 +104,19 @@ var AyohaHeroDockHtml =
   }
   
 
-function FloatPanel_Membership_MembershipCardHubsUpgrade() {
 
-    _FloatPanel_Membership_MembershipCardHubsUpgrade =
+
+ var _FloatPanel_Membership_MembershipCardHubsUpgrade =
     Ext.create('Ext.Container', {
         zIndex: 20,
-        xtype: 'container',
         height: '100%',
         width: '100%',
         id: 'FloatPanel_Membership_MembershipCardHubsUpgradeID',
-        draggable: false,
-        centered: true,
-        modal: false, // Use Sencha's modal handling
-        hideOnMaskTap: false, // Prevent closing on tap        
+        floated: true,
+    centered: true,
+    height: '100%',
+    width: '100%',
+    closeAction: 'hide', 
         layout: {
             type: 'vbox',
             pack: 'start',
@@ -126,7 +134,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
             easing: 'ease-out'
            
         },
-       style:ayohaThemeColor_Body(),
+       style:ayohaThemeColor_Body_Container(),
         items: [
 
 
@@ -166,7 +174,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
                                                  xtype: 'button',
                                                  id: 'btnFloatPanel_Membership_MembershipCardHubsUpgradeBack',
                                                  height: 30,
-                                                 width: 35,
+                                                 width: 65,
                                                  margin: '5 0 0 10',
                                                  // iconCls: 'list',
                                                  html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
@@ -183,7 +191,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
                                                          duration: 250
 
                                                      }));
-                                                     RemovePages("FloatPanel_Membership_MembershipCardHubsUpgradeHide()");
+                                                 
 
                                                  }
                                              },
@@ -223,7 +231,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
                                                                 duration: 250
 
                                                             }));
-                                                            RemovePages(_FloatPanel_Membership_MembershipCardHubsUpgrade, "isFloatPanel_Membership_MembershipCardHubsUpgradeOpen");
+                                                           // RemovePages(_FloatPanel_Membership_MembershipCardHubsUpgrade, "isFloatPanel_Membership_MembershipCardHubsUpgradeOpen");
                                                             //FloatPanel_Membership_MembershipCardHubsUpgrade_AddCardHide();
                                                         }
                                                     },
@@ -251,17 +259,30 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
                         layout: 'fit', // Layout Fit memastikan item bertindih
                         items: [
                     
+
+
+
+
+
+
                             // --- 1. HEADER (Floating/Docked Top) ---
                             // Ini kekal di atas. Kita tambah Z-Index supaya dia duduk ATAS list.
                             {
                                 xtype: 'container',
-                              docked: 'top',
+                             docked: 'top',
                               //top: 0, // Paksa duduk atas
                                width: '100%',
-                                height: 0, // Trick height 0 supaya dia overlay
-                                style: 'background-color:transparent; z-index: 99; position: absolute; top: 0; left: 0;', 
-                                cls: 'ayohaDockTop',
+                              // style: 'background-color:rgba(255, 255, 255, 0);  z-index: 99;',
+                              height: 0, // Trick height 0 supaya dia overlay
+                              // floated: true,                // ✅ overlay betul untuk ExtJS 7 Modern
+                               // top: 0, left: 0, right: 0,
+                              // height: 68,
+                              //  zIndex: 9999,
+                              style: 'background-color:transparent; z-index: 99; position: absolute; top: 0; left: 0;', 
+                           
+                               cls: 'ayohaDockTop',
                                 html: AyohaHeroDockHtml
+                             
 
 
 
@@ -273,14 +294,14 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
                             {
                                 xtype: 'list',
                                 id: 'FloatPanel_Membership_MembershipCardHubsUpgradeList',
-                                cls: 'ayohaHubList ayohaListReserveBottom',
+                               // cls: 'ayohaHubList ayohaListReserveBottom',
                                 margin: '0 0 0 0',
                     
                                 // Flex tak perlu dalam layout fit, tapi takpe biar je
-                                flex: 1, 
+                              //  flex: 1, 
                                 
-                                style: 'background-color:rgba(255, 255, 255, 0); border-radius:0;',
-                                
+                               style: 'background-color:rgba(255, 255, 255, 0); border-radius:0;',
+                              //  style: 'background-color:red;', 
                                 // Scrollable settings
                                 scrollable: {
                                     direction: 'vertical',
@@ -292,21 +313,22 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
                                 useSimpleItems: true,
                                 bufferSize: 5,
                                 
-                                store: 'MembershipCardStore', // Pastikan store ada di sini
+                             //   store: 'MembershipCardStore', // Pastikan store ada di sini
                     
                                 // --- INI RAHSIANYA (SPACER DALAM LIST) ---
                                 // Kita masukkan item dalam list dengan scrollDock: 'top'.
                                 // Ia akan jadi sebahagian daripada scroll, menolak item pertama ke bawah.
-                                items: [
-                                    {
-                                        xtype: 'component',
-                                        scrollDock: 'top', // PENTING: Ini letak dia dalam scroll area
-                                        docked: 'top',     // Sencha Touch 2.x kadang perlu ini juga
-                                        height: 68,       // Ubah ikut ketinggian sebenar Header anda
-                                        style: 'background: transparent;',
-                                        html: '&nbsp;'
-                                    }
-                                ],
+                                // items: [
+                                //     {
+                                //         xtype: 'component',
+                                //         floated: true,    
+                                //         scrollDock: 'top', // PENTING: Ini letak dia dalam scroll area
+                                //         docked: 'top',     // Sencha Touch 2.x kadang perlu ini juga
+                                //         height: 68,       // Ubah ikut ketinggian sebenar Header anda
+                                //         style: 'background: transparent;',
+                                //         html: '&nbsp;'
+                                //     }
+                                // ],
                     
                                 itemTpl: [
                                     '<div class="ayohaHubRow">',
@@ -420,96 +442,6 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
 
 
 
-
-
-
-
-
-                            // --- 3. SEARCH BAR (Docked Bottom) ---
-//                             {
-                           
-//                                 xtype: 'container',
-//                                 // JANGAN GUNA DOCKED: 'BOTTOM'. 
-//                                 // Kita guna positioning absolute supaya dia terapung atas list.
-                                
-//                                 height: 90, 
-//                                 width: '100%',
-//                                 docked:'bottom',
-//                                 // CSS Magic:
-//                                 // bottom: 20px -> Terapung sikit dari bawah skrin (Nampak floating)
-//                                 // pointer-events: none -> Supaya kalau user tekan ruang kosong tepi bar, tembus ke list belakang
-//                                // style: 'position: absolute; bottom: 20px; left: 0; z-index: 100; background: transparent; pointer-events: none; padding: 0 15px;',
-//                              //  style: 'background-color:rgba(255, 255, 255, 0);border-radius: 0px 0px 0px 0px;',
-                               
-//                                style: 'position: absolute; bottom: 20px; left: 0; width: 100%; z-index: 100; background-color: transparent !important; background: transparent !important; box-shadow: none !important; border: none !important; pointer-events: none; padding: 0 15px;',
-//                             //   style: 'position: absolute; bottom: 20px; left: 0; width: 100%; z-index: 100; background-color: transparent !important; background: transparent !important; box-shadow: none !important; border: none !important; pointer-events: none; padding: 0 15px;',
-                               
-//                                layout: {
-//                                     type: 'vbox',
-//                                     pack: 'center',
-//                                     align: 'stretch' // Stretch supaya lebar ikut skrin
-//                                 },
-
-
-
-//                                 items: [
-//                                     {
-//                                         xtype: 'component',
-//             height: 65, // Tinggi bar putih
-            
-//             // PENTING: pointer-events: auto supaya boleh klik input/button
-//             // Shadow yang lawa & Rounded corner besar (Capsule shape)
-//             // Background putih/blur sikit (Glassmorphism)
-          
-//            // style: 'pointer-events: auto; background: rgba(255,255,255,0.95); border-radius: 999px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 3px solid rgba(255,255,255,0.3);',
-                                      
-//             // Tukar style pada items -> component -> style
-// style: 'pointer-events: auto; ' +
-// 'background: #FFFFFF; ' + // Solid White (Jangan transparent)
-// 'border-radius: 50px; ' +
-
-// // 1. BORDER HALUS (Penting untuk define shape)
-// 'border: 1px solid rgba(81, 45, 168, 0.2); ' + 
-
-// // 2. SHADOW BERWARNA (Lebih premium dari shadow hitam)
-// // Shadow ni warna ungu gelap, opacity rendah. Nampak timbul betul.
-// 'box-shadow: 0 8px 25px rgba(81, 45, 168, 0.25); ' + 
-
-// 'display: flex; align-items: center; padding: 0 5px;',
-//             html:'<div class="ayohaSearchWrap">' +
-//                                         '<div class="ayohaSearchBar">' +
-                                      
-                                    
-//                                           '<span class="ayohaSearchIco" aria-hidden="true">' +
-//                                             '<svg viewBox="0 0 24 24">' +
-//                                               '<path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l3.2 3.2a1 1 0 0 0 1.4-1.4l-3.2-3.2A7.5 7.5 0 0 0 10.5 3Zm0 2a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Z"></path>' +
-//                                             '</svg>' +
-//                                           '</span>' +
-                                    
-//                                           '<input id="ayohaSearchInput" class="ayohaSearchInput" type="search" ' +
-//                                             'placeholder="Search merchants or cards…" autocomplete="off" />' +
-                                    
-//                                           '<button class="ayohaIconBtn ayohaIconBtnQr" aria-label="Scan QR" ' +
-//                                             'onclick="if(event.stopPropagation){event.stopPropagation();} event.cancelBubble=true; ' +
-//                                             'FloatPanel_ScanQR && FloatPanel_ScanQR();">' +
-//                                             '<svg viewBox="0 0 24 24">' +
-//                                               '<path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm12 0h2v2h-2v-2zm-4 0h2v4h-2v-4zm6 0h2v6h-2v-6zm-4 4h6v2h-6v-2z"></path>' +
-//                                             '</svg>' +
-//                                           '</button>' +
-                                    
-//                                           '<button class="ayohaIconBtn ayohaIconBtnFilter" aria-label="Filter" ' +
-//                                             'onclick="if(event.stopPropagation){event.stopPropagation();} event.cancelBubble=true; ' +
-//                                             'FloatPanel_Filter && FloatPanel_Filter();">' +
-//                                             '<svg viewBox="0 0 24 24">' +
-//                                               '<path d="M4 6h16v2H4V6zm3 5h10v2H7v-2zm3 5h4v2h-4v-2z"></path>' +
-//                                             '</svg>' +
-//                                           '</button>' +
-                                    
-//                                         '</div>' +
-//                                       '</div>',
-//                                     }
-//                                 ]
-//                             }
                         ]
                     },
 
@@ -525,39 +457,65 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade() {
         ]
 
     });
-    return _FloatPanel_Membership_MembershipCardHubsUpgrade;
+   
 
 
+
+
+
+
+/**
+ * @param {Boolean} fromBack  true bila dipanggil dari popstate (browser back)
+ * @param {Object}  animCfg   optional animation config (untuk swipe left/right)
+ */
+function FloatPanel_Membership_MembershipCardHubsUpgradeHide(fromBack, animCfg) {
+
+  // guard
+  if (isFloatPanel_Membership_MembershipCardHubsUpgradeOpen !== 'Y') return;
+
+  // hide (optional custom animation)
+  if (animCfg) {
+    _FloatPanel_Membership_MembershipCardHubsUpgrade.hide(Ext.fx.Animation(animCfg));
+  } else {
+    _FloatPanel_Membership_MembershipCardHubsUpgrade.hide();
+  }
+
+  isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'N';
+ // RemovePages("FloatPanel_ForgotPasswordHide()");
+
+  // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+  if (fromBack !== true) {
+    AyohaBrowserBack.close('FloatPanel_Membership_MembershipCardHubsUpgrade');
+  }
+
+
+ 
 
 }
-
-
-
-
 
 
 
 
 function FloatPanel_Membership_MembershipCardHubsUpgradeShow() {
 
-    Ext.Viewport.remove(_FloatPanel_Membership_MembershipCardHubsUpgrade);
-    this.overlay = Ext.Viewport.add(FloatPanel_Membership_MembershipCardHubsUpgrade());
-    this.overlay.show();
-   // LoadingPanelShow(getLoadingIcon(), 'Loading....');
-    AddRoutePages("FloatPanel_Membership_MembershipCardHubsUpgradeHide()");
-    isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'Y';
+
+  _FloatPanel_Membership_MembershipCardHubsUpgrade.show();
+  isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'Y';
    // Dashboard_MembershipCardHub();
 
    FloatPanel_Membership_MembershipCardHubsUpgrade_MembershipCardLoadBySubscriberAccNoDashboardMainStore();
-    //document.getElementById("input-FloatPanel_Membership_MembershipCardHubsUpgrade_SearchTxt").addEventListener("keyup", MembershipsLoadBySubscriberAccNoStoreOnKeyUp);
- 
+  AyohaBrowserBack.push('FloatPanel_Membership_MembershipCardHubsUpgrade', function () {
+    // bila user tekan BACK sebenar
+    FloatPanel_Membership_MembershipCardHubsUpgradeHide(true);
+  });
 
 
 
 
-    
-    
 }
+
+
+
 
 
 function  FloatPanel_Membership_MembershipCardHubsUpgrade_MembershipCardLoadBySubscriberAccNoDashboardMainStore() {
@@ -627,17 +585,9 @@ function  FloatPanel_Membership_MembershipCardHubsUpgrade_MembershipCardLoadBySu
     
 
 
-function FloatPanel_Membership_MembershipCardHubsUpgradeHide() {
-    // FloatPanel_Membership_MembershipCardHubsUpgrade_AddCardHide();
-    if (isFloatPanel_Membership_MembershipCardHubsUpgradeOpen == "Y") {
-        _FloatPanel_Membership_MembershipCardHubsUpgrade.hide(); isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'N';
-        RemovePages("FloatPanel_Membership_MembershipCardHubsUpgradeHide()");
-    }
-   
-}
 
 
-function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl,EnterpriseName,EnterpriseTagline,StrCheckInCount,EnterpiseAccNo) {
+function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShowORI(logoUrl,EnterpriseName,EnterpriseTagline,StrCheckInCount,EnterpiseAccNo) {
     // Create a new div element to hold our custom HTML
 
   var CheckInCount=parseInt(StrCheckInCount);
@@ -798,3 +748,134 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl
   
 }
    
+function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl,EnterpriseName,EnterpriseTagline,StrCheckInCount,EnterpiseAccNo) {
+  // var CheckInCount = parseInt(StrCheckInCount, 10) || 0;
+   var CheckInCount = parseInt(StrCheckInCount);
+   if (CheckInCount <= 2) {
+ 
+       FloatPanel_CheckInModalShow({
+           logoUrl: logoUrl,
+           enterpriseName: EnterpriseName,
+           enterpriseTagline: EnterpriseTagline,
+           enterpriseAccNo: EnterpiseAccNo,
+           checkInCount: CheckInCount,
+ 
+           onConfirmFn: function(modalView){
+               // ✅ letak code Ajax insert check-in kau sini
+               // var objn = {
+               //     "EnterpriseHQAccNo": EnterpiseAccNo,
+               //     "EnterpriseAccNo": EnterpiseAccNo,
+               //     "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
+               //     "CheckInCode": "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
+               //     "CheckInMethod": "Online",
+               //     "CheckInPage": "MerchantList"
+               // };
+ 
+               // Ext.Ajax.request({
+               //     type: "POST",
+               //     url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
+               //     dataType: "json",
+               //     data: JSON.stringify(objn),
+               //     headers: {"Content-Type":"application/json; charset=utf-8"},
+ 
+               //     success: function (result) {
+               //         var data = Ext.decode((result.responseText || '').trim());
+               //         if (data.success == "true") {
+               //             CheckInCount = CheckInCount + 1;
+ 
+               //             // celebrate + refresh
+               //             Ayoha_CelebrationReward(CheckInCount);
+               //             CoreFunction_DashboardAyohaUser();
+ 
+               //             // close modal
+               //             FloatPanel_CheckInModalHide();
+ 
+               //             // optional: close parent panel
+               //             FloatPanel_Membership_MembershipCardHubsUpgradeHide();
+               //         } else {
+               //             swalFireFail("Fail!->" + (result.responseText || '').trim());
+               //         }
+               //     },
+               //     failure: function (result) {
+               //         swalFireFail("Fail!" + (result.responseText || '').trim());
+               //     }
+               // });
+           },
+ 
+           onCancelFn: function(){
+               // optional cancel action
+           }
+       });
+ 
+       return;
+   }else{
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+   var objn = {
+     EnterpriseHQAccNo: EnterpiseAccNo,
+     EnterpriseAccNo: EnterpiseAccNo,
+     SubscriberAccNo: GetCurrAyohaUserAccountNo(),
+     CheckInCode: "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
+     CheckInMethod: "Online",
+     CheckInPage: "MerchantList"
+   };
+   
+   Ext.Ajax.request({
+     url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
+     method: 'POST',                 // ✅ betul
+     jsonData: objn,                 // ✅ auto encode JSON + set body
+     headers: {
+       'Content-Type': 'application/json; charset=utf-8'
+     },
+     success: function (response) {  // ✅ Ext pass response
+       var data;
+   
+       try {
+         data = Ext.decode((response.responseText || '').trim());
+       } catch (e) {
+         swalFireFail("Fail! Invalid JSON -> " + (response.responseText || ''));
+         Ext.Viewport.unmask();
+         LoadingPanelHide();
+         return;
+       }
+   
+       if (data && (data.success === true || data.success === "true")) {
+   
+        FloatPanel_CheckInModalHide(false); // popOut default
+         CoreFunction_DashboardAyohaUser();
+         FloatPanel_Membership_MembershipCardHubsUpgradeHide(false);
+       //  CoreFunction_DestroyFloatPanel('FloatPanel_Membership_MembershipCardHubsUpgrade_ID');
+         Ayoha_WelcomeBackFans();
+ 
+ 
+   
+       } else {
+         swalFireFail("Fail!->" + (response.responseText || '').trim());
+         LoadingPanelHide();
+         Ext.Viewport.unmask();
+         return;
+       }
+   
+       Ext.Viewport.unmask();
+     },
+     failure: function (response) {
+       swalFireFail("Fail!" + (response.responseText || '').trim());
+       Ext.Viewport.unmask();
+       LoadingPanelHide();
+     }
+   });
+ 
+   }
+ 
+   // else flow (CheckInCount > 2) keep as your original
+   // ... existing ajax request ...
+ }
+ 

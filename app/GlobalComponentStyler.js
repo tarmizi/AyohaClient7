@@ -89,3 +89,16 @@ function ayohaThemeColor_Hero(){
             'border:1px none white;font-family:Century Gothic;font-weight:700;font-size:10px;color:black">' +
             Title + '</div>';
     }
+
+
+
+
+    function ayohaThemeColor_Body_Container() {
+    return "background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);";
+     
+    //  return "background-color:  white";
+     // return "background-color: #F6F7FB";
+        return "background-color: #FAF5FF;";
+       //  #F3F4F6
+         return "background: linear-gradient(180deg, #FFF1F9 50%, #F3E8FF 50%);"
+   }
