@@ -2540,6 +2540,7 @@ function FloatPanelMerchantDetailPage_OpenWhatsApp() {
 function FloatPanelMerchantDetailPage_OpenMerchantReview() {
     //var IDS = localStorage.getItem("globalFloatPanelMerchantDetailPage_ID");
     //AyohaMerchantReviewShow(IDS);
+  
     AyohaMerchantReviewShow_FromFloatPanel_MerchantDetailPage();
 
     

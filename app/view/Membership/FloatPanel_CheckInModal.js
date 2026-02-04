@@ -46,43 +46,7 @@ Ext.define('BuskartApp.view.Membership.FloatPanel_CheckInModal', {
       },
   
       listeners: {
-        initialize: function () {
-          var me = this;
-  
-          // ✅ swipe (ikut pattern kau)
-          me.element.on({
-            swipe: function (e) {
-              if (!e) return;
-  
-              if (e.direction === "left") {
-                FloatPanel_CheckInModalHide(false, {
-                  type: 'slideOut',
-                  direction: 'left',
-                  easing: 'cubic-bezier(.7,0,.7,1)',
-                  duration: 250
-                });
-              }
-  
-              if (e.direction === "right") {
-                FloatPanel_CheckInModalHide(false, {
-                  type: 'slideOut',
-                  direction: 'right',
-                  easing: 'cubic-bezier(.7,0,.7,1)',
-                  duration: 250
-                });
-              }
-  
-              if (e.direction === "down") {
-                FloatPanel_CheckInModalHide(false, {
-                  type: 'slideOut',
-                  direction: 'down',
-                  easing: 'cubic-bezier(.7,0,.7,1)',
-                  duration: 250
-                });
-              }
-            }
-          });
-        },
+      
   
         // ✅ kalau user tap mask, close macam standard
         beforehide: function () {

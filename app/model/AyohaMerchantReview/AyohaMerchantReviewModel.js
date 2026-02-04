@@ -1,6 +1,5 @@
 ﻿Ext.define('BuskartApp.model.AyohaMerchantReview.AyohaMerchantReviewModel', {
-    extend: 'Ext.data.Model',
-    config: {
+    extend: 'Ext.data.Model',  
         fields: [
        'ID',
       'ReviewCode',
@@ -47,11 +46,17 @@
                name: 'ModifiedReviewTxt',
                convert: function (value, record) {
                    var _value;
+                   var strV=record.get('ReviewText');
+
+                   if(strV){
+                    _value = record.get('ReviewText').replace(/\n/g, "<br>");
+
+                   }else{
+                    _value="";
+                   }
                    
 
-
-
-                   _value = record.get('ReviewText').replace(/\n/g, "<br>");
+                 
 
                    return _value
                }
@@ -84,8 +89,7 @@
                     return _value
                 }
             },
-        ]
-    }
+        ]    
 });
 
 

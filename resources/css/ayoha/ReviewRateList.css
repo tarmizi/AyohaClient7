@@ -1,0 +1,161 @@
+/* =========================================================
+   AYOHA REVIEW LIST — TRANSPARENT + FULL WIDTH (Ext JS 7 Modern)
+   Letak CSS ini PALING BAWAH sekali (last) untuk menang cascade
+   ========================================================= */
+
+/* --- Base: list container full width + no padding/margin --- */
+.ayohaReviewList{
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-sizing: border-box !important;
+}
+
+/* --- Force transparent to everything inside list (incl pseudo elements) --- */
+.ayohaReviewList,
+.ayohaReviewList *,
+.ayohaReviewList *::before,
+.ayohaReviewList *::after{
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* --- Cover common ExtJS Modern wrappers (yang selalu bagi grey/bg) --- */
+.ayohaReviewList .x-scrollview,
+.ayohaReviewList .x-scroll-container,
+.ayohaReviewList .x-scroller,
+.ayohaReviewList .x-scroll-scroller,
+.ayohaReviewList .x-body,
+.ayohaReviewList .x-body-el,
+.ayohaReviewList .x-inner,
+.ayohaReviewList .x-component-inner,
+.ayohaReviewList .x-container-inner,
+.ayohaReviewList .x-dataview,
+.ayohaReviewList .x-dataview-inner,
+.ayohaReviewList .x-dataview-item,
+.ayohaReviewList .x-listitem,
+.ayohaReviewList .x-listitem-body,
+.ayohaReviewList .x-list-item,
+.ayohaReviewList .x-list-item-body{
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* --- Buang highlight grey masa tap/pressed/selected --- */
+.ayohaReviewList .x-pressed,
+.ayohaReviewList .x-item-pressed,
+.ayohaReviewList .x-selected,
+.ayohaReviewList .x-selected *{
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   FULL WIDTH FIXES
+   (Theme kadang letak padding kiri/kanan pada wrapper)
+   ========================================================= */
+
+/* 1) Buang side padding yang buat item nampak sempit */
+.ayohaReviewList .x-scrollview,
+.ayohaReviewList .x-body-el,
+.ayohaReviewList .x-inner,
+.ayohaReviewList .x-component-inner,
+.ayohaReviewList .x-container-inner,
+.ayohaReviewList .x-dataview-inner{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 2) Pastikan wrapper item betul-betul stretch */
+.ayohaReviewList .x-dataview-item,
+.ayohaReviewList .x-listitem{
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+}
+
+/* 3) Ini punca paling biasa (padding default pada body item) */
+.ayohaReviewList .x-listitem-body,
+.ayohaReviewList .x-list-item-body{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Optional: kalau ada border/rounding default theme yang nampak macam grey line */
+.ayohaReviewList .x-dataview-item,
+.ayohaReviewList .x-listitem{
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* =========================================================
+   LAST RESORT (kalau masih ada gap kiri/kanan)
+   Theme kadang hardcode padding 16px pada wrapper yang susah catch.
+   Aktifkan block ni kalau masih “tak betul-betul width”.
+   ========================================================= */
+
+/*
+.ayohaReviewList{
+  --ayohaSidePad: 16px;  // tukar kalau gap lain (12/20/etc)
+}
+
+.ayohaReviewList .review-item-container{
+  width: calc(100% + (var(--ayohaSidePad) * 2)) !important;
+  margin-left: calc(var(--ayohaSidePad) * -1) !important;
+  margin-right: calc(var(--ayohaSidePad) * -1) !important;
+  box-sizing: border-box !important;
+}
+*/
+
+
+/* =========================================================
+   FIX % WIDTH TAK JADI (ExtJS Modern SimpleListItem wrappers)
+   ========================================================= */
+
+/* Pastikan dataview stack items & stretch */
+.ayohaReviewList .x-dataview-inner{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;   /* ✅ KEY */
+}
+
+/* Paksa setiap item ambil satu row penuh */
+.ayohaReviewList .x-listitem{
+  flex: 0 0 100% !important;         /* ✅ KEY (flex-basis 100%) */
+  width: 100% !important;
+  max-width: none !important;
+  align-self: stretch !important;
+  margin: 0 !important;
+}
+
+/* Wrapper dalam item juga mesti 100% (ini yang selalu buat 408px) */
+.ayohaReviewList .x-listitem-body-el,
+.ayohaReviewList .x-listitem-inner-el,
+.ayohaReviewList .x-component-body-el,
+.ayohaReviewList .x-component-inner-el,
+.ayohaReviewList .x-innerhtml{
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+
+/* Optional: kalau ada “min-content” behavior */
+.ayohaReviewList .x-listitem-body-el,
+.ayohaReviewList .x-listitem-inner-el{
+  flex: 1 1 auto !important;
+}

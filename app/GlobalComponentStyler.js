@@ -102,3 +102,16 @@ function ayohaThemeColor_Hero(){
        //  #F3F4F6
          return "background: linear-gradient(180deg, #FFF1F9 50%, #F3E8FF 50%);"
    }
+
+
+   function ayohaThemeColor_Body_ThemeColor(){
+    var value="background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);";
+     //var value="background: linear-gradient(180deg,#F3E8FF 0%,#FFF1F9 100%);";
+      return value;
+  }
+
+  function ayohaThemeColor_Body_ThemeColor_Border(){
+    var value="background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);border:5px solid #6126E6;";
+     //var value="background: linear-gradient(180deg,#F3E8FF 0%,#FFF1F9 100%);";
+      return value;
+  }

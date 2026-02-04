@@ -248,7 +248,7 @@ xtype:'spacer'
                               
                                 xtype: 'component', 
                                 margin:'0 0 0 0',
-                            html: '<img onclick="FloatPanel_CheckOut_NonMemberHide();" src="resources/icons/DropDownWhite.png" alt="Coins" style="width:28px;height:28px"/>' 
+                            html: '<img onclick="FloatPanel_CheckOut_NonMemberHide(false);" src="resources/icons/DropDownWhite.png" alt="Coins" style="width:28px;height:28px"/>' 
                         },
                         {
                             xtype:'spacer',
