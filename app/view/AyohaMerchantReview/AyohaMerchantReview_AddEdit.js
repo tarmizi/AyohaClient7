@@ -492,8 +492,8 @@ function FloatPanel_AyohaMerchantReview_AddEditCreateIfNeeded() {
                {
                    xtype: 'container',
                    width: '100%',
-                   height: 40,
-                   margin: '0 0 0 0',
+                   height: 55,
+                   margin: '-10 0 0 0',
                   // docked: 'bottom',
                    // height:'70%',
                    // width: 40,
@@ -504,62 +504,77 @@ function FloatPanel_AyohaMerchantReview_AddEditCreateIfNeeded() {
                    id: 'containerAyohaMerchantReview_AddEditbottom',
                    layout: {
                        type: 'hbox',
-                       pack: 'right',
-                       align: 'right',
+                       pack: 'center',
+                       align: 'center',
                    },
                    items: [
+                    {
+xtype:'spacer'
+                    },
 
                        {
                            xtype: 'button',
-                          // width: 200,
-                           // hidden: true,
-                           //  align: 'stretch',
-
                            ui: 'plain',
-                           //  width: '80%',
-                           height: 40,
-                           margin: '0 0 0 0',
+                           height: 50,
+                           margin: '-10 0 0 0',
                            id: 'btnAyohaMerchantReview_AddEdit_Delete',
-                           // width: '80%',
-                           //style: {
-                           //    background: '#FA8072',
-                           //},
-                           // padding: '10px',
-                           //  text: '<font size=3px color=black><center><b>Register</b></center></font>',
-                           html: '<button class="buttonDeleteReview">Delete</button>',
-
+                        //    text: 'Delete',
+                        //    cls: 'buttonDeleteReview',                         
+                          html: '<button class="buttonDeleteReview">Delete</button>',
                            handler: function () {
+
+                            // AyohaConfirm({
+                            //     title: 'Confirmation',
+                            //     message: 'Are you sure want to deletefdgfdgfdg?',
+                            //     imageUrl: 'resources/icons/attention1.png',
+                            //     onYes: function () {
+                            //       AyohaMerchantReview_AddEdit_PostReview_Delete();
+                            //     }
+                            //   });
+
+                         
+                            AyohaConfirm({
+                                title: 'Confirmation',
+                                message: 'Are you sure want to delete?',
+                                imageUrl: 'resources/icons/attention1.png',
+                                onYes: function () {
+                                  AyohaMerchantReview_AddEdit_PostReview_Delete();
+                                }
+                              });
+
+
+
+                            // console.log('Delete tapped');
+                            // console.log('Swal is', typeof Swal);
+                          
+                            // if (typeof Swal === 'undefined') {
+                            //   Ext.toast('SweetAlert2 not loaded / Swal undefined');
+                            //   return;
+                            // }
+                          
+                            // Swal.fire('Test');
+
+
+
+
+
+
+
+
                                //  FloatPanel_AyohaUserRegistration_Save();
-                               Swal.fire({
-                                   title: 'Are you sure want to delete?',
-                                   //  text: "Delete this card will effect your customer card. They no longer accessible to this card. Think Carefully before proccedd with delete!",
-                                   //icon: 'warning',
-                                   //showCancelButton: true,
-                                   //confirmButtonColor: '#3085d6',
-                                   //cancelButtonColor: '#d33',
-                                   imageUrl: "resources/icons/attention1.png",
-                                   imageWidth: 150,
-                                   imageHeight: 150,
-                                   showCloseButton: true,
-                                 //  showCancelButton: true,
-                                   //  confirmButtonColor: '#3085d6',
-                                   confirmButtonColor: '#9932cc',
-                                   //cancelButtonColor: '#d33',
-                                   //cancelButtonText: 'No',
-                                   confirmButtonText: 'Yes'
-                               }).then(function (result) {
-                                   if (result.isConfirmed) {
-                                       AyohaMerchantReview_AddEdit_PostReview_Delete();
-                                   }
-                               });
-
-                              
-
-
-
-
-
-
+                            //    Swal.fire({
+                            //        title: 'Are you sure want to delete?',                                 
+                            //        imageUrl: "resources/icons/attention1.png",
+                            //        imageWidth: 150,
+                            //        imageHeight: 150,
+                            //        showCloseButton: true,
+                            //        confirmButtonColor: '#9932cc',
+                            //        confirmButtonText: 'Yes'
+                            //    }).then(function (result) {
+                            //        if (result.isConfirmed) {
+                            //            AyohaMerchantReview_AddEdit_PostReview_Delete();
+                            //        }
+                            //    });
                            },
                        },
                        {
@@ -570,8 +585,8 @@ function FloatPanel_AyohaMerchantReview_AddEditCreateIfNeeded() {
 
                            ui: 'plain',
                            //  width: '80%',
-                           height: 40,
-                           margin: '0 0 0 0',
+                           height: 50,
+                           margin: '-10 0 0 0',
                            id: 'btnAyohaMerchantReview_AddEdit_AddPostReview',
                            // width: '80%',
                            //style: {
@@ -604,8 +619,8 @@ function FloatPanel_AyohaMerchantReview_AddEditCreateIfNeeded() {
 
                               ui: 'plain',
                               //  width: '80%',
-                              height: 40,
-                              margin: '0 0 0 0',
+                              height: 50,
+                              margin: '-10 0 0 0',
                               id: 'btnAyohaMerchantReview_AddEdit_EditPostReview',
                               // width: '80%',
                               //style: {
@@ -629,6 +644,10 @@ function FloatPanel_AyohaMerchantReview_AddEditCreateIfNeeded() {
 
 
                           },
+                          {
+                            xtype:'spacer'
+                                                },
+                            
                    ]
                },
 
@@ -734,10 +753,24 @@ if(is_FloatPanel_Membership_MembershipCardSaleDetailOpen=='Y'){
 
 
 
-    AddRoutePages("AyohaMerchantReview_AddEditHide()");
-    Ext.Viewport.remove(_AyohaMerchantReview_AddEdit);
-    this.overlay = Ext.Viewport.add(AyohaMerchantReview_AddEdit());
-    this.overlay.show();   
+    // AddRoutePages("AyohaMerchantReview_AddEditHide()");
+    // Ext.Viewport.remove(_AyohaMerchantReview_AddEdit);
+    // this.overlay = Ext.Viewport.add(AyohaMerchantReview_AddEdit());
+    // this.overlay.show();   
+
+
+    FloatPanel_AyohaMerchantReview_AddEditCreateIfNeeded();
+ // ✅ penting: push history state supaya BACK browser boleh close overlay
+ AyohaBrowserBack.push('AyohaMerchantReview_AddEdit', function () {
+    // bila user tekan BACK sebenar
+    AyohaMerchantReview_AddEditHide(true);
+  });
+
+
+  _AyohaMerchantReview_AddEdit.show();
+
+
+
     isAyohaMerchantReview_AddEditOpen = 'Y';
     globalAyohaMerchantReview_AddEdit_PostReview_isSave = "N";
     var AccountName;
@@ -962,7 +995,14 @@ var globalAyohaMerchantReview_AddEdit_PostReview_isSave = "N";
 function AyohaMerchantReview_AddEdit_PostReview_Add() {
 
     if (starCount == 0) {
-        swalFireFail("Rating is Required!");
+        ayohaAlert({
+            title: 'Fail',
+            message: 'Rating is required!',
+            iconUrl: 'resources/icons/wired-gradient-1140-error.gif',
+            cb: function () {
+                AyohaMerchantReview_AddEditHide(false);
+            }
+          });
         return
     }
 
@@ -982,17 +1022,23 @@ function AyohaMerchantReview_AddEdit_PostReview_Add() {
             "RowStatusAyoha": "Active",
             "ItemCodeReview": globalAyohaMerchantReview_ItemCodeReview
         };
-        var _value = Ext.Ajax.request({
+    Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
+
+            // url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewInsertUpdate',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
 
             url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewInsertUpdate',
-
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
+            method: 'POST',
+            jsonData: objn,
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
 
             success: function (result, request) {
 
@@ -1003,12 +1049,26 @@ function AyohaMerchantReview_AddEdit_PostReview_Add() {
 
                 if (data.success == "true") {
                    AppState.AyohaMerchantReview_AddEdit.RateStarGiven=starCount;
-                    swalFireSuccesPostReview('Success post your review/rating,Thank You!');
-                    AyohaMerchantReview_AddEditHide();
+                   AyohaMerchantReview_AddEditHide(false);
+
+
+                //   ayohaAlert({
+                //     title: 'Success',
+                //     message: 'Success post your review/rating,Thank You!',
+                //     iconUrl: 'resources/icons/postReviewSucces02.gif',
+                //     cb: function () {
+                //         AyohaMerchantReview_AddEditHide(false);
+                //     }
+                //   });
+
+                
+
+
+                 //   AyohaMerchantReview_AddEditHide();
                     globalAyohaMerchantReview_AddEdit_PostReview_isSave = "Y";
 
 
-                    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Reload Review..' });
+                   // Ext.Viewport.mask({ xtype: 'loadmask', message: 'Reload Review..' });
                     var task = Ext.create('Ext.util.DelayedTask', function () {
                         if (is_FloatPanel_AyohaStore_SaleItemDetailOpen == 'Y') {
                             FloatPanel_AyohaStore_SaleItemDetail_RateAndReview();
@@ -1017,24 +1077,38 @@ function AyohaMerchantReview_AddEdit_PostReview_Add() {
                         }
 
                         
-                        Ext.Viewport.unmask();
+                 
                     });
-                    Ext.Viewport.unmask();
+                 
                     task.delay(500);
 
                 }
                 else {
 
-                    swalFireFail("Fail!");
-                    Ext.Viewport.unmask();
+                    ayohaAlert({
+                        title: 'Fail',
+                        message: 'Fail!',
+                        iconUrl: 'resources/icons/xsignPurpleOri.png',
+                        cb: function () {
+                            AyohaMerchantReview_AddEditHide(false);
+                        }
+                      });
+                
                 }
-                Ext.Viewport.unmask();
+             
 
             },
 
             failure: function (result, request) {
-                swalFireFail("Fail!");
-                Ext.Viewport.unmask();
+                ayohaAlert({
+                    title: 'Fail',
+                    message: 'System Fail!',
+                    iconUrl: 'resources/icons/xsignPurpleOri.png',
+                    cb: function () {
+                        AyohaMerchantReview_AddEditHide(false);
+                    }
+                  });
+             
             }
 
         });
@@ -1052,7 +1126,14 @@ function AyohaMerchantReview_AddEdit_PostReview_Edit() {
 
 
     if (starCount == 0) {
-        swalFireFail("Rating is Required!");
+        ayohaAlert({
+            title: 'Fail',
+            message: 'Rating is required!',
+            iconUrl: 'resources/icons/wired-gradient-1140-error.gif',
+            cb: function () {
+                AyohaMerchantReview_AddEditHide(false);
+            }
+          });
         return
     }
 
@@ -1068,18 +1149,23 @@ function AyohaMerchantReview_AddEdit_PostReview_Edit() {
             "RowStatusMerchant": "Active",
             "RowStatusAyoha": "Active"
         };
-        var _value = Ext.Ajax.request({
+      Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
 
+            // url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewInsertUpdate',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+            
             url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewInsertUpdate',
-
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-
+            method: 'POST',
+            jsonData: objn,
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
             success: function (result, request) {
 
                 //console.log(result.responseText);
@@ -1089,12 +1175,19 @@ function AyohaMerchantReview_AddEdit_PostReview_Edit() {
 
                 if (data.success == "true") {
                     AppState.AyohaMerchantReview_AddEdit.RateStarGiven=starCount;
-                    swalFireSuccesPostReview('Success post your review/rating,Thank You!');
-                  
-                    AyohaMerchantReview_AddEditHide();
+                    AyohaMerchantReview_AddEditHide(false);
+                    // ayohaAlert({
+                    //     title: 'Success',
+                    //     message: 'Success edit your review/rating,Thank You!',
+                    //     iconUrl: 'resources/icons/postReviewSucces02.gif',
+                    //     cb: function () {
+                    //         AyohaMerchantReview_AddEditHide(false);
+                    //     }
+                    //   });
+                    //AyohaMerchantReview_AddEditHide();
                     globalAyohaMerchantReview_AddEdit_PostReview_isSave = "Y";
 
-                    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Reload Review..' });
+                 //   Ext.Viewport.mask({ xtype: 'loadmask', message: 'Reload Review..' });
                     var task = Ext.create('Ext.util.DelayedTask', function () {
 
                         if (is_FloatPanel_AyohaStore_SaleItemDetailOpen == 'Y') {
@@ -1103,24 +1196,37 @@ function AyohaMerchantReview_AddEdit_PostReview_Edit() {
                             AyohaMerchantReview_AyohaMerchantReviewLoadByEnterpriseAccNoStore();
                         }
                        
-                        Ext.Viewport.unmask();
+                      
                     });
-                    Ext.Viewport.unmask();
+                
                     task.delay(500);
 
                 }
                 else {
 
-                    swalFireFail("Fail!");
-                    Ext.Viewport.unmask();
+                    ayohaAlert({
+                        title: 'Fail',
+                        message: ' Fail!',
+                        iconUrl: 'resources/icons/xsignPurpleOri.png',
+                        cb: function () {
+                            AyohaMerchantReview_AddEditHide(false);
+                        }
+                      });
+                  
                 }
-                Ext.Viewport.unmask();
+             
 
             },
 
             failure: function (result, request) {
-                swalFireFail("Fail!");
-                Ext.Viewport.unmask();
+                ayohaAlert({
+                    title: 'Fail',
+                    message: 'System Fail!',
+                    iconUrl: 'resources/icons/xsignPurpleOri.png',
+                    cb: function () {
+                        AyohaMerchantReview_AddEditHide(false);
+                    }
+                  });
             }
 
         });
@@ -1135,7 +1241,14 @@ function AyohaMerchantReview_AddEdit_PostReview_Edit() {
 function AyohaMerchantReview_AddEdit_PostReview_Delete() {
 
     if (starCount == 0) {
-        swalFireFail("Rating is Required!");
+        ayohaAlert({
+            title: 'Fail',
+            message: 'Rating is required!',
+            iconUrl: 'resources/icons/wired-gradient-1140-error.gif',
+            cb: function () {
+                AyohaMerchantReview_AddEditHide(false);
+            }
+          });
         return
     }
 
@@ -1150,17 +1263,25 @@ function AyohaMerchantReview_AddEdit_PostReview_Delete() {
             "RowStatusMerchant": "Active",
             "RowStatusAyoha": "InActive"
         };
-        var _value = Ext.Ajax.request({
+       Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
+
+            // url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewInsertUpdate',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
 
             url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewInsertUpdate',
+            method: 'POST',
+            jsonData: objn,
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
 
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
+
 
             success: function (result, request) {
 
@@ -1171,33 +1292,55 @@ function AyohaMerchantReview_AddEdit_PostReview_Delete() {
 
                 if (data.success == "true") {
                     AppState.AyohaMerchantReview_AddEdit.RateStarGiven=0;
-                    swalFireSuccesDeletePostReview('Post your review/rating delete Successfully!');                  
-                    AyohaMerchantReview_AddEditHide();
+                    AyohaMerchantReview_AddEditHide(false);
+                    // ayohaAlert({
+                    //     title: 'Delete',
+                    //     message: 'Success Delete your review/rating,Thank You!',
+                    //     iconUrl: 'resources/icons/deleteAnimated01.gif',
+                    //     cb: function () {
+                    //         AyohaMerchantReview_AddEditHide(false);
+                    //     }
+                    //   });
+
+
+                   
                     globalAyohaMerchantReview_AddEdit_PostReview_isSave = "Y";
-                    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Reload Review..' });
+                 //   Ext.Viewport.mask({ xtype: 'loadmask', message: 'Reload Review..' });
                     var task = Ext.create('Ext.util.DelayedTask', function () {
 
 
                         AyohaMerchantReview_AyohaMerchantReviewLoadByEnterpriseAccNoStore();
-                        Ext.Viewport.unmask();
+                       
                     });
-                    Ext.Viewport.unmask();
+                 
                     task.delay(500);
 
 
                 }
                 else {
 
-                    swalFireFail("Fail!");
-                    Ext.Viewport.unmask();
+                    ayohaAlert({
+                        title: 'Fail',
+                        message: 'Fail!',
+                        iconUrl: 'resources/icons/xsignPurpleOri.png',
+                        cb: function () {
+                            AyohaMerchantReview_AddEditHide(false);
+                        }
+                      });
                 }
-                Ext.Viewport.unmask();
+            
 
             },
 
             failure: function (result, request) {
-                swalFireFail("Fail!");
-                Ext.Viewport.unmask();
+                ayohaAlert({
+                    title: 'Fail',
+                    message: 'System Fail!',
+                    iconUrl: 'resources/icons/xsignPurpleOri.png',
+                    cb: function () {
+                        AyohaMerchantReview_AddEditHide(false);
+                    }
+                  });
             }
 
         });

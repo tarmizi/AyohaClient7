@@ -374,7 +374,7 @@ style: ayoha_BorderColor_1px(),
                         style: "background-color: transparent",
                         layout: {
                             type: 'vbox',
-                            pack: 'center',
+                            pack: 'start',
                             align: 'center'
                         },
                         items: [
@@ -391,7 +391,7 @@ style: ayoha_BorderColor_1px(),
                                    xtype: 'container',
                                    width: '100%',
                                    height: 28,
-                                   margin:'0 0 0 -10',
+                                   margin:'-10 0 0 -10',
                                    style: "background-color: transparent",
                                    layout: {
                                        type: 'hbox',
@@ -404,7 +404,7 @@ style: ayoha_BorderColor_1px(),
                                             xtype: 'button',
                                             id: 'btnAyohaMerchantReview_Star1',
                                             height: 28,
-                                            width: 28,
+                                            width: 50,
                                             // iconCls: 'list',
                                             html: '<div ><img src="resources/icons/reviewstarunrate.png" width="18" height="18" alt="Company Name"></div>',
                                             ui: 'plain',
@@ -417,8 +417,8 @@ style: ayoha_BorderColor_1px(),
 xtype: 'button',
 id: 'btnAyohaMerchantReview_Star2',
 height: 28,
-width: 28,
-margin:'0 0 0 -5',
+width: 50,
+margin:'0 0 0 -28',
 // iconCls: 'list',
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="18" height="18" alt="Company Name"></div>',
 ui: 'plain',
@@ -430,8 +430,8 @@ handler: function () {
 xtype: 'button',
 id: 'btnAyohaMerchantReview_Star3',
 height: 28,
-width: 28,
-margin: '0 0 0 -5',
+width: 48,
+margin:'0 0 0 -28',
 // iconCls: 'list',
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="18" height="18" alt="Company Name"></div>',
 ui: 'plain',
@@ -444,8 +444,8 @@ handler: function () {
 xtype: 'button',
 id: 'btnAyohaMerchantReview_Star4',
 height: 28,
-width: 28,
-margin: '0 0 0 -5',
+width: 48,
+margin:'0 0 0 -28',
 // iconCls: 'list',
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="18" height="18" alt="Company Name"></div>',
 ui: 'plain',
@@ -457,8 +457,8 @@ handler: function () {
 xtype: 'button',
 id: 'btnAyohaMerchantReview_Star5',
 height: 28,
-width: 28,
-margin: '0 0 0 -5',
+width: 48,
+margin:'0 0 0 -28',
 // iconCls: 'list',
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="18" height="18" alt="Company Name"></div>',
 ui: 'plain',
@@ -474,9 +474,9 @@ handler: function () {
 
 
                                {
-                                   margin: '17 0 0 10',
+                                   margin: '2 0 0 10',
                                   width: '100%',
-                                  height: 10,
+                                  height: 20,
                                    id: 'htmlAyohaMerchantReview_TotalReviews',
                                    html: '<div style="width100%;text-align:center;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;0 Reviews</div>'
                                }
@@ -1267,7 +1267,7 @@ function AyohaMerchantReview_AyohaMerchantReview_CalculateRating() {
                         }
                        
 
-                        Ext.getCmp('htmlAyohaMerchantReview_TotalReviews').setHtml('<div style="width100%;text-align:center;background-color: transparent;font-family:Century Gothic;;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;' + TotalVoter + ' Reviews</div>');
+                        Ext.getCmp('htmlAyohaMerchantReview_TotalReviews').setHtml('<div style="width100%;text-align:center;background-color: transparent;font-family:Century Gothic;;font-size:12px;color:black;font-weight:bold;overflow:hidden;margin:0px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;' + TotalVoter + ' Reviews</div>');
 
                         var RateReviews = TotalAvg.toFixed(1);
 
@@ -1759,18 +1759,25 @@ function AyohaMerchantReview_UpdateEnterpriseCountStar() {
     };
 
  
-    var _value = Ext.Ajax.request({
+    Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
 
-        url: GetAPIurl() + '/Enterprises/EnterprisesUpdateCountStar',
+        // url: GetAPIurl() + '/Enterprises/EnterprisesUpdateCountStar',
 
-        dataType: "json",
-        data: JSON.stringify(objn),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+        // dataType: "json",
+        // data: JSON.stringify(objn),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
 
+
+
+        
+  url: GetAPIurl() + '/Enterprises/EnterprisesUpdateCountStar',
+  method: 'POST',
+  jsonData: objn,
+  headers: { 'Content-Type': 'application/json; charset=utf-8' },
         success: function (result, request) {
 
             //console.log(result.responseText);

@@ -3243,3 +3243,41 @@ function Config_apiPostJson(endpoint, payload, onOk, onErr) {
     }
   });
 }
+
+
+
+
+
+
+
+
+
+var _AyohaConfirmOverlay = null;
+
+function AyohaConfirm(options) {
+  options = options || {};
+
+  if (!_AyohaConfirmOverlay || _AyohaConfirmOverlay.destroyed) {
+    _AyohaConfirmOverlay = Ext.create('BuskartApp.view.common.OverlayConfirm');
+    Ext.Viewport.add(_AyohaConfirmOverlay);
+  }
+
+  _AyohaConfirmOverlay.setTitleText(options.title || 'Confirmation');
+  _AyohaConfirmOverlay.setMessageText(options.message || 'Are you sure?');
+  _AyohaConfirmOverlay.setImageUrl(options.imageUrl || 'resources/icons/attention1.png');
+
+  _AyohaConfirmOverlay.setYesText(options.yesText || 'YES');
+  _AyohaConfirmOverlay.setNoText(options.noText || 'NO');
+
+  _AyohaConfirmOverlay.setOnYes(options.onYes || null);
+  _AyohaConfirmOverlay.setOnNo(options.onNo || null);
+
+  return new Promise(function (resolve) {
+    _AyohaConfirmOverlay._resolver = resolve;
+    _AyohaConfirmOverlay.show();
+  });
+}
+
+
+
+
