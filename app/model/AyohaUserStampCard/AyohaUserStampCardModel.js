@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaUserStampCard.AyohaUserStampCardModel', {
     extend: 'Ext.data.Model',
-    config: {
+ //   config: {
         fields: [
             'ID',
                  'StampCardCode',
@@ -92,6 +92,6 @@
                          }
                      },
         ]
-    }
+   // }
 });
 
