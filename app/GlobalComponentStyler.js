@@ -28,7 +28,27 @@ function ayohaThemeColor_Hero(){
   }
   
 
+  function ayohaThemeColor_Card(){
+  var value="background: linear-gradient(180deg, #491A7F 0%, #7027A5 50%, #9537C8 100%);border:1px solid white;border-radius:20px";
+    // var value= [
+    //   'border-radius:20px;',
+    //   'border:2px solid transparent;',
+    //   'background: linear-gradient(180deg,#491A7F 0%,#7027A5 50%,#9537C8 100%) padding-box,',
+    //   'linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.18)) border-box;',
+    //   'box-shadow: 0 18px 45px rgba(0,0,0,.38), 0 0 22px rgba(149,55,200,.25), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 18px rgba(0,0,0,.22);'
+    // ].join('')
+      return value;
 
+
+      style: [
+        'border-radius:20px;',
+        'border:2px solid transparent;',
+        'background: linear-gradient(180deg,#491A7F 0%,#7027A5 50%,#9537C8 100%) padding-box,',
+        'linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.18)) border-box;',
+        'box-shadow: 0 18px 45px rgba(0,0,0,.38), 0 0 22px rgba(149,55,200,.25), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 18px rgba(0,0,0,.22);'
+      ].join('')
+  }
+  
 
   
   function ayohaTheme_HeaderText(Title){
