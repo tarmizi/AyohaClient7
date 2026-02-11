@@ -22,7 +22,7 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
         closeAction: 'hide',
         draggable: false,
         modal: false,
-        id: 'FloatPanel_AyohaCardManagement_PreviewCardID',
+     id: 'FloatPanel_AyohaCardManagement_PreviewCardID',
         zIndex: 200,
         styleHtmlContent: true,
         layout: 'fit',
@@ -83,310 +83,3110 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
         items: [
 
-            {
-                xtype: 'container',
-                hidden:true,
-                //xtype: 'carousel',
-                //direction: 'horizontal',
-                //directionLock: true,
-                width: '100%',
-                margin: '0px 0px 0px 0px',
-                zIndex:500,
-                height: '100%',
-               // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-               // style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-                style:ayohaThemeColor_Hero(),
-                id:'FloatPanel_AyohaCardManagement_PreviewCardInnerIDs',
-                html: '<div id="divCardBgImg" ></div>',
-                layout: {
-                    type: 'vbox',
-
-                },
-                items: [
-                   
-                ]
-            },
 
             {
                 xtype: 'container',
-                //hidden:true,
-                zIndex: 800,
-               // zIndex: 10,
-                //xtype: 'carousel',
-                //direction: 'horizontal',
-                //directionLock: true,
+                id: 'FloatPanel_AyohaCardManagement_PreviewCardInnerIDs',
                 width: '100%',
                 height: '100%',
-              //  html: '<div id="divCardBgImg1" ></div>',
-                id: 'FloatPanel_AyohaCardManagement_PreviewCardInnerID',
-               style: 'background-color:transparent;',
-               // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-               // style: 'background-image: url(http://www.birds.com/wp-content/uploads/home/bird4.jpg); background-size: 100% 100%;border-bottom:1px solid;',
-                layout: {
-                    type: 'fit',
-
-                },
-
-
+                layout: 'fit',
+                style: 'background: transparent; position:relative; overflow:hidden;',  // ✅ penting
                 items: [
-                    {
-                        xtype: 'container',
-
-
-                        layout: {
-                            type: 'vbox',
-                            pack: 'start',
-                            align: 'center'
-
-                        },
-                        items: [
-
-
-                            {
-
-                                xtype: 'container',
-                                width: '100%',
-                                margin:'9 0 0 0',
-                                // width: 40,
-                               // height:100,
-
-                                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                                //hidden: true,
-
-                                id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHeader',
-                                style: {
-                                    // background: '#D25959',
-                                    background: 'transparent',
-                                    // border: '2px'
+                  {
+                    xtype: 'container',
+                    id: 'FloatPanel_AyohaCardManagement_PreviewCardInnerID',
+                    layout: 'fit',
+                    style: 'background: transparent; position:relative; z-index:2;',
+                    items: [
+                        {
+                            xtype: 'container',
+    
+    
+                            layout: {
+                                type: 'vbox',
+                                pack: 'start',
+                                align: 'center'
+    
+                            },
+                            items: [
+    
+    
+                                {
+    
+                                    xtype: 'container',
+                                    width: '100%',
+                                    margin:'9 0 0 0',
+                                    // width: 40,
+                                   // height:100,
+    
+                                    //  title: '<font size="3" color="white">Live Tracking Map</font>',
+                                    //hidden: true,
+    
+                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHeader',
+                                    style: {
+                                        // background: '#D25959',
+                                        background: 'transparent',
+                                        // border: '2px'
+                                    },
+                                    //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+                                    // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                                    layout: {
+                                        type: 'hbox',
+                                        pack: 'center',
+                                        align: 'center',
+                                    },
+                                    // hidden:true,
+                                    items:
+                                           [
+    
+    
+                                                         {
+                                                             xtype: 'button',
+                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCardBack',
+                                                             height: 30,
+                                                             width: 65,
+                                                             // iconCls: 'list',
+                                                             html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+                                                            // html: '<div ><img src="resources/icons/backwhite03.png" width="25" height="20" alt="Company Name"></div>',
+                                                             ui: 'plain',
+                                                             handler: function () {
+                                                                FloatPanel_AyohaCardManagement_PreviewCardHide(false);
+                                                             
+    
+    
+    
+                                                                //  _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
+                                                                //      type: 'slideOut',
+                                                                //      direction: 'left',
+                                                                //      easing: 'cubic-bezier(.7,0,.7,1)',
+                                                                //      duration: 250
+    
+                                                                //  }));
+                                                                //  isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
+                                                                //  clearInterval(BackgroungImgInterval);
+                                                                // // FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
+                                                                //  RemovePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
+                                                            
+                                                                }
+                                                         },
+                                                        
+                                                          {
+                                                              xtype: 'spacer',
+    
+                                                          },
+                                                           //{
+                                                           //    margin: '0 0 0 0',
+                                                           //    id: 'htmFloatPanel_AyohaCardManagement_PreviewCard_TitleHeaderTxt',
+                                                           //    html: '<font size=2 color=white><b>Loyalty Stamp Card</b></font>'
+                                                           //},
+                                                           //    {
+                                                           //        xtype: 'button',
+                                                           //        id: 'btnFloatPanel_AyohaCardManagement_PreviewCard_Icon',
+                                                           //        height: 30,
+                                                           //        width: 35,
+                                                           //        // iconCls: 'list',
+                                                           //        html: '<div ><img src="resources/icons/AyohaStampCardWhite.png" width="25" height="20" alt="Company Name"></div>',
+                                                           //        ui: 'plain',
+                                                           //        handler: function () {
+    
+                                                                    
+    
+                                                           //            _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
+                                                           //                type: 'slideOut',
+                                                           //                direction: 'right',
+                                                           //                easing: 'cubic-bezier(.7,0,.7,1)',
+                                                           //                duration: 250
+    
+                                                           //            }));
+                                                           //            isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
+                                                           //            clearInterval(BackgroungImgInterval);
+                                                           //            FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
+                                                           //        }
+                                                           //    },
+                                                          //{
+                                                          //    margin: '0 0 0 0',
+                                                          //    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_UserAccountName',
+                                                          //    hidden:true,
+                                                          //    html: '<font size=3 color=white><b>TARMIZI RAHIM</b></font>'
+                                                          //},
+    
+                                                               {
+                                                                   xtype: 'container',
+                                                                   margin: '6 -10 0 0',
+                                                                   //hidden: true,
+                                                                   //style: 'background-color: white;',
+                                                                   //style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 10px 0px 0px 10px;box-shadow: 5px 10px 18px #888888;',
+                                                                   style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;',
+    
+                                                                   height: 25,
+                                                                   width: 125,
+                                                                   // margin: '70 0 0 0',
+                                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
+                                                                   layout: {
+    
+                                                                       type: 'vbox',
+                                                                       pack: 'center',
+                                                                       align: 'center'
+                                                                   },
+                                                                   items: [
+    
+    
+                                                                       {
+                                                                           margin: '25 0 0 10',
+                                                                           id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
+                                                                           html: '<font size=2 color=white><b>Loyalty Stamp Card</b></font>',
+                                                                           //hidden: true,
+                                                                       },
+                                                                       {
+                                                                           //  margin: '2 0 0 0',
+                                                                           margin: '-3 0 0 0',
+                                                                           hidden:true,
+                                                                           id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardisExpired',
+                                                                           html: '<div class="blink_me" style="width:100px;border-radius: 10px 10px 10px 10px;background-color: white;text-align:center;border: 1px solid red;font-size: 9px;font-weight:bold;color:red;height:15px">Campaign Expired!</div>',
+                                                                          // hidden: true,
+                                                                       },
+                                                                       {
+                                                                           xtype: 'container',
+                                                                           //   margin: '0 0 0 5',
+                                                                           // hidden: true,
+                                                                           style: 'background-color: transparent;',
+    
+                                                                           height: 25,
+                                                                           width: 70,
+                                                                           // margin: '70 0 0 0',
+                                                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCardeWallet',
+                                                                           layout: {
+    
+                                                                               type: 'hbox',
+                                                                               pack: 'left',
+                                                                               align: 'left'
+                                                                           },
+                                                                           items: [
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    id: 'btnFloatPanel_AyohaCardManagement_PreviewCardeWallet',
+                                                                                    hidden: true,
+                                                                                    margin: '7 0 0 8',
+                                                                                    height: 30,
+                                                                                    width: 35,
+                                                                                    // iconCls: 'list',
+                                                                                    html: '<div class="blink_me"><img src="resources/icons/nfc-sign.png" width="25" height="20" alt="Company Name"></div>',
+                                                                                    ui: 'plain',
+                                                                                    handler: function () {
+                                                                                       // Ayoha_eWallet();
+    
+                                                                                    }
+                                                                                },
+                                                                                //{
+                                                                                //    height: 30,
+                                                                                //    margin: '10 0 0 0',
+                                                                                //    width: 65,
+    
+                                                                                //    //html: '<button OnClick="Ayoha_eWallet()" class="buttonsHtmlBgTransparent"><div style="color:white;text-align: left;font-size:14px;width:100%;font-weight:bold" >RM00.00</div></button>',
+                                                                                //},
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    id: 'btnFloatPanel_AyohaCardManagement_PreviewCardeWalletValue',
+                                                                                    margin: '7 0 0 2',
+                                                                                    height: 30,
+                                                                                    width: 65,
+                                                                                    hidden:true,
+                                                                                    // iconCls: 'list',
+                                                                                    html: '<div class="blink_me" style="color:white;text-align: left;font-size:16px;width:100%;font-weight:bold;margin:-1px 0px 0px -8px" >NFC</div>',
+                                                                                    ui: 'plain',
+                                                                                    handler: function () {
+                                                                                      //  Ayoha_eWallet();
+    
+                                                                                    }
+                                                                                },
+                                                                                //{
+                                                                                //    margin: '7 0 0 2',
+    
+                                                                                //}
+                                                                           ]
+                                                                       },
+    
+                                                                   ]
+                                                               },
+                                                       {
+                                                           xtype: 'container',
+                                                           margin: '1 0 0 -4',
+                                                          //hidden: true,
+                                                           //style: 'background-color: white;',
+                                                           style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: transparent;border-radius: 0px 0px 0px 0px;',
+                                                           height: 35,
+                                                           width: 70,
+                                                           // margin: '70 0 0 0',
+                                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCardPictureUser',
+                                                           layout: {
+    
+                                                               type: 'hbox',
+                                                               pack: 'center',
+                                                               align: 'center'
+                                                           },
+                                                           items: [
+                                                               {
+                                                                   xtype: 'button',
+                                                                   height: 40,
+                                                                   width: 70,
+                                                                   margin: '0 0 0 0',
+                                                                   id: 'btnFloatPanel_AyohaCardManagement_PreviewCardPicProfile',
+                                                                   //badgeText: "2",
+                                                                   html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:30px" ><img src="resources/icons/stampedFeatureWhite05.png"  style="width: 30px; height: 30px; border:2px none grey; border-radius: 0%;  margin:-1px 0px 0px 2px"></div>',
+                                                                   ui: 'plain',
+                                                                   handler: function () {
+    
+                                                                    FloatPanel_AyohaCardManagement_PreviewCardHide(false);
+                                                                                //    _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
+                                                                                //        type: 'slideOut',
+                                                                                //        direction: 'right',
+                                                                                //        easing: 'cubic-bezier(.7,0,.7,1)',
+                                                                                //        duration: 250
+    
+                                                                                //    }));
+                                                                                //    isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
+                                                                                //    clearInterval(BackgroungImgInterval);
+                                                                                //    FloatPanel_AyohaCardManagement_PreviewCardHide(false);
+                                                                                //    //FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
+                                                                                //    RemovePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
+                                                                   }
+                                                               },
+    
+    
+    
+                                                           ]
+                                                       },
+                                                               
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                           ]
+    
                                 },
-                                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                                layout: {
-                                    type: 'hbox',
-                                    pack: 'center',
-                                    align: 'center',
+                              
+                                      
+    
+    
+    
+    
+                                {
+    
+                                    xtype: 'container',
+                                    style: "background-color: transparent",
+                                    height: '100%',
+                                    width: '100%',
+                                   
+                                    layout: {
+                                        type: 'vbox',
+                                        pack: 'center',
+                                        align: 'center'
+    
+                                    },
+                                    scrollable: {
+                                        direction: 'vertical',
+                                        directionLock: true,
+                                        indicators: false
+                                    },
+    
+                                    items: [
+                                  {
+                                            xtype: 'container',
+                                            style: "background-color: transparent",
+                                            height: 800,
+                                            width: '100%',
+                                           
+                                            layout: {
+                                                type: 'vbox',
+                                                pack: 'start',
+                                                align: 'center'
+    
+                                            },
+    
+    
+                                            items: [
+                                              
+    
+                                                {
+                                                    xtype: 'container',
+                                                    style: "background-color: transparent",
+                                                    height: 200,
+                                                    width: '100%',
+                                                   
+                                                    layout: {
+                                                        type: 'vbox',
+                                                        pack: 'end',
+                                                        align: 'center'
+            
+                                                    },
+                                                    items:[
+                                                        {
+                                                            xtype: 'container',
+                                                            id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template1',
+                                                            width: '100%',
+                                                            //height: 180,              // boleh kekal fixed kalau memang nak, tapi elakkan margin besar
+                                                            padding: 0,
+                                                            style: "background-color:transparent;border-bottom:1px none white;",
+                                                            layout: { type: 'hbox', align: 'stretch' },   // ✅ stretch bagi anak container sama tinggi
+                                                            responsiveConfig: {
+                                                                'width < 360': {
+                                                                  layout: { type: 'vbox', align: 'stretch' },
+                                                                  height: 'auto'
+                                                                }
+                                                              },
+                                                            items: [
+    
+                                                              {
+                                                                xtype: 'container',
+                                                                flex: 1.2,   
+                                                                //padding: '0 0 0 30',   // ✅ semua item dalam kiri shift kanan                               // ✅ ganti width:'33%'
+                                                                layout: { type: 'vbox', pack: 'center', align: 'center' },
+                                                                items: [{
+                                                                  xtype: 'component',
+                                                                 // margin:'0 0 0 40',
+                                                                  id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo',
+                                                                  cls: 'pcLogo',
+                                                                  html: '<img src="resources/icons/ayohaReward01.gif" />'
+                                                                }]
+                                                              },
+                                                          
+                                                              {
+                                                                xtype: 'container',
+                                                                flex: 1.9,                                  // ✅ ganti width:'67%'
+                                                                padding: '0 0 0 0',
+                                                                layout: { type: 'vbox', pack: 'center', align: 'start' }, // ✅ bukan 'left'
+                                                                defaults: { xtype: 'component' },
+                                                                items: [
+                                                                  {
+                                                                    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName',
+                                                                    cls: 'pcTitle',
+                                                                    html: '<div>Loading...</div>'
+                                                                  },
+                                                                  {
+                                                                    xtype: 'component',
+                                                                    cls: 'pcDivider'
+                                                                  },
+                                                                  {
+                                                                    id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard',
+                                                                    cls: 'pcSub',
+                                                                    html: '<div>Loading...</div>'
+                                                                  },
+                                                                  {
+                                                                    id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard',
+                                                                    hidden: true,
+                                                                    cls: 'pcSmall',
+                                                                    html: '<div>Start Date: Loading...</div>'
+                                                                  },
+                                                                  {
+                                                                    id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
+                                                                    hidden: true,
+                                                                    cls: 'pcSmall pcBlink',
+                                                                    html: '<div>Start Date: Loading...</div>'
+                                                                  },
+                                                                  {
+                                                                    id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard',
+                                                                    hidden: true,
+                                                                    cls: 'pcSmall',
+                                                                    html: '<div>289 campaign days left</div>'
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                    ]
+                                                },
+                                              
+                                                  
+    
+    
+    
+    
+                                                // {
+                                                //     xtype: 'container',
+                                                //     id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template1',
+                                                //     margin: '0 0 0 0',
+                                                //    // hidden:true,
+                                                //     style: "background-color: black;border-bottom:1px solid white;",
+                                                //     // margin: '0 0 0 0',
+                                                //     width: '100%',
+                                                //     height: 180,
+                                                //     layout: {
+                                                //         type: 'hbox',
+                                                //         pack: 'center',
+                                                //         align: 'center'
+    
+                                                //     },
+                                                //     items: [
+    
+                                                //         {
+                                                //             xtype: 'container',
+                                                //             height: 180,
+                                                //             width: '33%',
+                                                //             style: "background-color: red;",
+                                                //             layout: {
+                                                //                 type: 'vbox',
+                                                //                 pack: 'center',
+                                                //                 align: 'center'
+    
+                                                //             },
+                                                //             items:[
+                                                //                 {
+                                                //                    margin: '80 0 0 0',
+                                                //                    xtype:'component',
+                                                //                     //  height: 180,
+                                                //                     //   width: 120,
+                                                //                     id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo',
+                                                //                     html: '<img src="resources/icons/ayohaReward01.gif" width="120" height="120"/>',
+                                                //                 },
+                                                //             ]
+                                                //         },
+                                                        
+                                                //         {
+                                                //             xtype: 'container',
+                                                //             height: 180,
+                                                //             width: '67%',
+                                                //             style: "background-color: green;",
+                                                //             layout: {
+                                                //                 type: 'vbox',
+                                                //                 pack: 'center',
+                                                //                 align: 'left'
+    
+                                                //             },
+                                                //             items: [
+    
+                                                //                  {
+                                                //                      margin: '70 0 0 5',
+                                                //                      id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName',
+                                                //                      html: '<font size=3 color=white><b>Loading......</b></font>',
+                                                //                      // html: '<div style="font-size:8px;color:white;font-weight:bold">Community Coffee Roastes Sdn Bhd</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                //                  },
+                                                //                  {
+                                                //                      xtype: 'container',
+                                                //                      style: "background-color: white;border-bottom:1px solid white;",
+                                                //                      height: 1,
+                                                //                      width: '65%',
+                                                //                      margin: '0 0 0 5',
+                                                //                      //style: {
+    
+                                                //                      //    background: 'white',
+    
+                                                //                      //},
+                                                //                      //layout: {
+                                                //                      //    type: 'hbox',
+                                                //                      //    pack: 'center',
+                                                //                      //    align: 'center'
+    
+                                                //                      //},
+                                                //                  },
+                                                //                   {
+                                                //                       margin: '0 0 0 5',
+    
+                                                //                       id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard',
+    
+                                                //                       html: '<font size=2 color=white><b>Loading....</b></font>',
+                                                //                   },
+    
+                                                //                            {
+                                                //                                margin: '-8 0 0 5',
+                                                //                                hidden: true,
+                                                //                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard',
+                                                                              
+    
+                                                //                                html: '<font size=1 color=white><b>Start Date:Loading....</b></font>',
+                                                //                            },
+                                                //                            {
+                                                //                                margin: '-22 0 0 5',
+                                                //                                hidden: true,
+                                                //                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
+    
+    
+                                                //                                html: '<font size=1 color=white><b>Start Date:Loading....</b></font>',
+                                                //                            },
+    
+                                                //                    //{
+                                                //                    //    xtype:'spacer'
+                                                //                    //},
+                                                //                    {
+                                                //                        margin: '-7 0 0 5',
+                                                //                       hidden: true,
+                                                //                        id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard',
+    
+                                                //                        html: '<font size=1 color=white><b>289 campaign days left</b></font>',
+                                                //                    },
+    
+                                                                  
+    
+                                                //             ]
+    
+                                                //         },
+    
+                                                          
+    
+    
+    
+                                                           
+    
+    
+    
+    
+                                                //     ]
+                                                // },
+    
+    
+                                                /////////////////////////////////////////////////////////////---lama
+                                                  //{
+                                                  //    xtype: 'container',
+                                                  //    margin:'-50 0 0 0',
+                                                  //    height: 1,
+                                                  //    width: '90%',
+                                                  //    style: {
+    
+                                                  //        background: 'white',
+    
+                                                  //    },
+                                                  //    layout: {
+                                                  //        type: 'hbox',
+                                                  //        pack: 'center',
+                                                  //        align: 'center'
+    
+                                                  //    },
+                                                  //},
+    
+    
+    
+                                                //  {
+                                                //      xtype: 'container',
+                                                //      id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template2',
+                                                //     hidden:true,
+                                                //      margin: '-40 0 0 0',
+                                                //      // margin: '0 0 0 0',
+                                                //      width: '100%',
+                                                //      height: 300,
+                                                //      layout: {
+                                                //          type: 'vbox',
+                                                //          pack: 'center',
+                                                //          align: 'center'
+    
+                                                //      },
+                                                //      items: [
+    
+                                                //          {
+                                                //              margin: '0 0 0 0',
+                                                //              height: 130,
+                                                //              width: 130,
+                                                //              id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo_Template2',
+                                                //              html: '<img src="resources/icons/ccrlogo.png" width="130" height="130"/>',
+                                                //          },
+                                                //          {
+                                                //              xtype: 'container',
+    
+                                                //              width: '100%',
+                                                //              layout: {
+                                                //                  type: 'vbox',
+                                                //                  pack: 'start',
+                                                //                  align: 'center'
+    
+                                                //              },
+                                                //              items: [
+    
+                                                //                   {
+                                                //                       margin: '0 0 0 0',
+                                                //                       id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName_Template2',
+                                                //                       html: '<font size=3 color=white><b>Community Coffee Roastes Sdn Bhd</b></font>',
+                                                //                      // html: '<div style="font-size:8px;color:white;font-weight:bold">Community Coffee Roastes Sdn Bhd</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                //                   },
+    
+                                                //              ]
+    
+                                                //          },
+    
+                                                //            {
+                                                //                xtype: 'container',
+                                                //                height: 1,
+                                                //                width: '90%',
+                                                //                style: {
+    
+                                                //                    background: 'white',
+    
+                                                //                },
+                                                //                layout: {
+                                                //                    type: 'hbox',
+                                                //                    pack: 'center',
+                                                //                    align: 'center'
+    
+                                                //                },
+                                                //            },
+    
+    
+    
+                                                //             {
+                                                //                 xtype: 'container',
+                                                              
+                                                //                 width: '90%',
+                                                //                 style: {
+    
+                                                //                     background: 'transparent',
+    
+                                                //                 },
+                                                //                 layout: {
+                                                //                     type: 'hbox',
+                                                //                     pack: 'start',
+                                                //                     align: 'center'
+    
+                                                //                 },
+                                                //                 items: [
+    
+                                                //                     {
+                                                //                         xtype: 'container',
+                                                //                         width: '60%',
+                                                //                         hidden:true,
+                                                //                         style: {
+    
+                                                //                             background: 'transparent',
+    
+                                                //                         },
+                                                //                         layout: {
+                                                //                             type: 'vbox',
+                                                //                             pack: 'center',
+                                                //                             align: 'center'
+    
+                                                //                         }, items: [
+    
+                                                //                              {
+                                                                               
+                                                //                                  html: '<div style="font-size:16px;color:white;font-weight:bold">Ramadhan 2021!</div>',
+                                                //                              },
+                                                //                         ]
+                                                //                     },
+                                                                   
+    
+                                                //                     {
+                                                //                         xtype: 'container',
+                                                //                         width: '100%',
+                                                //                         style: {
+    
+                                                //                             background: 'transparent',
+    
+                                                //                         },
+                                                //                         layout: {
+                                                //                             type: 'vbox',
+                                                //                             pack: 'start',
+                                                //                             align: 'center'
+    
+                                                //                         }, items: [
+                                                //                              {
+                                                //                                  margin: '0 0 0 0',
+    
+                                                //                                  id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard_Template2',
+    
+                                                //                                  html: '<font size=2 color=white><b>Loading...</b></font>',
+                                                //                              },
+    
+                                                //                             {
+                                                //                                 margin: '-8 0 0 0',
+    
+                                                //                                 id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard_Template2',
+    
+                                                //                                 html: '<font size=1 color=white><b>Start Date:14/11/2019</b></font>',
+                                                //                             },
+    
+                                                //                     //{
+                                                //                     //    xtype:'spacer'
+                                                //                     //},
+                                                //                     {
+                                                //                         margin: '-7 0 0 0',
+    
+                                                //                         id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_Template2',
+    
+                                                //                         html: '<font size=1 color=white><b>Expired Date:14/12/2020</b></font>',
+                                                //                     },
+                                                //                      {
+                                                //                          xtype: 'container',
+                                                //                          height: 1,
+                                                //                          width: '80%',
+                                                //                          style: {
+    
+                                                //                              background: 'white',
+    
+                                                //                          },
+                                                //                          layout: {
+                                                //                              type: 'hbox',
+                                                //                              pack: 'center',
+                                                //                              align: 'center'
+    
+                                                //                          },
+                                                //                      },
+    
+    
+                                                //                         ]
+    
+                                                //                     },
+    
+                                                                
+                                                                    
+                                                //                 ]
+                                                //             },
+    
+                                                 
+    
+                                                //   //{
+                                                //   //    xtype: 'container',
+                                                //   //    height: 1,
+                                                //   //    width: '90%',
+                                                //   //    style: {
+    
+                                                //   //        background: 'white',
+    
+                                                //   //    },
+                                                //   //    layout: {
+                                                //   //        type: 'hbox',
+                                                //   //        pack: 'center',
+                                                //   //        align: 'center'
+    
+                                                //   //    },
+                                                //   //},
+    
+    
+                                                //      ]
+                                                //  },
+    
+    
+                                                //  {
+                                                //      xtype: 'container',
+                                                //      id: 'containerFloatPanel_AyohaCardManagement_PreviewCardQrCode',
+                                                //      width: '100%',
+                                                //      height: 200,
+                                                //      hidden: true,
+                                                //      style: "background-color: transparent",
+                                                //      //style: "background-color: #F35B57;",
+    
+                                                //      layout: {
+                                                //          type: 'vbox',
+                                                //          pack: 'center',
+                                                //          align: 'center'
+    
+                                                //      },
+    
+    
+                                                //      items: [
+    
+    
+    
+    
+    
+    
+                                                //            {
+                                                //                id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardQRCode',
+                                                //                margin: '-90 0 0 0',
+                                                //              //  hidden:true,
+                                                //                width: '90%',
+                                                //                height: '100%',
+                                                //                html: '<img src="' + GetQRCodeImg() + '" style="width: 100%; height: 100%; border:1px solid white;" /><font size=2 color=white><b>Show This QR Code to be scanned by merchandiser</b></font>',
+                                                //            },
+    
+    
+    
+                                                          
+    
+    
+    
+                                                //      ]
+    
+                                                //  },
+    
+    
+    
+    
+    
+    
+    
+                                                   //{
+                                                   //    margin: '90 0 0 0',
+                                                               
+                                                   //    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardQRCode_count',
+                                                   //    html: '<font size=3 color=white><b>12</b></font>'
+                                                   //},
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                                    
+    
+                                                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+                                                  {
+                                                      xtype: 'container',
+                                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCardMaster',
+                                                      width: '100%',
+                                                   //   margin:'-40 0 0 0',
+                                                   height:500,
+                                                      //hidden:true,
+                                                     style: "background-color: transparent",
+                                                      //style: "background-color: #F35B57;",
+                                                    //  style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
+                                                      layout: {
+                                                          type: 'vbox',
+                                                          pack: 'start',
+                                                          align: 'center'
+    
+                                                      },
+    
+    
+                                                      items: [
+                                                           
+                                                          {
+                                                              xtype: 'container',
+                                                              id: 'containerFloatPanel_AyohaCardManagement_PreviewCardMasterLoading',
+                                                              width: '80%',
+                                                              height:300,
+                                                              hidden:true,
+                                                             // style: "background-color: transparent",
+                                                              //style: "background-color: #F35B57;",
+                                                              style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
+                                                              layout: {
+                                                                  type: 'vbox',
+                                                                  pack: 'center',
+                                                                  align: 'center'
+    
+                                                              },
+    
+                                                          },
+    
+                                                           {
+                                                               xtype: 'container',
+                                                               id: 'containerFloatPanel_AyohaCardManagement_PreviewCard1',
+                                                               //hidden:true,
+                                                               style: "background-color: transparent",
+                                                             //  style: "background-color: #F35B57;",
+                                                              // height: 80,
+                                                               //  height: 120,
+                                                              // height: 150,
+                                                             // height: 110,                                                      
+                                                               width: '100%',
+                                                               layout: {
+                                                                   type: 'hbox',
+                                                                   pack: 'center',
+                                                                   align: 'center'
+    
+                                                               },
+    
+    
+                                                               items: [
+                                                                   //{
+                                                                   //    xtype: 'panel',
+                                                                   //    width: '3%'
+                                                                   //},
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCard01',
+                                                                       //hidden:true,
+                                                                      
+                                                                       style: "background-color: transparent",
+                                                                       //style: "background-color: #F35B57;",
+                                                                       //height: 110,
+                                                                       height: 90,
+                                                                       width: 115,
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
+    
+                                                                       },
+                                                                       items: [
+    
+    
+    
+                                                                         
+    
+    
+    
+                                                           {
+                                                               xtype: 'button',
+                                                               id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard1',
+                                                               hidden: true,
+                                                               //   margin: '-10 0 0 0',
+                                                          //   margin: '95 0 0 0',
+                                                          height: 90,
+                                                              width: 115,
+                                                               //width: 100,
+                                                               zIndex: 100,
+                                                               html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                               ui: 'plain',
+                                                               handler: function () {
+                                                                   var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard1').getHtml();
+                                                                   FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[0]);
+    
+                                                               }
+                                                           },
+    
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                height: 80,
+                                                                              width: 105,
+                                                                               // width: 90,
+                                                                                //zIndex: -10,
+                                                                           //   margin: '-95 0 0 0',
+                                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCard1',
+                                                                                hidden: true,
+                                                                                //badgeText: "2",
+                                                                                html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+                                                                                //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+                                                                                ui: 'plain',
+                                                                                handler: function () {
+                                                                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard1').getHtml();
+                                                                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[0]);
+                                                                                   // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                hidden: true,
+                                                                                margin: '-25 0 0 0',
+                                                                              
+                                                                                
+                                                                                id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard1',
+                                                                                html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                            },
+    
+    
+                                                                       ]
+                                                                   },
+    
+    
+                                                                   
+    
+                                                                     {
+                                                                         xtype: 'container',
+                                                                         id: 'containerFloatPanel_AyohaCardManagement_PreviewCard02',
+                                                                         //hidden:true,
+                                                                         style: "background-color: transparent",
+                                                                         //style: "background-color: #F35B57;",
+                                                                         height: 90,
+                                                                        // width: 115,
+                                                                         width: 115,
+                                                                         layout: {
+                                                                             type: 'vbox',
+                                                                             pack: 'center',
+                                                                             align: 'center'
+    
+                                                                         },
+                                                                         items: [
+                                                                                   {
+                                                                                       xtype: 'button',
+                                                                                       id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard2',
+                                                                                      // visible: false,
+                                                                                       hidden: true,
+                                                                                       //   margin: '-10 0 0 0',
+                                                                                      // margin: '-95 0 0 0',
+                                                                                      height: 90,
+                                                                                      width: 115,
+                                                                                       zIndex: 100,
+                                                                                       html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                       ui: 'plain',
+                                                                                       handler: function () {
+                                                                                           var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard2').getHtml();
+                                                                                           FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[1]);
+    
+                                                                                       }
+                                                                                   },
+    
+    
+                                                                              {
+                                                                                  xtype: 'button',
+                                                                                  height: 80,
+                                                                                 width: 105,
+                                                                                 // width: 90,
+                                                                                // margin: '-95 0 0 0',
+                                                                                  id: 'btnFloatPanel_AyohaCardManagement_PreviewCard2',
+                                                                                  hidden: true,
+                                                                                  //badgeText: "2",
+                                                                                  // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+                                                                                  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+    
+    
+                                                                                  ui: 'plain',
+                                                                                  handler: function () {
+    
+                                                                                      var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard2').getHtml();
+                                                                                      FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[1]);
+                                                                                  }
+                                                                              },
+                                                                         {
+                                                                             hidden: true,
+                                                                             margin: '-25 0 0 0',
+                                                                             // margin: '-40 0 0 0',
+                                                                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard2',
+                                                                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                         },
+                                                                         ]
+                                                                     },
+    
+    
+    
+    
+                                                                       {
+                                                                           xtype: 'container',
+                                                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCard03',
+                                                                           //hidden:true,
+                                                                           style: "background-color: transparent",
+                                                                           //style: "background-color: #F35B57;",
+                                                                           height: 90,
+                                                                          // width: 100,
+                                                                          width: 115,
+                                                                           layout: {
+                                                                               type: 'vbox',
+                                                                               pack: 'center',
+                                                                               align: 'center'
+    
+                                                                           },
+                                                                           items: [
+                                                                                           {
+                                                                                               xtype: 'button',
+                                                                                               id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard3',
+                                                                                               hidden: true,
+                                                                                               //   margin: '-10 0 0 0',
+                                                                                              // margin: '-95 0 0 0',
+                                                                                              height: 90,
+                                                                                              width: 115,
+                                                                                              // width: 100,
+                                                                                               zIndex: 100,
+                                                                                               html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                               ui: 'plain',
+                                                                                               handler: function () {
+    
+                                                                                                   var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard3').getHtml();
+                                                                                                   FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[2]);
+                                                                                               }
+                                                                                           },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    height: 80,
+                                                                                    width: 105,
+                                                                                  //  width: 90,
+                                                                                   // margin: '-95 0 0 0',
+                                                                                    id: 'btnFloatPanel_AyohaCardManagement_PreviewCard3',
+                                                                                    hidden: true,
+                                                                                    //badgeText: "2",
+                                                                                    // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+                                                                                    html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
+    
+    
+                                                                                    //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+    
+    
+                                                                                    ui: 'plain',
+                                                                                    handler: function () {
+    
+                                                                                        var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard3').getHtml();
+                                                                                        FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[2]);
+    
+                                                                                    }
+                                                                                },
+                                                                            
+                                                                             {
+                                                                                 hidden: true,
+                                                                               margin: '-25 0 0 0',
+                                                                                 // margin: '-40 0 0 0',
+                                                                                 id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard3',
+                                                                                 html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                             },
+                                                                           ]
+                                                                       },
+    
+    
+    
+    
+    
+                                                               ]
+    
+                                                           },
+    
+    
+    
+    
+                                                           {
+                                                            xtype: 'container',
+                                                            id: 'containerFloatPanel_AyohaCardManagement_PreviewCard2',
+                                                           // margin:'0 0 0 0',
+                                                            //hidden:true,
+                                                            style: "background-color: transparent",
+                                                          
+                                                          //  style: "background-color: #F35B57;",
+                                                           // height: 80,
+                                                            //  height: 120,
+                                                           // height: 150,
+                                                            width: '100%',
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                pack: 'center',
+                                                                align: 'center'
+    
+                                                            },
+    
+    
+                                                            items: [
+                                                                //{
+                                                                //    xtype: 'panel',
+                                                                //    width: '3%'
+                                                                //},
+                                                                {
+                                                                    xtype: 'container',
+                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard04',
+                                                                    //hidden:true,
+                                                                   
+                                                                    style: "background-color: transparent",
+                                                                    //style: "background-color: #F35B57;",
+                                                                    //height: 110,
+                                                                    height: 90,
+                                                                    width: 115,
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        pack: 'center',
+                                                                        align: 'center'
+    
+                                                                    },
+                                                                    items: [
+    
+    
+    
+                                                                      
+    
+    
+    
+                                                        {
+                                                            xtype: 'button',
+                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard4',
+                                                            hidden: true,
+                                                            //   margin: '-10 0 0 0',
+                                                       //   margin: '95 0 0 0',
+                                                       height: 90,
+                                                            width: 115,
+                                                            zIndex: 100,
+                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                            ui: 'plain',
+                                                            handler: function () {
+                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard4').getHtml();
+                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[3]);
+    
+                                                            }
+                                                        },
+    
+                                                                         {
+                                                                             xtype: 'button',
+                                                                             height: 80,
+                                                                             width: 105,
+                                                                             //zIndex: -10,
+                                                                        //   margin: '-95 0 0 0',
+                                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard4',
+                                                                             hidden: true,
+                                                                             //badgeText: "2",
+                                                                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+                                                                             //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+                                                                             ui: 'plain',
+                                                                             handler: function () {
+                                                                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard4').getHtml();
+                                                                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[3]);
+                                                                                // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+                                                                             }
+                                                                         },
+                                                                         {
+                                                                             hidden: true,
+                                                                             margin: '-25 0 0 0',
+                                                                           
+                                                                             
+                                                                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard4',
+                                                                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                         },
+    
+    
+                                                                    ]
+                                                                },
+    
+    
+                                                                
+    
+                                                                  {
+                                                                      xtype: 'container',
+                                                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCard05',
+                                                                      //hidden:true,
+                                                                      style: "background-color: transparent",
+                                                                      //style: "background-color: #F35B57;",
+                                                                      height: 90,
+                                                                      width: 115,
+                                                                      layout: {
+                                                                          type: 'vbox',
+                                                                          pack: 'center',
+                                                                          align: 'center'
+    
+                                                                      },
+                                                                      items: [
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard5',
+                                                                                   // visible: false,
+                                                                                    hidden: true,
+                                                                                    //   margin: '-10 0 0 0',
+                                                                                   // margin: '-95 0 0 0',
+                                                                                   height: 90,
+                                                                                    width: 115,
+                                                                                    zIndex: 100,
+                                                                                    html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                    ui: 'plain',
+                                                                                    handler: function () {
+                                                                                        var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard5').getHtml();
+                                                                                        FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[4]);
+    
+                                                                                    }
+                                                                                },
+    
+    
+                                                                           {
+                                                                               xtype: 'button',
+                                                                               height: 80,
+                                                                               width: 105,
+                                                                             // margin: '-95 0 0 0',
+                                                                               id: 'btnFloatPanel_AyohaCardManagement_PreviewCard5',
+                                                                               hidden: true,
+                                                                               //badgeText: "2",
+                                                                               // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+                                                                               html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+    
+    
+                                                                               ui: 'plain',
+                                                                               handler: function () {
+    
+                                                                                   var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard5').getHtml();
+                                                                                   FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[4]);
+                                                                               }
+                                                                           },
+                                                                      {
+                                                                          hidden: true,
+                                                                          margin: '-25 0 0 0',
+                                                                          // margin: '-40 0 0 0',
+                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard5',
+                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                      },
+                                                                      ]
+                                                                  },
+    
+    
+    
+    
+                                                                    {
+                                                                        xtype: 'container',
+                                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard06',
+                                                                        //hidden:true,
+                                                                        style: "background-color: transparent",
+                                                                        //style: "background-color: #F35B57;",
+                                                                        height: 90,
+                                                                        width: 115,
+                                                                        layout: {
+                                                                            type: 'vbox',
+                                                                            pack: 'center',
+                                                                            align: 'center'
+    
+                                                                        },
+                                                                        items: [
+                                                                                        {
+                                                                                            xtype: 'button',
+                                                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard6',
+                                                                                            hidden: true,
+                                                                                            //   margin: '-10 0 0 0',
+                                                                                           // margin: '-95 0 0 0',
+                                                                                           height: 90,
+                                                                                            width: 115,
+                                                                                            zIndex: 100,
+                                                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                            ui: 'plain',
+                                                                                            handler: function () {
+    
+                                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard6').getHtml();
+                                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[5]);
+                                                                                            }
+                                                                                        },
+                                                                             {
+                                                                                 xtype: 'button',
+                                                                                 height: 80,
+                                                                                 width: 105,
+                                                                                // margin: '-95 0 0 0',
+                                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCard6',
+                                                                                 hidden: true,
+                                                                                 //badgeText: "2",
+                                                                                 // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+                                                                                 html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
+    
+    
+                                                                                 //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+    
+    
+                                                                                 ui: 'plain',
+                                                                                 handler: function () {
+    
+                                                                                     var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard6').getHtml();
+                                                                                     FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[5]);
+    
+                                                                                 }
+                                                                             },
+                                                                         
+                                                                          {
+                                                                              hidden: true,
+                                                                            margin: '-25 0 0 0',
+                                                                              // margin: '-40 0 0 0',
+                                                                              id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard6',
+                                                                              html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                          },
+                                                                        ]
+                                                                    },
+    
+    
+    
+    
+    
+                                                            ]
+    
+                                                        },
+    
+    
+    
+    
+    
+                                                        {
+                                                            xtype: 'container',
+                                                            id: 'containerFloatPanel_AyohaCardManagement_PreviewCard3',
+                                                            //hidden:true,
+                                                            style: "background-color: transparent",
+                                                          //  style: "background-color: #F35B57;",
+                                                           // height: 80,
+                                                            //  height: 120,
+                                                           // height: 150,
+                                                            width: '100%',
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                pack: 'center',
+                                                                align: 'center'
+    
+                                                            },
+    
+    
+                                                            items: [
+                                                                //{
+                                                                //    xtype: 'panel',
+                                                                //    width: '3%'
+                                                                //},
+                                                                {
+                                                                    xtype: 'container',
+                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard07',
+                                                                    //hidden:true,
+                                                                   
+                                                                    style: "background-color: transparent",
+                                                                    //style: "background-color: #F35B57;",
+                                                                    //height: 110,
+                                                                    height: 90,
+                                                                    width: 115,
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        pack: 'center',
+                                                                        align: 'center'
+    
+                                                                    },
+                                                                    items: [
+    
+    
+    
+                                                                      
+    
+    
+    
+                                                        {
+                                                            xtype: 'button',
+                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard7',
+                                                            hidden: true,
+                                                            //   margin: '-10 0 0 0',
+                                                       //   margin: '95 0 0 0',
+                                                       height: 90,
+                                                            width: 115,
+                                                            zIndex: 100,
+                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                            ui: 'plain',
+                                                            handler: function () {
+                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+    
+                                                            }
+                                                        },
+    
+                                                                         {
+                                                                             xtype: 'button',
+                                                                             height: 80,
+                                                                             width: 105,
+                                                                             //zIndex: -10,
+                                                                        //   margin: '-95 0 0 0',
+                                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard7',
+                                                                             hidden: true,
+                                                                             //badgeText: "2",
+                                                                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+                                                                             //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+                                                                             ui: 'plain',
+                                                                             handler: function () {
+                                                                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+                                                                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+                                                                                // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+                                                                             }
+                                                                         },
+                                                                         {
+                                                                             hidden: true,
+                                                                             margin: '-25 0 0 0',
+                                                                           
+                                                                             
+                                                                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard7',
+                                                                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                         },
+    
+    
+                                                                    ]
+                                                                },
+    
+    
+                                                                
+    
+                                                                  {
+                                                                      xtype: 'container',
+                                                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCard08',
+                                                                      //hidden:true,
+                                                                      style: "background-color: transparent",
+                                                                      //style: "background-color: #F35B57;",
+                                                                      height: 90,
+                                                                      width: 115,
+                                                                      layout: {
+                                                                          type: 'vbox',
+                                                                          pack: 'center',
+                                                                          align: 'center'
+    
+                                                                      },
+                                                                      items: [
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard8',
+                                                                                   // visible: false,
+                                                                                    hidden: true,
+                                                                                    //   margin: '-10 0 0 0',
+                                                                                   // margin: '-95 0 0 0',
+                                                                                   height: 90,
+                                                                                    width: 115,
+                                                                                    zIndex: 100,
+                                                                                    html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                    ui: 'plain',
+                                                                                    handler: function () {
+                                                                                        var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+                                                                                        FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+    
+                                                                                    }
+                                                                                },
+    
+    
+                                                                           {
+                                                                               xtype: 'button',
+                                                                               height: 80,
+                                                                               width: 105,
+                                                                             // margin: '-95 0 0 0',
+                                                                               id: 'btnFloatPanel_AyohaCardManagement_PreviewCard8',
+                                                                               hidden: true,
+                                                                               //badgeText: "2",
+                                                                               // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+                                                                               html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+    
+    
+                                                                               ui: 'plain',
+                                                                               handler: function () {
+    
+                                                                                   var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+                                                                                   FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+                                                                               }
+                                                                           },
+                                                                      {
+                                                                          hidden: true,
+                                                                          margin: '-25 0 0 0',
+                                                                          // margin: '-40 0 0 0',
+                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard8',
+                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                      },
+                                                                      ]
+                                                                  },
+    
+    
+    
+    
+                                                                    {
+                                                                        xtype: 'container',
+                                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard09',
+                                                                        //hidden:true,
+                                                                        style: "background-color: transparent",
+                                                                        //style: "background-color: #F35B57;",
+                                                                        height: 90,
+                                                                        width: 115,
+                                                                        layout: {
+                                                                            type: 'vbox',
+                                                                            pack: 'center',
+                                                                            align: 'center'
+    
+                                                                        },
+                                                                        items: [
+                                                                                        {
+                                                                                            xtype: 'button',
+                                                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard9',
+                                                                                            hidden: true,
+                                                                                            //   margin: '-10 0 0 0',
+                                                                                           // margin: '-95 0 0 0',
+                                                                                           height: 90,
+                                                                                            width: 115,
+                                                                                            zIndex: 100,
+                                                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                            ui: 'plain',
+                                                                                            handler: function () {
+    
+                                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+                                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+                                                                                            }
+                                                                                        },
+                                                                             {
+                                                                                 xtype: 'button',
+                                                                                 height: 80,
+                                                                                 width: 105,
+                                                                                // margin: '-95 0 0 0',
+                                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCard9',
+                                                                                 hidden: true,
+                                                                                 //badgeText: "2",
+                                                                                 // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+                                                                                 html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
+    
+    
+                                                                                 //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+    
+    
+                                                                                 ui: 'plain',
+                                                                                 handler: function () {
+    
+                                                                                     var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+                                                                                     FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+    
+                                                                                 }
+                                                                             },
+                                                                         
+                                                                          {
+                                                                              hidden: true,
+                                                                            margin: '-25 0 0 0',
+                                                                              // margin: '-40 0 0 0',
+                                                                              id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard9',
+                                                                              html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                          },
+                                                                        ]
+                                                                    },
+    
+    
+    
+    
+    
+                                                            ]
+    
+                                                        },
+    
+    
+    
+    
+                                                        {
+                                                            xtype: 'container',
+                                                            id: 'containerFloatPanel_AyohaCardManagement_PreviewCard4',
+                                                            //hidden:true,
+                                                            style: "background-color: transparent",
+                                                          //  style: "background-color: #F35B57;",
+                                                           // height: 80,
+                                                            //  height: 120,
+                                                           // height: 150,
+                                                            width: '100%',
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                pack: 'center',
+                                                                align: 'center'
+    
+                                                            },
+    
+    
+                                                            items: [
+                                                                //{
+                                                                //    xtype: 'panel',
+                                                                //    width: '3%'
+                                                                //},
+                                                                {
+                                                                    xtype: 'container',
+                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard10',
+                                                                    //hidden:true,
+                                                                   
+                                                                    style: "background-color: transparent",
+                                                                    //style: "background-color: #F35B57;",
+                                                                    //height: 110,
+                                                                    height: 90,
+                                                                    width: 115,
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        pack: 'center',
+                                                                        align: 'center'
+    
+                                                                    },
+                                                                    items: [
+    
+    
+    
+                                                                      
+    
+    
+    
+                                                        {
+                                                            xtype: 'button',
+                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard10',
+                                                            hidden: true,
+                                                            //   margin: '-10 0 0 0',
+                                                       //   margin: '95 0 0 0',
+                                                       height: 90,
+                                                            width: 115,
+                                                            zIndex: 100,
+                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                            ui: 'plain',
+                                                            handler: function () {
+                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
+    
+                                                            }
+                                                        },
+    
+                                                                         {
+                                                                             xtype: 'button',
+                                                                             height: 80,
+                                                                             width: 105,
+                                                                             //zIndex: -10,
+                                                                        //   margin: '-95 0 0 0',
+                                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard10',
+                                                                             hidden: true,
+                                                                             //badgeText: "2",
+                                                                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+                                                                             //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+                                                                             ui: 'plain',
+                                                                             handler: function () {
+                                                                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+                                                                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
+                                                                                // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+                                                                             }
+                                                                         },
+                                                                         {
+                                                                             hidden: true,
+                                                                             margin: '-25 0 0 0',
+                                                                           
+                                                                             
+                                                                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard10',
+                                                                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                         },
+    
+    
+                                                                    ]
+                                                                },
+    
+    
+                                                                
+    
+                                                                  {
+                                                                      xtype: 'container',
+                                                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCard11',
+                                                                      //hidden:true,
+                                                                      style: "background-color: transparent",
+                                                                      //style: "background-color: #F35B57;",
+                                                                      height: 90,
+                                                                      width: 115,
+                                                                      layout: {
+                                                                          type: 'vbox',
+                                                                          pack: 'center',
+                                                                          align: 'center'
+    
+                                                                      },
+                                                                      items: [
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard11',
+                                                                                   // visible: false,
+                                                                                    hidden: true,
+                                                                                    //   margin: '-10 0 0 0',
+                                                                                   // margin: '-95 0 0 0',
+                                                                                   height: 90,
+                                                                                    width: 115,
+                                                                                    zIndex: 100,
+                                                                                    html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                                                    ui: 'plain',
+                                                                                    handler: function () {
+                                                                                        var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+                                                                                        FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
+    
+                                                                                    }
+                                                                                },
+    
+    
+                                                                           {
+                                                                               xtype: 'button',
+                                                                               height: 80,
+                                                                               width: 105,
+                                                                             // margin: '-95 0 0 0',
+                                                                               id: 'btnFloatPanel_AyohaCardManagement_PreviewCard11',
+                                                                               hidden: true,
+                                                                               //badgeText: "2",
+                                                                               // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+                                                                               html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+    
+    
+                                                                               ui: 'plain',
+                                                                               handler: function () {
+    
+                                                                                   var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+                                                                                   FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
+                                                                               }
+                                                                           },
+                                                                      {
+                                                                          hidden: true,
+                                                                          margin: '-25 0 0 0',
+                                                                          // margin: '-40 0 0 0',
+                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard11',
+                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                                      },
+                                                                      ]
+                                                                  },
+    
+    
+    
+    
+                                                                  
+    
+    
+    
+    
+    
+                                                            ]
+    
+                                                        },
+    
+    
+    
+                                                        //    {
+                                                        //        xtype: 'container',
+                                                        //        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard3',
+                                                        //        //hidden:true,
+                                                        //        style: "background-color: transparent",
+                                                        //        //style: "background-color: #F35B57;",
+                                                        //       // height: 80,
+                                                        //        width: '100%',
+                                                        //        layout: {
+                                                        //            type: 'hbox',
+                                                        //            pack: 'center',
+                                                        //            align: 'center'
+    
+                                                        //        },
+    
+    
+                                                        //        items: [
+    
+    
+    
+    
+                                                        //               {
+                                                        //                   xtype: 'container',
+                                                        //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard07',
+                                                        //                   //hidden:true,
+                                                        //                   style: "background-color: transparent",
+                                                        //                   //style: "background-color: #F35B57;",
+    
+                                                        //                   layout: {
+                                                        //                       type: 'vbox',
+                                                        //                       pack: 'center',
+                                                        //                       align: 'center'
+    
+                                                        //                   },
+                                                        //                   items: [
+                                                                              
+                                                        //                       {
+                                                        //                           xtype: 'button',
+                                                        //                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard7',
+                                                        //                           hidden: true,
+                                                        //                           //   margin: '-10 0 0 0',
+                                                        //                          // margin: '-95 0 0 0',
+                                                        //                           height: 110,
+                                                        //                           width: 105,
+                                                        //                           zIndex: 100,
+                                                        //                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                        //                           ui: 'plain',
+                                                        //                           handler: function () {
+                                                        //                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+                                                        //                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+                                                        //                           }
+                                                        //                       },
+                                                        //                          {
+                                                        //                              xtype: 'button',
+                                                        //                              height: 80,
+                                                        //                              width: 105,
+                                                        //                             // margin: '-95 0 0 0',
+                                                        //                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard7',
+                                                        //                              hidden: true,
+                                                        //                              //badgeText: "2",
+                                                        //                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #E35CE1;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:15px 0px 0px 0px"><font size=5>ONLY</font></div><br><div style="margin:-20px 0px 0px 0px"><font size=5>RM1</font></div></div>',
+                                                        //                            //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:15px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard7"><font size=5>ONLY</font></div><br><div style="margin:-20px 0px 0px 0px"><font size=5>RM1</font></div></div>',
+                                                        //                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard7">7</div></div>',
+                                                        //                              ui: 'plain',
+                                                        //                              handler: function () {
+                                                        //                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+                                                        //                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+                                                        //                              }
+                                                        //                          },
+                                                        //                              {
+                                                        //                                  hidden: true,
+                                                        //                                  margin: '-10 0 0 0',
+                                                        //                                  // margin: '-40 0 0 0',
+                                                        //                                  id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard7',
+                                                        //                                  html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                        //                              },
+                                                                                 
+                                                        //                   ]
+                                                        //               },
+    
+    
+    
+    
+    
+                                                        //               {
+                                                        //                   xtype: 'container',
+                                                        //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard08',
+                                                        //                   //hidden:true,
+                                                        //                   style: "background-color: transparent",
+                                                        //                   //style: "background-color: #F35B57;",
+    
+                                                        //                   layout: {
+                                                        //                       type: 'vbox',
+                                                        //                       pack: 'center',
+                                                        //                       align: 'center'
+    
+                                                        //                   },
+                                                        //                   items: [
+                                                        //                       {
+                                                        //                           xtype: 'button',
+                                                        //                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard8',
+                                                        //                           hidden: true,
+                                                        //                           //   margin: '-10 0 0 0',
+                                                        //                          // margin: '-95 0 0 0',
+                                                        //                           height: 110,
+                                                        //                           width: 105,
+                                                        //                           zIndex: 100,
+                                                        //                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                        //                           ui: 'plain',
+                                                        //                           handler: function () {
+                                                        //                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+                                                        //                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+                                                        //                           }
+                                                        //                       },
+                                                                              
+                                                        //                         {
+                                                        //                             xtype: 'button',
+                                                        //                             height: 80,
+                                                        //                             width: 105,
+                                                        //                            // margin: '-95 0 0 0',
+                                                        //                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard8',
+                                                        //                             hidden: true,
+                                                        //                             //badgeText: "2",
+                                                        //                             //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: orange;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">8</div></div>',
+                                                        //                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard8">8</div></div>',
+    
+                                                        //                             ui: 'plain',
+                                                        //                             handler: function () {
+                                                        //                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+                                                        //                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+    
+                                                        //                             }
+                                                        //                         },
+                                                        //                         {
+                                                        //                             hidden: true,
+                                                        //                             margin: '-10 0 0 0',
+                                                        //                             // margin: '-40 0 0 0',
+                                                        //                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard8',
+                                                        //                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                        //                         },
+                                                                               
+                                                        //                   ]
+                                                        //               },
+    
+    
+    
+    
+    
+    
+                                                        //               {
+                                                        //                   xtype: 'container',
+                                                        //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard09',
+                                                        //                   //hidden:true,
+                                                        //                   style: "background-color: transparent",
+                                                        //                   //style: "background-color: #F35B57;",
+    
+                                                        //                   layout: {
+                                                        //                       type: 'vbox',
+                                                        //                       pack: 'center',
+                                                        //                       align: 'center'
+    
+                                                        //                   },
+                                                        //                   items: [
+                                                        //                        {
+                                                        //                            xtype: 'button',
+                                                        //                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard9',
+                                                        //                            hidden: true,
+                                                        //                            //   margin: '-10 0 0 0',
+                                                        //                           // margin: '-95 0 0 0',
+                                                        //                            height: 110,
+                                                        //                            width: 105,
+                                                        //                            zIndex: 100,
+                                                        //                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                        //                            ui: 'plain',
+                                                        //                            handler: function () {
+                                                        //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+                                                        //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+                                                        //                            }
+                                                        //                        },
+    
+                                                        //                          {
+                                                        //                              xtype: 'button',
+                                                        //                              height: 80,
+                                                        //                              width: 105,
+                                                        //                             // margin: '-95 0 0 0',
+                                                        //                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard9',
+                                                        //                              hidden: true,
+                                                        //                              //badgeText: "2",
+                                                        //                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #808000;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">9</div></div>',
+                                                        //                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard9">9</div></div>',
+                                                        //                              ui: 'plain',
+                                                        //                              handler: function () {
+                                                        //                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+                                                        //                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+                                                        //                              }
+                                                        //                          },
+                                                        //                          {
+                                                        //                              hidden: true,
+                                                        //                              margin: '-10 0 0 0',
+                                                        //                              // margin: '-40 0 0 0',
+                                                        //                              id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard9',
+                                                        //                              html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                        //                          },
+    
+                                                                                
+                                                        //                   ]
+                                                        //               },
+    
+    
+    
+                                                        //        ]
+    
+                                                        //    },
+    
+    
+                                                        //    {
+                                                        //        xtype: 'container',
+                                                        //        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard4',
+                                                        //        //hidden:true,
+                                                        //        style: "background-color: transparent",
+                                                        //        //style: "background-color: #F35B57;",
+                                                        //       // height: 80,
+                                                        //        width: '100%',
+                                                        //        layout: {
+                                                        //            type: 'hbox',
+                                                        //            pack: 'center',
+                                                        //            align: 'center'
+    
+                                                        //        },
+    
+    
+                                                        //        items: [
+    
+                                                                   
+    
+                                                        //               {
+                                                        //                   xtype: 'container',
+                                                        //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard10',
+                                                        //                   //hidden:true,
+                                                        //                   style: "background-color: transparent",
+                                                        //                   //style: "background-color: #F35B57;",
+    
+                                                        //                   layout: {
+                                                        //                       type: 'vbox',
+                                                        //                       pack: 'center',
+                                                        //                       align: 'center'
+    
+                                                        //                   },
+                                                        //                   items: [
+    
+    
+                                                        //                        {
+                                                        //                            xtype: 'button',
+                                                        //                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard10',
+                                                        //                            hidden: true,
+                                                        //                            //   margin: '-10 0 0 0',
+                                                        //                           // margin: '-95 0 0 0',
+                                                        //                            height: 110,
+                                                        //                            width: 105,
+                                                        //                            zIndex: 100,
+                                                        //                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                        //                            ui: 'plain',
+                                                        //                            handler: function () {
+                                                        //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+                                                        //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
+                                                        //                            }
+                                                        //                        },
+    
+    
+                                                        //                        {
+                                                        //                            xtype: 'button',
+                                                        //                            height: 80,
+                                                        //                            width: 105,
+                                                        //                           // margin: '-95 0 0 0',
+                                                        //                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard10',
+                                                        //                            hidden: true,
+                                                        //                            //badgeText: "2",
+                                                        //                            //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #008080;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">10</div></div>',
+                                                        //                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard10">10</div></div>',
+    
+                                                        //                            ui: 'plain',
+                                                        //                            handler: function () {
+                                                        //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+                                                        //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents,arrStampRewardNote[9]);
+                                                                                       
+                                                        //                            }
+                                                        //                        },
+                                                        //                         {
+                                                        //                             hidden: true,
+                                                        //                             margin: '-10 0 0 0',
+                                                        //                             // margin: '-40 0 0 0',
+                                                        //                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard10',
+                                                        //                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                        //                         },
+    
+                                                                              
+                                                        //                   ]
+                                                        //               },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                                        //                   {
+                                                        //                       xtype: 'container',
+                                                        //                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCard11',
+                                                        //                       //hidden:true,
+                                                        //                       style: "background-color: transparent",
+                                                        //                       //style: "background-color: #F35B57;",
+    
+                                                        //                       layout: {
+                                                        //                           type: 'vbox',
+                                                        //                           pack: 'center',
+                                                        //                           align: 'center'
+    
+                                                        //                       },
+    
+    
+    
+                                                        //                       items: [
+    
+                                                                                  
+                                                        //                            {
+                                                        //                                xtype: 'button',
+                                                        //                                id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard11',
+                                                        //                                hidden: true,
+                                                        //                                //   margin: '-10 0 0 0',
+                                                        //                               // margin: '-95 0 0 0',
+                                                        //                                height: 110,
+                                                        //                                width: 105,
+                                                        //                                zIndex: 100,
+                                                        //                                html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+                                                        //                                ui: 'plain',
+                                                        //                                handler: function () {
+                                                        //                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+                                                        //                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
+                                                        //                                }
+                                                        //                            },
+                                                        //                               {
+                                                        //                                   xtype: 'button',
+                                                        //                                   height: 80,
+                                                        //                                   width: 105,
+                                                        //                                  // margin: '-95 0 0 0',
+                                                        //                                   id: 'btnFloatPanel_AyohaCardManagement_PreviewCard11',
+                                                        //                                   hidden: true,
+                                                        //                                   //badgeText: "2",
+                                                        //                                   //html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1.png); background-size: 100% 100%;" ></div>',
+                                                        //                                 //  html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1Inactive.png); background-size: 100% 100%;" id="divContentFloatPanel_AyohaCardManagement_PreviewCard11" ></div>',
+                                                        //                                   html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard11">11</div></div>',
+                                                        //                                   ui: 'plain',
+                                                        //                                   handler: function () {
+                                                        //                                       var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+                                                        //                                       FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents,arrStampRewardNote[10]);
+                                                                                          
+                                                                                             
+                                                                                             
+                                                        //                                   }
+                                                        //                               },
+                                                        //                                {
+                                                        //                                    hidden: true,
+                                                        //                                    margin: '-10 0 0 0',
+                                                        //                                    // margin: '-40 0 0 0',
+                                                        //                                    id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard11',
+                                                        //                                    html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+                                                        //                                },
+    
+                                                                                       
+                                                        //                       ]
+    
+                                                        //                   },
+    
+    
+    
+    
+    
+    
+    
+                                                        //        ]
+    
+                                                        //    },
+    
+    
+    
+                                                           {
+                                                               xtype: 'container',
+                                                               id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_StampCampaignNote',
+                                                               margin: '10 0 0 0',
+                                                              // docked:'bottom',
+                                                               //hidden:true,
+                                                               style: "background-color: transparent",
+                                                               //style: "background-color: #F35B57;",
+                                                               height: 20,
+                                                               width: '100%',
+                                                               layout: {
+                                                                   type: 'hbox',
+                                                                   pack: 'center',
+                                                                   align: 'center'
+    
+                                                               },
+                                                               items: [
+                                                                   {
+                                                                      
+                                                                     //  margin: '-10 0 0 0',
+                                                                       // margin: '-40 0 0 0',
+                                                                       id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_StampCampaignNote',
+                                                                       html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;width:100%">*Only purchase above RM100 entitle to be stamped</div>',
+                                                                   },
+    
+    
+                                                               ]
+                                                           },
+                                                         
+    
+                                                             {
+                                              xtype: 'container',
+                                              id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_ContactUs',
+                                              width: '100%',
+                                             // hidden:true,
+                                              height: 60,
+                                              margin: '20 0 0 0',
+                                              style: "background-color:transparent;",
+                                              layout: {
+                                                  type: 'vbox',
+                                                  pack: 'center',
+                                                  align: 'center',
+                                              },
+                                              items: [
+    
+    
+                                                    {
+                                                        margin: '0 0 0 0',
+                                                        height: 20,
+                                                        html: '<font size=2 color=white><b>Visit Us</b></font>',
+                                                    },
+                                                  {
+                                                      xtype: 'container',
+                                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCardbottom',
+                                                      width: '100%',
+                                                      // hidden:true,
+                                                       height: 45,
+                                                      //hidden:true,
+                                                      style: "background-color: transparent",
+                                                      //style: "background-color: #F35B57;",
+                                                      margin: '0 0 0 0',
+                                                      layout: {
+                                                          type: 'hbox',
+                                                          pack: 'center',
+                                                          align: 'center'
+    
+                                                      },
+    
+    
+                                                      items: [
+    
+                                                      
+                                                                {
+                                                                    xtype: 'button',
+                                                                    height: 40,
+                                                                    width: 55,
+                                                                    margin: '0 0 0 0',
+                                                                    hidden:true,
+                                                                    id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomLocation',
+                                                                    //badgeText: "2",
+                                                                    html: '<div ><img src="resources/icons/locationThree.png" width="22" height="22" alt="Company Name"></div>',
+                                                                    ui: 'plain',
+                                                                    handler: function () {
+    
+    
+                                                                        globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+                                                                        var task = Ext.create('Ext.util.DelayedTask', function () {
+                                                                           // FloatPanel_PreviewAdvertisement_OpenLocation();
+                                                                            Dashboard_AyohaHotMerchant_OpenLocation(globalFloatPanelMerchantDetailPage_EnterpriseCoordinate);
+                                                                        });
+                                                                        task.delay(150);
+                                                                        //var Coordinate = globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseCoordinate.split(",");
+                                                                        //PlaceMarkerlat = Coordinate[0];
+                                                                        //PlaceMarkerlng = Coordinate[1];
+    
+                                                                        ////var addressLongLat = PlaceMarkerlat + ',' + PlaceMarkerlng;                                                          
+                                                                        ////window.open("geo:" + addressLongLat);
+    
+    
+                                                                        //if (PlaceMarkerlat) {
+                                                                        //    if (PlaceMarkerlng) {
+                                                                        //        window.open("https://www.google.com/maps/search/?api=1&query=" + PlaceMarkerlat + "," + PlaceMarkerlng, '_system');
+                                                                        //    } else {
+    
+                                                                        //        swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this setting!", "Location");
+                                                                        //    }
+                                                                        //} else {
+                                                                        //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this Message!", "Location");
+                                                                        //}
+                                                                    }
+                                                                },
+    
+                                                                {
+                                                                    xtype: 'button',
+                                                                    height: 40,
+                                                                    width: 55,
+                                                                    margin: '0 0 0 0',
+                                                                    id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomFB',
+                                                                    //badgeText: "2",
+                                                                    hidden: true,
+                                                                    html: '<div ><img src="resources/icons/Facebooklogo.png" width="22" height="22" alt="Company Name"></div>',
+                                                                    ui: 'plain',
+                                                                    handler: function () {
+                                                                        globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+                                                                        var task = Ext.create('Ext.util.DelayedTask', function () {
+                                                                           // FloatPanel_PreviewAdvertisement_OpenFB();
+                                                                           FloatPanel_MerchantDetailPage_OpenFB();
+                                                                        });
+                                                                        task.delay(150);
+    
+                                                                        //if (globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseFacebook) {
+    
+                                                                        //    setTimeout(function () { window.open("fb://page/" + globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseFacebook + ""); }, 25);
+                                                                        //} else {
+    
+                                                                        //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set FB Link.,Help Merchant to know this Message!", "FB")
+                                                                        //}
+    
+                                                                    }
+                                                                },
+                                                                 {
+                                                                     xtype: 'button',
+                                                                     height: 40,
+                                                                     width: 55,
+                                                                    margin: '0 0 0 0',
+                                                                     id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomInsta',
+                                                                     hidden: true,
+                                                                     //badgeText: "2",
+                                                                     html: '<div ><img src="resources/icons/instagram.png" width="22" height="22" alt="Company Name"></div>',
+                                                                     ui: 'plain',
+                                                                     handler: function () {
+    
+                                                                         globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+                                                                         var task = Ext.create('Ext.util.DelayedTask', function () {
+                                                                            // FloatPanel_PreviewAdvertisement_OpenInsta();
+                                                                            FloatPanel_MerchantDetailPage_OpenInsta();
+                                                                         });
+                                                                         task.delay(150);
+    
+    
+                                                                         //if (globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseInstagram) {
+    
+                                                                         //    setTimeout(function () { window.open("instagram://user?username=" + globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseInstagram + ""); }, 25);
+                                                                         //} else {
+    
+                                                                         //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Instagram Link.,Help Merchant to know this Message!", "Insta")
+                                                                         //}
+    
+    
+    
+    
+                                                                     }
+                                                                 },
+    
+    
+    
+                                                                  {
+                                                                      xtype: 'button',
+                                                                      height: 40,
+                                                                    width: 55,
+                                                                    margin: '0 0 0 0',
+                                                                      id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomTikTok',
+                                                                      hidden: true,
+                                                                      //badgeText: "2",
+                                                                      html: '<div ><img src="resources/icons/TikToklogo.png" width="22" height="22" alt="Company Name"></div>',
+                                                                      ui: 'plain',
+                                                                      handler: function () {
+    
+                                                                          globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+                                                                          FloatPanel_MerchantDetailPage_OpenTikTok();
+                                                                        //   var task = Ext.create('Ext.util.DelayedTask', function () {
+                                                                        //       FloatPanel_PreviewAdvertisement_OpenWhatsApp();
+                                                                        //   });
+                                                                        //   task.delay(150);
+    
+                                                                       
+    
+                                                                        
+    
+                                                                      }
+                                                                  },
+                                                                  
+                                                      
+                                                      ]
+    
+                                                  },
+                                              ]
+                                          },
+    
+    
+    
+    
+    
+                                                      ]
+    
+                                                  },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                            ]
+                                        },
+    
+    
+                                    ]
+    
+    
                                 },
-                                // hidden:true,
-                                items:
-                                       [
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                   {
+                                       xtype: 'container',
+                                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCardTitleOutterN',
+                                       width: '100%',
+                                       margin: '0 0 0 0',
+                                       height:110,
+                                       docked: 'bottom',
+                                       //hidden:true,
+                                       // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+                                       // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+                                       //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
+                                       style: "background-color: transparent;",
+    
+                                       layout: {
+                                           type: 'hbox',
+                                           pack: 'center',
+                                           align: 'center'
+    
+                                       },
+                                       items: [
+    
+                                           {
+                                               xtype: 'container',
+                                             
+                                               height: 110,
+                                               id:'containerStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icon',
+                                               layout: {
+                                                   type: 'vbox',
+                                                   pack: 'start',
+                                                   align: 'center'
+    
+                                               },
+                                               items: [
                                                      {
                                                          xtype: 'button',
-                                                         id: 'btnFloatPanel_AyohaCardManagement_PreviewCardBack',
-                                                         height: 30,
-                                                         width: 65,
-                                                         // iconCls: 'list',
-                                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
-                                                        // html: '<div ><img src="resources/icons/backwhite03.png" width="25" height="20" alt="Company Name"></div>',
+                                                         id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icon',
+                                                         //  badgeText: '1',
+                                                         margin: '0 0 0 35',
+                                                         height: 70,
+                                                         width: 85,
+                                                         html: '<img src="resources/icons/StampSuccessCount.gif" width="45" height="60" alt="Company Name">',
                                                          ui: 'plain',
                                                          handler: function () {
-                                                            FloatPanel_AyohaCardManagement_PreviewCardHide(false);
+                                                             FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+    
+                                                         }
+                                                     },
+                                                     {
+                                                         //margin: '0 0 0 -100',
+                                                         xtype: 'button',
+                                                         id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp',
+                                                         // margin: '0 0 0 -30',
+                                                         margin: '0 0 0 35',
+                                                         height: 35,
+                                                         width: 95,
+                                                         html: '<font size=5 color=white><b>4/11</b></font>',
+                                                         ui: 'plain',
+                                                         handler: function () {
+                                                             FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+                                                         }
+    
+                                                     },
+                                               ]
+                                           },
+    
+    
+                                            {
+                                                       xtype: 'spacer',
+                                                       width:7
+                                                   },
+                                           {
+    
+    
+                                               xtype: 'container',
+                                               id: 'containerFloatPanel_AyohaCardManagement_PreviewCardButtons',
+                                               name: 'namecontainerFloatPanel_AyohaCardManagement_PreviewCardButtons',
+    
+                                               // docked: 'bottom',
+                                               //hidden:true,
+                                               //ori//width: '76%',
+                                               width: '46%',
+                                               height: 50,
+                                               margin:'60 0 0 0',
+                                               //docked: 'bottom',
+                                               // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+                                               // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+                                               style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;border-radius:20px 20px 0px 0px;',
+                                               // style: "background-color: transparent",
+    
+                                               layout: {
+                                                   type: 'hbox',
+                                                   pack: 'center',
+                                                   align: 'center'
+    
+                                               },
+                                               items: [
+    
+                                                 
+                                                   {
+                                                       xtype: 'container',
+                                                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_StampCard',
+                                                       width: '38%',
+                                                       height: 40,
+                                                       style: "background-color: transparent",
+                                                       hidden:true,
+                                                       //style: "background-color: #F35B57;",
+    
+                                                       layout: {
+                                                           type: 'vbox',
+                                                           pack: 'center',
+                                                           align: 'center'
+    
+                                                       },
+                                                       items: [
+    
+                                                            {
+                                                                xtype: 'button',
+                                                                id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard',
+                                                                //  badgeText: '1',
+                                                                margin: '-5 0 0 0',
+                                                                height: 35,
+                                                                width: 35,
+                                                                html: '<img src="resources/icons/StampTwo.png" width="25" height="25" alt="Company Name">',
+                                                                ui: 'plain',
+                                                                handler: function () {
+                                                                    Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardMaster').setHidden(false);
+                                                                    Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardQrCode').setHidden(true);
+    
+                                                                }
+                                                            },
+                                                             {
+                                                                 margin: '-7 0 0 0',
+                                                                 html: '<font size=2 color=grey><b>Stamp Card</b></font>'
+                                                             },
+    
+                                                       ]
+                                                   },
+    
+                                               {
+                                                   xtype: 'container',
+                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_QrCode',
+                                                   name: 'namecontainerFloatPanel_AyohaCardManagement_PreviewCard_QrCode',
+                                                   //  width: '38%',                                               
+                                                   width:'80%',
+                                                   height: 40,
+                                                   style: "background-color: transparent",
+                                                   //style: "background-color: #F35B57;",
+    
+                                                   layout: {
+                                                       type: 'vbox',
+                                                       pack: 'center',
+                                                       align: 'center'
+    
+                                                   },
+                                                   items: [
+    
+                                                        {
+                                                            xtype: 'button',
+                                                            id: 'btnQrCode_FloatPanel_AyohaCardManagement_PreviewCard',
+                                                            //  badgeText: '1',
+                                                            margin: '-5 0 0 0',
+                                                            height: 35,
+                                                            width: 65,
+                                                            html: '<img src="resources/icons/qrcodetwo.png" width="25" height="25" alt="Company Name">',
+                                                            ui: 'plain',
+                                                            handler: function () {
+                                                                if(is_prompt_setMessage_NotYetMembershipMessage()){
+    return
+                                                                }else
+                                                                {
+                                                                    SingleTap_FloatPanel_AyohaCardManagement_PreviewCard_CreateStampQRCode();
+                                                                }
+                                                               
+                                                                //if (globalStampCampaignisCampaignExpired == "Expired") {
+    
+                                                                //    return;
+                                                                //}
+    
+    
+                                                                //var CountLoyaltyStamped = localStorage.getItem('CountLoyaltyStamped');
+                                                                //var CountStampCardRowShow = localStorage.getItem('CountStampCardRowShow');
+    
+                                                                //if (CountLoyaltyStamped == CountStampCardRowShow) {
+    
+                                                                //    return;
+                                                                //}
+                                                                //FloatPanel_AyohaCardManagement_StampQrCodeShow();
+    
+                                                              
+                                                            }
+                                                        },
+                                                         {
+                                                             margin: '-7 0 0 0',
+                                                             id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_StampQrCode',
+                                                             html: '<font size=2 color=grey><b>Stamp QR Code</b></font>'
+                                                         },
+    
+                                                   ]
+                                               },
+    
+                                               //////////////////test  area
+                                               // {
+                                               //     xtype: 'spacer',
+                                               //     width: 25
+                                               // },
+    
+                                               //{
+                                               //    xtype: 'container',
+                                               //    margin: '-70 0 0 -10',
+                                               //    layout: {
+                                               //        type: 'vbox',
+                                               //        pack: 'start',
+                                               //        align: 'center'
+    
+                                               //    },
+                                               //    items: [
+                                               //          {
+                                               //              xtype: 'button',
+                                               //              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icons',
+                                               //              //  badgeText: '1',
+                                               //              margin: '20 0 0 0',
+                                               //              height: 75,
+                                               //              width: 55,
+                                               //              html: '<img src="resources/icons/StampSuccessCount.gif" width="45" height="65" alt="Company Name">',
+                                               //              ui: 'plain',
+                                               //              handler: function () {
+                                               //                  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+    
+                                               //              }
+                                               //          },
+                                                       
+                                               //    ]
+                                               //},
+    
+                                               ///////////////////
+    
+                                               ]
+    
+    
+    
+                                           },
+                                          
+    
+    
+                                             {
+                                                 xtype: 'button',
+                                                 id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementButton',
+                                                 //  badgeText: '1',
+                                               hidden:true,
+                                                 margin: '-20 0 0 0',
+                                                 height: 110,
+                                                 width: 120,
+                                                 html: '<img src="resources/icons/SaleThree.gif" width="90" height="100" alt="Company Name">',
+                                                 ui: 'plain',
+                                                 handler: function () {
+                                                    
+                                                     FloatPanel_PreviewAdvertisementShow_StampCard("FloatPanel_AyohaCardManagement_AdvertisementButton");
+    
+                                                 }
+                                             },
+    
+                                                {
+                                                    xtype: 'button',
+                                                    id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementButton_TransparentBox',
+                                                    //  badgeText: '1',
+                                                    hidden: false,
+                                                    margin: '-20 0 0 0',
+                                                 height: 110,
+                                                 width: 120,
+                                                    html: '<img src="resources/icons/transparentbox.png" width="90" height="100" alt="Company Name">',
+                                                    ui: 'plain',
+                                                    handler: function () {
+                                                       
+    
+                                                    }
+                                                },
+    
+    
+                                               //{
+                                               //    xtype: 'container',
+                                               //    margin: '-70 0 0 0',
+                                               //    layout: {
+                                               //        type: 'vbox',
+                                               //        pack: 'start',
+                                               //        align: 'center'
+    
+                                               //    },
+                                               //    items: [
+                                               //          {
+                                               //              xtype: 'button',
+                                               //              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icons',
+                                               //              //  badgeText: '1',
+                                               //              margin: '0 0 0 0',
+                                               //              height: 160,
+                                               //              width: 160,
+                                               //              html: '<img src="resources/icons/SaleThree.gif" width="150" height="150" alt="Company Name">',
+                                               //              ui: 'plain',
+                                               //              handler: function () {
+                                               //                  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+    
+                                               //              }
+                                               //          },
+    
+                                               //    ]
+                                               //},
+                                       ]
+    
+                                   },
+    
+                                  
+    
+    
+                                  {
+                                      xtype: 'container',
+                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCardTitleOutter',
+                                      width: '100%',
+                                      height: 50,
+                                      docked: 'bottom',
+                                      hidden:true,
+                                      // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+                                      // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+                                      //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
+                                      style: "background-color: transparent;",
+    
+                                      layout: {
+                                          type: 'vbox',
+                                          pack: 'center',
+                                          align: 'center'
+    
+                                      },
+                                      items: [
+    
+    
+                                      
+                                      ]
+    
+                                  },
+    
+    
+    
+    
+    
+    
+    
+                            ]
+                        },
+                    ]
+                  }
+                ]
+              },
+
+
+
+
+
+
+
+
+
+            
+              
+
+
+
+
+
+
+
+
+
+            // {
+            //     xtype: 'container',
+            //    //hidden:true,
+            //     //xtype: 'carousel',
+            //     //direction: 'horizontal',
+            //     //directionLock: true,
+            //     width: '100%',
+            //     margin: '0px 0px 0px 0px',
+            //     zIndex:500,
+            //     height: '100%',
+            //    // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
+            //    // style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
+            //     style:ayohaThemeColor_Hero(),
+            //     id:'FloatPanel_AyohaCardManagement_PreviewCardInnerIDs',
+            //     html: '<div id="divCardBgImg" ></div>',
+            //     layout: {
+            //        type: 'vbox',
+
+            //     },
+            //     items: [
+                   
+            //     ]
+            // },
+
+          
+
+//             {
+//                 xtype: 'container',
+//                 zIndex: 800,
+              
+//                 width: '100%',
+//                 height: '100%',
+//                 html: '<div id="divCardBgImg1" ></div>',
+//                 id: 'FloatPanel_AyohaCardManagement_PreviewCardInnerID',
+//                style: 'background-color:transparent;',
+//                // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
+//                // style: 'background-image: url(http://www.birds.com/wp-content/uploads/home/bird4.jpg); background-size: 100% 100%;border-bottom:1px solid;',
+//                 layout: {
+//                     type: 'fit',
+
+//                 },
+
+
+//                 items: [
+//                     {
+//                         xtype: 'container',
+
+
+//                         layout: {
+//                             type: 'vbox',
+//                             pack: 'start',
+//                             align: 'center'
+
+//                         },
+//                         items: [
+
+
+//                             {
+
+//                                 xtype: 'container',
+//                                 width: '100%',
+//                                 margin:'9 0 0 0',
+//                                 // width: 40,
+//                                // height:100,
+
+//                                 //  title: '<font size="3" color="white">Live Tracking Map</font>',
+//                                 //hidden: true,
+
+//                                 id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHeader',
+//                                 style: {
+//                                     // background: '#D25959',
+//                                     background: 'transparent',
+//                                     // border: '2px'
+//                                 },
+//                                 //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+//                                 // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+//                                 layout: {
+//                                     type: 'hbox',
+//                                     pack: 'center',
+//                                     align: 'center',
+//                                 },
+//                                 // hidden:true,
+//                                 items:
+//                                        [
+
+
+//                                                      {
+//                                                          xtype: 'button',
+//                                                          id: 'btnFloatPanel_AyohaCardManagement_PreviewCardBack',
+//                                                          height: 30,
+//                                                          width: 65,
+//                                                          // iconCls: 'list',
+//                                                          html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+//                                                         // html: '<div ><img src="resources/icons/backwhite03.png" width="25" height="20" alt="Company Name"></div>',
+//                                                          ui: 'plain',
+//                                                          handler: function () {
+//                                                             FloatPanel_AyohaCardManagement_PreviewCardHide(false);
                                                          
 
 
 
-                                                            //  _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
-                                                            //      type: 'slideOut',
-                                                            //      direction: 'left',
-                                                            //      easing: 'cubic-bezier(.7,0,.7,1)',
-                                                            //      duration: 250
+//                                                             //  _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
+//                                                             //      type: 'slideOut',
+//                                                             //      direction: 'left',
+//                                                             //      easing: 'cubic-bezier(.7,0,.7,1)',
+//                                                             //      duration: 250
 
-                                                            //  }));
-                                                            //  isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
-                                                            //  clearInterval(BackgroungImgInterval);
-                                                            // // FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
-                                                            //  RemovePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
+//                                                             //  }));
+//                                                             //  isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
+//                                                             //  clearInterval(BackgroungImgInterval);
+//                                                             // // FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
+//                                                             //  RemovePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
                                                         
-                                                            }
-                                                     },
+//                                                             }
+//                                                      },
                                                     
-                                                      {
-                                                          xtype: 'spacer',
+//                                                       {
+//                                                           xtype: 'spacer',
 
-                                                      },
-                                                       //{
-                                                       //    margin: '0 0 0 0',
-                                                       //    id: 'htmFloatPanel_AyohaCardManagement_PreviewCard_TitleHeaderTxt',
-                                                       //    html: '<font size=2 color=white><b>Loyalty Stamp Card</b></font>'
-                                                       //},
-                                                       //    {
-                                                       //        xtype: 'button',
-                                                       //        id: 'btnFloatPanel_AyohaCardManagement_PreviewCard_Icon',
-                                                       //        height: 30,
-                                                       //        width: 35,
-                                                       //        // iconCls: 'list',
-                                                       //        html: '<div ><img src="resources/icons/AyohaStampCardWhite.png" width="25" height="20" alt="Company Name"></div>',
-                                                       //        ui: 'plain',
-                                                       //        handler: function () {
+//                                                       },
+//                                                        //{
+//                                                        //    margin: '0 0 0 0',
+//                                                        //    id: 'htmFloatPanel_AyohaCardManagement_PreviewCard_TitleHeaderTxt',
+//                                                        //    html: '<font size=2 color=white><b>Loyalty Stamp Card</b></font>'
+//                                                        //},
+//                                                        //    {
+//                                                        //        xtype: 'button',
+//                                                        //        id: 'btnFloatPanel_AyohaCardManagement_PreviewCard_Icon',
+//                                                        //        height: 30,
+//                                                        //        width: 35,
+//                                                        //        // iconCls: 'list',
+//                                                        //        html: '<div ><img src="resources/icons/AyohaStampCardWhite.png" width="25" height="20" alt="Company Name"></div>',
+//                                                        //        ui: 'plain',
+//                                                        //        handler: function () {
 
                                                                 
 
-                                                       //            _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
-                                                       //                type: 'slideOut',
-                                                       //                direction: 'right',
-                                                       //                easing: 'cubic-bezier(.7,0,.7,1)',
-                                                       //                duration: 250
+//                                                        //            _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
+//                                                        //                type: 'slideOut',
+//                                                        //                direction: 'right',
+//                                                        //                easing: 'cubic-bezier(.7,0,.7,1)',
+//                                                        //                duration: 250
 
-                                                       //            }));
-                                                       //            isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
-                                                       //            clearInterval(BackgroungImgInterval);
-                                                       //            FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
-                                                       //        }
-                                                       //    },
-                                                      //{
-                                                      //    margin: '0 0 0 0',
-                                                      //    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_UserAccountName',
-                                                      //    hidden:true,
-                                                      //    html: '<font size=3 color=white><b>TARMIZI RAHIM</b></font>'
-                                                      //},
+//                                                        //            }));
+//                                                        //            isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
+//                                                        //            clearInterval(BackgroungImgInterval);
+//                                                        //            FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
+//                                                        //        }
+//                                                        //    },
+//                                                       //{
+//                                                       //    margin: '0 0 0 0',
+//                                                       //    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_UserAccountName',
+//                                                       //    hidden:true,
+//                                                       //    html: '<font size=3 color=white><b>TARMIZI RAHIM</b></font>'
+//                                                       //},
 
-                                                           {
-                                                               xtype: 'container',
-                                                               margin: '6 -10 0 0',
-                                                               //hidden: true,
-                                                               //style: 'background-color: white;',
-                                                               //style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 10px 0px 0px 10px;box-shadow: 5px 10px 18px #888888;',
-                                                               style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;',
+//                                                            {
+//                                                                xtype: 'container',
+//                                                                margin: '6 -10 0 0',
+//                                                                //hidden: true,
+//                                                                //style: 'background-color: white;',
+//                                                                //style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 10px 0px 0px 10px;box-shadow: 5px 10px 18px #888888;',
+//                                                                style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;',
 
-                                                               height: 25,
-                                                               width: 125,
-                                                               // margin: '70 0 0 0',
-                                                               id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
-                                                               layout: {
+//                                                                height: 25,
+//                                                                width: 125,
+//                                                                // margin: '70 0 0 0',
+//                                                                id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
+//                                                                layout: {
 
-                                                                   type: 'vbox',
-                                                                   pack: 'center',
-                                                                   align: 'center'
-                                                               },
-                                                               items: [
-
-
-                                                                   {
-                                                                       margin: '25 0 0 10',
-                                                                       id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
-                                                                       html: '<font size=2 color=white><b>Loyalty Stamp Card</b></font>',
-                                                                       //hidden: true,
-                                                                   },
-                                                                   {
-                                                                       //  margin: '2 0 0 0',
-                                                                       margin: '-3 0 0 0',
-                                                                       hidden:true,
-                                                                       id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardisExpired',
-                                                                       html: '<div class="blink_me" style="width:100px;border-radius: 10px 10px 10px 10px;background-color: white;text-align:center;border: 1px solid red;font-size: 9px;font-weight:bold;color:red;height:15px">Campaign Expired!</div>',
-                                                                      // hidden: true,
-                                                                   },
-                                                                   {
-                                                                       xtype: 'container',
-                                                                       //   margin: '0 0 0 5',
-                                                                       // hidden: true,
-                                                                       style: 'background-color: transparent;',
-
-                                                                       height: 25,
-                                                                       width: 70,
-                                                                       // margin: '70 0 0 0',
-                                                                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCardeWallet',
-                                                                       layout: {
-
-                                                                           type: 'hbox',
-                                                                           pack: 'left',
-                                                                           align: 'left'
-                                                                       },
-                                                                       items: [
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCardeWallet',
-                                                                                hidden: true,
-                                                                                margin: '7 0 0 8',
-                                                                                height: 30,
-                                                                                width: 35,
-                                                                                // iconCls: 'list',
-                                                                                html: '<div class="blink_me"><img src="resources/icons/nfc-sign.png" width="25" height="20" alt="Company Name"></div>',
-                                                                                ui: 'plain',
-                                                                                handler: function () {
-                                                                                   // Ayoha_eWallet();
-
-                                                                                }
-                                                                            },
-                                                                            //{
-                                                                            //    height: 30,
-                                                                            //    margin: '10 0 0 0',
-                                                                            //    width: 65,
-
-                                                                            //    //html: '<button OnClick="Ayoha_eWallet()" class="buttonsHtmlBgTransparent"><div style="color:white;text-align: left;font-size:14px;width:100%;font-weight:bold" >RM00.00</div></button>',
-                                                                            //},
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCardeWalletValue',
-                                                                                margin: '7 0 0 2',
-                                                                                height: 30,
-                                                                                width: 65,
-                                                                                hidden:true,
-                                                                                // iconCls: 'list',
-                                                                                html: '<div class="blink_me" style="color:white;text-align: left;font-size:16px;width:100%;font-weight:bold;margin:-1px 0px 0px -8px" >NFC</div>',
-                                                                                ui: 'plain',
-                                                                                handler: function () {
-                                                                                  //  Ayoha_eWallet();
-
-                                                                                }
-                                                                            },
-                                                                            //{
-                                                                            //    margin: '7 0 0 2',
-
-                                                                            //}
-                                                                       ]
-                                                                   },
-
-                                                               ]
-                                                           },
-                                                   {
-                                                       xtype: 'container',
-                                                       margin: '1 0 0 -4',
-                                                      //hidden: true,
-                                                       //style: 'background-color: white;',
-                                                       style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: transparent;border-radius: 0px 0px 0px 0px;',
-                                                       height: 35,
-                                                       width: 70,
-                                                       // margin: '70 0 0 0',
-                                                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCardPictureUser',
-                                                       layout: {
-
-                                                           type: 'hbox',
-                                                           pack: 'center',
-                                                           align: 'center'
-                                                       },
-                                                       items: [
-                                                           {
-                                                               xtype: 'button',
-                                                               height: 40,
-                                                               width: 70,
-                                                               margin: '0 0 0 0',
-                                                               id: 'btnFloatPanel_AyohaCardManagement_PreviewCardPicProfile',
-                                                               //badgeText: "2",
-                                                               html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:30px" ><img src="resources/icons/stampedFeatureWhite05.png"  style="width: 30px; height: 30px; border:2px none grey; border-radius: 0%;  margin:-1px 0px 0px 2px"></div>',
-                                                               ui: 'plain',
-                                                               handler: function () {
-
-                                                                FloatPanel_AyohaCardManagement_PreviewCardHide(false);
-                                                                            //    _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
-                                                                            //        type: 'slideOut',
-                                                                            //        direction: 'right',
-                                                                            //        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                            //        duration: 250
-
-                                                                            //    }));
-                                                                            //    isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
-                                                                            //    clearInterval(BackgroungImgInterval);
-                                                                            //    FloatPanel_AyohaCardManagement_PreviewCardHide(false);
-                                                                            //    //FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
-                                                                            //    RemovePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
-                                                               }
-                                                           },
+//                                                                    type: 'vbox',
+//                                                                    pack: 'center',
+//                                                                    align: 'center'
+//                                                                },
+//                                                                items: [
 
 
+//                                                                    {
+//                                                                        margin: '25 0 0 10',
+//                                                                        id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
+//                                                                        html: '<font size=2 color=white><b>Loyalty Stamp Card</b></font>',
+//                                                                        //hidden: true,
+//                                                                    },
+//                                                                    {
+//                                                                        //  margin: '2 0 0 0',
+//                                                                        margin: '-3 0 0 0',
+//                                                                        hidden:true,
+//                                                                        id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardisExpired',
+//                                                                        html: '<div class="blink_me" style="width:100px;border-radius: 10px 10px 10px 10px;background-color: white;text-align:center;border: 1px solid red;font-size: 9px;font-weight:bold;color:red;height:15px">Campaign Expired!</div>',
+//                                                                       // hidden: true,
+//                                                                    },
+//                                                                    {
+//                                                                        xtype: 'container',
+//                                                                        //   margin: '0 0 0 5',
+//                                                                        // hidden: true,
+//                                                                        style: 'background-color: transparent;',
 
-                                                       ]
-                                                   },
+//                                                                        height: 25,
+//                                                                        width: 70,
+//                                                                        // margin: '70 0 0 0',
+//                                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCardeWallet',
+//                                                                        layout: {
+
+//                                                                            type: 'hbox',
+//                                                                            pack: 'left',
+//                                                                            align: 'left'
+//                                                                        },
+//                                                                        items: [
+//                                                                             {
+//                                                                                 xtype: 'button',
+//                                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCardeWallet',
+//                                                                                 hidden: true,
+//                                                                                 margin: '7 0 0 8',
+//                                                                                 height: 30,
+//                                                                                 width: 35,
+//                                                                                 // iconCls: 'list',
+//                                                                                 html: '<div class="blink_me"><img src="resources/icons/nfc-sign.png" width="25" height="20" alt="Company Name"></div>',
+//                                                                                 ui: 'plain',
+//                                                                                 handler: function () {
+//                                                                                    // Ayoha_eWallet();
+
+//                                                                                 }
+//                                                                             },
+//                                                                             //{
+//                                                                             //    height: 30,
+//                                                                             //    margin: '10 0 0 0',
+//                                                                             //    width: 65,
+
+//                                                                             //    //html: '<button OnClick="Ayoha_eWallet()" class="buttonsHtmlBgTransparent"><div style="color:white;text-align: left;font-size:14px;width:100%;font-weight:bold" >RM00.00</div></button>',
+//                                                                             //},
+//                                                                             {
+//                                                                                 xtype: 'button',
+//                                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCardeWalletValue',
+//                                                                                 margin: '7 0 0 2',
+//                                                                                 height: 30,
+//                                                                                 width: 65,
+//                                                                                 hidden:true,
+//                                                                                 // iconCls: 'list',
+//                                                                                 html: '<div class="blink_me" style="color:white;text-align: left;font-size:16px;width:100%;font-weight:bold;margin:-1px 0px 0px -8px" >NFC</div>',
+//                                                                                 ui: 'plain',
+//                                                                                 handler: function () {
+//                                                                                   //  Ayoha_eWallet();
+
+//                                                                                 }
+//                                                                             },
+//                                                                             //{
+//                                                                             //    margin: '7 0 0 2',
+
+//                                                                             //}
+//                                                                        ]
+//                                                                    },
+
+//                                                                ]
+//                                                            },
+//                                                    {
+//                                                        xtype: 'container',
+//                                                        margin: '1 0 0 -4',
+//                                                       //hidden: true,
+//                                                        //style: 'background-color: white;',
+//                                                        style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: transparent;border-radius: 0px 0px 0px 0px;',
+//                                                        height: 35,
+//                                                        width: 70,
+//                                                        // margin: '70 0 0 0',
+//                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCardPictureUser',
+//                                                        layout: {
+
+//                                                            type: 'hbox',
+//                                                            pack: 'center',
+//                                                            align: 'center'
+//                                                        },
+//                                                        items: [
+//                                                            {
+//                                                                xtype: 'button',
+//                                                                height: 40,
+//                                                                width: 70,
+//                                                                margin: '0 0 0 0',
+//                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCardPicProfile',
+//                                                                //badgeText: "2",
+//                                                                html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:30px" ><img src="resources/icons/stampedFeatureWhite05.png"  style="width: 30px; height: 30px; border:2px none grey; border-radius: 0%;  margin:-1px 0px 0px 2px"></div>',
+//                                                                ui: 'plain',
+//                                                                handler: function () {
+
+//                                                                 FloatPanel_AyohaCardManagement_PreviewCardHide(false);
+//                                                                             //    _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation({
+//                                                                             //        type: 'slideOut',
+//                                                                             //        direction: 'right',
+//                                                                             //        easing: 'cubic-bezier(.7,0,.7,1)',
+//                                                                             //        duration: 250
+
+//                                                                             //    }));
+//                                                                             //    isFloatPanel_AyohaCardManagement_PreviewCardOpen = 'N';
+//                                                                             //    clearInterval(BackgroungImgInterval);
+//                                                                             //    FloatPanel_AyohaCardManagement_PreviewCardHide(false);
+//                                                                             //    //FloatPanel_AyohaCardManagement_AdvertisementButtonHide();
+//                                                                             //    RemovePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
+//                                                                }
+//                                                            },
+
+
+
+//                                                        ]
+//                                                    },
                                                            
 
 
@@ -397,264 +3197,264 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                       ]
+//                                        ]
 
-                            },
+//                             },
                           
                                   
 
 
 
 
-                            {
+//                             {
 
-                                xtype: 'container',
-                                style: "background-color: transparent",
-                                height: '100%',
-                                width: '100%',
+//                                 xtype: 'container',
+//                                 style: "background-color: transparent",
+//                                 height: '100%',
+//                                 width: '100%',
                                
-                                layout: {
-                                    type: 'vbox',
-                                    pack: 'center',
-                                    align: 'center'
+//                                 layout: {
+//                                     type: 'vbox',
+//                                     pack: 'center',
+//                                     align: 'center'
 
-                                },
-                                scrollable: {
-                                    direction: 'vertical',
-                                    directionLock: true,
-                                    indicators: false
-                                },
+//                                 },
+//                                 scrollable: {
+//                                     direction: 'vertical',
+//                                     directionLock: true,
+//                                     indicators: false
+//                                 },
 
-                                items: [
-                              {
-                                        xtype: 'container',
-                                        style: "background-color: transparent",
-                                        height: 800,
-                                        width: '100%',
+//                                 items: [
+//                               {
+//                                         xtype: 'container',
+//                                         style: "background-color: transparent",
+//                                         height: 800,
+//                                         width: '100%',
                                        
-                                        layout: {
-                                            type: 'vbox',
-                                            pack: 'start',
-                                            align: 'center'
+//                                         layout: {
+//                                             type: 'vbox',
+//                                             pack: 'start',
+//                                             align: 'center'
 
-                                        },
+//                                         },
 
 
-                                        items: [
+//                                         items: [
                                           
 
-                                            {
-                                                xtype: 'container',
-                                                style: "background-color: transparent",
-                                                height: 200,
-                                                width: '100%',
+//                                             {
+//                                                 xtype: 'container',
+//                                                 style: "background-color: transparent",
+//                                                 height: 200,
+//                                                 width: '100%',
                                                
-                                                layout: {
-                                                    type: 'vbox',
-                                                    pack: 'end',
-                                                    align: 'center'
+//                                                 layout: {
+//                                                     type: 'vbox',
+//                                                     pack: 'end',
+//                                                     align: 'center'
         
-                                                },
-                                                items:[
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template1',
-                                                        width: '100%',
-                                                        //height: 180,              // boleh kekal fixed kalau memang nak, tapi elakkan margin besar
-                                                        padding: 0,
-                                                        style: "background-color:transparent;border-bottom:1px none white;",
-                                                        layout: { type: 'hbox', align: 'stretch' },   // ✅ stretch bagi anak container sama tinggi
-                                                        responsiveConfig: {
-                                                            'width < 360': {
-                                                              layout: { type: 'vbox', align: 'stretch' },
-                                                              height: 'auto'
-                                                            }
-                                                          },
-                                                        items: [
+//                                                 },
+//                                                 items:[
+//                                                     {
+//                                                         xtype: 'container',
+//                                                         id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template1',
+//                                                         width: '100%',
+//                                                         //height: 180,              // boleh kekal fixed kalau memang nak, tapi elakkan margin besar
+//                                                         padding: 0,
+//                                                         style: "background-color:transparent;border-bottom:1px none white;",
+//                                                         layout: { type: 'hbox', align: 'stretch' },   // ✅ stretch bagi anak container sama tinggi
+//                                                         responsiveConfig: {
+//                                                             'width < 360': {
+//                                                               layout: { type: 'vbox', align: 'stretch' },
+//                                                               height: 'auto'
+//                                                             }
+//                                                           },
+//                                                         items: [
 
-                                                          {
-                                                            xtype: 'container',
-                                                            flex: 1.2,   
-                                                            //padding: '0 0 0 30',   // ✅ semua item dalam kiri shift kanan                               // ✅ ganti width:'33%'
-                                                            layout: { type: 'vbox', pack: 'center', align: 'center' },
-                                                            items: [{
-                                                              xtype: 'component',
-                                                             // margin:'0 0 0 40',
-                                                              id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo',
-                                                              cls: 'pcLogo',
-                                                              html: '<img src="resources/icons/ayohaReward01.gif" />'
-                                                            }]
-                                                          },
+//                                                           {
+//                                                             xtype: 'container',
+//                                                             flex: 1.2,   
+//                                                             //padding: '0 0 0 30',   // ✅ semua item dalam kiri shift kanan                               // ✅ ganti width:'33%'
+//                                                             layout: { type: 'vbox', pack: 'center', align: 'center' },
+//                                                             items: [{
+//                                                               xtype: 'component',
+//                                                              // margin:'0 0 0 40',
+//                                                               id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo',
+//                                                               cls: 'pcLogo',
+//                                                               html: '<img src="resources/icons/ayohaReward01.gif" />'
+//                                                             }]
+//                                                           },
                                                       
-                                                          {
-                                                            xtype: 'container',
-                                                            flex: 1.9,                                  // ✅ ganti width:'67%'
-                                                            padding: '0 0 0 0',
-                                                            layout: { type: 'vbox', pack: 'center', align: 'start' }, // ✅ bukan 'left'
-                                                            defaults: { xtype: 'component' },
-                                                            items: [
-                                                              {
-                                                                id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName',
-                                                                cls: 'pcTitle',
-                                                                html: '<div>Loading...</div>'
-                                                              },
-                                                              {
-                                                                xtype: 'component',
-                                                                cls: 'pcDivider'
-                                                              },
-                                                              {
-                                                                id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard',
-                                                                cls: 'pcSub',
-                                                                html: '<div>Loading...</div>'
-                                                              },
-                                                              {
-                                                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard',
-                                                                hidden: true,
-                                                                cls: 'pcSmall',
-                                                                html: '<div>Start Date: Loading...</div>'
-                                                              },
-                                                              {
-                                                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
-                                                                hidden: true,
-                                                                cls: 'pcSmall pcBlink',
-                                                                html: '<div>Start Date: Loading...</div>'
-                                                              },
-                                                              {
-                                                                id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard',
-                                                                hidden: true,
-                                                                cls: 'pcSmall',
-                                                                html: '<div>289 campaign days left</div>'
-                                                              }
-                                                            ]
-                                                          }
-                                                        ]
-                                                      },
-                                                ]
-                                            },
+//                                                           {
+//                                                             xtype: 'container',
+//                                                             flex: 1.9,                                  // ✅ ganti width:'67%'
+//                                                             padding: '0 0 0 0',
+//                                                             layout: { type: 'vbox', pack: 'center', align: 'start' }, // ✅ bukan 'left'
+//                                                             defaults: { xtype: 'component' },
+//                                                             items: [
+//                                                               {
+//                                                                 id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName',
+//                                                                 cls: 'pcTitle',
+//                                                                 html: '<div>Loading...</div>'
+//                                                               },
+//                                                               {
+//                                                                 xtype: 'component',
+//                                                                 cls: 'pcDivider'
+//                                                               },
+//                                                               {
+//                                                                 id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard',
+//                                                                 cls: 'pcSub',
+//                                                                 html: '<div>Loading...</div>'
+//                                                               },
+//                                                               {
+//                                                                 id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard',
+//                                                                 hidden: true,
+//                                                                 cls: 'pcSmall',
+//                                                                 html: '<div>Start Date: Loading...</div>'
+//                                                               },
+//                                                               {
+//                                                                 id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
+//                                                                 hidden: true,
+//                                                                 cls: 'pcSmall pcBlink',
+//                                                                 html: '<div>Start Date: Loading...</div>'
+//                                                               },
+//                                                               {
+//                                                                 id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard',
+//                                                                 hidden: true,
+//                                                                 cls: 'pcSmall',
+//                                                                 html: '<div>289 campaign days left</div>'
+//                                                               }
+//                                                             ]
+//                                                           }
+//                                                         ]
+//                                                       },
+//                                                 ]
+//                                             },
                                           
                                               
 
 
 
 
-                                            // {
-                                            //     xtype: 'container',
-                                            //     id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template1',
-                                            //     margin: '0 0 0 0',
-                                            //    // hidden:true,
-                                            //     style: "background-color: black;border-bottom:1px solid white;",
-                                            //     // margin: '0 0 0 0',
-                                            //     width: '100%',
-                                            //     height: 180,
-                                            //     layout: {
-                                            //         type: 'hbox',
-                                            //         pack: 'center',
-                                            //         align: 'center'
+//                                             // {
+//                                             //     xtype: 'container',
+//                                             //     id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template1',
+//                                             //     margin: '0 0 0 0',
+//                                             //    // hidden:true,
+//                                             //     style: "background-color: black;border-bottom:1px solid white;",
+//                                             //     // margin: '0 0 0 0',
+//                                             //     width: '100%',
+//                                             //     height: 180,
+//                                             //     layout: {
+//                                             //         type: 'hbox',
+//                                             //         pack: 'center',
+//                                             //         align: 'center'
 
-                                            //     },
-                                            //     items: [
+//                                             //     },
+//                                             //     items: [
 
-                                            //         {
-                                            //             xtype: 'container',
-                                            //             height: 180,
-                                            //             width: '33%',
-                                            //             style: "background-color: red;",
-                                            //             layout: {
-                                            //                 type: 'vbox',
-                                            //                 pack: 'center',
-                                            //                 align: 'center'
+//                                             //         {
+//                                             //             xtype: 'container',
+//                                             //             height: 180,
+//                                             //             width: '33%',
+//                                             //             style: "background-color: red;",
+//                                             //             layout: {
+//                                             //                 type: 'vbox',
+//                                             //                 pack: 'center',
+//                                             //                 align: 'center'
 
-                                            //             },
-                                            //             items:[
-                                            //                 {
-                                            //                    margin: '80 0 0 0',
-                                            //                    xtype:'component',
-                                            //                     //  height: 180,
-                                            //                     //   width: 120,
-                                            //                     id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo',
-                                            //                     html: '<img src="resources/icons/ayohaReward01.gif" width="120" height="120"/>',
-                                            //                 },
-                                            //             ]
-                                            //         },
+//                                             //             },
+//                                             //             items:[
+//                                             //                 {
+//                                             //                    margin: '80 0 0 0',
+//                                             //                    xtype:'component',
+//                                             //                     //  height: 180,
+//                                             //                     //   width: 120,
+//                                             //                     id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo',
+//                                             //                     html: '<img src="resources/icons/ayohaReward01.gif" width="120" height="120"/>',
+//                                             //                 },
+//                                             //             ]
+//                                             //         },
                                                     
-                                            //         {
-                                            //             xtype: 'container',
-                                            //             height: 180,
-                                            //             width: '67%',
-                                            //             style: "background-color: green;",
-                                            //             layout: {
-                                            //                 type: 'vbox',
-                                            //                 pack: 'center',
-                                            //                 align: 'left'
+//                                             //         {
+//                                             //             xtype: 'container',
+//                                             //             height: 180,
+//                                             //             width: '67%',
+//                                             //             style: "background-color: green;",
+//                                             //             layout: {
+//                                             //                 type: 'vbox',
+//                                             //                 pack: 'center',
+//                                             //                 align: 'left'
 
-                                            //             },
-                                            //             items: [
+//                                             //             },
+//                                             //             items: [
 
-                                            //                  {
-                                            //                      margin: '70 0 0 5',
-                                            //                      id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName',
-                                            //                      html: '<font size=3 color=white><b>Loading......</b></font>',
-                                            //                      // html: '<div style="font-size:8px;color:white;font-weight:bold">Community Coffee Roastes Sdn Bhd</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                            //                  },
-                                            //                  {
-                                            //                      xtype: 'container',
-                                            //                      style: "background-color: white;border-bottom:1px solid white;",
-                                            //                      height: 1,
-                                            //                      width: '65%',
-                                            //                      margin: '0 0 0 5',
-                                            //                      //style: {
+//                                             //                  {
+//                                             //                      margin: '70 0 0 5',
+//                                             //                      id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName',
+//                                             //                      html: '<font size=3 color=white><b>Loading......</b></font>',
+//                                             //                      // html: '<div style="font-size:8px;color:white;font-weight:bold">Community Coffee Roastes Sdn Bhd</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                             //                  },
+//                                             //                  {
+//                                             //                      xtype: 'container',
+//                                             //                      style: "background-color: white;border-bottom:1px solid white;",
+//                                             //                      height: 1,
+//                                             //                      width: '65%',
+//                                             //                      margin: '0 0 0 5',
+//                                             //                      //style: {
 
-                                            //                      //    background: 'white',
+//                                             //                      //    background: 'white',
 
-                                            //                      //},
-                                            //                      //layout: {
-                                            //                      //    type: 'hbox',
-                                            //                      //    pack: 'center',
-                                            //                      //    align: 'center'
+//                                             //                      //},
+//                                             //                      //layout: {
+//                                             //                      //    type: 'hbox',
+//                                             //                      //    pack: 'center',
+//                                             //                      //    align: 'center'
 
-                                            //                      //},
-                                            //                  },
-                                            //                   {
-                                            //                       margin: '0 0 0 5',
+//                                             //                      //},
+//                                             //                  },
+//                                             //                   {
+//                                             //                       margin: '0 0 0 5',
 
-                                            //                       id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard',
+//                                             //                       id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard',
 
-                                            //                       html: '<font size=2 color=white><b>Loading....</b></font>',
-                                            //                   },
+//                                             //                       html: '<font size=2 color=white><b>Loading....</b></font>',
+//                                             //                   },
 
-                                            //                            {
-                                            //                                margin: '-8 0 0 5',
-                                            //                                hidden: true,
-                                            //                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard',
+//                                             //                            {
+//                                             //                                margin: '-8 0 0 5',
+//                                             //                                hidden: true,
+//                                             //                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard',
                                                                           
 
-                                            //                                html: '<font size=1 color=white><b>Start Date:Loading....</b></font>',
-                                            //                            },
-                                            //                            {
-                                            //                                margin: '-22 0 0 5',
-                                            //                                hidden: true,
-                                            //                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
+//                                             //                                html: '<font size=1 color=white><b>Start Date:Loading....</b></font>',
+//                                             //                            },
+//                                             //                            {
+//                                             //                                margin: '-22 0 0 5',
+//                                             //                                hidden: true,
+//                                             //                                id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
 
 
-                                            //                                html: '<font size=1 color=white><b>Start Date:Loading....</b></font>',
-                                            //                            },
+//                                             //                                html: '<font size=1 color=white><b>Start Date:Loading....</b></font>',
+//                                             //                            },
 
-                                            //                    //{
-                                            //                    //    xtype:'spacer'
-                                            //                    //},
-                                            //                    {
-                                            //                        margin: '-7 0 0 5',
-                                            //                       hidden: true,
-                                            //                        id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard',
+//                                             //                    //{
+//                                             //                    //    xtype:'spacer'
+//                                             //                    //},
+//                                             //                    {
+//                                             //                        margin: '-7 0 0 5',
+//                                             //                       hidden: true,
+//                                             //                        id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard',
 
-                                            //                        html: '<font size=1 color=white><b>289 campaign days left</b></font>',
-                                            //                    },
+//                                             //                        html: '<font size=1 color=white><b>289 campaign days left</b></font>',
+//                                             //                    },
 
                                                               
 
-                                            //             ]
+//                                             //             ]
 
-                                            //         },
+//                                             //         },
 
                                                       
 
@@ -665,260 +3465,260 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                            //     ]
-                                            // },
+//                                             //     ]
+//                                             // },
 
 
-                                            /////////////////////////////////////////////////////////////---lama
-                                              //{
-                                              //    xtype: 'container',
-                                              //    margin:'-50 0 0 0',
-                                              //    height: 1,
-                                              //    width: '90%',
-                                              //    style: {
+//                                             /////////////////////////////////////////////////////////////---lama
+//                                               //{
+//                                               //    xtype: 'container',
+//                                               //    margin:'-50 0 0 0',
+//                                               //    height: 1,
+//                                               //    width: '90%',
+//                                               //    style: {
 
-                                              //        background: 'white',
+//                                               //        background: 'white',
 
-                                              //    },
-                                              //    layout: {
-                                              //        type: 'hbox',
-                                              //        pack: 'center',
-                                              //        align: 'center'
+//                                               //    },
+//                                               //    layout: {
+//                                               //        type: 'hbox',
+//                                               //        pack: 'center',
+//                                               //        align: 'center'
 
-                                              //    },
-                                              //},
-
-
-
-                                            //  {
-                                            //      xtype: 'container',
-                                            //      id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template2',
-                                            //     hidden:true,
-                                            //      margin: '-40 0 0 0',
-                                            //      // margin: '0 0 0 0',
-                                            //      width: '100%',
-                                            //      height: 300,
-                                            //      layout: {
-                                            //          type: 'vbox',
-                                            //          pack: 'center',
-                                            //          align: 'center'
-
-                                            //      },
-                                            //      items: [
-
-                                            //          {
-                                            //              margin: '0 0 0 0',
-                                            //              height: 130,
-                                            //              width: 130,
-                                            //              id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo_Template2',
-                                            //              html: '<img src="resources/icons/ccrlogo.png" width="130" height="130"/>',
-                                            //          },
-                                            //          {
-                                            //              xtype: 'container',
-
-                                            //              width: '100%',
-                                            //              layout: {
-                                            //                  type: 'vbox',
-                                            //                  pack: 'start',
-                                            //                  align: 'center'
-
-                                            //              },
-                                            //              items: [
-
-                                            //                   {
-                                            //                       margin: '0 0 0 0',
-                                            //                       id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName_Template2',
-                                            //                       html: '<font size=3 color=white><b>Community Coffee Roastes Sdn Bhd</b></font>',
-                                            //                      // html: '<div style="font-size:8px;color:white;font-weight:bold">Community Coffee Roastes Sdn Bhd</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                            //                   },
-
-                                            //              ]
-
-                                            //          },
-
-                                            //            {
-                                            //                xtype: 'container',
-                                            //                height: 1,
-                                            //                width: '90%',
-                                            //                style: {
-
-                                            //                    background: 'white',
-
-                                            //                },
-                                            //                layout: {
-                                            //                    type: 'hbox',
-                                            //                    pack: 'center',
-                                            //                    align: 'center'
-
-                                            //                },
-                                            //            },
+//                                               //    },
+//                                               //},
 
 
 
-                                            //             {
-                                            //                 xtype: 'container',
+//                                             //  {
+//                                             //      xtype: 'container',
+//                                             //      id: 'FloatPanel_AyohaCardManagement_PreviewCard_Template2',
+//                                             //     hidden:true,
+//                                             //      margin: '-40 0 0 0',
+//                                             //      // margin: '0 0 0 0',
+//                                             //      width: '100%',
+//                                             //      height: 300,
+//                                             //      layout: {
+//                                             //          type: 'vbox',
+//                                             //          pack: 'center',
+//                                             //          align: 'center'
+
+//                                             //      },
+//                                             //      items: [
+
+//                                             //          {
+//                                             //              margin: '0 0 0 0',
+//                                             //              height: 130,
+//                                             //              width: 130,
+//                                             //              id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseLogo_Template2',
+//                                             //              html: '<img src="resources/icons/ccrlogo.png" width="130" height="130"/>',
+//                                             //          },
+//                                             //          {
+//                                             //              xtype: 'container',
+
+//                                             //              width: '100%',
+//                                             //              layout: {
+//                                             //                  type: 'vbox',
+//                                             //                  pack: 'start',
+//                                             //                  align: 'center'
+
+//                                             //              },
+//                                             //              items: [
+
+//                                             //                   {
+//                                             //                       margin: '0 0 0 0',
+//                                             //                       id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseName_Template2',
+//                                             //                       html: '<font size=3 color=white><b>Community Coffee Roastes Sdn Bhd</b></font>',
+//                                             //                      // html: '<div style="font-size:8px;color:white;font-weight:bold">Community Coffee Roastes Sdn Bhd</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                             //                   },
+
+//                                             //              ]
+
+//                                             //          },
+
+//                                             //            {
+//                                             //                xtype: 'container',
+//                                             //                height: 1,
+//                                             //                width: '90%',
+//                                             //                style: {
+
+//                                             //                    background: 'white',
+
+//                                             //                },
+//                                             //                layout: {
+//                                             //                    type: 'hbox',
+//                                             //                    pack: 'center',
+//                                             //                    align: 'center'
+
+//                                             //                },
+//                                             //            },
+
+
+
+//                                             //             {
+//                                             //                 xtype: 'container',
                                                           
-                                            //                 width: '90%',
-                                            //                 style: {
+//                                             //                 width: '90%',
+//                                             //                 style: {
 
-                                            //                     background: 'transparent',
+//                                             //                     background: 'transparent',
 
-                                            //                 },
-                                            //                 layout: {
-                                            //                     type: 'hbox',
-                                            //                     pack: 'start',
-                                            //                     align: 'center'
+//                                             //                 },
+//                                             //                 layout: {
+//                                             //                     type: 'hbox',
+//                                             //                     pack: 'start',
+//                                             //                     align: 'center'
 
-                                            //                 },
-                                            //                 items: [
+//                                             //                 },
+//                                             //                 items: [
 
-                                            //                     {
-                                            //                         xtype: 'container',
-                                            //                         width: '60%',
-                                            //                         hidden:true,
-                                            //                         style: {
+//                                             //                     {
+//                                             //                         xtype: 'container',
+//                                             //                         width: '60%',
+//                                             //                         hidden:true,
+//                                             //                         style: {
 
-                                            //                             background: 'transparent',
+//                                             //                             background: 'transparent',
 
-                                            //                         },
-                                            //                         layout: {
-                                            //                             type: 'vbox',
-                                            //                             pack: 'center',
-                                            //                             align: 'center'
+//                                             //                         },
+//                                             //                         layout: {
+//                                             //                             type: 'vbox',
+//                                             //                             pack: 'center',
+//                                             //                             align: 'center'
 
-                                            //                         }, items: [
+//                                             //                         }, items: [
 
-                                            //                              {
+//                                             //                              {
                                                                            
-                                            //                                  html: '<div style="font-size:16px;color:white;font-weight:bold">Ramadhan 2021!</div>',
-                                            //                              },
-                                            //                         ]
-                                            //                     },
+//                                             //                                  html: '<div style="font-size:16px;color:white;font-weight:bold">Ramadhan 2021!</div>',
+//                                             //                              },
+//                                             //                         ]
+//                                             //                     },
                                                                
 
-                                            //                     {
-                                            //                         xtype: 'container',
-                                            //                         width: '100%',
-                                            //                         style: {
+//                                             //                     {
+//                                             //                         xtype: 'container',
+//                                             //                         width: '100%',
+//                                             //                         style: {
 
-                                            //                             background: 'transparent',
+//                                             //                             background: 'transparent',
 
-                                            //                         },
-                                            //                         layout: {
-                                            //                             type: 'vbox',
-                                            //                             pack: 'start',
-                                            //                             align: 'center'
+//                                             //                         },
+//                                             //                         layout: {
+//                                             //                             type: 'vbox',
+//                                             //                             pack: 'start',
+//                                             //                             align: 'center'
 
-                                            //                         }, items: [
-                                            //                              {
-                                            //                                  margin: '0 0 0 0',
+//                                             //                         }, items: [
+//                                             //                              {
+//                                             //                                  margin: '0 0 0 0',
 
-                                            //                                  id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard_Template2',
+//                                             //                                  id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignName_PreviewCard_Template2',
 
-                                            //                                  html: '<font size=2 color=white><b>Loading...</b></font>',
-                                            //                              },
+//                                             //                                  html: '<font size=2 color=white><b>Loading...</b></font>',
+//                                             //                              },
 
-                                            //                             {
-                                            //                                 margin: '-8 0 0 0',
+//                                             //                             {
+//                                             //                                 margin: '-8 0 0 0',
 
-                                            //                                 id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard_Template2',
+//                                             //                                 id: 'htmlMyFloatPanel_AyohaCardManagement_CampaignDayLeft_PreviewCard_Template2',
 
-                                            //                                 html: '<font size=1 color=white><b>Start Date:14/11/2019</b></font>',
-                                            //                             },
+//                                             //                                 html: '<font size=1 color=white><b>Start Date:14/11/2019</b></font>',
+//                                             //                             },
 
-                                            //                     //{
-                                            //                     //    xtype:'spacer'
-                                            //                     //},
-                                            //                     {
-                                            //                         margin: '-7 0 0 0',
+//                                             //                     //{
+//                                             //                     //    xtype:'spacer'
+//                                             //                     //},
+//                                             //                     {
+//                                             //                         margin: '-7 0 0 0',
 
-                                            //                         id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_Template2',
+//                                             //                         id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_Template2',
 
-                                            //                         html: '<font size=1 color=white><b>Expired Date:14/12/2020</b></font>',
-                                            //                     },
-                                            //                      {
-                                            //                          xtype: 'container',
-                                            //                          height: 1,
-                                            //                          width: '80%',
-                                            //                          style: {
+//                                             //                         html: '<font size=1 color=white><b>Expired Date:14/12/2020</b></font>',
+//                                             //                     },
+//                                             //                      {
+//                                             //                          xtype: 'container',
+//                                             //                          height: 1,
+//                                             //                          width: '80%',
+//                                             //                          style: {
 
-                                            //                              background: 'white',
+//                                             //                              background: 'white',
 
-                                            //                          },
-                                            //                          layout: {
-                                            //                              type: 'hbox',
-                                            //                              pack: 'center',
-                                            //                              align: 'center'
+//                                             //                          },
+//                                             //                          layout: {
+//                                             //                              type: 'hbox',
+//                                             //                              pack: 'center',
+//                                             //                              align: 'center'
 
-                                            //                          },
-                                            //                      },
+//                                             //                          },
+//                                             //                      },
 
 
-                                            //                         ]
+//                                             //                         ]
 
-                                            //                     },
+//                                             //                     },
 
                                                             
                                                                 
-                                            //                 ]
-                                            //             },
+//                                             //                 ]
+//                                             //             },
 
                                              
 
-                                            //   //{
-                                            //   //    xtype: 'container',
-                                            //   //    height: 1,
-                                            //   //    width: '90%',
-                                            //   //    style: {
+//                                             //   //{
+//                                             //   //    xtype: 'container',
+//                                             //   //    height: 1,
+//                                             //   //    width: '90%',
+//                                             //   //    style: {
 
-                                            //   //        background: 'white',
+//                                             //   //        background: 'white',
 
-                                            //   //    },
-                                            //   //    layout: {
-                                            //   //        type: 'hbox',
-                                            //   //        pack: 'center',
-                                            //   //        align: 'center'
+//                                             //   //    },
+//                                             //   //    layout: {
+//                                             //   //        type: 'hbox',
+//                                             //   //        pack: 'center',
+//                                             //   //        align: 'center'
 
-                                            //   //    },
-                                            //   //},
-
-
-                                            //      ]
-                                            //  },
+//                                             //   //    },
+//                                             //   //},
 
 
-                                            //  {
-                                            //      xtype: 'container',
-                                            //      id: 'containerFloatPanel_AyohaCardManagement_PreviewCardQrCode',
-                                            //      width: '100%',
-                                            //      height: 200,
-                                            //      hidden: true,
-                                            //      style: "background-color: transparent",
-                                            //      //style: "background-color: #F35B57;",
-
-                                            //      layout: {
-                                            //          type: 'vbox',
-                                            //          pack: 'center',
-                                            //          align: 'center'
-
-                                            //      },
+//                                             //      ]
+//                                             //  },
 
 
-                                            //      items: [
+//                                             //  {
+//                                             //      xtype: 'container',
+//                                             //      id: 'containerFloatPanel_AyohaCardManagement_PreviewCardQrCode',
+//                                             //      width: '100%',
+//                                             //      height: 200,
+//                                             //      hidden: true,
+//                                             //      style: "background-color: transparent",
+//                                             //      //style: "background-color: #F35B57;",
+
+//                                             //      layout: {
+//                                             //          type: 'vbox',
+//                                             //          pack: 'center',
+//                                             //          align: 'center'
+
+//                                             //      },
 
 
+//                                             //      items: [
 
 
 
 
-                                            //            {
-                                            //                id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardQRCode',
-                                            //                margin: '-90 0 0 0',
-                                            //              //  hidden:true,
-                                            //                width: '90%',
-                                            //                height: '100%',
-                                            //                html: '<img src="' + GetQRCodeImg() + '" style="width: 100%; height: 100%; border:1px solid white;" /><font size=2 color=white><b>Show This QR Code to be scanned by merchandiser</b></font>',
-                                            //            },
+
+
+//                                             //            {
+//                                             //                id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardQRCode',
+//                                             //                margin: '-90 0 0 0',
+//                                             //              //  hidden:true,
+//                                             //                width: '90%',
+//                                             //                height: '100%',
+//                                             //                html: '<img src="' + GetQRCodeImg() + '" style="width: 100%; height: 100%; border:1px solid white;" /><font size=2 color=white><b>Show This QR Code to be scanned by merchandiser</b></font>',
+//                                             //            },
 
 
 
@@ -926,22 +3726,22 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                            //      ]
+//                                             //      ]
 
-                                            //  },
-
-
+//                                             //  },
 
 
 
 
 
-                                               //{
-                                               //    margin: '90 0 0 0',
+
+
+//                                                //{
+//                                                //    margin: '90 0 0 0',
                                                            
-                                               //    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardQRCode_count',
-                                               //    html: '<font size=3 color=white><b>12</b></font>'
-                                               //},
+//                                                //    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCardQRCode_count',
+//                                                //    html: '<font size=3 color=white><b>12</b></font>'
+//                                                //},
 
 
 
@@ -953,88 +3753,88 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
                                                 
 
-                                             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                              ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-                                              {
-                                                  xtype: 'container',
-                                                  id: 'containerFloatPanel_AyohaCardManagement_PreviewCardMaster',
-                                                  width: '100%',
-                                               //   margin:'-40 0 0 0',
-                                               height:500,
-                                                  //hidden:true,
-                                                 style: "background-color: transparent",
-                                                  //style: "background-color: #F35B57;",
-                                                //  style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
-                                                  layout: {
-                                                      type: 'vbox',
-                                                      pack: 'start',
-                                                      align: 'center'
+//                                               {
+//                                                   xtype: 'container',
+//                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCardMaster',
+//                                                   width: '100%',
+//                                                //   margin:'-40 0 0 0',
+//                                                height:500,
+//                                                   //hidden:true,
+//                                                  style: "background-color: transparent",
+//                                                   //style: "background-color: #F35B57;",
+//                                                 //  style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
+//                                                   layout: {
+//                                                       type: 'vbox',
+//                                                       pack: 'start',
+//                                                       align: 'center'
 
-                                                  },
+//                                                   },
 
 
-                                                  items: [
+//                                                   items: [
                                                        
-                                                      {
-                                                          xtype: 'container',
-                                                          id: 'containerFloatPanel_AyohaCardManagement_PreviewCardMasterLoading',
-                                                          width: '80%',
-                                                          height:300,
-                                                          hidden:true,
-                                                         // style: "background-color: transparent",
-                                                          //style: "background-color: #F35B57;",
-                                                          style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
-                                                          layout: {
-                                                              type: 'vbox',
-                                                              pack: 'center',
-                                                              align: 'center'
+//                                                       {
+//                                                           xtype: 'container',
+//                                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCardMasterLoading',
+//                                                           width: '80%',
+//                                                           height:300,
+//                                                           hidden:true,
+//                                                          // style: "background-color: transparent",
+//                                                           //style: "background-color: #F35B57;",
+//                                                           style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
+//                                                           layout: {
+//                                                               type: 'vbox',
+//                                                               pack: 'center',
+//                                                               align: 'center'
 
-                                                          },
+//                                                           },
 
-                                                      },
+//                                                       },
 
-                                                       {
-                                                           xtype: 'container',
-                                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCard1',
-                                                           //hidden:true,
-                                                           style: "background-color: transparent",
-                                                         //  style: "background-color: #F35B57;",
-                                                          // height: 80,
-                                                           //  height: 120,
-                                                          // height: 150,
-                                                         // height: 110,                                                      
-                                                           width: '100%',
-                                                           layout: {
-                                                               type: 'hbox',
-                                                               pack: 'center',
-                                                               align: 'center'
+//                                                        {
+//                                                            xtype: 'container',
+//                                                            id: 'containerFloatPanel_AyohaCardManagement_PreviewCard1',
+//                                                            //hidden:true,
+//                                                            style: "background-color: transparent",
+//                                                          //  style: "background-color: #F35B57;",
+//                                                           // height: 80,
+//                                                            //  height: 120,
+//                                                           // height: 150,
+//                                                          // height: 110,                                                      
+//                                                            width: '100%',
+//                                                            layout: {
+//                                                                type: 'hbox',
+//                                                                pack: 'center',
+//                                                                align: 'center'
 
-                                                           },
+//                                                            },
 
 
-                                                           items: [
-                                                               //{
-                                                               //    xtype: 'panel',
-                                                               //    width: '3%'
-                                                               //},
-                                                               {
-                                                                   xtype: 'container',
-                                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard01',
-                                                                   //hidden:true,
+//                                                            items: [
+//                                                                //{
+//                                                                //    xtype: 'panel',
+//                                                                //    width: '3%'
+//                                                                //},
+//                                                                {
+//                                                                    xtype: 'container',
+//                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard01',
+//                                                                    //hidden:true,
                                                                   
-                                                                   style: "background-color: transparent",
-                                                                   //style: "background-color: #F35B57;",
-                                                                   //height: 110,
-                                                                   height: 90,
-                                                                   width: 115,
-                                                                   layout: {
-                                                                       type: 'vbox',
-                                                                       pack: 'center',
-                                                                       align: 'center'
+//                                                                    style: "background-color: transparent",
+//                                                                    //style: "background-color: #F35B57;",
+//                                                                    //height: 110,
+//                                                                    height: 90,
+//                                                                    width: 115,
+//                                                                    layout: {
+//                                                                        type: 'vbox',
+//                                                                        pack: 'center',
+//                                                                        align: 'center'
 
-                                                                   },
-                                                                   items: [
+//                                                                    },
+//                                                                    items: [
 
 
 
@@ -1042,251 +3842,251 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                                       {
-                                                           xtype: 'button',
-                                                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard1',
-                                                           hidden: true,
-                                                           //   margin: '-10 0 0 0',
-                                                      //   margin: '95 0 0 0',
-                                                      height: 90,
-                                                          width: 115,
-                                                           //width: 100,
-                                                           zIndex: 100,
-                                                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                           ui: 'plain',
-                                                           handler: function () {
-                                                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard1').getHtml();
-                                                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[0]);
+//                                                        {
+//                                                            xtype: 'button',
+//                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard1',
+//                                                            hidden: true,
+//                                                            //   margin: '-10 0 0 0',
+//                                                       //   margin: '95 0 0 0',
+//                                                       height: 90,
+//                                                           width: 115,
+//                                                            //width: 100,
+//                                                            zIndex: 100,
+//                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                            ui: 'plain',
+//                                                            handler: function () {
+//                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard1').getHtml();
+//                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[0]);
 
-                                                           }
-                                                       },
+//                                                            }
+//                                                        },
 
-                                                                        {
-                                                                            xtype: 'button',
-                                                                            height: 80,
-                                                                          width: 105,
-                                                                           // width: 90,
-                                                                            //zIndex: -10,
-                                                                       //   margin: '-95 0 0 0',
-                                                                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard1',
-                                                                            hidden: true,
-                                                                            //badgeText: "2",
-                                                                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
-                                                                            //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
-                                                                            ui: 'plain',
-                                                                            handler: function () {
-                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard1').getHtml();
-                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[0]);
-                                                                               // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
-                                                                            }
-                                                                        },
-                                                                        {
-                                                                            hidden: true,
-                                                                            margin: '-25 0 0 0',
+//                                                                         {
+//                                                                             xtype: 'button',
+//                                                                             height: 80,
+//                                                                           width: 105,
+//                                                                            // width: 90,
+//                                                                             //zIndex: -10,
+//                                                                        //   margin: '-95 0 0 0',
+//                                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard1',
+//                                                                             hidden: true,
+//                                                                             //badgeText: "2",
+//                                                                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+//                                                                             //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+//                                                                             ui: 'plain',
+//                                                                             handler: function () {
+//                                                                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard1').getHtml();
+//                                                                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[0]);
+//                                                                                // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+//                                                                             }
+//                                                                         },
+//                                                                         {
+//                                                                             hidden: true,
+//                                                                             margin: '-25 0 0 0',
                                                                           
                                                                             
-                                                                            id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard1',
-                                                                            html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                        },
+//                                                                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard1',
+//                                                                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                         },
 
 
-                                                                   ]
-                                                               },
+//                                                                    ]
+//                                                                },
 
 
                                                                
 
-                                                                 {
-                                                                     xtype: 'container',
-                                                                     id: 'containerFloatPanel_AyohaCardManagement_PreviewCard02',
-                                                                     //hidden:true,
-                                                                     style: "background-color: transparent",
-                                                                     //style: "background-color: #F35B57;",
-                                                                     height: 90,
-                                                                    // width: 115,
-                                                                     width: 115,
-                                                                     layout: {
-                                                                         type: 'vbox',
-                                                                         pack: 'center',
-                                                                         align: 'center'
+//                                                                  {
+//                                                                      xtype: 'container',
+//                                                                      id: 'containerFloatPanel_AyohaCardManagement_PreviewCard02',
+//                                                                      //hidden:true,
+//                                                                      style: "background-color: transparent",
+//                                                                      //style: "background-color: #F35B57;",
+//                                                                      height: 90,
+//                                                                     // width: 115,
+//                                                                      width: 115,
+//                                                                      layout: {
+//                                                                          type: 'vbox',
+//                                                                          pack: 'center',
+//                                                                          align: 'center'
 
-                                                                     },
-                                                                     items: [
-                                                                               {
-                                                                                   xtype: 'button',
-                                                                                   id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard2',
-                                                                                  // visible: false,
-                                                                                   hidden: true,
-                                                                                   //   margin: '-10 0 0 0',
-                                                                                  // margin: '-95 0 0 0',
-                                                                                  height: 90,
-                                                                                  width: 115,
-                                                                                   zIndex: 100,
-                                                                                   html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                   ui: 'plain',
-                                                                                   handler: function () {
-                                                                                       var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard2').getHtml();
-                                                                                       FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[1]);
+//                                                                      },
+//                                                                      items: [
+//                                                                                {
+//                                                                                    xtype: 'button',
+//                                                                                    id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard2',
+//                                                                                   // visible: false,
+//                                                                                    hidden: true,
+//                                                                                    //   margin: '-10 0 0 0',
+//                                                                                   // margin: '-95 0 0 0',
+//                                                                                   height: 90,
+//                                                                                   width: 115,
+//                                                                                    zIndex: 100,
+//                                                                                    html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                    ui: 'plain',
+//                                                                                    handler: function () {
+//                                                                                        var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard2').getHtml();
+//                                                                                        FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[1]);
 
-                                                                                   }
-                                                                               },
-
-
-                                                                          {
-                                                                              xtype: 'button',
-                                                                              height: 80,
-                                                                             width: 105,
-                                                                             // width: 90,
-                                                                            // margin: '-95 0 0 0',
-                                                                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard2',
-                                                                              hidden: true,
-                                                                              //badgeText: "2",
-                                                                              // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
-                                                                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+//                                                                                    }
+//                                                                                },
 
 
-                                                                              ui: 'plain',
-                                                                              handler: function () {
-
-                                                                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard2').getHtml();
-                                                                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[1]);
-                                                                              }
-                                                                          },
-                                                                     {
-                                                                         hidden: true,
-                                                                         margin: '-25 0 0 0',
-                                                                         // margin: '-40 0 0 0',
-                                                                         id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard2',
-                                                                         html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                     },
-                                                                     ]
-                                                                 },
+//                                                                           {
+//                                                                               xtype: 'button',
+//                                                                               height: 80,
+//                                                                              width: 105,
+//                                                                              // width: 90,
+//                                                                             // margin: '-95 0 0 0',
+//                                                                               id: 'btnFloatPanel_AyohaCardManagement_PreviewCard2',
+//                                                                               hidden: true,
+//                                                                               //badgeText: "2",
+//                                                                               // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+//                                                                               html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
 
 
+//                                                                               ui: 'plain',
+//                                                                               handler: function () {
+
+//                                                                                   var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard2').getHtml();
+//                                                                                   FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[1]);
+//                                                                               }
+//                                                                           },
+//                                                                      {
+//                                                                          hidden: true,
+//                                                                          margin: '-25 0 0 0',
+//                                                                          // margin: '-40 0 0 0',
+//                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard2',
+//                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                      },
+//                                                                      ]
+//                                                                  },
 
 
-                                                                   {
-                                                                       xtype: 'container',
-                                                                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCard03',
-                                                                       //hidden:true,
-                                                                       style: "background-color: transparent",
-                                                                       //style: "background-color: #F35B57;",
-                                                                       height: 90,
-                                                                      // width: 100,
-                                                                      width: 115,
-                                                                       layout: {
-                                                                           type: 'vbox',
-                                                                           pack: 'center',
-                                                                           align: 'center'
-
-                                                                       },
-                                                                       items: [
-                                                                                       {
-                                                                                           xtype: 'button',
-                                                                                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard3',
-                                                                                           hidden: true,
-                                                                                           //   margin: '-10 0 0 0',
-                                                                                          // margin: '-95 0 0 0',
-                                                                                          height: 90,
-                                                                                          width: 115,
-                                                                                          // width: 100,
-                                                                                           zIndex: 100,
-                                                                                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                           ui: 'plain',
-                                                                                           handler: function () {
-
-                                                                                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard3').getHtml();
-                                                                                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[2]);
-                                                                                           }
-                                                                                       },
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                height: 80,
-                                                                                width: 105,
-                                                                              //  width: 90,
-                                                                               // margin: '-95 0 0 0',
-                                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCard3',
-                                                                                hidden: true,
-                                                                                //badgeText: "2",
-                                                                                // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
-                                                                                html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
 
 
-                                                                                //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+//                                                                    {
+//                                                                        xtype: 'container',
+//                                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard03',
+//                                                                        //hidden:true,
+//                                                                        style: "background-color: transparent",
+//                                                                        //style: "background-color: #F35B57;",
+//                                                                        height: 90,
+//                                                                       // width: 100,
+//                                                                       width: 115,
+//                                                                        layout: {
+//                                                                            type: 'vbox',
+//                                                                            pack: 'center',
+//                                                                            align: 'center'
+
+//                                                                        },
+//                                                                        items: [
+//                                                                                        {
+//                                                                                            xtype: 'button',
+//                                                                                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard3',
+//                                                                                            hidden: true,
+//                                                                                            //   margin: '-10 0 0 0',
+//                                                                                           // margin: '-95 0 0 0',
+//                                                                                           height: 90,
+//                                                                                           width: 115,
+//                                                                                           // width: 100,
+//                                                                                            zIndex: 100,
+//                                                                                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                            ui: 'plain',
+//                                                                                            handler: function () {
+
+//                                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard3').getHtml();
+//                                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[2]);
+//                                                                                            }
+//                                                                                        },
+//                                                                             {
+//                                                                                 xtype: 'button',
+//                                                                                 height: 80,
+//                                                                                 width: 105,
+//                                                                               //  width: 90,
+//                                                                                // margin: '-95 0 0 0',
+//                                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCard3',
+//                                                                                 hidden: true,
+//                                                                                 //badgeText: "2",
+//                                                                                 // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+//                                                                                 html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
 
 
-                                                                                ui: 'plain',
-                                                                                handler: function () {
+//                                                                                 //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
 
-                                                                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard3').getHtml();
-                                                                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[2]);
 
-                                                                                }
-                                                                            },
+//                                                                                 ui: 'plain',
+//                                                                                 handler: function () {
+
+//                                                                                     var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard3').getHtml();
+//                                                                                     FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[2]);
+
+//                                                                                 }
+//                                                                             },
                                                                         
-                                                                         {
-                                                                             hidden: true,
-                                                                           margin: '-25 0 0 0',
-                                                                             // margin: '-40 0 0 0',
-                                                                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard3',
-                                                                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                         },
-                                                                       ]
-                                                                   },
+//                                                                          {
+//                                                                              hidden: true,
+//                                                                            margin: '-25 0 0 0',
+//                                                                              // margin: '-40 0 0 0',
+//                                                                              id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard3',
+//                                                                              html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                          },
+//                                                                        ]
+//                                                                    },
 
 
 
 
 
-                                                           ]
+//                                                            ]
 
-                                                       },
-
-
+//                                                        },
 
 
-                                                       {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard2',
-                                                       // margin:'0 0 0 0',
-                                                        //hidden:true,
-                                                        style: "background-color: transparent",
+
+
+//                                                        {
+//                                                         xtype: 'container',
+//                                                         id: 'containerFloatPanel_AyohaCardManagement_PreviewCard2',
+//                                                        // margin:'0 0 0 0',
+//                                                         //hidden:true,
+//                                                         style: "background-color: transparent",
                                                       
-                                                      //  style: "background-color: #F35B57;",
-                                                       // height: 80,
-                                                        //  height: 120,
-                                                       // height: 150,
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'hbox',
-                                                            pack: 'center',
-                                                            align: 'center'
+//                                                       //  style: "background-color: #F35B57;",
+//                                                        // height: 80,
+//                                                         //  height: 120,
+//                                                        // height: 150,
+//                                                         width: '100%',
+//                                                         layout: {
+//                                                             type: 'hbox',
+//                                                             pack: 'center',
+//                                                             align: 'center'
 
-                                                        },
+//                                                         },
 
 
-                                                        items: [
-                                                            //{
-                                                            //    xtype: 'panel',
-                                                            //    width: '3%'
-                                                            //},
-                                                            {
-                                                                xtype: 'container',
-                                                                id: 'containerFloatPanel_AyohaCardManagement_PreviewCard04',
-                                                                //hidden:true,
+//                                                         items: [
+//                                                             //{
+//                                                             //    xtype: 'panel',
+//                                                             //    width: '3%'
+//                                                             //},
+//                                                             {
+//                                                                 xtype: 'container',
+//                                                                 id: 'containerFloatPanel_AyohaCardManagement_PreviewCard04',
+//                                                                 //hidden:true,
                                                                
-                                                                style: "background-color: transparent",
-                                                                //style: "background-color: #F35B57;",
-                                                                //height: 110,
-                                                                height: 90,
-                                                                width: 115,
-                                                                layout: {
-                                                                    type: 'vbox',
-                                                                    pack: 'center',
-                                                                    align: 'center'
+//                                                                 style: "background-color: transparent",
+//                                                                 //style: "background-color: #F35B57;",
+//                                                                 //height: 110,
+//                                                                 height: 90,
+//                                                                 width: 115,
+//                                                                 layout: {
+//                                                                     type: 'vbox',
+//                                                                     pack: 'center',
+//                                                                     align: 'center'
 
-                                                                },
-                                                                items: [
+//                                                                 },
+//                                                                 items: [
 
 
 
@@ -1294,243 +4094,243 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard4',
-                                                        hidden: true,
-                                                        //   margin: '-10 0 0 0',
-                                                   //   margin: '95 0 0 0',
-                                                   height: 90,
-                                                        width: 115,
-                                                        zIndex: 100,
-                                                        html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                            var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard4').getHtml();
-                                                            FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[3]);
+//                                                     {
+//                                                         xtype: 'button',
+//                                                         id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard4',
+//                                                         hidden: true,
+//                                                         //   margin: '-10 0 0 0',
+//                                                    //   margin: '95 0 0 0',
+//                                                    height: 90,
+//                                                         width: 115,
+//                                                         zIndex: 100,
+//                                                         html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                         ui: 'plain',
+//                                                         handler: function () {
+//                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard4').getHtml();
+//                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[3]);
 
-                                                        }
-                                                    },
+//                                                         }
+//                                                     },
 
-                                                                     {
-                                                                         xtype: 'button',
-                                                                         height: 80,
-                                                                         width: 105,
-                                                                         //zIndex: -10,
-                                                                    //   margin: '-95 0 0 0',
-                                                                         id: 'btnFloatPanel_AyohaCardManagement_PreviewCard4',
-                                                                         hidden: true,
-                                                                         //badgeText: "2",
-                                                                         html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
-                                                                         //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
-                                                                         ui: 'plain',
-                                                                         handler: function () {
-                                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard4').getHtml();
-                                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[3]);
-                                                                            // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
-                                                                         }
-                                                                     },
-                                                                     {
-                                                                         hidden: true,
-                                                                         margin: '-25 0 0 0',
+//                                                                      {
+//                                                                          xtype: 'button',
+//                                                                          height: 80,
+//                                                                          width: 105,
+//                                                                          //zIndex: -10,
+//                                                                     //   margin: '-95 0 0 0',
+//                                                                          id: 'btnFloatPanel_AyohaCardManagement_PreviewCard4',
+//                                                                          hidden: true,
+//                                                                          //badgeText: "2",
+//                                                                          html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+//                                                                          //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+//                                                                          ui: 'plain',
+//                                                                          handler: function () {
+//                                                                              var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard4').getHtml();
+//                                                                              FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[3]);
+//                                                                             // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+//                                                                          }
+//                                                                      },
+//                                                                      {
+//                                                                          hidden: true,
+//                                                                          margin: '-25 0 0 0',
                                                                        
                                                                          
-                                                                         id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard4',
-                                                                         html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                     },
+//                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard4',
+//                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                      },
 
 
-                                                                ]
-                                                            },
+//                                                                 ]
+//                                                             },
 
 
                                                             
 
-                                                              {
-                                                                  xtype: 'container',
-                                                                  id: 'containerFloatPanel_AyohaCardManagement_PreviewCard05',
-                                                                  //hidden:true,
-                                                                  style: "background-color: transparent",
-                                                                  //style: "background-color: #F35B57;",
-                                                                  height: 90,
-                                                                  width: 115,
-                                                                  layout: {
-                                                                      type: 'vbox',
-                                                                      pack: 'center',
-                                                                      align: 'center'
+//                                                               {
+//                                                                   xtype: 'container',
+//                                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard05',
+//                                                                   //hidden:true,
+//                                                                   style: "background-color: transparent",
+//                                                                   //style: "background-color: #F35B57;",
+//                                                                   height: 90,
+//                                                                   width: 115,
+//                                                                   layout: {
+//                                                                       type: 'vbox',
+//                                                                       pack: 'center',
+//                                                                       align: 'center'
 
-                                                                  },
-                                                                  items: [
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard5',
-                                                                               // visible: false,
-                                                                                hidden: true,
-                                                                                //   margin: '-10 0 0 0',
-                                                                               // margin: '-95 0 0 0',
-                                                                               height: 90,
-                                                                                width: 115,
-                                                                                zIndex: 100,
-                                                                                html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                ui: 'plain',
-                                                                                handler: function () {
-                                                                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard5').getHtml();
-                                                                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[4]);
+//                                                                   },
+//                                                                   items: [
+//                                                                             {
+//                                                                                 xtype: 'button',
+//                                                                                 id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard5',
+//                                                                                // visible: false,
+//                                                                                 hidden: true,
+//                                                                                 //   margin: '-10 0 0 0',
+//                                                                                // margin: '-95 0 0 0',
+//                                                                                height: 90,
+//                                                                                 width: 115,
+//                                                                                 zIndex: 100,
+//                                                                                 html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                 ui: 'plain',
+//                                                                                 handler: function () {
+//                                                                                     var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard5').getHtml();
+//                                                                                     FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[4]);
 
-                                                                                }
-                                                                            },
-
-
-                                                                       {
-                                                                           xtype: 'button',
-                                                                           height: 80,
-                                                                           width: 105,
-                                                                         // margin: '-95 0 0 0',
-                                                                           id: 'btnFloatPanel_AyohaCardManagement_PreviewCard5',
-                                                                           hidden: true,
-                                                                           //badgeText: "2",
-                                                                           // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
-                                                                           html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+//                                                                                 }
+//                                                                             },
 
 
-                                                                           ui: 'plain',
-                                                                           handler: function () {
-
-                                                                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard5').getHtml();
-                                                                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[4]);
-                                                                           }
-                                                                       },
-                                                                  {
-                                                                      hidden: true,
-                                                                      margin: '-25 0 0 0',
-                                                                      // margin: '-40 0 0 0',
-                                                                      id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard5',
-                                                                      html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                  },
-                                                                  ]
-                                                              },
+//                                                                        {
+//                                                                            xtype: 'button',
+//                                                                            height: 80,
+//                                                                            width: 105,
+//                                                                          // margin: '-95 0 0 0',
+//                                                                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard5',
+//                                                                            hidden: true,
+//                                                                            //badgeText: "2",
+//                                                                            // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+//                                                                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
 
 
+//                                                                            ui: 'plain',
+//                                                                            handler: function () {
+
+//                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard5').getHtml();
+//                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[4]);
+//                                                                            }
+//                                                                        },
+//                                                                   {
+//                                                                       hidden: true,
+//                                                                       margin: '-25 0 0 0',
+//                                                                       // margin: '-40 0 0 0',
+//                                                                       id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard5',
+//                                                                       html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                   },
+//                                                                   ]
+//                                                               },
 
 
-                                                                {
-                                                                    xtype: 'container',
-                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard06',
-                                                                    //hidden:true,
-                                                                    style: "background-color: transparent",
-                                                                    //style: "background-color: #F35B57;",
-                                                                    height: 90,
-                                                                    width: 115,
-                                                                    layout: {
-                                                                        type: 'vbox',
-                                                                        pack: 'center',
-                                                                        align: 'center'
-
-                                                                    },
-                                                                    items: [
-                                                                                    {
-                                                                                        xtype: 'button',
-                                                                                        id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard6',
-                                                                                        hidden: true,
-                                                                                        //   margin: '-10 0 0 0',
-                                                                                       // margin: '-95 0 0 0',
-                                                                                       height: 90,
-                                                                                        width: 115,
-                                                                                        zIndex: 100,
-                                                                                        html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                        ui: 'plain',
-                                                                                        handler: function () {
-
-                                                                                            var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard6').getHtml();
-                                                                                            FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[5]);
-                                                                                        }
-                                                                                    },
-                                                                         {
-                                                                             xtype: 'button',
-                                                                             height: 80,
-                                                                             width: 105,
-                                                                            // margin: '-95 0 0 0',
-                                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard6',
-                                                                             hidden: true,
-                                                                             //badgeText: "2",
-                                                                             // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
-                                                                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
 
 
-                                                                             //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+//                                                                 {
+//                                                                     xtype: 'container',
+//                                                                     id: 'containerFloatPanel_AyohaCardManagement_PreviewCard06',
+//                                                                     //hidden:true,
+//                                                                     style: "background-color: transparent",
+//                                                                     //style: "background-color: #F35B57;",
+//                                                                     height: 90,
+//                                                                     width: 115,
+//                                                                     layout: {
+//                                                                         type: 'vbox',
+//                                                                         pack: 'center',
+//                                                                         align: 'center'
+
+//                                                                     },
+//                                                                     items: [
+//                                                                                     {
+//                                                                                         xtype: 'button',
+//                                                                                         id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard6',
+//                                                                                         hidden: true,
+//                                                                                         //   margin: '-10 0 0 0',
+//                                                                                        // margin: '-95 0 0 0',
+//                                                                                        height: 90,
+//                                                                                         width: 115,
+//                                                                                         zIndex: 100,
+//                                                                                         html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                         ui: 'plain',
+//                                                                                         handler: function () {
+
+//                                                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard6').getHtml();
+//                                                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[5]);
+//                                                                                         }
+//                                                                                     },
+//                                                                          {
+//                                                                              xtype: 'button',
+//                                                                              height: 80,
+//                                                                              width: 105,
+//                                                                             // margin: '-95 0 0 0',
+//                                                                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard6',
+//                                                                              hidden: true,
+//                                                                              //badgeText: "2",
+//                                                                              // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+//                                                                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
 
 
-                                                                             ui: 'plain',
-                                                                             handler: function () {
+//                                                                              //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
 
-                                                                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard6').getHtml();
-                                                                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[5]);
 
-                                                                             }
-                                                                         },
+//                                                                              ui: 'plain',
+//                                                                              handler: function () {
+
+//                                                                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard6').getHtml();
+//                                                                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[5]);
+
+//                                                                              }
+//                                                                          },
                                                                      
-                                                                      {
-                                                                          hidden: true,
-                                                                        margin: '-25 0 0 0',
-                                                                          // margin: '-40 0 0 0',
-                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard6',
-                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                      },
-                                                                    ]
-                                                                },
+//                                                                       {
+//                                                                           hidden: true,
+//                                                                         margin: '-25 0 0 0',
+//                                                                           // margin: '-40 0 0 0',
+//                                                                           id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard6',
+//                                                                           html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                       },
+//                                                                     ]
+//                                                                 },
 
 
 
 
 
-                                                        ]
+//                                                         ]
 
-                                                    },
-
-
+//                                                     },
 
 
 
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard3',
-                                                        //hidden:true,
-                                                        style: "background-color: transparent",
-                                                      //  style: "background-color: #F35B57;",
-                                                       // height: 80,
-                                                        //  height: 120,
-                                                       // height: 150,
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'hbox',
-                                                            pack: 'center',
-                                                            align: 'center'
-
-                                                        },
 
 
-                                                        items: [
-                                                            //{
-                                                            //    xtype: 'panel',
-                                                            //    width: '3%'
-                                                            //},
-                                                            {
-                                                                xtype: 'container',
-                                                                id: 'containerFloatPanel_AyohaCardManagement_PreviewCard07',
-                                                                //hidden:true,
+//                                                     {
+//                                                         xtype: 'container',
+//                                                         id: 'containerFloatPanel_AyohaCardManagement_PreviewCard3',
+//                                                         //hidden:true,
+//                                                         style: "background-color: transparent",
+//                                                       //  style: "background-color: #F35B57;",
+//                                                        // height: 80,
+//                                                         //  height: 120,
+//                                                        // height: 150,
+//                                                         width: '100%',
+//                                                         layout: {
+//                                                             type: 'hbox',
+//                                                             pack: 'center',
+//                                                             align: 'center'
+
+//                                                         },
+
+
+//                                                         items: [
+//                                                             //{
+//                                                             //    xtype: 'panel',
+//                                                             //    width: '3%'
+//                                                             //},
+//                                                             {
+//                                                                 xtype: 'container',
+//                                                                 id: 'containerFloatPanel_AyohaCardManagement_PreviewCard07',
+//                                                                 //hidden:true,
                                                                
-                                                                style: "background-color: transparent",
-                                                                //style: "background-color: #F35B57;",
-                                                                //height: 110,
-                                                                height: 90,
-                                                                width: 115,
-                                                                layout: {
-                                                                    type: 'vbox',
-                                                                    pack: 'center',
-                                                                    align: 'center'
+//                                                                 style: "background-color: transparent",
+//                                                                 //style: "background-color: #F35B57;",
+//                                                                 //height: 110,
+//                                                                 height: 90,
+//                                                                 width: 115,
+//                                                                 layout: {
+//                                                                     type: 'vbox',
+//                                                                     pack: 'center',
+//                                                                     align: 'center'
 
-                                                                },
-                                                                items: [
+//                                                                 },
+//                                                                 items: [
 
 
 
@@ -1538,242 +4338,242 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard7',
-                                                        hidden: true,
-                                                        //   margin: '-10 0 0 0',
-                                                   //   margin: '95 0 0 0',
-                                                   height: 90,
-                                                        width: 115,
-                                                        zIndex: 100,
-                                                        html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                            var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
-                                                            FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+//                                                     {
+//                                                         xtype: 'button',
+//                                                         id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard7',
+//                                                         hidden: true,
+//                                                         //   margin: '-10 0 0 0',
+//                                                    //   margin: '95 0 0 0',
+//                                                    height: 90,
+//                                                         width: 115,
+//                                                         zIndex: 100,
+//                                                         html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                         ui: 'plain',
+//                                                         handler: function () {
+//                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+//                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
 
-                                                        }
-                                                    },
+//                                                         }
+//                                                     },
 
-                                                                     {
-                                                                         xtype: 'button',
-                                                                         height: 80,
-                                                                         width: 105,
-                                                                         //zIndex: -10,
-                                                                    //   margin: '-95 0 0 0',
-                                                                         id: 'btnFloatPanel_AyohaCardManagement_PreviewCard7',
-                                                                         hidden: true,
-                                                                         //badgeText: "2",
-                                                                         html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
-                                                                         //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
-                                                                         ui: 'plain',
-                                                                         handler: function () {
-                                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
-                                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
-                                                                            // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
-                                                                         }
-                                                                     },
-                                                                     {
-                                                                         hidden: true,
-                                                                         margin: '-25 0 0 0',
+//                                                                      {
+//                                                                          xtype: 'button',
+//                                                                          height: 80,
+//                                                                          width: 105,
+//                                                                          //zIndex: -10,
+//                                                                     //   margin: '-95 0 0 0',
+//                                                                          id: 'btnFloatPanel_AyohaCardManagement_PreviewCard7',
+//                                                                          hidden: true,
+//                                                                          //badgeText: "2",
+//                                                                          html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+//                                                                          //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+//                                                                          ui: 'plain',
+//                                                                          handler: function () {
+//                                                                              var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+//                                                                              FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+//                                                                             // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+//                                                                          }
+//                                                                      },
+//                                                                      {
+//                                                                          hidden: true,
+//                                                                          margin: '-25 0 0 0',
                                                                        
                                                                          
-                                                                         id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard7',
-                                                                         html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                     },
+//                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard7',
+//                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                      },
 
 
-                                                                ]
-                                                            },
+//                                                                 ]
+//                                                             },
 
 
                                                             
 
-                                                              {
-                                                                  xtype: 'container',
-                                                                  id: 'containerFloatPanel_AyohaCardManagement_PreviewCard08',
-                                                                  //hidden:true,
-                                                                  style: "background-color: transparent",
-                                                                  //style: "background-color: #F35B57;",
-                                                                  height: 90,
-                                                                  width: 115,
-                                                                  layout: {
-                                                                      type: 'vbox',
-                                                                      pack: 'center',
-                                                                      align: 'center'
+//                                                               {
+//                                                                   xtype: 'container',
+//                                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard08',
+//                                                                   //hidden:true,
+//                                                                   style: "background-color: transparent",
+//                                                                   //style: "background-color: #F35B57;",
+//                                                                   height: 90,
+//                                                                   width: 115,
+//                                                                   layout: {
+//                                                                       type: 'vbox',
+//                                                                       pack: 'center',
+//                                                                       align: 'center'
 
-                                                                  },
-                                                                  items: [
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard8',
-                                                                               // visible: false,
-                                                                                hidden: true,
-                                                                                //   margin: '-10 0 0 0',
-                                                                               // margin: '-95 0 0 0',
-                                                                               height: 90,
-                                                                                width: 115,
-                                                                                zIndex: 100,
-                                                                                html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                ui: 'plain',
-                                                                                handler: function () {
-                                                                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
-                                                                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+//                                                                   },
+//                                                                   items: [
+//                                                                             {
+//                                                                                 xtype: 'button',
+//                                                                                 id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard8',
+//                                                                                // visible: false,
+//                                                                                 hidden: true,
+//                                                                                 //   margin: '-10 0 0 0',
+//                                                                                // margin: '-95 0 0 0',
+//                                                                                height: 90,
+//                                                                                 width: 115,
+//                                                                                 zIndex: 100,
+//                                                                                 html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                 ui: 'plain',
+//                                                                                 handler: function () {
+//                                                                                     var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+//                                                                                     FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
 
-                                                                                }
-                                                                            },
-
-
-                                                                       {
-                                                                           xtype: 'button',
-                                                                           height: 80,
-                                                                           width: 105,
-                                                                         // margin: '-95 0 0 0',
-                                                                           id: 'btnFloatPanel_AyohaCardManagement_PreviewCard8',
-                                                                           hidden: true,
-                                                                           //badgeText: "2",
-                                                                           // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
-                                                                           html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+//                                                                                 }
+//                                                                             },
 
 
-                                                                           ui: 'plain',
-                                                                           handler: function () {
-
-                                                                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
-                                                                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
-                                                                           }
-                                                                       },
-                                                                  {
-                                                                      hidden: true,
-                                                                      margin: '-25 0 0 0',
-                                                                      // margin: '-40 0 0 0',
-                                                                      id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard8',
-                                                                      html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                  },
-                                                                  ]
-                                                              },
+//                                                                        {
+//                                                                            xtype: 'button',
+//                                                                            height: 80,
+//                                                                            width: 105,
+//                                                                          // margin: '-95 0 0 0',
+//                                                                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard8',
+//                                                                            hidden: true,
+//                                                                            //badgeText: "2",
+//                                                                            // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+//                                                                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
 
 
+//                                                                            ui: 'plain',
+//                                                                            handler: function () {
+
+//                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+//                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+//                                                                            }
+//                                                                        },
+//                                                                   {
+//                                                                       hidden: true,
+//                                                                       margin: '-25 0 0 0',
+//                                                                       // margin: '-40 0 0 0',
+//                                                                       id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard8',
+//                                                                       html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                   },
+//                                                                   ]
+//                                                               },
 
 
-                                                                {
-                                                                    xtype: 'container',
-                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard09',
-                                                                    //hidden:true,
-                                                                    style: "background-color: transparent",
-                                                                    //style: "background-color: #F35B57;",
-                                                                    height: 90,
-                                                                    width: 115,
-                                                                    layout: {
-                                                                        type: 'vbox',
-                                                                        pack: 'center',
-                                                                        align: 'center'
-
-                                                                    },
-                                                                    items: [
-                                                                                    {
-                                                                                        xtype: 'button',
-                                                                                        id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard9',
-                                                                                        hidden: true,
-                                                                                        //   margin: '-10 0 0 0',
-                                                                                       // margin: '-95 0 0 0',
-                                                                                       height: 90,
-                                                                                        width: 115,
-                                                                                        zIndex: 100,
-                                                                                        html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                        ui: 'plain',
-                                                                                        handler: function () {
-
-                                                                                            var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
-                                                                                            FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
-                                                                                        }
-                                                                                    },
-                                                                         {
-                                                                             xtype: 'button',
-                                                                             height: 80,
-                                                                             width: 105,
-                                                                            // margin: '-95 0 0 0',
-                                                                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard9',
-                                                                             hidden: true,
-                                                                             //badgeText: "2",
-                                                                             // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
-                                                                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
 
 
-                                                                             //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+//                                                                 {
+//                                                                     xtype: 'container',
+//                                                                     id: 'containerFloatPanel_AyohaCardManagement_PreviewCard09',
+//                                                                     //hidden:true,
+//                                                                     style: "background-color: transparent",
+//                                                                     //style: "background-color: #F35B57;",
+//                                                                     height: 90,
+//                                                                     width: 115,
+//                                                                     layout: {
+//                                                                         type: 'vbox',
+//                                                                         pack: 'center',
+//                                                                         align: 'center'
+
+//                                                                     },
+//                                                                     items: [
+//                                                                                     {
+//                                                                                         xtype: 'button',
+//                                                                                         id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard9',
+//                                                                                         hidden: true,
+//                                                                                         //   margin: '-10 0 0 0',
+//                                                                                        // margin: '-95 0 0 0',
+//                                                                                        height: 90,
+//                                                                                         width: 115,
+//                                                                                         zIndex: 100,
+//                                                                                         html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                         ui: 'plain',
+//                                                                                         handler: function () {
+
+//                                                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+//                                                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+//                                                                                         }
+//                                                                                     },
+//                                                                          {
+//                                                                              xtype: 'button',
+//                                                                              height: 80,
+//                                                                              width: 105,
+//                                                                             // margin: '-95 0 0 0',
+//                                                                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard9',
+//                                                                              hidden: true,
+//                                                                              //badgeText: "2",
+//                                                                              // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: blue;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
+//                                                                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">3</div></div>',
 
 
-                                                                             ui: 'plain',
-                                                                             handler: function () {
+//                                                                              //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard3">50%</div><br><div style="margin:-20px 0px 0px 0px"><font size=2>Off</font></div></div>',
 
-                                                                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
-                                                                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
 
-                                                                             }
-                                                                         },
+//                                                                              ui: 'plain',
+//                                                                              handler: function () {
+
+//                                                                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+//                                                                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+
+//                                                                              }
+//                                                                          },
                                                                      
-                                                                      {
-                                                                          hidden: true,
-                                                                        margin: '-25 0 0 0',
-                                                                          // margin: '-40 0 0 0',
-                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard9',
-                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                      },
-                                                                    ]
-                                                                },
+//                                                                       {
+//                                                                           hidden: true,
+//                                                                         margin: '-25 0 0 0',
+//                                                                           // margin: '-40 0 0 0',
+//                                                                           id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard9',
+//                                                                           html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                       },
+//                                                                     ]
+//                                                                 },
 
 
 
 
 
-                                                        ]
+//                                                         ]
 
-                                                    },
-
-
+//                                                     },
 
 
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard4',
-                                                        //hidden:true,
-                                                        style: "background-color: transparent",
-                                                      //  style: "background-color: #F35B57;",
-                                                       // height: 80,
-                                                        //  height: 120,
-                                                       // height: 150,
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'hbox',
-                                                            pack: 'center',
-                                                            align: 'center'
-
-                                                        },
 
 
-                                                        items: [
-                                                            //{
-                                                            //    xtype: 'panel',
-                                                            //    width: '3%'
-                                                            //},
-                                                            {
-                                                                xtype: 'container',
-                                                                id: 'containerFloatPanel_AyohaCardManagement_PreviewCard10',
-                                                                //hidden:true,
+//                                                     {
+//                                                         xtype: 'container',
+//                                                         id: 'containerFloatPanel_AyohaCardManagement_PreviewCard4',
+//                                                         //hidden:true,
+//                                                         style: "background-color: transparent",
+//                                                       //  style: "background-color: #F35B57;",
+//                                                        // height: 80,
+//                                                         //  height: 120,
+//                                                        // height: 150,
+//                                                         width: '100%',
+//                                                         layout: {
+//                                                             type: 'hbox',
+//                                                             pack: 'center',
+//                                                             align: 'center'
+
+//                                                         },
+
+
+//                                                         items: [
+//                                                             //{
+//                                                             //    xtype: 'panel',
+//                                                             //    width: '3%'
+//                                                             //},
+//                                                             {
+//                                                                 xtype: 'container',
+//                                                                 id: 'containerFloatPanel_AyohaCardManagement_PreviewCard10',
+//                                                                 //hidden:true,
                                                                
-                                                                style: "background-color: transparent",
-                                                                //style: "background-color: #F35B57;",
-                                                                //height: 110,
-                                                                height: 90,
-                                                                width: 115,
-                                                                layout: {
-                                                                    type: 'vbox',
-                                                                    pack: 'center',
-                                                                    align: 'center'
+//                                                                 style: "background-color: transparent",
+//                                                                 //style: "background-color: #F35B57;",
+//                                                                 //height: 110,
+//                                                                 height: 90,
+//                                                                 width: 115,
+//                                                                 layout: {
+//                                                                     type: 'vbox',
+//                                                                     pack: 'center',
+//                                                                     align: 'center'
 
-                                                                },
-                                                                items: [
+//                                                                 },
+//                                                                 items: [
 
 
 
@@ -1781,121 +4581,121 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard10',
-                                                        hidden: true,
-                                                        //   margin: '-10 0 0 0',
-                                                   //   margin: '95 0 0 0',
-                                                   height: 90,
-                                                        width: 115,
-                                                        zIndex: 100,
-                                                        html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                            var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
-                                                            FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
+//                                                     {
+//                                                         xtype: 'button',
+//                                                         id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard10',
+//                                                         hidden: true,
+//                                                         //   margin: '-10 0 0 0',
+//                                                    //   margin: '95 0 0 0',
+//                                                    height: 90,
+//                                                         width: 115,
+//                                                         zIndex: 100,
+//                                                         html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                         ui: 'plain',
+//                                                         handler: function () {
+//                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+//                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
 
-                                                        }
-                                                    },
+//                                                         }
+//                                                     },
 
-                                                                     {
-                                                                         xtype: 'button',
-                                                                         height: 80,
-                                                                         width: 105,
-                                                                         //zIndex: -10,
-                                                                    //   margin: '-95 0 0 0',
-                                                                         id: 'btnFloatPanel_AyohaCardManagement_PreviewCard10',
-                                                                         hidden: true,
-                                                                         //badgeText: "2",
-                                                                         html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
-                                                                         //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
-                                                                         ui: 'plain',
-                                                                         handler: function () {
-                                                                             var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
-                                                                             FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
-                                                                            // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
-                                                                         }
-                                                                     },
-                                                                     {
-                                                                         hidden: true,
-                                                                         margin: '-25 0 0 0',
+//                                                                      {
+//                                                                          xtype: 'button',
+//                                                                          height: 80,
+//                                                                          width: 105,
+//                                                                          //zIndex: -10,
+//                                                                     //   margin: '-95 0 0 0',
+//                                                                          id: 'btnFloatPanel_AyohaCardManagement_PreviewCard10',
+//                                                                          hidden: true,
+//                                                                          //badgeText: "2",
+//                                                                          html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard1">1</div></div>',
+//                                                                          //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: purple;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">1</div></div>',
+//                                                                          ui: 'plain',
+//                                                                          handler: function () {
+//                                                                              var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+//                                                                              FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
+//                                                                             // alert("btnFloatPanel_AyohaCardManagement_PreviewCard1");
+//                                                                          }
+//                                                                      },
+//                                                                      {
+//                                                                          hidden: true,
+//                                                                          margin: '-25 0 0 0',
                                                                        
                                                                          
-                                                                         id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard10',
-                                                                         html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                     },
+//                                                                          id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard10',
+//                                                                          html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                      },
 
 
-                                                                ]
-                                                            },
+//                                                                 ]
+//                                                             },
 
 
                                                             
 
-                                                              {
-                                                                  xtype: 'container',
-                                                                  id: 'containerFloatPanel_AyohaCardManagement_PreviewCard11',
-                                                                  //hidden:true,
-                                                                  style: "background-color: transparent",
-                                                                  //style: "background-color: #F35B57;",
-                                                                  height: 90,
-                                                                  width: 115,
-                                                                  layout: {
-                                                                      type: 'vbox',
-                                                                      pack: 'center',
-                                                                      align: 'center'
+//                                                               {
+//                                                                   xtype: 'container',
+//                                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard11',
+//                                                                   //hidden:true,
+//                                                                   style: "background-color: transparent",
+//                                                                   //style: "background-color: #F35B57;",
+//                                                                   height: 90,
+//                                                                   width: 115,
+//                                                                   layout: {
+//                                                                       type: 'vbox',
+//                                                                       pack: 'center',
+//                                                                       align: 'center'
 
-                                                                  },
-                                                                  items: [
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard11',
-                                                                               // visible: false,
-                                                                                hidden: true,
-                                                                                //   margin: '-10 0 0 0',
-                                                                               // margin: '-95 0 0 0',
-                                                                               height: 90,
-                                                                                width: 115,
-                                                                                zIndex: 100,
-                                                                                html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                                                ui: 'plain',
-                                                                                handler: function () {
-                                                                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
-                                                                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
+//                                                                   },
+//                                                                   items: [
+//                                                                             {
+//                                                                                 xtype: 'button',
+//                                                                                 id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard11',
+//                                                                                // visible: false,
+//                                                                                 hidden: true,
+//                                                                                 //   margin: '-10 0 0 0',
+//                                                                                // margin: '-95 0 0 0',
+//                                                                                height: 90,
+//                                                                                 width: 115,
+//                                                                                 zIndex: 100,
+//                                                                                 html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                                                 ui: 'plain',
+//                                                                                 handler: function () {
+//                                                                                     var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+//                                                                                     FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
 
-                                                                                }
-                                                                            },
-
-
-                                                                       {
-                                                                           xtype: 'button',
-                                                                           height: 80,
-                                                                           width: 105,
-                                                                         // margin: '-95 0 0 0',
-                                                                           id: 'btnFloatPanel_AyohaCardManagement_PreviewCard11',
-                                                                           hidden: true,
-                                                                           //badgeText: "2",
-                                                                           // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
-                                                                           html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
+//                                                                                 }
+//                                                                             },
 
 
-                                                                           ui: 'plain',
-                                                                           handler: function () {
+//                                                                        {
+//                                                                            xtype: 'button',
+//                                                                            height: 80,
+//                                                                            width: 105,
+//                                                                          // margin: '-95 0 0 0',
+//                                                                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard11',
+//                                                                            hidden: true,
+//                                                                            //badgeText: "2",
+//                                                                            // html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: brown;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">2</div></div>',
+//                                                                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard2">2</div></div>',
 
-                                                                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
-                                                                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
-                                                                           }
-                                                                       },
-                                                                  {
-                                                                      hidden: true,
-                                                                      margin: '-25 0 0 0',
-                                                                      // margin: '-40 0 0 0',
-                                                                      id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard11',
-                                                                      html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                                  },
-                                                                  ]
-                                                              },
+
+//                                                                            ui: 'plain',
+//                                                                            handler: function () {
+
+//                                                                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+//                                                                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
+//                                                                            }
+//                                                                        },
+//                                                                   {
+//                                                                       hidden: true,
+//                                                                       margin: '-25 0 0 0',
+//                                                                       // margin: '-40 0 0 0',
+//                                                                       id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard11',
+//                                                                       html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                                   },
+//                                                                   ]
+//                                                               },
 
 
 
@@ -1906,310 +4706,310 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                                        ]
+//                                                         ]
 
-                                                    },
-
-
-
-                                                    //    {
-                                                    //        xtype: 'container',
-                                                    //        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard3',
-                                                    //        //hidden:true,
-                                                    //        style: "background-color: transparent",
-                                                    //        //style: "background-color: #F35B57;",
-                                                    //       // height: 80,
-                                                    //        width: '100%',
-                                                    //        layout: {
-                                                    //            type: 'hbox',
-                                                    //            pack: 'center',
-                                                    //            align: 'center'
-
-                                                    //        },
-
-
-                                                    //        items: [
+//                                                     },
 
 
 
+//                                                     //    {
+//                                                     //        xtype: 'container',
+//                                                     //        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard3',
+//                                                     //        //hidden:true,
+//                                                     //        style: "background-color: transparent",
+//                                                     //        //style: "background-color: #F35B57;",
+//                                                     //       // height: 80,
+//                                                     //        width: '100%',
+//                                                     //        layout: {
+//                                                     //            type: 'hbox',
+//                                                     //            pack: 'center',
+//                                                     //            align: 'center'
 
-                                                    //               {
-                                                    //                   xtype: 'container',
-                                                    //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard07',
-                                                    //                   //hidden:true,
-                                                    //                   style: "background-color: transparent",
-                                                    //                   //style: "background-color: #F35B57;",
+//                                                     //        },
 
-                                                    //                   layout: {
-                                                    //                       type: 'vbox',
-                                                    //                       pack: 'center',
-                                                    //                       align: 'center'
 
-                                                    //                   },
-                                                    //                   items: [
+//                                                     //        items: [
+
+
+
+
+//                                                     //               {
+//                                                     //                   xtype: 'container',
+//                                                     //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard07',
+//                                                     //                   //hidden:true,
+//                                                     //                   style: "background-color: transparent",
+//                                                     //                   //style: "background-color: #F35B57;",
+
+//                                                     //                   layout: {
+//                                                     //                       type: 'vbox',
+//                                                     //                       pack: 'center',
+//                                                     //                       align: 'center'
+
+//                                                     //                   },
+//                                                     //                   items: [
                                                                           
-                                                    //                       {
-                                                    //                           xtype: 'button',
-                                                    //                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard7',
-                                                    //                           hidden: true,
-                                                    //                           //   margin: '-10 0 0 0',
-                                                    //                          // margin: '-95 0 0 0',
-                                                    //                           height: 110,
-                                                    //                           width: 105,
-                                                    //                           zIndex: 100,
-                                                    //                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                    //                           ui: 'plain',
-                                                    //                           handler: function () {
-                                                    //                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
-                                                    //                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
-                                                    //                           }
-                                                    //                       },
-                                                    //                          {
-                                                    //                              xtype: 'button',
-                                                    //                              height: 80,
-                                                    //                              width: 105,
-                                                    //                             // margin: '-95 0 0 0',
-                                                    //                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard7',
-                                                    //                              hidden: true,
-                                                    //                              //badgeText: "2",
-                                                    //                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #E35CE1;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:15px 0px 0px 0px"><font size=5>ONLY</font></div><br><div style="margin:-20px 0px 0px 0px"><font size=5>RM1</font></div></div>',
-                                                    //                            //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:15px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard7"><font size=5>ONLY</font></div><br><div style="margin:-20px 0px 0px 0px"><font size=5>RM1</font></div></div>',
-                                                    //                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard7">7</div></div>',
-                                                    //                              ui: 'plain',
-                                                    //                              handler: function () {
-                                                    //                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
-                                                    //                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
-                                                    //                              }
-                                                    //                          },
-                                                    //                              {
-                                                    //                                  hidden: true,
-                                                    //                                  margin: '-10 0 0 0',
-                                                    //                                  // margin: '-40 0 0 0',
-                                                    //                                  id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard7',
-                                                    //                                  html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                    //                              },
+//                                                     //                       {
+//                                                     //                           xtype: 'button',
+//                                                     //                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard7',
+//                                                     //                           hidden: true,
+//                                                     //                           //   margin: '-10 0 0 0',
+//                                                     //                          // margin: '-95 0 0 0',
+//                                                     //                           height: 110,
+//                                                     //                           width: 105,
+//                                                     //                           zIndex: 100,
+//                                                     //                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                     //                           ui: 'plain',
+//                                                     //                           handler: function () {
+//                                                     //                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+//                                                     //                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+//                                                     //                           }
+//                                                     //                       },
+//                                                     //                          {
+//                                                     //                              xtype: 'button',
+//                                                     //                              height: 80,
+//                                                     //                              width: 105,
+//                                                     //                             // margin: '-95 0 0 0',
+//                                                     //                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard7',
+//                                                     //                              hidden: true,
+//                                                     //                              //badgeText: "2",
+//                                                     //                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #E35CE1;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:15px 0px 0px 0px"><font size=5>ONLY</font></div><br><div style="margin:-20px 0px 0px 0px"><font size=5>RM1</font></div></div>',
+//                                                     //                            //  html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:15px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard7"><font size=5>ONLY</font></div><br><div style="margin:-20px 0px 0px 0px"><font size=5>RM1</font></div></div>',
+//                                                     //                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard7">7</div></div>',
+//                                                     //                              ui: 'plain',
+//                                                     //                              handler: function () {
+//                                                     //                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard7').getHtml();
+//                                                     //                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[6]);
+//                                                     //                              }
+//                                                     //                          },
+//                                                     //                              {
+//                                                     //                                  hidden: true,
+//                                                     //                                  margin: '-10 0 0 0',
+//                                                     //                                  // margin: '-40 0 0 0',
+//                                                     //                                  id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard7',
+//                                                     //                                  html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                     //                              },
                                                                              
-                                                    //                   ]
-                                                    //               },
+//                                                     //                   ]
+//                                                     //               },
 
 
 
 
 
-                                                    //               {
-                                                    //                   xtype: 'container',
-                                                    //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard08',
-                                                    //                   //hidden:true,
-                                                    //                   style: "background-color: transparent",
-                                                    //                   //style: "background-color: #F35B57;",
+//                                                     //               {
+//                                                     //                   xtype: 'container',
+//                                                     //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard08',
+//                                                     //                   //hidden:true,
+//                                                     //                   style: "background-color: transparent",
+//                                                     //                   //style: "background-color: #F35B57;",
 
-                                                    //                   layout: {
-                                                    //                       type: 'vbox',
-                                                    //                       pack: 'center',
-                                                    //                       align: 'center'
+//                                                     //                   layout: {
+//                                                     //                       type: 'vbox',
+//                                                     //                       pack: 'center',
+//                                                     //                       align: 'center'
 
-                                                    //                   },
-                                                    //                   items: [
-                                                    //                       {
-                                                    //                           xtype: 'button',
-                                                    //                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard8',
-                                                    //                           hidden: true,
-                                                    //                           //   margin: '-10 0 0 0',
-                                                    //                          // margin: '-95 0 0 0',
-                                                    //                           height: 110,
-                                                    //                           width: 105,
-                                                    //                           zIndex: 100,
-                                                    //                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                    //                           ui: 'plain',
-                                                    //                           handler: function () {
-                                                    //                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
-                                                    //                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
-                                                    //                           }
-                                                    //                       },
+//                                                     //                   },
+//                                                     //                   items: [
+//                                                     //                       {
+//                                                     //                           xtype: 'button',
+//                                                     //                           id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard8',
+//                                                     //                           hidden: true,
+//                                                     //                           //   margin: '-10 0 0 0',
+//                                                     //                          // margin: '-95 0 0 0',
+//                                                     //                           height: 110,
+//                                                     //                           width: 105,
+//                                                     //                           zIndex: 100,
+//                                                     //                           html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                     //                           ui: 'plain',
+//                                                     //                           handler: function () {
+//                                                     //                               var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+//                                                     //                               FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+//                                                     //                           }
+//                                                     //                       },
                                                                           
-                                                    //                         {
-                                                    //                             xtype: 'button',
-                                                    //                             height: 80,
-                                                    //                             width: 105,
-                                                    //                            // margin: '-95 0 0 0',
-                                                    //                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard8',
-                                                    //                             hidden: true,
-                                                    //                             //badgeText: "2",
-                                                    //                             //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: orange;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">8</div></div>',
-                                                    //                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard8">8</div></div>',
+//                                                     //                         {
+//                                                     //                             xtype: 'button',
+//                                                     //                             height: 80,
+//                                                     //                             width: 105,
+//                                                     //                            // margin: '-95 0 0 0',
+//                                                     //                             id: 'btnFloatPanel_AyohaCardManagement_PreviewCard8',
+//                                                     //                             hidden: true,
+//                                                     //                             //badgeText: "2",
+//                                                     //                             //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: orange;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">8</div></div>',
+//                                                     //                             html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard8">8</div></div>',
 
-                                                    //                             ui: 'plain',
-                                                    //                             handler: function () {
-                                                    //                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
-                                                    //                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
+//                                                     //                             ui: 'plain',
+//                                                     //                             handler: function () {
+//                                                     //                                 var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard8').getHtml();
+//                                                     //                                 FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[7]);
 
-                                                    //                             }
-                                                    //                         },
-                                                    //                         {
-                                                    //                             hidden: true,
-                                                    //                             margin: '-10 0 0 0',
-                                                    //                             // margin: '-40 0 0 0',
-                                                    //                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard8',
-                                                    //                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                    //                         },
+//                                                     //                             }
+//                                                     //                         },
+//                                                     //                         {
+//                                                     //                             hidden: true,
+//                                                     //                             margin: '-10 0 0 0',
+//                                                     //                             // margin: '-40 0 0 0',
+//                                                     //                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard8',
+//                                                     //                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                     //                         },
                                                                            
-                                                    //                   ]
-                                                    //               },
+//                                                     //                   ]
+//                                                     //               },
 
 
 
 
 
 
-                                                    //               {
-                                                    //                   xtype: 'container',
-                                                    //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard09',
-                                                    //                   //hidden:true,
-                                                    //                   style: "background-color: transparent",
-                                                    //                   //style: "background-color: #F35B57;",
+//                                                     //               {
+//                                                     //                   xtype: 'container',
+//                                                     //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard09',
+//                                                     //                   //hidden:true,
+//                                                     //                   style: "background-color: transparent",
+//                                                     //                   //style: "background-color: #F35B57;",
 
-                                                    //                   layout: {
-                                                    //                       type: 'vbox',
-                                                    //                       pack: 'center',
-                                                    //                       align: 'center'
+//                                                     //                   layout: {
+//                                                     //                       type: 'vbox',
+//                                                     //                       pack: 'center',
+//                                                     //                       align: 'center'
 
-                                                    //                   },
-                                                    //                   items: [
-                                                    //                        {
-                                                    //                            xtype: 'button',
-                                                    //                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard9',
-                                                    //                            hidden: true,
-                                                    //                            //   margin: '-10 0 0 0',
-                                                    //                           // margin: '-95 0 0 0',
-                                                    //                            height: 110,
-                                                    //                            width: 105,
-                                                    //                            zIndex: 100,
-                                                    //                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                    //                            ui: 'plain',
-                                                    //                            handler: function () {
-                                                    //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
-                                                    //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
-                                                    //                            }
-                                                    //                        },
+//                                                     //                   },
+//                                                     //                   items: [
+//                                                     //                        {
+//                                                     //                            xtype: 'button',
+//                                                     //                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard9',
+//                                                     //                            hidden: true,
+//                                                     //                            //   margin: '-10 0 0 0',
+//                                                     //                           // margin: '-95 0 0 0',
+//                                                     //                            height: 110,
+//                                                     //                            width: 105,
+//                                                     //                            zIndex: 100,
+//                                                     //                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                     //                            ui: 'plain',
+//                                                     //                            handler: function () {
+//                                                     //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+//                                                     //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+//                                                     //                            }
+//                                                     //                        },
 
-                                                    //                          {
-                                                    //                              xtype: 'button',
-                                                    //                              height: 80,
-                                                    //                              width: 105,
-                                                    //                             // margin: '-95 0 0 0',
-                                                    //                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard9',
-                                                    //                              hidden: true,
-                                                    //                              //badgeText: "2",
-                                                    //                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #808000;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">9</div></div>',
-                                                    //                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard9">9</div></div>',
-                                                    //                              ui: 'plain',
-                                                    //                              handler: function () {
-                                                    //                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
-                                                    //                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
-                                                    //                              }
-                                                    //                          },
-                                                    //                          {
-                                                    //                              hidden: true,
-                                                    //                              margin: '-10 0 0 0',
-                                                    //                              // margin: '-40 0 0 0',
-                                                    //                              id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard9',
-                                                    //                              html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                    //                          },
+//                                                     //                          {
+//                                                     //                              xtype: 'button',
+//                                                     //                              height: 80,
+//                                                     //                              width: 105,
+//                                                     //                             // margin: '-95 0 0 0',
+//                                                     //                              id: 'btnFloatPanel_AyohaCardManagement_PreviewCard9',
+//                                                     //                              hidden: true,
+//                                                     //                              //badgeText: "2",
+//                                                     //                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #808000;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">9</div></div>',
+//                                                     //                              html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard9">9</div></div>',
+//                                                     //                              ui: 'plain',
+//                                                     //                              handler: function () {
+//                                                     //                                  var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard9').getHtml();
+//                                                     //                                  FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[8]);
+//                                                     //                              }
+//                                                     //                          },
+//                                                     //                          {
+//                                                     //                              hidden: true,
+//                                                     //                              margin: '-10 0 0 0',
+//                                                     //                              // margin: '-40 0 0 0',
+//                                                     //                              id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard9',
+//                                                     //                              html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                     //                          },
 
                                                                             
-                                                    //                   ]
-                                                    //               },
+//                                                     //                   ]
+//                                                     //               },
 
 
 
-                                                    //        ]
+//                                                     //        ]
 
-                                                    //    },
-
-
-                                                    //    {
-                                                    //        xtype: 'container',
-                                                    //        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard4',
-                                                    //        //hidden:true,
-                                                    //        style: "background-color: transparent",
-                                                    //        //style: "background-color: #F35B57;",
-                                                    //       // height: 80,
-                                                    //        width: '100%',
-                                                    //        layout: {
-                                                    //            type: 'hbox',
-                                                    //            pack: 'center',
-                                                    //            align: 'center'
-
-                                                    //        },
+//                                                     //    },
 
 
-                                                    //        items: [
+//                                                     //    {
+//                                                     //        xtype: 'container',
+//                                                     //        id: 'containerFloatPanel_AyohaCardManagement_PreviewCard4',
+//                                                     //        //hidden:true,
+//                                                     //        style: "background-color: transparent",
+//                                                     //        //style: "background-color: #F35B57;",
+//                                                     //       // height: 80,
+//                                                     //        width: '100%',
+//                                                     //        layout: {
+//                                                     //            type: 'hbox',
+//                                                     //            pack: 'center',
+//                                                     //            align: 'center'
+
+//                                                     //        },
+
+
+//                                                     //        items: [
 
                                                                
 
-                                                    //               {
-                                                    //                   xtype: 'container',
-                                                    //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard10',
-                                                    //                   //hidden:true,
-                                                    //                   style: "background-color: transparent",
-                                                    //                   //style: "background-color: #F35B57;",
+//                                                     //               {
+//                                                     //                   xtype: 'container',
+//                                                     //                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard10',
+//                                                     //                   //hidden:true,
+//                                                     //                   style: "background-color: transparent",
+//                                                     //                   //style: "background-color: #F35B57;",
 
-                                                    //                   layout: {
-                                                    //                       type: 'vbox',
-                                                    //                       pack: 'center',
-                                                    //                       align: 'center'
+//                                                     //                   layout: {
+//                                                     //                       type: 'vbox',
+//                                                     //                       pack: 'center',
+//                                                     //                       align: 'center'
 
-                                                    //                   },
-                                                    //                   items: [
-
-
-                                                    //                        {
-                                                    //                            xtype: 'button',
-                                                    //                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard10',
-                                                    //                            hidden: true,
-                                                    //                            //   margin: '-10 0 0 0',
-                                                    //                           // margin: '-95 0 0 0',
-                                                    //                            height: 110,
-                                                    //                            width: 105,
-                                                    //                            zIndex: 100,
-                                                    //                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                    //                            ui: 'plain',
-                                                    //                            handler: function () {
-                                                    //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
-                                                    //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
-                                                    //                            }
-                                                    //                        },
+//                                                     //                   },
+//                                                     //                   items: [
 
 
-                                                    //                        {
-                                                    //                            xtype: 'button',
-                                                    //                            height: 80,
-                                                    //                            width: 105,
-                                                    //                           // margin: '-95 0 0 0',
-                                                    //                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard10',
-                                                    //                            hidden: true,
-                                                    //                            //badgeText: "2",
-                                                    //                            //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #008080;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">10</div></div>',
-                                                    //                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard10">10</div></div>',
+//                                                     //                        {
+//                                                     //                            xtype: 'button',
+//                                                     //                            id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard10',
+//                                                     //                            hidden: true,
+//                                                     //                            //   margin: '-10 0 0 0',
+//                                                     //                           // margin: '-95 0 0 0',
+//                                                     //                            height: 110,
+//                                                     //                            width: 105,
+//                                                     //                            zIndex: 100,
+//                                                     //                            html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                     //                            ui: 'plain',
+//                                                     //                            handler: function () {
+//                                                     //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+//                                                     //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[9]);
+//                                                     //                            }
+//                                                     //                        },
 
-                                                    //                            ui: 'plain',
-                                                    //                            handler: function () {
-                                                    //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
-                                                    //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents,arrStampRewardNote[9]);
+
+//                                                     //                        {
+//                                                     //                            xtype: 'button',
+//                                                     //                            height: 80,
+//                                                     //                            width: 105,
+//                                                     //                           // margin: '-95 0 0 0',
+//                                                     //                            id: 'btnFloatPanel_AyohaCardManagement_PreviewCard10',
+//                                                     //                            hidden: true,
+//                                                     //                            //badgeText: "2",
+//                                                     //                            //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #008080;border-radius: 50px;width:70px;height:70px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px">10</div></div>',
+//                                                     //                            html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard10">10</div></div>',
+
+//                                                     //                            ui: 'plain',
+//                                                     //                            handler: function () {
+//                                                     //                                var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard10').getHtml();
+//                                                     //                                FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents,arrStampRewardNote[9]);
                                                                                    
-                                                    //                            }
-                                                    //                        },
-                                                    //                         {
-                                                    //                             hidden: true,
-                                                    //                             margin: '-10 0 0 0',
-                                                    //                             // margin: '-40 0 0 0',
-                                                    //                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard10',
-                                                    //                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                    //                         },
+//                                                     //                            }
+//                                                     //                        },
+//                                                     //                         {
+//                                                     //                             hidden: true,
+//                                                     //                             margin: '-10 0 0 0',
+//                                                     //                             // margin: '-40 0 0 0',
+//                                                     //                             id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard10',
+//                                                     //                             html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                     //                         },
 
                                                                           
-                                                    //                   ]
-                                                    //               },
+//                                                     //                   ]
+//                                                     //               },
 
 
 
@@ -2220,304 +5020,302 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                                    //                   {
-                                                    //                       xtype: 'container',
-                                                    //                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCard11',
-                                                    //                       //hidden:true,
-                                                    //                       style: "background-color: transparent",
-                                                    //                       //style: "background-color: #F35B57;",
+//                                                     //                   {
+//                                                     //                       xtype: 'container',
+//                                                     //                       id: 'containerFloatPanel_AyohaCardManagement_PreviewCard11',
+//                                                     //                       //hidden:true,
+//                                                     //                       style: "background-color: transparent",
+//                                                     //                       //style: "background-color: #F35B57;",
 
-                                                    //                       layout: {
-                                                    //                           type: 'vbox',
-                                                    //                           pack: 'center',
-                                                    //                           align: 'center'
+//                                                     //                       layout: {
+//                                                     //                           type: 'vbox',
+//                                                     //                           pack: 'center',
+//                                                     //                           align: 'center'
 
-                                                    //                       },
+//                                                     //                       },
 
 
 
-                                                    //                       items: [
+//                                                     //                       items: [
 
                                                                               
-                                                    //                            {
-                                                    //                                xtype: 'button',
-                                                    //                                id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard11',
-                                                    //                                hidden: true,
-                                                    //                                //   margin: '-10 0 0 0',
-                                                    //                               // margin: '-95 0 0 0',
-                                                    //                                height: 110,
-                                                    //                                width: 105,
-                                                    //                                zIndex: 100,
-                                                    //                                html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
-                                                    //                                ui: 'plain',
-                                                    //                                handler: function () {
-                                                    //                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
-                                                    //                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
-                                                    //                                }
-                                                    //                            },
-                                                    //                               {
-                                                    //                                   xtype: 'button',
-                                                    //                                   height: 80,
-                                                    //                                   width: 105,
-                                                    //                                  // margin: '-95 0 0 0',
-                                                    //                                   id: 'btnFloatPanel_AyohaCardManagement_PreviewCard11',
-                                                    //                                   hidden: true,
-                                                    //                                   //badgeText: "2",
-                                                    //                                   //html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1.png); background-size: 100% 100%;" ></div>',
-                                                    //                                 //  html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1Inactive.png); background-size: 100% 100%;" id="divContentFloatPanel_AyohaCardManagement_PreviewCard11" ></div>',
-                                                    //                                   html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard11">11</div></div>',
-                                                    //                                   ui: 'plain',
-                                                    //                                   handler: function () {
-                                                    //                                       var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
-                                                    //                                       FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents,arrStampRewardNote[10]);
+//                                                     //                            {
+//                                                     //                                xtype: 'button',
+//                                                     //                                id: 'btnFloatPanel_AyohaCardManagement_StampTopImgOne_PreviewCard11',
+//                                                     //                                hidden: true,
+//                                                     //                                //   margin: '-10 0 0 0',
+//                                                     //                               // margin: '-95 0 0 0',
+//                                                     //                                height: 110,
+//                                                     //                                width: 105,
+//                                                     //                                zIndex: 100,
+//                                                     //                                html: '<img src="resources/icons/StampTopImgOne.png" width="90" height="100" alt="Company Name">',
+//                                                     //                                ui: 'plain',
+//                                                     //                                handler: function () {
+//                                                     //                                    var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+//                                                     //                                    FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents, arrStampRewardNote[10]);
+//                                                     //                                }
+//                                                     //                            },
+//                                                     //                               {
+//                                                     //                                   xtype: 'button',
+//                                                     //                                   height: 80,
+//                                                     //                                   width: 105,
+//                                                     //                                  // margin: '-95 0 0 0',
+//                                                     //                                   id: 'btnFloatPanel_AyohaCardManagement_PreviewCard11',
+//                                                     //                                   hidden: true,
+//                                                     //                                   //badgeText: "2",
+//                                                     //                                   //html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1.png); background-size: 100% 100%;" ></div>',
+//                                                     //                                 //  html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1Inactive.png); background-size: 100% 100%;" id="divContentFloatPanel_AyohaCardManagement_PreviewCard11" ></div>',
+//                                                     //                                   html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: #85929E;border-radius: 50px;width:70px;height:70px;color:#566573;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;" ><div style="margin:23px 0px 0px 0px" id="divContentFloatPanel_AyohaCardManagement_PreviewCard11">11</div></div>',
+//                                                     //                                   ui: 'plain',
+//                                                     //                                   handler: function () {
+//                                                     //                                       var Contents = Ext.getCmp('btnFloatPanel_AyohaCardManagement_PreviewCard11').getHtml();
+//                                                     //                                       FloatPanel_AyohaCardManagement_PreviewCard_ContentNoteShow(Contents,arrStampRewardNote[10]);
                                                                                       
                                                                                          
                                                                                          
-                                                    //                                   }
-                                                    //                               },
-                                                    //                                {
-                                                    //                                    hidden: true,
-                                                    //                                    margin: '-10 0 0 0',
-                                                    //                                    // margin: '-40 0 0 0',
-                                                    //                                    id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard11',
-                                                    //                                    html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
-                                                    //                                },
+//                                                     //                                   }
+//                                                     //                               },
+//                                                     //                                {
+//                                                     //                                    hidden: true,
+//                                                     //                                    margin: '-10 0 0 0',
+//                                                     //                                    // margin: '-40 0 0 0',
+//                                                     //                                    id: 'htmlFloatPanel_AyohaCardManagement_DateTimeStampby_PreviewCard11',
+//                                                     //                                    html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">17/10/2020</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold">7:58:20PM</div><div style="margin:-3px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;text-align:center">Mizi</div>',
+//                                                     //                                },
 
                                                                                    
-                                                    //                       ]
+//                                                     //                       ]
 
-                                                    //                   },
-
-
+//                                                     //                   },
 
 
 
 
 
-                                                    //        ]
-
-                                                    //    },
 
 
+//                                                     //        ]
 
-                                                       {
-                                                           xtype: 'container',
-                                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_StampCampaignNote',
-                                                           margin: '10 0 0 0',
-                                                          // docked:'bottom',
-                                                           //hidden:true,
-                                                           style: "background-color: transparent",
-                                                           //style: "background-color: #F35B57;",
-                                                           height: 20,
-                                                           width: '100%',
-                                                           layout: {
-                                                               type: 'hbox',
-                                                               pack: 'center',
-                                                               align: 'center'
+//                                                     //    },
 
-                                                           },
-                                                           items: [
-                                                               {
+
+
+//                                                        {
+//                                                            xtype: 'container',
+//                                                            id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_StampCampaignNote',
+//                                                            margin: '10 0 0 0',
+//                                                           // docked:'bottom',
+//                                                            //hidden:true,
+//                                                            style: "background-color: transparent",
+//                                                            //style: "background-color: #F35B57;",
+//                                                            height: 20,
+//                                                            width: '100%',
+//                                                            layout: {
+//                                                                type: 'hbox',
+//                                                                pack: 'center',
+//                                                                align: 'center'
+
+//                                                            },
+//                                                            items: [
+//                                                                {
                                                                   
-                                                                 //  margin: '-10 0 0 0',
-                                                                   // margin: '-40 0 0 0',
-                                                                   id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_StampCampaignNote',
-                                                                   html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;width:100%">*Only purchase above RM100 entitle to be stamped</div>',
-                                                               },
+//                                                                  //  margin: '-10 0 0 0',
+//                                                                    // margin: '-40 0 0 0',
+//                                                                    id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_StampCampaignNote',
+//                                                                    html: '<div style="margin:5px 0px 0px 0px;font-size:8px;color:white;font-weight:bold;width:100%">*Only purchase above RM100 entitle to be stamped</div>',
+//                                                                },
 
 
-                                                           ]
-                                                       },
+//                                                            ]
+//                                                        },
                                                      
 
-                                                         {
-                                          xtype: 'container',
-                                          id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_ContactUs',
-                                          width: '100%',
-                                         // hidden:true,
-                                          height: 60,
-                                          margin: '20 0 0 0',
-                                          style: "background-color:transparent;",
-                                          layout: {
-                                              type: 'vbox',
-                                              pack: 'center',
-                                              align: 'center',
-                                          },
-                                          items: [
+//                                                          {
+//                                           xtype: 'container',
+//                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_ContactUs',
+//                                           width: '100%',
+//                                          // hidden:true,
+//                                           height: 60,
+//                                           margin: '20 0 0 0',
+//                                           style: "background-color:transparent;",
+//                                           layout: {
+//                                               type: 'vbox',
+//                                               pack: 'center',
+//                                               align: 'center',
+//                                           },
+//                                           items: [
 
 
-                                                {
-                                                    margin: '0 0 0 0',
-                                                    height: 20,
-                                                    html: '<font size=2 color=white><b>Visit Us</b></font>',
-                                                },
-                                              {
-                                                  xtype: 'container',
-                                                  id: 'containerFloatPanel_AyohaCardManagement_PreviewCardbottom',
-                                                  width: '100%',
-                                                  // hidden:true,
-                                                   height: 45,
-                                                  //hidden:true,
-                                                  style: "background-color: transparent",
-                                                  //style: "background-color: #F35B57;",
-                                                  margin: '0 0 0 0',
-                                                  layout: {
-                                                      type: 'hbox',
-                                                      pack: 'center',
-                                                      align: 'center'
+//                                                 {
+//                                                     margin: '0 0 0 0',
+//                                                     height: 20,
+//                                                     html: '<font size=2 color=white><b>Visit Us</b></font>',
+//                                                 },
+//                                               {
+//                                                   xtype: 'container',
+//                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCardbottom',
+//                                                   width: '100%',
+//                                                   // hidden:true,
+//                                                    height: 45,
+//                                                   //hidden:true,
+//                                                   style: "background-color: transparent",
+//                                                   //style: "background-color: #F35B57;",
+//                                                   margin: '0 0 0 0',
+//                                                   layout: {
+//                                                       type: 'hbox',
+//                                                       pack: 'center',
+//                                                       align: 'center'
 
-                                                  },
+//                                                   },
 
 
-                                                  items: [
+//                                                   items: [
 
                                                   
-                                                            {
-                                                                xtype: 'button',
-                                                                height: 40,
-                                                                width: 55,
-                                                                margin: '0 0 0 0',
-                                                                hidden:true,
-                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomLocation',
-                                                                //badgeText: "2",
-                                                                html: '<div ><img src="resources/icons/locationThree.png" width="22" height="22" alt="Company Name"></div>',
-                                                                ui: 'plain',
-                                                                handler: function () {
+//                                                             {
+//                                                                 xtype: 'button',
+//                                                                 height: 40,
+//                                                                 width: 55,
+//                                                                 margin: '0 0 0 0',
+//                                                                 hidden:true,
+//                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomLocation',
+//                                                                 //badgeText: "2",
+//                                                                 html: '<div ><img src="resources/icons/locationThree.png" width="22" height="22" alt="Company Name"></div>',
+//                                                                 ui: 'plain',
+//                                                                 handler: function () {
 
 
-                                                                    globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
-                                                                    var task = Ext.create('Ext.util.DelayedTask', function () {
-                                                                       // FloatPanel_PreviewAdvertisement_OpenLocation();
-                                                                        Dashboard_AyohaHotMerchant_OpenLocation(globalFloatPanelMerchantDetailPage_EnterpriseCoordinate);
-                                                                    });
-                                                                    task.delay(150);
-                                                                    //var Coordinate = globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseCoordinate.split(",");
-                                                                    //PlaceMarkerlat = Coordinate[0];
-                                                                    //PlaceMarkerlng = Coordinate[1];
+//                                                                     globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+//                                                                     var task = Ext.create('Ext.util.DelayedTask', function () {
+//                                                                        // FloatPanel_PreviewAdvertisement_OpenLocation();
+//                                                                         Dashboard_AyohaHotMerchant_OpenLocation(globalFloatPanelMerchantDetailPage_EnterpriseCoordinate);
+//                                                                     });
+//                                                                     task.delay(150);
+//                                                                     //var Coordinate = globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseCoordinate.split(",");
+//                                                                     //PlaceMarkerlat = Coordinate[0];
+//                                                                     //PlaceMarkerlng = Coordinate[1];
 
-                                                                    ////var addressLongLat = PlaceMarkerlat + ',' + PlaceMarkerlng;                                                          
-                                                                    ////window.open("geo:" + addressLongLat);
-
-
-                                                                    //if (PlaceMarkerlat) {
-                                                                    //    if (PlaceMarkerlng) {
-                                                                    //        window.open("https://www.google.com/maps/search/?api=1&query=" + PlaceMarkerlat + "," + PlaceMarkerlng, '_system');
-                                                                    //    } else {
-
-                                                                    //        swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this setting!", "Location");
-                                                                    //    }
-                                                                    //} else {
-                                                                    //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this Message!", "Location");
-                                                                    //}
-                                                                }
-                                                            },
-
-                                                            {
-                                                                xtype: 'button',
-                                                                height: 40,
-                                                                width: 55,
-                                                                margin: '0 0 0 0',
-                                                                id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomFB',
-                                                                //badgeText: "2",
-                                                                hidden: true,
-                                                                html: '<div ><img src="resources/icons/Facebooklogo.png" width="22" height="22" alt="Company Name"></div>',
-                                                                ui: 'plain',
-                                                                handler: function () {
-                                                                    globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
-                                                                    var task = Ext.create('Ext.util.DelayedTask', function () {
-                                                                       // FloatPanel_PreviewAdvertisement_OpenFB();
-                                                                       FloatPanel_MerchantDetailPage_OpenFB();
-                                                                    });
-                                                                    task.delay(150);
-
-                                                                    //if (globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseFacebook) {
-
-                                                                    //    setTimeout(function () { window.open("fb://page/" + globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseFacebook + ""); }, 25);
-                                                                    //} else {
-
-                                                                    //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set FB Link.,Help Merchant to know this Message!", "FB")
-                                                                    //}
-
-                                                                }
-                                                            },
-                                                             {
-                                                                 xtype: 'button',
-                                                                 height: 40,
-                                                                 width: 55,
-                                                                margin: '0 0 0 0',
-                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomInsta',
-                                                                 hidden: true,
-                                                                 //badgeText: "2",
-                                                                 html: '<div ><img src="resources/icons/instagram.png" width="22" height="22" alt="Company Name"></div>',
-                                                                 ui: 'plain',
-                                                                 handler: function () {
-
-                                                                     globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
-                                                                     var task = Ext.create('Ext.util.DelayedTask', function () {
-                                                                        // FloatPanel_PreviewAdvertisement_OpenInsta();
-                                                                        FloatPanel_MerchantDetailPage_OpenInsta();
-                                                                     });
-                                                                     task.delay(150);
+//                                                                     ////var addressLongLat = PlaceMarkerlat + ',' + PlaceMarkerlng;                                                          
+//                                                                     ////window.open("geo:" + addressLongLat);
 
 
-                                                                     //if (globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseInstagram) {
+//                                                                     //if (PlaceMarkerlat) {
+//                                                                     //    if (PlaceMarkerlng) {
+//                                                                     //        window.open("https://www.google.com/maps/search/?api=1&query=" + PlaceMarkerlat + "," + PlaceMarkerlng, '_system');
+//                                                                     //    } else {
 
-                                                                     //    setTimeout(function () { window.open("instagram://user?username=" + globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseInstagram + ""); }, 25);
-                                                                     //} else {
+//                                                                     //        swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this setting!", "Location");
+//                                                                     //    }
+//                                                                     //} else {
+//                                                                     //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this Message!", "Location");
+//                                                                     //}
+//                                                                 }
+//                                                             },
 
-                                                                     //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Instagram Link.,Help Merchant to know this Message!", "Insta")
-                                                                     //}
+//                                                             {
+//                                                                 xtype: 'button',
+//                                                                 height: 40,
+//                                                                 width: 55,
+//                                                                 margin: '0 0 0 0',
+//                                                                 id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomFB',
+//                                                                 //badgeText: "2",
+//                                                                 hidden: true,
+//                                                                 html: '<div ><img src="resources/icons/Facebooklogo.png" width="22" height="22" alt="Company Name"></div>',
+//                                                                 ui: 'plain',
+//                                                                 handler: function () {
+//                                                                     globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+//                                                                     var task = Ext.create('Ext.util.DelayedTask', function () {
+//                                                                        // FloatPanel_PreviewAdvertisement_OpenFB();
+//                                                                        FloatPanel_MerchantDetailPage_OpenFB();
+//                                                                     });
+//                                                                     task.delay(150);
+
+//                                                                     //if (globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseFacebook) {
+
+//                                                                     //    setTimeout(function () { window.open("fb://page/" + globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseFacebook + ""); }, 25);
+//                                                                     //} else {
+
+//                                                                     //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set FB Link.,Help Merchant to know this Message!", "FB")
+//                                                                     //}
+
+//                                                                 }
+//                                                             },
+//                                                              {
+//                                                                  xtype: 'button',
+//                                                                  height: 40,
+//                                                                  width: 55,
+//                                                                 margin: '0 0 0 0',
+//                                                                  id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomInsta',
+//                                                                  hidden: true,
+//                                                                  //badgeText: "2",
+//                                                                  html: '<div ><img src="resources/icons/instagram.png" width="22" height="22" alt="Company Name"></div>',
+//                                                                  ui: 'plain',
+//                                                                  handler: function () {
+
+//                                                                      globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+//                                                                      var task = Ext.create('Ext.util.DelayedTask', function () {
+//                                                                         // FloatPanel_PreviewAdvertisement_OpenInsta();
+//                                                                         FloatPanel_MerchantDetailPage_OpenInsta();
+//                                                                      });
+//                                                                      task.delay(150);
 
 
+//                                                                      //if (globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseInstagram) {
 
+//                                                                      //    setTimeout(function () { window.open("instagram://user?username=" + globalFloatPanel_AyohaCardManagement_PreviewCard_EnterpriseInstagram + ""); }, 25);
+//                                                                      //} else {
 
-                                                                 }
-                                                             },
+//                                                                      //    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Instagram Link.,Help Merchant to know this Message!", "Insta")
+//                                                                      //}
 
 
 
-                                                              {
-                                                                  xtype: 'button',
-                                                                  height: 40,
-                                                                width: 55,
-                                                                margin: '0 0 0 0',
-                                                                  id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomTikTok',
-                                                                  hidden: true,
-                                                                  //badgeText: "2",
-                                                                  html: '<div ><img src="resources/icons/TikToklogo.png" width="22" height="22" alt="Company Name"></div>',
-                                                                  ui: 'plain',
-                                                                  handler: function () {
 
-                                                                      globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
-                                                                      FloatPanel_MerchantDetailPage_OpenTikTok();
-                                                                    //   var task = Ext.create('Ext.util.DelayedTask', function () {
-                                                                    //       FloatPanel_PreviewAdvertisement_OpenWhatsApp();
-                                                                    //   });
-                                                                    //   task.delay(150);
+//                                                                  }
+//                                                              },
+
+
+
+//                                                               {
+//                                                                   xtype: 'button',
+//                                                                   height: 40,
+//                                                                 width: 55,
+//                                                                 margin: '0 0 0 0',
+//                                                                   id: 'btnFloatPanel_AyohaCardManagement_PreviewCardbottomTikTok',
+//                                                                   hidden: true,
+//                                                                   //badgeText: "2",
+//                                                                   html: '<div ><img src="resources/icons/TikToklogo.png" width="22" height="22" alt="Company Name"></div>',
+//                                                                   ui: 'plain',
+//                                                                   handler: function () {
+
+//                                                                       globalFloatPanel_AyohaStore_ModuleTagging = "StampCard";
+//                                                                       FloatPanel_MerchantDetailPage_OpenTikTok();
+//                                                                     //   var task = Ext.create('Ext.util.DelayedTask', function () {
+//                                                                     //       FloatPanel_PreviewAdvertisement_OpenWhatsApp();
+//                                                                     //   });
+//                                                                     //   task.delay(150);
 
                                                                    
 
                                                                     
 
-                                                                  }
-                                                              },
+//                                                                   }
+//                                                               },
                                                               
                                                   
-                                                  ]
+//                                                   ]
 
-                                              },
-                                          ]
-                                      },
-
-
+//                                               },
+//                                           ]
+//                                       },
 
 
 
-                                                  ]
-
-                                              },
 
 
+//                                                   ]
+
+//                                               },
 
 
 
@@ -2525,16 +5323,16 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                                        ]
-                                    },
 
 
-                                ]
+//                                         ]
+//                                     },
 
 
-                            },
+//                                 ]
 
 
+//                             },
 
 
 
@@ -2545,357 +5343,359 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
 
 
 
-                              //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                               {
-                                   xtype: 'container',
-                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCardTitleOutterN',
-                                   width: '100%',
-                                   margin: '0 0 0 0',
-                                   height:110,
-                                   docked: 'bottom',
-                                   //hidden:true,
-                                   // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
-                                   // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                                   //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
-                                   style: "background-color: transparent;",
 
-                                   layout: {
-                                       type: 'hbox',
-                                       pack: 'center',
-                                       align: 'center'
 
-                                   },
-                                   items: [
+//                               //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                {
+//                                    xtype: 'container',
+//                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCardTitleOutterN',
+//                                    width: '100%',
+//                                    margin: '0 0 0 0',
+//                                    height:110,
+//                                    docked: 'bottom',
+//                                    //hidden:true,
+//                                    // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+//                                    // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+//                                    //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
+//                                    style: "background-color: transparent;",
 
-                                       {
-                                           xtype: 'container',
+//                                    layout: {
+//                                        type: 'hbox',
+//                                        pack: 'center',
+//                                        align: 'center'
+
+//                                    },
+//                                    items: [
+
+//                                        {
+//                                            xtype: 'container',
                                          
-                                           height: 110,
-                                           id:'containerStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icon',
-                                           layout: {
-                                               type: 'vbox',
-                                               pack: 'start',
-                                               align: 'center'
+//                                            height: 110,
+//                                            id:'containerStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icon',
+//                                            layout: {
+//                                                type: 'vbox',
+//                                                pack: 'start',
+//                                                align: 'center'
 
-                                           },
-                                           items: [
-                                                 {
-                                                     xtype: 'button',
-                                                     id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icon',
-                                                     //  badgeText: '1',
-                                                     margin: '0 0 0 35',
-                                                     height: 70,
-                                                     width: 85,
-                                                     html: '<img src="resources/icons/StampSuccessCount.gif" width="45" height="60" alt="Company Name">',
-                                                     ui: 'plain',
-                                                     handler: function () {
-                                                         FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+//                                            },
+//                                            items: [
+//                                                  {
+//                                                      xtype: 'button',
+//                                                      id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icon',
+//                                                      //  badgeText: '1',
+//                                                      margin: '0 0 0 35',
+//                                                      height: 70,
+//                                                      width: 85,
+//                                                      html: '<img src="resources/icons/StampSuccessCount.gif" width="45" height="60" alt="Company Name">',
+//                                                      ui: 'plain',
+//                                                      handler: function () {
+//                                                          FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
 
-                                                     }
-                                                 },
-                                                 {
-                                                     //margin: '0 0 0 -100',
-                                                     xtype: 'button',
-                                                     id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp',
-                                                     // margin: '0 0 0 -30',
-                                                     margin: '0 0 0 35',
-                                                     height: 35,
-                                                     width: 95,
-                                                     html: '<font size=5 color=white><b>4/11</b></font>',
-                                                     ui: 'plain',
-                                                     handler: function () {
-                                                         FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
-                                                     }
+//                                                      }
+//                                                  },
+//                                                  {
+//                                                      //margin: '0 0 0 -100',
+//                                                      xtype: 'button',
+//                                                      id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp',
+//                                                      // margin: '0 0 0 -30',
+//                                                      margin: '0 0 0 35',
+//                                                      height: 35,
+//                                                      width: 95,
+//                                                      html: '<font size=5 color=white><b>4/11</b></font>',
+//                                                      ui: 'plain',
+//                                                      handler: function () {
+//                                                          FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+//                                                      }
 
-                                                 },
-                                           ]
-                                       },
-
-
-                                        {
-                                                   xtype: 'spacer',
-                                                   width:7
-                                               },
-                                       {
+//                                                  },
+//                                            ]
+//                                        },
 
 
-                                           xtype: 'container',
-                                           id: 'containerFloatPanel_AyohaCardManagement_PreviewCardButtons',
-                                           name: 'namecontainerFloatPanel_AyohaCardManagement_PreviewCardButtons',
+//                                         {
+//                                                    xtype: 'spacer',
+//                                                    width:7
+//                                                },
+//                                        {
 
-                                           // docked: 'bottom',
-                                           //hidden:true,
-                                           //ori//width: '76%',
-                                           width: '46%',
-                                           height: 50,
-                                           margin:'60 0 0 0',
-                                           //docked: 'bottom',
-                                           // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
-                                           // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                                           style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;border-radius:20px 20px 0px 0px;',
-                                           // style: "background-color: transparent",
 
-                                           layout: {
-                                               type: 'hbox',
-                                               pack: 'center',
-                                               align: 'center'
+//                                            xtype: 'container',
+//                                            id: 'containerFloatPanel_AyohaCardManagement_PreviewCardButtons',
+//                                            name: 'namecontainerFloatPanel_AyohaCardManagement_PreviewCardButtons',
 
-                                           },
-                                           items: [
+//                                            // docked: 'bottom',
+//                                            //hidden:true,
+//                                            //ori//width: '76%',
+//                                            width: '46%',
+//                                            height: 50,
+//                                            margin:'60 0 0 0',
+//                                            //docked: 'bottom',
+//                                            // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+//                                            // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+//                                            style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;border-radius:20px 20px 0px 0px;',
+//                                            // style: "background-color: transparent",
+
+//                                            layout: {
+//                                                type: 'hbox',
+//                                                pack: 'center',
+//                                                align: 'center'
+
+//                                            },
+//                                            items: [
 
                                              
-                                               {
-                                                   xtype: 'container',
-                                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_StampCard',
-                                                   width: '38%',
-                                                   height: 40,
-                                                   style: "background-color: transparent",
-                                                   hidden:true,
-                                                   //style: "background-color: #F35B57;",
+//                                                {
+//                                                    xtype: 'container',
+//                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_StampCard',
+//                                                    width: '38%',
+//                                                    height: 40,
+//                                                    style: "background-color: transparent",
+//                                                    hidden:true,
+//                                                    //style: "background-color: #F35B57;",
 
-                                                   layout: {
-                                                       type: 'vbox',
-                                                       pack: 'center',
-                                                       align: 'center'
+//                                                    layout: {
+//                                                        type: 'vbox',
+//                                                        pack: 'center',
+//                                                        align: 'center'
 
-                                                   },
-                                                   items: [
+//                                                    },
+//                                                    items: [
 
-                                                        {
-                                                            xtype: 'button',
-                                                            id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard',
-                                                            //  badgeText: '1',
-                                                            margin: '-5 0 0 0',
-                                                            height: 35,
-                                                            width: 35,
-                                                            html: '<img src="resources/icons/StampTwo.png" width="25" height="25" alt="Company Name">',
-                                                            ui: 'plain',
-                                                            handler: function () {
-                                                                Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardMaster').setHidden(false);
-                                                                Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardQrCode').setHidden(true);
+//                                                         {
+//                                                             xtype: 'button',
+//                                                             id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard',
+//                                                             //  badgeText: '1',
+//                                                             margin: '-5 0 0 0',
+//                                                             height: 35,
+//                                                             width: 35,
+//                                                             html: '<img src="resources/icons/StampTwo.png" width="25" height="25" alt="Company Name">',
+//                                                             ui: 'plain',
+//                                                             handler: function () {
+//                                                                 Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardMaster').setHidden(false);
+//                                                                 Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardQrCode').setHidden(true);
 
-                                                            }
-                                                        },
-                                                         {
-                                                             margin: '-7 0 0 0',
-                                                             html: '<font size=2 color=grey><b>Stamp Card</b></font>'
-                                                         },
+//                                                             }
+//                                                         },
+//                                                          {
+//                                                              margin: '-7 0 0 0',
+//                                                              html: '<font size=2 color=grey><b>Stamp Card</b></font>'
+//                                                          },
 
-                                                   ]
-                                               },
+//                                                    ]
+//                                                },
 
-                                           {
-                                               xtype: 'container',
-                                               id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_QrCode',
-                                               name: 'namecontainerFloatPanel_AyohaCardManagement_PreviewCard_QrCode',
-                                               //  width: '38%',                                               
-                                               width:'80%',
-                                               height: 40,
-                                               style: "background-color: transparent",
-                                               //style: "background-color: #F35B57;",
+//                                            {
+//                                                xtype: 'container',
+//                                                id: 'containerFloatPanel_AyohaCardManagement_PreviewCard_QrCode',
+//                                                name: 'namecontainerFloatPanel_AyohaCardManagement_PreviewCard_QrCode',
+//                                                //  width: '38%',                                               
+//                                                width:'80%',
+//                                                height: 40,
+//                                                style: "background-color: transparent",
+//                                                //style: "background-color: #F35B57;",
 
-                                               layout: {
-                                                   type: 'vbox',
-                                                   pack: 'center',
-                                                   align: 'center'
+//                                                layout: {
+//                                                    type: 'vbox',
+//                                                    pack: 'center',
+//                                                    align: 'center'
 
-                                               },
-                                               items: [
+//                                                },
+//                                                items: [
 
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnQrCode_FloatPanel_AyohaCardManagement_PreviewCard',
-                                                        //  badgeText: '1',
-                                                        margin: '-5 0 0 0',
-                                                        height: 35,
-                                                        width: 65,
-                                                        html: '<img src="resources/icons/qrcodetwo.png" width="25" height="25" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                            if(is_prompt_setMessage_NotYetMembershipMessage()){
-return
-                                                            }else
-                                                            {
-                                                                SingleTap_FloatPanel_AyohaCardManagement_PreviewCard_CreateStampQRCode();
-                                                            }
+//                                                     {
+//                                                         xtype: 'button',
+//                                                         id: 'btnQrCode_FloatPanel_AyohaCardManagement_PreviewCard',
+//                                                         //  badgeText: '1',
+//                                                         margin: '-5 0 0 0',
+//                                                         height: 35,
+//                                                         width: 65,
+//                                                         html: '<img src="resources/icons/qrcodetwo.png" width="25" height="25" alt="Company Name">',
+//                                                         ui: 'plain',
+//                                                         handler: function () {
+//                                                             if(is_prompt_setMessage_NotYetMembershipMessage()){
+// return
+//                                                             }else
+//                                                             {
+//                                                                 SingleTap_FloatPanel_AyohaCardManagement_PreviewCard_CreateStampQRCode();
+//                                                             }
                                                            
-                                                            //if (globalStampCampaignisCampaignExpired == "Expired") {
+//                                                             //if (globalStampCampaignisCampaignExpired == "Expired") {
 
-                                                            //    return;
-                                                            //}
+//                                                             //    return;
+//                                                             //}
 
 
-                                                            //var CountLoyaltyStamped = localStorage.getItem('CountLoyaltyStamped');
-                                                            //var CountStampCardRowShow = localStorage.getItem('CountStampCardRowShow');
+//                                                             //var CountLoyaltyStamped = localStorage.getItem('CountLoyaltyStamped');
+//                                                             //var CountStampCardRowShow = localStorage.getItem('CountStampCardRowShow');
 
-                                                            //if (CountLoyaltyStamped == CountStampCardRowShow) {
+//                                                             //if (CountLoyaltyStamped == CountStampCardRowShow) {
 
-                                                            //    return;
-                                                            //}
-                                                            //FloatPanel_AyohaCardManagement_StampQrCodeShow();
+//                                                             //    return;
+//                                                             //}
+//                                                             //FloatPanel_AyohaCardManagement_StampQrCodeShow();
 
                                                           
-                                                        }
-                                                    },
-                                                     {
-                                                         margin: '-7 0 0 0',
-                                                         id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_StampQrCode',
-                                                         html: '<font size=2 color=grey><b>Stamp QR Code</b></font>'
-                                                     },
+//                                                         }
+//                                                     },
+//                                                      {
+//                                                          margin: '-7 0 0 0',
+//                                                          id: 'htmlFloatPanel_AyohaCardManagement_PreviewCard_StampQrCode',
+//                                                          html: '<font size=2 color=grey><b>Stamp QR Code</b></font>'
+//                                                      },
 
-                                               ]
-                                           },
+//                                                ]
+//                                            },
 
-                                           //////////////////test  area
-                                           // {
-                                           //     xtype: 'spacer',
-                                           //     width: 25
-                                           // },
+//                                            //////////////////test  area
+//                                            // {
+//                                            //     xtype: 'spacer',
+//                                            //     width: 25
+//                                            // },
 
-                                           //{
-                                           //    xtype: 'container',
-                                           //    margin: '-70 0 0 -10',
-                                           //    layout: {
-                                           //        type: 'vbox',
-                                           //        pack: 'start',
-                                           //        align: 'center'
+//                                            //{
+//                                            //    xtype: 'container',
+//                                            //    margin: '-70 0 0 -10',
+//                                            //    layout: {
+//                                            //        type: 'vbox',
+//                                            //        pack: 'start',
+//                                            //        align: 'center'
 
-                                           //    },
-                                           //    items: [
-                                           //          {
-                                           //              xtype: 'button',
-                                           //              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icons',
-                                           //              //  badgeText: '1',
-                                           //              margin: '20 0 0 0',
-                                           //              height: 75,
-                                           //              width: 55,
-                                           //              html: '<img src="resources/icons/StampSuccessCount.gif" width="45" height="65" alt="Company Name">',
-                                           //              ui: 'plain',
-                                           //              handler: function () {
-                                           //                  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+//                                            //    },
+//                                            //    items: [
+//                                            //          {
+//                                            //              xtype: 'button',
+//                                            //              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icons',
+//                                            //              //  badgeText: '1',
+//                                            //              margin: '20 0 0 0',
+//                                            //              height: 75,
+//                                            //              width: 55,
+//                                            //              html: '<img src="resources/icons/StampSuccessCount.gif" width="45" height="65" alt="Company Name">',
+//                                            //              ui: 'plain',
+//                                            //              handler: function () {
+//                                            //                  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
 
-                                           //              }
-                                           //          },
+//                                            //              }
+//                                            //          },
                                                    
-                                           //    ]
-                                           //},
+//                                            //    ]
+//                                            //},
 
-                                           ///////////////////
+//                                            ///////////////////
 
-                                           ]
+//                                            ]
 
 
 
-                                       },
+//                                        },
                                       
 
 
-                                         {
-                                             xtype: 'button',
-                                             id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementButton',
-                                             //  badgeText: '1',
-                                           hidden:true,
-                                             margin: '-20 0 0 0',
-                                             height: 110,
-                                             width: 120,
-                                             html: '<img src="resources/icons/SaleThree.gif" width="90" height="100" alt="Company Name">',
-                                             ui: 'plain',
-                                             handler: function () {
+//                                          {
+//                                              xtype: 'button',
+//                                              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementButton',
+//                                              //  badgeText: '1',
+//                                            hidden:true,
+//                                              margin: '-20 0 0 0',
+//                                              height: 110,
+//                                              width: 120,
+//                                              html: '<img src="resources/icons/SaleThree.gif" width="90" height="100" alt="Company Name">',
+//                                              ui: 'plain',
+//                                              handler: function () {
                                                 
-                                                 FloatPanel_PreviewAdvertisementShow_StampCard("FloatPanel_AyohaCardManagement_AdvertisementButton");
+//                                                  FloatPanel_PreviewAdvertisementShow_StampCard("FloatPanel_AyohaCardManagement_AdvertisementButton");
 
-                                             }
-                                         },
+//                                              }
+//                                          },
 
-                                            {
-                                                xtype: 'button',
-                                                id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementButton_TransparentBox',
-                                                //  badgeText: '1',
-                                                hidden: false,
-                                                margin: '-20 0 0 0',
-                                             height: 110,
-                                             width: 120,
-                                                html: '<img src="resources/icons/transparentbox.png" width="90" height="100" alt="Company Name">',
-                                                ui: 'plain',
-                                                handler: function () {
+//                                             {
+//                                                 xtype: 'button',
+//                                                 id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementButton_TransparentBox',
+//                                                 //  badgeText: '1',
+//                                                 hidden: false,
+//                                                 margin: '-20 0 0 0',
+//                                              height: 110,
+//                                              width: 120,
+//                                                 html: '<img src="resources/icons/transparentbox.png" width="90" height="100" alt="Company Name">',
+//                                                 ui: 'plain',
+//                                                 handler: function () {
                                                    
 
-                                                }
-                                            },
+//                                                 }
+//                                             },
 
 
-                                           //{
-                                           //    xtype: 'container',
-                                           //    margin: '-70 0 0 0',
-                                           //    layout: {
-                                           //        type: 'vbox',
-                                           //        pack: 'start',
-                                           //        align: 'center'
+//                                            //{
+//                                            //    xtype: 'container',
+//                                            //    margin: '-70 0 0 0',
+//                                            //    layout: {
+//                                            //        type: 'vbox',
+//                                            //        pack: 'start',
+//                                            //        align: 'center'
 
-                                           //    },
-                                           //    items: [
-                                           //          {
-                                           //              xtype: 'button',
-                                           //              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icons',
-                                           //              //  badgeText: '1',
-                                           //              margin: '0 0 0 0',
-                                           //              height: 160,
-                                           //              width: 160,
-                                           //              html: '<img src="resources/icons/SaleThree.gif" width="150" height="150" alt="Company Name">',
-                                           //              ui: 'plain',
-                                           //              handler: function () {
-                                           //                  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
+//                                            //    },
+//                                            //    items: [
+//                                            //          {
+//                                            //              xtype: 'button',
+//                                            //              id: 'btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp_Icons',
+//                                            //              //  badgeText: '1',
+//                                            //              margin: '0 0 0 0',
+//                                            //              height: 160,
+//                                            //              width: 160,
+//                                            //              html: '<img src="resources/icons/SaleThree.gif" width="150" height="150" alt="Company Name">',
+//                                            //              ui: 'plain',
+//                                            //              handler: function () {
+//                                            //                  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
 
-                                           //              }
-                                           //          },
+//                                            //              }
+//                                            //          },
 
-                                           //    ]
-                                           //},
-                                   ]
+//                                            //    ]
+//                                            //},
+//                                    ]
 
-                               },
+//                                },
 
                               
 
 
-                              {
-                                  xtype: 'container',
-                                  id: 'containerFloatPanel_AyohaCardManagement_PreviewCardTitleOutter',
-                                  width: '100%',
-                                  height: 50,
-                                  docked: 'bottom',
-                                  hidden:true,
-                                  // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
-                                  // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                                  //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
-                                  style: "background-color: transparent;",
+//                               {
+//                                   xtype: 'container',
+//                                   id: 'containerFloatPanel_AyohaCardManagement_PreviewCardTitleOutter',
+//                                   width: '100%',
+//                                   height: 50,
+//                                   docked: 'bottom',
+//                                   hidden:true,
+//                                   // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+//                                   // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+//                                   //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
+//                                   style: "background-color: transparent;",
 
-                                  layout: {
-                                      type: 'vbox',
-                                      pack: 'center',
-                                      align: 'center'
+//                                   layout: {
+//                                       type: 'vbox',
+//                                       pack: 'center',
+//                                       align: 'center'
 
-                                  },
-                                  items: [
+//                                   },
+//                                   items: [
 
 
                                   
-                                  ]
+//                                   ]
 
-                              },
-
-
+//                               },
 
 
 
 
 
-                        ]
-                    },
 
 
-                ]
-            },
+//                         ]
+//                     },
+
+
+//                 ]
+//             },
 
 
 
@@ -2979,7 +5779,7 @@ function FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCam
     // this.overlay = Ext.Viewport.add(FloatPanel_AyohaCardManagement_PreviewCard());
     // this.overlay.show();
     // AddRoutePages("FloatPanel_AyohaCardManagement_PreviewCardHide()");
-   
+    resetPreviewCardBackgroundDefault(); // ✅ penting!
     FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded();
 
 
@@ -3809,15 +6609,16 @@ if (MembershipTag=="YES"){
 
                 
                 Ext.getCmp('containerFloatPanel_AyohaCardManagement_PreviewCardMasterLoading').setHidden(true);
-                Load_FloatPanel_AyohaCardManagement_PreviewCardLoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeStore(strStampCampaignCode, EnterpriseAccNo);
-                Load_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementLinkModuleloadByEnterpriseHQAccNoModuleCodeStore(EnterpriseAccNo);
+                //Load_FloatPanel_AyohaCardManagement_PreviewCardLoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeStore(strStampCampaignCode, EnterpriseAccNo);
+                //Load_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementLinkModuleloadByEnterpriseHQAccNoModuleCodeStore(EnterpriseAccNo);
             } else {
                 console.log('No data found or load failed.');
             }
         }
     });
     
-
+    Load_FloatPanel_AyohaCardManagement_PreviewCardLoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeStore(strStampCampaignCode, EnterpriseAccNo);
+    //Load_FloatPanel_AyohaCardManagement_PreviewCard_AdvertisementLinkModuleloadByEnterpriseHQAccNoModuleCodeStore(EnterpriseAccNo);
 }
 
    
@@ -4042,7 +6843,7 @@ function FloatPanel_AyohaCardManagement_PreviewCardHide(fromBack, animCfg) {
 
 
         clearInterval(BackgroungImgInterval);
-
+        BackgroungImgInterval = null;
         if (animCfg) {
             _FloatPanel_AyohaCardManagement_PreviewCard.hide(Ext.fx.Animation(animCfg));
           } else {
@@ -4064,8 +6865,32 @@ function FloatPanel_AyohaCardManagement_PreviewCardHide(fromBack, animCfg) {
 
 }
 
-
-
+function stopPreviewCardBgAnim() {
+    if (BackgroungImgInterval) {
+      clearInterval(BackgroungImgInterval);
+      BackgroungImgInterval = null;
+    }
+  }
+function resetPreviewCardBackgroundDefault() {
+    stopPreviewCardBgAnim();
+  
+    var host = Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs');
+    if (!host) return;
+  
+    // kalau kita create bgEl sebelum ni
+    if (host._ayohaBgEl) {
+      // OPTION A: buang terus element bg layer
+      host._ayohaBgEl.destroy();
+      host._ayohaBgEl = null;
+    }
+  
+    // OPTIONAL: reset ke gradient default Ayoha
+    host.setStyle('background-image', 'linear-gradient(#c800ffc9,#ff00de75)');
+    host.setStyle('background-color', '#fac');
+  
+    // reset array
+    if (ArrCardBackgroundImg) ArrCardBackgroundImg.length = 0;
+  }
 
 
 
@@ -4377,152 +7202,614 @@ function Load_FloatPanel_AyohaCardManagement_PreviewCardLoadByStampCampaignCodeE
 
 var ArrCardBackgroundImg = [];
 
-function Load_FloatPanel_AyohaCardManagement_PreviewCardLoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeStore(strStampCampaignCode, EnterpriseAccNo) {
+function Load_FloatPanel_AyohaCardManagement_PreviewCardLoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeStoreORI(strStampCampaignCode, EnterpriseAccNo) {
 
-    // 1. Kosongkan array dahulu
+
     ArrCardBackgroundImg.length = 0;
 
-    // 2. Paparkan Loading Mask (Pilihan, untuk UI yang lebih baik)
-    Ext.Viewport.setMasked({
-        xtype: 'loadmask',
-        message: 'Loading...'
-    });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
 
-    // 3. Buat panggilan AJAX
-    Ext.Ajax.request({
-        // PENTING: Anda perlu dapatkan URL ini daripada definisi Store 'LoyaltyCardBackgroundImageLoadBy...' anda
-      //  url: 'URL_API_ANDA_DISINI', 
-        url: GetAPIurl() + '/LoyaltyCardBackgroundImage/LoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeBackgroundImageAnim',
-        
-        method: 'GET', // atau 'POST', bergantung pada API anda
-        
-        params: {
+        Ext.Ajax.request({
+          url: GetAPIurl() + '/LoyaltyCardBackgroundImage/LoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeBackgroundImageAnim',
+          method: 'GET',
+          timeout: 30000,
+      
+          // ✅ GET kena guna params (querystring), BUKAN jsonData
+          params: {
             StampCampaignCode: strStampCampaignCode,
             EnterpriseAccNo: EnterpriseAccNo
-        },
-        
-        success: function(response) {
-            // 4. Tukar response text (JSON string) kepada Object
-            var result = Ext.decode(response.responseText);
-            
-            // Bergantung pada struktur JSON anda, data mungkin berada dalam result.data atau result itu sendiri.
-            // Contoh di bawah menganggap server memulangkan array terus atau { data: [...] }
-            var data = result.data || result; 
-            
-            var count = data.length;
-
-            if (count > 0) {
-                // Loop data
-                for (var ii = 0; ii < count; ii++) {
-                    // Dalam AJAX biasa, kita akses property terus (obj.ImgPath), bukan .get('ImgPath')
-                    var record = data[ii];
-                    var ImgPath = record.ImgPath; 
-                    
+          },
+      
+          // ❌ buang headers Content-Type untuk elak preflight/CORS tak perlu
+          // headers: { "Content-Type": "application/json; charset=utf-8" },
+      
+          success: function (response) {
+            var data = Ext.decode((response.responseText || '').trim(), true);
+      
+            if (!data) {
+              alert("Invalid JSON response");
+              Ext.Viewport.unmask();
+              return;
+            }
+      
+            // ✅ success dalam response ialah boolean true
+            if (data.success === true) {
+      
+              var results = data.results || [];
+              var total = parseInt(data.total || results.length || 0, 10);
+      
+              if (total > 0 && Ext.isArray(results) && results.length > 0) {
+      
+                // reset array
+                ArrCardBackgroundImg = ArrCardBackgroundImg || [];
+                ArrCardBackgroundImg.length = 0;
+      
+                // loop results
+                for (var ii = 0; ii < results.length; ii++) {
+                  var rec = results[ii] || {};
+                  var ImgPath = rec.ImgPath || "";
+      
+                  if (ImgPath) {
                     ArrCardBackgroundImg.push(ImgPath);
+                  }
                 }
+      
+                // ambil anim setting dari first record
+                var first = results[0] || {};
+                var isAnimated = String(first.isAnimated || "").trim().toUpperCase(); // "YES"
+                var AnimatedInterval = parseInt(first.AnimatedInterval || 0, 10);     // contoh 4
+      
+                // kalau interval tu dalam "seconds", convert ms (pilih ikut API kau)
+                // AnimatedInterval = AnimatedInterval * 1000;
+      
+                var animatedFlag = (isAnimated === "YES" || isAnimated === "Y" || isAnimated === "TRUE" || isAnimated === "1");
+      
+                setPreviewCardBackgroundImage(AnimatedInterval, animatedFlag);
+      
+              } else {
+              //  alert("No background image found.");
+              }
+      
+            } else {
+              alert("API success=false");
+            }
+      
+            Ext.Viewport.unmask();
+          },
+      
+          failure: function (response) {
+            console.log("AJAX failure:", response.status, response.statusText, response.responseText);
+            Ext.Viewport.unmask();
+            alert("AJAX failure");
+          }
+        });
+      
+      });
+      
+      task.delay(500);
+      
 
-                // Ambil rekod pertama untuk animation settings
-                var firstRecord = data[0];
-                var isAnimated = firstRecord.isAnimated;
-                var AnimatedInterval = firstRecord.AnimatedInterval;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // var task = Ext.create('Ext.util.DelayedTask', function () {
+
+    //     var objn = {
+           
+    //       "StampCampaignCode": strStampCampaignCode,
+    //       "EnterpriseAccNo": EnterpriseAccNo,
+    //     };
+    
+    //     Ext.Ajax.request({
+    //         url: GetAPIurl() + '/LoyaltyCardBackgroundImage/LoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeBackgroundImageAnim',
+        
+    //       method: 'GET',
+    //       jsonData: objn,
+    
+    //       headers: {
+    //         "Content-Type": "application/json; charset=utf-8"
+    //       },
+    
+    //       success: function (response) {
+    //         var data = Ext.decode((response.responseText || '').trim());
+    // alert(data.success)
+    //         if (data.success == "true") {
+    
+    //           if (data.total > 0) {
+
+    //             var count = data.length;
+
+            
+    //             if (count > 0) {
+    //                 // Loop data
+    //                 for (var ii = 0; ii < count; ii++) {
+    //                     // Dalam AJAX biasa, kita akses property terus (obj.ImgPath), bukan .get('ImgPath')
+    //                     var record = data[ii];
+    //                     var ImgPath = record.ImgPath; 
+                        
+    //                     ArrCardBackgroundImg.push(ImgPath);
+    //                 }
+    
+    //                 // Ambil rekod pertama untuk animation settings
+    //                 var firstRecord = data[0];
+    //                 var isAnimated = firstRecord.isAnimated;
+    //                 var AnimatedInterval = firstRecord.AnimatedInterval;
+                    
+    //                 // Panggil fungsi preview
+    //                 setPreviewCardBackgroundImage(AnimatedInterval, isAnimated);
+    //             }
+
+
+
+
+    //           }
+    
+    //           if (data.total <= 0) {
+              
+    //             alert("Fail");
+    //             Ext.Viewport.unmask();
+    //           }
+    
+    //         } else {
+    //             alert("Failed");
+    //           Ext.Viewport.unmask();
+    //         }
+    //       },
+    
+    //       failure: function (response) {
+    //         Ext.Viewport.unmask();
+    //         alert("failure");
+          
+    //       }
+    //     });
+    
+    //   });
+    
+    //   task.delay(500);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Ext.defer(function () {
+      
+    //     var objn = {
+    //         StampCampaignCode: strStampCampaignCode,
+    //         EnterpriseAccNo: EnterpriseAccNo
+    //     };
+    
+    //     Ext.Ajax.request({
+    //         url: GetAPIurl() + '/LoyaltyCardBackgroundImage/LoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeBackgroundImageAnim',
+        
+    //         method: 'GET', // atau 'POST', bergantung pada API anda
+    //       jsonData: objn,
+    //       headers: { "Content-Type": "application/json; charset=utf-8" },
+    //       timeout: 30000,
+    
+    //       callback: function (options, success, response) {
+    //         // Unmask sekali je
+      
+    
+    //         if (!success) {
+    //           // optional debug:
+    //           console.log('CalculateRating failed', response && response.status, response && response.responseText);
+    //           return;
+    //         }
+    
+    //        // var data = Ext.decode((response.responseText || '').trim(), true) || {};
+    //         var data = Ext.decode((response.responseText));
+    //         // alert(data.success)
+    //         // if (data.success !== "true") return;
+    
+           
+    //         var count = data.length;
+
+    //         alert(count)
+    //         if (count > 0) {
+    //             // Loop data
+    //             for (var ii = 0; ii < count; ii++) {
+    //                 // Dalam AJAX biasa, kita akses property terus (obj.ImgPath), bukan .get('ImgPath')
+    //                 var record = data[ii];
+    //                 var ImgPath = record.ImgPath; 
+                    
+    //                 ArrCardBackgroundImg.push(ImgPath);
+    //             }
+
+    //             // Ambil rekod pertama untuk animation settings
+    //             var firstRecord = data[0];
+    //             var isAnimated = firstRecord.isAnimated;
+    //             var AnimatedInterval = firstRecord.AnimatedInterval;
                 
-                // Panggil fungsi preview
-                setPreviewCardBackgroundImage(AnimatedInterval, isAnimated);
-            }
+    //             // Panggil fungsi preview
+    //             setPreviewCardBackgroundImage(AnimatedInterval, isAnimated);
+    //         }
 
-            // Tutup Loading Mask
-            Ext.Viewport.setMasked(false);
+
+
+
+
+    
+    //         // var r = data.results[0];
+    
+    //         // // Kekalkan assignment global macam asal (kalau code lain guna)
+    //         // FiveStar      = r.FiveStar;
+    //         // FourStar      = r.FourStar;
+    //         // ThreeStar     = r.ThreeStar;
+    //         // TwoStar       = r.TwoStar;
+    //         // OneStar       = r.OneStar;
+    //         // TotalStar     = r.TotalStar;
+    //         // TotalVoter    = r.TotalVoter;
+    //         // VoteFiveStar  = r.VoteFiveStar;
+    //         // VoteFourStar  = r.VoteFourStar;
+    //         // VoteThreeStar = r.VoteThreeStar;
+    //         // VoteTwoStar   = r.VoteTwoStar;
+    //         // VoteOneStar   = r.VoteOneStar;
+    
+    //         // var totalVoter = parseFloat(r.TotalVoter) || 0;
+    
+    //         // // ikut formula asal kau
+    //         // var sumVote =
+    //         //   (parseFloat(r.VoteFiveStar)  || 0) +
+    //         //   (parseFloat(r.VoteFourStar)  || 0) +
+    //         //   (parseFloat(r.VoteThreeStar) || 0) +
+    //         //   (parseFloat(r.VoteTwoStar)   || 0) +
+    //         //   (parseFloat(r.VoteOneStar)   || 0);
+    
+    //         // var avg = (totalVoter > 0) ? (sumVote / totalVoter) : 0;
+    
+    //         // // simpan global (ikut pattern asal)
+    //         // globalFloatPanelMerchantDetailPage_CountReviewer = totalVoter;
+    //         // globalFloatPanelMerchantDetailPage_CountStar     = (Math.round(avg * 10) / 10).toFixed(1);
+    
+    //         // updateDashboardRatingUI(avg, totalVoter);
+    //       }
+    //     });
+    
+    //   }, 500);
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // // 2. Paparkan Loading Mask (Pilihan, untuk UI yang lebih baik)
+    // Ext.Viewport.setMasked({
+    //     xtype: 'loadmask',
+    //     message: 'Loading...'
+    // });
+
+    // // 3. Buat panggilan AJAX
+    // Ext.Ajax.request({
+    //     // PENTING: Anda perlu dapatkan URL ini daripada definisi Store 'LoyaltyCardBackgroundImageLoadBy...' anda
+    //   //  url: 'URL_API_ANDA_DISINI', 
+    //     url: GetAPIurl() + '/LoyaltyCardBackgroundImage/LoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeBackgroundImageAnim',
+        
+    //     method: 'GET', // atau 'POST', bergantung pada API anda
+        
+    //     params: {
+    //         StampCampaignCode: strStampCampaignCode,
+    //         EnterpriseAccNo: EnterpriseAccNo
+    //     },
+        
+    //     success: function(response) {
+    //         // 4. Tukar response text (JSON string) kepada Object
+    //         var result = Ext.decode(response.responseText);
+            
+    //         // Bergantung pada struktur JSON anda, data mungkin berada dalam result.data atau result itu sendiri.
+    //         // Contoh di bawah menganggap server memulangkan array terus atau { data: [...] }
+    //         var data = result.data || result; 
+            
+    //         var count = data.length;
+
+    //         if (count > 0) {
+    //             // Loop data
+    //             for (var ii = 0; ii < count; ii++) {
+    //                 // Dalam AJAX biasa, kita akses property terus (obj.ImgPath), bukan .get('ImgPath')
+    //                 var record = data[ii];
+    //                 var ImgPath = record.ImgPath; 
+                    
+    //                 ArrCardBackgroundImg.push(ImgPath);
+    //             }
+
+    //             // Ambil rekod pertama untuk animation settings
+    //             var firstRecord = data[0];
+    //             var isAnimated = firstRecord.isAnimated;
+    //             var AnimatedInterval = firstRecord.AnimatedInterval;
+                
+    //             // Panggil fungsi preview
+    //             setPreviewCardBackgroundImage(AnimatedInterval, isAnimated);
+    //         }
+
+    //         // Tutup Loading Mask
+    //         Ext.Viewport.setMasked(false);
+    //     },
+        
+    //     failure: function(response) {
+    //         console.log('Server failed to respond');
+    //         Ext.Viewport.setMasked(false);
+    //     }
+    // });
+}
+
+
+
+function Load_FloatPanel_AyohaCardManagement_PreviewCardLoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeStore(strStampCampaignCode, EnterpriseAccNo) {
+
+    // reset
+    ArrCardBackgroundImg = ArrCardBackgroundImg || [];
+    ArrCardBackgroundImg.length = 0;
+  
+    // (optional) show mask
+    // Ext.Viewport.setMasked({ xtype: 'loadmask', message: 'Loading...' });
+  
+    Ext.defer(function () {
+  
+      Ext.Ajax.request({
+        url: GetAPIurl() + '/LoyaltyCardBackgroundImage/LoyaltyCardBackgroundImageLoadByEnterpriseAccNoStampCampaignCodeBackgroundImageAnim',
+        method: 'GET',
+        timeout: 30000,
+  
+        params: {
+          StampCampaignCode: strStampCampaignCode,
+          EnterpriseAccNo: EnterpriseAccNo
         },
-        
-        failure: function(response) {
-            console.log('Server failed to respond');
+  
+        success: function (response) {
+          var data = Ext.decode((response.responseText || '').trim(), true);
+  
+          if (!data) {
+            console.log("Invalid JSON response");
             Ext.Viewport.setMasked(false);
-        }
-    });
-}
-// contoh guna
-// loadCardBgImages(strStampCampaignCode, EnterpriseAccNo).then(arr => {
-//   console.log("Images:", arr);
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-var BackgroungImgInterval;
-function setPreviewCardBackgroundImage(IntervalAnime,isAnimated) {
-    //var panjang = ArrCardBackgroundImg.length;
-    console.log(ArrCardBackgroundImg[1])
-
-
-    var y = parseInt(screen.height)-12;
-   
-    
-    //Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardID').setHtml('background-image: url(""); background-size: 100% 100%;');
-
-   // Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerID').setStyle("background-color:transparent;")
-  //  Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerID').setHtml('<div style="background-color:transparent;width:100%;height:100%;" id="divCardBgImg" ><img src="' + ArrCardBackgroundImg[1] + '"  style="width:100%;height:' + y + 'px;"></div>');
-
-
-    var randomImgPath = ArrCardBackgroundImg[Math.floor(Math.random() * ArrCardBackgroundImg.length)];
-    Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs').setHtml('<div style="background-color:transparent;width:100%;height:' + y + 'px;background-image: url ("' + randomImgPath + '")" id="divCardBgImg" ></div>');
+            return;
+          }
   
-
-   
- 
- 
-
-    if (isAnimated == "NO") {
-        Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs').setHtml('<div style="background-color:transparent;width:100%;height:' + y + 'px;background-image: url (" ' + randomImgPath + '")" id="divCardBgImg" ></div>');
-        $("#divCardBgImg").css("background-image", "url(" + randomImgPath + ")");
-        $("#divCardBgImg").css("background-repeat", "no-repeat");
-        $("#divCardBgImg").css("background-size", "100% 100%");
-        $("#divCardBgImg").css("height", $(window).height() - 3);
-        
-        return;
-    }
-
-    
-
-
-
-    if (isAnimated == "YES") {
-
-        var interval = parseInt(IntervalAnime * 1000);
-        var i = 0;
-        //  $("#divCardBgImg").css("background-image", "url(" + ArrCardBackgroundImg[i] + ")");
-        BackgroungImgInterval = setInterval(function () {
-            i++;
-
-            Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerID').setStyle("background-color:transparent;");
-            if (i == ArrCardBackgroundImg.length) {
-                i = 0;
+          if (data.success === true) {
+  
+            var results = data.results || [];
+            if (Ext.isArray(results) && results.length > 0) {
+  
+              // fill array
+              ArrCardBackgroundImg.length = 0;
+              for (var ii = 0; ii < results.length; ii++) {
+                var rec = results[ii] || {};
+                var ImgPath = rec.ImgPath || "";
+                if (ImgPath) ArrCardBackgroundImg.push(ImgPath);
+              }
+  
+              // anim settings
+              var first = results[0] || {};
+              var AnimatedInterval = first.AnimatedInterval; // contoh 4
+              var isAnimated = first.isAnimated;             // "YES"
+  
+              // ✅ RUN background only when panel is painted
+              var runBg = function () {
+                // pastikan bgLayer dah wujud dalam panel (yang kau buat absolute/2-layer tu)
+                setPreviewCardBackgroundImage(AnimatedInterval, isAnimated);
+              };
+  
+              var panel = Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs');
+  
+              if (panel) {
+                // kalau dah render, terus jalan
+                if (panel.rendered) {
+                  runBg();
+                } else {
+                  panel.on('painted', runBg, null, { single: true });
+                }
+              } else {
+                // kalau panel belum wujud (timing), retry sekejap
+                Ext.defer(function () {
+                  var p2 = Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs');
+                  if (p2) {
+                    if (p2.rendered) runBg();
+                    else p2.on('painted', runBg, null, { single: true });
+                  } else {
+                    console.log("PreviewCardInnerIDs panel not found (still).");
+                  }
+                }, 200);
+              }
+  
+            } else {
+              console.log("No background image found.");
             }
-
-            //  if (ArrCardBackgroundImg[i] != "background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)") {
-            console.log(ArrCardBackgroundImg[i]);
-            $("#divCardBgImg").fadeOut("slow", function () {
-                $("#divCardBgImg").css("background-image", "url(" + ArrCardBackgroundImg[i] + ")");
-                $("#divCardBgImg").css("background-repeat", "no-repeat");
-                $("#divCardBgImg").css("background-size", "100% 100%");
-                $("#divCardBgImg").css("height", $(window).height() - 3);
-                //  $("#divCardBgImg").css("width", "1"));
-                $("#divCardBgImg").fadeIn("slow");
-            });
-            //}
-
-        }, interval);
-    }
   
+          } else {
+            console.log("API success=false");
+          }
+  
+          Ext.Viewport.setMasked(false);
+        },
+  
+        failure: function (response) {
+          console.log("AJAX failure:", response.status, response.statusText, response.responseText);
+          Ext.Viewport.setMasked(false);
+        }
+      });
+  
+    }, 200); // tak perlu 500 sangat, tapi ikut kau
+  }
+  
+
+
+
+var BackgroungImgInterval = null;
+
+function normalizeAnimatedFlag(v){
+  if (v === true) return true;
+  var s = String(v || '').trim().toUpperCase();
+  return (s === 'YES' || s === 'Y' || s === 'TRUE' || s === '1');
 }
+
+function toMs(intervalVal){
+  var n = parseInt(intervalVal, 10);
+  if (isNaN(n) || n <= 0) return 4000;   // default 4s
+  if (n >= 1000) return n;               // already ms
+  return n * 1000;                       // assume seconds (API kau contoh 4)
+}
+
+function ensureBgEl(){
+  var host = Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs');
+  if (!host) return null;
+
+  // create sekali sahaja
+  if (!host._ayohaBgEl) {
+    host._ayohaBgEl = host.element.createChild({
+      tag: 'div',
+      cls: 'ayohaPreviewBgLayer'
+    });
+  }
+  return host._ayohaBgEl;
+}
+
+function setBg(bgEl, imgUrl){
+  // boleh letak gradient + image sekali (nampak premium)
+  var bg = 'linear-gradient(#c800ffc9,#ff00de75), url(' + imgUrl + ')';
+  bgEl.setStyle('background-image', 'url(' + imgUrl + ')');
+ // bgEl.setStyle('background-image', bg);
+}
+
+function setPreviewCardBackgroundImage(IntervalAnime, isAnimated){
+  if (!ArrCardBackgroundImg || ArrCardBackgroundImg.length === 0) return;
+
+  var bgEl = ensureBgEl();
+  if (!bgEl) return;
+
+  // stop interval lama
+  if (BackgroungImgInterval) {
+    clearInterval(BackgroungImgInterval);
+    BackgroungImgInterval = null;
+  }
+
+  var animated = normalizeAnimatedFlag(isAnimated);
+  var intervalMs = toMs(IntervalAnime);
+
+  var i = 0;
+  setBg(bgEl, ArrCardBackgroundImg[i]);
+
+  if (!animated || ArrCardBackgroundImg.length <= 1) return;
+
+  BackgroungImgInterval = setInterval(function(){
+    i = (i + 1) % ArrCardBackgroundImg.length;
+    var next = ArrCardBackgroundImg[i];
+
+    // fade bg sahaja (content tak fade)
+    bgEl.setStyle('opacity', '0');
+    Ext.defer(function(){
+      setBg(bgEl, next);
+      bgEl.setStyle('opacity', '1');
+    }, 220);
+
+  }, intervalMs);
+}
+
+
+
+
+
+// var BackgroungImgInterval;
+// function setPreviewCardBackgroundImage(IntervalAnime,isAnimated) {
+//     //var panjang = ArrCardBackgroundImg.length;
+//     console.log(ArrCardBackgroundImg[1])
+
+
+//     var y = parseInt(screen.height)-12;
+   
+    
+
+//     var randomImgPath = ArrCardBackgroundImg[Math.floor(Math.random() * ArrCardBackgroundImg.length)];
+//     Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs').setHtml('<div style="background-color:transparent;width:100%;height:' + y + 'px;background-image: url ("' + randomImgPath + '")" id="divCardBgImg" ></div>');
+  
+
+   
+ 
+ 
+
+//     if (isAnimated == "NO") {
+//         Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerIDs').setHtml('<div style="background-color:transparent;width:100%;height:' + y + 'px;background-image: url (" ' + randomImgPath + '")" id="divCardBgImg" ></div>');
+//         $("#divCardBgImg").css("background-image", "url(" + randomImgPath + ")");
+//         $("#divCardBgImg").css("background-repeat", "no-repeat");
+//         $("#divCardBgImg").css("background-size", "100% 100%");
+//         $("#divCardBgImg").css("height", $(window).height() - 3);
+        
+//         return;
+//     }
+
+    
+
+
+
+//     if (isAnimated == true) {
+
+//         var interval = parseInt(IntervalAnime * 1000);
+//         var i = 0;
+//         //  $("#divCardBgImg").css("background-image", "url(" + ArrCardBackgroundImg[i] + ")");
+//         BackgroungImgInterval = setInterval(function () {
+//             i++;
+
+//             Ext.getCmp('FloatPanel_AyohaCardManagement_PreviewCardInnerID').setStyle("background-color:transparent;");
+//             if (i == ArrCardBackgroundImg.length) {
+//                 i = 0;
+//             }
+
+//             //  if (ArrCardBackgroundImg[i] != "background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)") {
+//             console.log(ArrCardBackgroundImg[i]);
+//             $("#divCardBgImg").fadeOut("slow", function () {
+//                 $("#divCardBgImg").css("background-image", "url(" + ArrCardBackgroundImg[i] + ")");
+//                 $("#divCardBgImg").css("background-repeat", "no-repeat");
+//                 $("#divCardBgImg").css("background-size", "100% 100%");
+//                 $("#divCardBgImg").css("height", $(window).height() - 3);
+//                 //  $("#divCardBgImg").css("width", "1"));
+//                 $("#divCardBgImg").fadeIn("slow");
+//             });
+//             //}
+
+//         }, interval);
+//     }
+  
+// }
 
 
 

@@ -57,3 +57,16 @@
   .pcBlink{ animation: blink 1s infinite; }
   @keyframes blink { 50% { opacity: .25; } }
   
+
+  
+  /* background layer yang kita create guna JS */
+.ayohaPreviewBgLayer{
+  position:absolute;
+  inset:0;
+  z-index:1;                 /* bawah content (content z-index:2) */
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  opacity:1;
+  transition: opacity .35s ease;
+}
