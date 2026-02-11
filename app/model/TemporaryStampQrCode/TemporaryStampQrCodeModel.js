@@ -1,8 +1,8 @@
 ﻿Ext.define('BuskartApp.model.TemporaryStampQrCode.TemporaryStampQrCodeModel', {
     extend: 'Ext.data.Model',
-    config: {
+    //config: {
         fields: [
             'TempStampQrCode'
         ]
-    }
+    //}
 });

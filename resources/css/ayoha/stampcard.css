@@ -1,0 +1,59 @@
+/* Logo: jangan hardcode 120x120, biar ikut device */
+.pcLogo img{
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    display:block;
+  }
+  
+  /* Screen besar sikit, bagi logo naik */
+  @media (min-width: 390px){
+    .pcLogo img{ width: 90px; height: 90px; }
+  }
+
+  .pcLogo { margin-left: 32px; }          /* adjust */
+@media (min-width: 390px){
+  .pcLogo { margin-left: 36px; }
+}
+  
+  /* Font responsif: clamp(min, vw, max) */
+  .pcTitle{
+    color:#fff;
+    font-weight:700;
+    font-size: clamp(14px, 3.6vw, 18px);
+    line-height: 1.15;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;   /* ✅ elak layout pecah bila nama panjang */
+  }
+  
+  .pcSub{
+    color:#fff;
+    font-weight:600;
+    font-size: clamp(12px, 3.2vw, 15px);
+    line-height: 1.15;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .pcSmall{
+    color:#fff;
+    font-weight:600;
+    font-size: clamp(10px, 2.6vw, 12px);
+    line-height: 1.1;
+  }
+  
+  .pcDivider{
+    height:1px;
+    width: 65%;
+    background:#fff;
+    margin: 6px 0 6px 0;
+    opacity: .9;
+  }
+  
+  .pcBlink{ animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+  

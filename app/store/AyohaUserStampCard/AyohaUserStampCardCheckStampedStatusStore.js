@@ -1,28 +1,55 @@
 ﻿Ext.define('BuskartApp.store.AyohaUserStampCard.AyohaUserStampCardCheckStampedStatusStore', {
-    extend: 'Ext.data.Store',
-    //  alias: 'store.ResponderAlertGetByAcc',
-    config: {
-        model: 'BuskartApp.model.AyohaUserStampCard.AyohaUserStampCardModel',
-        autoLoad: false,
+    // extend: 'Ext.data.Store',
+    // //  alias: 'store.ResponderAlertGetByAcc',
+    // config: {
+    //     model: 'BuskartApp.model.AyohaUserStampCard.AyohaUserStampCardModel',
+    //     autoLoad: false,
 
-        proxy: {
+    //     proxy: {
 
-            type: 'ajax',
-            //   url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/GetAutoFenceTimerByID',
-            //  url: 'http://192.168.0.103:9019/FlatBill/FlatBillgetFlatBill',
-            url: GetAPIurl() + '/AyohaUserStampCard/AyohaUserStampCardCheckStampedStatus',
-            reader: {
-                type: 'json',
-                rootProperty: 'results',
-                totalProperty: 'total',
-                successProperty: 'success',
-                messageProperty: 'message'
-            },
+    //         type: 'ajax',
+    //         //   url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/GetAutoFenceTimerByID',
+    //         //  url: 'http://192.168.0.103:9019/FlatBill/FlatBillgetFlatBill',
+    //         url: GetAPIurl() + '/AyohaUserStampCard/AyohaUserStampCardCheckStampedStatus',
+    //         reader: {
+    //             type: 'json',
+    //             rootProperty: 'results',
+    //             totalProperty: 'total',
+    //             successProperty: 'success',
+    //             messageProperty: 'message'
+    //         },
 
 
 
+    //     }
+
+
+    // }
+});
+
+
+
+
+
+
+
+
+var _DataStore_AyohaUserStampCardCheckStampedStatusStore = Ext.create('Ext.data.Store', {
+
+    model: 'BuskartApp.model.AyohaUserStampCard.AyohaUserStampCardModel',
+    id: '_AyohaUserStampCardCheckStampedStatusStoreID',
+    proxy: {
+        type: 'ajax',
+        url: GetAPIurl() + '/AyohaUserStampCard/AyohaUserStampCardCheckStampedStatus',
+        actionMethods: {
+            read: 'GET'
+        },
+        reader: {
+            type: 'json',
+            rootProperty: 'results',
+            totalProperty: 'total',
+            successProperty: 'success',
+            messageProperty: 'message'
         }
-
-
-    }
+    },
 });

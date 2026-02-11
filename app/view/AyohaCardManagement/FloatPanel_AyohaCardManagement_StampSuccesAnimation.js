@@ -8,33 +8,26 @@
 
 
 
-var _FloatPanel_AyohaCardManagement_StampSuccesAnimation;
+var _FloatPanel_AyohaCardManagement_StampSuccesAnimation=null;
 
-function FloatPanel_AyohaCardManagement_StampSuccesAnimation() {
-
-    _FloatPanel_AyohaCardManagement_StampSuccesAnimation = Ext.create('Ext.Panel',
+function FloatPanel_AyohaCardManagement_StampSuccesAnimationCreateIfNeeded() {
+    if (_FloatPanel_AyohaCardManagement_StampSuccesAnimation && !_FloatPanel_AyohaCardManagement_StampSuccesAnimation.destroyed) return;
+    _FloatPanel_AyohaCardManagement_StampSuccesAnimation = Ext.create('Ext.Container',
 
 
         {
             id: 'FloatPanel_AyohaCardManagement_StampSuccesAnimationID',
-           // xtype: 'panel',
-            zIndex: 400,
-            xtype: 'container',
-            //height: 475,
+            zIndex: 260,
+           // xtype: 'container',
             height: '100%',
-            //  height: '60%',
             width:'100%',
-            draggable: false,
-
-           // styleHtmlContent: true,
-
-         //  centered: true,
-            //bottom: 64,
-            // zIndex: 100,
-           modal: true,
-         //   hideOnMaskTap: true,
-            //left: 10,
-            //top:10,
+            styleHtmlContent: true,
+            floated: true,
+        centered: true,
+        fullscreen: true,        // ✅ ganti height/width 100%
+        closeAction: 'hide',
+        modal: true,
+        hideOnMaskTap: true,
             layout: {
                 type: 'fit'
             },
@@ -56,10 +49,19 @@ function FloatPanel_AyohaCardManagement_StampSuccesAnimation() {
                 //duration: 3000,
                 //easing: 'ease-in'
             },
-
+            listeners: {
+    
+ 
+                // ✅ kalau user tap mask, close macam standard
+                beforehide: function () {
+                  // kalau hide dipanggil bukan dari function kita, block dulu
+                  // (optional: boleh allow kalau kau nak)
+                  return true;
+                }
+              },
            //style: 'background-image: url("resources/icons/LatestConfetiTwo.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
-          style: ' background-color:transparent;',
-
+          style: 'background-color:transparent;',
+         // style: 'background: rgba(20,10,30,0.75);',
           //style: 'background-image: url("resources/icons/ConfetiFour.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
 
             items: {
@@ -136,25 +138,59 @@ function FloatPanel_AyohaCardManagement_StampSuccesAnimation() {
 
 
         });
-
-    return _FloatPanel_AyohaCardManagement_StampSuccesAnimation;
 }
 
 
 
+// function FloatPanel_AyohaCardManagement_StampSuccesAnimation() {
+
+
+
+//     return _FloatPanel_AyohaCardManagement_StampSuccesAnimation;
+// }
+
+
+
 function FloatPanel_AyohaCardManagement_StampSuccesAnimationShow() {
-    Ext.Viewport.remove(_FloatPanel_AyohaCardManagement_StampSuccesAnimation);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaCardManagement_StampSuccesAnimation());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaCardManagement_StampSuccesAnimationHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaCardManagement_StampSuccesAnimation);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaCardManagement_StampSuccesAnimation());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaCardManagement_StampSuccesAnimationHide()");
+    // is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide = 'Y';
+
+
+
+
+    FloatPanel_AyohaCardManagement_StampSuccesAnimationCreateIfNeeded();
+
+
+    _FloatPanel_AyohaCardManagement_StampSuccesAnimation.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_AyohaCardManagement_StampSuccesAnimation', function () {
+     
+        FloatPanel_AyohaCardManagement_StampQrCodeHide(true);
+      });
+    }
+
+
     is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide = 'Y';
+
+
+
+
+
+
+
+
+
 
     var containerView = Ext.ComponentQuery.query('container[name=clickableContainerFloatPanel_AyohaCardManagement_StampSuccesAnimation]')[0];
     var containerViewEl = containerView.element;
     containerViewEl.on('tap',
       function (event, node, options, eOpts) {
 
-          FloatPanel_AyohaCardManagement_StampSuccesAnimationHide();
+        FloatPanel_AyohaCardManagement_StampSuccesAnimationHide(false);
       }
     );
     //var task = Ext.create('Ext.util.DelayedTask', function () {
@@ -199,14 +235,40 @@ function FloatPanel_AyohaCardManagement_StampSuccesAnimationShow() {
 }
 var is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide = 'N';
 
-function FloatPanel_AyohaCardManagement_StampSuccesAnimationHide() {
+function FloatPanel_AyohaCardManagement_StampSuccesAnimationHide(fromBack, animCfg) {
   
+    // if (is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide == 'Y') {
+    //     _FloatPanel_AyohaCardManagement_StampSuccesAnimation.hide();
+    //     is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide = 'N';
+    //     RemovePages("FloatPanel_AyohaCardManagement_StampSuccesAnimationHide()");
+    //    // swalFireSuccessStampedCardMsg("Stamped Success!!");
+    // }
+
+
+
     if (is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide == 'Y') {
+       
         _FloatPanel_AyohaCardManagement_StampSuccesAnimation.hide();
-        is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide = 'N';
-        RemovePages("FloatPanel_AyohaCardManagement_StampSuccesAnimationHide()");
-       // swalFireSuccessStampedCardMsg("Stamped Success!!");
+
+
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaCardManagement_StampSuccesAnimation.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaCardManagement_StampSuccesAnimation.hide();
+          }
+          is_FloatPanel_AyohaCardManagement_StampSuccesAnimationHide = 'N';
+                                          
+       
+         // RemovePages("FloatPanel_ForgotPasswordHide()");
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaCardManagement_StampSuccesAnimation');
+          }
     }
+
 
 }
 
