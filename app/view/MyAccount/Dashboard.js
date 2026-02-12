@@ -1694,9 +1694,10 @@ xtype: 'container',
                                   listeners: {
                                     element: 'element',
                                     tap: function () {
-                                        BuskartApp.app
-                                        .getController('Dashboard.SuccessCheckinController')
-                                        .Dashboard_StampCard_SuccessCheckIn_LoadStampCardPerkStore();
+                                      Dashboard_StampCard_SuccessCheckIn_LoadStampCardPerkStore();
+                                        // BuskartApp.app
+                                        // .getController('Dashboard.SuccessCheckinController')
+                                        // .Dashboard_StampCard_SuccessCheckIn_LoadStampCardPerkStore();
                                     }
                                 }
                             }],

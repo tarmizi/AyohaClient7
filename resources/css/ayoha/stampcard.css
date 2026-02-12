@@ -1,14 +1,14 @@
 /* Logo: jangan hardcode 120x120, biar ikut device */
 .pcLogo img{
-    width: 72px;
-    height: 72px;
+    width: 42px;
+    height: 42px;
     object-fit: contain;
     display:block;
   }
   
   /* Screen besar sikit, bagi logo naik */
   @media (min-width: 390px){
-    .pcLogo img{ width: 90px; height: 90px; }
+    .pcLogo img{ width: 40px; height: 40px; }
   }
 
   .pcLogo { margin-left: 32px; }          /* adjust */
@@ -32,7 +32,7 @@
     color:#fff;
     font-weight:600;
     font-size: clamp(12px, 3.2vw, 15px);
-    line-height: 1.15;
+    line-height: 1;
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;

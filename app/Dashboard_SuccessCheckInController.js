@@ -1763,6 +1763,7 @@ function DashBoard_StampCardLoadByEnterpriseAccNoStore(){
 
 
 function Dashboard_StampCard_SuccessCheckIn_LoadStampCardPerkStore(){
+  //  alert('Dashboard_StampCard_SuccessCheckIn_LoadStampCardPerkStore')
   _DataStore_DashboardStampCard_SuccessCheckIn_LoadStampCardPerkStore.getProxy().setExtraParam('EnterpriseAccNo', globalFloatPanelMerchantDetailPage_EnterpriseAccNo);
  _DataStore_DashboardStampCard_SuccessCheckIn_LoadStampCardPerkStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
  _DataStore_DashboardStampCard_SuccessCheckIn_LoadStampCardPerkStore.getProxy().setUrl(GetAPIurl() + '/DashboardAyohaUser/DashboardStampCard_SuccessCheckIn_LoadStampCardPerk');
@@ -3042,18 +3043,8 @@ function SuccessCheckinController_Dashboard_StampCard_SuccessCheckIn_OpenMerchan
  var isMembers = isMember.get('isMember');
 
 
- //var StampCampaignCode = ArrStampCampaignCode[0];
- //var EnterpriseAccNo = ArrEnterpriseAccNo[0];
- //var StartDate = ArrStartDate[0];
- //var EndDate = ArrEndDate[0];
+ 
  var SubscriberAccNo = GetCurrAyohaUserAccountNo();
- //var EnterpriseName = ArrEnterpriseName[0];
- //var StampRuleRemarks = ArrStampRuleRemarks[0];
- //var isStampRulePopUp = ArrIsStampRulePopUp[0];
- //var StampCampaignName = ArrStampCampaignName[0];
- //var CountLoyaltyStamped = ArrStampContentSequence[0];
- //var CountStampCardRowShow = ArrStampTotalRow[0];
- //var EnterprisesLogo = ArrEnterprisesLogo[0];
 
 
 
@@ -3068,8 +3059,8 @@ function SuccessCheckinController_Dashboard_StampCard_SuccessCheckIn_OpenMerchan
  var TotalRows = StampedYES[1];
  localStorage.setItem('StampCampaignCode', StampCampaignCodes);
 
- localStorage.setItem('CountLoyaltyStamped', YESStamped);
- localStorage.setItem('CountStampCardRowShow', TotalRows);
+//  localStorage.setItem('CountLoyaltyStamped', YESStamped);
+//  localStorage.setItem('CountStampCardRowShow', TotalRows);
  FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampCampaignCodes, EnterpriseAccNos, StartDates, EndDates, SubscriberAccNo, EnterpriseNames, StampRuleRemarkss, StampCampaignNames, YESStamped, TotalRows, EnterprisesLogos);
 
 
