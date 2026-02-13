@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.LoyaltyPoint.LoyaltyPointModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
            'ID',
       'SubscriberAccNo',
@@ -147,26 +147,31 @@
 
                  var str = record.get('JenisPoint');
                  var ReceiptBillID = record.get('ReceiptBillID');
-                 var ItemCode = record.get('ReceiptBillID').split('-');
-                 var strItemCode=ItemCode[0];
-                 if (str == "Earn") {
-                     _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Receipt/Bill No:' + ReceiptBillID + '</div>'
-
-                     // return;
+                 if(ReceiptBillID){
+                    var ItemCode = record.get('ReceiptBillID').split('-');
+                    var strItemCode=ItemCode[0];
+                    if (str == "Earn") {
+                        _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Receipt/Bill No:' + ReceiptBillID + '</div>'
+   
+                        // return;
+                    }
+   
+                    if (str == "Redeem") {
+                        _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Item Code:' + strItemCode + '</div>'
+                    }
+   
+   
+                    if (str == "Refund") {
+                        _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Item Code:' + strItemCode + '-(Rejected)</div>'
+                    }
+                    if (str == "Cancel") {
+                        _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;color:red">Receipt/Bill No:' + ReceiptBillID + '</div>'
+                    }
+                    return _value;
+                 }else{
+                    return "NA";
                  }
-
-                 if (str == "Redeem") {
-                     _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Item Code:' + strItemCode + '</div>'
-                 }
-
-
-                 if (str == "Refund") {
-                     _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Item Code:' + strItemCode + '-(Rejected)</div>'
-                 }
-                 if (str == "Cancel") {
-                     _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;color:red">Receipt/Bill No:' + ReceiptBillID + '</div>'
-                 }
-                 return _value;
+               
 
 
              }
@@ -203,7 +208,7 @@
               }
           },
         ]
-    }
+   // }
 });
 
 //<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Receipt/Bill No:{ReceiptBillID}</div>

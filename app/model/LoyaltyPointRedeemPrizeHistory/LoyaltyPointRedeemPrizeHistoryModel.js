@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.LoyaltyPointRedeemPrizeHistory.LoyaltyPointRedeemPrizeHistoryModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
             'ID',
                  'ItemCode',
@@ -63,15 +63,20 @@
 
 
                             _ItemCode = record.get('ItemCode');
+                            if(_ItemCode){
+                                _value = _ItemCode.split('-');
+                            }else{
+                                _value ="NA"
+                            }
 
-                            _value = _ItemCode.split('-');
+                         
 
 
                             return _value[0]
                         }
                     },
         ]
-    }
+   // }
 });
 
 

@@ -1,0 +1,25 @@
+/* elak table "phantom" spacing & pastikan width betul-betul 100% */
+.redeemItemTable {
+    width: 100%;
+    table-layout: fixed;   /* stabilkan column sizing */
+  }
+  
+  /* pastikan row button tak ada ruang pelik */
+  .redeemBtnWrap {
+    width: 100%;
+  }
+  
+  /* button full width */
+  .buttonLoyaltyCardPointRedeemList {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box;
+  }
+  
+  /* optional: kalau nak bagi cantik sikit (tak wajib) */
+  .buttonLoyaltyCardPointRedeemList {
+    border: none;
+    padding: 12px 14px;
+    border-radius: 22px;
+  }
+  

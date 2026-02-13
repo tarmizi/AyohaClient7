@@ -1,6 +1,6 @@
 Ext.define('BuskartApp.model.PointCampaignRedeem.PointCampaignRedeemModel', {
     extend: 'Ext.data.Model',
-    config: {
+    //config: {
         fields: [
              'ID',
       'ImgPath',
@@ -54,7 +54,7 @@ Ext.define('BuskartApp.model.PointCampaignRedeem.PointCampaignRedeemModel', {
         }
     },      
         ]
-    }
+   // }
 });
 
 

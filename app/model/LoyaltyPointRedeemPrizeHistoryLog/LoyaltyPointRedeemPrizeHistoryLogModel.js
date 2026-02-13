@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.LoyaltyPointRedeemPrizeHistoryLog.LoyaltyPointRedeemPrizeHistoryLogModel', {
     extend: 'Ext.data.Model',
-    config: {
+  //  config: {
         fields: [
             'ID',
                  'ItemCode',
@@ -16,7 +16,7 @@
                  'RedeemHistoryApprovalStatusBy',
                  'AccountName'
         ]
-    }
+   // }
 });
 
 
