@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaRedeemPrizeHistory.AyohaRedeemPrizeHistoryModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
             'ID',
                  'ItemCode',
@@ -28,10 +28,10 @@
                             _RedeemHistoryStatusDate = record.get('RedeemHistoryStatusDate');
 
                             if (_RedeemHistoryStatus == "Submitted") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:orange;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-15px 0px 0px 0px;color:orange;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
                             }
                             if (_RedeemHistoryStatus == "Cancel") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:red;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-5px 0px 0px 0px;color:red;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
                             }
                             if (_RedeemHistoryStatus == "Approved") {
                                 _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:green;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
@@ -76,7 +76,7 @@
                               }
                           },
         ]
-    }
+   // }
 });
 
 

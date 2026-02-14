@@ -437,7 +437,7 @@ function Load_FloatPanel_AyohaCardManagement_StampQrCode_TemporaryStampQrCodeGen
 
 function FloatPanel_AyohaCardManagement_StampQrCode_CreateQrCode(TmpQrCodeTxt) {
     var payload = TmpQrCodeTxt || "65e0105e-d337-4482-906a-7df2d8ac8f2f";
-    localStorage.setItem('CurrStampCardQrCode', payload);
+  //  localStorage.setItem('CurrStampCardQrCode', payload);
   
     var qrCmp = Ext.getCmp('htmlFloatPanel_AyohaCardManagement_StampQrCode');
     qrCmp.setHidden(false);

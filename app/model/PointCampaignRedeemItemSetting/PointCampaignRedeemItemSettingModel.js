@@ -39,8 +39,30 @@
                 return _value;
             }
         },
+
+
         {
             name: 'ModifiedButtonRedeemItem',
+            convert: function (value, record) {
+              var ID = record.get('ID');
+          
+              if (globalPointCampaignIsExpired === "Expired") {
+                return '' +
+                  '<div class="redeemBtnWrap">' +
+                    '<div class="buttonStandardTheme redeemDisabled">Campaign Expired !</div>' +
+                  '</div>';
+              }
+          
+              return '' +
+                '<div class="redeemBtnWrap">' +
+                  '<div class="buttonStandardTheme redeemVisual">Redeem Perk!</div>' +
+                '</div>';
+            }
+          },
+          
+          
+        {
+            name: 'ModifiedButtonRedeemItemORI',
             convert: function (value, record) {
                 var _value;
                 var ID = record.get('ID');

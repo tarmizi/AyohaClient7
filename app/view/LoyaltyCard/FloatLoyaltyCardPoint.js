@@ -434,71 +434,13 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                             layout: { type: 'vbox', pack: 'start', align: 'left' },
       
                             items: [
-                            //   {
-                            //     xtype: 'list',
-                            //     id: 'List_FloatLoyaltyCardPoint_RedeemPrize',
-                            //     height: '100%',
-                            //     width: '100%',
-                            //     store: _DataStore_PointCampaignRedeemLoadByPointCampaignCodeStore,
-                            //     style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px 0px 0px 0px;',
-                            //     mode: 'SINGLE',
-                            //     disableSelection: true,
-      
-                            //     scrollable: {
-                            //       direction: 'vertical',
-                            //       indicators: {
-                            //         y: { autoHide: true },
-                            //         x: { autoHide: true }
-                            //       }
-                            //     },
-      
-                            //     itemTpl:
-                            //       '<div class="myContent">' +
-                            //         '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;">' +
-                            //           '<tr>' +
-                            //             '<th style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;border-color:#A2CDF5;color:#333;text-align:center" colspan="4">' +
-                            //               '<img src="{ImgPath}"style="width: 100%; height: 300px; " />' +
-                            //             '</th>' +
-                            //           '</tr>' +
-                            //           '<tr>' +
-                            //             '<td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3">' +
-                            //               'Item Name:<br>' +
-                            //               '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ItemName}</div>' +
-                            //             '</td>' +
-                            //           '</tr>' +
-                            //           '<tr>' +
-                            //             '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:left">' +
-                            //               'Item Code:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ModifiedItemCode}</div>' +
-                            //             '</td>' +
-                            //             '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:center">' +
-                            //               'Entitled Point:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ItemPoint}</div>' +
-                            //             '</td>' +
-                            //             '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:right">' +
-                            //               'Item Cost:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">RM{ItemPrizePriceCost}</div>' +
-                            //             '</td>' +
-                            //           '</tr>' +
-                            //           '<tr>' +
-                            //             '<td style="font-family:Arial, sans-serif;font-size:11px;padding:2px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:100%;" colspan="3">' +
-                            //               '{ModifiedButtonRedeemItem}' +
-                            //             '</td>' +
-                            //           '</tr>' +
-                            //         '</table>' +
-                            //       '</div>',
-      
-                            //     listeners: {
-                            //       itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
-                            //       itemsingletap: function (dataview, index, target, record, e, eOpts) { }
-                            //     }
-                            //   }
-
-
                               {
                                 xtype: 'list',
                                 id: 'List_FloatLoyaltyCardPoint_RedeemPrize',
                                 height: '100%',
                                 width: '100%',
                                 store: _DataStore_PointCampaignRedeemLoadByPointCampaignCodeStore,
-                                style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px 0px 0px 0px;',
+                                style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px;',
                                 mode: 'SINGLE',
                                 disableSelection: true,
                               
@@ -510,58 +452,177 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                   }
                                 },
                               
+                                // ✅ EMPTY LIST MESSAGE
+                                deferEmptyText: false,
+                                emptyText:
+                                  '<div class="ayohaEmptyWrap">' +
+                                    '<div class="ayohaEmptyCard">' +
+                                      '<div class="ayohaEmptyIcon">' +
+                                        '<img src="resources/icons/Logo/icon_ayoha_gradient_vertical.png" style="width:44px;height:44px;" />' +
+                                      '</div>' +
+                                      '<div class="ayohaEmptyTitle">No Redeem Items Yet</div>' +
+                                      '<div class="ayohaEmptyDesc">This campaign doesn’t have any redeemable perks right now. Please check again later.</div>' +
+                                    '</div>' +
+                                  '</div>',
+                              
                                 itemTpl:
                                   '<div class="myContent redeemItemWrap">' +
                                     '<table class="redeemItemTable" style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0;">' +
                               
-                                      // ===== IMAGE ROW (FIX: colspan 3) =====
                                       '<tr>' +
-                                        '<th style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;border-color:#A2CDF5;color:#333;text-align:center" colspan="3">' +
+                                        '<th style="font-family:Arial,sans-serif;font-size:12px;font-weight:bold;padding:0 5px;border:none;overflow:hidden;word-break:normal;color:#333;text-align:center" colspan="3">' +
                                           '<img src="{ImgPath}" style="width:100%;height:300px;display:block;" />' +
                                         '</th>' +
                                       '</tr>' +
                               
-                                      // ===== ITEM NAME ROW =====
                                       '<tr>' +
-                                        '<td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3">' +
+                                        '<td style="font-family:Arial,sans-serif;font-size:11px;padding:0 5px;border:1px solid transparent;color:black;background-color:transparent;text-align:left" colspan="3">' +
                                           'Item Name:<br>' +
-                                          '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ItemName}</div>' +
+                                          '<div style="font-family:Arial,sans-serif;font-size:15px;font-weight:bold;margin:-1px 0 0 0;">{ItemName}</div>' +
                                         '</td>' +
                                       '</tr>' +
                               
-                                      // ===== 3 COLUMNS ROW =====
                                       '<tr>' +
-                                        '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:left">' +
-                                          'Item Code:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ModifiedItemCode}</div>' +
+                                        '<td style="font-family:Arial,sans-serif;font-size:11px;padding:4px 5px;border:1px solid transparent;color:black;background-color:transparent;vertical-align:top;width:33.3%;text-align:left">' +
+                                          'Item Code:<br><div style="font-family:Arial,sans-serif;font-size:15px;font-weight:bold;margin:-1px 0 0 0;">{ModifiedItemCode}</div>' +
                                         '</td>' +
                               
-                                        '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:center">' +
-                                          'Entitled Point:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ItemPoint}</div>' +
+                                        '<td style="font-family:Arial,sans-serif;font-size:11px;padding:4px 5px;border:1px solid transparent;color:black;background-color:transparent;vertical-align:top;width:33.3%;text-align:center">' +
+                                          'Entitled Point:<br><div style="font-family:Arial,sans-serif;font-size:15px;font-weight:bold;margin:-1px 0 0 0;">{ItemPoint}</div>' +
                                         '</td>' +
                               
-                                        '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:right">' +
-                                          'Item Cost:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">RM{ItemPrizePriceCost}</div>' +
+                                        '<td style="font-family:Arial,sans-serif;font-size:11px;padding:4px 5px;border:1px solid transparent;color:black;background-color:transparent;vertical-align:top;width:33.3%;text-align:right">' +
+                                          'Item Cost:<br><div style="font-family:Arial,sans-serif;font-size:15px;font-weight:bold;margin:-1px 0 0 0;">RM{ItemPrizePriceCost}</div>' +
                                         '</td>' +
                                       '</tr>' +
                               
-                                      // ===== BUTTON ROW (FULL WIDTH) =====
                                       '<tr>' +
-                                        '<td style="font-family:Arial, sans-serif;font-size:11px;padding:8px 12px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:100%;" colspan="3">' +
-                                        //   '<div class="blink_me redeemBtnWrap" style="width:100%;text-align:center;margin:0;">' +
-                                        //     '<button onclick="FloatLoyaltyCardPointCheckRedeemEntitle(\'{ID}\')" class="buttonLoyaltyCardPointRedeemList">Redeem Perk!</button>' +
-                                        //   '</div>' +
-                                        '{ModifiedButtonRedeemItem}' +
+                                        '<td style="font-family:Arial,sans-serif;font-size:11px;padding:8px 12px;border:1px solid transparent;color:black;background-color:transparent;vertical-align:top;width:100%;" colspan="3">' +
+                                          '{ModifiedButtonRedeemItem}' +
                                         '</td>' +
                                       '</tr>' +
                               
                                     '</table>' +
                                   '</div>',
                               
-                                listeners: {
-                                  itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
-                                  itemsingletap: function (dataview, index, target, record, e, eOpts) { }
-                                }
+
+
+                                  listeners: {
+                                    itemsingletap: function (dataview, index, target, record, e, eOpts) {
+                                      // kalau expired jangan redeem
+                                      if (globalPointCampaignIsExpired === "Expired") return;
+                                  
+                                      var id = record.get('ID');
+                                      FloatLoyaltyCardPointCheckRedeemEntitle(id);
+                                    }
+                                  },
+                                  
+                              
                               }
+                              
+                          
+
+  //                             {
+  //                               xtype: 'list',
+  //                               id: 'List_FloatLoyaltyCardPoint_RedeemPrize',
+  //                               height: '100%',
+  //                               width: '100%',
+  //                               store: _DataStore_PointCampaignRedeemLoadByPointCampaignCodeStore,
+  //                               style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px 0px 0px 0px;',
+  //                               mode: 'SINGLE',
+  //                               disableSelection: true,
+                              
+  //                               scrollable: {
+  //                                 direction: 'vertical',
+  //                                 indicators: {
+  //                                   y: { autoHide: true },
+  //                                   x: { autoHide: true }
+  //                                 }
+  //                               },
+  //                               listeners: {
+  //                                 tap: {
+  //                                   element: 'element',
+  //                                   delegate: '.redeemActionBtn',
+  //                                   fn: function (e, t) {
+  //                                     e.stopEvent(); // ✅ stop bubbling ke list/item
+  //                                     var id = parseInt(t.getAttribute('data-id'), 10);
+                                
+  //                                     // optional safety blur kalau browser fokus element lain
+  //                                     if (document.activeElement && document.activeElement.blur) {
+  //                                       document.activeElement.blur();
+  //                                     }
+                                
+  //                                     if (!isNaN(id)) {
+  //                                       FloatLoyaltyCardPointCheckRedeemEntitle(id);
+  //                                     }
+  //                                   }
+  //                                 }
+  //                               },
+                                
+  //                               // ✅ EMPTY LIST MESSAGE
+  // deferEmptyText: false,
+  // emptyText:
+  //   '<div class="ayohaEmptyWrap">' +
+  //     '<div class="ayohaEmptyCard">' +
+  //       '<div class="ayohaEmptyIcon">' +
+  //         '<img src="resources/icons/Logo/icon_ayoha_gradient_vertical.png" style="width:44px;height:44px;" />' +
+  //       '</div>' +
+  //       '<div class="ayohaEmptyTitle">No Redeem Items Yet</div>' +
+  //       '<div class="ayohaEmptyDesc">This campaign doesn’t have any redeemable perks right now. Please check again later.</div>' +
+  //     '</div>' +
+  //   '</div>',
+  //                               itemTpl:
+  //                                 '<div class="myContent redeemItemWrap">' +
+  //                                   '<table class="redeemItemTable" style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0;">' +
+                              
+  //                                     // ===== IMAGE ROW (FIX: colspan 3) =====
+  //                                     '<tr>' +
+  //                                       '<th style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;border-color:#A2CDF5;color:#333;text-align:center" colspan="3">' +
+  //                                         '<img src="{ImgPath}" style="width:100%;height:300px;display:block;" />' +
+  //                                       '</th>' +
+  //                                     '</tr>' +
+                              
+  //                                     // ===== ITEM NAME ROW =====
+  //                                     '<tr>' +
+  //                                       '<td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3">' +
+  //                                         'Item Name:<br>' +
+  //                                         '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ItemName}</div>' +
+  //                                       '</td>' +
+  //                                     '</tr>' +
+                              
+  //                                     // ===== 3 COLUMNS ROW =====
+  //                                     '<tr>' +
+  //                                       '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:left">' +
+  //                                         'Item Code:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ModifiedItemCode}</div>' +
+  //                                       '</td>' +
+                              
+  //                                       '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:center">' +
+  //                                         'Entitled Point:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{ItemPoint}</div>' +
+  //                                       '</td>' +
+                              
+  //                                       '<td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:33.3%;text-align:right">' +
+  //                                         'Item Cost:<br><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">RM{ItemPrizePriceCost}</div>' +
+  //                                       '</td>' +
+  //                                     '</tr>' +
+                              
+  //                                     // ===== BUTTON ROW (FULL WIDTH) =====
+  //                                     '<tr>' +
+  //                                       '<td style="font-family:Arial, sans-serif;font-size:11px;padding:8px 12px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:100%;" colspan="3">' +
+  //                                       //   '<div class="blink_me redeemBtnWrap" style="width:100%;text-align:center;margin:0;">' +
+  //                                       //     '<button onclick="FloatLoyaltyCardPointCheckRedeemEntitle(\'{ID}\')" class="buttonLoyaltyCardPointRedeemList">Redeem Perk!</button>' +
+  //                                       //   '</div>' +
+  //                                       '{ModifiedButtonRedeemItem}' +
+  //                                       '</td>' +
+  //                                     '</tr>' +
+                              
+  //                                   '</table>' +
+  //                                 '</div>',
+                              
+  //                               listeners: {
+  //                                 itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
+  //                                 itemsingletap: function (dataview, index, target, record, e, eOpts) { }
+  //                               }
+  //                             }
                               
                             ]
                           },
@@ -584,7 +645,9 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                 height: '100%',
                                 width: '100%',
                                 store: _DataStore_LoyaltyPointRedeemPrizeHistoryLoadRedeemHistoryStore,
-                                style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px 0px 0px 0px;',
+                                style: 'background-color: #fff !important;',
+                              //  cls: 'ayohaRedeemHistoryList',   // ✅ tambah ini
+                                cls: 'ayohaRedeemHistoryList',
                                 mode: 'SINGLE',
                                 disableSelection: true,
       
@@ -596,34 +659,69 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                   }
                                 },
       
-                                itemTpl:
-                                  '<div class="myContent">' +
-                                    '<table style="border-collapse:collapse;border-spacing:0;width:100%" class="tg">' +
-                                      '<thead>' +
-                                        '<tr>' +
-                                          '<th style="background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:30%" rowspan="2">' +
-                                            '<img src="{ImgPath}" style="width: 100px; height: 100px; border:1px none white;max-width:100px;" />' +
-                                          '</th>' +
-                                          '<th style="background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:70%" colspan="2">' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:5px 0px 0px 0px;">Redeem Item Name:</div><br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:17px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{ItemName}-({ModifiedItemCode})</div><br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:-15px 0px 0px 0px;">Redeem Item ID:</div><br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:17px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{ID}</div><br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:-15px 0px 0px 0px;">Redeem Point:</div><br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:19px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;"><b>{RedeemPoint}</b></div>' +
-                                            '<div style="width:100%;text-align:left;margin:0px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;">Redeem Status:<br>{ModifiedRedeemHistoryStatus}</div>' +
-                                          '</th>' +
-                                        '</tr>' +
-                                      '</thead>' +
-                                    '</table>' +
-                                    '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-30px 0px 0px 0px;width:100%;text-align:center;color:black;">' +
-                                      '<button class="buttonStatusLog" onClick="FloatLoyaltyCardPoint_RedeemPrizeHistoryLogShow({ID})">View Redeem Status Log</button>' +
+                                deferEmptyText: false,
+                                emptyText:
+                                  '<div class="ayohaEmptyWrap">' +
+                                    '<div class="ayohaEmptyCard">' +
+                                      '<div class="ayohaEmptyIcon">' +
+                                        '<img src="resources/icons/myredeemption.png" style="width:44px;height:44px;" />' +
+                                      '</div>' +
+                                      '<div class="ayohaEmptyTitle">No Redeemed History Yet</div>' +
+                                      '<div class="ayohaEmptyDesc">You doesn’t have any redeemable history right now. Please check again later.</div>' +
                                     '</div>' +
                                   '</div>',
+
+                                  itemTpl:
+  '<div class="myContent" style="width:100%;display:block;">' +
+    '<div class="ayohaRedeemHistoryItem" style="width:100%;display:block;">' +   // ✅ wrapper baru
+      '<table style="border-collapse:collapse;border-spacing:0;width:100%">' +
+        '<thead>' +
+          '<tr>' +
+            '<th style="background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:30%" rowspan="2">' +
+              '<img src="{ImgPath}" style="width: 120px; height: 120px; border:1px none white;max-width:120px;" />' +
+            '</th>' +
+            '<th style="background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 7px;text-align:left;vertical-align:top;word-break:normal;width:70%" colspan="2">' +
+              '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:5px 0px 0px 0px;">Redeem Item Name:</div><br>' +
+              '<div style="font-family:Arial, sans-serif;font-size:17px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{ItemName}-({ModifiedItemCode})</div><br>' +
+              '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:-15px 0px 0px 0px;">Redeem Point:</div><br>' +
+              '<div style="font-family:Arial, sans-serif;font-size:19px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;"><b>{RedeemPoint}</b></div><br>' +
+              '<div style="width:100%;text-align:left;margin:-13px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;">Redeem Status:<br>{ModifiedRedeemHistoryStatus}</div>' +
+            '</th>' +
+          '</tr>' +
+        '</thead>' +
+      '</table>' +
+    '</div>' +
+  '</div>',
+
+                                // itemTpl:
+                                //   '<div class="myContent">' +
+                                //     '<table style="border-collapse:collapse;border-spacing:0;width:100%" class="tg">' +
+                                //       '<thead>' +
+                                //         '<tr>' +
+                                //           '<th style="background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:30%" rowspan="2">' +
+                                //             '<img src="{ImgPath}" style="width: 120px; height: 120px; border:1px none white;max-width:120px;" />' +
+                                //           '</th>' +
+                                //           '<th style="background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 7px;text-align:left;vertical-align:top;word-break:normal;width:70%" colspan="2">' +
+                                //             '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:5px 0px 0px 0px;">Redeem Item Name:</div><br>' +
+                                //             '<div style="font-family:Arial, sans-serif;font-size:17px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{ItemName}-({ModifiedItemCode})</div><br>' +
+                                //             // '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:-15px 0px 0px 0px;">Redeem Item ID:</div><br>' +
+                                //             // '<div style="font-family:Arial, sans-serif;font-size:17px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{ID}</div><br>' +
+                                //             '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;margin:-15px 0px 0px 0px;">Redeem Point:</div><br>' +
+                                //             '<div style="font-family:Arial, sans-serif;font-size:19px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;"><b>{RedeemPoint}</b></div><br>' +
+                                //             '<div style="width:100%;text-align:left;margin:-13px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:normal;">Redeem Status:<br>{ModifiedRedeemHistoryStatus}</div>' +
+                                //           '</th>' +
+                                //         '</tr>' +
+                                //       '</thead>' +
+                                //     '</table>' +
+                                   
+                                //   '</div>',
       
                                 listeners: {
                                   itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
-                                  itemsingletap: function (dataview, index, target, record, e, eOpts) { }
+                                  itemsingletap: function (dataview, index, target, record, e, eOpts) { 
+                                    var id = record.get('ID');
+                                    FloatLoyaltyCardPoint_RedeemPrizeHistoryLogShow(id);
+                                  }
                                 }
                               }
                             ]
@@ -647,8 +745,9 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                 height: '100%',
                                 width: '100%',
                                 store: _DataStore_LoyaltyPointLoadByPointCampaignCodeUserStore,
-                                style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px 0px 0px 0px;',
                                 mode: 'SINGLE',
+                                cls: 'ayohaPointHistoryList',   // ✅ tambah                                
+                                style: 'background-color: #fff !important;',
                                 disableSelection: true,
                                 grouped: true,
       
@@ -659,29 +758,101 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                     x: { autoHide: true }
                                   }
                                 },
-      
-                                itemTpl:
-                                  '<div class="myContent">' +
-                                    '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;">' +
-                                      '<thead>' +
-                                        '<tr>' +
-                                          '<th style="border-color:transparent;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:70%;background-color:transparent;">' +
-                                            '{ModifiedAmount}<br>{ModifiedReceiptBillID}<br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{PointedByDate_DateOnly} {PointedByDate_TimeOnly}</div><br>' +
-                                            '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{PointedBy}' +
-                                          '</th>' +
-                                          '<th style="border-color:transparent;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:30%;background-color:transparent;">' +
-                                            '{ModifiedTypeCRDB}' +
-                                          '</th>' +
-                                        '</tr>' +
-                                      '</thead>' +
-                                    '</table>' +
+                                deferEmptyText: false,
+                                emptyText:
+                                  '<div class="ayohaEmptyWrap">' +
+                                    '<div class="ayohaEmptyCard">' +
+                                      '<div class="ayohaEmptyIcon">' +
+                                        '<img src="resources/icons/HistoryPurple01.png" style="width:44px;height:44px;" />' +
+                                      '</div>' +
+                                      '<div class="ayohaEmptyTitle">No Point History Yet</div>' +
+                                      '<div class="ayohaEmptyDesc">You doesn’t have any Point Collection/Redeemed history right now. Please check again later.</div>' +
+                                    '</div>' +
                                   '</div>',
+                                  itemTpl: 
+                                  '<div class="myContent">' +
+                                    '<table style="width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;background:transparent;margin:0;">' +
+                                      '<colgroup>' +
+                                        '<col style="width:80%;">' +
+                                        '<col style="width:20%;">' +
+                                      '</colgroup>' +
+                                      '<tbody>' +
+                                        '<tr>' +
+                                          '<td style="padding:0;vertical-align:top;font-family:Arial,sans-serif;font-size:14px;font-weight:normal;overflow-wrap:anywhere;word-break:break-word;">' +
+                                            '{ModifiedAmount}<br>{ModifiedReceiptBillID}<br>' +
+                                            '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{PointedByDate_DateOnly} {PointedByDate_TimeOnly}</div><br>' +
+                                            '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{PointedBy}</div>' +
+                                          '</td>' +
+                                          '<td style="padding:0;vertical-align:middle;text-align:right;font-family:Arial,sans-serif;font-size:14px;font-weight:normal;white-space:nowrap;">' +
+                                            '{ModifiedTypeCRDB}' +
+                                          '</td>' +
+                                        '</tr>' +
+                                      '</tbody>' +
+                                    '</table>' +
+                                  '</div>'
+                              
+                                  
+
+
+                                  // itemTpl:
+                                  // '<div class="myContent">' +
+                                  //   '<table style="width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;background:transparent;margin:0;">' +
+                                
+                                  //     // ✅ kunci ratio column
+                                  //     '<colgroup>' +
+                                  //       '<col style="width:80%;">' +
+                                  //       '<col style="width:20%;">' +
+                                  //     '</colgroup>' +
+                                
+                                  //     '<tbody>' +
+                                  //       '<tr>' +
+                                
+                                  //         // LEFT (80%)
+                                  //         '<td style="padding:0;vertical-align:top;' +
+                                  //             'font-family:Arial,sans-serif;font-size:14px;font-weight:normal;' +
+                                  //             'overflow-wrap:anywhere;word-break:break-word;">' +
+                                  //           '{ModifiedAmount}<br>{ModifiedReceiptBillID}<br>' +
+                                  //           '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{PointedByDate_DateOnly} {PointedByDate_TimeOnly}</div><br>' +
+                                  //           '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{PointedBy}</div>' +
+                                  //         '</td>' +
+                                
+                                  //         // RIGHT (20%)
+                                  //         '<td style="padding:0;vertical-align:middle;text-align:right;' +
+                                  //             'font-family:Arial,sans-serif;font-size:14px;font-weight:normal;' +
+                                  //             'white-space:nowrap;">' +
+                                  //           '{ModifiedTypeCRDB}' +
+                                  //         '</td>' +
+                                
+                                  //       '</tr>' +
+                                  //     '</tbody>' +
+                                  //   '</table>' +
+                                  // '</div>',
+                                
+
+
+
+                                // itemTpl:
+                                //   '<div class="myContent">' +
+                                //     '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;">' +
+                                //       '<thead>' +
+                                //         '<tr>' +
+                                //           '<th style="border-color:transparent;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:80%;background-color:transparent;">' +
+                                //             '{ModifiedAmount}<br>{ModifiedReceiptBillID}<br>' +
+                                //             '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{PointedByDate_DateOnly} {PointedByDate_TimeOnly}</div><br>' +
+                                //             '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{PointedBy}' +
+                                //           '</th>' +
+                                //           '<th style="border-color:transparent;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:20%;background-color:transparent;">' +
+                                //             '{ModifiedTypeCRDB}' +
+                                //           '</th>' +
+                                //         '</tr>' +
+                                //       '</thead>' +
+                                //     '</table>' +
+                                //   '</div>',
       
-                                listeners: {
-                                  itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
-                                  itemsingletap: function (dataview, index, target, record, e, eOpts) { }
-                                }
+                                // listeners: {
+                                //   itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
+                                //   itemsingletap: function (dataview, index, target, record, e, eOpts) { }
+                                // }
                               }
                             ]
                           },
@@ -711,22 +882,43 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                   {
                                     margin: '0 0 0 0',
                                     id: 'htmlFloatLoyaltyCardPoint_AccountName',
-                                    html: '<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerTop" style="width: 100%; border:2px none red;text-align:center;font-size:12px;color:purple;font-weight:bold;" >Tarmizi Bin Rahim</div>'
+                                    html: '<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerTop" style="width: 100%; border:2px none red;text-align:center;font-size:12px;color:purple;font-weight:bold;" >You are not subscribed to this Membership Program</div>'
                                   },
                                   {
                                     margin: '-2 0 0 0',
                                     id: 'htmlFloatLoyaltyCardPoint_MembershipNo',
-                                    html: '<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerTopMembershipNi" style="width: 100%; border:2px none red;text-align:center;font-size:12px;color:purple;font-weight:bold;" >0121112222-56545218</div>'
+                                    html: '<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerTopMembershipNi" style="width: 100%; border:2px none red;text-align:center;font-size:12px;color:purple;font-weight:bold;" >Get The Membership Card Now!</div>'
                                   }
                                 ]
                               },
       
                               {
+                                width: '100%',
+                                id: 'htmlFloatLoyaltyCardPoint_NoPointQRCode',
+                                flex: 1,
+html:
+'<div class="ayohaEmptyWrap">' +
+  '<div class="ayohaEmptyCard">' +
+    '<div class="ayohaEmptyIcon">' +
+      '<img src="resources/icons/qrcodetwo.png" style="width:44px;height:44px;" />' +
+    '</div>' +
+    '<div class="ayohaEmptyTitle">QR Code Not Generated</div>' +
+    '<div class="ayohaEmptyDesc">You are not subcribed this membership loyalty program. Get the membership card Now!</div>' +
+  '</div>' +
+'</div>',
+                              },
+                              {
                                 id: 'htmlFloatLoyaltyCardPoint_PointQRCode',
-                                margin: '0 0 0 20',
+                                hidden:true,                             
+                                margin: '0 0 0 0',
                                 width: '100%',
                                 flex: 1,
-                                html: '<div id="myPointQRCodeImg" style="width: 100%; height: 100%; border:2px none red;" />'
+                              //  html: '<div id="myPointQRCodeImg" style="width: 100%; height: 100%; border:2px none red;" />'
+                                html: '<div style="width:100%;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:10px;">'+
+                                '<div id="myPointQRCodeImgPad" style="background:#fff;padding:18px;border-radius:14px;">'+
+                                  '<div id="myPointQRCodeImg"></div>'+
+                                '</div>'+
+                              '</div>'
                               },
       
                               {
@@ -736,12 +928,12 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                 height: 40,
                                 width: '100%',
                                 style: ' background-color: transparent',
-                                layout: { type: 'hbox', pack: 'center', align: 'center' },
+                                layout: { type: 'vbox', pack: 'start', align: 'center' },
       
                                 items: [
                                   {
                                     id: 'htmlFloatLoyaltyCardPoint_PointQRCodeInnerbottemTxt',
-                                    html: '<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerBottom" style="width: 100%; border:2px none red;text-align:center;font-size:11px;color:purple;font-weight:bold;" >Show this QR Code to Merchandiser and Earn Points!!!</div>'
+                                    html: '<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerBottom" style="width: 100%; border:2px none red;text-align:center;font-size:11px;color:purple;font-weight:bold;" >Show this QR Code to Merchant and Earn Points!!!</div>'
                                   }
                                 ]
                               }
@@ -1153,7 +1345,7 @@ function FloatLoyaltyCardPointShow(CampaingName, PointCampaignCode, EnterpriseLo
 
    // Ext.getCmp('htmlFloatLoyaltyCardPointPointTitle').setHtml('<div style="width:130px;border-radius: 10px 0px 0px 10px;background-color: transparent;text-align:center;border: 1px none white;font-size: 11px;font-weight:bold;color:white;height:20px">' + GetAyohaUserAccountNames() + '</div>');
     ////Ext.getCmp('htmlFloatLoyaltyCardPointPointTitle').setHtml('<div style="width:130px;border-radius: 0px 0px 0px 0px;background-color: transparent;text-align:right;border: 1px none white;font-size: 11px;font-weight:bold;color:white;height:20px">' + GetAyohaUserAccountNames() + '</div>');
-    Ext.getCmp('htmlFloatLoyaltyCardPointPointTitle').setHtml('<div style="width:130px;border-radius: 0px 0px 0px 0px;background-color: transparent;text-align:right;border: 1px none white;font-size: 11px;font-weight:bold;color:white;height:20px">Loyalty Point Card</div>');
+    Ext.getCmp('htmlFloatLoyaltyCardPointPointTitle').setHtml('<div style="width:130px;border-radius: 0px 0px 0px 0px;background-color: transparent;text-align:right;border: 1px none white;font-size: 14px;font-weight:bold;color:white;height:20px">Loyalty Point Card</div>');
 
 
 
@@ -1280,6 +1472,7 @@ function FloatLoyaltyCardPointAdjustHeight() {
 
 function FloatLoyaltyCardPointCheckRedeemEntitle(val) {
 
+ // alert('FloatLoyaltyCardPointCheckRedeemEntitle:'+ val)
     if(is_prompt_setMessage_NotYetMembershipMessage()){
         return
      }
@@ -1404,10 +1597,13 @@ function FloatLoyaltyCardPoint_MoveCarousel(Idx) {
 
 
         if(is_prompt_setMessage_NotYetMembershipMessage()){
+
             return
            }
-
+           Ext.getCmp('htmlFloatLoyaltyCardPoint_NoPointQRCode').setHidden(true);
+           Ext.getCmp('htmlFloatLoyaltyCardPoint_PointQRCode').setHidden(false);
         if (globalPointCampaignIsExpired == "NotExpired") {
+         
             var val = GetCurrAyohaUserAccountNo() + "|" + _FloatLoyaltyCardPoint_PointCampaignCode;
             //var val = GetCurrAyohaUserAccountNo()+ "|Point";            
             FloatLoyaltyCardPoint_CreateQrCode(val);
@@ -1573,6 +1769,9 @@ _DataStore_LoyaltyPointLoadByPointCampaignCodeUserStore.load({
 
 
 
+
+
+
 function FloatLoyaltyCardPoint_CreateQrCode(TmpQrCodeTxt) {
  
 
@@ -1581,34 +1780,56 @@ function FloatLoyaltyCardPoint_CreateQrCode(TmpQrCodeTxt) {
     Ext.getCmp('htmlFloatLoyaltyCardPoint_AccountName').setHtml('<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerTop"  style="width: 100%;  border:2px none red;text-align:center;font-size:12px;color:purple;font-weight:bold;" >' + GetAyohaUserAccountNames() + '</div>');
     Ext.getCmp('htmlFloatLoyaltyCardPoint_MembershipNo').setHtml('<div id="divFloatLoyaltyCardPoint_PointQRCodeInnerTopMembershipNi"  style="width: 100%;  border:2px none red;text-align:center;font-size:12px;color:purple;font-weight:bold;" >' + val[1] + '-' + val[2] + '</div>');
 
-    // var x = screen.width;
-    // var y = screen.height;
-    // var xx = x - 32;
-    // var yy = y - 427;
-
   
 
+
+
+    var qrCmp = Ext.getCmp('htmlFloatLoyaltyCardPoint_PointQRCode');
+    qrCmp.setHidden(false);
+  
+    qrCmp.on('painted', function () {
+      var wrap = document.getElementById("myPointQRCodeImg");
+      if (!wrap) return;
+  
+      wrap.innerHTML = ""; // clear lama
+  
+      // ✅ Error correction tinggi bantu lagi senang scan
+      new window.QRCode(wrap, {
+        text: TmpQrCodeTxt,
+        width: 260,
+        height: 260,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: window.QRCode.CorrectLevel.H
+      });
+  
+
+     
+    }, null, { single: true });
+
+
+
+
+
+
+
+
+
     
-    // qrcode = new QRCode(document.getElementById("myPointQRCodeImg"), {       
-    //     width: xx-1,
-    //     height: yy,
+
+    // var x = screen.width;
+    // var xx = x - 28;
+    // qrcode = new QRCode(document.getElementById("myPointQRCodeImg"), {
+    //     //width: 330,
+    //     width: xx,
+    //     height: 360
     // });
 
-    
-
-    var x = screen.width;
-    var xx = x - 28;
-    qrcode = new QRCode(document.getElementById("myPointQRCodeImg"), {
-        //width: 330,
-        width: xx,
-        height: 360
-    });
 
 
+    // qrcode.clear();
 
-    qrcode.clear();
-
-    qrcode.makeCode(TmpQrCodeTxt);
+    // qrcode.makeCode(TmpQrCodeTxt);
 
     
 

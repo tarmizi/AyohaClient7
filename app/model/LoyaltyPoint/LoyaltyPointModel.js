@@ -46,7 +46,7 @@
                  var ModifiedBy = record.get('ModifiedBy');
                  if (str == "Credit") {
                      //_value = '<font size=5 color=black><b>+</b>' + AyohaPoint + ' </font>'
-                     _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right"><font size=5 color=black><b>+</b>' + AyohaPoint + ' </font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-30px 0px 0px 0px;text-align:right">Points</div>';
+                     _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right"><font size=5 color=black><b>+</b>' + AyohaPoint + ' </font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-26px 0px 0px 0px;text-align:right">Points</div>';
                      // return;
                  }
 
@@ -57,11 +57,11 @@
                 
                  if (str == "Debit" && JenisPoint != "Cancel") {
                     // _value = '<font size=6 color=black><b>-</b>' + AyohaPoint + ' </font>'
-                     _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right"><font size=5 color=black><b>+</b>' + AyohaPoint + ' </font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-30px 0px 0px 0px;text-align:right">Points</div>';
+                     _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right"><font size=5 color=black><b>+</b>' + AyohaPoint + ' </font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-26px 0px 0px 0px;text-align:right">Points</div>';
                  }
 
                  if (str == "Debit" && JenisPoint == "Redeem")  {
-                    _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-12px 0px 0px 0px;text-align:right"><font size=5 color=red><b>-</b>' + AyohaPoint + '</font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-30px 0px 0px 0px;text-align:right;color:red">Points</div>';
+                    _value = '<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:-12px 0px 0px 0px;text-align:right"><font size=5 color=red><b>-</b>' + AyohaPoint + '</font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-26px 0px 0px 0px;text-align:right;color:red">Points</div>';
                       //_value = '<div style="font-family:Arial, sans-serif;font-size:20px;font-weight:bold;word-break:normal;margin:-12px 0px 0px 0px;text-align:right"><font size=6 color=red><b>-</b>' + AyohaPoint + '</font></div><br><div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-30px 0px 0px 0px;text-align:right;color:red">Points</div><br><div style="font-family:Arial, sans-serif;font-size:9px;font-weight:normal;word-break:normal;margin:-20px 0px 0px 0px;text-align:right;color:red">' + ModifiedBy + '</div>';
                   }
                  return _value;
@@ -120,10 +120,21 @@
 
 
                      if (str == "Credit") {
-                         // _value = '<font size=2 color=black><b>+</b></font>' + AyohaPoint;dddd10
-                         _value = '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right"><font size=2 color=black><b>+</b></font>' + AyohaPoint + ' Point</div>';
-                         // return;
+                        _value =
+                        '<div style="font-family:Arial,sans-serif;text-align:right;line-height:1.05;margin:-6px 0 0 0;">' +
+                          '<div style="font-size:26px;font-weight:800;color:#000;">' +
+                            '<span style="font-size:18px;font-weight:800;margin-right:2px;">+</span>' +
+                            '<span>' + AyohaPoint + '</span>' +
+                          '</div>' +
+                          '<div style="font-size:13px;font-weight:700;color:#000;margin-top:2px;">Points</div>' +
+                        '</div>';
+                    
+                        
+                      //   _value = '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right"><font size=2 color=black><b>+</b></font>' + AyohaPoint + ' Point</div>';
+                     
                      }
+
+                     
 
                      if (str == "Debit" && JenisPoint == "Cancel") {
                          //  _value = '<font size=3 color=red><b>-</b></font> ' + AyohaPoint;
@@ -151,7 +162,7 @@
                     var ItemCode = record.get('ReceiptBillID').split('-');
                     var strItemCode=ItemCode[0];
                     if (str == "Earn") {
-                        _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">Receipt/Bill No:' + ReceiptBillID + '</div>'
+                        _value = '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-27px 0px 0px 0px;">' + ReceiptBillID + '</div>'
    
                         // return;
                     }

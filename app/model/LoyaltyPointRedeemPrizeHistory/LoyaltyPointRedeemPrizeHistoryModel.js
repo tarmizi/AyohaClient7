@@ -29,22 +29,22 @@
                             _RedeemHistoryStatusDate = record.get('RedeemHistoryStatusDate');
 
                             if (_RedeemHistoryStatus == "Submitted") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:orange;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-8px 0px 0px 0px;color:orange;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
                             }
                             if (_RedeemHistoryStatus == "Received") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:blue;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-8px 0px 0px 0px;color:blue;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
                             }
                             if (_RedeemHistoryStatus == "Approved") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:green;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-8px 0px 0px 0px;color:green;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
 
                             } if (_RedeemHistoryStatus == "Rejected") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:red;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-8px 0px 0px 0px;color:red;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
 
                             } if (_RedeemHistoryStatus == "Delivered") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:purple;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-8px 0px 0px 0px;color:purple;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
 
                             } if (_RedeemHistoryStatus == "Accepted") {
-                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;color:black;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
+                                _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-8px 0px 0px 0px;color:black;">' + _RedeemHistoryStatus + ' - ' + _RedeemHistoryStatusDate + '</div>';
 
                             }
 

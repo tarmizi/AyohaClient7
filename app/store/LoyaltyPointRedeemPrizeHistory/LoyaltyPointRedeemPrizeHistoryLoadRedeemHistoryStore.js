@@ -36,6 +36,12 @@
 // });
 
 
+
+
+
+
+
+
 var _DataStore_LoyaltyPointRedeemPrizeHistoryLoadRedeemHistoryStore = Ext.create('Ext.data.Store', {
 
     model: 'BuskartApp.model.LoyaltyPointRedeemPrizeHistory.LoyaltyPointRedeemPrizeHistoryModel',

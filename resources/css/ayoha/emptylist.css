@@ -1,0 +1,43 @@
+.ayohaEmptyWrap{
+    width:100%;
+    padding: 24px 16px;
+    box-sizing: border-box;
+  }
+  
+  .ayohaEmptyCard{
+    width:100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 18px 16px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(0,0,0,0.08);
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  
+  .ayohaEmptyIcon{
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: rgba(128,0,255,0.08);
+    border: 1px solid rgba(128,0,255,0.15);
+  }
+  
+  .ayohaEmptyTitle{
+    font-size: 15px;
+    font-weight: 800;
+    color: #3a0a6a;
+    margin: 2px 0 6px 0;
+  }
+  
+  .ayohaEmptyDesc{
+    font-size: 12px;
+    line-height: 1.4;
+    color: #666;
+  }
+  

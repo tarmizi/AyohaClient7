@@ -5,9 +5,9 @@
   }
   
   /* pastikan row button tak ada ruang pelik */
-  .redeemBtnWrap {
+  /* .redeemBtnWrap {
     width: 100%;
-  }
+  } */
   
   /* button full width */
   .buttonLoyaltyCardPointRedeemList {
@@ -23,3 +23,287 @@
     border-radius: 22px;
   }
   
+
+
+  .redeemBtnWrap{
+    width:100%;
+    text-align:center;
+    margin:0;
+  }
+  
+  /* button design kau (pakai class sedia ada buttonStandardTheme) */
+  .buttonStandardTheme.redeemVisual{
+    width:100%;
+    display:block;
+    background: linear-gradient(90deg,#6a1fd6 0%, #ff00de 55%, #c800ff 100%);
+    pointer-events:none;          /* ✅ tap jatuh ke list item */
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* expired: bagi nampak disable */
+  .buttonStandardTheme.redeemDisabled{
+    width:100%;
+    display:block;
+    pointer-events:none;          /* ✅ tetap tak steal tap */
+    opacity:.65;
+    filter: grayscale(20%);
+  }
+  
+
+
+
+
+
+  .redeemActionBtn{
+    width:100%;
+    max-width: 520px;     /* optional kalau nak limit cantik */
+    display:block;
+    box-sizing:border-box;
+    padding: 14px 14px;
+    border-radius: 999px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color:#fff;
+    cursor:pointer;
+    user-select:none;
+  
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .redeemActive{
+    background: linear-gradient(90deg,#6a1fd6 0%, #ff00de 55%, #c800ff 100%);
+    box-shadow: 0 10px 20px rgba(0,0,0,.18);
+    border: 1px solid rgba(255,255,255,.22);
+  }
+  
+  .redeemExpired{
+    background: rgba(255,255,255,.22);
+    border: 1px solid rgba(255,255,255,.28);
+    color: #fff;
+    opacity: .85;
+  }
+  
+
+  
+  /* Optional: bila user tap item, bagi highlight lembut */
+  .x-item-pressed .ayohaRedeemHistoryItem{
+    transform: scale(0.995);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+  
+/* 0) Buang semua gutter/padding dalam list/scroller */
+.ayohaRedeemHistoryList,
+.ayohaRedeemHistoryList .x-scroll-container,
+.ayohaRedeemHistoryList .x-scroller,
+.ayohaRedeemHistoryList .x-scroll-scroller,
+.ayohaRedeemHistoryList .x-dataview-inner{
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+/* 1) Paksa setiap list item betul-betul full width */
+.ayohaRedeemHistoryList .x-dataview-item,
+.ayohaRedeemHistoryList .x-listitem,
+.ayohaRedeemHistoryList .x-list-item,
+.ayohaRedeemHistoryList .x-listitem-body{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: transparent !important;
+}
+
+/* 2) Pastikan wrapper template full */
+.ayohaRedeemHistoryList .myContent{
+  width: 100% !important;
+  display: block !important;
+}
+
+/* 3) “Bukan card” — full width, divider line */
+.ayohaRedeemHistoryList .ayohaRedeemHistoryItem{
+  width: 100% !important;
+  margin: 0 !important;                 /* ✅ no left/right gap */
+  padding: 12px 12px !important;        /* padding content je */
+  box-sizing: border-box !important;
+
+  background: #fff !important;
+  border-radius: 0 !important;          /* ✅ buang card rounded */
+  box-shadow: none !important;          /* ✅ buang shadow */
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* 4) Table confirm ikut full width */
+.ayohaRedeemHistoryList .ayohaRedeemHistoryItem table{
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+
+
+/* ================================
+   REDEMPTIONS STATUS LOG (LIST)
+   cls pada list: ayohaRedeemLogList
+   ================================ */
+
+/* 1) Pastikan seluruh list putih & tiada padding/gutter */
+.ayohaRedeemLogList,
+.ayohaRedeemLogList .x-scroll-container,
+.ayohaRedeemLogList .x-scroller,
+.ayohaRedeemLogList .x-scroll-scroller,
+.ayohaRedeemLogList .x-dataview-inner{
+  background: #fff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 2) Buang padding/margin default item wrapper Ext */
+.ayohaRedeemLogList .x-dataview-item,
+.ayohaRedeemLogList .x-list-item,
+.ayohaRedeemLogList .x-listitem,
+.ayohaRedeemLogList .x-listitem-body{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: transparent !important;
+}
+
+/* 3) Wrapper dari itemTpl (confirm wujud) */
+.ayohaRedeemLogList .redeemLogItem{
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 16px 14px 14px 14px !important;
+  background: #fff !important;
+  position: relative;              /* ✅ untuk divider */
+}
+
+/* 4) Divider inset (CONFIRM nampak) */
+.ayohaRedeemLogList .redeemLogItem::after{
+  content: "";
+  position: absolute;
+  left: 14px;                      /* ✅ inset kiri */
+  right: 0px;                     /* ✅ inset kanan */
+  bottom: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+}
+
+/* (Optional) kalau nak divider full width tepi-to-tepi, guna ini */
+/*
+.ayohaRedeemLogList .redeemLogItem::after{
+  left: 0;
+  right: 0;
+}
+*/
+
+/* 5) Title */
+.ayohaRedeemLogList .redeemLogTitle{
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 10px 0;
+}
+
+/* 6) Row layout: label kiri, value kanan */
+.ayohaRedeemLogList .redeemLogRow{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 6px;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* label */
+.ayohaRedeemLogList .redeemLogRow .k{
+  min-width: 92px;                 /* adjust ikut taste */
+  color: #666;
+  font-weight: 600;
+}
+
+/* value */
+.ayohaRedeemLogList .redeemLogRow .v{
+  flex: 1;
+  color: #111;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* 7) Empty state (kalau store kosong) */
+.ayohaRedeemLogList .ayohaEmptyWrap{
+  width: 100%;
+  padding: 26px 18px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.ayohaRedeemLogList .ayohaEmptyCard{
+  width: 100%;
+  padding: 18px 16px;
+  box-sizing: border-box;
+  border: 1px dashed rgba(0,0,0,0.18);
+  border-radius: 12px;
+  text-align: center;
+  background: #fff;
+}
+
+.ayohaRedeemLogList .ayohaEmptyTitle{
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.ayohaRedeemLogList .ayohaEmptyDesc{
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+
+
+
+
+/* ===== LIST AREA PUTIH ===== */
+.ayohaPointHistoryList,
+.ayohaPointHistoryList .x-scroll-container,
+.ayohaPointHistoryList .x-scroller,
+.ayohaPointHistoryList .x-scroll-scroller,
+.ayohaPointHistoryList .x-dataview-inner {
+  background: #fff !important;
+}
+
+/* Buang padding default item supaya border cantik */
+.ayohaPointHistoryList .x-dataview-item,
+.ayohaPointHistoryList .x-listitem,
+.ayohaPointHistoryList .x-list-item,
+.ayohaPointHistoryList .x-listitem-body {
+  background: #fff !important;
+  padding: 10px 12px !important;      /* ✅ spacing content */
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+/* ✅ Soft border + divider feel */
+.ayohaPointHistoryList .x-dataview-item {
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+/* optional: bagi “card” feel sikit tanpa jadi card (no rounded) */
+.ayohaPointHistoryList .x-dataview-item:active,
+.ayohaPointHistoryList .x-item-pressed {
+  background: rgba(0,0,0,0.03) !important;
+}
+
+/* Kalau guna grouped list: header group pun putih */
+.ayohaPointHistoryList .x-list-header,
+.ayohaPointHistoryList .x-list-header-wrap {
+  background: #f7f7f7 !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+}
