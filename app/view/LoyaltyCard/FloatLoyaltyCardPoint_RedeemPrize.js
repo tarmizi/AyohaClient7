@@ -208,7 +208,7 @@ var isFloatLoyaltyCardPoint_RedeemPrizeOpen = 'N';
   
     _FloatLoyaltyCardPoint_RedeemPrize = Ext.create('Ext.Container', {
       id: 'LoadingFloatLoyaltyCardPoint_RedeemPrizeID',
-      zIndex: 250,
+      zIndex: 210,
       floated: true,
       centered: true,
       fullscreen: true,
@@ -620,7 +620,7 @@ function FloatLoyaltyCardPoint_RedeemPrize_RedeemNow() {
             if (data.success == "true") {
 
              //   swalFireSuccess("Redeem Submitted Successfully!");
-               
+             FloatLoyaltyCardPoint_RedeemPrize_SubmitRedeemPerk();
                 FloatLoyaltyCardPoint_RedeemPrizeHide(false);
                 Load_FloatLoyaltyCardPoint_LoyaltyPointRedeemPrizeHistoryLoadRedeemHistoryStore(globalPointCampaignCode_FloatLoyaltyCardPoint, globalEnterpriseAccNo_FloatLoyaltyCardPoint);
                 FloatLoyaltyCardPoint_MoveCarousel(1);
@@ -650,3 +650,192 @@ function FloatLoyaltyCardPoint_RedeemPrize_RedeemNow() {
 }
 
 //GetCurrAyohaUserGroupCode()
+
+
+
+
+
+
+
+function FloatLoyaltyCardPoint_RedeemPrize_SubmitRedeemPerkORI() {
+    // ✅ fix: string -> number
+   
+   
+    let subText = "Redeem Perks Submitted Successful!";
+
+   
+    // kalau ada swal sedang buka, tutup dulu
+    if (window.Swal && Swal.isVisible && Swal.isVisible()) Swal.close();
+   
+    // ✅ elak "tap event yang sama" buat modal rasa pelik dalam ExtJS
+  
+      Swal.fire({
+        title: '',
+        html: `
+          <div class="ayohaSwalCard">
+            <div class="ayohaSwalTitle">:
+
+            🎁 Redeem Perks</div>
+   
+            <div class="ayohaSwalPoints">
+              <span class="ayohaSwalCoin">🪙</span>
+              
+            </div>
+   
+            <div class="ayohaSwalSub">${escapeHtml(subText)}</div>
+   
+            <div class="ayohaSwalConfettiWrap"></div>
+          </div>
+        `,
+        confirmButtonText: 'OK',
+        showConfirmButton: true,
+        buttonsStyling: false,
+   
+        // IMPORTANT utk elak layout/scroll issue
+        heightAuto: false,
+        position: 'center',
+        // auto close optional (boleh buang kalau tak nak)
+       // timer: 1800,
+        timerProgressBar: false,
+   
+        allowOutsideClick: true,
+   
+        customClass: {
+          container: 'ayohaRewardSwalContainer',
+          popup: 'ayohaRewardSwalPopup',
+          backdrop: 'ayohaRewardSwalBackdrop',
+          htmlContainer: 'ayohaRewardSwalHtml',
+          confirmButton: 'ayohaRewardSwalBtn'
+        },
+   
+        didOpen: () => {
+          // hide Ext scroll indicator / lock scroll bawah
+          document.body.classList.add('ayohaRewardOverlayOn');
+          document.documentElement.classList.add('ayohaRewardOverlayOn');
+   
+        //   const popup = Swal.getPopup();
+        //   if (popup) spawnConfettiFromCoin(popup, 30);
+        },
+   
+        willClose: () => {
+          document.body.classList.remove('ayohaRewardOverlayOn');
+          document.documentElement.classList.remove('ayohaRewardOverlayOn');
+        }
+      });
+   }
+
+
+
+
+
+   function FloatLoyaltyCardPoint_RedeemPrize_SubmitRedeemPerkORI2() {
+    let subText = "Redeem Perks Submitted Successful!";
+  
+    // kalau ada swal sedang buka, tutup dulu
+    if (window.Swal && Swal.isVisible && Swal.isVisible()) Swal.close();
+  
+    Swal.fire({
+      title: '',
+      html: `
+        <div class="ayohaSwalCard">
+          <div class="ayohaSwalTitle">🎁 Redeem Perks</div>
+  
+          <div class="ayohaSwalPoints">
+            <span class="ayohaSwalCoin">🪙</span>
+          </div>
+  
+          <div class="ayohaSwalSub">${escapeHtml(subText)}</div>
+  
+          <div class="ayohaSwalConfettiWrap"></div>
+        </div>
+      `,
+      confirmButtonText: 'OK',
+      showConfirmButton: true,
+      buttonsStyling: false,
+  
+      // ✅ JANGAN AUTO CLOSE
+      timer: undefined,
+      timerProgressBar: false,
+  
+      // ✅ boleh tutup bila tekan luar / ESC
+      allowOutsideClick: true,
+      allowEscapeKey: true,
+  
+      // IMPORTANT utk elak layout/scroll issue
+      heightAuto: false,
+      position: 'center',
+  
+      customClass: {
+        container: 'ayohaRewardSwalContainer',
+        popup: 'ayohaRewardSwalPopup',
+        backdrop: 'ayohaRewardSwalBackdrop',
+        htmlContainer: 'ayohaRewardSwalHtml',
+        confirmButton: 'ayohaRewardSwalBtn'
+      },
+  
+      didOpen: () => {
+        document.body.classList.add('ayohaRewardOverlayOn');
+        document.documentElement.classList.add('ayohaRewardOverlayOn');
+      },
+  
+      willClose: () => {
+        document.body.classList.remove('ayohaRewardOverlayOn');
+        document.documentElement.classList.remove('ayohaRewardOverlayOn');
+      }
+    });
+  }
+  
+
+  function FloatLoyaltyCardPoint_RedeemPrize_SubmitRedeemPerk() {
+    let subText = "Redeem Perks Submitted Successful!";
+  
+    if (window.Swal && Swal.isVisible && Swal.isVisible()) Swal.close();
+  
+    Swal.fire({
+      target: document.body, // ✅ pastikan attach ke body (bukan dalam Ext container/transform)
+  
+      title: '',
+      html: `
+        <div class="ayohaSwalCard">
+          <div class="ayohaSwalTitle">🎁 Redeem Perks</div>
+          <div class="ayohaSwalPoints"><span class="ayohaSwalCoin">🪙</span></div>
+          <div class="ayohaSwalSub">${escapeHtml(subText)}</div>
+        </div>
+      `,
+      confirmButtonText: 'OK',
+      showConfirmButton: true,
+      buttonsStyling: false,
+  
+      // ✅ jangan auto close
+      timer: undefined,
+      allowOutsideClick: true,
+      allowEscapeKey: true,
+  
+      heightAuto: false,
+      position: 'center',
+  
+      customClass: {
+        container: 'ayohaRewardSwalContainer',
+        popup: 'ayohaRewardSwalPopup',
+        backdrop: 'ayohaRewardSwalBackdrop',
+        htmlContainer: 'ayohaRewardSwalHtml',
+        confirmButton: 'ayohaRewardSwalBtn'
+      },
+  
+      didOpen: () => {
+        document.body.classList.add('ayohaRewardOverlayOn');
+        document.documentElement.classList.add('ayohaRewardOverlayOn');
+    //  const popup = Swal.getPopup();
+    //       if (popup) spawnConfettiFromCoin(popup, 1000);
+        // ✅ paksa z-index runtime (kalau ExtJS override)
+        const c = Swal.getContainer();
+        if (c) c.style.zIndex = '99999999';
+      },
+  
+      willClose: () => {
+        document.body.classList.remove('ayohaRewardOverlayOn');
+        document.documentElement.classList.remove('ayohaRewardOverlayOn');
+      }
+    });
+  }
+  

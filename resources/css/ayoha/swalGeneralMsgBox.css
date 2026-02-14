@@ -1,0 +1,15 @@
+/* Swal container paling atas */
+.swal2-container.ayohaRewardSwalContainer{
+    z-index: 99999999 !important;
+  }
+  
+  /* Popup pun pastikan tinggi */
+  .swal2-popup.ayohaRewardSwalPopup{
+    z-index: 99999999 !important;
+  }
+  
+  /* Backdrop bawah sikit dari popup */
+  .swal2-backdrop-show.ayohaRewardSwalBackdrop{
+    z-index: 99999998 !important;
+  }
+  
