@@ -218,7 +218,16 @@ var isFloatLoyaltyCardPoint_RedeemPrizeOpen = 'N';
       styleHtmlContent: true,
       layout: 'fit',
       style: ayohaThemeColor_Hero(),
+      listeners: {
+     
   
+        // ✅ kalau user tap mask, close macam standard
+        beforehide: function () {
+          // kalau hide dipanggil bukan dari function kita, block dulu
+          // (optional: boleh allow kalau kau nak)
+          return true;
+        }
+      },
       showAnimation: { type: 'popIn', duration: 250, easing: 'ease-out' },
       hideAnimation: { type: 'popOut', duration: 250 },
   

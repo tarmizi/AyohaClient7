@@ -10,130 +10,466 @@
 var is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = "N";
 
 
-var _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm;
+var _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm=null;
 
-function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm() {
+
+
+function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfNeeded() {
+    if (_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm && !_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.destroyed) return;
 
     _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm = Ext.create('Ext.Container',
 
 
-        {
-            id: 'FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormID',
-          //  name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm',
-            // xtype: 'panel',
-            zIndex: 160,
-            xtype: 'container',
-            //height: 475,
-            height: '100%',
-            //  height: '60%',
-            width: '100%',
-            draggable: false,
+    {
+        id: 'FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormID',
+        zIndex: 65,
+        floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+        draggable: false,
+        modal: true,
+        styleHtmlContent: true,
+        layout: 'fit',
+        showAnimation: {
+            type: 'popIn',
+            duration: 250,
+            easing: 'ease-out'
+            //type: 'slideIn',
+            //direction:'down',
+            //duration: 1000,
+            //easing: 'ease-in'
+        },
+        hideAnimation: {
+            type: 'popOut',
+            duration: 250,
+            easing: 'ease-out'
+            //type: 'slideOut',
+            //direction: 'down',
+            //duration: 3000,
+            //easing: 'ease-in'
+        },
+        style: ' background-color:white;',           
+        listeners: {
+ 
 
-            styleHtmlContent: true,
-            
-            centered: true,
-            //bottom: 64,
-            // zIndex: 100,
-            // modal: true,
-            //   hideOnMaskTap: true,
-            //left: 10,
-            //top:10,
-            layout: {
-                type: 'fit'
-            },
-            showAnimation: {
-                type: 'popIn',
-                duration: 250,
-                easing: 'ease-out'
-                //type: 'slideIn',
-                //direction:'down',
-                //duration: 1000,
-                //easing: 'ease-in'
-            },
-            hideAnimation: {
-                type: 'popOut',
-                duration: 250,
-                easing: 'ease-out'
-                //type: 'slideOut',
-                //direction: 'down',
-                //duration: 3000,
-                //easing: 'ease-in'
-            },
-
-            //style: 'background-image: url("resources/icons/LatestConfetiTwo.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
-            style: ' background-color:white;',
-            // style: 'background-image: url("resources/icons/AyohaRankingRewardContest01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
-            //style: 'background-image: url("resources/icons/ConfetiFour.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
-            // style: ' background-color: #fac;background-image: linear-gradient( #c800ffc9,#ff00de75)',
-            listeners: {
-                initialize: function (c) {
-                    this.element.on({
-                        swipe: function (e, node, options) {
-                            //if (e.direction == "up") {
-                            //    LoyaltyCardRedeemListHide();
-                            //}
-                            if (e.direction == "left") {
-                                is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-                                RemovePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
-                                _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide(Ext.fx.Animation({
-                                    type: 'slideOut',
-                                    direction: 'left',
-                                    easing: 'cubic-bezier(.7,0,.7,1)',
-                                    duration: 250
-
-                                }));
-                            } if (e.direction == "right") {
-                                is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-                                RemovePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
-                                _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide(Ext.fx.Animation({
-                                    type: 'slideOut',
-                                    direction: 'right',
-                                    easing: 'cubic-bezier(.7,0,.7,1)',
-                                    duration: 250
-
-                                }));
-                            }
+            // ✅ kalau user tap mask, close macam standard
+            beforehide: function () {
+              // kalau hide dipanggil bukan dari function kita, block dulu
+              // (optional: boleh allow kalau kau nak)
+              return true;
+            }
+          },
 
 
-                           
-                        }
-                    });
-                }
-            },
-            items: {
-                ////zIndex: 40,
+
+          items: [
+
+
+            {
+
                 xtype: 'container',
-                id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm',
-                // style: 'background-image: url("resources/icons/ConfetiFour.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
-              //  name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm',
-                style: ' background-color:transparent;',
-                layout: {
-                    type: 'vbox',
-                    pack: 'start',
-                    align: 'center'
-                },
                 width: '100%',
-                height: '100%',
-                //  margin:'-10 0 0 -7',
-                items: [
+                docked: 'top',
+                height: ayoha_HeaderHeight(),
+                style:ayohaThemeColor_Header(),
+
+                id: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHeader',
+             
+                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                layout: {
+                    type: 'hbox',
+                    pack: 'center',
+                    align: 'center',
+                },
+                // hidden:true,
+                items:
+                       [
+                           
+
+                                     {
+                                         xtype: 'button',
+                                         id: 'btnFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormBack',
+                                         height: 30,
+                                         width: 65,
+                                         margin: '0 0 0 10',
+                                         // iconCls: 'list',
+                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+                                         ui: 'plain',
+                                         handler: function () {
+                                            FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide(false);
+
+                                         }
+                                     },
+
+                                      {
+                                          xtype: 'spacer',
+
+                                      },
+
+
+                                      {
+                                        margin: '0 15 0 0',
+                                          id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt',
+                                          html: '<font size=2 color=black><b>Take My Selfie!</b></font>'
+                                      },
+
+                                    
+
+
+
+
+
+
+
+
+
+                       ]
+
+            },
+
+
+                {
+                    xtype: 'container',
+                    id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_Main',
+                    // style: 'background-image: url("resources/icons/contestAdvertisement01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
+                    // name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm',
+                    style: ' background-color:transparent;',
+                    layout: {
+                        type: 'vbox',
+                        pack: 'start',
+                        align: 'center'
+                    },
+                    width: '100%',
+                    height: '100%',
+                    indicators: false,
+                    scrollable: {
+                       directionLock: true,
+                       indicators: false
+                    },
+                    items: [
+
+                        {
+                            xtype: 'container',
+                            id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage',
+                         //   style: ' background-color:transparent;',
+                         margin:'10 0 0 0',
+                            style: 'border-top:2px dotted purple;border-left:2px dotted purple;border-right:2px dotted purple;border-bottom:2px dotted purple',
+                            layout: {
+                                type: 'vbox',
+                                pack: 'left',
+                                align: 'left'
+                            },
+                            width: '94%',
+                           // height: 700,
+                            items: [
+                                 {
+                                   //  xtype: 'pinchzoomimage',
+                                   xtype: 'image',
+                                     src: 'resources/icons/selfieIcon.png',
+                                     width: '100%',
+                                     height: 700,
+                                     mode: 'image',
+                                    //  indicators: false,
+                                     id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage',
+                                 },
+                                  {
+                                      id: 'HtmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload',
+                                      hidden: true,
+                                      margin: '10 0 0 0',
+                                      width: '100%',
+                                      html: '<input type="file" id="input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload" accept="image/*"  onchange="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess()"   style="border-color:#53A5F8;color:black;width:268px;text-align: left;font-size:15px;">'
+
+                                      //     html: '<button class="button3" style="width:165px;height:32px"><label for="imageUploadPicProfile" class="btn btn-primary btn-block btn-outlined" style="width:25px;height:32px">Upload Picture</label><input type="file" id="imageUploadPicProfile" accept="image/*" style="display: none;width:25px;height:32px" onchange="EnableuploadAccPicProfile()" /></button>',
+
+
+
+
+
+                                  },
+
+
+
+
+                               
+                            ]
+                        },
+                        {
+                         xtype: 'container',
+                         // hidden:true,
+                         margin:'0 0 0 0',
+                         id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection',
+                         // style: 'background-image: url("resources/icons/contestAdvertisement01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
+                         // name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestDetail',
+                         style: ' background-color:transparent;',
+                         layout: {
+                             type: 'vbox',
+                             pack: 'start',
+                             align: 'left'
+                         },
+                         width: '94%',
+                         height: 50,
+                         items: [
+                             {margin:'10 0 0 0',
+                                 html: '<div style="width: 100%; height:30px; background:white;text-align:left;font-size:12px;">Question:</div>',
+                             },
+                             {
+                              margin: '-15 0 0 0',
+                              id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection',
+                           
+                              width: '100%',
+                              height: 20,
+                              html: '<input type="text" id="input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection"  style="border-color:transparent;color:black;width:100%;text-align: left;font-size:12px;font-weight:bold">'
+             
+                          },
+                         ]
+                     },
+
+{
+                            xtype: 'container',
+                            // hidden:true,
+                            margin:'-10 0 0 0',
+                            id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection',
+                            // style: 'background-image: url("resources/icons/contestAdvertisement01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
+                            // name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestDetail',
+                            style: ' background-color:transparent;',
+                            layout: {
+                                type: 'vbox',
+                                pack: 'start',
+                                align: 'left'
+                            },
+                            width: '94%',
+                           // height: 10,
+                           height: 120,
+                            items: [
+                                {margin:'10 0 0 0',
+                                    html: '<div style="width: 100%; height:30px; background:white;text-align:left;font-size:12px;">Your Answer:</div>',
+                                },
+                                {
+                                 margin: '-12 0 0 0',
+                                 id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection',
+                              
+                                 width: '100%',
+                                 height: 98,
+                                 html: '<textarea type="text" id="input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection"  style="border: 1px solid black;color:black;width:100%;text-align: left;font-size:16px;height:80px;" wrap="hard"></textarea>'
+                
+                             },
+                            ]
+                        },
+
+
+
+                        {
+                         xtype: 'container',
+                         style: ' background-color:transparent',
+                         id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',                                               
+                         margin: '0 0 0 0',
+                         height: 15,
+                         width: '100%',
+                         layout: {
+                             type: 'vbox',
+                             pack: 'start',
+                             align: 'center'
+                         },
+                         items: [
+                        
+                             {
+                                 xtype: 'container',
+                                 width: '100%',
+                                 style: ' background-color:transparent',
+                                 layout: {
+                                     type: 'hbox',
+                                     pack: 'start',
+                                     align: 'center'
+             
+                                 },
+                                 items: [
+                                     {
+                                         xtype:'spacer',
+                                         width:14
+                                                                                                         },
+                                          {
+                                              xtype: 'container',
+             
+                                              width: '100%',
+                                              style: {
+             
+                                                  background: 'transparent',
+             
+                                              },
+                                              layout: {
+                                                  type: 'vbox',
+                                                  pack: 'start',
+                                                  align: 'left'
+             
+                                              },
+                                              items: [
+             
+             
+                                                  {
+                                                      xtype: 'container',
+             
+                                                      width: '100%',
+                                                      style: {
+             
+                                                          background: 'transparent',
+             
+                                                      },
+                                                      layout: {
+                                                          type: 'hbox',
+                                                          pack: 'start',
+                                                          align: 'center'
+             
+                                                      },
+                                                      items: [
+                                                       
+                                                         {
+                                                             margin: '0 0 0 0', 
+                                                             width: '100%',                 
+                                                             html: '<div style="color:red;text-align: left;font-size:12px;width:100%;"><i>*Upload Receipt</i></div>',
+                                                         },
+             
+             
+                                                      ]
+                                                  },
+             
+             
+                              
+             
+             
+             
+             
+             
+             
+                                         //    {
+             
+                                         //        margin: '-2 0 0 0',
+                                         //        width: '105%',
+                                         //        height: 20,
+                                         //        html: '<input type="text" id="inputName-FloatPanel_AyohaContestSetting_UploadedImage" readOnly style="border-color:grey;color:grey;width:100%;text-align: left;font-size:12px;">'
+                                         //    },
+                                         {
+                                             id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
+                                             hidden: true,
+                                             margin: '0 0 0 0',
+                                             width: '100%',
+                                             html: '<input type="file" id="inputImg-htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage" accept="image/*"  onchange="inputImgFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage()"   style="border-color:#540575;color:black;width:268px;text-align: left;font-size:15px;">'
+                      
+                                             //     html: '<button class="button3" style="width:165px;height:32px"><label for="imageUploadPicProfile" class="btn btn-primary btn-block btn-outlined" style="width:25px;height:32px">Upload Picture</label><input type="file" id="imageUploadPicProfile" accept="image/*" style="display: none;width:25px;height:32px" onchange="EnableuploadAccPicProfile()" /></button>',
+                      
+                      
+                      
+                      
+                      
+                                         },
+                                        
+                                         {
+                                             margin: '2 0 0 0',
+                                             height: 140,
+                                             hidden: true,
+                                             width: 140,
+                                             id: 'FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
+                                             html: '<img src="resources/icons/createpicprofile01.png" style="width: 140px; height: 140px; border:2px solid white; border-radius: 50%; "/>',
+                                         },
+                                            {
+
+                                             id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',
+                                             margin: '-2 0 0 0',
+                                                width: '90%',
+                                             height: 20,
+                                             html: '<input type="text" id="inputName-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt"  readOnly  style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
+                                
+                                
+                                         },
+             
+                                              ]
+             
+                                          },
+             
+             
+                                           //{
+                                           //    xtype:'container'
+             
+                                           //},
+                                             {
+                                                 xtype: 'button',
+                                                 id: 'btnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',
+                                                 name: 'clickablebtnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
+                                                // name: 'clickablebtnFloatPanel_AyohaContestSetting_UploadBackgroundImage',
+                                                 //  badgeText: '1',
+                                                 margin: '0 0 -10 -70',
+                                                 height: 35,
+                                                 width: 35,
+                                                 html: '<img src="resources/icons/upload02.png" width="25" height="25" alt="Company Name">',
+                                                 ui: 'plain',
+                                                 handler: function () {
+                                                   
+                                                 }
+                                             },
+             
+                                 ]
+             
+                             },
+             
+                         ]
+                     },
+                     {
+                         xtype: 'container',
+                         hidden:true,
+                         id:'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt',
+                         name:'nameFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt',
+//height:150,
+height:30,
+                         width: '100%',
+                         style: {
+
+                             background: 'transparent',
+
+                         },
+                         layout: {
+                             type: 'hbox',
+                             pack: 'start',
+                             align: 'center'
+
+                         },
+                         items: [
+                             {
+                                 xtype:'spacer',
+                                 width:14
+                                                                                                 },
+                            {
+                                //margin: '-70 0 0 0', 
+                                margin: '0 0 0 0', 
+                                width: '100%', 
+                                                
+                                html: '<div style="color:blue;text-align: left;font-size:10px;width:100%;"><u>View Receipt</u></div>',
+                            },
+
+
+                         ]
+                     },
+                    ]
+                },
+
 
 
                    {
 
                        xtype: 'container',
                        width: '100%',
-                       docked: 'top',
+                       docked: 'bottom',
+                       height: 60,
+                       //  hidden: true,
                        // width: 40,
 
                        //  title: '<font size="3" color="white">Live Tracking Map</font>',
                        //hidden: true,
 
-                       id: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHeader',
-                       style: {
-                           // background: '#D25959',
-                           background: 'transparent',
-                           // border: '2px'
-                       },
+                       id: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormBottom',
+                       //    style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)',
+                       style: 'background-color:transparent;border-top:1px solid #DCDCDC',
+
                        //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
                        // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                        layout: {
@@ -144,83 +480,139 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm() {
                        // hidden:true,
                        items:
                               [
-                                   {
-                                       xtype: 'panel',
-                                       width: 10
-                                   },
 
-                                            {
-                                                xtype: 'button',
-                                                id: 'btnFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormBack',
-                                                height: 30,
-                                                width: 35,
-                                                margin: '5 0 0 0',
-                                                // iconCls: 'list',
-                                                html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
-                                                ui: 'plain',
-                                                handler: function () {
-                                                    // FloatPanel_AyohaReward_TopTenRankingHide();
-                                                    // FloatPanel_AyohaReward_TopTenRanking_AddCardHide();
-                                                    is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-                                                    _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide(Ext.fx.Animation({
-                                                        type: 'slideOut',
-                                                        direction: 'left',
-                                                        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                        duration: 250
+                                 {
 
-                                                    }));
-                                                    RemovePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
-                                                    //  FloatPanel_AyohaReward_TopTenRanking_AddCardHide();
+                                     xtype: 'container',
+                                     width: '90%',
+                                     height: 60,
+                                     hidden:true,
+                                     margin: '0 0 0 0',
+                                     id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer',
+                                     // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
+                                     style: 'background-color:transparent;',
+                                     // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
+                                     layout: {
+                                         type: 'vbox',
+                                         pack: 'center',
+                                         align: 'center',
+                                     },
+                                     items: [
 
-                                                }
-                                            },
+                                        {
+                                            width: '100%',
+                                            height: 40,
+                                            id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer',
+                                            html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer();" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Submit My Answer</div></div>'
+                                        },
+                                       
 
-                                             {
-                                                 xtype: 'spacer',
+                                     ]
+                                 },
 
-                                             },
+                                  {
+
+                                      xtype: 'container',
+                                      width: '90%',
+                                      height: 60,
+                                      margin: '0 0 0 0',
+                                      id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie',
+                                      // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
+                                      style: 'background-color:transparent;',
+                                      // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
+                                      layout: {
+                                          type: 'vbox',
+                                          pack: 'center',
+                                          align: 'center',
+                                      },
+                                      items: [
+
+                                         {
+                                             width: '100%',
+                                             height: 40,
+                                             id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie',
+                                             html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Take My Selfie!</div></div>'
+                                         },
+                                        
+
+                                      ]
+                                  },
+
+                                                                 {
+
+                                                                     xtype: 'container',
+                                                                     width: '90%',
+                                                                     hidden:true,
+                                                                     height: 60,
+                                                                     margin: '0 0 0 0',
+                                                                     id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit',
+                                                                     // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
+                                                                     style: 'background-color:transparent;',
+                                                                     // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
+                                                                     layout: {
+                                                                         type: 'hbox',
+                                                                         pack: 'center',
+                                                                         align: 'center',
+                                                                     },
+                                                                     items: [
+
+                                                                        {
+                                                                            width: '55%',
+                                                                            height: 40,
+                                                                            id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DetailSubmit',
+                                                                            html: '<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">19/2/2022</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Contest Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">You are Winner!</div>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'spacer',
+                                                                            width: '5%',
+                                                                        },
+                                                                        {
+                                                                            width: '35%',
+                                                                            height: 40,
+                                                                            id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DeleteSelfie',
+                                                                            html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_DeleteMySelfie_Staging();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: white;border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 14px;font-weight:bold;color:red;margin:6px 0px 0px 0px;">Delete</div></div>'
+                                                                        },
+                                                                     ]
+                                                                 },
 
 
-                                             {
-                                                 margin: '0 0 0 0',
-                                                 id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt',
-                                                 html: '<font size=2 color=black><b>Take My Selfie!</b></font>'
-                                             },
+                                                                             {
 
-                                             {
-                                                 xtype: 'panel',
-                                                 width: 10
-                                             },
-                                                   {
-                                                       xtype: 'button',
-                                                       id: 'btnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_CardIcon',
-                                                       height: 30,
-                                                       hidden: true,
-                                                       width: 35,
-                                                       // iconCls: 'list',
-                                                       html: '<div ><img src="resources/icons/contest01.png" width="25" height="20" alt="Company Name"></div>',
-                                                       ui: 'plain',
-                                                       handler: function () {
+                                                                                 xtype: 'container',
+                                                                                 width: '90%',
+                                                                                 hidden: true,
+                                                                                 height: 60,
+                                                                                 margin: '0 0 0 0',
+                                                                                 id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AfterSubmit',
+                                                                                 // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
+                                                                                 style: 'background-color:transparent;',
+                                                                                 // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
+                                                                                 layout: {
+                                                                                     type: 'hbox',
+                                                                                     pack: 'center',
+                                                                                     align: 'center',
+                                                                                 },
+                                                                                 items: [
 
-                                                           is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-
-                                                           _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide(Ext.fx.Animation({
-                                                               type: 'slideOut',
-                                                               direction: 'right',
-                                                               easing: 'cubic-bezier(.7,0,.7,1)',
-                                                               duration: 250
-
-                                                           }));
-                                                           RemovePages(_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm, "is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen");
-                                                           //FloatPanel_AyohaReward_TopTenRanking_AddCardHide();
-                                                       }
-                                                   },
-
-
-
-
-
-
+                                                                                    {
+                                                                                        width: '45%',
+                                                                                        height: 50,
+                                                                                        id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_RetakeSelfie',
+                                                                                        html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Re-Take My Selfie!</div></div>'
+                                                                                      //  html: '<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">19/2/2022</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Contest Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">You are Winner!</div>'
+                                                                                    },
+                                                                                    {
+                                                                                        xtype: 'spacer',
+                                                                                        width: '5%',
+                                                                                    },
+                                                                                    {
+                                                                                        width: '45%',
+                                                                                        height: 40,
+                                                                                        id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_Re-SubmitSelfie',
+                                                                                        html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_SubmitMySelfie();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: white;border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 14px;font-weight:bold;color:red;margin:6px 0px 0px 0px;">Submit</div></div>'
+                                                                                    },
+                                                                                 ]
+                                                                             },
 
 
 
@@ -229,506 +621,29 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm() {
                    },
 
 
-                       {
-                           xtype: 'container',
-                           id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_Main',
-                           // style: 'background-image: url("resources/icons/contestAdvertisement01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
-                           // name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm',
-                           style: ' background-color:transparent;',
-                           layout: {
-                               type: 'vbox',
-                               pack: 'start',
-                               align: 'center'
-                           },
-                           width: '100%',
-                           height: '100%',
-                           indicators: false,
-                           scrollable: {
-                              directionLock: true,
-                              indicators: false
-                           },
-                           items: [
 
-                               {
-                                   xtype: 'container',
-                                   id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage',
-                                //   style: ' background-color:transparent;',
-                                   style: 'border-top:2px dotted purple;border-left:2px dotted purple;border-right:2px dotted purple;border-bottom:2px dotted purple',
-                                   layout: {
-                                       type: 'vbox',
-                                       pack: 'left',
-                                       align: 'left'
-                                   },
-                                   width: '94%',
-                                  // height: 700,
-                                   items: [
-                                        {
-                                            xtype: 'pinchzoomimage',
-                                            src: 'resources/icons/selfieIcon.png',
-                                            width: '100%',
-                                            height: 700,
-                                            indicators: false,
-                                            id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage',
-                                        },
-                                         {
-                                             id: 'HtmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload',
-                                             hidden: true,
-                                             margin: '10 0 0 0',
-                                             width: '100%',
-                                             html: '<input type="file" id="input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload" accept="image/*"  onchange="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess()"   style="border-color:#53A5F8;color:black;width:268px;text-align: left;font-size:15px;">'
-
-                                             //     html: '<button class="button3" style="width:165px;height:32px"><label for="imageUploadPicProfile" class="btn btn-primary btn-block btn-outlined" style="width:25px;height:32px">Upload Picture</label><input type="file" id="imageUploadPicProfile" accept="image/*" style="display: none;width:25px;height:32px" onchange="EnableuploadAccPicProfile()" /></button>',
+         ]
 
 
-
-
-
-                                         },
-
-
-
-
-                                      
-                                   ]
-                               },
-                               {
-                                xtype: 'container',
-                                // hidden:true,
-                                margin:'0 0 0 0',
-                                id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection',
-                                // style: 'background-image: url("resources/icons/contestAdvertisement01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
-                                // name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestDetail',
-                                style: ' background-color:transparent;',
-                                layout: {
-                                    type: 'vbox',
-                                    pack: 'start',
-                                    align: 'left'
-                                },
-                                width: '94%',
-                                height: 50,
-                                items: [
-                                    {margin:'10 0 0 0',
-                                        html: '<div style="width: 100%; height:30px; background:white;text-align:left;font-size:12px;">Question:</div>',
-                                    },
-                                    {
-                                     margin: '-15 0 0 0',
-                                     id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection',
-                                  
-                                     width: '100%',
-                                     height: 20,
-                                     html: '<input type="text" id="input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection"  style="border-color:transparent;color:black;width:100%;text-align: left;font-size:12px;font-weight:bold">'
-                    
-                                 },
-                                ]
-                            },
-
-   {
-                                   xtype: 'container',
-                                   // hidden:true,
-                                   margin:'-10 0 0 0',
-                                   id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection',
-                                   // style: 'background-image: url("resources/icons/contestAdvertisement01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
-                                   // name: 'clickableContainerFloatPanel_DashboardMerchantReward_MembershipContestDetail',
-                                   style: ' background-color:transparent;',
-                                   layout: {
-                                       type: 'vbox',
-                                       pack: 'start',
-                                       align: 'left'
-                                   },
-                                   width: '94%',
-                                  // height: 10,
-                                  height: 98,
-                                   items: [
-                                       {margin:'10 0 0 0',
-                                           html: '<div style="width: 100%; height:30px; background:white;text-align:left;font-size:12px;">Your Answer:</div>',
-                                       },
-                                       {
-                                        margin: '-12 0 0 0',
-                                        id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection',
-                                     
-                                        width: '100%',
-                                        height: 80,
-                                        html: '<textarea type="text" id="input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection"  style="border: 1px solid black;color:black;width:100%;text-align: left;font-size:16px;height:80px;" wrap="hard"></textarea>'
-                       
-                                    },
-                                   ]
-                               },
-
-
-
-                               {
-                                xtype: 'container',
-                                style: ' background-color:transparent',
-                                id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',                                               
-                                margin: '23 0 0 0',
-                                height: 10,
-                                width: '100%',
-                                layout: {
-                                    type: 'vbox',
-                                    pack: 'start',
-                                    align: 'center'
-                                },
-                                items: [
-                               
-                                    {
-                                        xtype: 'container',
-                                        width: '100%',
-                                        style: ' background-color:transparent',
-                                        layout: {
-                                            type: 'hbox',
-                                            pack: 'start',
-                                            align: 'center'
-                    
-                                        },
-                                        items: [
-                                            {
-                                                xtype:'spacer',
-                                                width:14
-                                                                                                                },
-                                                 {
-                                                     xtype: 'container',
-                    
-                                                     width: '100%',
-                                                     style: {
-                    
-                                                         background: 'transparent',
-                    
-                                                     },
-                                                     layout: {
-                                                         type: 'vbox',
-                                                         pack: 'start',
-                                                         align: 'left'
-                    
-                                                     },
-                                                     items: [
-                    
-                    
-                                                         {
-                                                             xtype: 'container',
-                    
-                                                             width: '100%',
-                                                             style: {
-                    
-                                                                 background: 'transparent',
-                    
-                                                             },
-                                                             layout: {
-                                                                 type: 'hbox',
-                                                                 pack: 'start',
-                                                                 align: 'center'
-                    
-                                                             },
-                                                             items: [
-                                                              
-                                                                {
-                                                                    margin: '0 0 0 0', 
-                                                                    width: '100%',                 
-                                                                    html: '<div style="color:red;text-align: left;font-size:12px;width:100%;"><i>*Upload Receipt</i></div>',
-                                                                },
-                    
-                    
-                                                             ]
-                                                         },
-                    
-                    
-                                     
-                    
-                    
-                    
-                    
-                    
-                    
-                                                //    {
-                    
-                                                //        margin: '-2 0 0 0',
-                                                //        width: '105%',
-                                                //        height: 20,
-                                                //        html: '<input type="text" id="inputName-FloatPanel_AyohaContestSetting_UploadedImage" readOnly style="border-color:grey;color:grey;width:100%;text-align: left;font-size:12px;">'
-                                                //    },
-                                                {
-                                                    id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
-                                                    hidden: true,
-                                                    margin: '0 0 0 0',
-                                                    width: '100%',
-                                                    html: '<input type="file" id="inputImg-htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage" accept="image/*"  onchange="inputImgFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage()"   style="border-color:#540575;color:black;width:268px;text-align: left;font-size:15px;">'
-                             
-                                                    //     html: '<button class="button3" style="width:165px;height:32px"><label for="imageUploadPicProfile" class="btn btn-primary btn-block btn-outlined" style="width:25px;height:32px">Upload Picture</label><input type="file" id="imageUploadPicProfile" accept="image/*" style="display: none;width:25px;height:32px" onchange="EnableuploadAccPicProfile()" /></button>',
-                             
-                             
-                             
-                             
-                             
-                                                },
-                                               
-                                                {
-                                                    margin: '2 0 0 0',
-                                                    height: 140,
-                                                    hidden: true,
-                                                    width: 140,
-                                                    id: 'FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
-                                                    html: '<img src="resources/icons/createpicprofile01.png" style="width: 140px; height: 140px; border:2px solid white; border-radius: 50%; "/>',
-                                                },
-                                                   {
-    
-                                                    id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',
-                                                    margin: '-2 0 0 0',
-                                                       width: '90%',
-                                                    height: 20,
-                                                    html: '<input type="text" id="inputName-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt"  readOnly  style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
-                                       
-                                       
-                                                },
-                    
-                                                     ]
-                    
-                                                 },
-                    
-                    
-                                                  //{
-                                                  //    xtype:'container'
-                    
-                                                  //},
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',
-                                                        name: 'clickablebtnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
-                                                       // name: 'clickablebtnFloatPanel_AyohaContestSetting_UploadBackgroundImage',
-                                                        //  badgeText: '1',
-                                                        margin: '0 0 -10 -70',
-                                                        height: 35,
-                                                        width: 35,
-                                                        html: '<img src="resources/icons/upload02.png" width="25" height="25" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                          
-                                                        }
-                                                    },
-                    
-                                        ]
-                    
-                                    },
-                    
-                                ]
-                            },
-                            {
-                                xtype: 'container',
-                                hidden:true,
-                                id:'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt',
-                                name:'nameFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt',
-height:150,
-                                width: '100%',
-                                style: {
-
-                                    background: 'transparent',
-
-                                },
-                                layout: {
-                                    type: 'hbox',
-                                    pack: 'start',
-                                    align: 'center'
-
-                                },
-                                items: [
-                                    {
-                                        xtype:'spacer',
-                                        width:14
-                                                                                                        },
-                                   {
-                                       margin: '-70 0 0 0', 
-                                       width: '100%', 
-                                                       
-                                       html: '<div style="color:blue;text-align: left;font-size:10px;width:100%;"><u>View Receipt</u></div>',
-                                   },
-
-
-                                ]
-                            },
-                           ]
-                       },
-
-
-
-                          {
-
-                              xtype: 'container',
-                              width: '100%',
-                              docked: 'bottom',
-                              height: 60,
-                              //  hidden: true,
-                              // width: 40,
-
-                              //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                              //hidden: true,
-
-                              id: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormBottom',
-                              //    style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)',
-                              style: 'background-color:transparent;border-top:1px solid #DCDCDC',
-
-                              //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                              // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                              layout: {
-                                  type: 'hbox',
-                                  pack: 'center',
-                                  align: 'center',
-                              },
-                              // hidden:true,
-                              items:
-                                     [
-
-                                        {
-
-                                            xtype: 'container',
-                                            width: '90%',
-                                            height: 60,
-                                            hidden:true,
-                                            margin: '0 0 0 0',
-                                            id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer',
-                                            // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
-                                            style: 'background-color:transparent;',
-                                            // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
-                                            layout: {
-                                                type: 'vbox',
-                                                pack: 'center',
-                                                align: 'center',
-                                            },
-                                            items: [
-
-                                               {
-                                                   width: '100%',
-                                                   height: 40,
-                                                   id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer',
-                                                   html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer();" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Submit My Answer</div></div>'
-                                               },
-                                              
-
-                                            ]
-                                        },
-
-                                         {
-
-                                             xtype: 'container',
-                                             width: '90%',
-                                             height: 60,
-                                             margin: '0 0 0 0',
-                                             id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie',
-                                             // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
-                                             style: 'background-color:transparent;',
-                                             // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
-                                             layout: {
-                                                 type: 'vbox',
-                                                 pack: 'center',
-                                                 align: 'center',
-                                             },
-                                             items: [
-
-                                                {
-                                                    width: '100%',
-                                                    height: 40,
-                                                    id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie',
-                                                    html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Take My Selfie!</div></div>'
-                                                },
-                                               
-
-                                             ]
-                                         },
-
-                                                                        {
-
-                                                                            xtype: 'container',
-                                                                            width: '90%',
-                                                                            hidden:true,
-                                                                            height: 60,
-                                                                            margin: '0 0 0 0',
-                                                                            id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit',
-                                                                            // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
-                                                                            style: 'background-color:transparent;',
-                                                                            // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
-                                                                            layout: {
-                                                                                type: 'hbox',
-                                                                                pack: 'center',
-                                                                                align: 'center',
-                                                                            },
-                                                                            items: [
-
-                                                                               {
-                                                                                   width: '55%',
-                                                                                   height: 40,
-                                                                                   id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DetailSubmit',
-                                                                                   html: '<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">19/2/2022</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Contest Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">You are Winner!</div>'
-                                                                               },
-                                                                               {
-                                                                                   xtype: 'spacer',
-                                                                                   width: '5%',
-                                                                               },
-                                                                               {
-                                                                                   width: '35%',
-                                                                                   height: 40,
-                                                                                   id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DeleteSelfie',
-                                                                                   html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_DeleteMySelfie_Staging();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: white;border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 14px;font-weight:bold;color:red;margin:6px 0px 0px 0px;">Delete</div></div>'
-                                                                               },
-                                                                            ]
-                                                                        },
-
-
-                                                                                    {
-
-                                                                                        xtype: 'container',
-                                                                                        width: '90%',
-                                                                                        hidden: true,
-                                                                                        height: 60,
-                                                                                        margin: '0 0 0 0',
-                                                                                        id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AfterSubmit',
-                                                                                        // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
-                                                                                        style: 'background-color:transparent;',
-                                                                                        // style:'border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:85%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;',
-                                                                                        layout: {
-                                                                                            type: 'hbox',
-                                                                                            pack: 'center',
-                                                                                            align: 'center',
-                                                                                        },
-                                                                                        items: [
-
-                                                                                           {
-                                                                                               width: '45%',
-                                                                                               height: 50,
-                                                                                               id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_RetakeSelfie',
-                                                                                               html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Re-Take My Selfie!</div></div>'
-                                                                                             //  html: '<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">19/2/2022</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Contest Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">You are Winner!</div>'
-                                                                                           },
-                                                                                           {
-                                                                                               xtype: 'spacer',
-                                                                                               width: '5%',
-                                                                                           },
-                                                                                           {
-                                                                                               width: '45%',
-                                                                                               height: 40,
-                                                                                               id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_Re-SubmitSelfie',
-                                                                                               html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_SubmitMySelfie();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: white;border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 14px;font-weight:bold;color:red;margin:6px 0px 0px 0px;">Submit</div></div>'
-                                                                                           },
-                                                                                        ]
-                                                                                    },
-
-
-
-                                     ]
-
-                          },
-
-
-
-                ]
-
-            },
+      
 
 
 
 
 
 
-        });
+    });
 
-    return _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm;
 }
+
+
+
+// function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm() {
+
+  
+
+//     return _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm;
+// }
 
 
 
@@ -764,10 +679,34 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow() {
 
 
 
-    Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm);
-    this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
+    // Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm);
+    // this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
+
+
+
+
+
+
+
+    FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfNeeded();
+
+
+    _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm', function () {
+        FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide(true);
+        
+      });
+    }
+
+
+
+
+
+
 
     is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'Y';
    
@@ -780,7 +719,9 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow() {
         Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormID').setZIndex(335);
     }
    
-    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt').setHtml('<font size=2 color=black><b>'+globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestName+'</b></font>');
+    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt').setHtml( ayohaTheme_HeaderText(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestName));
+  
+   // Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt').setHtml('<font size=2 color=black><b>'+globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestName+'</b></font>');
 
    
     var containernameFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt = Ext.ComponentQuery.query('container[name=nameFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt]')[0];
@@ -846,17 +787,45 @@ if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestStatu
 
 function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit() {
 
-    Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm);
-    this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
+    // Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm);
+    // this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
+
+
+
+
+
+
+
+    FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfNeeded();
+
+
+    _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm', function () {
+        FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide(true);
+        
+      });
+    }
+
+
+
+
+
+
+
+
     is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'Y';
     // var _innerHeight = parseInt(window.innerHeight) - 105;
     // Ext.getCmp('ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage').setHeight(_innerHeight);
     // Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage').setHeight(_innerHeight);
    
-    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt').setHtml('<font size=2 color=black><b>'+globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestName+'</b></font>');
-    LoadingPanelShow(getLoadingIcon(), 'Loading...');
+    
+    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt').setHtml( ayohaTheme_HeaderText(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestName));
+  
+    // LoadingPanelShow(getLoadingIcon(), 'Loading...');
     if (isFloatPanel_MembershipCardList_UpgradeOpen=="Y"){
         
         
@@ -999,13 +968,34 @@ Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormIm
 
 }
 
-function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide() {
+function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide(fromBack,animCfg) {
 
+    // if (is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen == 'Y') {
+    //     _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
+    //     is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
+    //     RemovePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
+    //     // swalFireSuccessStampedCardMsg("Stamped Success!!");
+    // }
+
+
+
+    
     if (is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen == 'Y') {
+       
         _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
-        is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-        RemovePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
-        // swalFireSuccessStampedCardMsg("Stamped Success!!");
+
+        if (animCfg) {
+            _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
+          }
+          is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
+         
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm');
+          }
     }
 
 }

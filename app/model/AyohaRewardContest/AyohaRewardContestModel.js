@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaRewardContest.AyohaRewardContestModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
       'ID',
       'ContestCode',
@@ -61,5 +61,5 @@
        'EnterpriseName',
        'EnterpriseAccNo'
         ]
-    }
+   // }
 });

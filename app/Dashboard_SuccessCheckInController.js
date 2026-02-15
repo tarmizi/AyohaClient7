@@ -2114,8 +2114,7 @@ _DataStore_Contest_SuccessCheckIn_LoadContestPerkStore.load({
      callback: function (records, operation, success) {
          if (success && records.length > 0) {
          
-           // globalisSuccessCheckinController_Dashboard_LoadVoucherPerksOpen="Y";
-           // AppState.MainDashboard.MainDashboard_CheckInSuccess_VoucherCount=records.length;
+           _DataStore_AyohaRewardContestLoadBySubscriberAccNoStore=_DataStore_Contest_SuccessCheckIn_LoadContestPerkStore;
              Ext.getCmp('listTabpanelDashboardMerchantRewards_Contest').setStore(_DataStore_Contest_SuccessCheckIn_LoadContestPerkStore);
              Ext.getCmp('listTabpanelDashboard_PerksInfo_Contest').setStore(_DataStore_Contest_SuccessCheckIn_LoadContestPerkStore);
             
