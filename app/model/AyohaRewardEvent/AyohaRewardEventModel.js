@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaRewardEvent.AyohaRewardEventModel', {
     extend: 'Ext.data.Model',
-    config: {
+  //  config: {
         fields: [
       'ID',
       'EventCode',
@@ -85,5 +85,5 @@
             }
         },
         ]
-    }
+   // }
 });

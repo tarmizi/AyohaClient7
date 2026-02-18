@@ -135,3 +135,69 @@ function ayohaThemeColor_Hero(){
      //var value="background: linear-gradient(180deg,#F3E8FF 0%,#FFF1F9 100%);";
       return value;
   }
+
+
+
+
+
+
+
+
+  
+  function AyohaAppMessageBox(SubText) {
+    //let subText = "Redeem Perks Submitted Successful!";
+  
+    if (window.Swal && Swal.isVisible && Swal.isVisible()) Swal.close();
+  
+    Swal.fire({
+      target: document.body, // ✅ pastikan attach ke body (bukan dalam Ext container/transform)
+  
+      title:'',
+    
+      html: `
+      <div class="ayohaSwalCard">
+        <div class="ayohaSwalMessageBox">
+          <img src="resources/icons/successregister.gif" style="width:70px;height:70px;object-fit:contain;display:block;">
+        </div>
+        <div class="ayohaSwalTitle">${escapeHtml(SubText)}</div>
+      </div>
+    `,
+    
+
+      confirmButtonText: 'OK',
+      showConfirmButton: true,
+      buttonsStyling: false,
+  
+      // ✅ jangan auto close
+      timer: undefined,
+      allowOutsideClick: true,
+      allowEscapeKey: true,
+  
+      heightAuto: false,
+      position: 'center',
+  
+      customClass: {
+        container: 'ayohaRewardSwalContainer',
+        popup: 'ayohaRewardSwalPopup',
+        backdrop: 'ayohaRewardSwalBackdrop',
+        htmlContainer: 'ayohaRewardSwalHtml',
+        confirmButton: 'ayohaRewardSwalBtn'
+      },
+  
+      didOpen: () => {
+        document.body.classList.add('ayohaRewardOverlayOn');
+        document.documentElement.classList.add('ayohaRewardOverlayOn');
+    //  const popup = Swal.getPopup();
+    //       if (popup) spawnConfettiFromCoin(popup, 1000);
+        // ✅ paksa z-index runtime (kalau ExtJS override)
+        const c = Swal.getContainer();
+        if (c) c.style.zIndex = '99999999';
+      },
+  
+      willClose: () => {
+        document.body.classList.remove('ayohaRewardOverlayOn');
+        document.documentElement.classList.remove('ayohaRewardOverlayOn');
+      }
+    });
+  }
+  

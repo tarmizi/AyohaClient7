@@ -1,7 +1,5 @@
 ﻿Ext.define('BuskartApp.view.Dashboard.FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm', {
-    requires: [
-        'Ext.util.DelayedTask'
-],
+
 });
 
 
@@ -27,8 +25,9 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
         centered: true,
         fullscreen: true,
         closeAction: 'hide',
+      // closeAction: 'destroy',
         draggable: false,
-        modal: true,
+        modal: false,
         styleHtmlContent: true,
         layout: 'fit',
         showAnimation: {
@@ -49,7 +48,13 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
             //duration: 3000,
             //easing: 'ease-in'
         },
-        style: ' background-color:white;',           
+        style: ' background-color:white;',    
+        // listeners: {
+        //     hide: function(cmp){
+        //       Ext.Viewport.remove(cmp, true); // true = destroy
+        //       _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm = null;
+        //     }
+        //  } ,      
         listeners: {
  
 
@@ -264,8 +269,8 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
                          xtype: 'container',
                          style: ' background-color:transparent',
                          id: 'ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',                                               
-                         margin: '0 0 0 0',
-                         height: 15,
+                         margin: '-10 0 0 0',
+                         height: 50,
                          width: '100%',
                          layout: {
                              type: 'vbox',
@@ -277,6 +282,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
                              {
                                  xtype: 'container',
                                  width: '100%',
+                                 height: 50,
                                  style: ' background-color:transparent',
                                  layout: {
                                      type: 'hbox',
@@ -375,11 +381,21 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
                                             {
 
                                              id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',
-                                             margin: '-2 0 0 0',
+                                             margin: '0 0 0 0',
                                                 width: '90%',
-                                             height: 20,
-                                             html: '<input type="text" id="inputName-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt"  readOnly  style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
-                                
+                                             height: 33,
+                                           //  html: '<input type="text" id="inputName-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt"  readOnly  style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
+                                             html: '<input type="text" id="inputName-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt" ' +
+                                             'readonly ' +
+                                             'style="width:100%;' +
+                                                    'border:none;' +
+                                                    'border-bottom:1px solid #000;' +
+                                                    'outline:none;' +
+                                                    'background:transparent;' +
+                                                    'color:#000;' +
+                                                    'text-align:left;' +
+                                                    'font-size:12px;' +
+                                                    'padding:6px 0;" />'
                                 
                                          },
              
@@ -388,19 +404,19 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
                                           },
              
              
-                                           //{
-                                           //    xtype:'container'
+                                           {
+                                              xtype:'container'
              
-                                           //},
+                                           },
                                              {
                                                  xtype: 'button',
                                                  id: 'btnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt',
                                                  name: 'clickablebtnFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage',
                                                 // name: 'clickablebtnFloatPanel_AyohaContestSetting_UploadBackgroundImage',
                                                  //  badgeText: '1',
-                                                 margin: '0 0 -10 -70',
+                                                 margin: '0 0 0 -70',
                                                  height: 35,
-                                                 width: 35,
+                                                 width: 65,
                                                  html: '<img src="resources/icons/upload02.png" width="25" height="25" alt="Company Name">',
                                                  ui: 'plain',
                                                  handler: function () {
@@ -422,6 +438,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormCreateIfN
 //height:150,
 height:30,
                          width: '100%',
+                         margin: '-10 0 0 0', 
                          style: {
 
                              background: 'transparent',
@@ -440,7 +457,7 @@ height:30,
                                                                                                  },
                             {
                                 //margin: '-70 0 0 0', 
-                                margin: '0 0 0 0', 
+
                                 width: '100%', 
                                                 
                                 html: '<div style="color:blue;text-align: left;font-size:10px;width:100%;"><u>View Receipt</u></div>',
@@ -459,7 +476,7 @@ height:30,
                        xtype: 'container',
                        width: '100%',
                        docked: 'bottom',
-                       height: 60,
+                       height: 80,
                        //  hidden: true,
                        // width: 40,
 
@@ -485,7 +502,7 @@ height:30,
 
                                      xtype: 'container',
                                      width: '90%',
-                                     height: 60,
+                                     height: 80,
                                      hidden:true,
                                      margin: '0 0 0 0',
                                      id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer',
@@ -501,9 +518,13 @@ height:30,
 
                                         {
                                             width: '100%',
-                                            height: 40,
+                                           // height: 60,
+                                            margin: '-5 0 0 0',
                                             id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer',
-                                            html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer();" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Submit My Answer</div></div>'
+                                            html:'<div class="ayohaMActions">' +
+                                            '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer();">Submit My Answer</button>' +        
+                                            '</div>',
+                                           // html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer();" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Submit My Answer</div></div>'
                                         },
                                        
 
@@ -515,6 +536,7 @@ height:30,
                                       xtype: 'container',
                                       width: '90%',
                                       height: 60,
+                                     // hidden:true,
                                       margin: '0 0 0 0',
                                       id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie',
                                       // name: 'containeFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormRedeemVoucher',
@@ -542,7 +564,7 @@ height:30,
 
                                                                      xtype: 'container',
                                                                      width: '90%',
-                                                                     hidden:true,
+                                                                    // hidden:true,
                                                                      height: 60,
                                                                      margin: '0 0 0 0',
                                                                      id: 'containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit',
@@ -570,7 +592,13 @@ height:30,
                                                                             width: '35%',
                                                                             height: 40,
                                                                             id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DeleteSelfie',
-                                                                            html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_DeleteMySelfie_Staging();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: white;border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 14px;font-weight:bold;color:red;margin:6px 0px 0px 0px;">Delete</div></div>'
+                                                                            html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_DeleteMySelfie_Staging();" ' +
+                                                                            'style="width:100%;height:40px;background:#fff;border:2px solid #fac;border-radius:20px;' +
+                                                                            'display:flex;align-items:center;justify-content:center;' +
+                                                                            'font-size:14px;font-weight:bold;color:red;box-sizing:border-box;cursor:pointer;">Delete</div>'
+                                                                      
+                                                                          //  html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_DeleteMySelfie_Staging();" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color:white;border-radius:20px;width:100%;height:40px;line-height:40px;font-size:12px;font-weight:bold;color:#000;text-align:center;">Delete</div>'
+
                                                                         },
                                                                      ]
                                                                  },
@@ -635,17 +663,6 @@ height:30,
     });
 
 }
-
-
-
-// function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm() {
-
-  
-
-//     return _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm;
-// }
-
-
 
 
 
@@ -778,6 +795,7 @@ if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_isRequiredRe
 
 if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestStatus=="New"){
     Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ViewReceipt').setHidden(true);
+    Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit').setHidden(true);
 }
 
 
@@ -787,11 +805,7 @@ if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestStatu
 
 function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit() {
 
-    // Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm);
-    // this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm());
-    // this.overlay.show();
-    // AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
-
+   
 
 
 
@@ -818,11 +832,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit
 
 
     is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'Y';
-    // var _innerHeight = parseInt(window.innerHeight) - 105;
-    // Ext.getCmp('ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage').setHeight(_innerHeight);
-    // Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage').setHeight(_innerHeight);
-   
-    
+  
     Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TitleHeaderTxt').setHtml( ayohaTheme_HeaderText(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestName));
   
     // LoadingPanelShow(getLoadingIcon(), 'Loading...');
@@ -863,14 +873,14 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit
         Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage').setHeight(_innerHeight);
         Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage').setSrc(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_AdvertisementImgPath);
         Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie').setHidden(true);
-        Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer').setHidden(false);
+       // Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer').setHidden(false);
         Ext.getCmp('ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection').setHidden(false);
         Ext.getCmp('ContainerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection').setHidden(false);
         document.getElementById('input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_QuestionSection').value=globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestQuestion;
    
         Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_SubmitMyAnswer').setHidden(true);
         Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie').setHidden(true);
-        Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit').setHidden(true);
+       // Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit').setHidden(true);
         Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AfterSubmit').setHidden(true);
    
    
@@ -900,12 +910,82 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit
 
 
 
-    FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCode();
+   FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCode();
 
 }
 
+var _taskSelfieLoad = null;
 
 function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCode() {
+
+  globalConfig_ResizeUploadedImage = "ExistingImage";
+
+  var store = _DataStore_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCodeStore;
+
+  // ✅ cancel task lama (kalau ada)
+  if (_taskSelfieLoad) { _taskSelfieLoad.cancel(); _taskSelfieLoad = null; }
+
+  store.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
+  store.getProxy().setExtraParam('ContestCode', globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestCode);
+  store.getProxy().setUrl(GetAPIurl() + '/AyohaRewardContest_SelfieAndWin/AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCode');
+
+  store.load({
+    callback: function (records, op, success) {
+
+      // ✅ kalau panel dah tutup, jangan buat apa-apa
+      if (is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen !== 'Y') return;
+
+      var pnl = Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormID');
+      if (!pnl || pnl.destroyed || (pnl.getHidden && pnl.getHidden())) return;
+
+      if (!success || !records || !records.length) return;
+
+      var rec = records[0];
+      var selpieImage = rec.get('SelfieImagePath');
+      var ReceiptLink = rec.get('ReceiptLink');
+      var ReceiptName = rec.get('ReceiptName');
+
+      globalFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ID = rec.get('ID');
+      globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_EnterpriseAccNo = rec.get('EnterpriseAccNo');
+      globalFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceiptImage = ReceiptLink;
+
+   //   alert(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType)
+
+      if (globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType == "Text") {
+
+        var ansEl = document.getElementById('input-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AnswerSection');
+        if (ansEl) ansEl.value = selpieImage;
+
+        var recEl = document.getElementById('inputName-FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt');
+        if (recEl) recEl.value = ReceiptName;
+
+        var c = Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit');
+        if (c) c.setHidden(false);
+
+        var h = Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DetailSubmit');
+        if (h) h.setHtml(
+          '<div style="font-size:10px;color:black;margin:-10px 0 0 0">Submitted Date:</div><br>' +
+          '<div style="font-size:12px;font-weight:bold;color:black;margin:-23px 0 0 0">' + rec.get('ModifiedDate') + '</div><br>' +
+          '<div style="font-size:10px;color:black;margin:-20px 0 0 0">Status:</div><br>' +
+          '<div style="font-size:12px;font-weight:bold;color:black;margin:-23px 0 0 0">' + rec.get('ContestStatus') + '</div>'
+        );
+      }
+
+      if (globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType == "Picture") {
+        var img = Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormImage');
+        if (img) img.setSrc(selpieImage);
+
+        var take = Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie');
+        if (take) take.setHidden(true);
+
+        var rt = Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit');
+        if (rt) rt.setHidden(false);
+      }
+    }
+  });
+}
+
+function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCodeORI() {
     globalConfig_ResizeUploadedImage = "ExistingImage";
 
     _DataStore_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCodeStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
@@ -915,7 +995,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AyohaRew
 
     var task = Ext.create('Ext.util.DelayedTask', function () {
         var count = _DataStore_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCodeStore.getCount();
-//alert(count)
+
         if (count > 0) {
             var Store = _DataStore_AyohaRewardContestSelfieAndWinLoadBySubscriberAccNoContestCodeStore.getAt(0);
             var selpieImage = Store.get('SelfieImagePath');
@@ -933,7 +1013,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AyohaRew
               
               
                 Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_ReTakeMySelfie_Submit').setHidden(false);
-                Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DetailSubmit').setHtml('<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">' + Store.get('ModifiedDate') + '</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">' + Store.get('ContestStatus') + '</div>');
+                Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_DetailSubmit').setHtml('<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-23px 0px 0px 0px">' + Store.get('ModifiedDate') + '</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-23px 0px 0px 0px">' + Store.get('ContestStatus') + '</div>');
                 id="htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_UploadReceipt"
             }
             if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType=="Picture"){
@@ -951,15 +1031,11 @@ Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormIm
             }
            
 
-          
-         //   Ext.getCmp('containerFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_AfterSubmit').setHidden(true);
-            
-
 
 
            
         }
-        LoadingPanelHide();
+ 
    
     });
     task.delay(500);
@@ -968,21 +1044,40 @@ Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieFormIm
 
 }
 
+function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHideORI(fromBack, animCfg) {
+    if (!_FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm ||
+        _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.destroyed) return;
+  
+    if (is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen !== 'Y') return;
+  
+    var cmp = _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm;
+    var anim = animCfg ? Ext.fx.Animation(animCfg) : null;
+  
+    cmp.hide(anim);   // ✅ sekali sahaja
+  
+    is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
+  
+    if (fromBack !== true) {
+      AyohaBrowserBack.close('FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm');
+    }
+  }
+  
+
+
+
+
+
+
 function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide(fromBack,animCfg) {
 
-    // if (is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen == 'Y') {
-    //     _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
-    //     is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-    //     RemovePages("FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide()");
-    //     // swalFireSuccessStampedCardMsg("Stamped Success!!");
-    // }
+    
 
 
 
     
     if (is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen == 'Y') {
        
-        _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
+      //  _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
 
         if (animCfg) {
             _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide(Ext.fx.Animation(animCfg));
@@ -990,13 +1085,14 @@ function FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormHide(from
             _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm.hide();
           }
           is_FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormOpen = 'N';
-         
+          if (_taskSelfieLoad) { _taskSelfieLoad.cancel(); _taskSelfieLoad = null; }
         
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm');
           }
     }
+  
 
 }
 

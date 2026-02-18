@@ -12,4 +12,28 @@
   .swal2-backdrop-show.ayohaRewardSwalBackdrop{
     z-index: 99999998 !important;
   }
+
+  
+
+
+  .ayohaSwalMessageBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: 8px 0 4px 0;
+  }
+  
+  .ayohaSwalMessageBoxSuccess.ayohaSwalSuccessGif{
+    width: 70px;
+    height: 70px;
+    display:inline-block;
+  
+    background-image: url("resources/icons/successregister.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  
+    /* optional: nampak lebih “pop” */
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,.22));
+  }
   

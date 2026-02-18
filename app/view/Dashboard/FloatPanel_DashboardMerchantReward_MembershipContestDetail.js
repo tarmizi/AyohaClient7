@@ -24,9 +24,10 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailCreateIfNeede
             floated: true,
             centered: true,
             fullscreen: true,
-            closeAction: 'hide',
+            //closeAction: 'hide',
+            closeAction: 'destroy',
             draggable: false,
-            modal: true,
+            modal: false,
             styleHtmlContent: true,
             layout: 'fit',
             showAnimation: {
@@ -53,18 +54,23 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailCreateIfNeede
             // style: 'background-image: url("resources/icons/AyohaRankingRewardContest01.png"); background-size: 100% 100%;background-repeat: no-repeat;',
             //style: 'background-image: url("resources/icons/ConfetiFour.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
             // style: ' background-color: #fac;background-image: linear-gradient( #c800ffc9,#ff00de75)',
-            listeners: {
+            // listeners: {
      
   
-                // ✅ kalau user tap mask, close macam standard
-                beforehide: function () {
-                  // kalau hide dipanggil bukan dari function kita, block dulu
-                  // (optional: boleh allow kalau kau nak)
-                  return true;
+            //     // ✅ kalau user tap mask, close macam standard
+            //     beforehide: function () {
+            //       // kalau hide dipanggil bukan dari function kita, block dulu
+            //       // (optional: boleh allow kalau kau nak)
+            //       return true;
+            //     }
+            //   },
+
+              listeners: {
+                hide: function(cmp){
+                  Ext.Viewport.remove(cmp, true); // true = destroy
+                  _FloatPanel_DashboardMerchantReward_MembershipContestDetail = null;
                 }
-              },
-
-
+              } ,
 
               items: [
 
@@ -628,12 +634,25 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromAyoh
 }
 
 
+function FloatPanel_DashboardMerchantReward_MembershipContestDetailHide(fromBack, animCfg) {
+    if (!_FloatPanel_DashboardMerchantReward_MembershipContestDetail ||
+        _FloatPanel_DashboardMerchantReward_MembershipContestDetail.destroyed) return;
+  
+    if (is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen !== 'Y') return;
+  
+    var cmp = _FloatPanel_DashboardMerchantReward_MembershipContestDetail;
+    var anim = animCfg ? Ext.fx.Animation(animCfg) : null;
+  
+    cmp.hide(anim);   // ✅ sekali sahaja
+  
+    is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen = 'N';
+  
+    if (fromBack !== true) {
+      AyohaBrowserBack.close('FloatPanel_DashboardMerchantReward_MembershipContestDetail');
+    }
+  }
 
-
-
-
-
-function FloatPanel_DashboardMerchantReward_MembershipContestDetailHide(fromBack,animCfg) {
+function FloatPanel_DashboardMerchantReward_MembershipContestDetailHideORI(fromBack,animCfg) {
 
     // if (is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen == 'Y') {
     //     _FloatPanel_DashboardMerchantReward_MembershipContestDetail.hide();
@@ -646,7 +665,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailHide(fromBack
      
     if (is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen == 'Y') {
        
-        _FloatPanel_DashboardMerchantReward_MembershipContestDetail.hide();
+      //  _FloatPanel_DashboardMerchantReward_MembershipContestDetail.hide();
 
         if (animCfg) {
             _FloatPanel_DashboardMerchantReward_MembershipContestDetail.hide(Ext.fx.Animation(animCfg));
@@ -666,6 +685,7 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailHide(fromBack
 
 
 
+  
 
 
 //function FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(RespondStatus) {
