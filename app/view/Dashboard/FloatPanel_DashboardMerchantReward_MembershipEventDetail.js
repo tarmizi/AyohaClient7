@@ -160,13 +160,13 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailCreateIfNeeded(
                                    align: 'center'
                                },
                                width: '94%',
-                               height: 480,
+                               height: 500,
                                items: [
                                 
                                     {
                                         margin: '0 0 0 0',
                                         width: '100%',
-                                        height: 480,
+                                        height: 500,
                                         id: 'htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail',
                                         html: '<div class="myContent" style="background-color:white;width:100%;height:400px;">' +
                                                           '&nbsp;&nbsp;<div style="font-family:Arial, sans-serif;font-size:14px;color:black;font-weight:bold;text-align:left;"><img src="{EnterpriseLogo}" style="width:30px;height:30px;border-radius:50%;margin:0px 0px 0px 20px;"/><div style="margin:-28px 0px 0px 55px;">{EnterpriseName}</div></div>&nbsp;&nbsp;<br>' +
@@ -832,7 +832,7 @@ function FloatPanel_MerchantReward_MembershipEventDetail_LoadBySubscriberAccNoAn
 
             // --- A. DATA PARSING (Guna Helper) ---
             var RespondStatus   = record.get('RespondStatus');
-         alert(RespondStatus)   
+       //  alert(RespondStatus)   
     if (RespondStatus == "IwillAttend") {
       Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail_IwillAttend').setHtml('<div style="width: 100%; height:50px; background:white;text-align:center;font-size:13px;" onclick="FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(' + "'" + 'IwillAttend' + "'" + ')"><img src="resources/icons/iwillattend01.png" style="width:20px;height:20px;margin:8px 0px 0px 0px;"/><div style="margin:-5px 0px 0px 0px;font-weight:bold;color:purple;"><u>I Will Attend</u></div></div>');
       Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail_Interested').setHtml('<div style="width:100%; height:50px; background:white;text-align:center;font-size:12px;" onclick="FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(' + "'" + 'Interested' + "'" + ')"><img src="resources/icons/like01.png" style="width:20px;height:20px;margin:8px 0px 0px 0px;"/><div  style="margin:0px 0px 0px 0px;">Interested</div></div>');
