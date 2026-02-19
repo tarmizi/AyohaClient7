@@ -1433,6 +1433,7 @@ xtype: 'container',
                  {
                     
                      margin: '10 0 0 14',
+                     id:'Dashboard_PerksText',
                      //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
                     html: '<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎁 Perks you can enjoy here</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Collect stamps, earn points & claim vouchers here</div>'
                     // html: '<span style="font-size:10px;color:#16a34a;background:#ecfdf5;border:1px solid #bbf7d0;padding:3px 6px;border-radius:999px;white-space:nowrap;">Get available perks in selected Check-In Merchant!</span><br><div style="color:white;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">One Hub • Double Reward,Get your exiciting perks!</div>'
@@ -4247,7 +4248,9 @@ xtype: 'container',
                     margin: '10 0 0 14',
                     //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
                  //  html: '<div     style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>Unlock Premium Access</b></div><br> <div style="margin:-24px 0px 0px 0px;font-size:11px;color:#6b7280;">Get this store’s membership card for premium access</div>'
-           html: '<div     style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🔓 Unlock Premium Access</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Get this store’s membership card for premium access</div>'
+           
+                 id:'Dashboard_MembershipCardTxt',
+                 html: '<div     style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🔓 Unlock Premium Access</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Get this store’s membership card for premium access</div>'
    
                  },
                
@@ -4272,9 +4275,10 @@ xtype: 'container',
 
 {
   
-  id: 'listDashboard_MembershipCard_CheckIn',
+  id: 'listDashboard_MembershipCard_CheckIn_NonMember',
   margin: '0 0 0 5',
   xtype: 'dataview',
+  hidden:true,
 // height: 290,
 height: 325,
 // height: 0,
@@ -4382,6 +4386,116 @@ itemTpl: new Ext.XTemplate(
 
 
 
+{
+  
+  id: 'listDashboard_MembershipCard_CheckIn_Member',
+  margin: '0 0 0 5',
+  xtype: 'dataview',
+  hidden:true,
+// height: 290,
+height: 325,
+// height: 0,
+  style: "background-color: rgba(0, 0, 0, 0);",
+  inline: {
+      wrap: false
+  },
+  scrollable: {
+      direction: 'horizontal',
+      indicators: false,
+  },
+  width: '93%',
+
+
+itemTpl: new Ext.XTemplate(
+'<div class="ayohaCardItem">',
+
+'<div class="ayohaCardWrap">',
+
+// ===== CARD FACE =====
+'<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size:100% 100%;background-position:center center;background-repeat:no-repeat;">',
+
+'<div class="ayohaCardOverlay"></div>',
+'<div class="ayohaCardInnerRim"></div>',
+
+'<div class="ayohaCardContent">',
+
+'<table class="ayohaCardTable" OnClick="FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
+  '<tbody>',
+
+    '<tr>',
+      '<td class="ayohaCardTop" colspan="3">',
+        '<div class="ayohaTopRow">',
+          '<div class="ayohaTopLogo">{ModifiedEnterprisesLogo}</div>',
+          '<div class="ayohaTopName">{ModifiedEnterprisesName}</div>',
+        '</div>',
+      '</td>',
+    '</tr>',
+
+    '<tr>',
+      '<td class="ayohaCardMid" colspan="3"><br>',
+        '<div class="ayohaCardType">{MembershipCardType}</div>',
+        '<div class="ayohaCardNo">123 4567</div>',
+        '<div class="ayohaCardName">YOUR NAME</div>',
+      '</td>',
+    '</tr>',
+
+    '<tr>',
+      '<td class="ayohaCardColL" colspan="2">',
+        '<div class="k">Member Since</div>',
+        '<div class="v">After Approved</div>',
+      '</td>',
+      '<td class="ayohaCardColR">',
+        '<div class="k">Valid Until</div>',
+        '<div class="v">{ModifiedStrExpiredDate}</div>',
+      '</td>',
+    '</tr>',
+
+  '</tbody>',
+'</table>',
+
+'</div>', // end ayohaCardContent
+'</div>',   // end card face
+
+
+
+// ===== PRICE ROW (FLEX SIDE-BY-SIDE) =====
+
+
+
+
+
+'</div>', // ✅ end ayohaCardWrap (tutup selepas priceRow)
+'</div>',    // end ayohaCardItem
+
+'<div class="ayohaCardPriceRow" style="width:100%;height:60px; display:none; align-items:center;  box-sizing:border-box;">' ,
+
+// Bahagian Kiri (Harga)
+// Kita buang style pelik-pelik, biar simple
+'<div class="priceLeft" style="display:none;">' ,
+'<div class="price">RM{MembershipCardFee}</div>' ,
+'<div class="priceSub">Membership Fees</div>' ,
+'</div>',
+
+// Bahagian Kanan (Button)
+// PENTING: "margin-left: auto" di sini akan memaksa kotak ini pergi sejauh mungkin ke kanan
+'<div style="margin-left:auto;display:none;">' ,
+'<button class="ayohaCtaGetItNow" ',
+'onclick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">' ,
+'<span class="ayohaCtaText">Get It Now!</span>' ,
+'<span class="ayohaCtaArrow">→</span>' ,
+'</button>',
+'</div>' ,
+
+'</div>'
+),
+
+
+
+
+
+  emptyText: '<div  style="background-color:transparent;width: 100%; height: 400px;margin:20px 0px 0px 0px;padding:5px 10px"><img src="resources/icons/NoMembershipEvent.jpg" style="width: 100%; height: 400px;"/></div>',
+
+},
 
 
      ]
@@ -18263,6 +18377,7 @@ function Dashboard_LoadLastCheckIn(){
                AppState.MainDashboard.MainDashboardRelativeCheckInTime = record.get('RelativeCheckInTime');
                AppState.MainDashboard.MainDashboardAyohaRewardPointCheckIn = record.get('AyohaRewardPointCheckIn');
                AppState.MainDashboard.MainDashboardCheckInCount  = record.get('CheckInCount');
+               AppState.MainDashboard.isMember  = record.get('isMember');
 
              
     globalFloatPanelMerchantDetailPage_ID =record.get('ID');
@@ -18289,9 +18404,17 @@ function Dashboard_LoadLastCheckIn(){
 
 
 
-    
+    if(record.get('isMember')=="YES"){
+      Ext.getCmp('Dashboard_MembershipCardTxt').setHtml('<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🌟 Member Privileges Enabled</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Your exclusive perks are active — enjoy the premium experience ✨</div>');
+      Ext.getCmp('Dashboard_PerksText').setHtml('<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎉 Your Member Benefits</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Welcome back, member! Your perks are ready to enjoy here 🎁✨</div>');
+   
+    }
    
 
+    if(record.get('isMember')=="NO"){
+      Ext.getCmp('Dashboard_MembershipCardTxt').setHtml('<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🔓 Unlock Premium Access</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Get this store’s membership card for premium access</div>');
+      Ext.getCmp('Dashboard_PerksText').setHtml('<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎁 Perks you can enjoy here</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Collect stamps, earn points & claim vouchers here</div>');
+    }
    
   
 
@@ -18540,7 +18663,7 @@ Ext.getCmp('containerDashboard_HotSeatPromotionImage').setHidden(true);
              //   CoreFunction_DashboardLoadByEnterpriseAccNoStorePerk();
                 CoreFunction_DashboardEnterprises_LoadRecentlyCheckIn();
                 CoreFunction_DashboardMembershipLoyaltyProgramMaster_LoadMasterStore();
-                LoadingPanelHide();
+               // LoadingPanelHide();
             }
 
             

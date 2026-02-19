@@ -12,6 +12,7 @@ var _FloatPanel_DashboardMerchantReward_MembershipEventDetail=null;
 
 function FloatPanel_DashboardMerchantReward_MembershipEventDetailCreateIfNeeded() {
     if (_FloatPanel_DashboardMerchantReward_MembershipEventDetail && !_FloatPanel_DashboardMerchantReward_MembershipEventDetail.destroyed) return;
+  
     _FloatPanel_DashboardMerchantReward_MembershipEventDetail = Ext.create('Ext.Container',
 
 
@@ -46,13 +47,7 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailCreateIfNeeded(
             //duration: 3000,
             //easing: 'ease-in'
         },
-        style: ' background-color:white;',    
-        // listeners: {
-        //     hide: function(cmp){
-        //       Ext.Viewport.remove(cmp, true); // true = destroy
-        //       _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm = null;
-        //     }
-        //  } ,      
+        style: ' background-color:white;',   
         listeners: {
  
 

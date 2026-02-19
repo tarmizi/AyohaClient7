@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.MembershipCardCampaingEntitled.MembershipCardCampaingEntitledModel', {
     extend: 'Ext.data.Model',
-    config: {
+    //config: {
         fields: [
 'ID',
    'CampaignCode',
@@ -177,7 +177,7 @@
            }
        }
         ]
-    }
+   // }
 });
 
 

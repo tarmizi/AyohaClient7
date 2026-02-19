@@ -2390,8 +2390,20 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
          if (success && records.length > 0) {
         
            
-             Ext.getCmp('listDashboard_MembershipCard_CheckIn').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
-            // setScreenWidthMembershipCardCheckIn(count,jenis)
+             Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
+            
+            
+             Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
+             
+             if (AppState.MainDashboard.isMember=="YES"){
+                Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setHidden(false);
+                Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setHidden(true);
+             }
+             if (AppState.MainDashboard.isMember=="NO"){
+                Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setHidden(true);
+                Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setHidden(false);
+             }
+             // setScreenWidthMembershipCardCheckIn(count,jenis)
             setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
             SuccessCheckinController_DashboardSuccessCheckIn_LoadVIEWMerchantDashboard_StoreActivity();
             

@@ -1001,9 +1001,9 @@ function FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(E
 //alert(globalFloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCard_EnterpriseTagLine)
     globalOpenMembershipCardList_Upgrade_From = "FloatPanel_MembershipCardList_MyMembershipCard";
     FloatPanel_MembershipCardList_UpgradeShow_MyMembershipCard(EnterpriseHQAccountNo, EnterpriseAccountNo, MembershipCardCode, ID);
-    setTimeout(function () {
+    // setTimeout(function () {
         
-        Ext.getCmp('htmlFloatPanel_MembershipCardList_Upgrade_TitleHeaderTxt').setHtml('<font size=2 color=black><b>My Membership Card</b></font>');
-    }, 2000);
+    //     Ext.getCmp('htmlFloatPanel_MembershipCardList_Upgrade_TitleHeaderTxt').setHtml('<font size=2 color=black><b>My Membership Card</b></font>');
+    // }, 2000);
 
 }

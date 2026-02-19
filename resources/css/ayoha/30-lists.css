@@ -16,3 +16,55 @@
   font-size:12px;
   color:var(--text-500);
 }
+
+/* buang padding/margin list container */
+.perkList .x-list-inner,
+.perkList .x-dataview-inner {
+  padding: 0 !important;
+}
+
+/* buang padding/margin setiap item */
+.perkList .x-listitem,
+.perkList .x-list-item {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* buang padding inner wrapper */
+.perkList .x-listitem-inner-el,
+.perkList .x-listitem-body-el,
+.perkList .x-list-item-body,
+.perkList .x-innerhtml {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* kalau myContent ada style default yang tambah gap */
+.perkList .myContent{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+
+/* putihkan semua layer dalaman list/scroller */
+.perkList,
+.perkList .x-component,
+.perkList .x-dataview,
+.perkList .x-dataview-inner,
+.perkList .x-list-inner,
+.perkList .x-scroller,
+.perkList .x-scroller-ct {
+  background: #fff !important;
+}
+
+
+/* paksa wrapper item stretch 100% */
+.perkList .x-listitem,
+.perkList .x-list-item,
+.perkList .x-listitem-inner-el,
+.perkList .x-listitem-body-el,
+.perkList .x-list-item-body {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}

@@ -3,7 +3,7 @@ Ext.define('BuskartApp.view.Membership.FloatPanel_MembershipCardList_NotYetSubsc
 
 });
 
-var _FloatPanel_MembershipCardList_NotYetSubscribed;
+var _FloatPanel_MembershipCardList_NotYetSubscribed=null;
 var _FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo;
 var _FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCode;
 var globalFloatPanel_MembershipCardList_NotYetSubscribed_ItemCoverImg;
@@ -16,34 +16,23 @@ var _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
 
 
 
-
-
-
-
-function FloatPanel_MembershipCardList_NotYetSubscribed() {
+function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
+    if (_FloatPanel_MembershipCardList_NotYetSubscribed && !_FloatPanel_MembershipCardList_NotYetSubscribed.destroyed) return;
 
     _FloatPanel_MembershipCardList_NotYetSubscribed =
-    Ext.create('Ext.Panel', {
-       // zIndex: 290,
-        zIndex: 70,
-        xtype: 'container',
-        //height: 465,
-       height: '100%',
-      // height: '95%',
-        width: '100%',
+    Ext.create('Ext.Container', {
+       
         id: 'FloatPanel_MembershipCardList_NotYetSubscribedID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
+        zIndex: 65,
+        floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-            type: 'fit'
-        },
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -58,50 +47,23 @@ function FloatPanel_MembershipCardList_NotYetSubscribed() {
             duration: 250,
             easing: 'ease-out'
         },
-        //style: 'border-bottom:1px solid;background-color:#353839;',
-        style: 'background-color:white;',
-      // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-      //  style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-      
-      listeners: {
-        initialize: function (c) {
-            this.element.on({
-                swipe: function (e, node, options) {
+        style: ' background-color:white;',    
+        // listeners: {
+        //     hide: function(cmp){
+        //       Ext.Viewport.remove(cmp, true); // true = destroy
+        //       _FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm = null;
+        //     }
+        //  } ,      
+        listeners: {
+ 
 
-                    if (e.direction == "left") {
-                        _FloatPanel_MembershipCardList_NotYetSubscribed.hide(Ext.fx.Animation({
-                            type: 'slideOut',
-                            direction: 'left',
-                            easing: 'cubic-bezier(.7,0,.7,1)',
-                            duration: 250
-
-                        }));
-                        isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N';
-                        _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
-                        globalFloatPanel_MembershipCardList_NotYetSubscribed_price="";
-                        globalFloatPanel_MembershipCardList_NotYetSubscribed_plan="";                       
-                        RemovePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
-                    } if (e.direction == "right") {
-                        _FloatPanel_MembershipCardList_NotYetSubscribed.hide(Ext.fx.Animation({
-                            type: 'slideOut',
-                            direction: 'right',
-                            easing: 'cubic-bezier(.7,0,.7,1)',
-                            duration: 250
-
-                        }));
-                        globalFloatPanel_MembershipCardList_NotYetSubscribed_price="";
-                        globalFloatPanel_MembershipCardList_NotYetSubscribed_plan="";
-                       
-                        isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N';
-                        _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
-                        RemovePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
-                    }
-                   
-
-                }
-            });
-        }
-    },
+            // ✅ kalau user tap mask, close macam standard
+            beforehide: function () {
+              // kalau hide dipanggil bukan dari function kita, block dulu
+              // (optional: boleh allow kalau kau nak)
+              return true;
+            }
+          },
 
         items: [
             {
@@ -534,12 +496,12 @@ function FloatPanel_MembershipCardList_NotYetSubscribed() {
                                                         items: [
                                                             {
                                                                 margin: '-15 0 0 0',
-                                                                id: 'htmlCardTxt01',
+                                                              //  id: 'htmlCardTxt01',
                                                                 html: '<font size=1 color=grey>Ayoha</font>'
                                                             },
                                                             {
                                                                 margin: '-12 0 0 0',
-                                                                id: 'htmlTransactionTxt',
+                                                               // id: 'htmlTransactionTxt',
                                                                 html: '<font size=1 color=grey>Store</font>'
                                                             },
                                                         ]
@@ -1000,100 +962,6 @@ function FloatPanel_MembershipCardList_NotYetSubscribed() {
 
 
 
-//////////////////////////
- //           {
-
- //               xtype: 'container',
- //               width: '100%',
- //              // docked: 'bottom',
- //               height: 40,
- //               hidden:true,
- //               // width: 40,
-
- //               //  title: '<font size="3" color="white">Live Tracking Map</font>',
- //               //hidden: true,
- //               //margin: '10 0 0 0',
- //               id: 'containerFloatPanel_MembershipCardList_NotYetSubscribedBottom',
- //               //style: {
- //               //    // background: '#D25959',
- //               //    background: 'transparent',
- //               //    // border: '2px'
- //               //},
- //               //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
- //                style: 'border-bottom:2px solid #D25959;background-color:transparent',
- //              // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #d3d3d3;',
- //               layout: {
- //                   type: 'hbox',
- //                   pack: 'center',
- //                   align: 'center',
- //               },
- //               // hidden:true,
- //               items:
- //                      [
-
- //                           {
- //                               xtype: 'button',
- //                               //  align: 'stretch',
-
- //                               ui: 'plain',
- //                               width: '100%',
- //                               height: 40,
- //                               id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_GetMembershipCard',
- //                             hidden:true,
- //                               // width: '80%',
- //                               //style: {
- //                               //    background: '#FA8072',
- //                               //},
- //                               // padding: '10px',
- //                               //  text: '<font size=3px color=white><center><b>Register</b></center></font>',
- //                               //text: '<div class="blink_me"><button class="button3viewloyaltycard">Get Membership Card</button></div>',
- //                               text: '<button class="button3viewloyaltycard">Get Membership Card</button>',
- //                               handler: function () {
- //                                   getMembershipCard();
- //                                  // FloatPanel_MembershipCardManagement_NewCardAdd_Save();
- //                               },
-
-
- //                           },
-                                    
-
-
- //{
- //    xtype: 'button',
- //    //  align: 'stretch',
-
- //    ui: 'plain',
- //    width: '100%',
- //    height: 40,
- //    id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_DeleteMembershipCard',
- //    hidden: true,
- //    // width: '80%',
- //    //style: {
- //    //    background: '#FA8072',
- //    //},
- //    // padding: '10px',
- //    //  text: '<font size=3px color=white><center><b>Register</b></center></font>',
- //    //text: '<div class="blink_me"><button class="button3viewloyaltycard">Get Membership Card</button></div>',
- //    text: '<button class="button3Deleteviewloyaltycard">Delete Membership Card</button>',
- //    handler: function () {
-
-      
-       
-
- //    },
-
-
- //},
-
-
-
-
-
-
-
- //                      ]
-
- //           },
             
                     {
                         xtype: 'container',
@@ -1301,6 +1169,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed() {
 {
 xtype: 'container',
 width: '93%',
+hidden:true,
 margin: '10 0 0 0',
 height: 40,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
@@ -1350,6 +1219,7 @@ items:[
 {
     xtype: 'container',
     width: '25%',
+    hidden:true,
     height:23,
     name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage',
     margin: '0 0 0 0',
@@ -1385,6 +1255,7 @@ items:[
     xtype: 'container',
     width: '25%',
     height:23,
+    hidden:true,
     name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_OnlineStore',
     margin: '0 0 0 0',
     style: 'background-color:transparent',
@@ -1426,6 +1297,7 @@ items:[
     xtype: 'container',
     width: '25%',
     height:23,
+    hidden:true,
     id:'containerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantVoucher',
     name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantVoucher',
     margin: '0 0 0 0',
@@ -2670,11 +2542,19 @@ items: [
 
 
     });
-    return _FloatPanel_MembershipCardList_NotYetSubscribed;
-
-
-
 }
+
+
+
+
+// function FloatPanel_MembershipCardList_NotYetSubscribed() {
+
+   
+//     return _FloatPanel_MembershipCardList_NotYetSubscribed;
+
+
+
+// }
 
 
 
@@ -2690,6 +2570,22 @@ function FloatPanel_MembershipCardList_NotYetSubscribedShow(MembershipCardCode, 
     this.overlay = Ext.Viewport.add(FloatPanel_MembershipCardList_NotYetSubscribed());
     this.overlay.show();
     AddRoutePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     FloatPanel_MembershipCardList_NotYetSubscribedAdjustHeight();
     
     isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'Y';
@@ -2887,11 +2783,36 @@ function FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(M
    
    
    
-    Ext.Viewport.remove(_FloatPanel_MembershipCardList_NotYetSubscribed);
-    this.overlay = Ext.Viewport.add(FloatPanel_MembershipCardList_NotYetSubscribed());
-    this.overlay.show();
+    // Ext.Viewport.remove(_FloatPanel_MembershipCardList_NotYetSubscribed);
+    // this.overlay = Ext.Viewport.add(FloatPanel_MembershipCardList_NotYetSubscribed());
+    // this.overlay.show();
   
  
+
+
+
+
+
+
+    FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded();
+
+
+   _FloatPanel_MembershipCardList_NotYetSubscribed.show();
+   // ✅ push browser back (ikut style kau)
+   if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+     AyohaBrowserBack.push('FloatPanel_MembershipCardList_NotYetSubscribed', function () {
+    
+        FloatPanel_DashboardMerchantReward_MembershipEventDetailHide(true);
+     });
+   }
+
+
+
+
+
+
+
+
     globalOpenMembershipCardList_NotYetSubscribed_From = "DashboardMain";
 
     globalFloatPanel_MembershipCardList_NotYetSubscribed_price = null;
@@ -2951,8 +2872,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(M
     var EntAccNo = EnterpriseAccountNo;
 
    // Dashboard_VisitorAnalsysInsertUpdate("MembershipCard", "NA", EntAccNo);
-    FloatPanel_MerchantDetailPageHide();
-    Dashboard_SearchMerchantListHide();
+  //  FloatPanel_MerchantDetailPageHide();
+  //  Dashboard_SearchMerchantListHide();
   
     FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardPaymentPlanLoadByPaymentPlanCodeStore(EnterpriseAccountNo,MembershipCardCode);
 
@@ -3119,15 +3040,35 @@ function FloatPanel_MembershipCardList_NotYetSubscribedAdjustHeight() {
 
 
 
-function FloatPanel_MembershipCardList_NotYetSubscribedHide() {
+function FloatPanel_MembershipCardList_NotYetSubscribedHide(fromBack,animCfg) {
+
+    // if (isFloatPanel_MembershipCardList_NotYetSubscribedOpen == 'Y') {
+    //     globalFloatPanel_MembershipCardList_NotYetSubscribed_price="";
+    //     globalFloatPanel_MembershipCardList_NotYetSubscribed_plan="";
+    //     _FloatPanel_MembershipCardList_NotYetSubscribed.hide(); isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N'; _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
+    //     RemovePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
+    // }
+
+
+    
 
     if (isFloatPanel_MembershipCardList_NotYetSubscribedOpen == 'Y') {
-        globalFloatPanel_MembershipCardList_NotYetSubscribed_price="";
-        globalFloatPanel_MembershipCardList_NotYetSubscribed_plan="";
-        _FloatPanel_MembershipCardList_NotYetSubscribed.hide(); isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N'; _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
-        RemovePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
-    }
+       
+      
 
+        if (animCfg) {
+            _FloatPanel_MembershipCardList_NotYetSubscribed.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_MembershipCardList_NotYetSubscribed.hide();
+          }
+          isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N';
+          _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_MembershipCardList_NotYetSubscribed');
+          }
+    }
  
 }
 

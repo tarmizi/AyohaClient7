@@ -2170,12 +2170,12 @@ html: '<input type="text"  id="input-FloatPanel_Membership_MembershipCardSaleDet
                                                              items: [
                                                                  {
                                                                      margin: '-15 0 0 0',
-                                                                     id: 'htmlCardTxt01',
+                                                                    // id: 'htmlCardTxt01',
                                                                      html: '<font size=1 color=grey>Ayoha</font>'
                                                                  },
                                                                  {
                                                                      margin: '-12 0 0 0',
-                                                                     id: 'htmlTransactionTxt',
+                                                                    // id: 'htmlTransactionTxt',
                                                                      html: '<font size=1 color=grey>Store</font>'
                                                                  },
                                                              ]
@@ -2234,12 +2234,12 @@ html: '<input type="text"  id="input-FloatPanel_Membership_MembershipCardSaleDet
                                                              items: [
                                                                  {
                                                                      margin: '-15 0 0 0',
-                                                                     id: 'htmlCardTxt01',
+//id: 'htmlCardTxt01',
                                                                      html: '<font size=1 color=grey>Card</font>'
                                                                  },
                                                                  {
                                                                      margin: '-12 0 0 0',
-                                                                     id: 'htmlTransactionTxt',
+                                                                   //  id: 'htmlTransactionTxt',
                                                                      html: '<font size=1 color=grey>Transaction</font>'
                                                                  },
                                                              ]
