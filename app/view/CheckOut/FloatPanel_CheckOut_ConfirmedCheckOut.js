@@ -26,7 +26,7 @@ var isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
         zIndex: 100,
         xtype: 'container',
         height: '100%', // This is the FULL-SCREEN BACKDROP
-        width: '100%',  // This is the FULL-SCREEN BACKDROP
+        width: '97%',  // This is the FULL-SCREEN BACKDROP
         id: 'FloatPanel_CheckOut_ConfirmedCheckOutID',
         name: 'nameFloatPanel_CheckOut_ConfirmedCheckOut',
         styleHtmlContent: true,

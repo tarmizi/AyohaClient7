@@ -16,38 +16,7 @@
   font-size:12px;
   color:var(--text-500);
 }
-
-/* buang padding/margin list container */
-.perkList .x-list-inner,
-.perkList .x-dataview-inner {
-  padding: 0 !important;
-}
-
-/* buang padding/margin setiap item */
-.perkList .x-listitem,
-.perkList .x-list-item {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* buang padding inner wrapper */
-.perkList .x-listitem-inner-el,
-.perkList .x-listitem-body-el,
-.perkList .x-list-item-body,
-.perkList .x-innerhtml {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* kalau myContent ada style default yang tambah gap */
-.perkList .myContent{
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-
-
-/* putihkan semua layer dalaman list/scroller */
+/* 1) List background bagi nampak gap */
 .perkList,
 .perkList .x-component,
 .perkList .x-dataview,
@@ -55,16 +24,650 @@
 .perkList .x-list-inner,
 .perkList .x-scroller,
 .perkList .x-scroller-ct {
-  background: #fff !important;
+  /* background: #F6F4FF !important; */
+  background: transparent !important;
+}
+
+/* 2) Buang padding default dari inner list */
+.perkList .x-list-inner,
+.perkList .x-dataview-inner {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 3) Pastikan wrapper item betul-betul full width */
+.perkList .x-listitem,
+.perkList .x-list-item {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+.perkList .x-listitem-inner-el,
+.perkList .x-listitem-body-el,
+.perkList .x-list-item-body,
+.perkList .x-innerhtml {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+/* 4) ✅ INI yang buat gap + full width card “rasa” kemas
+      (jangan set margin/padding = 0 untuk myContent lagi) */
+.perkList .myContent {
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  padding: 0 14px !important;      /* ✅ side spacing kiri/kanan (ubah 14 -> 0 kalau nak edge-to-edge) */
+  margin: 0 0 12px 0 !important;   /* ✅ gap vertical antara item */
 }
 
 
-/* paksa wrapper item stretch 100% */
-.perkList .x-listitem,
-.perkList .x-list-item,
-.perkList .x-listitem-inner-el,
-.perkList .x-listitem-body-el,
-.perkList .x-list-item-body {
+
+
+/* ===== Enterprise List: force full width + spacing ===== */
+
+/* 1) inner list padding (buat card nampak inset cantik kiri kanan) */
+.enterpriseList .x-list-inner,
+.enterpriseList .x-dataview-inner{
+  padding: 0 14px !important;      /* ✅ side padding */
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 2) setiap item stretch 100% + gap vertical */
+.enterpriseList .x-listitem,
+.enterpriseList .x-list-item,
+.enterpriseList .x-dataview-item{
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+
+  padding: 0 !important;
+  margin: 0 0 12px 0 !important;   /* ✅ jarak antara item */
+}
+
+/* 3) buang padding/margin wrapper dalaman yang selalu buat jadi sempit */
+.enterpriseList .x-listitem-inner-el,
+.enterpriseList .x-listitem-body-el,
+.enterpriseList .x-list-item-body,
+.enterpriseList .x-innerhtml{
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 4) card itself full width (no negative margin hacks) */
+.enterpriseList .enterpriseCard{
   width: 100% !important;
   box-sizing: border-box !important;
+
+  padding: 10px 12px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(124,58,237,.12);
+  box-shadow: 0 8px 22px rgba(17,24,39,.06);
+}
+
+/* layout inside card */
+.enterpriseList .enterpriseRow{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.enterpriseList .enterpriseLogo{
+  flex: 0 0 72px;
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background-color:#fff;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+  border: 1px solid rgba(124,58,237,.10);
+}
+
+.enterpriseList .enterpriseInfo{
+  flex:1;
+  min-width:0;
+}
+
+.enterpriseList .enterpriseName{
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color:#111827;
+  line-height:1.15;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.enterpriseList .enterpriseMeta{
+  margin-top:2px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color:#6B7280;
+  line-height:1.2;
+}
+
+.enterpriseList .enterpriseDetails{
+  margin-top:6px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color:#374151;
+  line-height:1.35;
+}
+
+.enterpriseList .enterpriseLabel{
+  font-weight:800;
+  color:#6D28D9;
+}
+
+
+
+
+
+
+.mcDetailCard{
+  width:100%;
+  box-sizing:border-box;
+  background:#fff;
+  padding:14px 14px;
+  border-radius:16px;
+  border:1px solid rgba(124,58,237,.12);
+  box-shadow: 0 10px 26px rgba(17,24,39,.06);
+}
+
+.mcDetailRow{
+  display:grid;
+  grid-template-columns: 44% 56%;
+  column-gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px dashed rgba(124,58,237,.16);
+}
+
+.mcDetailRowLast{
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.mcLabel{
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #6B7280;
+  line-height: 1.25;
+}
+
+.mcValue{
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.25;
+
+  /* ✅ wrap elok untuk address/remarks panjang */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/***********************
+  TRX LIST - FULL WIDTH
+************************/
+
+/* ✅ target paling kuat ikut ID component (lebih pasti kena) */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-inner,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-component-outer,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-scroll-container,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-scroll-scroller,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-inner,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-dataview-inner,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-group,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-group-inner{
+  background:#fff !important;
+}
+
+/* ✅ buang semua padding/margin yang selalu buat item jadi sempit */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-inner,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-dataview-inner,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-listitem,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-item,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-dataview-item,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .trxRow{
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+}
+
+/* ✅ INI SELALU PUNCA: wrapper template ada padding */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-innerhtml,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-item-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-listitem-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-item-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-body-el{
+  padding:0 !important;
+  margin:0 !important;
+  width:100% !important;
+}
+
+/* ✅ bagi jarak bawah setiap card sahaja (tanpa kiri/kanan) */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .trxRow{
+  margin: 0 0 12px 0 !important;
+}
+
+/* group header full width */
+.trxGroupHdr{
+  padding: 10px 12px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color:#111827;
+  background:#fff !important;
+  border-top: 1px solid rgba(0,0,0,.06);
+  margin-bottom: 6px;            
+}
+
+/* ✅ CARD full width betul-betul */
+.trxCard{
+  display:block;
+  width:100% !important;
+  box-sizing:border-box;
+  background:#fff;
+  border:1px solid rgba(124,58,237,.12);
+  border-radius:16px;
+  padding:12px 12px;
+  /* buang shadow */
+  box-shadow: none !important;
+}
+
+.trxRow{
+  margin: 0 0 8px 0 !important;  /* asal 12px, tukar jadi 8px */
+}
+
+/* fallback kalau trxRow tak wujud */
+.trxList .x-listitem,
+.trxList .x-list-item,
+.trxList .x-dataview-item{
+  margin: 0 0 8px 0 !important;
+}
+/* layout dalam card */
+.trxTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.trxType{
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  color:#111827;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.trxMain{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.trxLeft{
+  flex:1;
+  min-width:0;
+}
+
+.trxCampaign{
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color:#111827;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.trxDatetime{
+  margin-top:4px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color:#6B7280;
+  line-height:1.2;
+}
+
+.trxRight{
+  flex:0 0 auto;
+  text-align:right;
+}
+
+.trxAmount{
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color:#111827;
+  line-height:1;
+  white-space:nowrap;
+}
+
+/* empty */
+.trxEmpty{
+  width:100%;
+  padding:18px 14px;
+  border-radius:16px;
+  background: rgba(124,58,237,.06);
+  border: 1px dashed rgba(124,58,237,.22);
+  text-align:center;
+}
+
+.trxEmptyTitle{
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color:#6D28D9;
+}
+
+.trxEmptySub{
+  margin-top:4px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color:#6B7280;
+}
+
+
+
+/* =========================================================
+   TRX LIST - FIX GAP BESAR (Sencha wrapper padding/height)
+   Letak paling bawah CSS file
+========================================================= */
+
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-inner,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-dataview-inner{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ✅ buang padding/margin/height default wrapper item */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-listitem,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-item,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-dataview-item{
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+/* ✅ INI selalu punca gap: innerhtml/body ada padding besar */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-innerhtml,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-item-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-listitem-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-item-body,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-body-el{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ✅ buang separator line (yang buat nampak macam ada ruang) */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-listitem::after,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-list-item::after,
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .x-dataview-item::after{
+  display: none !important;
+  content: none !important;
+}
+
+/* ✅ kawal gap ikut kau: set dekat sini */
+#FloatPanel_MembershipCardList_Upgrade_CardTransactionList .trxCard{
+  box-shadow: none !important;
+  margin: 0 0 -10px 0 !important;   /* <-- try 4px / 6px / 8px */
+}
+
+
+/* =========================================
+   GROUP HEADER - PREMIUM + BADGE (SINGLE LAYER)
+========================================= */
+
+/* neutralize semua wrapper Sencha supaya tak jadi 3 lapisan */
+.trxList .x-list-header,
+.trxList .x-list-group-title,
+.trxList .x-group-header,
+.trxList .x-list-header .x-innerhtml,
+.trxList .x-list-group-title .x-innerhtml,
+.trxList .x-group-header .x-innerhtml{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* header box custom (satu layer sahaja) */
+.trxGroupHdrInner{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin: 10px 10px 8px 10px;
+  padding: 10px 12px;
+
+  border-radius: 12px;
+  background: linear-gradient(180deg, #55209a, #3f146f) !important; /* premium purple */
+  border: 1px solid rgba(255,255,255,.10);
+
+  box-sizing:border-box;
+}
+
+/* dot kiri */
+.trxGroupDot{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  flex:0 0 auto;
+  background: rgba(255,255,255,.95) !important;
+  box-shadow:none !important;
+}
+
+/* text label */
+.trxGroupHdrLabel{
+  flex: 1;
+  min-width:0;
+
+  font-family: Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 900;
+  letter-spacing: .45px;
+  color: #fff !important;
+  text-transform: uppercase;
+  line-height: 1.2;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* badge count (16) */
+.trxGroupHdrBadge{
+  flex: 0 0 auto;
+
+  padding: 4px 9px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.22);
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color: #fff;
+
+  line-height: 1;
+}
+
+/* chevron kanan (optional, kalau nak) */
+.trxGroupHdrInner:after{
+  content:"";
+  width:8px;
+  height:8px;
+  border-right:2px solid rgba(255,255,255,.75);
+  border-bottom:2px solid rgba(255,255,255,.75);
+  transform: rotate(-45deg);
+  margin-left: 6px;
+  flex:0 0 auto;
+}
+
+
+
+
+/* === kill layer default header wrapper (supaya tak jadi 3 lapisan) === */
+.trxList .x-list-header,
+.trxList .x-list-group-title,
+.trxList .x-group-header,
+.trxList .x-list-header .x-innerhtml,
+.trxList .x-list-group-title .x-innerhtml,
+.trxList .x-group-header .x-innerhtml{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* === satu-satunya layer yg ada rupa premium === */
+.trxHdrWrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin: 10px 10px 8px 10px;
+  padding: 10px 12px;
+  padding-right: 40px;              /* bagi ruang caret default kanan */
+
+  border-radius: 12px;
+  background: linear-gradient(180deg, #55209a, #3f146f) !important;
+  border: 1px solid rgba(255,255,255,.10);
+  box-sizing:border-box;
+}
+
+/* dot */
+.trxHdrDot{
+  width:8px;height:8px;border-radius:999px;
+  background: rgba(255,255,255,.95) !important;
+  flex:0 0 auto;
+}
+
+/* label */
+.trxHdrLabel{
+  flex:1; min-width:0;
+  font-family: Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 900;
+  letter-spacing: .45px;
+  color:#fff !important;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* badge */
+.trxHdrBadge{
+  flex:0 0 auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.22);
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color:#fff !important;
+  line-height:1;
+}
+
+
+
+
+/* =========================================================
+   TRX GROUP HEADER - FORCE PADDING (CONFIRM TAK RAPAT)
+   Copy paste. Letak PALING BAWAH CSS file.
+========================================================= */
+
+/* 1) Force rupa + padding dekat WRAPPER header */
+.trxList.trxList .x-list-header,
+.trxList.trxList .x-list-group-title,
+.trxList.trxList .x-group-header{
+  /* ✅ padding text (kanan besar untuk ruang caret) */
+  padding: 12px 48px 12px 14px !important;
+
+  /* spacing luar */
+  margin: 10px 12px 8px 12px !important;
+
+  /* styling */
+  background: rgba(124,58,237,.08) !important;
+  border: 1px solid rgba(124,58,237,.12) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+
+  /* text style */
+  font-family: Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  letter-spacing: .45px !important;
+  text-transform: uppercase !important;
+  color: #111827 !important;
+  line-height: 1.2 !important;
+
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* 2) Kosongkan inner wrapper supaya tak override padding wrapper */
+.trxList.trxList .x-list-header .x-innerhtml,
+.trxList.trxList .x-list-group-title .x-innerhtml,
+.trxList.trxList .x-group-header .x-innerhtml{
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 3) Dot kecil kiri (optional premium) */
+.trxList.trxList .x-list-header:before,
+.trxList.trxList .x-list-group-title:before,
+.trxList.trxList .x-group-header:before{
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: rgba(124,58,237,.85);
+}
+
+/* 4) Soften caret/icon kanan (kalau wujud) */
+.trxList.trxList .x-list-header .x-icon-el,
+.trxList.trxList .x-list-group-title .x-icon-el,
+.trxList.trxList .x-group-header .x-icon-el{
+  opacity: .55 !important;
 }

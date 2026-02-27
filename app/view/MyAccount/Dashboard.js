@@ -4505,7 +4505,8 @@ itemTpl: new Ext.XTemplate(
  {
     xtype: 'container',
     width: '100%',
-    height:1250,
+    //height:1250,
+    height:1140,
     id:'containerCheckInMerchantPage',
     style: 'background-color: transparent;',
   // style: 'background:  #faf5ff;',
@@ -4517,15 +4518,15 @@ itemTpl: new Ext.XTemplate(
     },
     items:[
 
-   {
- xtype: 'container',
-    width: '100%',
-    height:45,
-    style: 'background: transparent;',
-        },
+//    {
+//  xtype: 'container',
+//     width: '100%',
+//     height:45,
+//     style: 'background: transparent;',
+//         },
         {
  xtype: 'container',
-    width: '100%',
+    width: '97%',
     height:1160,
       style: 'background-color: white;',
      id:'containerCheckInMerchantPage_Inner',
@@ -4539,19 +4540,19 @@ itemTpl: new Ext.XTemplate(
     items:[
 
      
-  {
- xtype: 'container',
-    width: '100%',
-    height:10,
-    style: 'background: transparent;',
-        },
+//   {
+//  xtype: 'container',
+//     width: '100%',
+//     height:10,
+//     style: 'background: transparent;',
+//         },
         {
             xtype: 'container',
             width: '100%',
             height:20,
         
            // margin: '0 0 0 0',
-           margin: '10 0 0 0',
+           margin: '0 0 0 0',
             // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
             //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
             style: 'background-color:transparent',
@@ -6104,8 +6105,8 @@ xtype: 'container',
                  {
                     
                   
-                    margin: '10 0 0 14',
-                   html: '<div     style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>Recently Active</b></div><br> <div style="margin:-24px 0px 0px 0px;font-size:11px;color:#6b7280;">See who’s been active recently</div>'
+                    margin: '10 0 0 24',
+                   html: '<div     style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>Recently Active Here</b></div><br> <div style="margin:-24px 0px 0px 0px;font-size:11px;color:#6b7280;">See who’s been active recently</div>'
            
                  },
                
@@ -18378,7 +18379,7 @@ function Dashboard_LoadLastCheckIn(){
                AppState.MainDashboard.MainDashboardAyohaRewardPointCheckIn = record.get('AyohaRewardPointCheckIn');
                AppState.MainDashboard.MainDashboardCheckInCount  = record.get('CheckInCount');
                AppState.MainDashboard.isMember  = record.get('isMember');
-
+               AppState.MainDashboard.EnterpriseAccNo  = record.get('EnterpriseAccNo');
              
     globalFloatPanelMerchantDetailPage_ID =record.get('ID');
     globalFloatPanelMerchantDetailPage_EnterpriseAccNo = record.get('EnterpriseAccNo');

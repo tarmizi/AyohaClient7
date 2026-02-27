@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaRewardPoint.AyohaRewardPointModel', {
     extend: 'Ext.data.Model',
-    config: {
+    //config: {
         fields: [
        'ID',               
       'SubscriberAccNo',
@@ -387,7 +387,7 @@ console.log(CampaignCode);
       'MembershipCardName',
       'PaymentNote'
         ]
-    }
+   // }
 });
 
 

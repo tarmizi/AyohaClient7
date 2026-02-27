@@ -1,28 +1,64 @@
 ﻿Ext.define('BuskartApp.store.MembershipCard.MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore', {
-    extend: 'Ext.data.Store',
-    //  alias: 'store.ResponderAlertGetByAcc',
-    config: {
-        model: 'BuskartApp.model.MembershipCard.MembershipCardMembershipsModel',
-        autoLoad: false,
+    // extend: 'Ext.data.Store',
+    // //  alias: 'store.ResponderAlertGetByAcc',
+    // config: {
+    //     model: 'BuskartApp.model.MembershipCard.MembershipCardMembershipsModel',
+    //     autoLoad: false,
 
-        proxy: {
+    //     proxy: {
 
-            type: 'ajax',
-            //   url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/GetAutoFenceTimerByID',
-            //  url: 'http://192.168.0.103:9019/FlatBill/FlatBillgetFlatBill',
-            url: GetAPIurl() + '/MembershipCardExtent/MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNo',
-            reader: {
-                type: 'json',
-                rootProperty: 'results',
-                totalProperty: 'total',
-                successProperty: 'success',
-                messageProperty: 'message'
-            },
+    //         type: 'ajax',
+    //         //   url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/GetAutoFenceTimerByID',
+    //         //  url: 'http://192.168.0.103:9019/FlatBill/FlatBillgetFlatBill',
+    //         url: GetAPIurl() + '/MembershipCardExtent/MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNo',
+    //         reader: {
+    //             type: 'json',
+    //             rootProperty: 'results',
+    //             totalProperty: 'total',
+    //             successProperty: 'success',
+    //             messageProperty: 'message'
+    //         },
 
 
 
+    //     }
+
+
+    // }
+});
+
+
+
+
+
+var _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore = Ext.create('Ext.data.Store', {
+
+    model: 'BuskartApp.model.MembershipCard.MembershipCardMembershipsModel',
+    id: '_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStoreID',
+    proxy: {
+        type: 'ajax',
+        url: GetAPIurl() + '/MembershipCardExtent/MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNo',
+        actionMethods: {
+            read: 'GET'
+        },
+        reader: {
+            type: 'json',
+            rootProperty: 'results',
+            totalProperty: 'total',
+            successProperty: 'success',
+            messageProperty: 'message'
         }
-
-
-    }
+    },
+    // listeners: {
+    //     load: function(store, records, successful, operation, eOpts) {
+    //         // After the store loads data successfully...
+    //         if (successful) {
+    //             // Add the special "Load More" record at the end.
+    //             // It only needs the 'isLoadMore' flag.
+    //             store.add({
+    //                 isLoadMore: true
+    //             });
+    //         }
+    //     }
+    // }
 });

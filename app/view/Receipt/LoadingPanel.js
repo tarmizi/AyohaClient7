@@ -178,11 +178,11 @@ function LoadingPanelHidex() {
 
 
 
-function LoadingPanelShow() {
-    Ext.Viewport.remove(_LoadingPanel);
-    this.overlay = Ext.Viewport.add(LoadingPanel()); // _GeofenceInfoPanel place in Geofence_fencingstatusAlert class.                         
-    // }
-    this.overlay.show();
+// function LoadingPanelShow() {
+//     Ext.Viewport.remove(_LoadingPanel);
+//     this.overlay = Ext.Viewport.add(LoadingPanel()); // _GeofenceInfoPanel place in Geofence_fencingstatusAlert class.                         
+//     // }
+//     this.overlay.show();
 
 
-}
+// }

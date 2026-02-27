@@ -309,6 +309,7 @@ function LoadingPanelHide() {
 
 
 function LoadingPanelShow(Icon,Msg) {
+    return;
     Ext.Viewport.remove(_LoadingPanel);
     this.overlay = Ext.Viewport.add(LoadingPanel()); // _GeofenceInfoPanel place in Geofence_fencingstatusAlert class.                         
     // }

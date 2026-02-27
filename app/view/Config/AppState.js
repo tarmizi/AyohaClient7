@@ -47,7 +47,8 @@ var AppState = {
         MainDashboardCheckInCount : null,
         MainDashboardBottomkMenuTabTag : null,
         MainDashboard_CheckInSuccess_VoucherCount : null,
-        isMember:null
+        isMember:null,
+        EnterpriseAccNo:null
       
     
     },

@@ -480,13 +480,34 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailShow(ID) {
 }
 
 function FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(ContestCode) {
-    AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestDetailHide()");
-    Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestDetail);
-    this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestDetail());
-    this.overlay.show();
-    //AddRoutePages(_FloatPanel_DashboardMerchantReward_MembershipContestDetail, "is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen");
-    LoadingPanelShow(getLoadingIcon(), 'Loading...');
-    Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipContestDetailID').setZIndex(330);
+    // AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipContestDetailHide()");
+    // Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipContestDetail);
+    // this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipContestDetail());
+    // this.overlay.show();
+    // //AddRoutePages(_FloatPanel_DashboardMerchantReward_MembershipContestDetail, "is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen");
+    // LoadingPanelShow(getLoadingIcon(), 'Loading...');
+    // Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipContestDetailID').setZIndex(330);
+
+
+
+
+    FloatPanel_DashboardMerchantReward_MembershipContestDetailCreateIfNeeded();
+    Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipContestDetailID').setZIndex(66);
+
+    _FloatPanel_DashboardMerchantReward_MembershipContestDetail.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_DashboardMerchantReward_MembershipContestDetail', function () {
+     
+        FloatPanel_DashboardMerchantReward_MembershipContestDetailHide(true);
+      });
+    }
+   
+
+
+
+
+
     is_FloatPanel_DashboardMerchantReward_MembershipContestDetailOpen = 'Y';
 
   
@@ -556,21 +577,36 @@ function FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMemb
            // alert(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestStatus)
         
             if (globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestStatus != 'New') {
-        
+
+
+
                 if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType=="Text"){
-                    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">View My Submitted Answer</div></div>');
-                }
-                if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType=="Picture"){
-                    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">View My Submitted Selfie</div></div>'); 
-                }
+                    // Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">View My Submitted Answer</div></div>');
+                     Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div class="ayohaMActions">' +
+                     '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();">View My Submitted Answer</button>' +        
+                     '</div>');
+                 }
+                 if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType=="Picture"){
+                    // Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">View My Submitted Selfie</div></div>'); 
+                     Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div class="ayohaMActions">' +
+                     '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();">View My Submitted Selfie</button>' +        
+                     '</div>');
+                 }
+        
+                // if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType=="Text"){
+                //     Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">View My Submitted Answer</div></div>');
+                // }
+                // if(globalFloatPanel_DashboardMerchantReward_MembershipContestDetail_ContestType=="Picture"){
+                //     Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipContestDetail_Register').setHtml('<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieFormShow_Edit();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">View My Submitted Selfie</div></div>'); 
+                // }
                 
             }
-            LoadingPanelHide();
+            //LoadingPanelHide();
         }
-        LoadingPanelHide();
+        //LoadingPanelHide();
 
     });
-    task.delay(700);
+    task.delay(100);
     
     
   

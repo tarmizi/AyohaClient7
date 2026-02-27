@@ -1,0 +1,131 @@
+/* ===== AYOHA PREMIUM BOTTOM NAV ===== */
+.ayohaBottomNav {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(246,244,255,.92) 100%) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  
+    border-top: 1px solid rgba(124,58,237,.18) !important;
+    box-shadow: 0 -10px 30px rgba(17,24,39,.10) !important;
+  }
+  
+  .ayohaBottomNav:before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:2px;
+    background: linear-gradient(90deg, rgba(124,58,237,0), rgba(124,58,237,.35), rgba(124,58,237,0));
+    pointer-events:none;
+  }
+  
+  .ayohaBottomNavScroll{
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom)) 10px;
+    background: transparent !important;
+  }
+  
+  /* each item */
+  .ayohaBottomNavItem{
+    width: 92px;
+    border-radius: 16px;
+    padding: 6px 8px;
+    margin: 0 6px;
+    background: transparent;
+    box-sizing: border-box;
+  }
+  
+  /* active state */
+  .ayohaBottomNavItem.is-active{
+    background: rgba(124,58,237,.10);
+    border: 1px solid rgba(124,58,237,.18);
+  }
+  
+  /* make Ext button label center (important for Modern) */
+  .ayohaBottomNav .x-button-label{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 !important;
+  }
+  
+  /* icon wrap (background-image icon) */
+  .ayohaBottomNavIconWrap{
+    width: 34px;
+    height: 34px;
+    border-radius: 14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  
+    background-color: rgba(124,58,237,.10);
+    box-shadow: 0 10px 22px rgba(124,58,237,.16);
+  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px 22px;
+  }
+  
+  .ayohaBottomNavItem.is-active .ayohaBottomNavIconWrap{
+    background-color: rgba(124,58,237,.16);
+    box-shadow: 0 12px 26px rgba(124,58,237,.22);
+  }
+  
+  /* label */
+  .ayohaBottomNavTxt{
+    margin-top: 4px;
+    text-align:center;
+    line-height: 1.05;
+    font-family: Arial, sans-serif;
+  }
+  
+  .ayohaBottomNavTxt .l1,
+  .ayohaBottomNavTxt .l2{
+    font-size: 8px;
+    font-weight: 800;
+    color: #6B7280;
+  }
+  
+  .ayohaBottomNavItem.is-active .ayohaBottomNavTxt .l1,
+  .ayohaBottomNavItem.is-active .ayohaBottomNavTxt .l2{
+    color: #6D28D9;
+    text-decoration: underline;
+  }
+
+
+
+
+  /* ✅ force button html (x-text-el) visible for our bottom nav buttons */
+/* pastikan body button center */
+.ayohaBottomNavBtn .x-body-el{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+  
+  /* guna icon element ExtJS (x-icon-el) sebagai bubble + image */
+  .ayohaBottomNavBtn .x-icon-el{
+    width:34px !important;
+    height:34px !important;
+    border-radius:14px !important;
+  
+    background-color:transparent !important;
+    box-shadow: 0 10px 22px rgba(124,58,237,.16) !important;
+  
+    /* ✅ JANGAN override background-image.
+       ExtJS akan set background-image inline bila guna config icon: 'url' */
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 22px 22px !important;
+  
+    display:block !important;
+  }
+  
+  /* buang glyph font-icon yang jadi '|' */
+  .ayohaBottomNavBtn .x-icon-el:before{
+    content:"" !important;
+  }
+  
+  /* active state */
+  .ayohaBottomNavItem.is-active .ayohaBottomNavBtn .x-icon-el{
+    background-color:transparent !important;
+    box-shadow: 0 12px 26px rgba(124,58,237,.22) !important;
+  }

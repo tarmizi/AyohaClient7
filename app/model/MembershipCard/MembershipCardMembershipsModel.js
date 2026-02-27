@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.MembershipCard.MembershipCardMembershipsModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
                  'ID',
       'MembershipCardCode',
@@ -39,5 +39,5 @@
       'MembershipRejectedDate',  
 
         ]
-    }
+    //}
 });

@@ -218,7 +218,7 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
                                                                    //style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 10px 0px 0px 10px;box-shadow: 5px 10px 18px #888888;',
                                                                    style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;',
     
-                                                                   height: 25,
+                                                                   height: 30,
                                                                    width: 125,
                                                                    // margin: '70 0 0 0',
                                                                    id: 'containerFloatPanel_AyohaCardManagement_PreviewCardHaiUser',
@@ -485,6 +485,7 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
                                                                   {
                                                                     id: 'htmlMyFloatPanel_AyohaCardManagement_EndDate_PreviewCard_ExpiredBlinking',
                                                                     hidden: true,
+                                                                    margin:'-6 0 0 0',
                                                                     cls: 'pcSmall pcBlink',
                                                                     html: '<div>Start Date: Loading...</div>'
                                                                   },

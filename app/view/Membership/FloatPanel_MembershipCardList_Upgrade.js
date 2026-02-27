@@ -12,7 +12,7 @@ var _FloatPanel_MembershipCardList_Upgrade_EnterpriseAccNo;
 var _FloatPanel_MembershipCardList_Upgrade_MembershipCode;
 var Index=0;
 var isFloatPanel_MembershipCardList_UpgradeOpen = 'N';
-
+var _AyohaSkipCarouselListenerOnce = false;
 var CarouselIndex = 0;
 
 var _FloatPanel_MembershipCardList_Upgrade_isFirstLoad = "N";
@@ -20,6 +20,42 @@ var _FloatPanel_MembershipCardList_Upgrade_isFirstLoad = "N";
 
 function FloatPanel_MembershipCardList_UpgradeCreateIfNeeded() {
     if (_FloatPanel_MembershipCardList_Upgrade && !_FloatPanel_MembershipCardList_Upgrade.destroyed) return;
+
+
+
+
+    function AyohaBottomMenuItem(cfg) {
+        return {
+          xtype: 'container',
+          id: cfg.containerId,
+          cls: 'ayohaBottomNavItem' + (cfg.active ? ' is-active' : ''),
+          layout: { type: 'vbox', pack: 'center', align: 'center' },
+          items: [
+            {
+              xtype: 'button',
+              id: cfg.btnId,
+              ui: 'plain',
+              width: 34,
+              height: 34,
+      
+              cls: 'ayohaBottomNavBtn',
+      
+              // ✅ guna icon config (ExtJS akan set background-image pada .x-icon-el)
+              icon: cfg.icon,
+      
+              handler: cfg.handler
+            },
+            {
+              xtype: 'component',
+              id: cfg.txtId,
+              cls: 'ayohaBottomNavTxt',
+              html:
+                '<div class="l1">' + cfg.line1 + '</div>' +
+                '<div class="l2">' + cfg.line2 + '</div>'
+            }
+          ]
+        };
+      }
 
 
     _FloatPanel_MembershipCardList_Upgrade =
@@ -62,95 +98,96 @@ function FloatPanel_MembershipCardList_UpgradeCreateIfNeeded() {
           },
 
         items: [
-            {
+//             {
 
-                xtype: 'container',
-                width: '100%',
-                docked: 'bottom',
-                height: 40,
-                //hidden:true,
-                // width: 40,
+//                 xtype: 'container',
+//                 width: '100%',
+//                 docked: 'bottom',
+//                 height: 40,
+//                 //hidden:true,
+//                 // width: 40,
 
-                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                //hidden: true,
-                //margin: '10 0 0 0',
-                id: 'containerFloatPanel_MembershipCardList_UpgradeBottom',
-                name: 'clickableContainerFloatPanel_MembershipCardList_UpgradeBottom',
-                //style: {
-                //    // background: '#D25959',
-                //    background: 'transparent',
-                //    // border: '2px'
-                //},
-                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                style: 'border-bottom:2px none #D25959;background-color:transparent',
-                // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #d3d3d3;',
-                layout: {
-                    type: 'fit',
-                    //pack: 'center',
-                    //align: 'center',
-                },
-                // hidden:true,
-                items:
-                       [
+//                 //  title: '<font size="3" color="white">Live Tracking Map</font>',
+//                 //hidden: true,
+//                 //margin: '10 0 0 0',
+//                 id: 'containerFloatPanel_MembershipCardList_UpgradeBottom',
+//                 name: 'clickableContainerFloatPanel_MembershipCardList_UpgradeBottom',
+//                 //style: {
+//                 //    // background: '#D25959',
+//                 //    background: 'transparent',
+//                 //    // border: '2px'
+//                 //},
+//                 //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+//                 style: 'border-bottom:2px none #D25959;background-color:transparent',
+//                 // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #d3d3d3;',
+//                 layout: {
+//                     type: 'fit',
+//                     //pack: 'center',
+//                     //align: 'center',
+//                 },
+//                 // hidden:true,
+//                 items:
+//                        [
 
-                            {
-                                //xtype: 'button',
-                                ////  align: 'stretch',
+//                             {
+//                                 //xtype: 'button',
+//                                 ////  align: 'stretch',
 
-                                //ui: 'plain',
-                                // width: '100%',
-                                margin:'2 0 0 0',
-                                height: 40,
-                                id: 'btnFloatPanel_MembershipCardList_Upgrade_GetMembershipCard',
-                                //hidden: true,
+//                                 //ui: 'plain',
+//                                 // width: '100%',
+//                                 margin:'2 0 0 0',
+//                                 height: 40,
+//                                 id: 'btnFloatPanel_MembershipCardList_Upgrade_GetMembershipCard',
+//                                 //hidden: true,
                               
-                                html: '<div class="blink_me"><button class="button3viewloyaltycard">Get Membership Card !!!</button></div>',
-                                //handler: function () {
-                                //    getMembershipCard();
-                                //    // FloatPanel_MembershipCardManagement_NewCardAdd_Save();
-                                //},
+//                                 html: '<div class="blink_me"><button class="button3viewloyaltycard">Get Membership Card !!!</button></div>',
+//                                 //handler: function () {
+//                                 //    getMembershipCard();
+//                                 //    // FloatPanel_MembershipCardManagement_NewCardAdd_Save();
+//                                 //},
 
 
-                            },
-
-
-
- {
-     xtype: 'button',
-     //  align: 'stretch',
-
-     ui: 'plain',
-     width: '100%',
-     height: 40,
-     id: 'btnFloatPanel_MembershipCardList_Upgrade_DeleteMembershipCard',
-     hidden: true,
-     // width: '80%',
-     //style: {
-     //    background: '#FA8072',
-     //},
-     // padding: '10px',
-     //  text: '<font size=3px color=white><center><b>Register</b></center></font>',
-     //text: '<div class="blink_me"><button class="button3viewloyaltycard">Get Membership Card</button></div>',
-     text: '<button class="button3Deleteviewloyaltycard">Delete Membership Card</button>',
-     handler: function () {
+//                             },
 
 
 
+//  {
+//      xtype: 'button',
+//      //  align: 'stretch',
 
-     },
-
-
- },
+//      ui: 'plain',
+//      width: '100%',
+//      height: 40,
+//      id: 'btnFloatPanel_MembershipCardList_Upgrade_DeleteMembershipCard',
+//      hidden: true,
+//      // width: '80%',
+//      //style: {
+//      //    background: '#FA8072',
+//      //},
+//      // padding: '10px',
+//      //  text: '<font size=3px color=white><center><b>Register</b></center></font>',
+//      //text: '<div class="blink_me"><button class="button3viewloyaltycard">Get Membership Card</button></div>',
+//      text: '<button class="button3Deleteviewloyaltycard">Delete Membership Card</button>',
+//      handler: function () {
 
 
 
 
+//      },
+
+
+//  },
 
 
 
-                       ]
 
-            },
+
+
+
+//                        ]
+
+//             },
+
             {
 
                 xtype: 'container',
@@ -228,760 +265,7 @@ function FloatPanel_MembershipCardList_UpgradeCreateIfNeeded() {
 
 
 
-            {
-
-                xtype: 'container',
-                width: '100%',
-                // width: 40,
-                docked: 'bottom',
-                height: 55,
-                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                //hidden: true,
-
-                id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottomOutter',
-                style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top: 1px solid grey;',
-
-               // width: 100% !important; height: 55px !important; background-image: url(&quot;resources/icons/border5.png&quot;); background-size: 100% 100%; border-top: 1px solid grey;
-                //style: {
-                //    // background: '#D25959',
-                //    background: 'transparent',
-                //    // border: '2px'
-                //},
-                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                layout: {
-                    type: 'hbox',
-                    pack: 'start',
-                    align: 'center',
-                },
-
-
-
-
-                // hidden:true,
-                items:
-                       [
-                           {
-                               xtype: 'container',
-                               id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottomInner',
-                               width: '100%',
-                               style: "background-color: transparent",
-                               height: 55,
-                               layout: {
-                                   type: 'hbox',
-                                   pack: 'center',
-                                   align: 'center',
-                               },
-                               scrollable: {
-                                   direction: 'horizontal',
-                                   directionLock: true,
-                                   indicators: false
-                               },
-                               items: [
-
-
-                                   {
-                                       xtype: 'container',
-                                       width: 490,
-                                       style: "background-color: transparent",
-                                       height: 55,
-                                       layout: {
-                                           type: 'hbox',
-                                           pack: 'center',
-                                           align: 'center',
-                                       },
-                                       items: [
-
-                                        {
-                                            xtype:'spacer',
-                                            width:10
-                                            },
-
-                                           {
-                                               xtype: 'container',
-                                               id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',
-                                               //width: '33%',
-                                               //height: 30,
-                                               margin: '0 0 0 0',
-                                               flex: 1,
-                                               style: "background-color: transparent",
-                                               //style: "background-color: #F35B57;",
-
-                                               layout: {
-                                                   type: 'vbox',
-                                                   pack: 'center',
-                                                   align: 'center'
-
-                                               },
-                                               items: [
-
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',
-                                                        //  badgeText: '1',
-                                                        margin: '2 0 0 0',
-
-                                                        height: 30,
-                                                        width: 30,
-                                                        html: '<img src="resources/icons/EntitleReward.png" width="24" height="24" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-
-                                                            MoveMembeshipCarousel(0);
-                                                           
-
-                                                         
-                                                        }
-                                                    },
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_MenuBottom_EntitleRewardTxt',
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'vbox',
-                                                            pack: 'center',
-                                                            align: 'center'
-
-                                                        },
-                                                        items: [
-                                                            {
-                                                                margin: '-5 0 0 0',
-                                                                id: 'htmlMembershipTxt',
-                                                               // html: '<font size=1 color=purple><b><u>Membership</u></b></font>'
-                                                               html:'<div style="color:purple;text-align: center;font-size:8px;width:100%;font-weight:bold"><u>Membership</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-20px 0px 0px 0px"><u>Privillage</u></div>',
-                                                            },
-                                                            {
-                                                                margin: '-12 0 0 0',
-                                                                id: 'htmlPrivillageTxt',
-                                                                hidden:true,
-                                                                html: '<font size=1 color=purple><b><u>Privillage</u></b></font>'
-                                                            },
-                                                        ]
-
-                                                    },
-
-
-                                               ]
-                                           },
-                                           {
-                                            xtype:'spacer',
-                                            width:10
-                                            },
-                                           {
-                                               xtype: 'container',
-                                               id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',
-                                               //width: '33%',
-                                               //height: 30,
-                                               margin: '0 0 0 0',
-                                               flex: 1,
-                                               style: "background-color: transparent",
-                                               //style: "background-color: #F35B57;",
-
-                                               layout: {
-                                                   type: 'vbox',
-                                                   pack: 'center',
-                                                   align: 'center'
-                                               },
-                                               items: [
-
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',
-                                                        //  badgeText: '1',
-                                                        margin: '2 0 0 0',
-
-                                                        height: 30,
-                                                        width: 30,
-                                                        html: '<img src="resources/icons/EnttileOutlet.png" style="width:24px;height:24px;margin:0px 0px 0px -5px">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                            MoveMembeshipCarousel(1);
-                                                           
-                                                        }
-                                                    },
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutletTxt',
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'vbox',
-                                                            pack: 'center',
-                                                            align: 'center'
-
-                                                        },
-                                                        items: [
-                                                            {
-                                                              //  margin: '-15 0 0 0',
-                                                                margin: '-5 0 0 0',                                                                
-                                                                width: '100%',
-                                                                id: 'htmlMembershipTxt02',
-                                                              html:'<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Entitle</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>',
-                                                            //  html: '<div style="font-size:10px;color:grey;width:100%;height:30px;background-color:transparent;text-align:center">Memberships Entitle Outlets</div>'
-                                                            },
-                                                            {
-                                                                margin: '-12 0 0 0',
-                                                                hidden:true,
-                                                                id: 'htmlEntitleOutletTxt',
-                                                                html: '<font size=1 color=grey>Outlets</font>'
-                                                            },
-                                                        ]
-
-                                                    },
-
-
-                                               ]
-                                           },
-{
-xtype:'spacer',
-width:10
-},
-
-                                           {
-                                               xtype: 'container',
-                                               id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStore',
-                                               //width: '33%',
-                                               //height: 30,
-                                               margin: '0 0 0 0',
-                                               flex: 1,
-                                               style: "background-color: transparent",
-                                               //style: "background-color: #F35B57;",
-
-                                               layout: {
-                                                   type: 'vbox',
-                                                   pack: 'end',
-                                                   align: 'center'
-
-                                               },
-                                               items: [
-
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStore',
-                                                        //  badgeText: '1',
-                                                        margin: '2 0 0 0',
-
-                                                        height: 30,
-                                                        width: 30,
-                                                        html: '<img src="resources/icons/AyohaStorePurple.png" style="width:24px;height:24px;margin:0px 0px 0px -5px">',
-                                                       // html: '<img src="resources/icons/AyohaStorePurple.png" width="22" height="22" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                           // FloatPanelMerchantDetailPage_AyohaStore();
-                                                            FloatPanel_MembershipCardList_Upgrade_AyohaStore();
-
-                                                        }
-                                                    },
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStoreTxt',
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'vbox',
-                                                            pack: 'start',
-                                                            align: 'center'
-
-                                                        },
-                                                        items: [
-                                                            {
-                                                                margin: '-5 0 0 0',
-                                                                width: '100%',
-                                                                id: 'htmlAyohaStoreTxt01',
-                                                                html:'<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>',
-                                                               // html: '<font size=1 color=grey>Ayoha</font>'
-                                                               // html: '<div style="font-size:10px;color:grey;width:100%;height:30px;background-color:transparent;text-align:center">Ayoha Store</div>'
-                                                            },
-                                                            {
-                                                                margin: '-12 0 0 0',
-                                                                hidden:true,
-                                                                //id: 'htmlTransactionTxt',
-                                                                html: '<font size=1 color=grey>Store</font>'
-                                                            },
-                                                        ]
-
-                                                    },
-
-
-                                               ]
-                                           },
-                                           {
-                                            xtype:'spacer',
-                                            width:10
-                                            },
-                                            
-                                           {
-                                               xtype: 'container',
-                                               id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',
-                                               //width: '33%',
-                                               //height: 30,
-                                               margin: '0 0 0 0',
-                                               flex: 1,
-                                               style: "background-color: transparent",
-                                               //style: "background-color: #F35B57;",
-
-                                               layout: {
-                                                   type: 'vbox',
-                                                   pack: 'center',
-                                                   align: 'center'
-
-                                               },
-                                               items: [
-
-                                                    {
-                                                        xtype: 'button',
-                                                        id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',
-                                                        //  badgeText: '1',
-                                                        margin: '2 0 0 0',
-
-                                                        height: 30,
-                                                        width: 30,
-                                                        html: '<img src="resources/icons/MembershipCardTransaction.png" style="width:24px;height:24px;margin:0px 0px 0px -5px">',
-                                                      //  html: '<img src="resources/icons/MembershipCardTransaction.png" width="26" height="26" alt="Company Name">',
-                                                        ui: 'plain',
-                                                        handler: function () {
-                                                            MoveMembeshipCarousel(2);
-                                                          
-
-
-                                                        }
-                                                    },
-                                                    {
-                                                        xtype: 'container',
-                                                        id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransactionTxt',
-                                                        width: '100%',
-                                                        layout: {
-                                                            type: 'vbox',
-                                                            pack: 'start',
-                                                            align: 'center'
-
-                                                        },
-                                                        items: [
-                                                            {
-                                                                margin: '-5 0 0 0',
-                                                                id: 'htmlCardTransactionTxt01',
-                                                                html:'<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>',
-                                                               // html: '<font size=1 color=grey>Card</font>'
-                                                            },
-                                                            {
-                                                                margin: '-12 0 0 0',
-                                                                hidden:true,
-                                                               // id: 'htmlTransactionTxt',
-                                                                html: '<font size=1 color=grey>Transaction</font>'
-                                                            },
-                                                        ]
-
-                                                    },
-
-
-                                               ]
-                                           },
-
-                                           {
-                                            xtype:'spacer',
-                                            width:10
-                                            },
-                                     {
-                                         xtype: 'container',
-                                         id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',
-                                         //width: '33%',
-                                         //height: 30,
-                                         margin: '0 0 0 0',
-                                         flex: 1,
-                                         style: "background-color: transparent",
-                                         //style: "background-color: #F35B57;",
-
-                                         layout: {
-                                             type: 'vbox',
-                                             pack: 'center',
-                                             align: 'center'
-
-                                         },
-                                         items: [
-
-                                              {
-                                                  xtype: 'button',
-                                                  id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',
-                                                  //  badgeText: '1',
-                                                                                              
-                                                  margin: '2 0 0 0',
-
-                                                  height: 30,
-                                                  width: 30,
-                                                  html: '<img src="resources/icons/MembershipCardDetail.png" style="width:24px;height:24px;margin:0px 0px 0px -5px">',
-                                               
-                                                  ui: 'plain',
-                                                  handler: function () {
-                                                      MoveMembeshipCarousel(3);
-                                                      
-                                                  }
-                                              },
-                                              {
-                                                  xtype: 'container',
-                                                  id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfoTxt',
-                                                  width: '100%',
-                                                  layout: {
-                                                      type: 'vbox',
-                                                      pack: 'center',
-                                                      align: 'center'
-
-                                                  },
-                                                  items: [
-                                                      {
-                                                          margin: '-5 0 0 0',
-                                                          id: 'htmlCardDetailTxt',
-                                                          html:'<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>',
-                                                        //  html: '<font size=1 color=grey>Card Detail</font>'
-                                                      },
-                                                      {
-                                                          margin: '-12 0 0 0',
-                                                          //id: 'htmlInfoTxt',
-                                                          hidden:true,
-                                                          html: '<font size=1 color=grey>Info</font>'
-                                                      },
-                                                  ]
-
-                                              },
-
-
-                                         ]
-                                     },
-                                     {
-                                        xtype:'spacer',
-                                        width:10
-                                        },
-
-                                     {
-                                         xtype: 'container',
-                                         id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',
-                                         //width: '33%',
-                                         //height: 30,
-                                        // hidden: true,
-                                         margin: '0 0 0 0',
-                                         flex: 1,
-                                         style: "background-color: transparent",
-                                         //style: "background-color: #F35B57;",
-
-                                         layout: {
-                                             type: 'vbox',
-                                             pack: 'center',
-                                             align: 'center'
-
-                                         },
-                                         items: [
-
-                                              {
-                                                  xtype: 'button',
-                                                  id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',
-                                                  //  badgeText: '1',
-                                                  margin: '2 0 0 0',
-
-                                                  height: 30,
-                                                  width: 30,
-                                                  html: '<img src="resources/icons/shakeHand01.png" style="width:24px;height:24px;margin:0px 0px 0px -5px">',
-                                                //  html: '<img src="resources/icons/shakeHand01.png" width="26" height="26" alt="Company Name">',
-                                                  ui: 'plain',
-                                                  handler: function () {
-
-                                                      // MoveMembeshipCarousel(4);
-                                                      FloatPanel_Membership_TermAndConditionShow();
-
-
-                                                  }
-                                              },
-                                              {
-                                                  xtype: 'container',
-                                                  id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndConditionTxt',
-                                                  width: '100%',
-                                                  layout: {
-                                                      type: 'vbox',
-                                                      pack: 'center',
-                                                      align: 'center'
-
-                                                  },
-                                                  items: [
-                                                      {
-                                                          margin: '-5 0 0 0',
-                                                          id: 'htmlTermAndConditionTxt',
-                                                          html:'<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>',
-                                                         // html: '<font size=1 color=grey>Terms &</font>'
-                                                      },
-                                                      {
-                                                          margin: '-12 0 0 0',
-                                                          //id: 'htmlTermAndConditionTxts',
-                                                          hidden:true,
-                                                          html: '<font size=1 color=grey>Condition</font>'
-                                                      },
-                                                  ]
-
-                                              },
-
-
-                                         ]
-                                     },
-
-
-
-                                     {
-                                         xtype: 'container',
-                                         id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFC',
-                                         //width: '33%',
-                                         //height: 30,
-                                         hidden:true,
-                                         margin: '0 0 0 0',
-                                         flex: 1,
-                                         style: "background-color: transparent",
-                                         //style: "background-color: #F35B57;",
-
-                                         layout: {
-                                             type: 'vbox',
-                                             pack: 'center',
-                                             align: 'center'
-
-                                         },
-                                         items: [
-
-                                              {
-                                                  xtype: 'button',
-                                                  id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFC',
-                                                  //  badgeText: '1',
-                                                  margin: '0 0 0 0',
-
-                                                  height: 36,
-                                                  width: 36,
-                                                  html: '<img src="resources/icons/NFCenabled.png" width="26" height="26" alt="Company Name">',
-                                                  ui: 'plain',
-                                                  handler: function () {
-
-                                                     // MoveMembeshipCarousel(4);
-
-
-
-                                                  }
-                                              },
-                                              {
-                                                  xtype: 'container',
-                                                  id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFCTxt',
-                                                  width: '100%',
-                                                  layout: {
-                                                      type: 'vbox',
-                                                      pack: 'center',
-                                                      align: 'center'
-
-                                                  },
-                                                  items: [
-                                                      {
-                                                          margin: '-15 0 0 0',
-                                                          id: 'htmlNFCTxt',
-                                                          html: '<font size=1 color=grey>NFC</font>'
-                                                      },
-                                                      {
-                                                          margin: '-12 0 0 0',
-                                                          id: 'htmlEnabledTxt',
-                                                          html: '<font size=1 color=grey>Enabled</font>'
-                                                      },
-                                                  ]
-
-                                              },
-
-
-                                         ]
-                                     },
-
-                                     {
-                                        xtype:'spacer',
-                                        width:10
-                                        },
-
-                                     {
-                                         xtype: 'container',
-                                         id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard',
-                                         //width: '33%',
-                                         //height: 30,
-                                         margin: '0 0 0 0',
-                                         flex: 1,
-                                         style: "background-color: transparent",
-                                         //style: "background-color: #F35B57;",
-
-                                         layout: {
-                                             type: 'vbox',
-                                             pack: 'center',
-                                             align: 'center'
-
-                                         },
-                                         items: [
-
-                                              {
-                                                  xtype: 'button',
-                                                  id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard',
-                                                  //  badgeText: '1',
-                                                 
-                                                  margin: '2 0 0 0',
-
-                                                  height: 30,
-                                                  width: 30,
-                                                  html: '<img src="resources/icons/CancelMembershipCard.png" style="width:24px;height:24px;margin:0px 0px 0px -5px">',
-                                                 
-                                                 
-                                                  ui: 'plain',
-                                                  handler: function () {
-
-                                                      MoveMembeshipCarousel(4);
-                                                     
-
-                                                    
-                                                  }
-                                              },
-                                              {
-                                                  xtype: 'container',
-                                                  id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCardTxt',
-                                                  width: '100%',
-                                                  layout: {
-                                                      type: 'vbox',
-                                                      pack: 'center',
-                                                      align: 'center'
-
-                                                  },
-                                                  items: [
-                                                      {
-                                                          margin: '-5 0 0 0',
-                                                          id: 'htmlUnsubscribeTxt',
-                                                          html:'<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Unsubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>',
-                                                        //  html: '<font size=1 color=grey>Unsubscribe</font>'
-                                                      },
-                                                      {
-                                                          margin: '-12 0 0 10',
-                                                          //id: 'htmlMembershipCardTxt',
-                                                          hidden:true,
-                                                          html: '<font size=1 color=grey>Membership Card</font>'
-                                                      },
-                                                  ]
-
-                                              },
-
-
-                                         ]
-                                     },
-
-
-                                         
-
-
-
-                                     {
-                                        xtype:'spacer',
-                                        width:10
-                                        },
-
-
-                                         
-
-
-
-
-
-
-
-
-
-
-                                       ]
-
-                                   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                               ]
-                           },
-
-
-
-
-
-
-
-
-                           {
-                               xtype: 'container',
-                               margin: '10 0 0 0',
-                               hidden: true,
-                               style: 'background-color: transparent;',
-                               //style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 40px 40px 40px 40px;box-shadow:inset 1px 0px 3px 3px #EEEDED ;',
-                               height: 80,
-                               width: '20%',
-                               // margin: '70 0 0 0',
-                               id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_GetMembershipCard',
-                               layout: {
-
-                                   type: 'vbox',
-                                   pack: 'start',
-                                   align: 'center'
-                               },
-                               items: [
-                                   {
-                                       xtype: 'container',
-                                       margin: '-40 0 0 -3',
-                                       // hidden: true,
-                                       //style: 'background-color: white;',
-                                       style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 40px 40px 40px 40px;box-shadow:inset 1px 0px 3px 3px #EEEDED ;',
-                                       height: 80,
-                                       width: 80,
-                                       // margin: '70 0 0 0',
-                                       id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_GetMembershipCardInner',
-                                       layout: {
-
-                                           type: 'vbox',
-                                           pack: 'center',
-                                           align: 'center'
-                                       },
-                                       items: [
-                                           {
-                                               xtype: 'button',
-                                               height: 80,
-                                               width: 80,
-                                               margin: '0 0 0 0',
-                                               id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_GetMembershipCard',
-                                               html: '<img src="resources/icons/MembershipcardPurple.png" width="45" height="45" alt="Company Name">',
-                                               //    html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid white;background: white;border-radius: 20px 20px 20px 20px;width:70px;height:70px" ><img src="resources/icons/picprofile.png" width="30" height="30" alt="Company Name"></div>',
-                                               ui: 'plain',
-                                               handler: function () {
-
-                                                   //   MovementHistoryMapPanelCheckInShow(GetCurrentUserAccountNo(), globalMovementcode);
-                                                   //  setupMovementMap(2);
-
-
-                                                 //  FloatPanel_AyohaCardManagement_StampSuccesAnimationShow();
-
-
-                                                   //Ext.getCmp('mainView').setActiveItem(16);
-                                                   //loadNotificationSummary();
-                                               }
-                                           },
-
-
-
-                                       ]
-                                   },
-                               ]
-                           },
-
-
-
-
-                       ]
-
-            },
+          
 
 
                     {
@@ -1041,12 +325,7 @@ width:10
 
                             },
                            
-                            //{
-                            //    xtype: 'container',
-                            //    style: 'background-color: transparent',
-                            //    width: '100%',
-                            //    height:5,
-                            //},
+                        
 
                             {
                                 xtype: 'container',
@@ -1137,7 +416,7 @@ width:10
     xtype: 'container',
     width: '100%',
     style: 'background-color:transparent',
-    height:20
+    height:10
 },
                             {
                                 xtype: 'container',
@@ -1225,6 +504,12 @@ width:25
                             },
 
                             {
+                                xtype: 'container',
+                                width: '100%',
+                                style: 'background-color:transparent',
+                                height:10
+                            },
+                            {
                                 xtype: 'carousel',
 
                                 //hidden: true,
@@ -1232,29 +517,32 @@ width:25
                                // style: 'background-color:#f7f7f7',
                                 style: 'background-color:white',
                                 width: '100%',
-                                height: '70%',
-                                indicator: true,
+                                height: '60%',
+                                indicator: false    ,
                                 listeners: {
 
-                                    //initialize: function (c) {
-                                    //    this.element.on({
-                                    //        swipe: function (e, node, options) {
-                                    //            if (e.direction == "left") {
-                                    //                swipeDirection = "Left";
-
-                                    //            } else {
-                                    //                swipeDirection = "Right";
-                                    //            }
-                                    //        }
-                                    //    });
-                                    //},
+                                  
                                     activeitemchange: function (container, newCard, oldCard, index) {
                                         // console.log('Current index:' + container.getActiveIndex());
                                         CarouselIndex = container.getActiveIndex();
-
+  // ✅ kalau event ni datang dari button, jangan repeat call
+  if (_AyohaSkipCarouselListenerOnce) {
+    _AyohaSkipCarouselListenerOnce = false; // reset
+    return;
+  }
+  
                                   
                                         if (_FloatPanel_MembershipCardList_Upgrade_isFirstLoad == "Y") {
+                                            
                                             MoveMembeshipCarousel(CarouselIndex);
+                                           AyohaBottomNav_SetActive(CarouselIndex);
+                                            // Ext.defer(function(){
+                                            //     var idx = carousel.getItems().indexOf(newCard);
+                                            //     if (idx < 0) idx = carousel.getActiveIndex();
+                                            //     CarouselIndex = idx;
+                                            //     AyohaBottomNav_SetActive(idx);
+                                            //   }, 30);
+
                                         }
 
                                       
@@ -1302,7 +590,7 @@ width:25
 variableHeights: false,
 itemConfig: { 
   style: 'padding:0 !important;margin:0 !important;width:100% !important;' 
-  //  style: 'padding-left:20px !important;padding-right:16px !important;margin:0 !important;width:100% !important;'
+ 
 },
                                                    
                                                       style: 'background:#fff !important;',
@@ -1321,107 +609,146 @@ itemConfig: {
                                                         }
                                                     },
                                                          
-                                                    // itemTpl:
-                                                    // '<div class="myContent" style="background:transparent;padding:6px 0;">' +
-                                                  
-                                                    //   // Card row
-                                                    //   '<div style="'
-                                                    // + 'display:flex;align-items:center;gap:10px;'
-                                                    // + 'width:100%;height:60px;'
-                                                    // + 'background:#fff;border-radius:14px;'
-                                                    // + 'padding:10px 12px;'
-                                                    // + 'box-shadow:0 6px 18px rgba(0,0,0,.06);'
-                                                    // + 'box-sizing:border-box;'
-                                                    // + '">' +
-                                                  
-                                                    //     // Icon
-                                                    //     '<div style="flex:0 0 38px;width:38px;height:38px;border-radius:10px;'
-                                                    //   + 'background-image:url({ModifiedCampaignType});'
-                                                    //   + 'background-size:cover;background-position:center;background-repeat:no-repeat;'
-                                                    //   + 'box-shadow:0 6px 14px rgba(0,0,0,.10);'
-                                                    //   + '"></div>' +
-                                                  
-                                                    //     // Text block
-                                                    //     '<div style="flex:1;min-width:0;line-height:1.15;">' +
-                                                    //       '<div style="'
-                                                    //     + 'font-family:Arial,sans-serif;'
-                                                    //     + 'font-size:14px;font-weight:800;'
-                                                    //     + 'color:#111827;'
-                                                    //     + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
-                                                    //     + '">' +
-                                                    //         '{ModifiedCampaignTypeShorted}' +
-                                                    //       '</div>' +
-                                                  
-                                                    //       '<div style="margin-top:4px;'
-                                                    //     + 'font-family:Arial,sans-serif;'
-                                                    //     + 'font-size:11px;font-weight:400;'
-                                                    //     + 'color:#6b7280;'
-                                                    //     + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
-                                                    //     + '">' +
-                                                    //         '{CampaignName} <span style="color:#9ca3af;">•</span> {ModifiedCountLoyaltyStamped}' +
-                                                    //       '</div>' +
-                                                    //     '</div>' +
-                                                  
-                                                    //   '</div>' +
-                                                    // '</div>',
-                                                  
-                                                    itemTpl:
-                                                    '<div class="myContent" style="'
-                                                  + 'background:transparent;'
-                                                 // + 'padding:6px 16px 6px 20px;'   // ✅ top right bottom left (left lebih besar)
-                                                  + 'padding:6px 12px;'                 // ✅ gap vertical + side padding (full width nice)
-                                                  //+ 'margin:0px 0px 0px 20px;'
-                                                  + 'margin-left:10px;'  // ✅ tolak card ke kanan
-                                                  + 'width:100%;'
-                                                  + 'box-sizing:border-box;'
-                                                  + '">' +
-                                                  
-                                                      '<div style="'
-                                                    + 'display:flex;align-items:center;gap:10px;'
-                                                    + 'width:100%;'                     // ✅ full width card
-                                                    + 'min-height:70px;'                // ✅ elak overlap bila font wrap / device lain
-                                                    + 'background:#fff;'
-                                                  //  + 'border-radius:14px;'
-                                                    + 'padding:10px 12px;'
-                                                    //+ 'box-shadow:0 6px 18px rgba(0,0,0,.06);'
-                                                   // + 'box-sizing:border-box;'
-                                                    + '">' +
-                                                  
-                                                        // icon
-                                                        '<div style="flex:0 0 40px;'
-                                                      + 'width:40px;height:40px;border-radius:12px;'
-                                                      + 'background-image:url({ModifiedCampaignType});'
-                                                      + 'background-size:cover;background-position:center;background-repeat:no-repeat;'
-                                                      + 'box-shadow:0 6px 14px rgba(0,0,0,.10);'
-                                                      + '"></div>' +
-                                                  
-                                                        // texts
-                                                        '<div style="flex:1;min-width:0;line-height:1.2;">' +
-                                                  
-                                                          '<div style="font-family:Arial,sans-serif;'
-                                                        + 'font-size:15px;font-weight:800;'
-                                                        + 'color:#111827;'
-                                                        + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
-                                                        + '{ModifiedCampaignTypeShorted}'
-                                                        + '</div>' +
-                                                  
-                                                          '<div style="margin-top:4px;'
-                                                        + 'font-family:Arial,sans-serif;'
-                                                        + 'font-size:11px;font-weight:400;'
-                                                        + 'color:#6b7280;'
-                                                        + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
-                                                        + '{CampaignName} <span style="color:#9ca3af;">•</span> {ModifiedCountLoyaltyStamped}'
-                                                        + '</div>' +
-                                                  
-                                                        '</div>' +
-                                                  
-                                                      '</div>' +
-                                                    '</div>',
-                                                  
-
-
-
-
+                                                    itemTpl: new Ext.XTemplate(
+                                                        // ✅ FULL WIDTH + GAP VERTICAL
+                                                        '<div class="myContent" style="'
+                                                      + 'background:transparent;'
+                                                      + 'width:100%;'
+                                                      + 'box-sizing:border-box;'
+                                                      + 'padding:0 14px;'          // side spacing kiri/kanan
+                                                      + 'margin:0 0 12px 0;'       // ✅ gap vertical antara item
+                                                      + '">' +
+                                                      
+                                                          // ✅ CARD FULL WIDTH
+                                                          '<div style="'
+                                                        + 'display:flex;align-items:center;gap:12px;'
+                                                        + 'width:100%;min-height:86px;'
+                                                        + 'background:#fff;'
+                                                        + 'border-radius:18px;'
+                                                        + 'border:1px solid rgba(124,58,237,.14);'
+                                                        + 'box-shadow:0 10px 26px rgba(17,24,39,.06);'
+                                                        + 'padding:12px 12px 12px 10px;'
+                                                        + 'position:relative;'
+                                                        + 'box-sizing:border-box;'
+                                                        + '">' +
+                                                      
+                                                            // left accent bar
+                                                            '<div style="'
+                                                          + 'width:6px;align-self:stretch;border-radius:999px;'
+                                                          + 'background:{[this.getAccent(values.ModifiedCampaignTypeShorted)]};'
+                                                          + '"></div>' +
+                                                      
+                                                            // icon bubble
+                                                            '<div style="'
+                                                          + 'flex:0 0 44px;width:44px;height:44px;border-radius:14px;'
+                                                          + 'background:{[this.getBubble(values.ModifiedCampaignTypeShorted)]};'
+                                                          + 'display:flex;align-items:center;justify-content:center;'
+                                                          + 'box-shadow:inset 0 1px 0 rgba(255,255,255,.85);'
+                                                          + '">' +
+                                                              '<div style="'
+                                                            + 'width:28px;height:28px;border-radius:10px;'
+                                                            + 'background-image:url({ModifiedCampaignType});'
+                                                            + 'background-size:cover;background-position:center;background-repeat:no-repeat;'
+                                                            + '"></div>' +
+                                                            '</div>' +
+                                                      
+                                                            // text area (3 lines)
+                                                            '<div style="flex:1;min-width:0;line-height:1.2;">' +
+                                                      
+                                                              // LINE 1: title
+                                                              '<div style="display:flex;align-items:center;gap:10px;">' +
+                                                                '<div style="'
+                                                              + 'font-family:Arial,sans-serif;'
+                                                              + 'font-size:15px;font-weight:900;'
+                                                              + 'color:#111827;'
+                                                              + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
+                                                              + '">{ModifiedCampaignTypeShorted}</div>' +
+                                                              '</div>' +
+                                                      
+                                                              // LINE 2: microcopy
+                                                              '<div style="margin-top:4px;'
+                                                            + 'font-family:Arial,sans-serif;'
+                                                            + 'font-size:12.5px;font-weight:700;'
+                                                            + 'color:#4B5563;'
+                                                            + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
+                                                            + '">{CampaignName}</div>' +
+                                                      
+                                                              // LINE 3: badge (moved here)
+                                                              '<tpl if="this.hasBadge(values)">' +
+                                                                '<div style="margin-top:7px;display:flex;align-items:center;gap:8px;min-width:0;">' +
+                                                                  '<div style="{[this.getBadgeStyle(values)]}">'
+                                                                    + '{[this.getBadgeText(values)]}'
+                                                                  + '</div>' +
+                                                                '</div>' +
+                                                              '</tpl>' +
+                                                      
+                                                            '</div>' +
+                                                      
+                                                            // chevron
+                                                            '<div style="color:#9CA3AF;font-size:24px;line-height:1;flex:0 0 auto;padding-left:2px;">›</div>' +
+                                                      
+                                                          '</div>' +
+                                                        '</div>',
+                                                      {
+                                                        getAccent: function (t) {
+                                                          t = (t || '').toLowerCase();
+                                                          if (t.indexOf('stamp') > -1) return '#7C3AED';
+                                                          if (t.indexOf('discount') > -1) return '#22C55E';
+                                                          if (t.indexOf('contest') > -1) return '#F59E0B';
+                                                          if (t.indexOf('event') > -1) return '#3B82F6';
+                                                          if (t.indexOf('point') > -1) return '#EC4899';
+                                                          return '#7C3AED';
+                                                        },
+                                                      
+                                                        getBubble: function (t) {
+                                                          t = (t || '').toLowerCase();
+                                                          if (t.indexOf('stamp') > -1) return 'rgba(124,58,237,.12)';
+                                                          if (t.indexOf('discount') > -1) return 'rgba(34,197,94,.12)';
+                                                          if (t.indexOf('contest') > -1) return 'rgba(245,158,11,.14)';
+                                                          if (t.indexOf('event') > -1) return 'rgba(59,130,246,.12)';
+                                                          if (t.indexOf('point') > -1) return 'rgba(236,72,153,.12)';
+                                                          return 'rgba(124,58,237,.12)';
+                                                        },
+                                                      
+                                                        getBadgeBg: function (t) {
+                                                          t = (t || '').toLowerCase();
+                                                          if (t.indexOf('discount') > -1) return 'rgba(34,197,94,.12)';
+                                                          if (t.indexOf('contest') > -1) return 'rgba(245,158,11,.16)';
+                                                          if (t.indexOf('event') > -1) return 'rgba(59,130,246,.12)';
+                                                          if (t.indexOf('point') > -1) return 'rgba(236,72,153,.12)';
+                                                          return 'rgba(124,58,237,.10)';
+                                                        },
+                                                      
+                                                        hasBadge: function (v) {
+                                                          return !!(v && v.ModifiedCountLoyaltyStamped && String(v.ModifiedCountLoyaltyStamped).trim());
+                                                        },
+                                                      
+                                                        getBadgeText: function (v) {
+                                                          return v.ModifiedCountLoyaltyStamped;
+                                                        },
+                                                      
+                                                        // ✅ badge auto cantik walau text panjang (contoh Entitled 40% discount...)
+                                                        getBadgeStyle: function (v) {
+                                                          var t = v.ModifiedCampaignTypeShorted || '';
+                                                          var accent = this.getAccent(t);
+                                                          var bg = this.getBadgeBg(t);
+                                                          var text = (v.ModifiedCountLoyaltyStamped || '').toString();
+                                                          var isLong = text.length > 22;
+                                                      
+                                                          return [
+                                                            'max-width:100%;',
+                                                            'padding:6px 10px;',
+                                                            'background:' + bg + ';',
+                                                            'color:' + accent + ';',
+                                                            'font-weight:900;',
+                                                            'font-size:12px;',
+                                                            'box-sizing:border-box;',
+                                                            isLong
+                                                              ? 'border-radius:12px;white-space:normal;line-height:1.15;'
+                                                              : 'border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
+                                                          ].join('');
+                                                        }
+                                                      }),
 
                                                 
                                                     height: '100%',
@@ -1469,16 +796,19 @@ itemConfig: {
                                                             //var StampCampaignName = records.get('StampCampaignName');
                                                             //var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
                                                             //var CountStampCardRowShow = records.get('CountStampCardRowShow');
-                                                            localStorage.setItem('StampCampaignCode', CampaignCode);
+                                                            
+                                                            
+                                                            
+                                                            // localStorage.setItem('StampCampaignCode', CampaignCode);
 
-                                                            localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
-                                                            localStorage.setItem('CountStampCardRowShow', Stamp);
+                                                            // localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
+                                                            // localStorage.setItem('CountStampCardRowShow', Stamp);
                                                              
                                                       
 
-                                                            FloatPanel_ScannedMerchantHide();
+                                                          //  FloatPanel_ScannedMerchantHide();
 
-                                                         
+                                                         //alert(MembershipTag)
                                                             if (MembershipTag == 'YES') {
 
 
@@ -1494,26 +824,28 @@ itemConfig: {
                                                                     Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>' + CountLoyaltyStamped + '</b></font>');
                                                                 }
                                                                 if (CampaignType == "Point Reward Loyalty Card") {
-                                                                    LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                  //  LoadingPanelShow(getLoadingIcon(), 'Loading....');
                                                                     FloatLoyaltyCardPointShow(CampaignName, CampaignCode, EnterpriseLogo, EnterpriseName, EnterpriseAccNo, EndDate, isRequiredStartEndDate, isCampaignExpired);
                                                                    // FloatLoyaltyCardPointShow(StampCampaignName, StampCampaignCode, EnterprisesLogo, EnterpriseName, EnterpriseAccNo, EndDate, isRequiredStartEndDate, PointisCampaignExpired);
                                                                 }
                                                                 if (CampaignType == "Membership Card Discount") {
-                                                                    LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                  //  LoadingPanelShow(getLoadingIcon(), 'Loading....');
                                                                     FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
                                                                 }
                                                                 if (CampaignType == "Membership Card Contest") {
-                                                                    LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                   // LoadingPanelShow(getLoadingIcon(), 'Loading....');
                                                                     FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
                                                                    // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
                                                                 }
                                                                 if (CampaignType == "Membership Card Event") {
-                                                                    LoadingPanelShow(getLoadingIcon(), 'Loading....');
-                                                                    //FloatPanel_DashboardMerchantReward_MembershipEventDetailShow(EnterpriseLogo, EnterpriseName, EventCoverPhoto, EventName, EventStartDate_Day, EventStartDate_Month, EventStartTime, EventEndDate_Day, EventEndDate_Month, EventEndTime, EventLocationName, ModifiedWidth, EventDescription, EventLocationCoordinate, EventUrlTicket, EventCode, EnterpriseAccNo, RespondStatus,ID);
+                                                                   // LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                   // FloatPanel_DashboardMerchantReward_MembershipEventDetailShow(EnterpriseLogo, EnterpriseName, EventCoverPhoto, EventName, EventStartDate_Day, EventStartDate_Month, EventStartTime, EventEndDate_Day, EventEndDate_Month, EventEndTime, EventLocationName, ModifiedWidth, EventDescription, EventLocationCoordinate, EventUrlTicket, EventCode, EnterpriseAccNo, RespondStatus,ID);
+                                                                   //alert(CampaignCode)
+                                                                   
                                                                     FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMembershipCardList_Upgrade(CampaignCode,EnterpriseLogo, EnterpriseName);
+                                                                   // FloatPanel_DashboardMerchantReward_MembershipEventDetailShow
                                                                    
-                                                                   
-                                                                    // FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
+//FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
                                                                    // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
                                                                 }
                                                                // 
@@ -1644,39 +976,55 @@ itemConfig: {
                                  layout: {
                                      type: 'vbox',
                                      pack: 'start',
-                                     align: 'left'
+                                     align: 'center'
 
                                  },
                                  items: [
                                      {
-                                         xtype: 'list',
-                                         //flex:1,
-                                         height: '100%',
-                                        // store: 'MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore',
-                                        store:_DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
-                                         id: 'FloatPanel_MembershipCardList_Upgrade_EnterpriseEntitledList',
-                                         mode: 'SINGLE',
-                                         //  grouped: true,
-                                         disableSelection: true,
-                                         style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                         scrollable: {
-                                             direction: 'vertical',
-                                             indicators: {
-                                                 y: {
-                                                     autoHide: true
-                                                 },
-                                                 x: {
-                                                     autoHide: true
-                                                 }
-                                             }
-                                         },
-                                         itemTpl: '<div class="myContent"  style="background-color:white;width:104%">' +
-                                                     //'<table style="border-collapse:collapse;border-spacing:10;width:99%;background-color:white;" ><thead><tr><th style="background-color:transparent;border-radius: 10px 0px 0px 10px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;font-color:white;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal" rowspan="2"><img src="{EnterpriseLogoPath}"style="width: 60px; height: 60px; margin-top: 5px; border:1px none #A2CDF5; border-radius: 50%; max-width:100px; " /></th><th style="background-color:transparent;border-color:transparent;border-right:1px none grey;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;color:black;overflow:hidden;padding:5px 5px;text-align:left;vertical-align:top;word-break:normal" rowspan="2"><font size=3><b>{EnterpriseName}</b></font><br>{EnterpriseAddress}<br><br>Current Campaign:RAMADHAN 2021</div><br>Start:01/10/2020<div style="width:100%;text-align:right;margin:-16px 0px 0px 0px">End:01/10/2021</div></th></tr><tr></tr></thead></table>' +
-                                                      '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:3px 0px 0px -13px;" ><thead><tr><th style="background-color:transparent;border-radius: 0px 0px 0px 0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;font-color:white;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal" rowspan="2"><img src="{EnterpriseLogo}"style="width: 80px; height: 80px; margin-top: 5px; border:1px none #A2CDF5; border-radius: 50%; max-width:100px; " /></th><th style="background-color:transparent;border-color:transparent;border-right:1px none grey;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:5px 5px;text-align:left;vertical-align:top;word-break:normal" rowspan="2"><font size=3><b>{EnterpriseName}</b></font><br><div style="width:100%;text-align:left;margin:-3px 0px 0px 0px"><font size=1><b>({EnterpriseRegistrationNo})-{EnterpriseType}</b></font></div><br><div style="width:100%;text-align:left;margin:-15px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">{EnterpriseAddress}<br>Phone No:{EnterprisePhoneNo}<br>Email:{EnterpriseEmail}</div></div></th></tr><tr></tr></thead></table>' +
+                                        xtype: 'list',
+                                        id: 'FloatPanel_MembershipCardList_Upgrade_EnterpriseEntitledList',
+                                        cls: 'enterpriseList',
+                                      
+                                        // full height/width
+                                        flex: 1,            // ✅ paling selamat kalau parent vbox/hbox
+                                        width: '95%',
+                                      
+                                        store: _DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
+                                        mode: 'SINGLE',
+                                        disableSelection: true,
+                                      
+                                        style: 'background-color:#fff;',
+                                      
+                                        scrollable: {
+                                          direction: 'vertical',
+                                          indicators: {
+                                            y: { autoHide: true },
+                                            x: { autoHide: true }
+                                          }
+                                        },
+                                      
+                                        itemTpl:
+                                          '<div class="enterpriseCard">' +
+                                            '<div class="enterpriseRow">' +
+                                      
+                                              '<div class="enterpriseLogo" style="background-image:url({EnterpriseLogo});"></div>' +
+                                      
+                                              '<div class="enterpriseInfo">' +
+                                                '<div class="enterpriseName">{EnterpriseName}</div>' +
+                                                '<div class="enterpriseMeta">({EnterpriseRegistrationNo}) - {EnterpriseType}</div>' +
+                                      
+                                                '<div class="enterpriseDetails">' +
+                                                  '{EnterpriseAddress}<br>' +
+                                                  '<span class="enterpriseLabel">Phone:</span> {EnterprisePhoneNo}<br>' +
+                                                  '<span class="enterpriseLabel">Email:</span> {EnterpriseEmail}' +
+                                                '</div>' +
+                                              '</div>' +
+                                      
+                                            '</div>' +
+                                          '</div>',
+                                      
 
-
-                                                        '</div>',
-                                         width: '100%',
+                                      
                                          listeners: {
                                              itemsingletap: function (list, idx, target, records, evt) {
 
@@ -1701,121 +1049,216 @@ itemConfig: {
                                  {
                                      xtype: 'container',
                                      id: 'containerFloatPanel_MembershipCardList_Upgrade_CardTransaction',
-                                     style: ' background-color: transparent',
-                                    // height: '95%',
+                                     style: 'background-color: transparent',
+                                     height: '100%',
                                      width: '100%',
-                                     layout: {
-                                         type: 'vbox',
-                                         pack: 'start',
-                                         align: 'left'
+                                     layout: { type: 'vbox', pack: 'start', align: 'left' },
 
-                                     },
+
+
+
+
+                                    //  style: ' background-color: transparent',
+                                    // // height: '95%',
+                                    //  width: '100%',
+                                    //  layout: {
+                                    //      type: 'vbox',
+                                    //      pack: 'start',
+                                    //      align: 'center'
+
+                                    //  },
                                      items: [
-                                         {
+                                      // {
+                                      //   xtype: 'list',
+                                      //   id: 'FloatPanel_MembershipCardList_Upgrade_CardTransactionList',
+                                      //   height: '100%',
+                                      //   width: '100%',
+                                      //   store: _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore,
+                                      //   mode: 'SINGLE',
+                                      //   cls: 'ayohaPointHistoryList',   // ✅ tambah                                
+                                      //   style: 'background-color: #fff !important;',
+                                      //   disableSelection: true,
+                                      //   grouped: true,
+              
+                                      //   scrollable: {
+                                      //     direction: 'vertical',
+                                      //     indicators: {
+                                      //       y: { autoHide: true },
+                                      //       x: { autoHide: true }
+                                      //     }
+                                      //   },
+                                      //   deferEmptyText: false,
+                                      //   emptyText:
+                                      //     '<div class="ayohaEmptyWrap">' +
+                                      //       '<div class="ayohaEmptyCard">' +
+                                      //         '<div class="ayohaEmptyIcon">' +
+                                      //           '<img src="resources/icons/HistoryPurple01.png" style="width:44px;height:44px;" />' +
+                                      //         '</div>' +
+                                      //         '<div class="ayohaEmptyTitle">No Point History Yet</div>' +
+                                      //         '<div class="ayohaEmptyDesc">You doesn’t have any Point Collection/Redeemed history right now. Please check again later.</div>' +
+                                      //       '</div>' +
+                                      //     '</div>',
+                                      //     itemTpl: 
+                                      //     '<div class="myContent">' +
+                                      //       '<table style="width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;background:transparent;margin:0;">' +
+                                      //         '<colgroup>' +
+                                      //           '<col style="width:80%;">' +
+                                      //           '<col style="width:20%;">' +
+                                      //         '</colgroup>' +
+                                      //         '<tbody>' +
+                                      //           '<tr>' +
+                                      //             '<td style="padding:0;vertical-align:top;font-family:Arial,sans-serif;font-size:14px;font-weight:normal;overflow-wrap:anywhere;word-break:break-word;">' +
+                                      //               '{AyohaPointType}<br>{CampaignName}<br>' +
+                                      //               '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div><br>' +
+                                      //               '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{CreatedBy}</div>' +
+                                      //             '</td>' +
+                                      //             '<td style="padding:0;vertical-align:middle;text-align:right;font-family:Arial,sans-serif;font-size:14px;font-weight:normal;white-space:nowrap;">' +
+                                      //               '{ModifiedTypeCRDBExtent}' +
+                                      //             '</td>' +
+                                      //           '</tr>' +
+                                      //         '</tbody>' +
+                                      //       '</table>' +
+                                      //     '</div>'
+                                      
+                                          
+        
+                                      // },
+
+                                        {
+                                            xtype: 'list',
+                                            id: 'FloatPanel_MembershipCardList_Upgrade_CardTransactionList',
+                                            height: '100%',
+                                            width: '100%',
+                                          //  cls: 'trxList',   // ✅ tambah                                
+                                            style: 'background-color: #fff !important;',
+                                            disableSelection: true,
+                                            grouped: true,
+                  
+                                            scrollable: {
+                                              direction: 'vertical',
+                                              indicators: {
+                                                y: { autoHide: true },
+                                                x: { autoHide: true }
+                                              }
+                                            },
+                                            deferEmptyText: false,
+                                         
+                                           
+                                            store: _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore,
+                                          
+                                            mode: 'SINGLE',
+                                            disableSelection: true,
+                                          
+                                          
+                                          
+                                            itemTpl:
+                                              '<div class="trxCard">' +
+                                                '<div class="trxTop">' +
+                                                  '<div class="trxType">{AyohaPointType}</div>' +
+                                                '</div>' +
+                                                '<div class="trxMain">' +
+                                                  '<div class="trxLeft">' +
+                                                    '<div class="trxCampaign">{CampaignName}</div>' +
+                                                    '<div class="trxDatetime">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div>' +
+                                                  '</div>' +
+                                                  '<div class="trxRight">' +
+                                                    '<div class="trxAmount">{ModifiedTypeCRDBExtent}</div>' +
+                                                  '</div>' +
+                                                '</div>' +
+                                              '</div>',
+                                          
+                                            emptyText:
+                                              '<div class="trxEmpty">' +
+                                                '<div class="trxEmptyTitle">No Transactions</div>' +
+                                                '<div class="trxEmptySub">Your transaction history will appear here.</div>' +
+                                              '</div>'
+                                          }
 
 
-                                             xtype: 'list',
-                                             // height: '64%',
-                                             // height: '100%',
-                                             // height: 200,
-                                             //   flex: 2,
-                                             store: 'AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore',
-                                             id: 'FloatPanel_MembershipCardList_Upgrade_CardTransactionList',
-                                             mode: 'SINGLE',
-                                             disableSelection: true,
-                                             grouped: true,
-                                             // disableSelection: true,
-
-                                             style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                             scrollable: {
-                                                 direction: 'vertical',
-                                                 indicators: {
-                                                     y: {
-                                                         autoHide: true
-                                                     },
-                                                     x: {
-                                                         autoHide: true
-                                                     }
-                                                 }
-                                             },
-                                             itemTpl: '<div class="myContent">' +
-
-
-                                                                     '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;"><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{AyohaPointType}</div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:1px 0px 0px 0px;"><b>{CampaignName}</b></div><br><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-16px 0px 0px 0px;">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div></td><td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right">{ModifiedTypeCRDBExtent}</div></td></tr></table>' +
-
-                                             '</div>',
-                                             emptyText: '<div class="myContent">No Transactions</div>',
-                                             width: '100%',
-                                             // height: 600,
-                                             // height: '100%',
-
-                                             listeners: {
-
-
-                                                 itemdoubletap: function (dataview, index, target, record, e, eOpts) {
-
-
-                                                 },
-
-                                                 itemsingletap: function (dataview, index, target, record, e, eOpts) {
-
-                                                 }
-                                             }
 
 
 
+//                                          {
+
+                                          
 
 
 
-                                         },
-                                         //{
-                                         //    xtype: 'list',
-                                         //    height: '100%',
-                                         //    // store: 'LoyaltyStampLoadBySubscriberAccNoStore',
-                                         //    store:'LoyaltyStampLoadBySubscriberAccNoAndMembershipCardCodeStore',
-                                         //    id: 'FloatPanel_MembershipCardList_Upgrade_StampHistoryList',
-                                         //    mode: 'SINGLE',
-                                         //    grouped: true,
-                                         //    disableSelection: true,
-                                         //    itemTpl: '<div class="myContent">' +
+//                                              xtype: 'list',
+// flex:1,
+//                                              // height: '64%',
+//                                              // height: '100%',
+//                                              // height: 200,
+//                                              //   flex: 2,
+//                                           //   store: 'AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore',
+//                                              id: 'FloatPanel_MembershipCardList_Upgrade_CardTransactionList',
+//                                              mode: 'SINGLE',
+//                                              disableSelection: true,
+//                                              grouped: true,
+//                                              // disableSelection: true,
 
-                                         //    //  '<table style="border-collapse:collapse;border-spacing:0;margin:2px 0px 0px 0px;table-layout: fixed; width: 100%; height:20px;" class="tg"><colgroup><col style="width: 78%"><col style="width: 22%"></colgroup><thead><tr><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</th><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal">{LastStampBy}</th></tr></thead></table>' +
-                                         //     '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</div>' +
+//                                              style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+//                                              scrollable: {
+//                                                  direction: 'vertical',
+//                                                  indicators: {
+//                                                      y: {
+//                                                          autoHide: true
+//                                                      },
+//                                                      x: {
+//                                                          autoHide: true
+//                                                      }
+//                                                  }
+//                                              },
+//                                              itemTpl:
+//                                              '<div class="trxCard">' +
+                                           
+//                                                '<div class="trxTop">' +
+//                                                  '<div class="trxType">{AyohaPointType}</div>' +
+//                                                '</div>' +
+                                           
+//                                                '<div class="trxMain">' +
+//                                                  '<div class="trxLeft">' +
+//                                                    '<div class="trxCampaign">{CampaignName}</div>' +
+//                                                    '<div class="trxDatetime">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div>' +
+//                                                  '</div>' +
+                                           
+//                                                  '<div class="trxRight">' +
+//                                                    '<div class="trxAmount">{ModifiedTypeCRDBExtent}</div>' +
+//                                                  '</div>' +
+//                                                '</div>' +
+                                           
+//                                              '</div>',
+                                           
+//                                            emptyText:
+//                                              '<div class="trxEmpty">' +
+//                                                '<div class="trxEmptyTitle">No Transactions</div>' +
+//                                                '<div class="trxEmptySub">Your transaction history will appear here.</div>' +
+//                                              '</div>',
+//                                             //  width: '100%',
+//                                             //  height:'100%',
+//                                              // height: 600,
+//                                              // height: '100%',
+
+//                                              listeners: {
+
+
+//                                                  itemdoubletap: function (dataview, index, target, record, e, eOpts) {
+
+
+//                                                  },
+
+//                                                  itemsingletap: function (dataview, index, target, record, e, eOpts) {
+
+//                                                  }
+//                                              }
 
 
 
-                                         //      '</div>',
-                                         //    width: '100%',
-                                         //    listeners: {
-                                         //        itemsingletap: function (list, idx, target, records, evt) {
-
-                                         //            var StampedCampaignCode = records.get('StampedCampaignCode');
-                                         //            var EnterpriseAccNo = records.get('EnterpriseAccNo');
-                                         //            var StartDate = records.get('StartDate');
-                                         //            var EndDate = records.get('EndDate');
-                                         //            var SubscriberAccNo = records.get('SubscriberAccNo');
-                                         //            var EnterpriseName = records.get('EnterpriseName');
-                                         //            var StampRuleRemarks = records.get('StampRuleRemarks');
-                                         //            var isStampRulePopUp = records.get('isStampRulePopUp');
-                                         //            var StampCampaignName = records.get('StampCampaignName');
-                                         //            var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
-                                         //            var CountStampCardRowShow = records.get('CountStampCardRowShow');
-                                         //            localStorage.setItem('StampCampaignCode', StampedCampaignCode);
-
-                                         //            localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
-                                         //            localStorage.setItem('CountStampCardRowShow', CountStampCardRowShow);
-                                         //            //alert(StampRuleRemarks); alert(isStampRulePopUp);
-
-                                         //            FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow);
 
 
-                                         //        },
-                                         //        deselect: function (list, records) {
 
-                                         //        }
-                                         //    },
-
-                                         //},
+//                                          },
+                                       
 
                                      ]
 
@@ -1843,52 +1286,121 @@ itemConfig: {
                                            //  height: 480,
                                              id: 'FloatPanel_MembershipCardList_Upgrade_CardDetails',
                                              // store: 'LoyaltyStampLoadBySubscriberAccNoStore',
-                                             store: 'MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore',                                            
+                                          //   store: 'MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore',                                            
                                              mode: 'SINGLE',
-                                             style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                            // grouped: true,
+                                             flex: 1,
+                                            width: '100%',
+                                            style: 'background:#fff; padding:0; margin:0;',
+                                          
                                              disableSelection: true,
-                                             indicators: {
-                                                y: {
-                                                    autoHide: true
-                                                },
-                                                x: {
-                                                    autoHide: true
-                                                }
-                                            },
-                                             itemTpl: '<div class="myContent">' +
+                                             scrollable: {
+                                                direction: 'vertical',
+                                                indicators: { y: { autoHide: true }, x: { autoHide: true } }
+                                              },
 
-                                             //  '<table style="border-collapse:collapse;border-spacing:0;margin:2px 0px 0px 0px;table-layout: fixed; width: 100%; height:20px;" class="tg"><colgroup><col style="width: 78%"><col style="width: 22%"></colgroup><thead><tr><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</th><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal">{LastStampBy}</th></tr></thead></table>' +
-                                              '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Membership Card Name</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardName}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Level</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardType}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFee}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees Payment Cycle</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFeePaymentCycle}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Expiry (Month)</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{StrExpiredDate}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">is Required Approval?</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{isRequiredApproval}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{CreatedDate}</div>' +
-                                               //'<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
-                                               //'<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipDate}</div>' +
-                                                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Method</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipByMethod}</div>' +
-                                                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Date</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembrshipApprovalDate}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval By</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalBy}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Status</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalStatus}</div>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Paid Fees Amount</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{ReceivedAmount}</div>' +
-                                                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Remarks</div><br>' +
-                                               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{Remarks}</div>' +
-                                             '</div>',
-                                             width: '100%',
+
+
+
+                                            itemTpl:
+                                            '<div class="mcDetailCard">' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Membership Card Name</div>' +
+                                                '<div class="mcValue">{MembershipCardName}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Card Level</div>' +
+                                                '<div class="mcValue">{MembershipCardType}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Card Fees</div>' +
+                                                '<div class="mcValue">{MembershipCardFee}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Card Fees Payment Cycle</div>' +
+                                                '<div class="mcValue">{MembershipCardFeePaymentCycle}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Card Expiry (Month)</div>' +
+                                                '<div class="mcValue">{StrExpiredDate}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Required Approval?</div>' +
+                                                '<div class="mcValue">{isRequiredApproval}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Registration Date</div>' +
+                                                '<div class="mcValue">{CreatedDate}</div>' +
+                                              '</div>' +
+                                          
+                                            //   '<div class="mcDetailRow">' +
+                                            //     '<div class="mcLabel">Registration/Request Method</div>' +
+                                            //     '<div class="mcValue">{MembershipByMethod}</div>' +
+                                            //   '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Approval Date</div>' +
+                                                '<div class="mcValue">{MembrshipApprovalDate}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Approval By</div>' +
+                                                '<div class="mcValue">{MembershipApprovalBy}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Approval Status</div>' +
+                                                '<div class="mcValue">{MembershipApprovalStatus}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow">' +
+                                                '<div class="mcLabel">Paid Fees Amount</div>' +
+                                                '<div class="mcValue">{ReceivedAmount}</div>' +
+                                              '</div>' +
+                                          
+                                              '<div class="mcDetailRow mcDetailRowLast">' +
+                                                '<div class="mcLabel">Approval Remarks</div>' +
+                                                '<div class="mcValue">{Remarks}</div>' +
+                                              '</div>' +
+                                          
+                                            '</div>',
+
+
+                                            //  itemTpl: '<div class="myContent">' +
+                                            //   '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Membership Card Name</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardName}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Level</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardType}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFee}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees Payment Cycle</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFeePaymentCycle}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Expiry (Month)</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{StrExpiredDate}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">is Required Approval?</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{isRequiredApproval}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{CreatedDate}</div>' +                                               
+                                            //     '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Method</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipByMethod}</div>' +
+                                            //     '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Date</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembrshipApprovalDate}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval By</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalBy}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Status</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalStatus}</div>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Paid Fees Amount</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{ReceivedAmount}</div>' +
+                                            //     '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Remarks</div><br>' +
+                                            //    '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{Remarks}</div>' +
+                                            //  '</div>',
+                                         
                                              listeners: {
                                                  itemsingletap: function (list, idx, target, records, evt) {
 
@@ -1928,11 +1440,285 @@ itemConfig: {
                         ]
                     },
 
+                    {
+                        xtype: 'container',
+                        width: '100%',
+                        docked: 'bottom',
+                        height: 65,
+                        id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottomOutter',
+                      
+                        // ✅ ganti style border5.png -> CSS premium
+                        cls: 'ayohaBottomNav',
+                      
+                        layout: 'fit',
+                      
+                        items: [
+                          {
+                            xtype: 'container',
+                            id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottomInner',
+                            width: '100%',
+                            cls: 'ayohaBottomNavScroll',
+                            style: 'background-color: transparent;',
+                            height: 65,
+                      
+                            scrollable: {
+                              direction: 'horizontal',
+                              directionLock: true,
+                              indicators: false
+                            },
+                      
+                            layout: { type: 'hbox', pack: 'start', align: 'center' },
+                      
+                            items: [
+                      
+                              AyohaBottomMenuItem({
+                                active: true,
+                                containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',
+                                btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',
+                                txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_MenuBottom_EntitleRewardTxt',
+                                icon: 'resources/icons/EntitleReward.png',                               
+                                line1: 'Membership',
+                                line2: 'Privillage',
+                                handler: function () {
+                                    _AyohaSkipCarouselListenerOnce = true;  
+                                  MoveMembeshipCarousel(0);
+                                  AyohaBottomNav_SetActive(0);     // ikut index
+                                }
+                              }),
+                      
+                              AyohaBottomMenuItem({
+                                containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',
+                                btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',
+                                txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutletTxt',
+                                icon: 'resources/icons/EnttileOutlet.png',                                
+                                line1: 'Entitle',
+                                line2: 'Outlets',
+                                handler: function () {
+                                    _AyohaSkipCarouselListenerOnce = true;  
+                                  MoveMembeshipCarousel(1);
+                                  AyohaBottomNav_SetActive(1);     // ikut index
+                                }
+                              }),     
+                              AyohaBottomMenuItem({
+                                containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',
+                                btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',
+                                txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransactionTxt',
+                                icon: 'resources/icons/MembershipCardTransaction.png',
+                                line1: 'Card',
+                                line2: 'Transactions',
+                                handler: function () {
+                                    _AyohaSkipCarouselListenerOnce = true;  
+                                  MoveMembeshipCarousel(2);
+                                  AyohaBottomNav_SetActive(2);     // ikut index
+                                }
+                              }),
+                      
+                              AyohaBottomMenuItem({
+                                containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',
+                                btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',
+                                txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfoTxt',
+                                icon: 'resources/icons/MembershipCardDetail.png',
+                                line1: 'Card',
+                                line2: 'Details',
+                                handler: function () {
+                                    _AyohaSkipCarouselListenerOnce = true;  
+                                  MoveMembeshipCarousel(3);
+                                  AyohaBottomNav_SetActive(3);     // ikut index
+                                }
+                              }),
+
+                      
+                              AyohaBottomMenuItem({
+                                containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',
+                                btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',
+                                txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndConditionTxt',
+                                icon: 'resources/icons/shakeHand01.png',
+                                line1: 'Term &',
+                                line2: 'Conditions',
+                                handler: function () {
+                                 
+                                  AyohaBottomNav_SetActive(4); 
+                                  FloatPanel_Membership_TermAndConditionShow();
+                                }
+                              }),
+                              AyohaBottomMenuItem({
+                                containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard',
+                                btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard',
+                                txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCardTxt',
+                                icon: 'resources/icons/CancelMembershipCard.png',
+                                line1: 'Unsubscribe',
+                                line2: 'Membership',
+                                handler: function () {
+                                    _AyohaSkipCarouselListenerOnce = true;  
+                                  MoveMembeshipCarousel(4);
+                                  AyohaBottomNav_SetActive(5);     // ikut index
+                                }
+                              }),
+                              // NFC (hidden, kekal)
+                              {
+                                xtype: 'container',
+                                id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFC',
+                                hidden: true,
+                                cls: 'ayohaBottomNavItem',
+                                layout: { type: 'vbox', pack: 'center', align: 'center' },
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFC',
+                                        ui: 'plain',
+                                        width: 34,
+                                        height: 34,
+                                        cls: 'ayohaBottomNavBtn',
+                                        icon: 'resources/icons/NFCenabled.png'
+                                      },
+                                  {
+                                    xtype: 'component',
+                                    id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFCTxt',
+                                    cls: 'ayohaBottomNavTxt',
+                                    html: '<div class="l1">NFC</div><div class="l2">Enabled</div>'
+                                  }
+                                ]
+                              },
+                      
+                            
+                      
+                            ]
+                          }
+                        ]
+                      }
 
 
 
-
-
+        // {
+        //     xtype: 'container',
+        //     docked: 'bottom',
+        //     height: 60,
+        //     width: '100%',
+        //     id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottomOutter',
+          
+        //     // ✅ ganti inline style border5.png -> guna css premium
+        //     cls: 'ayohaBottomNav',
+          
+        //     layout: 'fit',
+          
+        //     items: [
+        //       {
+        //         xtype: 'container',
+        //         id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottomInner',
+        //         cls: 'ayohaBottomNavScroll',
+          
+        //         scrollable: {
+        //           direction: 'horizontal',
+        //           directionLock: true,
+        //           indicators: false
+        //         },
+          
+        //         layout: { type: 'hbox', pack: 'start', align: 'center' },
+                
+          
+        //         // ✅ item menu (no more spacer & width 490)
+        //         items: [
+                  
+        //           AyohaBottomMenuItem({
+        //             active: true,
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_MenuBottom_EntitleRewardTxt',
+        //             icon: 'resources/icons/EntitleReward.png',
+                   
+        //             line1: 'Membership',
+        //             line2: 'Privillage',
+        //             handler: function () { MoveMembeshipCarousel(0); }
+        //           }),
+          
+        //           AyohaBottomMenuItem({
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutletTxt',
+        //             icon: 'resources/icons/EnttileOutlet.png',
+        //             line1: 'Entitle',
+        //             line2: 'Outlets',
+        //             handler: function () { MoveMembeshipCarousel(1); }
+        //           }),
+          
+        //           AyohaBottomMenuItem({
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStore',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStore',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStoreTxt',
+        //             icon: 'resources/icons/AyohaStorePurple.png',
+        //             line1: 'Ayoha',
+        //             line2: 'Store',
+        //             handler: function () { FloatPanel_MembershipCardList_Upgrade_AyohaStore(); }
+        //           }),
+          
+        //           AyohaBottomMenuItem({
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransactionTxt',
+        //             icon: 'resources/icons/MembershipCardTransaction.png',
+        //             line1: 'Card',
+        //             line2: 'Transactions',
+        //             handler: function () { MoveMembeshipCarousel(2); }
+        //           }),
+          
+        //           AyohaBottomMenuItem({
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfoTxt',
+        //             icon: 'resources/icons/MembershipCardDetail.png',
+        //             line1: 'Card',
+        //             line2: 'Details',
+        //             handler: function () { MoveMembeshipCarousel(3); }
+        //           }),
+          
+        //           AyohaBottomMenuItem({
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndConditionTxt',
+        //             icon: 'resources/icons/shakeHand01.png',
+        //             line1: 'Term &',
+        //             line2: 'Conditions',
+        //             handler: function () { FloatPanel_Membership_TermAndConditionShow(); }
+        //           }),
+          
+        //           // NFC hidden (kekal hidden)
+        //           {
+        //             xtype: 'container',
+        //             hidden: true,
+        //             id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFC',
+        //             cls: 'ayohaBottomNavItem',
+        //             layout: { type: 'vbox', pack: 'center', align: 'center' },
+        //             items: [
+        //               {
+        //                 xtype: 'button',
+        //                 id: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFC',
+        //                 ui: 'plain',
+        //                 width: 34,
+        //                 height: 34,
+        //                 html: '<div class="ayohaBottomNavIconWrap"><img src="resources/icons/NFCenabled.png" /></div>'
+        //               },
+        //               {
+        //                 xtype: 'component',
+        //                 id: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_NFCTxt',
+        //                 cls: 'ayohaBottomNavTxt',
+        //                 html: '<div class="l1">NFC</div><div class="l2">Enabled</div>'
+        //               }
+        //             ]
+        //           },
+          
+        //           AyohaBottomMenuItem({
+        //             containerId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard',
+        //             btnId: 'btnFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard',
+        //             txtId: 'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCardTxt',
+        //             icon: 'resources/icons/CancelMembershipCard.png',
+        //             line1: 'Unsubscribe',
+        //             line2: 'Membership',
+        //             handler: function () { MoveMembeshipCarousel(4); }
+        //           })
+        //         ]
+        //       }
+        //     ]
+        //   }
 
 
 
@@ -1987,9 +1773,6 @@ itemConfig: {
 
 
 
-
-
-
 //function FloatPanel_MembershipCardList_UpgradeShow(ID) {
 //var MembershipTag;
 function FloatPanel_MembershipCardList_UpgradeShow(MembershipCardCode, EnterpriseAccountNo) {
@@ -2009,7 +1792,7 @@ function FloatPanel_MembershipCardList_UpgradeShow(MembershipCardCode, Enterpris
     //alert(EnterpriseHQAccountNo);
     //alert(EnterpriseAccountNo);
    // Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_GetMembershipCard').setHidden(false);
-    Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
+   // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
    // Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_DeleteMembershipCard').setHidden(true);
     
     _FloatPanel_MembershipCardList_Upgrade_EnterpriseAccNo = EnterpriseAccountNo;
@@ -2356,6 +2139,8 @@ function FloatPanel_MembershipCardList_UpgradeShow_MyMembershipCard_FromScannedQ
 var globalOpenMembershipCardList_Upgrade_From;
 
 function FloatPanel_MembershipCardList_UpgradeAdjustHeight() {
+
+    return;
     var y = parseInt(screen.height);
     var x = parseInt(window.innerHeight);
 
@@ -2366,7 +2151,7 @@ function FloatPanel_MembershipCardList_UpgradeAdjustHeight() {
 
 
     if (globalOpenMembershipCardList_Upgrade_From == "FloatPanel_MembershipCardList_MyMembershipCard") {
-        Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
+       // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
         Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 7);
     }
     if (globalOpenMembershipCardList_Upgrade_From == "FloatPanel_RewardStoreMembershipCard")
@@ -2375,26 +2160,26 @@ function FloatPanel_MembershipCardList_UpgradeAdjustHeight() {
         console.log(globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed);
         if (globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed == "NO") {
             Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 1);
-            Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
+           // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
         }
         if (globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed == "YES") {
             console.log(globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed);
             Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 7);
-            Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
+          //  Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
         }
     }
     if (globalOpenMembershipCardList_Upgrade_From == "FloatPanel_MerchantDetailPage") {
        
         if (globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed == "NO") {
             Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 1);
-            Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
+           // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
             disabledBottomButton();
             MembershipTag = 'NO';
         }
         if (globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed == "YES") {
             console.log(globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed);
             Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 7);
-            Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);           
+            //Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);           
             MembershipTag = 'YES';
         }
     }
@@ -2406,14 +2191,14 @@ function FloatPanel_MembershipCardList_UpgradeAdjustHeight() {
     if (globalOpenMembershipCardList_Upgrade_From == "DashboardMain") {
         if (globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed == "NO") {
             Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 1);
-            Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
+           // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(false);
             disabledBottomButton();
             MembershipTag = 'NO';
         }
         if (globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed == "YES") {
             console.log(globalFloatPanel_MembershipCardList_UpgradeShow_FromAyohaMerchant_isMembershipCardSubscribed);
             Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 7);
-            Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);           
+           // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);           
             MembershipTag = 'YES';
         }
       
@@ -2423,11 +2208,11 @@ function FloatPanel_MembershipCardList_UpgradeAdjustHeight() {
 
 
     if (globalOpenMembershipCardList_Upgrade_From == "FloatPanel_AyohaStore_MembershipCardUsed") {
-        Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
+      //  Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
         Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 7);
     }
     if (globalOpenMembershipCardList_Upgrade_From == "FloatPanel_AyohaStore_MembershipCardBeingUsed") {
-        Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
+      //  Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
         Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID').setHeight(x + 7);
     }
     Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CarouselEntitleReward_EntitleEnterprise').setHeight(newHeights);
@@ -3271,6 +3056,8 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardCampaingEntitledLoa
 function FloatPanel_MembershipCardList_Upgrade_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(MembershipCode, EnterpriseAccountNo) {
    // Ext.getStore('MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore').removeAll();
 
+
+
    if (MembershipCode) {
    _DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore.getProxy().setExtraParam('MembershipCardCode', MembershipCode);
    _DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore.getProxy().setExtraParam('EnterpriseHQAccNo', EnterpriseAccountNo);
@@ -3279,12 +3066,12 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardEnterprisesEntitled
    _DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore.load({
        callback: function (records, operation, success) {
            if (success && records.length > 0) {
-               console.log('Store loaded successfully, total records: ' + records.length);
+             //  console.log('Store loaded successfully, total records: ' + records.length);
    
               
            } else {
-               console.error('Failed to load store data or no record found.');
-               LoadingPanelHide();
+             //  console.error('Failed to load store data or no record found.');
+              // LoadingPanelHide();
            }
        }
    });
@@ -3339,18 +3126,25 @@ function MembershipCardDelete() {
 
     };
    
-    var _value = Ext.Ajax.request({
+    Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
+
+        // url: GetAPIurl() + '/Memberships/MembershipsDelete',
+
+        // dataType: "json",
+        // data: JSON.stringify(obj),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
+
 
         url: GetAPIurl() + '/Memberships/MembershipsDelete',
-
-        dataType: "json",
-        data: JSON.stringify(obj),
+        method: 'POST',                 // ✅ betul
+        jsonData: obj,                 // ✅ auto encode JSON + set body
         headers: {
-            "Content-Type": "application/json; charset=utf-8"
+          'Content-Type': 'application/json; charset=utf-8'
         },
-
         success: function (result, request) {
 
             //console.log(result.responseText);
@@ -3360,9 +3154,9 @@ function MembershipCardDelete() {
 
             if (data.success == "true") {
 
-                swalFireSuccess("Delete Membership Card Success!");
+                //swalFireSuccess("Delete Membership Card Success!");
                 FloatPanel_MembershipCardList_MyMembershipCard_MembershipsLoadBySubscriberAccNoStore();
-                FloatPanel_MembershipCardList_UpgradeHide();
+                FloatPanel_MembershipCardList_UpgradeHide(false);
                 //  Load_FloatPanel_AyohaEnterpriseAccount_AyohaEnterprisesUserLoadByEnterpriseHQAccNoStore();
 
               //  Load_FloatPanel_AyohaCardManagement_EditCard_StampCampaignEnterprisesLoadByStampCampaignCodeStore();
@@ -3393,31 +3187,77 @@ function getMembershipCard() {
 }
 
 
+
+var AYOHA_BOTTOMNAV_ITEMS = [
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EntitleReward',     // 0
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_EnttileOutlet',     // 1
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_AyohaStore',        // 2
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardTransaction',   // 3
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_CardDetailsInfo',   // 4
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_TermAndCondition',  // 5
+    'containerFloatPanel_MembershipCardList_Upgrade_MenuBottom_DeleteCard'         // 6 (kalau guna)
+  ];
+  
+//   function AyohaBottomNav_SetActive(index){
+ 
+//     alert('AyohaBottomNav_SetActive:'+index)
+
+//     for (var i = 0; i < AYOHA_BOTTOMNAV_ITEMS.length; i++) {
+//       var cmp = Ext.getCmp(AYOHA_BOTTOMNAV_ITEMS[i]);
+//       if (!cmp) continue;
+  
+//       // buang active dari semua
+//       cmp.removeCls('is-active');
+  
+//       // set active untuk selected
+//       if (i === index) cmp.addCls('is-active');
+//     }
+//   }
+
+
+
+
+  function AyohaBottomNav_SetActive(idx){
+    var nav = Ext.getCmp('containerFloatPanel_MembershipCardList_Upgrade_MenuBottomInner');
+    if (!nav) return;
+  
+    // ambil item nav yang memang dalam container ni sahaja
+    var navItems = nav.query('container[cls~=ayohaBottomNavItem]');
+    navItems = navItems.filter(function(it){ return !it.getHidden(); });
+  
+    navItems.forEach(function(it){ it.removeCls('is-active'); });
+  
+    var target = navItems[idx];
+    if (target) target.addCls('is-active');
+  }
+
+
 function MoveMembeshipCarousel(Idx) {
-   
+   var EntAccNo=AppState.MainDashboard.EnterpriseAccNo;
     if (Idx == 0) {
         Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CarouselEntitleReward_EntitleEnterprise').setActiveItem(0);
         FloatPanel_MembershipCardList_Upgrade_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore(_FloatPanel_MembershipCardList_Upgrade_MembershipCode);
-        Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:purple;text-align: center;font-size:8px;width:100%;font-weight:bold"><u>Membership</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-20px 0px 0px 0px"><u>Privillage</u></div>');       
-        Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Entitle</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
-        Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
+       // Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:purple;text-align: center;font-size:8px;width:100%;font-weight:bold"><u>Membership</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-20px 0px 0px 0px"><u>Privillage</u></div>');       
+      //  Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Entitle</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
+        //Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
         Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_EntitiledReward').setHtml('<div style="width:100%;text-align:center;color:purple;font-family: Arial; font-size:13px;font-weight:bold;"><u>Membership Privillage</u></div>');
         if (MembershipTag == 'NO') {
             return;
         }
-        Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
-        Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
-        Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
-        Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
+        // Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
+        // Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
+        // Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
+        // Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
       
     }
     if (Idx == 1) {
-        Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CarouselEntitleReward_EntitleEnterprise').setActiveItem(1);
-        FloatPanel_MembershipCardList_Upgrade_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(_FloatPanel_MembershipCardList_Upgrade_MembershipCode, _FloatPanel_MembershipCardList_Upgrade_EnterpriseAccNo);
-        Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_EntitiledReward').setHtml('<div style="width:100%;text-align:center;color:purple;font-family: Arial; font-size:13px;font-weight:bold;"><u>Entitle Outlets</u></div>');
-        Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
-        Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:bold"><u>Entitle</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Outlets</u></div>');
-        Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
+       Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CarouselEntitleReward_EntitleEnterprise').setActiveItem(1);
+      
+       FloatPanel_MembershipCardList_Upgrade_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(_FloatPanel_MembershipCardList_Upgrade_MembershipCode, EntAccNo);
+       // Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_EntitiledReward').setHtml('<div style="width:100%;text-align:center;color:purple;font-family: Arial; font-size:13px;font-weight:bold;"><u>Entitle Outlets</u></div>');
+       // Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
+       // Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:bold"><u>Entitle</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Outlets</u></div>');
+      //  Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
 
 
 
@@ -3425,10 +3265,10 @@ function MoveMembeshipCarousel(Idx) {
         if (MembershipTag == 'NO') {
             return;
         }
-         Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
-         Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
-         Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
-         Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
+        //  Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
+        //  Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
+        //  Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
+        //  Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
        
        
        
@@ -3446,15 +3286,15 @@ function MoveMembeshipCarousel(Idx) {
             return;
         }
         Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CarouselEntitleReward_EntitleEnterprise').setActiveItem(2); 
-        Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_EntitiledReward').setHtml('<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;"><u>Membership Card Transactions</u></div>');     
+        // Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_EntitiledReward').setHtml('<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;"><u>Membership Card Transactions</u></div>');     
         FloatPanel_MembershipCardList_Upgrade_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore();
-        Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px"><u>Card</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Transactions</u></div>');
-        Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
-        Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
-        Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
-        Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
-        Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:normal">Entitle</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
-        Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
+        // Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px"><u>Card</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Transactions</u></div>');
+        // Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
+        // Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
+        // Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
+       // Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
+       // Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:normal">Entitle</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
+       // Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
 
 
 
@@ -3480,13 +3320,13 @@ function MoveMembeshipCarousel(Idx) {
 
         Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CarouselEntitleReward_EntitleEnterprise').setActiveItem(3);
      
-        Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
-        Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px"><u>Card</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Details</u></div>');
-        Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
-        Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
-        Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
-        Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:normal">Entitle</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
-        Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
+        // Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
+        // Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px"><u>Card</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Details</u></div>');
+        // Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
+        // Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">UnSubscribe</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Membership</div>');
+       // Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
+       // Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:normal">Entitle</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
+       // Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
 
 
 
@@ -3502,14 +3342,48 @@ function MoveMembeshipCarousel(Idx) {
         if (MembershipTag == 'NO') {
             return;
         }
+
+
+       
+        ShowConfirmUnsubscribe_Membership();
+        return;
+
+
+
+
+        
+
+
+
+
+
+
+        // ExtJS 7 Modern: confirm dialog (equivalent to Swal.fire)
+Ext.Msg.show({
+  title: 'Confirm Unsubscribe',
+  message:
+    'Unsubscribing from this membership will affect your current points, stamps, and privilege card.<br><br>' +
+    'You will no longer be able to access this card.<br><br>' +
+    '<b>Please think carefully before proceeding.</b>',
+  buttons: [
+    { text: 'Cancel', itemId: 'cancel' },
+    { text: 'Yes, Unsubscribe', itemId: 'yes' }
+  ],
+  // optional icon: 'warning' (depends on theme/build)
+  fn: function (btnId) {
+    if (btnId === 'yes') {
+      //MembershipCardDelete();
+    }
+  }
+});
  
-        Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
-        Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
-        Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
-        Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px"><u>UnSubscribe</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Membership</u></div>');
-        Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
-        Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:normal">Entitle</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
-        Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
+        // Ext.getCmp('htmlCardTransactionTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Transactions</div>');
+        // Ext.getCmp('htmlCardDetailTxt').setHtml('<div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Card</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Details</div>');
+        // Ext.getCmp('htmlTermAndConditionTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Term &</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Conditions</div>');
+        // Ext.getCmp('htmlUnsubscribeTxt').setHtml('<div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px"><u>UnSubscribe</u></div><br><div style="font-weight:bold;color:purple;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px"><u>Membership</u></div>');
+       // Ext.getCmp('htmlMembershipTxt').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px">Membership</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Privillage</div>');       
+        //Ext.getCmp('htmlMembershipTxt02').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;margin:3px 0px 0px 0px;font-weight:normal">Entitle</div><br><div style="font-weight:normal;color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Outlets</div>');
+        //Ext.getCmp('htmlAyohaStoreTxt01').setHtml('<div style="color:grey;text-align: center;font-size:8px;width:100%;;margin:3px 0px 0px 0px">Ayoha</div><br><div style="color:grey;text-align: center;font-size:8px;width:100%;margin:-22px 0px 0px 0px">Store</div>');
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         Ext.getCmp('btnFloatPanel_MembershipCardList_Upgrade_EntitiledReward').setHtml('<div style="width:100%;text-align:center;color:purple;font-family: Arial; font-size:13px;font-weight:bold;"><u>Unsubcribe Membership</u></div>');
@@ -3517,23 +3391,146 @@ function MoveMembeshipCarousel(Idx) {
        
        
        
-        Swal.fire({
-            title: 'Are you sure To delete?',
-            text: "Unsubscribe membership  will effect your Current Point,Stamp and Previllage card. Your are no longer accessible to this card. Think Carefully before proccedd !",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-        }).then(function (result) {
-            if (result.isConfirmed) {
-                MembershipCardDelete();
-            }
-        });
+        // Swal.fire({
+        //     title: 'Are you sure To delete?',
+        //     text: "Unsubscribe membership  will effect your Current Point,Stamp and Previllage card. Your are no longer accessible to this card. Think Carefully before proccedd !",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes'
+        // }).then(function (result) {
+        //     if (result.isConfirmed) {
+        //         MembershipCardDelete();
+        //     }
+        // });
     }
     
 }
 
+
+
+
+
+
+
+
+
+
+function ShowConfirmUnsubscribe_Membership() {
+
+  var fp = Ext.getCmp('FloatPanel_MembershipCardList_UpgradeID');
+  if (fp) {
+    fp.setMasked({ xtype: 'mask', cls: 'ayohaModalMask' });
+  }
+
+  var dlg = Ext.create('Ext.Dialog', {
+    cls: 'ayohaPremiumDialog ayohaPremiumDialogUnsub',
+    centered: true,
+    floated: true,
+    modal: true,
+    hideOnMaskTap: false,
+    zIndex: 999999,
+
+    width: '95%',
+    maxWidth: 520,
+
+    items: [{
+      xtype: 'container',
+      cls: 'ayohaDlgWrap',
+      items: [
+        {
+          xtype: 'container',
+          cls: 'ayohaDlgHeader',
+          layout: {
+            type: 'hbox',
+            align: 'center',
+            pack: 'center'   // kalau nak center; tukar 'start' kalau nak kiri
+          },
+          items: [
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderIcon',
+              html:
+                '<div class="ayohaDlgHeaderIconCircle">' +
+                  '<img class="ayohaDlgHeaderIconImg" src="resources/icons/CancelMembershipCard.png" />' +
+                '</div>'
+            },
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderTitle',
+              html: 'Confirm Unsubscribe',
+              flex: 1
+            }
+          ]
+        },
+
+        // ✅ PREMIUM HEADER (icon + title)
+        // {
+        //   xtype: 'container',
+        //   cls: 'ayohaDlgHeader',
+        //   items: [
+           
+        //     {
+        //       xtype: 'component',
+        //       cls: 'ayohaDlgHeaderIcon',
+        //       html: '<div class="ayohaDlgHeaderIconCircle">' +
+        //               '<img class="ayohaDlgHeaderIconImg" src="resources/icons/DeletePurple.png" />' +
+        //             '</div>'
+        //       // kalau takde image warningWhite.png, guna emoji:
+        //       // html: '<div class="ayohaDlgHeaderIconCircle">!</div>'
+        //     },
+        //     {
+        //       xtype: 'component',
+        //       cls: 'ayohaDlgHeaderTitle',
+        //       html: 'Confirm Unsubscribe'
+        //     },
+            
+        //   ]
+        // },
+
+        // ✅ BODY (lebih kemas)
+        {
+          xtype: 'component',
+          cls: 'ayohaDlgBody',
+          html:
+            '<div class="ayohaDlgMsg">' +
+              '<div class="ayohaDlgLine">Unsubscribing will affect your <b>Points</b>, <b>Stamps</b>, and <b>Privilege</b>.</div>' +
+              '<div class="ayohaDlgLine">You will no longer be able to access this card.</div>' +
+              '<div class="ayohaDlgHint">Please think carefully before proceeding.</div>' +
+            '</div>'
+        }
+
+      ]
+    }],
+
+    buttons: [{
+      text: 'CANCEL',
+      cls: 'ayohaDlgBtn ayohaDlgBtnCancel',
+      handler: function () { dlg.destroy(); }
+    },
+{
+  xtype:'spacer'
+},
+    {
+      text: 'YES, UNSUBSCRIBE',
+      cls: 'ayohaDlgBtn ayohaDlgBtnDanger',
+      handler: function () {
+        dlg.destroy();
+        MembershipCardDelete();
+      }
+    }],
+
+    listeners: {
+      destroy: function () {
+        if (fp) fp.setMasked(false);
+      }
+    }
+  });
+
+  if (fp) fp.add(dlg); else Ext.Viewport.add(dlg);
+  dlg.show();
+}
 
 
 
@@ -3681,7 +3678,35 @@ function FloatPanel_MembershipCardList_Upgrade_LoyaltyStampLoadBySubscriberAccNo
 
 function FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore() {
     
-  
+
+    _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore.getProxy().setExtraParam('AyohaUserAccNo', GetCurrAyohaUserAccountNo());
+    _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore.getProxy().setExtraParam('MMC', _FloatPanel_MembershipCardList_Upgrade_MembershipCode);
+    _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore.getProxy().setExtraParam('EnterprisesAccNo', AppState.MainDashboard.EnterpriseAccNo);
+   
+    _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore.getProxy().setUrl(GetAPIurl() + '/MembershipCardExtent/MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNo');
+    
+    _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+            //  alert('Store loaded successfully, total records: ' + records.length);
+              Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CardDetails').setStore(_DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore);
+               
+            } else {
+                Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CardDetails').setStore(_DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore);
+             
+           //  alert('Failed to load store data or no record found.');
+               // LoadingPanelHide();
+            }
+        }
+    });
+
+
+
+
+return
+
+
+
     Ext.getStore('MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore').getProxy().setExtraParams({
         AyohaUserAccNo: GetCurrAyohaUserAccountNo(),
         MMC: _FloatPanel_MembershipCardList_Upgrade_MembershipCode,
@@ -3729,7 +3754,30 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadBySubscriberAcc
 function FloatPanel_MembershipCardList_Upgrade_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore() {
 
 
+    _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore.getProxy().setExtraParam('AyohaUserAccNo', GetCurrAyohaUserAccountNo());
+    _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore.getProxy().setExtraParam('EnterprisesAccNo', AppState.MainDashboard.EnterpriseAccNo);
+    _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore.getProxy().setExtraParam('MCC', _FloatPanel_MembershipCardList_Upgrade_MembershipCode);
+    _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore.getProxy().setUrl(GetAPIurl() + '/AyohaRewardPoint/AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCC');
+    
+    _DataStore_AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore.load({
+        callback: function (records, operation, success) {
+          
+            if (success && records.length > 0) {
+              // Ext.defer(function () {
+              //   if (window._AyohaPatchTrxGroupHeaderNow) window._AyohaPatchTrxGroupHeaderNow();
+              // }, 120);
+            
+            } else {
+             
+            }
+        }
+    });
 
+
+
+
+
+return;
 
 
 
@@ -3804,4 +3852,58 @@ function FloatPanel_MembershipCardList_Upgrade_AyohaStore() {
 
 
     Ext.Viewport.setMasked(false);
+}
+
+
+
+
+
+
+function AyohaTrxGroupHeader_ToBadge(listId) {
+  var list = Ext.getCmp(listId || 'FloatPanel_MembershipCardList_Upgrade_CardTransactionList');
+  if (!list || !list.element || !list.element.dom) return;
+
+  // scope: kawasan list + parent (sebab ada sticky header kadang duduk dekat parent)
+  var root = list.element.dom;
+  var parent = (list.up && list.up() && list.up().element && list.up().element.dom) ? list.up().element.dom : root;
+
+  var headers = parent.querySelectorAll('.x-list-header, .x-list-group-title, .x-group-header, [class*="list-header"]');
+
+  function enc(s){
+    return (Ext.String && Ext.String.htmlEncode) ? Ext.String.htmlEncode(s) : (s + '');
+  }
+
+  for (var i = 0; i < headers.length; i++) {
+    var h = headers[i];
+    if (!h || h.getAttribute('data-ayoha-badge') === '1') continue;
+
+    // pastikan header ni berkait dengan list ni
+    if (!(root.contains(h) || parent.contains(h))) continue;
+
+    var inner = h.querySelector('.x-innerhtml') || h;
+    var txt = (inner.textContent || inner.innerText || '').replace(/\s+/g,' ').trim();
+    if (!txt) continue;
+
+    // parse "FEBRUARY 2026 (16)"
+    var m = txt.match(/^(.*?)(?:\s*\((\d+)\))?\s*$/);
+    if (!m) continue;
+
+    var label = (m[1] || '').trim();
+    var count = (m[2] || '').trim();
+
+    // filter yg betul2 month header (optional tapi elak tersalah patch)
+    if (!/^(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER)\s+\d{4}$/i.test(label)) {
+      continue;
+    }
+
+    h.setAttribute('data-ayoha-badge', '1');
+
+    // ✅ tukar text jadi layout + badge
+    inner.innerHTML =
+      '<div class="trxHdrWrap">' +
+        '<span class="trxHdrDot"></span>' +
+        '<span class="trxHdrLabel">' + enc(label) + '</span>' +
+        (count ? '<span class="trxHdrBadge">' + enc(count) + '</span>' : '') +
+      '</div>';
+  }
 }

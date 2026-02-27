@@ -201,3 +201,152 @@ function ayohaThemeColor_Hero(){
     });
   }
   
+
+
+
+
+
+
+  function AyohaDecorateTrxGroupHeaders(listCmp) {
+    try {
+        var list = listCmp || Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CardTransactionList');
+        if (!list || !list.element || !list.element.dom) return;
+
+        // Cari kemungkinan header class (ikut version/theme)
+        var headers = list.element.dom.querySelectorAll(
+            '.x-list-header, .x-list-group-title, .x-group-header, [class*="list-header"]'
+        );
+
+        if (!headers || !headers.length) return;
+
+        Ext.Array.each(headers, function (hdr) {
+            if (!hdr) return;
+
+            // Elak decorate berulang
+            if (hdr.getAttribute('data-ayoha-grouphdr') === '1') return;
+
+            var txt = (hdr.textContent || hdr.innerText || '').replace(/\s+/g, ' ').trim();
+            if (!txt) return;
+
+            // Parse "FEBRUARY 2026 (16)"
+            var m = txt.match(/^(.*?)(?:\s*\((\d+)\))?\s*$/);
+            var label = (m && m[1]) ? m[1] : txt;
+            var count = (m && m[2]) ? m[2] : '';
+
+            // Encode text (safe)
+            if (Ext.String && Ext.String.htmlEncode) {
+                label = Ext.String.htmlEncode(label);
+            }
+
+            hdr.setAttribute('data-ayoha-grouphdr', '1');
+
+            // Replace content jadi premium header
+            hdr.innerHTML =
+                '<div class="trxGroupHdrInline">' +
+                    '<div class="trxGroupHdrInlineLeft">' +
+                        '<span class="trxGroupDot"></span>' +
+                        '<span class="trxGroupHdrLabel">' + label + '</span>' +
+                        (count ? '<span class="trxGroupHdrCount">(' + count + ')</span>' : '') +
+                    '</div>' +
+                    '<span class="trxGroupHdrCaret"></span>' +
+                '</div>';
+        });
+
+    } catch (e) {
+        console.log('AyohaDecorateTrxGroupHeaders error:', e);
+    }
+}
+
+
+
+function AyohaPatchTrxGroupHeaderLive() {
+  var list = Ext.getCmp('FloatPanel_MembershipCardList_Upgrade_CardTransactionList');
+  if (!list || !list.element || !list.element.dom) return;
+
+  // scope luas sikit sebab sticky header kadang render luar list subtree
+  var scopeRoot = (list.up && list.up()) ? (list.up().element && list.up().element.dom) : null;
+  if (!scopeRoot) scopeRoot = document.body;
+
+  function isMonthHeaderText(txt) {
+      if (!txt) return false;
+      txt = txt.replace(/\s+/g, ' ').trim();
+      // contoh: FEBRUARY 2026 (16)
+      return /^(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER)\s+\d{4}(?:\s*\(\d+\))?$/i.test(txt);
+  }
+
+  function patchOne(el) {
+      if (!el || el.nodeType !== 1) return false;
+      if (el.getAttribute('data-ayoha-grouphdr') === '1') return true;
+
+      var txt = (el.textContent || el.innerText || '').replace(/\s+/g, ' ').trim();
+      if (!isMonthHeaderText(txt)) return false;
+
+      // pastikan element nampak macam header row (avoid patch text lain)
+      var rect = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+      if (rect && rect.height > 80) return false; // header biasanya rendah
+
+      // mark
+      el.setAttribute('data-ayoha-grouphdr', '1');
+
+      // ✅ inline style terus (selector/theme-proof)
+      el.style.background = 'linear-gradient(180deg, rgba(124,58,237,.14), rgba(124,58,237,.05))';
+      el.style.border = '1px solid rgba(124,58,237,.18)';
+      el.style.borderRadius = '12px';
+      el.style.padding = '9px 12px';
+      el.style.margin = '8px 10px 6px 10px';
+      el.style.boxShadow = 'none';
+      el.style.color = '#2b1658';
+      el.style.fontWeight = '900';
+      el.style.fontSize = '13px';
+      el.style.letterSpacing = '.4px';
+      el.style.textTransform = 'uppercase';
+      el.style.lineHeight = '1.2';
+      el.style.boxSizing = 'border-box';
+
+      // kalau ada child wrapper, style dia juga
+      if (el.firstElementChild) {
+          el.firstElementChild.style.margin = '0';
+          el.firstElementChild.style.padding = '0';
+          el.firstElementChild.style.background = 'transparent';
+      }
+
+      return true;
+  }
+
+  function scanAndPatch() {
+      try {
+          // scan dalam scope root
+          var nodes = scopeRoot.querySelectorAll('div, span, li');
+          for (var i = 0; i < nodes.length; i++) {
+              patchOne(nodes[i]);
+          }
+
+          // fallback scan seluruh body (untuk sticky header luar subtree)
+          var bodyNodes = document.body.querySelectorAll('div, span, li');
+          for (var j = 0; j < bodyNodes.length; j++) {
+              patchOne(bodyNodes[j]);
+          }
+      } catch (e) {
+          console.log('AyohaPatchTrxGroupHeaderLive scan error:', e);
+      }
+  }
+
+  // run awal
+  scanAndPatch();
+
+  // observer (header kadang recreate masa scroll)
+  if (!window._AyohaTrxGroupHdrObserver) {
+      window._AyohaTrxGroupHdrObserver = new MutationObserver(function () {
+          scanAndPatch();
+      });
+
+      window._AyohaTrxGroupHdrObserver.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true
+      });
+  }
+
+  // expose manual refresh helper
+  window._AyohaPatchTrxGroupHeaderNow = scanAndPatch;
+}

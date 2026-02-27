@@ -521,8 +521,8 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow(Enterprise
 
 function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMembershipCardList_Upgrade(CampaignCode,EnterpriseLogo,EnterpriseName){
    
-   // alert(CampaignCode);
-    var task = Ext.create('Ext.util.DelayedTask', function () {
+  // alert(CampaignCode);
+  
 
         var objn = {
            
@@ -530,16 +530,24 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMember
             "EventCode": CampaignCode,
         };
         console.log(objn);
-        var _value = Ext.Ajax.request({
+        Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
+
+            // url: GetAPIurl() + '/AyohaRewardEvent/AyohaRewardEventLoadBySubscriberAccNoAndEventCode',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
 
             url: GetAPIurl() + '/AyohaRewardEvent/AyohaRewardEventLoadBySubscriberAccNoAndEventCode',
-
-            dataType: "json",
-            data: JSON.stringify(objn),
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
 
             success: function (result, request) {
@@ -550,7 +558,7 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMember
                 data = Ext.decode(result.responseText.trim());
 
                 if (data.success == "true") {
-                 // alert(data.results[0].EventName)
+                // alert(data.results[0].EventName)
 
                  var ModifiedWidth = parseInt(window.innerWidth) - 24;
 
@@ -577,9 +585,8 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMember
 
         });
 
-        Ext.Viewport.unmask();
-    });
-    task.delay(500);
+
+   
    
    
    
@@ -600,13 +607,212 @@ function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMember
 
 function FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMembershipCardList_Upgrade_Show(EnterpriseLogo,EnterpriseName ,EventCoverPhoto, EventName, EventStartDate_Day, EventStartDate_Month, EventStartTime, EventEndDate_Day, EventEndDate_Month, EventEndTime, EventLocationName, ModifiedWidth, EventDescription, EventLocationCoordinate, EventUrlTicket, EventCode, EnterpriseAccNo, RespondStatus,ID){
 
-    AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipEventDetailHide()");
-    Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipEventDetail);
-    this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipEventDetail());
-    this.overlay.show();
+    // AddRoutePages("FloatPanel_DashboardMerchantReward_MembershipEventDetailHide()");
+    // Ext.Viewport.remove(_FloatPanel_DashboardMerchantReward_MembershipEventDetail);
+    // this.overlay = Ext.Viewport.add(FloatPanel_DashboardMerchantReward_MembershipEventDetail());
+    // this.overlay.show();
    // AddRoutePages(_FloatPanel_DashboardMerchantReward_MembershipEventDetail, "is_FloatPanel_DashboardMerchantReward_MembershipEventDetailOpen");
   // alert(EnterpriseLogo);
-   Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipEventDetailID').setZIndex(330);
+
+
+
+
+
+
+
+
+  globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_ModifiedWidth = parseInt(window.innerWidth) - 24;
+
+  FloatPanel_DashboardMerchantReward_MembershipEventDetailCreateIfNeeded();
+
+
+  _FloatPanel_DashboardMerchantReward_MembershipEventDetail.show();
+  // ✅ push browser back (ikut style kau)
+  if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+    AyohaBrowserBack.push('FloatPanel_DashboardMerchantReward_MembershipEventDetail', function () {
+   
+       FloatPanel_DashboardMerchantReward_MembershipEventDetailHide(true);
+    });
+  }
+
+
+   Ext.getCmp('FloatPanel_DashboardMerchantReward_MembershipEventDetailID').setZIndex(66);
+
+
+
+
+
+   is_FloatPanel_DashboardMerchantReward_MembershipEventDetailOpen = 'Y';
+   globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_ID = ID;
+   globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_EventCode = EventCode;
+   globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_EnterpriseAccNo = EnterpriseAccNo;
+   globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_EventLocationCoordinate = EventLocationCoordinate;
+   
+
+ //  alert(EnterpriseLogo);
+   if (EventLocationCoordinate != "NA") {
+     
+
+
+
+       Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail').setHtml(
+           '<div style="background:#fff;width:100%;height:370px;box-sizing:border-box;padding:12px;">' +
+         
+             // HEADER (logo + enterprise name)
+             '<div style="display:flex;align-items:center;gap:10px;padding:4px 2px 10px 2px;">' +
+               '<img src="' + EnterpriseLogo + '" style="width:34px;height:34px;border-radius:50%;object-fit:cover;display:block;">' +
+               '<div style="font-family:Arial,sans-serif;font-size:16px;font-weight:700;color:#111;line-height:18px;">' + EnterpriseName + '</div>' +
+             '</div>' +
+         
+             // COVER PHOTO
+             '<div style="width:100%;border-radius:12px;overflow:hidden;">' +
+               //'<img src="' + EventCoverPhoto + '" style="width:100%;height:200px;object-fit:cover;display:block;">' +
+               '<img src="' + EventCoverPhoto + '"  style="width:' + globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_ModifiedWidth + 'px;height:300px;"></img>' +
+             '</div>' +
+         
+             // CONTENT ROW (date left, details right)
+             '<div style="display:flex;gap:12px;align-items:flex-start;margin-top:12px;">' +
+         
+               // DATE BOX
+               '<div style="width:78px;min-width:78px;text-align:center;">' +
+                 '<div style="font-family:Arial,sans-serif;font-size:48px;font-weight:800;color:#111;line-height:46px;">' + EventStartDate_Day + '</div>' +
+                 '<div style="font-family:Arial,sans-serif;font-size:16px;font-weight:800;color:#e00000;letter-spacing:1px;margin-top:2px;">' + EventStartDate_Month + '</div>' +
+               '</div>' +
+         
+               // DETAILS
+               '<div style="flex:1;min-width:0;">' +
+                 '<div style="font-family:Arial,sans-serif;font-size:18px;font-weight:800;color:#111;line-height:22px;word-break:break-word;">' + EventName + '</div>' +
+         
+                 '<div style="font-family:Arial,sans-serif;font-size:12px;color:#333;margin-top:6px;line-height:16px;word-break:break-word;">' +
+                   EventStartDate_Day + ' ' + EventStartDate_Month + ', ' + EventStartTime + ' - ' +
+                   EventEndDate_Day + ' ' + EventEndDate_Month + ', ' + EventEndTime + '.' +
+                 '</div>' +
+         
+                 // LOCATION (clickable)
+                 '<div onclick="FloatPanel_DashboardMerchantReward_MembershipEventDetail_OpenLocation();" ' +
+                      'style="display:flex;align-items:center;gap:6px;margin-top:8px;cursor:pointer;">' +
+                   '<img src="resources/icons/locationOne.png" style="width:18px;height:18px;display:block;">' +
+                   '<div style="font-family:Arial,sans-serif;font-size:12px;color:#1e5eff;text-decoration:underline;line-height:16px;word-break:break-word;">' +
+                     EventLocationName + '.' +
+                   '</div>' +
+                 '</div>' +
+         
+               '</div>' +
+             '</div>' +
+         
+           '</div>'
+         );
+         
+
+
+
+
+
+   } else {
+       // Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail').setHtml('<div class="myContent" style="background-color:white;width:100%;height:370px;">' +
+       //              '&nbsp;&nbsp;<div style="font-family:Arial, sans-serif;font-size:14px;color:black;font-weight:bold;text-align:left;"><img src="' + EnterpriseLogo + '" style="width:30px;height:30px;border-radius:50%;margin:0px 0px 0px 20px;"/><div style="margin:-28px 0px 0px 55px;">' + EnterpriseName + '</div></div>&nbsp;&nbsp;' +
+       //             '&nbsp;&nbsp;<img src="' + EventCoverPhoto + '" style="width:' + ModifiedWidth + 'px;height:200px;margin:-10px 0px 0px 0px;"/>&nbsp;&nbsp;' +
+       //            '<div style="width: 90px; float:left; height:70px; background:white; margin:-5px 0px 0px 0px;"><div style="font-family:Arial, sans-serif;font-size:40px;color:black;font-weight:bold;text-align:center;">' + EventStartDate_Day + '</div><br><div style="font-family:Arial, sans-serif;font-size:16px;color:red;font-weight:bold;margin:-30px 0px 0px 0px;text-align:center;">' + EventStartDate_Month + '</div></div><div style="width: 230px; float:left; height:70px; background:white; margin:0px;word-break: break-all;"><div style="margin:5px 0px 0px 0px;text-align:left;color:black;font-family: Arial; font-size:14px;word-wrap: break-word;word-break: break-all;white-space: break-spaces;font-weight:bold;width:100%;height:30px;">' + EventName + '<br><br><div style="margin:-24px 0px 0px 0px;text-align:left;color:black;font-family: Arial; font-size:11px;word-wrap: break-word;word-break: break-all;white-space: break-spaces;font-weight:normal;width:100%;">' + EventStartDate_Day + ' ' + EventStartDate_Month + ',' + EventStartTime + ' - ' + EventEndDate_Day + ' ' + EventEndDate_Month + ',' + EventEndTime + '.</div><br><div style="margin:-24px 0px 0px 0px;text-align:left;color:black;font-family: Arial; font-size:11px;word-wrap: break-word;word-break: break-all;white-space: break-spaces;font-weight:normal;width:100%;">' + EventLocationName + '.</div></div></div>');
+
+                  Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail').setHtml(
+                   '<div class="myContent" style="background:#fff;width:100%;height:370px;box-sizing:border-box;padding:12px;">' +
+                 
+                     // HEADER
+                     '<div style="display:flex;align-items:center;gap:10px;margin:0 0 10px 0;">' +
+                       '<img src="' + EnterpriseLogo + '" style="width:30px;height:30px;border-radius:50%;object-fit:cover;display:block;">' +
+                       '<div style="font-family:Arial,sans-serif;font-size:14px;color:#000;font-weight:700;">' + EnterpriseName + '</div>' +
+                     '</div>' +
+                 
+                     // COVER
+                     '<div style="width:100%;border-radius:12px;overflow:hidden;">' +
+                       //'<img src="' + EventCoverPhoto + '" style="width:100%;height:200px;object-fit:cover;display:block;">' +
+                      '<img src="' + EventCoverPhoto + '"  style="width:' + globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_ModifiedWidth + 'px;height:300px;"></img>' +
+                     '</div>' +
+                 
+                     // BODY ROW
+                     '<div style="display:flex;gap:12px;align-items:flex-start;margin-top:12px;">' +
+                 
+                       // DATE (LEFT)
+                       '<div style="width:90px;min-width:90px;text-align:center;">' +
+                         '<div style="font-family:Arial,sans-serif;font-size:40px;color:#000;font-weight:800;line-height:40px;">' + EventStartDate_Day + '</div>' +
+                         '<div style="font-family:Arial,sans-serif;font-size:16px;color:red;font-weight:800;margin-top:2px;">' + EventStartDate_Month + '</div>' +
+                       '</div>' +
+                 
+                       // DETAILS (RIGHT)
+                       '<div style="flex:1;min-width:0;">' +
+                         '<div style="font-family:Arial,sans-serif;font-size:14px;color:#000;font-weight:800;line-height:18px;word-break:break-word;">' +
+                           EventName +
+                         '</div>' +
+                 
+                         '<div style="margin-top:6px;font-family:Arial,sans-serif;font-size:11px;color:#000;font-weight:400;line-height:15px;word-break:break-word;">' +
+                           EventStartDate_Day + ' ' + EventStartDate_Month + ', ' + EventStartTime + ' - ' +
+                           EventEndDate_Day + ' ' + EventEndDate_Month + ', ' + EventEndTime + '.' +
+                         '</div>' +
+                 
+                         '<div style="margin-top:6px;font-family:Arial,sans-serif;font-size:11px;color:blue;font-weight:400;line-height:15px;word-break:break-word;">' +
+                           '<u><img src="resources/icons/locationOne.png" style="width:18px;height:18px;margin:0 4px -4px 0;display:inline-block;">' +
+                           EventLocationName + '.</u>' +
+                         '</div>' +
+                       '</div>' +
+                 
+                     '</div>' +
+                   '</div>'
+                 );
+                 
+   }
+
+  
+  
+
+
+
+
+
+
+
+   var regex = /<br\s*[\/]?>/gi;
+   var ModifiedEventDescription = EventDescription.replace(regex, "\n");
+
+   document.getElementById('input-FloatPanel_DashboardMerchantReward_MembershipEventDetailTextArea').value = ModifiedEventDescription;
+
+
+   
+   if (RespondStatus == "IwillAttend") {
+    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail_IwillAttend').setHtml('<div style="width: 100%; height:50px; background:white;text-align:center;font-size:13px;" onclick="FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(' + "'" + 'IwillAttend' + "'" + ')"><img src="resources/icons/iwillattend01.png" style="width:20px;height:20px;margin:8px 0px 0px 0px;"/><div style="margin:-5px 0px 0px 0px;font-weight:bold;color:purple;"><u>I Will Attend</u></div></div>');
+    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail_Interested').setHtml('<div style="width:100%; height:50px; background:white;text-align:center;font-size:12px;" onclick="FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(' + "'" + 'Interested' + "'" + ')"><img src="resources/icons/like01.png" style="width:20px;height:20px;margin:8px 0px 0px 0px;"/><div  style="margin:0px 0px 0px 0px;">Interested</div></div>');
+}
+if (RespondStatus == "Interested") {
+    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail_IwillAttend').setHtml('<div style="width: 100%; height:50px; background:white;text-align:center;font-size:12px;" onclick="FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(' + "'" + 'IwillAttend' + "'" + ')"><img src="resources/icons/iwillattend02.png" style="width:20px;height:20px;margin:8px 0px 0px 0px;"/><div style="margin:0px 0px 0px 0px;font-weight:normal;">I Will Attend</div></div>');
+    Ext.getCmp('htmlFloatPanel_DashboardMerchantReward_MembershipEventDetail_Interested').setHtml('<div style="width:100%; height:50px; background:white;text-align:center;font-size:13px;" onclick="FloatPanel_MerchantReward_MembershipEventDetail_RespondStatus(' + "'" + 'Interested' + "'" + ')"><img src="resources/icons/like02.png" style="width:20px;height:20px;margin:8px 0px 0px 0px;"/><div  style="margin:-5px 0px 0px 0px;font-weight:bold;color:purple;"><u>Interested</u></div></div>');
+
+}
+   return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     is_FloatPanel_DashboardMerchantReward_MembershipEventDetailOpen = 'Y';
     globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_ID = ID;
     globalFloatPanel_DashboardMerchantReward_MembershipEventDetail_EventCode = EventCode;

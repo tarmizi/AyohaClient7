@@ -72,6 +72,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                     xtype: 'container',
                     id: 'containerFloatLoyaltyCardPointHeader',
                     width: '100%',
+                    height:60,
                     docked:'top',
                     style: { background: 'transparent' },
                     layout: {
@@ -85,6 +86,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                       {
                         xtype: 'button',
                         id: 'btnFloatLoyaltyCardPointBack',
+                        margin:'-8 0 0 0',
                         height: 30,
                         width: 65,
                         html: '<div><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
@@ -101,7 +103,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                         xtype: 'container',
                         id: 'containerFloatLoyaltyCardPointTitle',
                         margin: '0 -18 0 0',
-                        height: 25,
+                        height: 45,
                         width: 135,
                         style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;',
                         layout: { type: 'vbox', pack: 'center', align: 'center' },
@@ -113,9 +115,9 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                             html: '<div style="width:130px;border-radius: 10px 0px 0px 10px;background-color: white;text-align:center;border: 1px solid grey;font-size: 11px;font-weight:bold;color:black;height:20px">Azrina Bt Rahim</div>'
                           },
                           {
-                            margin: '-3 0 0 0',
+                            margin: '0 0 0 0',
                             id: 'htmlFloatLoyaltyCardPointisExpired',
-                            html: '<div class="blink_me" style="width:100px;border-radius: 10px 10px 10px 10px;background-color: white;text-align:center;border: 1px solid red;font-size: 9px;font-weight:bold;color:red;height:15px">Campaign Expired!</div>',
+                            html: '<div  style="width:100px;border-radius: 10px 10px 10px 10px;background-color: white;text-align:center;border: 1px solid red;font-size: 9px;font-weight:bold;color:red;height:15px">Campaign Expired!</div>',
                             hidden: true
                           },
       
@@ -137,7 +139,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                 margin: '7 0 0 8',
                                 height: 30,
                                 width: 65,
-                                html: '<div class="blink_me"><img src="resources/icons/nfc-sign.png" width="25" height="20" alt="Company Name"></div>',
+                                html: '<div><img src="resources/icons/nfc-sign.png" width="25" height="20" alt="Company Name"></div>',
                                 ui: 'plain',
                                 handler: function () { }
                               },
@@ -148,7 +150,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                 margin: '7 0 0 2',
                                 height: 30,
                                 width: 100,
-                                html: '<div class="blink_me" style="color:white;text-align: left;font-size:16px;width:100%;font-weight:bold;margin:-1px 0px 0px -8px" >NFC</div>',
+                                html: '<div  style="color:white;text-align: left;font-size:16px;width:100%;font-weight:bold;margin:-1px 0px 0px -8px" >NFC</div>',
                                 ui: 'plain',
                                 handler: function () { }
                               }
@@ -194,6 +196,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
               {
                 xtype: 'container',
                 width: '100%',
+                height: '100%',
                 layout: {
                   type: 'vbox',
                   pack: 'start',
@@ -330,7 +333,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                                     margin: '-5 15 0 0',
                                     height: 55,
                                     width: 55,
-                                    html: '<div class="blink_me"><img src="resources/icons/gift-hearts-icon.png" width="45" height="45" alt="Company Name"></div>',
+                                    html: '<div ><img src="resources/icons/gift-hearts-icon.png" width="45" height="45" alt="Company Name"></div>',
                                     ui: 'plain',
                                     handler: function () {
                                       LoyaltyCardRedeemListShow();
@@ -428,7 +431,7 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                           {
                             xtype: 'container',
                             id: 'carouselFloatLoyaltyCardPoint_RedeemItem',
-                            style: ' background-color: transparent',
+                            style: 'background-color: transparent !important;',
                             height: '100%',
                             width: '100%',
                             layout: { type: 'vbox', pack: 'start', align: 'left' },
@@ -437,10 +440,10 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                               {
                                 xtype: 'list',
                                 id: 'List_FloatLoyaltyCardPoint_RedeemPrize',
-                                height: '100%',
+                                height: '90%',
                                 width: '100%',
                                 store: _DataStore_PointCampaignRedeemLoadByPointCampaignCodeStore,
-                                style: 'background-color:rgba(255,255,255, 0.9);border-radius: 0px;',
+                                style: 'background-color:white !important;',
                                 mode: 'SINGLE',
                                 disableSelection: true,
                               
@@ -793,66 +796,6 @@ function FloatLoyaltyCardPointCreateIfNeeded() {
                               
                                   
 
-
-                                  // itemTpl:
-                                  // '<div class="myContent">' +
-                                  //   '<table style="width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;background:transparent;margin:0;">' +
-                                
-                                  //     // ✅ kunci ratio column
-                                  //     '<colgroup>' +
-                                  //       '<col style="width:80%;">' +
-                                  //       '<col style="width:20%;">' +
-                                  //     '</colgroup>' +
-                                
-                                  //     '<tbody>' +
-                                  //       '<tr>' +
-                                
-                                  //         // LEFT (80%)
-                                  //         '<td style="padding:0;vertical-align:top;' +
-                                  //             'font-family:Arial,sans-serif;font-size:14px;font-weight:normal;' +
-                                  //             'overflow-wrap:anywhere;word-break:break-word;">' +
-                                  //           '{ModifiedAmount}<br>{ModifiedReceiptBillID}<br>' +
-                                  //           '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{PointedByDate_DateOnly} {PointedByDate_TimeOnly}</div><br>' +
-                                  //           '<div style="font-size:11px;font-weight:normal;margin:-23px 0 0 0;">{PointedBy}</div>' +
-                                  //         '</td>' +
-                                
-                                  //         // RIGHT (20%)
-                                  //         '<td style="padding:0;vertical-align:middle;text-align:right;' +
-                                  //             'font-family:Arial,sans-serif;font-size:14px;font-weight:normal;' +
-                                  //             'white-space:nowrap;">' +
-                                  //           '{ModifiedTypeCRDB}' +
-                                  //         '</td>' +
-                                
-                                  //       '</tr>' +
-                                  //     '</tbody>' +
-                                  //   '</table>' +
-                                  // '</div>',
-                                
-
-
-
-                                // itemTpl:
-                                //   '<div class="myContent">' +
-                                //     '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;">' +
-                                //       '<thead>' +
-                                //         '<tr>' +
-                                //           '<th style="border-color:transparent;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:80%;background-color:transparent;">' +
-                                //             '{ModifiedAmount}<br>{ModifiedReceiptBillID}<br>' +
-                                //             '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{PointedByDate_DateOnly} {PointedByDate_TimeOnly}</div><br>' +
-                                //             '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-23px 0px 0px 0px;">{PointedBy}' +
-                                //           '</th>' +
-                                //           '<th style="border-color:transparent;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:20%;background-color:transparent;">' +
-                                //             '{ModifiedTypeCRDB}' +
-                                //           '</th>' +
-                                //         '</tr>' +
-                                //       '</thead>' +
-                                //     '</table>' +
-                                //   '</div>',
-      
-                                // listeners: {
-                                //   itemdoubletap: function (dataview, index, target, record, e, eOpts) { },
-                                //   itemsingletap: function (dataview, index, target, record, e, eOpts) { }
-                                // }
                               }
                             ]
                           },
@@ -944,7 +887,10 @@ html:
                     ]
                   },
       
-                  // =========================================================
+                 
+                ]
+              },
+               // =========================================================
                   // BOTTOM MENU
                   // =========================================================
                   {
@@ -952,8 +898,9 @@ html:
                     id: 'containerFloatLoyaltyCardPoint_MenuBottom',
                     docked:'bottom',
                     width: '100%',
-                    height: 55,
-                    style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+                    height: 60,
+                    cls: 'ayohaBottomNav',
+                   // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
                     layout: { type: 'hbox', pack: 'start', align: 'center' },
       
                     items: [
@@ -1198,8 +1145,6 @@ html:
                       }
                     ]
                   }
-                ]
-              }
             ]
           }
         ]
@@ -1307,7 +1252,7 @@ function FloatLoyaltyCardPointShow(CampaingName, PointCampaignCode, EnterpriseLo
         Ext.getCmp('container_pointspacer').setHeight(5);
         if (PointisCampaignExpired == "Expired") {
             Ext.getCmp('htmlFloatLoyaltyCardPointisExpired').setHidden(false);
-            Ext.getCmp('htmlFloatLoyaltyCardPoint_CampaignEndDate').setHtml('<font class="blink_me" size=1 color=white>Campaign End Date:' + EndDate + '</font>');
+            Ext.getCmp('htmlFloatLoyaltyCardPoint_CampaignEndDate').setHtml('<font  size=1 color=white>Campaign End Date:' + EndDate + '</font>');
             globalPointCampaignIsExpired = "Expired";
         }
         
