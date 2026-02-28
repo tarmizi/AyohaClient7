@@ -4823,7 +4823,7 @@ margin: '10 0 0 0',
 
 html:
   '<div class="ayohaCtaWrap">' +
-    '<button class="ayohaCtaBtn" type="button" onclick="Ayoha_ViewProductServices()">' +
+    '<button class="ayohaCtaBtn" type="button" onclick="FloatPanelMerchantDetailPage_AyohaStore()">' +
       '<span class="ayohaCtaGlow"></span>' +
       '<span class="ayohaCtaSheen"></span>' +
 

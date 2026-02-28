@@ -2,7 +2,7 @@
 
 });
 
-var _FloatPanel_AyohaStore;
+var _FloatPanel_AyohaStore=null;
 
 
 var isFloatPanel_AyohaStoreOpen = 'N';
@@ -11,311 +11,297 @@ var _FloatPanel_AyohaStore_isFirstLoad = "N";
 
 
 
-
-
-
-
-
-
-function FloatPanel_AyohaStore() {
-
+function FloatPanel_AyohaStoreCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore&& !_FloatPanel_AyohaStore.destroyed) return;
     _FloatPanel_AyohaStore =
-     Ext.create('Ext.Panel', {
-         requires: [
-       'Ext.util.DelayedTask',
-         ],
-         xtype: 'container',
-         //height: 465,
-         height: '100%',
-         width: '100%',
-         id: 'FloatPanel_AyohaStoreID',
-         draggable: false,
-         //zIndex: 280,
-         zIndex: 90,
+    Ext.create('Ext.Container', {
+      
+        id: 'FloatPanel_AyohaStoreID',
+        zIndex: 65,
+        floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
+        showAnimation: {
+            type: 'popIn',
+            duration: 250,
+            easing: 'ease-out'
+        },
+        hideAnimation: {
+            type: 'popOut',
+            //direction: 'up',
+            //easing: 'cubic-bezier(.7,0,.7,1)',
+            duration: 250
+        },
+        // style: 'border-bottom:1px solid;background-color:#353839;',
+        //style: 'border-bottom:1px solid;background-color:black;',
+        style: 'border-bottom:1px none;background-color:white;',
+        //  style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
 
-         centered: true,
-         //bottom: 64,
-         // zIndex: 100,
-         modal: false,
-         // hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
-         showAnimation: {
-             type: 'popIn',
-             duration: 250,
-             easing: 'ease-out'
-         },
-         hideAnimation: {
-             type: 'popOut',
-             //direction: 'up',
-             //easing: 'cubic-bezier(.7,0,.7,1)',
-             duration: 250
-         },
-         // style: 'border-bottom:1px solid;background-color:#353839;',
-         //style: 'border-bottom:1px solid;background-color:black;',
-         style: 'border-bottom:1px none;background-color:white;',
-         //  style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
+        //listeners: {
+        //    initialize: function (c) {
+        //        this.element.on({
+        //            swipe: function (e, node, options) {
+        //                //if (e.direction == "up") {
+        //                //    FloatPanel_AyohaStoreHide();
+        //                //}
+        //                if (e.direction == "left") {
+        //                    FloatPanel_AyohaStore_CartShow();
 
-         //listeners: {
-         //    initialize: function (c) {
-         //        this.element.on({
-         //            swipe: function (e, node, options) {
-         //                //if (e.direction == "up") {
-         //                //    FloatPanel_AyohaStoreHide();
-         //                //}
-         //                if (e.direction == "left") {
-         //                    FloatPanel_AyohaStore_CartShow();
-
-         //                } 
-         //            }
-         //        });
-         //    }
-         //},
-
-
-         items: [
-
-
-
-
-             {
-                 xtype: 'container',
-                 width: '100%',
-                 height: '100%',
-                 style: "background-color: transparent;",
-                 // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-                 // style: 'background-image: url("resources/icons/pointbackdrop.png"); background-size: 100% 30%;background-repeat: no-repeat;',
-                 layout: {
-                     type: 'vbox',
-                     pack: 'center',
-                     align: 'center'
-                 },
-                 items: [
-                     {
-
-                         xtype: 'container',
-                         width: '100%',
-                         // width: 40,
-                         //zIndex:-10,
-                         //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                         //hidden: true,
-                         docked: 'top',
-                         id: 'containerFloatPanel_AyohaStoreHeader1',
-                         style: "background-color: transparent;",
-                         //style: {
-                         //    // background: '#D25959',
-                         //    background: 'transparent',
-                         //    // border: '2px'
-                         //},
-                         //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                         // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                         layout: {
-                             type: 'hbox',
-                             pack: 'center',
-                             align: 'center',
-                         },
-                         // hidden:true,
-                         items:
-                                [
-
-
-
-
-
-
-
-
-                                    {
-                                        xtype: 'button',
-                                        id: 'btnFloatPanel_AyohaStoreBack',
-                                        height: 30,
-                                        width: 35,
-                                       // zIndex:100,
-                                        margin: '0 0 0 0',
-                                        // iconCls: 'list',
-                                        html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
-                                        ui: 'plain',
-                                        handler: function () {
-                                           
-                                            _FloatPanel_AyohaStore.hide(Ext.fx.Animation({
-                                                type: 'slideOut',
-                                                direction: 'left',
-                                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                                duration: 250
-
-                                            }));
-                                            isFloatPanel_AyohaStoreOpen = 'N';
-                                            _FloatPanel_AyohaStore_isFirstLoad = "N";
-                                            RemovePages("FloatPanel_AyohaStoreHide()");
-                                            FloatPanel_AyohaStore_LikeDislikeStore_Save();
-                                        }
-                                    },
-
-                                               {
-                                                   xtype: 'spacer',
-
-                                               },
-
-                                               {
-                                                   xtype: 'button',
-                                                   margin: '-8 -8 0 0',
-                                                   hidden: true,
-                                                   zIndex: 100,
-                                                   html: '<font size=2 color=white><b>Ayoha Store</b></font>',
-                                                   ui: 'plain',
-                                                   handler: function () {
-
-                                                   }
-                                               },
-
-
-
-                                        //{
-                                        //    xtype: 'button',
-                                        //    id: 'btnbtnFloatPanel_AyohaStoreFakeButton',
-                                        //    height: 35,
-                                        //    hidden:true,
-                                        //    width: 140,
-                                        //    zIndex: 100,
-                                        //    // badgeText:'0',
-                                        //    // iconCls: 'list',
-                                        //    margin: '0 -135 0 0',
-                                        //    //  html: '<div><img src="resources/icons/AyohaStoreWhite.png" width="25" height="25" alt="Company Name"></div>',
-                                        //    ui: 'plain',
-                                        //    handler: function () {
-                                        //        FloatPanel_AyohaStore_CartShow();
-                                        //    }
-                                        //},
-                                        ///////////////////////
-
-
-{
-    xtype: 'container',
-    margin: '0 0 0 0',
-   // zIndex: 200,
-    id: 'containerFloatPanel_AyohaStore_AyohaeWallet',
-    name: 'nameContainerFloatPanel_AyohaStore_AyohaeWallet',
-    zIndex: 100,
-    // hidden:true,
-   // style: 'background-color:rgba(255,255,255, 0.7);border-radius: 25px 25px 25px 25px;',
-    //style: 'border-right:2px none #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background:#ECF0F1;border-radius: 28px 33px 33px 28px;',
-    style: 'background:transparent;',
-
-
-    height: 30,
-    width: 125,
-    layout: {
-
-        type: 'hbox',
-        pack: 'right',
-        align: 'right'
-    },
-    items: [
-        //{
-        //    xtype: 'panel',
-        //    width:1
+        //                } 
+        //            }
+        //        });
+        //    }
         //},
-        {
-            margin: '0 0 0 0',
-            id: 'htmlFloatPanel_AyohaStore_TitleHeaderTxtAyohaEwallet',
-            zIndex:100,
-            html: '<div onclick="FloatPanel_AyohaeWalletShow()" style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:-3px 0px 0px 0px">Ayoha e-Wallet</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 16px;font-weight:bold;color:black;margin:-24px 0px 0px 0px">RM 00.00</div>'
-            // html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha Reward</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:-6px 0px 0px 0px">Client V 1.0</div>'
 
 
-        },
+        items: [
 
-           {
-               xtype: 'panel',
-               width: 2
-           },
 
-        {
-            xtype: 'container',
-            style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
-          
-           // style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black;background: white;border-radius: 50%;',
-            height: 35,
-            width: 35,
-            margin: '0 0 -2 0',
-            layout: {
 
-                type: 'vbox',
-                pack: 'center',
-                align: 'center'
-            },
-            items: [
-                {
-                    //xtype: 'button',
-                    //id: 'btnMyAccount_DashboardEwalletIcon',
-                    height: 20,
-                    width: 20,
-                    margin: '0 0 0 0',
-                    zIndex: 100,
-                    // iconCls: 'list',
-                    //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
-                    html: '<div onclick="FloatPanel_AyohaeWalletShow()" ><img src="resources/icons/ayohaewallet01.png" style ="width:20px;height:20px;" alt="Company Name"></div>',
-                    // ui: 'plain',
-                    //handler: function () {
 
-                    //    //_FloatPanel_AyohaEnterpriseAccount.hide(Ext.fx.Animation({
-                    //    //    type: 'slideOut',
-                    //    //    direction: 'left',
-                    //    //    easing: 'cubic-bezier(.7,0,.7,1)',
-                    //    //    duration: 250
-
-                    //    //}));
-                    //    //isLoyaltyCardRedeemListOpen = 'N';
-                    //}
+            {
+                xtype: 'container',
+                width: '100%',
+                height: '100%',
+                style: "background-color: transparent;",
+                // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
+                // style: 'background-image: url("resources/icons/pointbackdrop.png"); background-size: 100% 30%;background-repeat: no-repeat;',
+                layout: {
+                    type: 'vbox',
+                    pack: 'center',
+                    align: 'center'
                 },
-            ]
-        },
+                items: [
+                    {
+
+                        xtype: 'container',
+                        width: '100%',
+                        // width: 40,
+                        //zIndex:-10,
+                        //  title: '<font size="3" color="white">Live Tracking Map</font>',
+                        //hidden: true,
+                        docked: 'top',
+                        id: 'containerFloatPanel_AyohaStoreHeader1',
+                        style: "background-color: transparent;",
+                        //style: {
+                        //    // background: '#D25959',
+                        //    background: 'transparent',
+                        //    // border: '2px'
+                        //},
+                        //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+                        // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                        layout: {
+                            type: 'hbox',
+                            pack: 'center',
+                            align: 'center',
+                        },
+                        // hidden:true,
+                        items:
+                               [
 
 
 
-    ]
-},
+
+
+
+
+
+                                   {
+                                       xtype: 'button',
+                                       id: 'btnFloatPanel_AyohaStoreBack',
+                                       height: 30,
+                                       width: 35,
+                                      // zIndex:100,
+                                       margin: '0 0 0 0',
+                                       // iconCls: 'list',
+                                       html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
+                                       ui: 'plain',
+                                       handler: function () {
+                                          
+                                           _FloatPanel_AyohaStore.hide(Ext.fx.Animation({
+                                               type: 'slideOut',
+                                               direction: 'left',
+                                               easing: 'cubic-bezier(.7,0,.7,1)',
+                                               duration: 250
+
+                                           }));
+                                           isFloatPanel_AyohaStoreOpen = 'N';
+                                           _FloatPanel_AyohaStore_isFirstLoad = "N";
+                                           RemovePages("FloatPanel_AyohaStoreHide()");
+                                           FloatPanel_AyohaStore_LikeDislikeStore_Save();
+                                       }
+                                   },
+
+                                              {
+                                                  xtype: 'spacer',
+
+                                              },
+
+                                              {
+                                                  xtype: 'button',
+                                                  margin: '-8 -8 0 0',
+                                                  hidden: true,
+                                                  zIndex: 100,
+                                                  html: '<font size=2 color=white><b>Ayoha Store</b></font>',
+                                                  ui: 'plain',
+                                                  handler: function () {
+
+                                                  }
+                                              },
+
+
+
+                                       //{
+                                       //    xtype: 'button',
+                                       //    id: 'btnbtnFloatPanel_AyohaStoreFakeButton',
+                                       //    height: 35,
+                                       //    hidden:true,
+                                       //    width: 140,
+                                       //    zIndex: 100,
+                                       //    // badgeText:'0',
+                                       //    // iconCls: 'list',
+                                       //    margin: '0 -135 0 0',
+                                       //    //  html: '<div><img src="resources/icons/AyohaStoreWhite.png" width="25" height="25" alt="Company Name"></div>',
+                                       //    ui: 'plain',
+                                       //    handler: function () {
+                                       //        FloatPanel_AyohaStore_CartShow();
+                                       //    }
+                                       //},
+                                       ///////////////////////
+
+
 {
-    xtype: 'panel',
-    width: 7
-},
-{
-    xtype: 'container',
-    zIndex: 100,
-    height: 35,
-    width: 35,
-    margin: '0 0 0 0',
-    // id: 'containerFloatPanel_AyohaStore_MyCartCountbadge',
-    id: 'containerFloatPanel_AyohaStoreMyPurchaseHistory',
-    name: 'namecontainerFloatPanel_AyohaStoreMyPurchaseHistory',
-    // name: 'namecontainerFloatPanel_AyohaStoreMyCart',
+   xtype: 'container',
+   margin: '0 0 0 0',
+  // zIndex: 200,
+   id: 'containerFloatPanel_AyohaStore_AyohaeWallet',
+   name: 'nameContainerFloatPanel_AyohaStore_AyohaeWallet',
+   zIndex: 100,
+   // hidden:true,
+  // style: 'background-color:rgba(255,255,255, 0.7);border-radius: 25px 25px 25px 25px;',
+   //style: 'border-right:2px none #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background:#ECF0F1;border-radius: 28px 33px 33px 28px;',
+   style: 'background:transparent;',
 
-    //  style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
-    style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
-    layout: {
-        type: 'vbox',
-        pack: 'center',
-        align: 'center'
 
-    },
-    items: [
+   height: 30,
+   width: 125,
+   layout: {
+
+       type: 'hbox',
+       pack: 'right',
+       align: 'right'
+   },
+   items: [
+       //{
+       //    xtype: 'panel',
+       //    width:1
+       //},
+       {
+           margin: '0 0 0 0',
+           id: 'htmlFloatPanel_AyohaStore_TitleHeaderTxtAyohaEwallet',
+           zIndex:100,
+           html: '<div onclick="FloatPanel_AyohaeWalletShow()" style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:-3px 0px 0px 0px">Ayoha e-Wallet</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 16px;font-weight:bold;color:black;margin:-24px 0px 0px 0px">RM 00.00</div>'
+           // html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha Reward</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:-6px 0px 0px 0px">Client V 1.0</div>'
+
+
+       },
+
           {
-              xtype: 'button',
-              height: 30,
-              width: 30,
-              margin: '3 0 0 -7',
-              id: 'btnFloatPanel_AyohaStoreMyPurchaseHistory',
-              //badgeText: "2",
-              html: '<img src="resources/icons/purchase01.png" width="20" height="20" alt="Company Name">',
-              ui: 'plain',
-              handler: function () {
-                //  FloatPanel_AyohaStore_DotMenuItemHide();
-                  FloatPanel_AyohaStore_OrderHistoryShow();
-                  // FloatPanel_AyohaStoreMerchant_AddEditItemShow();
-
-              }
+              xtype: 'panel',
+              width: 2
           },
+
+       {
+           xtype: 'container',
+           style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
+         
+          // style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black;background: white;border-radius: 50%;',
+           height: 35,
+           width: 35,
+           margin: '0 0 -2 0',
+           layout: {
+
+               type: 'vbox',
+               pack: 'center',
+               align: 'center'
+           },
+           items: [
+               {
+                   //xtype: 'button',
+                   //id: 'btnMyAccount_DashboardEwalletIcon',
+                   height: 20,
+                   width: 20,
+                   margin: '0 0 0 0',
+                   zIndex: 100,
+                   // iconCls: 'list',
+                   //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
+                   html: '<div onclick="FloatPanel_AyohaeWalletShow()" ><img src="resources/icons/ayohaewallet01.png" style ="width:20px;height:20px;" alt="Company Name"></div>',
+                   // ui: 'plain',
+                   //handler: function () {
+
+                   //    //_FloatPanel_AyohaEnterpriseAccount.hide(Ext.fx.Animation({
+                   //    //    type: 'slideOut',
+                   //    //    direction: 'left',
+                   //    //    easing: 'cubic-bezier(.7,0,.7,1)',
+                   //    //    duration: 250
+
+                   //    //}));
+                   //    //isLoyaltyCardRedeemListOpen = 'N';
+                   //}
+               },
+           ]
+       },
+
+
+
+   ]
+},
+{
+   xtype: 'panel',
+   width: 7
+},
+{
+   xtype: 'container',
+   zIndex: 100,
+   height: 35,
+   width: 35,
+   margin: '0 0 0 0',
+   // id: 'containerFloatPanel_AyohaStore_MyCartCountbadge',
+   id: 'containerFloatPanel_AyohaStoreMyPurchaseHistory',
+   name: 'namecontainerFloatPanel_AyohaStoreMyPurchaseHistory',
+   // name: 'namecontainerFloatPanel_AyohaStoreMyCart',
+
+   //  style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
+   style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
+   layout: {
+       type: 'vbox',
+       pack: 'center',
+       align: 'center'
+
+   },
+   items: [
+         {
+             xtype: 'button',
+             height: 30,
+             width: 30,
+             margin: '3 0 0 -7',
+             id: 'btnFloatPanel_AyohaStoreMyPurchaseHistory',
+             //badgeText: "2",
+             html: '<img src="resources/icons/purchase01.png" width="20" height="20" alt="Company Name">',
+             ui: 'plain',
+             handler: function () {
+               //  FloatPanel_AyohaStore_DotMenuItemHide();
+                 FloatPanel_AyohaStore_OrderHistoryShow();
+                 // FloatPanel_AyohaStoreMerchant_AddEditItemShow();
+
+             }
+         },
 
 //{
 //    margin: '0 0 0 0',
@@ -327,952 +313,698 @@ function FloatPanel_AyohaStore() {
 //},
 
 
-    ]
+   ]
 },
- {
-     xtype: 'panel',
-     width: 7
- },
 {
-    xtype: 'container',
-    zIndex: 110,
-    height: 35,
-    width: 35,
-    margin: '0 0 0 0',
-   // id: 'containerFloatPanel_AyohaStore_MyCartCountbadge',
-    id: 'containerFloatPanel_AyohaStoreMyCart',
-    name: 'namecontainerFloatPanel_AyohaStoreMyCart_L',
-   // name: 'namecontainerFloatPanel_AyohaStoreMyCart',
-    
-  //  style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
-    style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
-    layout: {
-        type: 'vbox',
-        pack: 'center',
-        align: 'center'
-
-    },
-    items: [
-
+    xtype: 'panel',
+    width: 7
+},
 {
-    margin: '-1 0 0 0',
-    id: 'htmlFloatPanel_AyohaStore_MyCartCountbadgeText',
-    html: '<div style="background: transparent;height:10px;font-size: 12px;font-weight:normal;color:black;text-align:center;" ><b>0</b></div>'
+   xtype: 'container',
+   zIndex: 110,
+   height: 35,
+   width: 35,
+   margin: '0 0 0 0',
+  // id: 'containerFloatPanel_AyohaStore_MyCartCountbadge',
+   id: 'containerFloatPanel_AyohaStoreMyCart',
+   name: 'namecontainerFloatPanel_AyohaStoreMyCart_L',
+  // name: 'namecontainerFloatPanel_AyohaStoreMyCart',
    
+ //  style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
+   style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
+   layout: {
+       type: 'vbox',
+       pack: 'center',
+       align: 'center'
+
+   },
+   items: [
+
+{
+   margin: '-1 0 0 0',
+   id: 'htmlFloatPanel_AyohaStore_MyCartCountbadgeText',
+   html: '<div style="background: transparent;height:10px;font-size: 12px;font-weight:normal;color:black;text-align:center;" ><b>0</b></div>'
+  
 },
 {
-    margin: '2 2 0 0',
-    // hidden: true,
-    width: 18,
-    height: 18,
-    html: '<img src="resources/icons/myCart02.png" alt="Image" style="width:18px;height:18px;">',
-    // ui:'plain'
+   margin: '2 2 0 0',
+   // hidden: true,
+   width: 18,
+   height: 18,
+   html: '<img src="resources/icons/myCart02.png" alt="Image" style="width:18px;height:18px;">',
+   // ui:'plain'
 },
 
 
-    ]
+   ]
 },
- 
-                                        /////////////////////////////
 
-
-                                             {
-                                                 xtype: 'container',
-                                                 id: 'containerFloatPanel_AyohaStoreMyCartxx',
-                                                 name: 'namecontainerFloatPanel_AyohaStoreMyCart',
-                                                 hidden:true,
-                                                 width: 110,
-                                                 height: 30,
-                                                 margin: '0 0 0 0',
-                                                 // hidden: true,
-                                                 // style: "background-color: transparent",
-                                                 //style: "background-color: #F35B57;",
-                                                 style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background: white;border-radius: 10px 10px 10px 10px;',
-                                                 layout: {
-                                                     type: 'hbox',
-                                                     pack: 'left',
-                                                     align: 'left'
-
-                                                 },
-                                                 items: [
-
-                                                     {
-                                                         xtype: 'panel',
-                                                         width: 5
-                                                     },
-
-
-                                                     {
-                                                         margin: '8 0 0 0',
-                                                         id: 'htmlFloatPanel_AyohaStore_CartAmount',
-                                                         html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:black;text-align:center;" >RM00.00</div>'
-                                                     },
-                                                       {
-                                                           margin: '2 0 0 2',
-
-                                                           width: 24,
-                                                           height: 24,
-                                                           html: '<img src="resources/icons/myCart02.png" alt="Image" style="width:24px;height:24px;">',
-                                                           // ui:'plain'
-                                                       },
-
-                                                       {
-                                                           xtype: 'container',
-                                                           height: 35,
-                                                           width: 35,
-                                                           margin: '-3 0 0 5',
-                                                           id: 'containerFloatPanel_AyohaStore_MyCartCountbadge',
-                                                           style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
-                                                           layout: {
-                                                               type: 'vbox',
-                                                               pack: 'center',
-                                                               align: 'center'
-
-                                                           },
-                                                           items: [
-
-                                                     {
-                                                         margin: '-2 0 0 0',
-                                                         id: 'htmlFloatPanel_AyohaStore_MyCartCountbadgeTextxx',
-                                                         html: '<div style="background: transparent;height:10px;font-size: 12px;font-weight:normal;color:black;text-align:center;" ><b>0</b></div>'
-                                                     },
-                                                     {
-                                                         margin: '0 0 0 0',
-                                                         id: 'htmlFloatPanel_AyohaStore_MyCartCountbadgeTextItem',
-                                                         html: '<div style="background: transparent;height:5px;font-size: 8px;font-weight:normal;color:black;text-align:center;" >Item</div>'
-                                                     },
-
-                                                           ]
-                                                       },
-
-
-
-
-                                                 ]
-                                             },
-
-
-
-                                {
-                                    xtype: 'panel',
-                                    width: 10
-                                }
-
-
-
-
-                                ]
-
-                     },
-
-
-
-
-
-
-
-
-                     {
-                         xtype: 'container',
-                         height: 140,
-                         // hidden:true,
-                         //flex: 1,
-                         // height:'35%',
-                         //height: 198,
-
-                         //  height: 173,
-                         width: '100%',
-                         id: 'containerFloatPanel_AyohaStoreCompanyLogoHeaderMaster',
-                         docked: 'top',
-                         style: "background-color: transparent;",
-                         //   style: 'background-image: url("resources/icons/pointbackdropwhite.png"); background-size: 100% 100%;border-bottom:1px none;border-radius: 20px 20px 20px 20px;',
-                         //style: {
-
-                         //    background: 'transparent',
-
-                         //},
-
-                         layout: {
-                             type: 'vbox',
-                             pack: 'center',
-                             align: 'center'
-
-                         },
-                         items: [
-
-
-
-                             {
-
-                                 xtype: 'container',
-                                 margin: '0 0 0 0',
-                                 //width: '100%',
-                                 // zIndex: 190,
-                                 //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                                 //hidden: true,
-                                 docked: 'top',
-                                 id: 'containerFloatPanel_AyohaStoreCompanyLogoHeader',
-                                 style: "background-color: transparent;",
-                                 //style: {
-                                 //    // background: '#D25959',
-                                 //    background: 'transparent',
-                                 //    // border: '2px'
-                                 //},
-
-                                 // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                                 layout: {
-                                     type: 'vbox',
-                                     pack: 'center',
-                                     align: 'center',
-                                 },
-                                 // hidden:true,
-                                 items:
-                                        [
-
-
-
-
+                                       /////////////////////////////
 
 
                                             {
                                                 xtype: 'container',
-                                                styleHtmlContent: true,
-                                                margin: '-20 0 0 0',
-                                                width: '100%',
-                                                //zIndex: 90,
-                                                style: 'background-color: transparent;',
-                                                id: 'containerFloatPanel_AyohaStoreCompanyLogo',
+                                                id: 'containerFloatPanel_AyohaStoreMyCartxx',
+                                                name: 'namecontainerFloatPanel_AyohaStoreMyCart',
+                                                hidden:true,
+                                                width: 110,
+                                                height: 30,
+                                                margin: '0 0 0 0',
+                                                // hidden: true,
+                                                // style: "background-color: transparent",
+                                                //style: "background-color: #F35B57;",
+                                                style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background: white;border-radius: 10px 10px 10px 10px;',
                                                 layout: {
+                                                    type: 'hbox',
+                                                    pack: 'left',
+                                                    align: 'left'
 
-                                                    type: 'vbox',
-                                                    pack: 'center',
-                                                    align: 'center'
                                                 },
                                                 items: [
 
+                                                    {
+                                                        xtype: 'panel',
+                                                        width: 5
+                                                    },
+
 
                                                     {
+                                                        margin: '8 0 0 0',
+                                                        id: 'htmlFloatPanel_AyohaStore_CartAmount',
+                                                        html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:black;text-align:center;" >RM00.00</div>'
+                                                    },
+                                                      {
+                                                          margin: '2 0 0 2',
 
-                                                        xtype: 'container',
-                                                        width: '100%',
+                                                          width: 24,
+                                                          height: 24,
+                                                          html: '<img src="resources/icons/myCart02.png" alt="Image" style="width:24px;height:24px;">',
+                                                          // ui:'plain'
+                                                      },
+
+                                                      {
+                                                          xtype: 'container',
+                                                          height: 35,
+                                                          width: 35,
+                                                          margin: '-3 0 0 5',
+                                                          id: 'containerFloatPanel_AyohaStore_MyCartCountbadge',
+                                                          style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
+                                                          layout: {
+                                                              type: 'vbox',
+                                                              pack: 'center',
+                                                              align: 'center'
+
+                                                          },
+                                                          items: [
+
+                                                    {
+                                                        margin: '-2 0 0 0',
+                                                        id: 'htmlFloatPanel_AyohaStore_MyCartCountbadgeTextxx',
+                                                        html: '<div style="background: transparent;height:10px;font-size: 12px;font-weight:normal;color:black;text-align:center;" ><b>0</b></div>'
+                                                    },
+                                                    {
                                                         margin: '0 0 0 0',
-                                                        height: 80,
-                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                        style: "background-color: transparent;",
-                                                        layout: {
-                                                            type: 'hbox',
-                                                            pack: 'center',
-                                                            align: 'center'
+                                                        id: 'htmlFloatPanel_AyohaStore_MyCartCountbadgeTextItem',
+                                                        html: '<div style="background: transparent;height:5px;font-size: 8px;font-weight:normal;color:black;text-align:center;" >Item</div>'
+                                                    },
 
-                                                        },
-                                                        items: [
-                                                            //{
-                                                            //    xtype: 'panel',
-                                                            //    id: 'panelFloatPanel_AyohaStore_Status7',
-                                                            //    width: 7
-                                                            //},
+                                                          ]
+                                                      },
 
 
 
-                                                            {
-                                                                xtype: 'container',
-                                                                width: '25%',
-                                                                id: 'containerFloatPanel_AyohaStore_Logo',
 
-                                                                margin: '0 0 0 0',
-                                                                //style: {
-                                                                //    // background: '#D25959',
-                                                                //    background: 'rgba(76, 175, 80, 0.3);',
-                                                                //    // border: '2px'
-                                                                //},
-                                                                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                                                                style: 'background-color:transparent',
-                                                                layout: {
-                                                                    type: 'vbox',
-                                                                    pack: 'center',
-                                                                    align: 'center',
-                                                                },
-                                                                items: [
-                                                                      {
-                                                                          //xtype: 'button',
-                                                                          //height: 75,
-                                                                          //width: 75,
-
-                                                                          margin: '0 0 0 0',
-                                                                          id: 'htmlFloatPanel_AyohaStore_CompanyLogo',
-                                                                          //badgeText: "2",
-                                                                          //  html: '<img src="resources/icons/MyAdvertisementDashboardOne.png" width="65" height="65" alt="Company Name">',
-                                                                          html: '<div ><img src="https://setkita.com/AyohaImgCard/Logo/39259-0123214416-NoEnterprise/azmah01-removebg-preview.png" width="80" height="65" alt="Company Name"></div>',
-
-                                                                      },
-
-                                                                ]
-                                                            },
-                                                            {
-                                                                xtype: 'panel',
-                                                                width: 7
-                                                            },
-                                                               {
-                                                                   xtype: 'container',
-                                                                   width: '75%',
-                                                                   id: 'containerFloatPanel_AyohaStore_CompanyInfo',
+                                                ]
+                                            },
 
 
-                                                                   margin: '0 0 0 0',
-                                                                   //style: {
-                                                                   //    // background: '#D25959',
-                                                                   //    background: 'rgba(76, 175, 80, 0.3);',
-                                                                   //    // border: '2px'
-                                                                   //},
-                                                                   //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                                                                   style: 'background-color:transparent',
-                                                                   layout: {
-                                                                       type: 'vbox',
-                                                                       pack: 'center',
-                                                                       align: 'center',
-                                                                   },
-                                                                   items: [
+
+                               {
+                                   xtype: 'panel',
+                                   width: 10
+                               }
+
+
+
+
+                               ]
+
+                    },
+
+
+
+
+
+
+
+
+                    {
+                        xtype: 'container',
+                        height: 140,
+                        // hidden:true,
+                        //flex: 1,
+                        // height:'35%',
+                        //height: 198,
+
+                        //  height: 173,
+                        width: '100%',
+                        id: 'containerFloatPanel_AyohaStoreCompanyLogoHeaderMaster',
+                        docked: 'top',
+                        style: "background-color: transparent;",
+                        //   style: 'background-image: url("resources/icons/pointbackdropwhite.png"); background-size: 100% 100%;border-bottom:1px none;border-radius: 20px 20px 20px 20px;',
+                        //style: {
+
+                        //    background: 'transparent',
+
+                        //},
+
+                        layout: {
+                            type: 'vbox',
+                            pack: 'center',
+                            align: 'center'
+
+                        },
+                        items: [
+
+
+
+                            {
+
+                                xtype: 'container',
+                                margin: '0 0 0 0',
+                                //width: '100%',
+                                // zIndex: 190,
+                                //  title: '<font size="3" color="white">Live Tracking Map</font>',
+                                //hidden: true,
+                                docked: 'top',
+                                id: 'containerFloatPanel_AyohaStoreCompanyLogoHeader',
+                                style: "background-color: transparent;",
+                                //style: {
+                                //    // background: '#D25959',
+                                //    background: 'transparent',
+                                //    // border: '2px'
+                                //},
+
+                                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                                layout: {
+                                    type: 'vbox',
+                                    pack: 'center',
+                                    align: 'center',
+                                },
+                                // hidden:true,
+                                items:
+                                       [
+
+
+
+
+
+
+                                           {
+                                               xtype: 'container',
+                                               styleHtmlContent: true,
+                                               margin: '-20 0 0 0',
+                                               width: '100%',
+                                               //zIndex: 90,
+                                               style: 'background-color: transparent;',
+                                               id: 'containerFloatPanel_AyohaStoreCompanyLogo',
+                                               layout: {
+
+                                                   type: 'vbox',
+                                                   pack: 'center',
+                                                   align: 'center'
+                                               },
+                                               items: [
+
+
+                                                   {
+
+                                                       xtype: 'container',
+                                                       width: '100%',
+                                                       margin: '0 0 0 0',
+                                                       height: 80,
+                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                       style: "background-color: transparent;",
+                                                       layout: {
+                                                           type: 'hbox',
+                                                           pack: 'center',
+                                                           align: 'center'
+
+                                                       },
+                                                       items: [
+                                                           //{
+                                                           //    xtype: 'panel',
+                                                           //    id: 'panelFloatPanel_AyohaStore_Status7',
+                                                           //    width: 7
+                                                           //},
+
+
+
+                                                           {
+                                                               xtype: 'container',
+                                                               width: '25%',
+                                                               id: 'containerFloatPanel_AyohaStore_Logo',
+
+                                                               margin: '0 0 0 0',
+                                                               //style: {
+                                                               //    // background: '#D25959',
+                                                               //    background: 'rgba(76, 175, 80, 0.3);',
+                                                               //    // border: '2px'
+                                                               //},
+                                                               //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+                                                               style: 'background-color:transparent',
+                                                               layout: {
+                                                                   type: 'vbox',
+                                                                   pack: 'center',
+                                                                   align: 'center',
+                                                               },
+                                                               items: [
+                                                                     {
+                                                                         //xtype: 'button',
+                                                                         //height: 75,
+                                                                         //width: 75,
+
+                                                                         margin: '0 0 0 0',
+                                                                         id: 'htmlFloatPanel_AyohaStore_CompanyLogo',
+                                                                         //badgeText: "2",
+                                                                         //  html: '<img src="resources/icons/MyAdvertisementDashboardOne.png" width="65" height="65" alt="Company Name">',
+                                                                         html: '<div ><img src="https://setkita.com/AyohaImgCard/Logo/39259-0123214416-NoEnterprise/azmah01-removebg-preview.png" width="80" height="65" alt="Company Name"></div>',
+
+                                                                     },
+
+                                                               ]
+                                                           },
+                                                           {
+                                                               xtype: 'panel',
+                                                               width: 7
+                                                           },
+                                                              {
+                                                                  xtype: 'container',
+                                                                  width: '75%',
+                                                                  id: 'containerFloatPanel_AyohaStore_CompanyInfo',
+
+
+                                                                  margin: '0 0 0 0',
+                                                                  //style: {
+                                                                  //    // background: '#D25959',
+                                                                  //    background: 'rgba(76, 175, 80, 0.3);',
+                                                                  //    // border: '2px'
+                                                                  //},
+                                                                  //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+                                                                  style: 'background-color:transparent',
+                                                                  layout: {
+                                                                      type: 'vbox',
+                                                                      pack: 'center',
+                                                                      align: 'center',
+                                                                  },
+                                                                  items: [
+                                                                         {
+
+                                                                             id: 'htmlFloatPanel_AyohaStore_CompanyInfo_Name',
+                                                                             width: '100%',
+                                                                             html: '<div style="color:black;text-align: left;font-size:16px;width:100%;font-weight:bold">BuskartApp Technology Sdn Bhd</div>',
+
+
+                                                                         },
                                                                           {
 
-                                                                              id: 'htmlFloatPanel_AyohaStore_CompanyInfo_Name',
+                                                                              id: 'htmlFloatPanel_AyohaStore_CompanyInfo_Line',
                                                                               width: '100%',
-                                                                              html: '<div style="color:black;text-align: left;font-size:16px;width:100%;font-weight:bold">BuskartApp Technology Sdn Bhd</div>',
+                                                                              margin: '0 0 0 0',
+                                                                              html: '<div style="background-color:black;text-align: left;font-size:16px;width:80%;font-weight:bold;height:1px"></div>',
 
 
                                                                           },
-                                                                           {
+                                                                          {
 
-                                                                               id: 'htmlFloatPanel_AyohaStore_CompanyInfo_Line',
-                                                                               width: '100%',
-                                                                               margin: '0 0 0 0',
-                                                                               html: '<div style="background-color:black;text-align: left;font-size:16px;width:80%;font-weight:bold;height:1px"></div>',
+                                                                              id: 'htmlFloatPanel_AyohaStore_CompanyInfo_Tagline',
 
-
-                                                                           },
-                                                                           {
-
-                                                                               id: 'htmlFloatPanel_AyohaStore_CompanyInfo_Tagline',
-
-                                                                               width: '100%',
-                                                                               // iconCls: 'list',
-                                                                               //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 30px 30px 30px 30px;width:45px;height:45px;" ><img src="resources/icons/founder.jpg" width="25" height="25"  alt="Company Name" style="margin:7px 0px 0px 0px;border-radius: 50%;"></div>',
-                                                                               html: '<div style="color:black;text-align: left;font-size:12px;width:100%;font-weight:normal;margin:0px 0px 0px 0px;">Date:28/12/2020 10:30:54PM</div>',
+                                                                              width: '100%',
+                                                                              // iconCls: 'list',
+                                                                              //html: '<div style="border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 30px 30px 30px 30px;width:45px;height:45px;" ><img src="resources/icons/founder.jpg" width="25" height="25"  alt="Company Name" style="margin:7px 0px 0px 0px;border-radius: 50%;"></div>',
+                                                                              html: '<div style="color:black;text-align: left;font-size:12px;width:100%;font-weight:normal;margin:0px 0px 0px 0px;">Date:28/12/2020 10:30:54PM</div>',
 
 
-                                                                           },
-                                                                           {
-                                                                               xtype: 'container',
-                                                                               id: 'containerPreviewAdvertisementButton_bottomx',
-                                                                               hidden: true,
-                                                                               width: '100%',
-                                                                               style: "background-color: transparent",
-                                                                               //style: "background-color: #F35B57;",
-                                                                               margin: '0 0 0 0',
-                                                                               layout: {
-                                                                                   type: 'hbox',
-                                                                                   pack: 'left',
-                                                                                   align: 'left'
+                                                                          },
+                                                                          {
+                                                                              xtype: 'container',
+                                                                              id: 'containerPreviewAdvertisementButton_bottomx',
+                                                                              hidden: true,
+                                                                              width: '100%',
+                                                                              style: "background-color: transparent",
+                                                                              //style: "background-color: #F35B57;",
+                                                                              margin: '0 0 0 0',
+                                                                              layout: {
+                                                                                  type: 'hbox',
+                                                                                  pack: 'left',
+                                                                                  align: 'left'
 
-                                                                               },
+                                                                              },
 
 
-                                                                               items: [
+                                                                              items: [
 
-                                                                                    {
-                                                                                        xtype: 'button',
-                                                                                        height: 23,
-                                                                                        width: 23,
-                                                                                        // hidden: true,
-                                                                                        margin: '0 0 0 0',
-                                                                                        id: 'btnFloatPanel_PreviewAdvertisementbottom_Location',
-                                                                                        //badgeText: "2",
-                                                                                        html: '<div ><img src="resources/icons/locationWhite02.png" width="13" height="13" alt="Company Name"></div>',
-                                                                                        ui: 'plain',
-                                                                                        handler: function () {
+                                                                                   {
+                                                                                       xtype: 'button',
+                                                                                       height: 23,
+                                                                                       width: 23,
+                                                                                       // hidden: true,
+                                                                                       margin: '0 0 0 0',
+                                                                                       id: 'btnFloatPanel_PreviewAdvertisementbottom_Location',
+                                                                                       //badgeText: "2",
+                                                                                       html: '<div ><img src="resources/icons/locationWhite02.png" width="13" height="13" alt="Company Name"></div>',
+                                                                                       ui: 'plain',
+                                                                                       handler: function () {
 
-                                                                                            var Coordinate = globalFloatPanel_PreviewAdvertisement_CoordinateLink.split(",");
-                                                                                            PlaceMarkerlat = Coordinate[0];
-                                                                                            PlaceMarkerlng = Coordinate[1];
+                                                                                           var Coordinate = globalFloatPanel_PreviewAdvertisement_CoordinateLink.split(",");
+                                                                                           PlaceMarkerlat = Coordinate[0];
+                                                                                           PlaceMarkerlng = Coordinate[1];
 
 
 
 
 
-                                                                                            if (PlaceMarkerlat) {
-                                                                                                if (PlaceMarkerlng) {
-                                                                                                    window.open("https://www.google.com/maps/search/?api=1&query=" + PlaceMarkerlat + "," + PlaceMarkerlng, '_system'); return false;
+                                                                                           if (PlaceMarkerlat) {
+                                                                                               if (PlaceMarkerlng) {
+                                                                                                   window.open("https://www.google.com/maps/search/?api=1&query=" + PlaceMarkerlat + "," + PlaceMarkerlng, '_system'); return false;
+                                                                                               } else {
+
+                                                                                                   swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this setting!", "Location");
+                                                                                               }
+                                                                                           } else {
+                                                                                               swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this Message!", "Location");
+                                                                                           }
+
+
+
+                                                                                       }
+                                                                                   },
+                                                                                        {
+                                                                                            xtype: 'button',
+                                                                                            height: 23,
+                                                                                            width: 23,
+                                                                                            //hidden: true,
+                                                                                            margin: '0 0 0 0',
+                                                                                            id: 'btnFloatPanel_PreviewAdvertisementbottom_FBx',
+                                                                                            //badgeText: "2",
+                                                                                            html: '<div ><img src="resources/icons/facebookWhiteIcon.png" width="13" height="13" alt="Company Name"></div>',
+                                                                                            ui: 'plain',
+                                                                                            handler: function () {
+
+
+
+
+                                                                                                if (globalFloatPanel_PreviewAdvertisement_FBLink) {
+
+                                                                                                    //  setTimeout(function () { window.open("fb://page/" + globalFloatPanel_PreviewAdvertisement_FBLink + ""); }, 25);
+                                                                                                    setTimeout(function () { window.open("fb://page/" + globalFloatPanel_PreviewAdvertisement_FBLink + "", '_system'); return false; }, 25);
                                                                                                 } else {
 
-                                                                                                    swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this setting!", "Location");
+                                                                                                    swalFireInfoMerchantButtonLink("Merchant Might be Not Set FB Link.,Help Merchant to know this Message!", "FB")
                                                                                                 }
-                                                                                            } else {
-                                                                                                swalFireInfoMerchantButtonLink("Merchant Might be Not Set Location Coordinate.,Help merchant to know this Message!", "Location");
+
                                                                                             }
-
-
-
-                                                                                        }
-                                                                                    },
+                                                                                        },
                                                                                          {
                                                                                              xtype: 'button',
                                                                                              height: 23,
                                                                                              width: 23,
-                                                                                             //hidden: true,
                                                                                              margin: '0 0 0 0',
-                                                                                             id: 'btnFloatPanel_PreviewAdvertisementbottom_FBx',
+                                                                                             // hidden: true,
+                                                                                             id: 'btnFloatPanel_PreviewAdvertisementbottom_Instax',
                                                                                              //badgeText: "2",
-                                                                                             html: '<div ><img src="resources/icons/facebookWhiteIcon.png" width="13" height="13" alt="Company Name"></div>',
+                                                                                             html: '<div ><img src="resources/icons/instagramWhiteIcon.png" width="13" height="13" alt="Company Name"></div>',
                                                                                              ui: 'plain',
                                                                                              handler: function () {
+                                                                                                 // alert(GetEnterpriseInstagram());
 
 
 
 
-                                                                                                 if (globalFloatPanel_PreviewAdvertisement_FBLink) {
 
-                                                                                                     //  setTimeout(function () { window.open("fb://page/" + globalFloatPanel_PreviewAdvertisement_FBLink + ""); }, 25);
-                                                                                                     setTimeout(function () { window.open("fb://page/" + globalFloatPanel_PreviewAdvertisement_FBLink + "", '_system'); return false; }, 25);
+
+
+                                                                                                 if (globalFloatPanel_PreviewAdvertisement_InstaLink) {
+                                                                                                     setTimeout(function () { window.open("instagram://user?username=" + globalFloatPanel_PreviewAdvertisement_InstaLink + "", '_system'); return false; }, 25);
                                                                                                  } else {
 
-                                                                                                     swalFireInfoMerchantButtonLink("Merchant Might be Not Set FB Link.,Help Merchant to know this Message!", "FB")
+                                                                                                     swalFireInfoMerchantButtonLink("Merchant Might be Not Set Instagram Link.,Help Merchant to know this Message!", "Insta")
                                                                                                  }
+
+
 
                                                                                              }
                                                                                          },
+
+
+
+                                                                                          //{
+                                                                                          //    //xtype: 'button',
+                                                                                          //    //align: 'stretch',
+                                                                                          //    //height: 32,
+                                                                                          //    //width: 92,
+                                                                                          //    id: 'btnFloatPanel_PreviewAdvertisementbottom_Wassap',
+                                                                                          //    // ui: 'plain',
+                                                                                          //    //  window.open("http://" + url, "_blank");
+                                                                                          //    //  html: '<img src="resources/icons/whatApplogosnew.png" style="width: 32px; height: 32px;" />'
+
+
+                                                                                          //    html: '<a href="https://api.whatsapp.com/send?phone=+60133376958"><img src="resources/icons/whatApplogosnew.png" style="width: 22px; height: 22px;" /></a>'
+                                                                                          //}
                                                                                           {
                                                                                               xtype: 'button',
                                                                                               height: 23,
                                                                                               width: 23,
                                                                                               margin: '0 0 0 0',
-                                                                                              // hidden: true,
-                                                                                              id: 'btnFloatPanel_PreviewAdvertisementbottom_Instax',
+                                                                                              //  hidden: true,
+                                                                                              id: 'btnFloatPanel_PreviewAdvertisementbottom_Wassapx',
                                                                                               //badgeText: "2",
-                                                                                              html: '<div ><img src="resources/icons/instagramWhiteIcon.png" width="13" height="13" alt="Company Name"></div>',
+                                                                                              html: '<a href="https://api.whatsapp.com/send?phone=+60133376958"><img src="resources/icons/whatsappWhite.png" width="13" height="13" alt="Company Name"/></a>',
                                                                                               ui: 'plain',
                                                                                               handler: function () {
-                                                                                                  // alert(GetEnterpriseInstagram());
+
+
+
+                                                                                                  // window.open("https://api.whatsapp.com/send?phone=+60133376958&text=https://BuskartApp.com/ayohaimg/"+ModifiedMediaFileName);
+
+                                                                                                  //  window.open("https://api.whatsapp.com/send?phone=" + GetPICContactNo() + "&text=https://BuskartApp.com/ayohaimg/" + ModifiedMediaFileName);
 
 
 
 
 
-
-
-                                                                                                  if (globalFloatPanel_PreviewAdvertisement_InstaLink) {
-                                                                                                      setTimeout(function () { window.open("instagram://user?username=" + globalFloatPanel_PreviewAdvertisement_InstaLink + "", '_system'); return false; }, 25);
+                                                                                                  if (globalFloatPanel_PreviewAdvertisement_WhatsAppLink) {
+                                                                                                      // var ModifiedMediaFileName = globalMediaFileName.replace(".", "") + ".html?ImgId=" + globalMediaFileName;
+                                                                                                      //  window.open("https://api.whatsapp.com/send?phone=" + globalFloatPanel_PreviewAdvertisement_WhatsAppLink + "&text=Hi");
+                                                                                                      window.open("https://api.whatsapp.com/send?phone=" + globalFloatPanel_PreviewAdvertisement_WhatsAppLink + "&text=Hi", '_system'); return false;
+                                                                                                      // window.open("https://api.whatsapp.com/send?phone=" + globalFloatPanel_PreviewAdvertisement_WhatsAppLink + "&text=https://BuskartApp.com/ayohaimg/" + ModifiedMediaFileName);
                                                                                                   } else {
-
-                                                                                                      swalFireInfoMerchantButtonLink("Merchant Might be Not Set Instagram Link.,Help Merchant to know this Message!", "Insta")
+                                                                                                      swalFireInfoMerchantButtonLink("Merchant Might be Not Set WhatsApp No.,Help merchant to know this Message!", "WhatsApp");
                                                                                                   }
 
 
 
                                                                                               }
                                                                                           },
+                                                                              ]
+
+                                                                          },
+
+                                                                  ]
+                                                              },
+
+                                                              {
+                                                                  xtype: 'button',
+                                                                  id: 'btnFloatPanel_AyohaStore_SaleAnimated',
+                                                                  //  badgeText: '1',
+                                                                  hidden: true,
+                                                                  margin: '-5 0 0 -80',
+                                                                  height: 80,
+                                                                  width: 80,
+                                                                  html: '<img src="resources/icons/SaleThree.gif" width="50" height="50" alt="Company Name">',
+                                                                  ui: 'plain',
+                                                                  handler: function () {
+                                                                      // NoAdvertisementCreated
+                                                                      // FloatPanel_PreviewAdvertisementShow_StampCard("FloatPanel_AyohaCardManagement_AdvertisementButton");
+
+                                                                    
+
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "FloatPanel_AyohaReward_AyohaTapContest") {
+                                                                          //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
+                                                                          //{
+                                                                          //    swalFireWarning("No Advertisement Created!");
+                                                                          //    return;
+                                                                          //}
+                                                                          FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
+                                                                          return;
+                                                                      }
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "Dashboard_AyohaHotMerchant") {
+                                                                          //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
+                                                                          //{
+                                                                          //    swalFireWarning("No Advertisement Created!");
+                                                                          //    return;
+                                                                          //}
+                                                                          FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
+                                                                          return;
+                                                                      }
 
 
 
-                                                                                           //{
-                                                                                           //    //xtype: 'button',
-                                                                                           //    //align: 'stretch',
-                                                                                           //    //height: 32,
-                                                                                           //    //width: 92,
-                                                                                           //    id: 'btnFloatPanel_PreviewAdvertisementbottom_Wassap',
-                                                                                           //    // ui: 'plain',
-                                                                                           //    //  window.open("http://" + url, "_blank");
-                                                                                           //    //  html: '<img src="resources/icons/whatApplogosnew.png" style="width: 32px; height: 32px;" />'
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "AyohaMerchant") {
+                                                                          //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
+                                                                          //{
+                                                                          //    swalFireWarning("No Advertisement Created!");
+                                                                          //    return;
+                                                                          //}
+                                                                          FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
+                                                                          return;
+                                                                      }
+
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "BurgerMenu_MyAyohaStore") {
+                                                                          //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
+                                                                          //{
+                                                                          //    swalFireWarning("No Advertisement Created!");
+                                                                          //    return;
+                                                                          //}
+                                                                          FloatPanel_PreviewAdvertisementShow_BurgerMenu_MyAyohaStore("BurgerMenu_MyAyohaStore")
+
+                                                                          return;
+                                                                      }
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "PushNotification") {
+                                                                          //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
+                                                                          //{
+                                                                          //    swalFireWarning("No Advertisement Created!");
+                                                                          //    return;
+                                                                          //}
+                                                                          FloatPanel_PreviewAdvertisementShow_PushNotification("PushNotification");
+                                                                          return;
+                                                                      }
+
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "Floating_Advertisement") {
+                                                                          //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
+                                                                          //{
+                                                                          //    swalFireWarning("No Advertisement Created!");
+                                                                          //    return;
+                                                                          //}
+
+                                                                          localStorage.setItem("Floating_AdvertismentCode", globalFloatPanel_FloatingAdvertisement_AdvertismentCode);
+                                                                          FloatPanel_PreviewAdvertisementShow_FloatingAdvertisement("Floating_Advertisement");
+
+                                                                          // FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
+                                                                          return;
+                                                                      }
+                                                                      if (globalFloatPanel_AyohaStore_ModuleTagging == "VIAAdvertisement") {
+
+                                                                          FloatPanel_PreviewAdvertisementShow_VIAAdvertisement("Dashboard_PreviewVIAAdvertisement");
+
+                                                                          // FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
+                                                                          return;
+                                                                      }
+                                                                      else {
+                                                                          var index = globalDashboard_OpenAdvertisementNo;
+                                                                         
+                                                                          openAdvertisement_fromOtherPage(index);
+                                                                      }
 
 
-                                                                                           //    html: '<a href="https://api.whatsapp.com/send?phone=+60133376958"><img src="resources/icons/whatApplogosnew.png" style="width: 22px; height: 22px;" /></a>'
-                                                                                           //}
-                                                                                           {
-                                                                                               xtype: 'button',
-                                                                                               height: 23,
-                                                                                               width: 23,
-                                                                                               margin: '0 0 0 0',
-                                                                                               //  hidden: true,
-                                                                                               id: 'btnFloatPanel_PreviewAdvertisementbottom_Wassapx',
-                                                                                               //badgeText: "2",
-                                                                                               html: '<a href="https://api.whatsapp.com/send?phone=+60133376958"><img src="resources/icons/whatsappWhite.png" width="13" height="13" alt="Company Name"/></a>',
-                                                                                               ui: 'plain',
-                                                                                               handler: function () {
+
+                                                                  }
+                                                              }
+                                                       ]
 
 
+                                                   },
+                                                   {
+                                                       xtype: 'container',
+                                                       width: '100%',
+                                                       margin: '-7 0 0 0',
+                                                       height: 50,
+                                                       style: "background-color: transparent;",
+                                                       layout: {
+                                                           type: 'hbox',
+                                                           pack: 'start',
+                                                           align: 'center',
+                                                       },
+                                                       items: [
+                                                           {
+                                                               xtype: 'container',
+                                                               width: '100%',
+                                                               margin: '0 0 0 0',
+                                                               height: 50,
+                                                               // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                               style: "background-color: transparent;",
+                                                               layout: {
+                                                                   type: 'hbox',
+                                                                   pack: 'center',
+                                                                   align: 'center'
 
-                                                                                                   // window.open("https://api.whatsapp.com/send?phone=+60133376958&text=https://BuskartApp.com/ayohaimg/"+ModifiedMediaFileName);
-
-                                                                                                   //  window.open("https://api.whatsapp.com/send?phone=" + GetPICContactNo() + "&text=https://BuskartApp.com/ayohaimg/" + ModifiedMediaFileName);
-
-
-
-
-
-                                                                                                   if (globalFloatPanel_PreviewAdvertisement_WhatsAppLink) {
-                                                                                                       // var ModifiedMediaFileName = globalMediaFileName.replace(".", "") + ".html?ImgId=" + globalMediaFileName;
-                                                                                                       //  window.open("https://api.whatsapp.com/send?phone=" + globalFloatPanel_PreviewAdvertisement_WhatsAppLink + "&text=Hi");
-                                                                                                       window.open("https://api.whatsapp.com/send?phone=" + globalFloatPanel_PreviewAdvertisement_WhatsAppLink + "&text=Hi", '_system'); return false;
-                                                                                                       // window.open("https://api.whatsapp.com/send?phone=" + globalFloatPanel_PreviewAdvertisement_WhatsAppLink + "&text=https://BuskartApp.com/ayohaimg/" + ModifiedMediaFileName);
-                                                                                                   } else {
-                                                                                                       swalFireInfoMerchantButtonLink("Merchant Might be Not Set WhatsApp No.,Help merchant to know this Message!", "WhatsApp");
-                                                                                                   }
-
-
-
-                                                                                               }
-                                                                                           },
-                                                                               ]
-
-                                                                           },
-
-                                                                   ]
                                                                },
+                                                               scrollable: {
+                                                                   direction: 'horizontal',
+                                                                   directionLock: true,
+                                                                   indicators: false
+                                                               },
+                                                               items: [
 
-                                                               {
-                                                                   xtype: 'button',
-                                                                   id: 'btnFloatPanel_AyohaStore_SaleAnimated',
-                                                                   //  badgeText: '1',
-                                                                   hidden: true,
-                                                                   margin: '-5 0 0 -80',
-                                                                   height: 80,
-                                                                   width: 80,
-                                                                   html: '<img src="resources/icons/SaleThree.gif" width="50" height="50" alt="Company Name">',
-                                                                   ui: 'plain',
-                                                                   handler: function () {
-                                                                       // NoAdvertisementCreated
-                                                                       // FloatPanel_PreviewAdvertisementShow_StampCard("FloatPanel_AyohaCardManagement_AdvertisementButton");
+                                                                     {
+                                                                         xtype: 'container',
+                                                                         width: 400,
+                                                                        // width: 620,
+                                                                        // width: 680,
+                                                                         style: "background-color: transparent",
+                                                                         height: 50,
+                                                                         layout: {
+                                                                             type: 'hbox',
+                                                                             pack: 'center',
+                                                                             align: 'center',
+                                                                         },
+                                                                         items: [
 
-                                                                     
-
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "FloatPanel_AyohaReward_AyohaTapContest") {
-                                                                           //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
-                                                                           //{
-                                                                           //    swalFireWarning("No Advertisement Created!");
-                                                                           //    return;
-                                                                           //}
-                                                                           FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
-                                                                           return;
-                                                                       }
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "Dashboard_AyohaHotMerchant") {
-                                                                           //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
-                                                                           //{
-                                                                           //    swalFireWarning("No Advertisement Created!");
-                                                                           //    return;
-                                                                           //}
-                                                                           FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
-                                                                           return;
-                                                                       }
-
-
-
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "AyohaMerchant") {
-                                                                           //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
-                                                                           //{
-                                                                           //    swalFireWarning("No Advertisement Created!");
-                                                                           //    return;
-                                                                           //}
-                                                                           FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
-                                                                           return;
-                                                                       }
-
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "BurgerMenu_MyAyohaStore") {
-                                                                           //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
-                                                                           //{
-                                                                           //    swalFireWarning("No Advertisement Created!");
-                                                                           //    return;
-                                                                           //}
-                                                                           FloatPanel_PreviewAdvertisementShow_BurgerMenu_MyAyohaStore("BurgerMenu_MyAyohaStore")
-
-                                                                           return;
-                                                                       }
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "PushNotification") {
-                                                                           //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
-                                                                           //{
-                                                                           //    swalFireWarning("No Advertisement Created!");
-                                                                           //    return;
-                                                                           //}
-                                                                           FloatPanel_PreviewAdvertisementShow_PushNotification("PushNotification");
-                                                                           return;
-                                                                       }
-
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "Floating_Advertisement") {
-                                                                           //if (globalFloatPanel_RewardStore_AdvertisementCode == "NoAdvertisementCreated")
-                                                                           //{
-                                                                           //    swalFireWarning("No Advertisement Created!");
-                                                                           //    return;
-                                                                           //}
-
-                                                                           localStorage.setItem("Floating_AdvertismentCode", globalFloatPanel_FloatingAdvertisement_AdvertismentCode);
-                                                                           FloatPanel_PreviewAdvertisementShow_FloatingAdvertisement("Floating_Advertisement");
-
-                                                                           // FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
-                                                                           return;
-                                                                       }
-                                                                       if (globalFloatPanel_AyohaStore_ModuleTagging == "VIAAdvertisement") {
-
-                                                                           FloatPanel_PreviewAdvertisementShow_VIAAdvertisement("Dashboard_PreviewVIAAdvertisement");
-
-                                                                           // FloatPanel_PreviewAdvertisementShow_RewardStore("FloatPanel_AyohaStore");
-                                                                           return;
-                                                                       }
-                                                                       else {
-                                                                           var index = globalDashboard_OpenAdvertisementNo;
-                                                                          
-                                                                           openAdvertisement_fromOtherPage(index);
-                                                                       }
-
-
-
-                                                                   }
-                                                               }
-                                                        ]
-
-
-                                                    },
-                                                    {
-                                                        xtype: 'container',
-                                                        width: '100%',
-                                                        margin: '-7 0 0 0',
-                                                        height: 50,
-                                                        style: "background-color: transparent;",
-                                                        layout: {
-                                                            type: 'hbox',
-                                                            pack: 'start',
-                                                            align: 'center',
-                                                        },
-                                                        items: [
-                                                            {
-                                                                xtype: 'container',
-                                                                width: '100%',
-                                                                margin: '0 0 0 0',
-                                                                height: 50,
-                                                                // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                style: "background-color: transparent;",
-                                                                layout: {
-                                                                    type: 'hbox',
-                                                                    pack: 'center',
-                                                                    align: 'center'
-
-                                                                },
-                                                                scrollable: {
-                                                                    direction: 'horizontal',
-                                                                    directionLock: true,
-                                                                    indicators: false
-                                                                },
-                                                                items: [
-
-                                                                      {
-                                                                          xtype: 'container',
-                                                                          width: 400,
-                                                                         // width: 620,
-                                                                         // width: 680,
-                                                                          style: "background-color: transparent",
-                                                                          height: 50,
-                                                                          layout: {
-                                                                              type: 'hbox',
-                                                                              pack: 'center',
-                                                                              align: 'center',
-                                                                          },
-                                                                          items: [
-
-                                                                              {
-                                                                                  xtype: 'container',
-                                                                                  // width: '20%',
-                                                                                  flex: 1,
-                                                                                  margin: '0 0 0 0',
-                                                                                  height: 50,
-                                                                                  id: 'containerFloatPanel_AyohaStore_TotalProduct',
-                                                                                  name: 'namecontainerFloatPanel_AyohaStore_TotalProduct',
-                                                                                  // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                                  style: "background-color: transparent;",
-                                                                                  layout: {
-                                                                                      type: 'vbox',
-                                                                                      pack: 'center',
-                                                                                      align: 'center'
-
-                                                                                  },
-                                                                                  items: [
-                                                                                      {
-                                                                                          id: 'htmlFloatPanel_AyohaStore_TotalProductCount',
-                                                                                          height: 22,
-                                                                                          margin: '9 0 0 0',
-                                                                                          width: 22,
-                                                                                          html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0</div>',
-                                                                                          // html: '<div ><img src="resources/icons/likeOn.png" width="22" height="22" alt="Company Name"></div>',
-                                                                                      },
-                                                                                      {
-                                                                                          margin: '0 0 0 0',
-                                                                                          html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Total</div>',
-
-                                                                                      },
-                                                                                       {
-                                                                                           margin: '-4 0 0 0',
-                                                                                           html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Product</div>',
-
-                                                                                       }
-                                                                                  ]
-                                                                              },
-                                                                      {
-                                                                          xtype: 'container',
-                                                                          // width: '20%',
-                                                                          flex: 1,
-                                                                          margin: '0 0 0 0',
-                                                                          height: 50,
-                                                                          id: 'containerFloatPanel_AyohaStore_TotalProductCategaory',
-                                                                          name: 'namecontainerFloatPanel_AyohaStore_TotalProductCategaory',
-                                                                          // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                          style: "background-color: transparent;",
-                                                                          layout: {
-                                                                              type: 'vbox',
-                                                                              pack: 'center',
-                                                                              align: 'center'
-
-                                                                          },
-                                                                          items: [
-                                                                              {
-                                                                                  id: 'htmlFloatPanel_AyohaStore_TotalProductCategaoryCount',
-                                                                                  height: 22,
-                                                                                  margin: '9 0 0 0',
-                                                                                  width: 22,
-                                                                                  html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0</div>',
-                                                                                  // html: '<div ><img src="resources/icons/likeOn.png" width="22" height="22" alt="Company Name"></div>',
-                                                                              },
-                                                                              {
-                                                                                  margin: '0 0 0 0',
-                                                                                  html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Product</div>',
-
-                                                                              },
-                                                                               {
-                                                                                   margin: '-4 0 0 0',
-                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Category</div>',
-
-                                                                               }
-                                                                          ]
-                                                                      },
-
-
-
-                                                                    {
-                                                                        xtype: 'container',
-                                                                        // width: '20%',
-                                                                        flex: 1,
-                                                                        margin: '0 0 0 0',
-                                                                        height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_MembershipCard',
-                                                                        name: 'namecontainerFloatPanel_AyohaStore_MembershipCard',
-                                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                        style: "background-color: transparent;",
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            pack: 'center',
-                                                                            align: 'center'
-
-                                                                        },
-                                                                        items: [
-                                                                            {
-                                                                                id: 'htmlFloatPanel_AyohaStore_MembershipCardIcon',
-                                                                                height: 22,
-                                                                                margin: '9 0 0 0',
-                                                                                width: 22,
-                                                                                html: '<div ><img src="resources/icons/membershipPurpleThree.png" width="22" height="22" alt="Company Name"></div>',
-                                                                            },
-                                                                            {
-                                                                                margin: '0 0 0 0',
-                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Membership</div>',
-
-                                                                            },
                                                                              {
-                                                                                 margin: '-4 0 0 0',
-                                                                                 id: 'htmlFloatPanel_AyohaStore_MembershipCardCount',
-                                                                                 html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Card <b>(0)</b></div>',
+                                                                                 xtype: 'container',
+                                                                                 // width: '20%',
+                                                                                 flex: 1,
+                                                                                 margin: '0 0 0 0',
+                                                                                 height: 50,
+                                                                                 id: 'containerFloatPanel_AyohaStore_TotalProduct',
+                                                                                 name: 'namecontainerFloatPanel_AyohaStore_TotalProduct',
+                                                                                 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                                 style: "background-color: transparent;",
+                                                                                 layout: {
+                                                                                     type: 'vbox',
+                                                                                     pack: 'center',
+                                                                                     align: 'center'
 
-                                                                             }
-                                                                        ]
-                                                                    },
-                                                                    {
-                                                                        xtype: 'container',
-                                                                        // width: '20%',
-                                                                        flex: 1,
-                                                                        margin: '0 0 0 0',
-                                                                        height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_LikeStatus',
-                                                                        // name: 'namecontainerFloatPanel_AyohaStore_Like',
-                                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                        style: "background-color: transparent;",
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            pack: 'center',
-                                                                            align: 'center'
+                                                                                 },
+                                                                                 items: [
+                                                                                     {
+                                                                                         id: 'htmlFloatPanel_AyohaStore_TotalProductCount',
+                                                                                         height: 22,
+                                                                                         margin: '9 0 0 0',
+                                                                                         width: 22,
+                                                                                         html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0</div>',
+                                                                                         // html: '<div ><img src="resources/icons/likeOn.png" width="22" height="22" alt="Company Name"></div>',
+                                                                                     },
+                                                                                     {
+                                                                                         margin: '0 0 0 0',
+                                                                                         html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Total</div>',
 
-                                                                        },
-                                                                        items: [
-                                                                            {
-                                                                                xtype: 'container',
-                                                                                id: 'containerFloatPanel_AyohaStore_LikeIcon',
-                                                                                name: 'namecontainerFloatPanel_AyohaStore_LikeIcon',
-                                                                                // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                                style: "background-color: transparent;",
-                                                                                height: 22,
-                                                                                width: 22,
-                                                                                layout: {
-                                                                                    type: 'vbox',
-                                                                                    pack: 'center',
-                                                                                    align: 'center'
+                                                                                     },
+                                                                                      {
+                                                                                          margin: '-4 0 0 0',
+                                                                                          html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Product</div>',
 
-                                                                                },
-                                                                                items: [
-                                                                                    {
-                                                                                        id: 'htmlFloatPanel_AyohaStore_LikeIcon',
-                                                                                        height: 22,
-                                                                                        margin: '18 0 0 0',
-                                                                                        width: 22,
-                                                                                        html: '<div ><img src="resources/icons/unlovepurple.png" width="22" height="22" alt="Company Name"></div>',
-                                                                                    },
-                                                                                ]
-                                                                            },
-
-                                                                              {
-                                                                                  xtype: 'container',
-                                                                                  id: 'containerFloatPanel_AyohaStore_LikeCount',
-                                                                                  name: 'namecontainerFloatPanel_AyohaStore_LikeCount',
-                                                                                  // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                                  style: "background-color: transparent;",
-                                                                                  margin: '8 0 0 0',
-                                                                                  layout: {
-                                                                                      type: 'vbox',
-                                                                                      pack: 'center',
-                                                                                      align: 'center'
-
-                                                                                  },
-                                                                                  items: [
-                                                                                       {
-                                                                                           margin: '0 0 0 0',
-                                                                                           id: 'htmlFloatPanel_AyohaStore_LikeCount',
-                                                                                           html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;"><b>0</b></div>',
-
-                                                                                       },
-                                                                             {
-                                                                                 margin: '-4 0 0 0',
-                                                                                 id: 'htmlFloatPanel_AyohaStore_LikeCountLikes',
-                                                                                 html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loves</div>',
-
+                                                                                      }
+                                                                                 ]
                                                                              },
-                                                                                  ]
-                                                                              },
-
-
-                                                                        ]
-                                                                    },
-
-                                                                    {
-                                                                        xtype: 'container',
-                                                                        //width: '20%',
-                                                                        flex: 1,
-                                                                        margin: '0 0 0 0',
-                                                                        height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_ReviewAndRate',
-                                                                        name: 'namecontainerFloatPanel_AyohaStore_ReviewAndRate',
-                                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                        style: "background-color: transparent;",
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            pack: 'center',
-                                                                            align: 'center'
-
-                                                                        },
-                                                                        items: [
-                                                                            {
-                                                                                margin: '0 0 0 0',
-                                                                                id: 'htmlFloatPanel_AyohaStore_ReviewAndRateCount',
-                                                                                html: '<div style="color:black;text-align: center;font-size:20px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0.0</div>',
-
-                                                                            },
-
-                                                                            {
-                                                                                xtype: 'container',
-                                                                                width: '100%',
-                                                                                margin: '-12 0 0 0',
-                                                                                height: 9,
-                                                                                // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                                style: "background-color: transparent;",
-                                                                                layout: {
-                                                                                    type: 'hbox',
-                                                                                    pack: 'center',
-                                                                                    align: 'center'
-
-                                                                                },
-                                                                                items: [
-
-                                                                                    {
-                                                                                        id: 'htmlFloatPanel_AyohaStore_Star1',
-                                                                                        height: 9,
-                                                                                        width: 9,
-                                                                                        html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
-                                                                                    },
-                    {
-                        id: 'htmlFloatPanel_AyohaStore_Star2',
-                        height: 9,
-                        width: 9,
-                        html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
-                    },
-                      {
-                          id: 'htmlFloatPanel_AyohaStore_Star3',
-                          height: 9,
-                          width: 9,
-                          html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
-                      },
-                        {
-                            id: 'htmlFloatPanel_AyohaStore_Star4',
-                            height: 9,
-                            width: 9,
-                            html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
-                        },
-                          {
-                              id: 'htmlFloatPanel_AyohaStore_Star5',
-                              height: 9,
-                              width: 9,
-                              html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
-
-                          },
-                                                                                ]
-                                                                            },
-
-                                                                            {
-                                                                                xtype: 'container',
-                                                                                width: '100%',
-                                                                                margin: '8 0 0 0',
-                                                                                height: 9,
-                                                                                layout: {
-                                                                                    type: 'hbox',
-                                                                                    pack: 'center',
-                                                                                    align: 'center'
-                                                                                },
-                                                                                items: [
-                                                                                    {
-                                                                                        id: 'htmlFloatPanel_AyohaStore_ReviewByCount',
-                                                                                        html: '<div style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:8px;color:black;font-weight:bold;overflow:hidden;"><img src="resources/icons/myaccountwhite01.png" alt="Image" style="width:7px;height:7px;">&nbsp;0 Reviews</div>',
-                                                                                    },
-                                                                                ]
-                                                                            },
-                                                                             //{
-                                                                             //    margin: '0 0 0 0',
-                                                                             //    height: 15,
-                                                                             //    id: 'htmlAyohaMerchantReview_TotalReviewsxx',
-                                                                             //    html: '<div style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;0 Reviews</div>'
-                                                                             //}
-                                                                        ]
-                                                                    },
-                                                                   
-
-
                                                                      {
                                                                          xtype: 'container',
                                                                          // width: '20%',
                                                                          flex: 1,
-                                                                         hidden:true,
                                                                          margin: '0 0 0 0',
                                                                          height: 50,
-                                                                         id: 'containerFloatPanel_AyohaStore_MembershipPointLoyaltyCard',
-                                                                         name: 'namecontainerFloatPanel_AyohaStore_MembershipPointLoyaltyCard',
+                                                                         id: 'containerFloatPanel_AyohaStore_TotalProductCategaory',
+                                                                         name: 'namecontainerFloatPanel_AyohaStore_TotalProductCategaory',
                                                                          // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
                                                                          style: "background-color: transparent;",
                                                                          layout: {
@@ -1283,163 +1015,90 @@ function FloatPanel_AyohaStore() {
                                                                          },
                                                                          items: [
                                                                              {
-                                                                                 id: 'htmlFloatPanel_AyohaStore_MembershipPointLoyaltyCardIcon',
+                                                                                 id: 'htmlFloatPanel_AyohaStore_TotalProductCategaoryCount',
                                                                                  height: 22,
                                                                                  margin: '9 0 0 0',
                                                                                  width: 22,
-                                                                                 html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/loyaltypoint.png" width="22" height="22" alt="Company Name"></div>',
-                                                                                 
+                                                                                 html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0</div>',
+                                                                                 // html: '<div ><img src="resources/icons/likeOn.png" width="22" height="22" alt="Company Name"></div>',
                                                                              },
                                                                              {
                                                                                  margin: '0 0 0 0',
-                                                                                 html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty Point</div>',
+                                                                                 html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Product</div>',
 
                                                                              },
                                                                               {
                                                                                   margin: '-4 0 0 0',
-                                                                                  id: 'htmlFloatPanel_AyohaStore_MembershipPointLoyaltyCardCount',
-                                                                                  html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Card<b>(0)</b></div>',
+                                                                                  html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Category</div>',
 
                                                                               }
                                                                          ]
                                                                      },
-                                                                       {
-                                                                           xtype: 'container',
-                                                                           // width: '20%',
-                                                                           flex: 1,
-                                                                        hidden:true,
-                                                                           margin: '0 0 0 0',
-                                                                           height: 50,
-                                                                           id: 'containerFloatPanel_AyohaStore_MembershipStampLoyaltyCard',
-                                                                           name: 'namecontainerFloatPanel_AyohaStore_MembershipStampLoyaltyCard',
-                                                                           // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                           style: "background-color: transparent;",
-                                                                           layout: {
-                                                                               type: 'vbox',
-                                                                               pack: 'center',
-                                                                               align: 'center'
+
+
+
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       // width: '20%',
+                                                                       flex: 1,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_MembershipCard',
+                                                                       name: 'namecontainerFloatPanel_AyohaStore_MembershipCard',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
+
+                                                                       },
+                                                                       items: [
+                                                                           {
+                                                                               id: 'htmlFloatPanel_AyohaStore_MembershipCardIcon',
+                                                                               height: 22,
+                                                                               margin: '9 0 0 0',
+                                                                               width: 22,
+                                                                               html: '<div ><img src="resources/icons/membershipPurpleThree.png" width="22" height="22" alt="Company Name"></div>',
+                                                                           },
+                                                                           {
+                                                                               margin: '0 0 0 0',
+                                                                               html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Membership</div>',
 
                                                                            },
-                                                                           items: [
-                                                                               {
-                                                                                   id: 'htmlFloatPanel_AyohaStore_MembershipStampLoyaltyCardIcon',
-                                                                                   height: 22,
-                                                                                   margin: '9 0 0 0',
-                                                                                   width: 22,
-                                                                                   html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/stampicon.png" width="22" height="22" alt="Company Name"></div>',
-                                                                                   
-                                                                               },
-                                                                               {
-                                                                                   margin: '0 0 0 0',
-                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty Stamp</div>',
+                                                                            {
+                                                                                margin: '-4 0 0 0',
+                                                                                id: 'htmlFloatPanel_AyohaStore_MembershipCardCount',
+                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Card <b>(0)</b></div>',
 
-                                                                               },
-                                                                                {
-                                                                                    margin: '-4 0 0 0',
-                                                                                    id: 'htmlFloatPanel_AyohaStore_MembershipStampLoyaltyCardCount',
-                                                                                    html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Card<b>(0)</b></div>',
+                                                                            }
+                                                                       ]
+                                                                   },
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       // width: '20%',
+                                                                       flex: 1,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_LikeStatus',
+                                                                       // name: 'namecontainerFloatPanel_AyohaStore_Like',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
 
-                                                                                }
-                                                                           ]
                                                                        },
-
-
-
-
-
-
-                                                                       {
-                                                                           xtype: 'container',
-                                                                           // width: '20%',
-                                                                           flex: 1,
-                                                                           margin: '0 0 0 0',
-                                                                           height: 50,
-                                                                           hidden:true,
-                                                                           id: 'containerFloatPanel_AyohaStore_MembershipEvent',
-                                                                           name: 'namecontainerFloatPanel_AyohaStore_MembershipEvent',
-                                                                           // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                           style: "background-color: transparent;",
-                                                                           layout: {
-                                                                               type: 'vbox',
-                                                                               pack: 'center',
-                                                                               align: 'center'
-
-                                                                           },
-                                                                           items: [
-                                                                               {
-                                                                                   id: 'htmlFloatPanel_AyohaStore_MembershipEventIcon',
-                                                                                   height: 22,
-                                                                                   margin: '9 0 0 0',
-                                                                                   width: 22,
-                                                                                   html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/event.png" width="22" height="22" alt="Company Name"></div>',
-                                                                               },
-                                                                               {
-                                                                                   margin: '0 0 0 0',
-                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
-
-                                                                               },
-                                                                                {
-                                                                                    margin: '-4 0 0 0',
-                                                                                    id: 'htmlFloatPanel_AyohaStore_MembershipEventCount',
-                                                                                    html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Event<b>(0)</b></div>',
-
-                                                                                }
-                                                                           ]
-                                                                       },
-                                                                      
-
-                                                                        {
-                                                                            xtype: 'container',
-                                                                            // width: '20%',
-                                                                            flex: 1,
-                                                                            margin: '0 0 0 0',
-                                                                            height: 50,
-                                                                            hidden:true,
-                                                                            id: 'containerFloatPanel_AyohaStore_MembershipContest',
-                                                                            name: 'namecontainerFloatPanel_AyohaStore_MembershipContest',
-                                                                            // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                            style: "background-color: transparent;",
-                                                                            layout: {
-                                                                                type: 'vbox',
-                                                                                pack: 'center',
-                                                                                align: 'center'
-
-                                                                            },
-                                                                            items: [
-                                                                                {
-                                                                                    id: 'htmlFloatPanel_AyohaStore_MembershipContestIcon',
-                                                                                    height: 22,
-                                                                                    margin: '9 0 0 0',
-                                                                                    width: 22,
-                                                                                    html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/contesticon.png" width="22" height="22" alt="Company Name"></div>',
-                                                                                },
-                                                                                {
-                                                                                    margin: '0 0 0 0',
-                                                                                    html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
-
-                                                                                },
-                                                                                 {
-                                                                                     margin: '-4 0 0 0',
-                                                                                     id: 'htmlFloatPanel_AyohaStore_MembershipContestCount',
-                                                                                     html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Contest<b>(0)</b></div>',
-
-                                                                                 }
-                                                                            ]
-                                                                        },
-
-                                                                       
-
+                                                                       items: [
                                                                            {
                                                                                xtype: 'container',
-                                                                               // width: '20%',
-                                                                               flex: 1,
-                                                                               margin: '0 0 0 0',
-                                                                               height: 50,
-                                                                              // hidden:true,
-                                                                               id: 'containerFloatPanel_AyohaStore_MembershipVoucher',
-                                                                               name: 'namecontainerFloatPanel_AyohaStore_MembershipVoucher',
+                                                                               id: 'containerFloatPanel_AyohaStore_LikeIcon',
+                                                                               name: 'namecontainerFloatPanel_AyohaStore_LikeIcon',
                                                                                // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
                                                                                style: "background-color: transparent;",
+                                                                               height: 22,
+                                                                               width: 22,
                                                                                layout: {
                                                                                    type: 'vbox',
                                                                                    pack: 'center',
@@ -1448,75 +1107,158 @@ function FloatPanel_AyohaStore() {
                                                                                },
                                                                                items: [
                                                                                    {
-                                                                                       id: 'htmlFloatPanel_AyohaStore_MembershipVoucherIcon',
+                                                                                       id: 'htmlFloatPanel_AyohaStore_LikeIcon',
                                                                                        height: 22,
-                                                                                       margin: '9 0 0 0',
+                                                                                       margin: '18 0 0 0',
                                                                                        width: 22,
-                                                                                       html: '<div ><img src="resources/icons/Voucher02.png" width="22" height="22" alt="Company Name"></div>',
+                                                                                       html: '<div ><img src="resources/icons/unlovepurple.png" width="22" height="22" alt="Company Name"></div>',
                                                                                    },
+                                                                               ]
+                                                                           },
+
+                                                                             {
+                                                                                 xtype: 'container',
+                                                                                 id: 'containerFloatPanel_AyohaStore_LikeCount',
+                                                                                 name: 'namecontainerFloatPanel_AyohaStore_LikeCount',
+                                                                                 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                                 style: "background-color: transparent;",
+                                                                                 margin: '8 0 0 0',
+                                                                                 layout: {
+                                                                                     type: 'vbox',
+                                                                                     pack: 'center',
+                                                                                     align: 'center'
+
+                                                                                 },
+                                                                                 items: [
+                                                                                      {
+                                                                                          margin: '0 0 0 0',
+                                                                                          id: 'htmlFloatPanel_AyohaStore_LikeCount',
+                                                                                          html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;"><b>0</b></div>',
+
+                                                                                      },
+                                                                            {
+                                                                                margin: '-4 0 0 0',
+                                                                                id: 'htmlFloatPanel_AyohaStore_LikeCountLikes',
+                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loves</div>',
+
+                                                                            },
+                                                                                 ]
+                                                                             },
+
+
+                                                                       ]
+                                                                   },
+
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       //width: '20%',
+                                                                       flex: 1,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_ReviewAndRate',
+                                                                       name: 'namecontainerFloatPanel_AyohaStore_ReviewAndRate',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
+
+                                                                       },
+                                                                       items: [
+                                                                           {
+                                                                               margin: '0 0 0 0',
+                                                                               id: 'htmlFloatPanel_AyohaStore_ReviewAndRateCount',
+                                                                               html: '<div style="color:black;text-align: center;font-size:20px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0.0</div>',
+
+                                                                           },
+
+                                                                           {
+                                                                               xtype: 'container',
+                                                                               width: '100%',
+                                                                               margin: '-12 0 0 0',
+                                                                               height: 9,
+                                                                               // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                               style: "background-color: transparent;",
+                                                                               layout: {
+                                                                                   type: 'hbox',
+                                                                                   pack: 'center',
+                                                                                   align: 'center'
+
+                                                                               },
+                                                                               items: [
+
                                                                                    {
-                                                                                       margin: '0 0 0 0',
-                                                                                       html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
-
+                                                                                       id: 'htmlFloatPanel_AyohaStore_Star1',
+                                                                                       height: 9,
+                                                                                       width: 9,
+                                                                                       html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
                                                                                    },
-                                                                                    {
-                                                                                        margin: '-4 0 0 0',
-                                                                                        id: 'htmlFloatPanel_AyohaStore_MembershipVoucherCount',
-                                                                                        html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Voucher<b>(0)</b></div>',
+                   {
+                       id: 'htmlFloatPanel_AyohaStore_Star2',
+                       height: 9,
+                       width: 9,
+                       html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
+                   },
+                     {
+                         id: 'htmlFloatPanel_AyohaStore_Star3',
+                         height: 9,
+                         width: 9,
+                         html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
+                     },
+                       {
+                           id: 'htmlFloatPanel_AyohaStore_Star4',
+                           height: 9,
+                           width: 9,
+                           html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
+                       },
+                         {
+                             id: 'htmlFloatPanel_AyohaStore_Star5',
+                             height: 9,
+                             width: 9,
+                             html: '<div ><img src="resources/icons/reviewstarunrate.png" width="9" height="9" alt="Company Name"></div>',
 
-                                                                                    }
+                         },
                                                                                ]
                                                                            },
 
                                                                            {
-                                                                            xtype: 'container',
-                                                                            // width: '20%',
-                                                                            flex: 1,
-                                                                            margin: '0 0 0 0',
-                                                                            height: 50,
-                                                                           hidden:true,
-                                                                            id: 'containerFloatPanel_AyohaStore_MembershipDiscount',
-                                                                            name: 'namecontainerFloatPanel_AyohaStore_MembershipDiscount',
-                                                                            // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                            style: "background-color: transparent;",
-                                                                            layout: {
-                                                                                type: 'vbox',
-                                                                                pack: 'center',
-                                                                                align: 'center'
-
-                                                                            },
-                                                                            items: [
-                                                                                {
-                                                                                    id: 'htmlFloatPanel_AyohaStore_MembershipDiscountIcon',
-                                                                                    height: 22,
-                                                                                    margin: '9 0 0 0',
-                                                                                    width: 22,
-                                                                                    html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/discounticon.png" width="22" height="22" alt="Company Name"></div>',
-                                                                                },
-                                                                                {
-                                                                                    margin: '0 0 0 0',
-                                                                                    html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
-
-                                                                                },
-                                                                                 {
-                                                                                     margin: '-4 0 0 0',
-                                                                                     id: 'htmlFloatPanel_AyohaStore_MembershipDiscountCount',
-                                                                                     html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Discount<b>(0)</b></div>',
-
-                                                                                 }
-                                                                            ]
-                                                                        },
+                                                                               xtype: 'container',
+                                                                               width: '100%',
+                                                                               margin: '8 0 0 0',
+                                                                               height: 9,
+                                                                               layout: {
+                                                                                   type: 'hbox',
+                                                                                   pack: 'center',
+                                                                                   align: 'center'
+                                                                               },
+                                                                               items: [
+                                                                                   {
+                                                                                       id: 'htmlFloatPanel_AyohaStore_ReviewByCount',
+                                                                                       html: '<div style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:8px;color:black;font-weight:bold;overflow:hidden;"><img src="resources/icons/myaccountwhite01.png" alt="Image" style="width:7px;height:7px;">&nbsp;0 Reviews</div>',
+                                                                                   },
+                                                                               ]
+                                                                           },
+                                                                            //{
+                                                                            //    margin: '0 0 0 0',
+                                                                            //    height: 15,
+                                                                            //    id: 'htmlAyohaMerchantReview_TotalReviewsxx',
+                                                                            //    html: '<div style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;0 Reviews</div>'
+                                                                            //}
+                                                                       ]
+                                                                   },
+                                                                  
 
 
                                                                     {
                                                                         xtype: 'container',
-                                                                        //width: '20%',
+                                                                        // width: '20%',
                                                                         flex: 1,
                                                                         hidden:true,
                                                                         margin: '0 0 0 0',
                                                                         height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_FB',
-                                                                        name: 'namecontainerFloatPanel_AyohaStore_FB',
+                                                                        id: 'containerFloatPanel_AyohaStore_MembershipPointLoyaltyCard',
+                                                                        name: 'namecontainerFloatPanel_AyohaStore_MembershipPointLoyaltyCard',
                                                                         // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
                                                                         style: "background-color: transparent;",
                                                                         layout: {
@@ -1527,480 +1269,724 @@ function FloatPanel_AyohaStore() {
                                                                         },
                                                                         items: [
                                                                             {
-                                                                                id: 'htmlFloatPanel_AyohaStore_FB',
+                                                                                id: 'htmlFloatPanel_AyohaStore_MembershipPointLoyaltyCardIcon',
                                                                                 height: 22,
                                                                                 margin: '9 0 0 0',
                                                                                 width: 22,
-                                                                                // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
-                                                                                html: '<div ><img src="resources/icons/facebook.png" width="22" height="22" alt="Company Name"></div>',
+                                                                                html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/loyaltypoint.png" width="22" height="22" alt="Company Name"></div>',
+                                                                                
                                                                             },
                                                                             {
-                                                                                margin: '1 0 0 0',
-                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Facebook</div>',
+                                                                                margin: '0 0 0 0',
+                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty Point</div>',
 
                                                                             },
+                                                                             {
+                                                                                 margin: '-4 0 0 0',
+                                                                                 id: 'htmlFloatPanel_AyohaStore_MembershipPointLoyaltyCardCount',
+                                                                                 html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Card<b>(0)</b></div>',
 
+                                                                             }
                                                                         ]
                                                                     },
-                                                                    {
-                                                                        xtype: 'container',
-                                                                        //width: '20%',
-                                                                        hidden: true,
-                                                                        flex: 1,
-                                                                        margin: '0 0 0 0',
-                                                                        height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_Insta',
-                                                                        name: 'namecontainerFloatPanel_AyohaStore_Insta',
-                                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                        style: "background-color: transparent;",
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            pack: 'center',
-                                                                            align: 'center'
+                                                                      {
+                                                                          xtype: 'container',
+                                                                          // width: '20%',
+                                                                          flex: 1,
+                                                                       hidden:true,
+                                                                          margin: '0 0 0 0',
+                                                                          height: 50,
+                                                                          id: 'containerFloatPanel_AyohaStore_MembershipStampLoyaltyCard',
+                                                                          name: 'namecontainerFloatPanel_AyohaStore_MembershipStampLoyaltyCard',
+                                                                          // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                          style: "background-color: transparent;",
+                                                                          layout: {
+                                                                              type: 'vbox',
+                                                                              pack: 'center',
+                                                                              align: 'center'
 
-                                                                        },
-                                                                        items: [
-                                                                            {
-                                                                                id: 'htmlFloatPanel_AyohaStore_Insta',
-                                                                                height: 22,
-                                                                                margin: '9 0 0 0',
-                                                                                width: 22,
-                                                                                // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
-                                                                                html: '<div ><img src="resources/icons/instagramlogo.png" width="22" height="22" alt="Company Name"></div>',
-                                                                            },
-                                                                            {
-                                                                                margin: '1 0 0 0',
-                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Instagram</div>',
+                                                                          },
+                                                                          items: [
+                                                                              {
+                                                                                  id: 'htmlFloatPanel_AyohaStore_MembershipStampLoyaltyCardIcon',
+                                                                                  height: 22,
+                                                                                  margin: '9 0 0 0',
+                                                                                  width: 22,
+                                                                                  html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/stampicon.png" width="22" height="22" alt="Company Name"></div>',
+                                                                                  
+                                                                              },
+                                                                              {
+                                                                                  margin: '0 0 0 0',
+                                                                                  html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty Stamp</div>',
 
-                                                                            },
+                                                                              },
+                                                                               {
+                                                                                   margin: '-4 0 0 0',
+                                                                                   id: 'htmlFloatPanel_AyohaStore_MembershipStampLoyaltyCardCount',
+                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Card<b>(0)</b></div>',
 
-                                                                        ]
-                                                                    },
-
-
-                                                                    {
-                                                                        xtype: 'container',
-                                                                        //width: '20%',
-                                                                        hidden: true,
-                                                                        flex: 1,
-                                                                        margin: '0 0 0 0',
-                                                                        height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_WhatsApp',
-                                                                        name: 'namecontainerFloatPanel_AyohaStore_WhatsApp',
-                                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                        style: "background-color: transparent;",
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            pack: 'center',
-                                                                            align: 'center'
-
-                                                                        },
-                                                                        items: [
-                                                                            {
-                                                                                id: 'htmlFloatPanel_AyohaStore_WhatsApp',
-                                                                                height: 22,
-                                                                                margin: '9 0 0 0',
-                                                                                width: 22,
-                                                                                // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
-                                                                                html: '<div ><img src="resources/icons/whatsapp01.png" width="22" height="22" alt="Company Name"></div>',
-                                                                            },
-                                                                            {
-                                                                                margin: '1 0 0 0',
-                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">WhatsApp</div>',
-
-                                                                            },
-
-                                                                        ]
-                                                                    },
-
-                                                                    {
-                                                                        xtype: 'container',
-                                                                        //width: '20%',
-                                                                        hidden: true,
-                                                                        flex: 1,
-                                                                        margin: '0 0 0 0',
-                                                                        height: 50,
-                                                                        id: 'containerFloatPanel_AyohaStore_Location',
-                                                                        name: 'namecontainerFloatPanel_AyohaStore_Location',
-                                                                        // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
-                                                                        style: "background-color: transparent;",
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            pack: 'center',
-                                                                            align: 'center'
-
-                                                                        },
-                                                                        items: [
-                                                                            {
-                                                                                id: 'htmlFloatPanel_AyohaStore_WhatsApp',
-                                                                                height: 22,
-                                                                                margin: '9 0 0 0',
-                                                                                width: 22,
-                                                                                // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
-                                                                                html: '<div ><img src="resources/icons/locationTwo.png" width="22" height="22" alt="Company Name"></div>',
-                                                                            },
-                                                                            {
-                                                                                margin: '1 0 0 0',
-                                                                                html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Location</div>',
-
-                                                                            },
-
-                                                                        ]
-                                                                    },
-
-
+                                                                               }
                                                                           ]
                                                                       },
 
 
 
 
-                                                                ]
-                                                            }
-
-                                                        ]
-                                                    },
 
 
-                                                ]
-                                            },
+                                                                      {
+                                                                          xtype: 'container',
+                                                                          // width: '20%',
+                                                                          flex: 1,
+                                                                          margin: '0 0 0 0',
+                                                                          height: 50,
+                                                                          hidden:true,
+                                                                          id: 'containerFloatPanel_AyohaStore_MembershipEvent',
+                                                                          name: 'namecontainerFloatPanel_AyohaStore_MembershipEvent',
+                                                                          // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                          style: "background-color: transparent;",
+                                                                          layout: {
+                                                                              type: 'vbox',
+                                                                              pack: 'center',
+                                                                              align: 'center'
+
+                                                                          },
+                                                                          items: [
+                                                                              {
+                                                                                  id: 'htmlFloatPanel_AyohaStore_MembershipEventIcon',
+                                                                                  height: 22,
+                                                                                  margin: '9 0 0 0',
+                                                                                  width: 22,
+                                                                                  html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/event.png" width="22" height="22" alt="Company Name"></div>',
+                                                                              },
+                                                                              {
+                                                                                  margin: '0 0 0 0',
+                                                                                  html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
+
+                                                                              },
+                                                                               {
+                                                                                   margin: '-4 0 0 0',
+                                                                                   id: 'htmlFloatPanel_AyohaStore_MembershipEventCount',
+                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Event<b>(0)</b></div>',
+
+                                                                               }
+                                                                          ]
+                                                                      },
+                                                                     
+
+                                                                       {
+                                                                           xtype: 'container',
+                                                                           // width: '20%',
+                                                                           flex: 1,
+                                                                           margin: '0 0 0 0',
+                                                                           height: 50,
+                                                                           hidden:true,
+                                                                           id: 'containerFloatPanel_AyohaStore_MembershipContest',
+                                                                           name: 'namecontainerFloatPanel_AyohaStore_MembershipContest',
+                                                                           // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                           style: "background-color: transparent;",
+                                                                           layout: {
+                                                                               type: 'vbox',
+                                                                               pack: 'center',
+                                                                               align: 'center'
+
+                                                                           },
+                                                                           items: [
+                                                                               {
+                                                                                   id: 'htmlFloatPanel_AyohaStore_MembershipContestIcon',
+                                                                                   height: 22,
+                                                                                   margin: '9 0 0 0',
+                                                                                   width: 22,
+                                                                                   html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/contesticon.png" width="22" height="22" alt="Company Name"></div>',
+                                                                               },
+                                                                               {
+                                                                                   margin: '0 0 0 0',
+                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
+
+                                                                               },
+                                                                                {
+                                                                                    margin: '-4 0 0 0',
+                                                                                    id: 'htmlFloatPanel_AyohaStore_MembershipContestCount',
+                                                                                    html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Contest<b>(0)</b></div>',
+
+                                                                                }
+                                                                           ]
+                                                                       },
+
+                                                                      
+
+                                                                          {
+                                                                              xtype: 'container',
+                                                                              // width: '20%',
+                                                                              flex: 1,
+                                                                              margin: '0 0 0 0',
+                                                                              height: 50,
+                                                                             // hidden:true,
+                                                                              id: 'containerFloatPanel_AyohaStore_MembershipVoucher',
+                                                                              name: 'namecontainerFloatPanel_AyohaStore_MembershipVoucher',
+                                                                              // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                              style: "background-color: transparent;",
+                                                                              layout: {
+                                                                                  type: 'vbox',
+                                                                                  pack: 'center',
+                                                                                  align: 'center'
+
+                                                                              },
+                                                                              items: [
+                                                                                  {
+                                                                                      id: 'htmlFloatPanel_AyohaStore_MembershipVoucherIcon',
+                                                                                      height: 22,
+                                                                                      margin: '9 0 0 0',
+                                                                                      width: 22,
+                                                                                      html: '<div ><img src="resources/icons/Voucher02.png" width="22" height="22" alt="Company Name"></div>',
+                                                                                  },
+                                                                                  {
+                                                                                      margin: '0 0 0 0',
+                                                                                      html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
+
+                                                                                  },
+                                                                                   {
+                                                                                       margin: '-4 0 0 0',
+                                                                                       id: 'htmlFloatPanel_AyohaStore_MembershipVoucherCount',
+                                                                                       html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Voucher<b>(0)</b></div>',
+
+                                                                                   }
+                                                                              ]
+                                                                          },
+
+                                                                          {
+                                                                           xtype: 'container',
+                                                                           // width: '20%',
+                                                                           flex: 1,
+                                                                           margin: '0 0 0 0',
+                                                                           height: 50,
+                                                                          hidden:true,
+                                                                           id: 'containerFloatPanel_AyohaStore_MembershipDiscount',
+                                                                           name: 'namecontainerFloatPanel_AyohaStore_MembershipDiscount',
+                                                                           // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                           style: "background-color: transparent;",
+                                                                           layout: {
+                                                                               type: 'vbox',
+                                                                               pack: 'center',
+                                                                               align: 'center'
+
+                                                                           },
+                                                                           items: [
+                                                                               {
+                                                                                   id: 'htmlFloatPanel_AyohaStore_MembershipDiscountIcon',
+                                                                                   height: 22,
+                                                                                   margin: '9 0 0 0',
+                                                                                   width: 22,
+                                                                                   html: '<div ><img src="https://setkita.com/AyohaImgCard/AyohaRewardMembershipPrevillageIcon/discounticon.png" width="22" height="22" alt="Company Name"></div>',
+                                                                               },
+                                                                               {
+                                                                                   margin: '0 0 0 0',
+                                                                                   html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Loyalty</div>',
+
+                                                                               },
+                                                                                {
+                                                                                    margin: '-4 0 0 0',
+                                                                                    id: 'htmlFloatPanel_AyohaStore_MembershipDiscountCount',
+                                                                                    html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Discount<b>(0)</b></div>',
+
+                                                                                }
+                                                                           ]
+                                                                       },
 
 
-                                             //{
-                                             //    xtype: 'container',
-                                             //    width: '100%',
-                                             //    margin: '-30 0 0 0',
-                                             //    layout: {
-                                             //        type: 'hbox',
-                                             //        pack: 'center',
-                                             //        align: 'center'
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       //width: '20%',
+                                                                       flex: 1,
+                                                                       hidden:true,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_FB',
+                                                                       name: 'namecontainerFloatPanel_AyohaStore_FB',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
 
-                                             //    },
-                                             //    items: [
+                                                                       },
+                                                                       items: [
+                                                                           {
+                                                                               id: 'htmlFloatPanel_AyohaStore_FB',
+                                                                               height: 22,
+                                                                               margin: '9 0 0 0',
+                                                                               width: 22,
+                                                                               // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
+                                                                               html: '<div ><img src="resources/icons/facebook.png" width="22" height="22" alt="Company Name"></div>',
+                                                                           },
+                                                                           {
+                                                                               margin: '1 0 0 0',
+                                                                               html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Facebook</div>',
 
-                                             //        {
-                                             //            width: 46,
-                                             //            height: 46,
-                                             //            html: '<div style="margin:-60px 0px 0px 20px"><img src="resources/icons/shiningIcon.png" width="46" height="46" alt="Company Name"></div>',
-                                             //        },
-                                             //        {
-                                             //            xtype: 'spacer'
-                                             //        },
-                                             //         {
-                                             //             width: 36,
-                                             //             height: 36,
-                                             //             html: '<div style="margin:-20px 0px 0px -70px"><img src="resources/icons/shiningIcon.png" width="36" height="36" alt="Company Name"></div>',
-                                             //         },
-                                             //        {
-                                             //            width: 30,
-                                             //            height: 30,
-                                             //            html: '<div style="margin:-20px 0px 0px 40px"><img src="resources/icons/shiningIcon.png" width="30" height="30" alt="Company Name"></div>',
-                                             //        },
-                                             //         {
-                                             //             xtype: 'spacer'
-                                             //         },
-                                             //        {
-                                             //            width: 20,
-                                             //            height: 20,
-                                             //            html: '<div style="margin:-20px 0px 0px -20px"><img src="resources/icons/shiningIcon.png" width="20" height="20" alt="Company Name"></div>',
-                                             //        },
-                                             //    ]
+                                                                           },
 
-                                             //},
+                                                                       ]
+                                                                   },
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       //width: '20%',
+                                                                       hidden: true,
+                                                                       flex: 1,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_Insta',
+                                                                       name: 'namecontainerFloatPanel_AyohaStore_Insta',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
 
+                                                                       },
+                                                                       items: [
+                                                                           {
+                                                                               id: 'htmlFloatPanel_AyohaStore_Insta',
+                                                                               height: 22,
+                                                                               margin: '9 0 0 0',
+                                                                               width: 22,
+                                                                               // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
+                                                                               html: '<div ><img src="resources/icons/instagramlogo.png" width="22" height="22" alt="Company Name"></div>',
+                                                                           },
+                                                                           {
+                                                                               margin: '1 0 0 0',
+                                                                               html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Instagram</div>',
 
+                                                                           },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                        ]
-
-                             },
+                                                                       ]
+                                                                   },
 
 
-                         ]
-                     },
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       //width: '20%',
+                                                                       hidden: true,
+                                                                       flex: 1,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_WhatsApp',
+                                                                       name: 'namecontainerFloatPanel_AyohaStore_WhatsApp',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
+
+                                                                       },
+                                                                       items: [
+                                                                           {
+                                                                               id: 'htmlFloatPanel_AyohaStore_WhatsApp',
+                                                                               height: 22,
+                                                                               margin: '9 0 0 0',
+                                                                               width: 22,
+                                                                               // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
+                                                                               html: '<div ><img src="resources/icons/whatsapp01.png" width="22" height="22" alt="Company Name"></div>',
+                                                                           },
+                                                                           {
+                                                                               margin: '1 0 0 0',
+                                                                               html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">WhatsApp</div>',
+
+                                                                           },
+
+                                                                       ]
+                                                                   },
+
+                                                                   {
+                                                                       xtype: 'container',
+                                                                       //width: '20%',
+                                                                       hidden: true,
+                                                                       flex: 1,
+                                                                       margin: '0 0 0 0',
+                                                                       height: 50,
+                                                                       id: 'containerFloatPanel_AyohaStore_Location',
+                                                                       name: 'namecontainerFloatPanel_AyohaStore_Location',
+                                                                       // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
+                                                                       style: "background-color: transparent;",
+                                                                       layout: {
+                                                                           type: 'vbox',
+                                                                           pack: 'center',
+                                                                           align: 'center'
+
+                                                                       },
+                                                                       items: [
+                                                                           {
+                                                                               id: 'htmlFloatPanel_AyohaStore_Location',
+                                                                               height: 22,
+                                                                               margin: '9 0 0 0',
+                                                                               width: 22,
+                                                                               // html: '<div style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">3</div>',
+                                                                               html: '<div ><img src="resources/icons/locationTwo.png" width="22" height="22" alt="Company Name"></div>',
+                                                                           },
+                                                                           {
+                                                                               margin: '1 0 0 0',
+                                                                               html: '<div style="color:black;text-align: center;font-size:8px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">Location</div>',
+
+                                                                           },
+
+                                                                       ]
+                                                                   },
+
+
+                                                                         ]
+                                                                     },
+
+
+
+
+                                                               ]
+                                                           }
+
+                                                       ]
+                                                   },
+
+
+                                               ]
+                                           },
+
+
+                                            //{
+                                            //    xtype: 'container',
+                                            //    width: '100%',
+                                            //    margin: '-30 0 0 0',
+                                            //    layout: {
+                                            //        type: 'hbox',
+                                            //        pack: 'center',
+                                            //        align: 'center'
+
+                                            //    },
+                                            //    items: [
+
+                                            //        {
+                                            //            width: 46,
+                                            //            height: 46,
+                                            //            html: '<div style="margin:-60px 0px 0px 20px"><img src="resources/icons/shiningIcon.png" width="46" height="46" alt="Company Name"></div>',
+                                            //        },
+                                            //        {
+                                            //            xtype: 'spacer'
+                                            //        },
+                                            //         {
+                                            //             width: 36,
+                                            //             height: 36,
+                                            //             html: '<div style="margin:-20px 0px 0px -70px"><img src="resources/icons/shiningIcon.png" width="36" height="36" alt="Company Name"></div>',
+                                            //         },
+                                            //        {
+                                            //            width: 30,
+                                            //            height: 30,
+                                            //            html: '<div style="margin:-20px 0px 0px 40px"><img src="resources/icons/shiningIcon.png" width="30" height="30" alt="Company Name"></div>',
+                                            //        },
+                                            //         {
+                                            //             xtype: 'spacer'
+                                            //         },
+                                            //        {
+                                            //            width: 20,
+                                            //            height: 20,
+                                            //            html: '<div style="margin:-20px 0px 0px -20px"><img src="resources/icons/shiningIcon.png" width="20" height="20" alt="Company Name"></div>',
+                                            //        },
+                                            //    ]
+
+                                            //},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                       ]
+
+                            },
+
+
+                        ]
+                    },
 
 
 
 {
-    xtype: 'container',
-    id: 'containerFloatPanel_AyohaStoreMasterHeaderTop',
-    // hidden:true,
-    width: '100%',
-    height: 25,
-    docked: 'top',
-    //  zIndex: 90,
+   xtype: 'container',
+   id: 'containerFloatPanel_AyohaStoreMasterHeaderTop',
+   // hidden:true,
+   width: '100%',
+   height: 25,
+   docked: 'top',
+   //  zIndex: 90,
 
-    // style: "background-color: transparent;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 20px 20px 0px 0px;",
-    // style: 'border-bottom:1px solid #D25959;background-color:transparent',
-    //   style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 20px 20px 0px 0px;',
-    // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
-    style: {
-        // background: '#D25959',
-        background: 'transparent',
-        // border: '2px'
-    },
-    layout: {
-        type: 'hbox',
-        pack: 'center',
-        align: 'center'
+   // style: "background-color: transparent;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 20px 20px 0px 0px;",
+   // style: 'border-bottom:1px solid #D25959;background-color:transparent',
+   //   style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 20px 20px 0px 0px;',
+   // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
+   style: {
+       // background: '#D25959',
+       background: 'transparent',
+       // border: '2px'
+   },
+   layout: {
+       type: 'hbox',
+       pack: 'center',
+       align: 'center'
 
-    },
-    items: [
-        {
-            xtype: 'container',
-            margin: '-17 0 0 0',
-            id: 'containerFloatPanel_AyohaStoreMasterHeader',
-            width: '100%',
-            height: 30,
-            // style: "background-color: white",
-            style: 'border-bottom:1px none #D25959;background-color:transparent',
-            //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
-            // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
-            //style: "background-color: #F35B57;",
+   },
+   items: [
+       {
+           xtype: 'container',
+           margin: '-17 0 0 0',
+           id: 'containerFloatPanel_AyohaStoreMasterHeader',
+           width: '100%',
+           height: 30,
+           // style: "background-color: white",
+           style: 'border-bottom:1px none #D25959;background-color:transparent',
+           //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
+           // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
+           //style: "background-color: #F35B57;",
 
-            layout: {
-                type: 'hbox',
-                pack: 'center',
-                align: 'center'
+           layout: {
+               type: 'hbox',
+               pack: 'center',
+               align: 'center'
 
-            },
-            items: [
+           },
+           items: [
 
 
 
-                       {
-                           xtype: 'panel',
-                           width: 11
-                       },
+                      {
+                          xtype: 'panel',
+                          width: 11
+                      },
+                        {
+                            id: 'htmlFloatPanel_AyohaStore_SearchProduct',
+                            margin: '0 0 0 0',
+
+                            // zIndex: -10,
+                            width: '85%',
+                            // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
+                            // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
+                            html: '<input type="text" id="input-FloatPanel_AyohaStore_SearchProduct" style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 10px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 3px"  placeholder="Search Product">',
+                        },
+
                          {
-                             id: 'htmlFloatPanel_AyohaStore_SearchProduct',
-                             margin: '0 0 0 0',
-
-                             // zIndex: -10,
-                             width: '85%',
-                             // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
-                             // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
-                             html: '<input type="text" id="input-FloatPanel_AyohaStore_SearchProduct" style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 10px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 3px"  placeholder="Search Product">',
+                             xtype: 'button',
+                             id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenu',
+                             //  badgeText: '1',
+                             margin: '2 0 0 5',
+                             hidden: true,
+                             height: 26,
+                             width: 40,
+                             html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+                             ui: 'plain',
+                             handler: function () {
+                                 globalFloatPanel_AyohaStore_DotMenuItemExpandShrinkBtn = "Shrink";
+                                 FloatPanel_AyohaStore_DotMenuItemShow();
+                             }
                          },
-
                           {
-                              xtype: 'button',
-                              id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenu',
-                              //  badgeText: '1',
-                              margin: '2 0 0 5',
-                              hidden: true,
-                              height: 26,
-                              width: 40,
-                              html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
-                              ui: 'plain',
-                              handler: function () {
-                                  globalFloatPanel_AyohaStore_DotMenuItemExpandShrinkBtn = "Shrink";
-                                  FloatPanel_AyohaStore_DotMenuItemShow();
-                              }
+                              xtype: 'panel',
+                              width: 11
                           },
-                           {
-                               xtype: 'panel',
-                               width: 11
-                           },
 
 
 
 
-               ////////////////////////{
-               ////////////////////////    xtype: 'container',
-               ////////////////////////    id: 'containerFloatPanel_AyohaStore_ProductCategory',
-               ////////////////////////    name: 'namecontainerFloatPanel_AyohaStore_ProductCategory',
-               ////////////////////////    hidden:true,
-               ////////////////////////    width: 158,
-               ////////////////////////    height: 41,
-               ////////////////////////    margin: '-3 0 0 -8',
-               ////////////////////////    styleHtmlContent: true,
-               ////////////////////////    style: "background-color: transparent",
-               ////////////////////////    layout: {
-               ////////////////////////        type: 'hbox',
-               ////////////////////////        pack: 'center',
-               ////////////////////////        align: 'right'
+              ////////////////////////{
+              ////////////////////////    xtype: 'container',
+              ////////////////////////    id: 'containerFloatPanel_AyohaStore_ProductCategory',
+              ////////////////////////    name: 'namecontainerFloatPanel_AyohaStore_ProductCategory',
+              ////////////////////////    hidden:true,
+              ////////////////////////    width: 158,
+              ////////////////////////    height: 41,
+              ////////////////////////    margin: '-3 0 0 -8',
+              ////////////////////////    styleHtmlContent: true,
+              ////////////////////////    style: "background-color: transparent",
+              ////////////////////////    layout: {
+              ////////////////////////        type: 'hbox',
+              ////////////////////////        pack: 'center',
+              ////////////////////////        align: 'right'
 
-               ////////////////////////    },
-               ////////////////////////    items: [
-               ////////////////////////        {
-               ////////////////////////            width: 20,
-               ////////////////////////            height: 20,
-               ////////////////////////            margin: '-2 0 0 -4',
-               ////////////////////////            id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
-               ////////////////////////            html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
-               ////////////////////////        },
-               ////////////////////////        {
-               ////////////////////////            //  width: 150,
-               ////////////////////////            margin: '-2 0 0 -20',
-               ////////////////////////            id: 'htmlFloatPanel_AyohaStor_ProductCategoryTxt',
-               ////////////////////////            html: '<input type="text" id="input-htmlFloatPanel_AyohaStor_ProductCategoryTxt"  placeHolder="Product Category" readOnly  style="border-radius: 0px;border-bottom: 1px solid purple;padding: 2px; width: 130px;height: 20px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;color:black;text-align:center"/>'
-               ////////////////////////        },
-               ////////////////////////  //{
-               ////////////////////////  //    width: 20,
-               ////////////////////////  //    height: 20,
-               ////////////////////////  //    margin: '-2 0 0 -20',
-               ////////////////////////  //    id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
-               ////////////////////////  //    html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
-               ////////////////////////  //},
-               ////////////////////////    ]
-               ////////////////////////},
-               ////////////////////////  {
-               ////////////////////////      xtype: 'button',
-               ////////////////////////      id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed',
-               ////////////////////////      //  badgeText: '1',
-               ////////////////////////      margin: '-2 0 0 0',
-               ////////////////////////      height: 30,
-               ////////////////////////      width: 30,
-               ////////////////////////      html: '<img  src="resources/icons/membershipPurpleThree.png" style="width:20px;height:20px;margin:0px 0px 0px -2px;" alt="Company Name">',
-               ////////////////////////      ui: 'plain',
-               ////////////////////////      handler: function () {
+              ////////////////////////    },
+              ////////////////////////    items: [
+              ////////////////////////        {
+              ////////////////////////            width: 20,
+              ////////////////////////            height: 20,
+              ////////////////////////            margin: '-2 0 0 -4',
+              ////////////////////////            id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
+              ////////////////////////            html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
+              ////////////////////////        },
+              ////////////////////////        {
+              ////////////////////////            //  width: 150,
+              ////////////////////////            margin: '-2 0 0 -20',
+              ////////////////////////            id: 'htmlFloatPanel_AyohaStor_ProductCategoryTxt',
+              ////////////////////////            html: '<input type="text" id="input-htmlFloatPanel_AyohaStor_ProductCategoryTxt"  placeHolder="Product Category" readOnly  style="border-radius: 0px;border-bottom: 1px solid purple;padding: 2px; width: 130px;height: 20px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;color:black;text-align:center"/>'
+              ////////////////////////        },
+              ////////////////////////  //{
+              ////////////////////////  //    width: 20,
+              ////////////////////////  //    height: 20,
+              ////////////////////////  //    margin: '-2 0 0 -20',
+              ////////////////////////  //    id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
+              ////////////////////////  //    html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
+              ////////////////////////  //},
+              ////////////////////////    ]
+              ////////////////////////},
+              ////////////////////////  {
+              ////////////////////////      xtype: 'button',
+              ////////////////////////      id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed',
+              ////////////////////////      //  badgeText: '1',
+              ////////////////////////      margin: '-2 0 0 0',
+              ////////////////////////      height: 30,
+              ////////////////////////      width: 30,
+              ////////////////////////      html: '<img  src="resources/icons/membershipPurpleThree.png" style="width:20px;height:20px;margin:0px 0px 0px -2px;" alt="Company Name">',
+              ////////////////////////      ui: 'plain',
+              ////////////////////////      handler: function () {
 
 
-               ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
-               ////////////////////////              FloatPanel_AyohaStore_MembershipCardUsedShow();
-               ////////////////////////          }
-               ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
-               ////////////////////////              FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-               ////////////////////////          }
-               ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
-               ////////////////////////              FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-               ////////////////////////          }
-               ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
-               ////////////////////////              swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
-               ////////////////////////          }
-               ////////////////////////      }
-               ////////////////////////  },
-               ////////////////////////    {
-               ////////////////////////        xtype: 'button',
-               ////////////////////////        id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed_Txt',
-               ////////////////////////        //  badgeText: '1',
-               ////////////////////////        margin: '-5 0 0 -4',
-               ////////////////////////        height: 30,
-               ////////////////////////        width: 130,
-               ////////////////////////        html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">Atul Follower</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Member Card Used</div>',
-               ////////////////////////        ui: 'plain',
-               ////////////////////////        handler: function () {
+              ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
+              ////////////////////////              FloatPanel_AyohaStore_MembershipCardUsedShow();
+              ////////////////////////          }
+              ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
+              ////////////////////////              FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+              ////////////////////////          }
+              ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
+              ////////////////////////              FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+              ////////////////////////          }
+              ////////////////////////          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
+              ////////////////////////              swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
+              ////////////////////////          }
+              ////////////////////////      }
+              ////////////////////////  },
+              ////////////////////////    {
+              ////////////////////////        xtype: 'button',
+              ////////////////////////        id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed_Txt',
+              ////////////////////////        //  badgeText: '1',
+              ////////////////////////        margin: '-5 0 0 -4',
+              ////////////////////////        height: 30,
+              ////////////////////////        width: 130,
+              ////////////////////////        html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">Atul Follower</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Member Card Used</div>',
+              ////////////////////////        ui: 'plain',
+              ////////////////////////        handler: function () {
 
-               ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
-               ////////////////////////                FloatPanel_AyohaStore_MembershipCardUsedShow();
-               ////////////////////////            }
-               ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
-               ////////////////////////                FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-               ////////////////////////            }
-               ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
-               ////////////////////////                FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-               ////////////////////////            }
-               ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
-               ////////////////////////                swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
-               ////////////////////////            }
-               ////////////////////////        }
-               ////////////////////////    },
+              ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
+              ////////////////////////                FloatPanel_AyohaStore_MembershipCardUsedShow();
+              ////////////////////////            }
+              ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
+              ////////////////////////                FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+              ////////////////////////            }
+              ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
+              ////////////////////////                FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+              ////////////////////////            }
+              ////////////////////////            if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
+              ////////////////////////                swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
+              ////////////////////////            }
+              ////////////////////////        }
+              ////////////////////////    },
 
-               ////////////////////////      {
-               ////////////////////////          xtype: 'button',
-               ////////////////////////          id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsedPointRate_Txt',
-               ////////////////////////          //  badgeText: '1',
-               ////////////////////////          hidden:true,
-               ////////////////////////          margin: '-5 0 0 -4',
-               ////////////////////////          height: 30,
-               ////////////////////////          width: 130,
-               ////////////////////////          html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">RM0.02 = 1Point</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Card Point Rate </div>',
-               ////////////////////////          ui: 'plain',
-               ////////////////////////          handler: function () {
+              ////////////////////////      {
+              ////////////////////////          xtype: 'button',
+              ////////////////////////          id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsedPointRate_Txt',
+              ////////////////////////          //  badgeText: '1',
+              ////////////////////////          hidden:true,
+              ////////////////////////          margin: '-5 0 0 -4',
+              ////////////////////////          height: 30,
+              ////////////////////////          width: 130,
+              ////////////////////////          html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">RM0.02 = 1Point</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Card Point Rate </div>',
+              ////////////////////////          ui: 'plain',
+              ////////////////////////          handler: function () {
 
-               ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
-               ////////////////////////                  FloatPanel_AyohaStore_MembershipCardUsedShow();
-               ////////////////////////              }
-               ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
-               ////////////////////////                  FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-               ////////////////////////              }
-               ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
-               ////////////////////////                  FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-               ////////////////////////              }
-               ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
-               ////////////////////////                  swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
-               ////////////////////////              }
-               ////////////////////////          }
-               ////////////////////////      },
-               //////////////////////// {
-               ////////////////////////     xtype: 'spacer'
-               //////////////////////// },
+              ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
+              ////////////////////////                  FloatPanel_AyohaStore_MembershipCardUsedShow();
+              ////////////////////////              }
+              ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
+              ////////////////////////                  FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+              ////////////////////////              }
+              ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
+              ////////////////////////                  FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+              ////////////////////////              }
+              ////////////////////////              if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
+              ////////////////////////                  swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
+              ////////////////////////              }
+              ////////////////////////          }
+              ////////////////////////      },
+              //////////////////////// {
+              ////////////////////////     xtype: 'spacer'
+              //////////////////////// },
 
-               ////////////////////////  {
-               ////////////////////////      xtype: 'button',
-               ////////////////////////      id: 'btn_FloatPanel_AyohaStoreMasterHeader_BoxMenu',
-               ////////////////////////      hidden:true,
-               ////////////////////////      //  badgeText: '1',
-               ////////////////////////      margin: '-2 0 0 0',
-               ////////////////////////      //  hidden: true,
-               ////////////////////////      height: 26,
-               ////////////////////////      width: 26,
-               ////////////////////////      html: '<img src="resources/icons/BoxMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
-               ////////////////////////      ui: 'plain',
-               ////////////////////////      handler: function () {
+              ////////////////////////  {
+              ////////////////////////      xtype: 'button',
+              ////////////////////////      id: 'btn_FloatPanel_AyohaStoreMasterHeader_BoxMenu',
+              ////////////////////////      hidden:true,
+              ////////////////////////      //  badgeText: '1',
+              ////////////////////////      margin: '-2 0 0 0',
+              ////////////////////////      //  hidden: true,
+              ////////////////////////      height: 26,
+              ////////////////////////      width: 26,
+              ////////////////////////      html: '<img src="resources/icons/BoxMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+              ////////////////////////      ui: 'plain',
+              ////////////////////////      handler: function () {
 
-               ////////////////////////          Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
-               ////////////////////////          Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
-               ////////////////////////         // FloatPanel_AyohaStore_setSaleListItemColStyle();
-               ////////////////////////      }
-               ////////////////////////  },
-               ////////////////////////  {
-               ////////////////////////      xtype: 'button',
-               ////////////////////////      id: 'btn_FloatPanel_AyohaStoreMasterHeader_ListMenu',
-               ////////////////////////      //  badgeText: '1',
-               ////////////////////////      hidden: true,
-               ////////////////////////      margin: '-2 0 0 0',
-               ////////////////////////      //  hidden: true,
-               ////////////////////////      height: 26,
-               ////////////////////////      width: 26,
-               ////////////////////////      html: '<img src="resources/icons/ListMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -5px;" alt="Company Name">',
-               ////////////////////////      ui: 'plain',
-               ////////////////////////      handler: function () {
+              ////////////////////////          Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
+              ////////////////////////          Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
+              ////////////////////////         // FloatPanel_AyohaStore_setSaleListItemColStyle();
+              ////////////////////////      }
+              ////////////////////////  },
+              ////////////////////////  {
+              ////////////////////////      xtype: 'button',
+              ////////////////////////      id: 'btn_FloatPanel_AyohaStoreMasterHeader_ListMenu',
+              ////////////////////////      //  badgeText: '1',
+              ////////////////////////      hidden: true,
+              ////////////////////////      margin: '-2 0 0 0',
+              ////////////////////////      //  hidden: true,
+              ////////////////////////      height: 26,
+              ////////////////////////      width: 26,
+              ////////////////////////      html: '<img src="resources/icons/ListMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -5px;" alt="Company Name">',
+              ////////////////////////      ui: 'plain',
+              ////////////////////////      handler: function () {
 
-               ////////////////////////          Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
-               ////////////////////////          Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
-               ////////////////////////      }
-               ////////////////////////  },
-               ////////////////////////   {
-               ////////////////////////       xtype: 'button',
-               ////////////////////////       id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenuX',
-               ////////////////////////       //  badgeText: '1',
-               ////////////////////////       margin: '-2 0 0 0',
-               ////////////////////////      // hidden: true,
-               ////////////////////////       height: 26,
-               ////////////////////////       width: 20,
-               ////////////////////////       html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
-               ////////////////////////       ui: 'plain',
-               ////////////////////////       handler: function () {
+              ////////////////////////          Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
+              ////////////////////////          Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
+              ////////////////////////      }
+              ////////////////////////  },
+              ////////////////////////   {
+              ////////////////////////       xtype: 'button',
+              ////////////////////////       id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenuX',
+              ////////////////////////       //  badgeText: '1',
+              ////////////////////////       margin: '-2 0 0 0',
+              ////////////////////////      // hidden: true,
+              ////////////////////////       height: 26,
+              ////////////////////////       width: 20,
+              ////////////////////////       html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+              ////////////////////////       ui: 'plain',
+              ////////////////////////       handler: function () {
 
-               ////////////////////////           FloatPanel_AyohaStore_DotMenuItemShow();
-               ////////////////////////       }
-               ////////////////////////   },
-               ////////////////////////   {
-               ////////////////////////       xtype: 'panel',
-               ////////////////////////       width: 5
-               ////////////////////////   },
+              ////////////////////////           FloatPanel_AyohaStore_DotMenuItemShow();
+              ////////////////////////       }
+              ////////////////////////   },
+              ////////////////////////   {
+              ////////////////////////       xtype: 'panel',
+              ////////////////////////       width: 5
+              ////////////////////////   },
 
-            ]
+           ]
 
-        },
-    ]
+       },
+   ]
 },
 
 
@@ -2052,99 +2038,97 @@ function FloatPanel_AyohaStore() {
 //},
 
 {
-    xtype: 'container',
-    id: 'containerFloatPanel_AyohaStore_SaleItemMaster',
-    style: ' background-color: white',
-    // margin: '-11 0 0 0',
-    height: '100%',
-    width: '100%',
-    layout: {
-        type: 'vbox',
-        pack: 'start',
-        align: 'left'
+   xtype: 'container',
+   id: 'containerFloatPanel_AyohaStore_SaleItemMaster',
+   style: ' background-color: white',
+   // margin: '-11 0 0 0',
+   height: '100%',
+   width: '100%',
+   layout: {
+       type: 'vbox',
+       pack: 'start',
+       align: 'left'
 
-    },
+   },
 
-    items: [
-        {
-            xtype: 'container',
-            id: 'containerFloatPanel_AyohaStore_SaleItem',
-            style: ' background-color: transparent',
-            // margin: '-11 0 0 0',
-            height: '100%',
-            width: '100%',
-            layout: {
-                type: 'vbox',
-                pack: 'start',
-                align: 'left'
+   items: [
+       {
+           xtype: 'container',
+           id: 'containerFloatPanel_AyohaStore_SaleItem',
+           style: ' background-color: transparent',
+           // margin: '-11 0 0 0',
+           height: '100%',
+           width: '100%',
+           layout: {
+               type: 'vbox',
+               pack: 'start',
+               align: 'left'
 
-            },
-            scrollable: {
-                direction: 'vertical',
-                directionLock: true,
-                indicators: false
-            },
-            items: [
-                {
+           },
+           scrollable: {
+               direction: 'vertical',
+               directionLock: true,
+               indicators: false
+           },
+           items: [
+               {
 
-                    xtype: 'container',
-                    id: 'containerFloatPanel_AyohaStore_SearchProduct',
-                    docked: 'bottom',
-                    //  hidden:true,
-                    // margin: '-10 0 0 0',
-                    width: '100%',
-                    //height: 50,
-                    height: 30,
-                    //style: "background-color: white;border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;border-radius: 50px 50px 50px 50px;",
-                    //style: "background-color: white;border-top:2px solid #ECF0F1;",
-                    style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px none grey;',
-                    //style: "background-color: #F35B57;",
-                    title: 'FloatPanel_AyohaStore_SearchProductCardLis',
-                    layout: {
-                        type: 'hbox',
-                        pack: 'center',
-                        align: 'center'
+                   xtype: 'container',
+                   id: 'containerFloatPanel_AyohaStore_SearchProduct',
+                   docked: 'bottom',
+                   //  hidden:true,
+                   // margin: '-10 0 0 0',
+                   width: '100%',
+                   //height: 50,
+                   height: 30,
+                   //style: "background-color: white;border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;border-radius: 50px 50px 50px 50px;",
+                   //style: "background-color: white;border-top:2px solid #ECF0F1;",
+                   style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px none grey;',
+                   //style: "background-color: #F35B57;",
+                   title: 'FloatPanel_AyohaStore_SearchProductCardLis',
+                   layout: {
+                       type: 'hbox',
+                       pack: 'center',
+                       align: 'center'
 
-                    },
-
-
-                    items: [
-                         //   {
-                         //       xtype: 'panel',
-                         //       width: 11
-                         //   },
-                         //{
-                         //    id: 'htmlFloatPanel_AyohaStore_SearchProductx',
-                         //    margin: '0 0 0 0',
-
-                         //    // zIndex: -10,
-                         //    width: '85%',
-                         //    // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
-                         //    // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
-                         //    html: '<input type="text" id="input-FloatPanel_AyohaStore_SearchProductx" style="width:100%;height: 35px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 10px;background-color: #f8f8f8;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 3px" onfocusout="FloatPanel_AyohaStoreAdjustHeight_Extended()" placeholder="Search Product">',
-                         //},
-
-                         // {
-                         //     xtype: 'button',
-                         //     id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenu',
-                         //     //  badgeText: '1',
-                         //     margin: '-2 0 0 5',
-                         //     // hidden: true,
-                         //     height: 26,
-                         //     width: 40,
-                         //     html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
-                         //     ui: 'plain',
-                         //     handler: function () {
-
-                         //         FloatPanel_AyohaStore_DotMenuItemShow();
-                         //     }
-                         // },
-                         //  {
-                         //      xtype: 'panel',
-                         //      width: 5
-                         //  },
+                   },
 
 
+                   items: [
+                        //   {
+                        //       xtype: 'panel',
+                        //       width: 11
+                        //   },
+                        //{
+                        //    id: 'htmlFloatPanel_AyohaStore_SearchProductx',
+                        //    margin: '0 0 0 0',
+
+                        //    // zIndex: -10,
+                        //    width: '85%',
+                        //    // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
+                        //    // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
+                        //    html: '<input type="text" id="input-FloatPanel_AyohaStore_SearchProductx" style="width:100%;height: 35px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 10px;background-color: #f8f8f8;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 3px" onfocusout="FloatPanel_AyohaStoreAdjustHeight_Extended()" placeholder="Search Product">',
+                        //},
+
+                        // {
+                        //     xtype: 'button',
+                        //     id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenu',
+                        //     //  badgeText: '1',
+                        //     margin: '-2 0 0 5',
+                        //     // hidden: true,
+                        //     height: 26,
+                        //     width: 40,
+                        //     html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+                        //     ui: 'plain',
+                        //     handler: function () {
+
+                        //         FloatPanel_AyohaStore_DotMenuItemShow();
+                        //     }
+                        // },
+                        //  {
+                        //      xtype: 'panel',
+                        //      width: 5
+                        //  },
 
 
 
@@ -2152,395 +2136,397 @@ function FloatPanel_AyohaStore() {
 
 
 
-                         /////////////////////////////
-
-                            {
-                                xtype: 'container',
-                                id: 'containerFloatPanel_AyohaStore_ProductCategory',
-                                name: 'namecontainerFloatPanel_AyohaStore_ProductCategory',
-                                hidden: true,
-                                width: 158,
-                                height: 41,
-                                margin: '-3 0 0 -8',
-                                styleHtmlContent: true,
-                                style: "background-color: transparent",
-                                layout: {
-                                    type: 'hbox',
-                                    pack: 'center',
-                                    align: 'right'
-
-                                },
-                                items: [
-                                    {
-                                        width: 20,
-                                        height: 20,
-                                        margin: '-2 0 0 -4',
-                                        id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
-                                        html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
-                                    },
-                                    {
-                                        //  width: 150,
-                                        margin: '-2 0 0 -20',
-                                        id: 'htmlFloatPanel_AyohaStor_ProductCategoryTxt',
-                                        html: '<input type="text" id="input-htmlFloatPanel_AyohaStor_ProductCategoryTxt"  placeHolder="Product Category" readOnly  style="border-radius: 0px;border-bottom: 1px solid purple;padding: 2px; width: 130px;height: 20px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;color:black;text-align:center"/>'
-                                    },
-                              //{
-                              //    width: 20,
-                              //    height: 20,
-                              //    margin: '-2 0 0 -20',
-                              //    id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
-                              //    html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
-                              //},
-                                ]
-                            },
-
-                               {
-                                   xtype: 'button',
-                                   id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed',
-                                   //  badgeText: '1',
-                                   margin: '-17 0 0 0',
-                                   height: 50,
-                                   width: 70,
-                                   html: '<img  src="resources/icons/membershipPurpleThree.png" style="width:20px;height:20px;margin:0px 0px 0px -2px;" alt="Company Name">',
-                                   ui: 'plain',
-                                   handler: function () {
-
-                                   
-
-                                       if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
-                                           FloatPanel_AyohaStore_MembershipCardUsedShow();
-                                       }
-                                       if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
-                                           FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-                                       }
-                                       if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
-                                           FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-                                       }
-                                       if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
-                                           // swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
-                                           Swal.fire({
-                                               title: '',
-                                               html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>."+setMessage_toBeAyohaMember(),
-                                              // html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>.<br><br>every ayoha reward user required to be a member in every one of our online stores,we will give you more rewards for every purchase you make.<br><br>  Press JOIN to get a membership card and join the campaign!",
-                                               //imageUrl: "resources/icons/membershipPurpleThree.png",
-                                               imageUrl: FloatPanel_AyohaStore_getEnterpriseLogo(),
-                                               imageWidth: 350,
-                                               imageHeight: 200,
-                                               showCloseButton: true,
-                                               showCancelButton: false,
-                                               //  confirmButtonColor: '#3085d6',
-                                               confirmButtonColor: '#9932cc',
-                                               cancelButtonColor: '#d33',
-                                               confirmButtonText: 'JOIN',
-                                               footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
-                                           }).then(function (result) {
-                                               if (result.isConfirmed) {
-if(MembershipTag=="NO"){
-     FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(globalFloatPanelMerchantDetailPage_MembershipCardCode, globalFloatPanelMerchantDetailPage_EnterpriseAccNo, MembershipTag,'NA',globalFloatPanelMerchantDetailPage_CountStar,globalFloatPanelMerchantDetailPage_CountReviewer)
-     localStorage.setItem("MembershipByMethod", "AyohaStore");
-     FloatPanel_AyohaStoreHide();
 
 
-    return
-}
-                                                   localStorage.setItem("MembershipByMethod", "AyohaStore");
-                                                   // GetMembershipCardEnableClick_containerFloatPanel_MembershipCardList_UpgradeBottom()
-                                                   FloatPanel_AyohaStore_SaleItemDetailHide();
-                                                   var ent = FloatPanel_AyohaStore_getEnterpriseAccNo();
-                                                   FloatPanel_RewardStoreMembershipCardShow_FromQrCode(ent, ent);
-                                               }
-                                           });
-                                       }
-                                   }
+                        /////////////////////////////
+
+                           {
+                               xtype: 'container',
+                               id: 'containerFloatPanel_AyohaStore_ProductCategory',
+                               name: 'namecontainerFloatPanel_AyohaStore_ProductCategory',
+                               hidden: true,
+                               width: 158,
+                               height: 41,
+                               margin: '-3 0 0 -8',
+                               styleHtmlContent: true,
+                               style: "background-color: transparent",
+                               layout: {
+                                   type: 'hbox',
+                                   pack: 'center',
+                                   align: 'right'
+
                                },
-                                 {
-                                     xtype: 'button',
-                                     id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed_Txt',
-                                     //  badgeText: '1',
-                                     margin: '1 0 0 -4',
-                                     height: 30,
-                                     width: 180,
-                                     html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">Atul Follower</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Membership Card Used</div>',
-                                     ui: 'plain',
-                                     handler: function () {
-
-                                         if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
-                                             FloatPanel_AyohaStore_MembershipCardUsedShow();
-                                         }
-                                         if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
-                                             FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-                                         }
-                                         if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
-                                             FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-                                         }
-                                         if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
-                                             //  swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
-                                             Swal.fire({
-                                                 title: '',
-                                                 html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>."+setMessage_toBeAyohaMember(),
-                                                // html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>.<br><br>every ayoha reward user required to be a member in every one of our online stores,we will give you more rewards for every purchase you make.<br><br>  Press JOIN to get a membership card and join the campaign!",
-                                                 //imageUrl: "resources/icons/membershipPurpleThree.png",
-                                                 imageUrl: FloatPanel_AyohaStore_getEnterpriseLogo(),
-                                                 imageWidth: 350,
-                                                 imageHeight: 200,
-                                                 showCloseButton: true,
-                                                 showCancelButton: false,
-                                                 //  confirmButtonColor: '#3085d6',
-                                                 confirmButtonColor: '#9932cc',
-                                                 cancelButtonColor: '#d33',
-                                                 confirmButtonText: 'JOIN',
-                                                 footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
-                                             }).then(function (result) {
-                                                 if (result.isConfirmed) {
-                                                     localStorage.setItem("MembershipByMethod", "AyohaStore");
-                                                     // GetMembershipCardEnableClick_containerFloatPanel_MembershipCardList_UpgradeBottom()
-                                                     FloatPanel_AyohaStore_SaleItemDetailHide();
-                                                     var ent = FloatPanel_AyohaStore_getEnterpriseAccNo();
-                                                     FloatPanel_RewardStoreMembershipCardShow_FromQrCode(ent, ent);
-                                                 }
-                                             });
-                                             return;
-                                         }
-                                     }
-                                 },
-
+                               items: [
                                    {
-                                       xtype: 'button',
-                                       id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsedPointRate_Txt',
-                                       //  badgeText: '1',
-                                       hidden: true,
-                                       margin: '-5 0 0 -4',
-                                       height: 30,
-                                       width: 130,
-                                       html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">RM0.02 = 1Point</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Card Point Rate </div>',
-                                       ui: 'plain',
-                                       handler: function () {
-
-                                           if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
-                                               FloatPanel_AyohaStore_MembershipCardUsedShow();
-                                           }
-                                           if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
-                                               FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-                                           }
-                                           if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
-                                               FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
-                                           }
-                                           if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
-                                               // swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
-                                               Swal.fire({
-                                                   title: '',
-                                                   html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>."+setMessage_toBeAyohaMember(),
-                                                   //html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>.<br><br>every ayoha reward user required to be a member in every one of our online stores,we will give you more rewards for every purchase you make.<br><br>  Press JOIN to get a membership card and join the campaign!",
-                                                   //imageUrl: "resources/icons/membershipPurpleThree.png",
-                                                   imageUrl: FloatPanel_AyohaStore_getEnterpriseLogo(),
-                                                   imageWidth: 350,
-                                                   imageHeight: 200,
-                                                   showCloseButton: true,
-                                                   showCancelButton: false,
-                                                   //  confirmButtonColor: '#3085d6',
-                                                   confirmButtonColor: '#9932cc',
-                                                   cancelButtonColor: '#d33',
-                                                   confirmButtonText: 'JOIN',
-                                                   footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
-                                               }).then(function (result) {
-                                                   if (result.isConfirmed) {
-                                                       localStorage.setItem("MembershipByMethod", "AyohaStore");
-                                                       // GetMembershipCardEnableClick_containerFloatPanel_MembershipCardList_UpgradeBottom()
-                                                       FloatPanel_AyohaStore_SaleItemDetailHide();
-                                                       var ent = FloatPanel_AyohaStore_getEnterpriseAccNo();
-                                                       FloatPanel_RewardStoreMembershipCardShow_FromQrCode(ent, ent);
-                                                   }
-                                               });
-                                               return;
-                                           }
-                                       }
+                                       width: 20,
+                                       height: 20,
+                                       margin: '-2 0 0 -4',
+                                       id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
+                                       html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
                                    },
+                                   {
+                                       //  width: 150,
+                                       margin: '-2 0 0 -20',
+                                       id: 'htmlFloatPanel_AyohaStor_ProductCategoryTxt',
+                                       html: '<input type="text" id="input-htmlFloatPanel_AyohaStor_ProductCategoryTxt"  placeHolder="Product Category" readOnly  style="border-radius: 0px;border-bottom: 1px solid purple;padding: 2px; width: 130px;height: 20px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;color:black;text-align:center"/>'
+                                   },
+                             //{
+                             //    width: 20,
+                             //    height: 20,
+                             //    margin: '-2 0 0 -20',
+                             //    id: 'htmlFloatPanel_AyohaStoreMasterHeaderIcon',
+                             //    html: '<img src="resources/icons/dropdown01.png" width="16" height="16" alt="Company Name">',
+                             //},
+                               ]
+                           },
+
                               {
-                                  xtype: 'spacer'
+                                  xtype: 'button',
+                                  id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed',
+                                  //  badgeText: '1',
+                                  margin: '-17 0 0 0',
+                                  height: 50,
+                                  width: 70,
+                                  html: '<img  src="resources/icons/membershipPurpleThree.png" style="width:20px;height:20px;margin:0px 0px 0px -2px;" alt="Company Name">',
+                                  ui: 'plain',
+                                  handler: function () {
+
+                                  
+
+                                      if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
+                                          FloatPanel_AyohaStore_MembershipCardUsedShow();
+                                      }
+                                      if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
+                                          FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+                                      }
+                                      if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
+                                          FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+                                      }
+                                      if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
+                                          // swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
+                                          Swal.fire({
+                                              title: '',
+                                              html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>."+setMessage_toBeAyohaMember(),
+                                             // html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>.<br><br>every ayoha reward user required to be a member in every one of our online stores,we will give you more rewards for every purchase you make.<br><br>  Press JOIN to get a membership card and join the campaign!",
+                                              //imageUrl: "resources/icons/membershipPurpleThree.png",
+                                              imageUrl: FloatPanel_AyohaStore_getEnterpriseLogo(),
+                                              imageWidth: 350,
+                                              imageHeight: 200,
+                                              showCloseButton: true,
+                                              showCancelButton: false,
+                                              //  confirmButtonColor: '#3085d6',
+                                              confirmButtonColor: '#9932cc',
+                                              cancelButtonColor: '#d33',
+                                              confirmButtonText: 'JOIN',
+                                              footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
+                                          }).then(function (result) {
+                                              if (result.isConfirmed) {
+if(MembershipTag=="NO"){
+    FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(globalFloatPanelMerchantDetailPage_MembershipCardCode, globalFloatPanelMerchantDetailPage_EnterpriseAccNo, MembershipTag,'NA',globalFloatPanelMerchantDetailPage_CountStar,globalFloatPanelMerchantDetailPage_CountReviewer)
+    localStorage.setItem("MembershipByMethod", "AyohaStore");
+    FloatPanel_AyohaStoreHide();
+
+
+   return
+}
+                                                  localStorage.setItem("MembershipByMethod", "AyohaStore");
+                                                  // GetMembershipCardEnableClick_containerFloatPanel_MembershipCardList_UpgradeBottom()
+                                                  FloatPanel_AyohaStore_SaleItemDetailHide();
+                                                  var ent = FloatPanel_AyohaStore_getEnterpriseAccNo();
+                                                  FloatPanel_RewardStoreMembershipCardShow_FromQrCode(ent, ent);
+                                              }
+                                          });
+                                      }
+                                  }
                               },
-
-                               {
-                                   xtype: 'button',
-                                   id: 'btn_FloatPanel_AyohaStoreMasterHeader_BoxMenu',
-                                   hidden: true,
-                                   //  badgeText: '1',
-                                   margin: '-2 0 0 0',
-                                   //  hidden: true,
-                                   height: 26,
-                                   width: 26,
-                                   html: '<img src="resources/icons/BoxMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
-                                   ui: 'plain',
-                                   handler: function () {
-
-                                       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
-                                       Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
-                                       // FloatPanel_AyohaStore_setSaleListItemColStyle();
-                                   }
-                               },
-                               {
-                                   xtype: 'button',
-                                   id: 'btn_FloatPanel_AyohaStoreMasterHeader_ListMenu',
-                                   //  badgeText: '1',
-                                   hidden: true,
-                                   margin: '-2 0 0 0',
-                                   //  hidden: true,
-                                   height: 26,
-                                   width: 26,
-                                   html: '<img src="resources/icons/ListMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -5px;" alt="Company Name">',
-                                   ui: 'plain',
-                                   handler: function () {
-
-                                       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
-                                       Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
-                                   }
-                               },
                                 {
                                     xtype: 'button',
-                                    id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenuX',
+                                    id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsed_Txt',
                                     //  badgeText: '1',
-                                    margin: '4 0 0 3',
-                                    // hidden: true,
-                                    height: 26,
-                                    width: 20,
-                                    html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+                                    margin: '1 0 0 -4',
+                                    height: 30,
+                                    width: 180,
+                                    html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">Atul Follower</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Membership Card Used</div>',
                                     ui: 'plain',
                                     handler: function () {
-                                        //globalFloatPanel_AyohaStore_DotMenuItemExpandShrinkBtn = "Shrink";
-                                       
-                                        FloatPanel_AyohaStore_DotMenuItemShow();
+
+                                        if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
+                                            FloatPanel_AyohaStore_MembershipCardUsedShow();
+                                        }
+                                        if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
+                                            FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+                                        }
+                                        if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
+                                            FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+                                        }
+                                        if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
+                                            //  swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
+                                            Swal.fire({
+                                                title: '',
+                                                html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>."+setMessage_toBeAyohaMember(),
+                                               // html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>.<br><br>every ayoha reward user required to be a member in every one of our online stores,we will give you more rewards for every purchase you make.<br><br>  Press JOIN to get a membership card and join the campaign!",
+                                                //imageUrl: "resources/icons/membershipPurpleThree.png",
+                                                imageUrl: FloatPanel_AyohaStore_getEnterpriseLogo(),
+                                                imageWidth: 350,
+                                                imageHeight: 200,
+                                                showCloseButton: true,
+                                                showCancelButton: false,
+                                                //  confirmButtonColor: '#3085d6',
+                                                confirmButtonColor: '#9932cc',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'JOIN',
+                                                footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
+                                            }).then(function (result) {
+                                                if (result.isConfirmed) {
+                                                    localStorage.setItem("MembershipByMethod", "AyohaStore");
+                                                    // GetMembershipCardEnableClick_containerFloatPanel_MembershipCardList_UpgradeBottom()
+                                                    FloatPanel_AyohaStore_SaleItemDetailHide();
+                                                    var ent = FloatPanel_AyohaStore_getEnterpriseAccNo();
+                                                    FloatPanel_RewardStoreMembershipCardShow_FromQrCode(ent, ent);
+                                                }
+                                            });
+                                            return;
+                                        }
                                     }
                                 },
-                                {
-                                    xtype: 'panel',
-                                    width: 5
-                                },
 
-                    ]
+                                  {
+                                      xtype: 'button',
+                                      id: 'btn_FloatPanel_AyohaStoreMasterHeader_MembershipCardUsedPointRate_Txt',
+                                      //  badgeText: '1',
+                                      hidden: true,
+                                      margin: '-5 0 0 -4',
+                                      height: 30,
+                                      width: 130,
+                                      html: '<div style="color:black;text-align: left;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;color:black;">RM0.02 = 1Point</div><br><div style="color:black;text-align: left;font-size:8px;width:100%;font-weight:normal;margin:-34px 0px 0px 0px;color:black;">Card Point Rate </div>',
+                                      ui: 'plain',
+                                      handler: function () {
 
-
-                },
-
-
-
-
-                {
-
-
-                    xtype: 'list',
-                    hidden: true,
-                    // height: '64%',
-                    // height: '100%',
-                    // height: 200,
-                    //   flex: 2,
-                    store: _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore,
-                    id: 'FloatPanel_AyohaStore_SaleItemList',
-                    mode: 'SINGLE',
-                    scrollable: {
-                        direction: 'vertical',
-                        indicators: {
-                            y: {
-                                autoHide: true
-                            },
-                            x: {
-                                autoHide: true
-                            }
-                        }
-                    },
-                    disableSelection: true,
-                    grouped: true,
-                    plugins: [
-            {
-                xclass: 'Ext.plugin.PullRefresh',
-                pullText: 'Pull down untill..',
-
-            }
-                    ],
-                    itemTpl: '<div class="myContent" style="background-color:white;width:108%;height:148px;">' +                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                                                                                                      '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:158px;"><thead><tr><th style="background-color:transparent;border-color:transparent;border-bottom:2px none #F3F1F5;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:35%" rowspan="2"><img OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')" src="{ItemCoverImg}" style="width: 124.52px; height: 140px; border:1px none grey;border-radius:0px 0px 0px 0px;" /></th><th style="background-color:transparent;border-bottom:2px none #F3F1F5;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break: break-all;width:65%" colspan="2"><div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break: break-all;margin:5px 0px 0px 0px;height:auto;width:100%;" OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{row_num}).{ItemName}</div><br><div OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')"  style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-17px 0px 0px 0px;color:#c800ffc9;width:100%;text-align:left;">{ModifiedPrice}</div><br>{Pointlabel}<br><div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:break-all;margin:-15px 0px 0px 0px;height:35px" OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{ModifiedItemDescriptions}</div></th></tr></thead></table>'
-
-      + '</div>'
-                   // + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 0px;width:100%;text-align:right;color:#c800ffc9;height:22px;"><button OnClick="FloatPanel_AyohaStoreMerchant_ItemDelete({ID})" class="buttonsHtmlBgTransparent" style="margin:0px -35px 0px 0px;height:32px;width:32px;"><img src="resources/icons/DeletePurple.png" alt="Image" style="width:20px;height:20px;margin:0px 0px 0px -70px;"></button><button OnClick="FloatPanel_AyohaStoreMerchant_AddEditItemShowEdit({ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ')"  class="buttonsHtmlBgTransparent" style="margin:0px -15px 0px 0px;height:32px;width:32px;"><img src="resources/icons/editReview.png" alt="Image" style="width:20px;height:20px;margin:0px 0px 0px 0px;"></button></div>',
-                  ////// + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;">{ModifiedShowStock}<div style="margin:-27px 0px 0px 0px;"><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/><button OnClick="FloatPanel_AyohaStore_AddToCart({ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ')" class="buttonAddToCartMain"><img src="resources/icons/ordercartpurple01.png" alt="Image" style="width:27px;height:27px;margin:-7px"/></button></div>' +
-                 
-                 // + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;">{ModifiedShowStock}<div style="margin:-27px 0px 0px 0px;"><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/><button OnClick="FloatPanel_AyohaStore_AddToCart({ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ')" class="buttonAddToCartMain"></button></div>' +
-                 // + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;"><div style="margin:-27px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')" class="buttonAddToCartSign">-</button><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/>-<button OnClick="FloatPanel_AyohaStore_AddToCart_ADD({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign"><b>+</b></button></div>' +
-                 // + '<div display:none; style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;"><div style="margin:-27px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')" class="buttonAddToCartSign">-</button><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/>-<button OnClick="FloatPanel_AyohaStore_AddToCart_ADD({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign"><b>+</b></button></div>' +
-
-                  + '{ModifiedDiscount}',
-
-                    emptyText: '<div class="myContent">No Sale Item</div>',
-                    width: '100%',
-                    listeners: {
-
-
-                        itemdoubletap: function (dataview, index, target, record, e, eOpts) {
-
-
-                        },
-
-                        itemsingletap: function (dataview, index, target, record, e, eOpts) {
-
-                        }
-                    }
-
-
-                },
-
-                {
-                    xtype: 'container',
-                    id: 'containerFloatPanel_AyohaStore_SaleItemListColThreeScroll',
-                    style: 'background-color: white',
-                    // hidden: true,
-                    margin: '0 0 0 0',
-                    height: '100%',
-                    width: '100%',
-                    layout: {
-                        type: 'vbox',
-                        pack: 'start',
-                        align: 'center'
-
-                    },
-                    items: [
-                        
-                              {
-                                
-                                  id: 'tableFloatPanel_AyohaStore_SaleItemListColThree',
-                                  store: _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore,
-                                  // grouped: true,
-                                  xtype: 'dataview',
-                                  // xtype: 'list',
-                                  //height: 815,
-                                  scrollable: true,
-                                //  indicators: false,
-                                  scrollable: {
-                                      direction: 'vertical',
-                                      indicators: false,
+                                          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Not Select Any Card") {
+                                              FloatPanel_AyohaStore_MembershipCardUsedShow();
+                                          }
+                                          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "Has Select One Card") {
+                                              FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+                                          }
+                                          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "DefaultCard") {
+                                              FloatPanel_AyohaStore_MembershipCardBeingUsedShow();
+                                          }
+                                          if (globalFloatPanelAyohaStore_CheckMembershipCardIsUsedStatus == "NotMember_NoMembershipCard") {
+                                              // swalFireWarning("You are Not Member of this merchant or No Membership Card Created!.");
+                                              Swal.fire({
+                                                  title: '',
+                                                  html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>."+setMessage_toBeAyohaMember(),
+                                                  //html: "<b>Hi!,! You are not member of " + FloatPanel_AyohaStore_getEnterpriseName() + "</b>.<br><br>every ayoha reward user required to be a member in every one of our online stores,we will give you more rewards for every purchase you make.<br><br>  Press JOIN to get a membership card and join the campaign!",
+                                                  //imageUrl: "resources/icons/membershipPurpleThree.png",
+                                                  imageUrl: FloatPanel_AyohaStore_getEnterpriseLogo(),
+                                                  imageWidth: 350,
+                                                  imageHeight: 200,
+                                                  showCloseButton: true,
+                                                  showCancelButton: false,
+                                                  //  confirmButtonColor: '#3085d6',
+                                                  confirmButtonColor: '#9932cc',
+                                                  cancelButtonColor: '#d33',
+                                                  confirmButtonText: 'JOIN',
+                                                  footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
+                                              }).then(function (result) {
+                                                  if (result.isConfirmed) {
+                                                      localStorage.setItem("MembershipByMethod", "AyohaStore");
+                                                      // GetMembershipCardEnableClick_containerFloatPanel_MembershipCardList_UpgradeBottom()
+                                                      FloatPanel_AyohaStore_SaleItemDetailHide();
+                                                      var ent = FloatPanel_AyohaStore_getEnterpriseAccNo();
+                                                      FloatPanel_RewardStoreMembershipCardShow_FromQrCode(ent, ent);
+                                                  }
+                                              });
+                                              return;
+                                          }
+                                      }
                                   },
-                                  inline: true,
-                                  width: '100%',
-                                  plugins: [
-                   {
-                       xclass: 'Ext.plugin.PullRefresh',
-                       pullText: 'Pull down untill..',
+                             {
+                                 xtype: 'spacer'
+                             },
 
-                   }
-                                  ],
-                                  cls: 'dataview-item',
-                                  itemTpl: '<div OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{ModifiedDiscountCol}</div>{ModifiedItemCoverImg}</div>',
+                              {
+                                  xtype: 'button',
+                                  id: 'btn_FloatPanel_AyohaStoreMasterHeader_BoxMenu',
+                                  hidden: true,
+                                  //  badgeText: '1',
+                                  margin: '-2 0 0 0',
+                                  //  hidden: true,
+                                  height: 26,
+                                  width: 26,
+                                  html: '<img src="resources/icons/BoxMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+                                  ui: 'plain',
+                                  handler: function () {
 
-
+                                      Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
+                                      Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
+                                      // FloatPanel_AyohaStore_setSaleListItemColStyle();
+                                  }
                               },
+                              {
+                                  xtype: 'button',
+                                  id: 'btn_FloatPanel_AyohaStoreMasterHeader_ListMenu',
+                                  //  badgeText: '1',
+                                  hidden: true,
+                                  margin: '-2 0 0 0',
+                                  //  hidden: true,
+                                  height: 26,
+                                  width: 26,
+                                  html: '<img src="resources/icons/ListMenu.png" style="width:16px;height:16px;margin:0px 0px 0px -5px;" alt="Company Name">',
+                                  ui: 'plain',
+                                  handler: function () {
+
+                                      Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
+                                      Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
+                                  }
+                              },
+                               {
+                                   xtype: 'button',
+                                   id: 'btn_FloatPanel_AyohaStoreMasterHeader_DotMenuX',
+                                   //  badgeText: '1',
+                                   margin: '4 0 0 3',
+                                   // hidden: true,
+                                   height: 26,
+                                   width: 20,
+                                   html: '<img src="resources/icons/MenuDotPurple01.png" style="width:5px;height:16px;margin:0px 0px 0px -2px;" alt="Company Name">',
+                                   ui: 'plain',
+                                   handler: function () {
+                                       //globalFloatPanel_AyohaStore_DotMenuItemExpandShrinkBtn = "Shrink";
+                                      
+                                       FloatPanel_AyohaStore_DotMenuItemShow();
+                                   }
+                               },
+                               {
+                                   xtype: 'panel',
+                                   width: 5
+                               },
+
+                   ]
+
+
+               },
 
 
 
-                    ]
-                },
+
+               {
 
 
-            ]
+                   xtype: 'list',
+                   hidden: true,
+                   // height: '64%',
+                   // height: '100%',
+                   // height: 200,
+                   //   flex: 2,
+                   store: _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore,
+                   id: 'FloatPanel_AyohaStore_SaleItemList',
+                   mode: 'SINGLE',
+                   scrollable: {
+                       direction: 'vertical',
+                       indicators: {
+                           y: {
+                               autoHide: true
+                           },
+                           x: {
+                               autoHide: true
+                           }
+                       }
+                   },
+                   disableSelection: true,
+                   grouped: true,
+                   plugins: [
+           {
+               xclass: 'Ext.plugin.PullRefresh',
+               pullText: 'Pull down untill..',
 
-        },
-    ]
+           }
+                   ],
+                   itemTpl: '<div class="myContent" style="background-color:white;width:108%;height:148px;">' +                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                     '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:158px;"><thead><tr><th style="background-color:transparent;border-color:transparent;border-bottom:2px none #F3F1F5;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:middle;word-break:normal;width:35%" rowspan="2"><img OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')" src="{ItemCoverImg}" style="width: 124.52px; height: 140px; border:1px none grey;border-radius:0px 0px 0px 0px;" /></th><th style="background-color:transparent;border-bottom:2px none #F3F1F5;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break: break-all;width:65%" colspan="2"><div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break: break-all;margin:5px 0px 0px 0px;height:auto;width:100%;" OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{row_num}).{ItemName}</div><br><div OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')"  style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:-17px 0px 0px 0px;color:#c800ffc9;width:100%;text-align:left;">{ModifiedPrice}</div><br>{Pointlabel}<br><div style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;word-break:break-all;margin:-15px 0px 0px 0px;height:35px" OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{ModifiedItemDescriptions}</div></th></tr></thead></table>'
+
+     + '</div>'
+                  // + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 0px;width:100%;text-align:right;color:#c800ffc9;height:22px;"><button OnClick="FloatPanel_AyohaStoreMerchant_ItemDelete({ID})" class="buttonsHtmlBgTransparent" style="margin:0px -35px 0px 0px;height:32px;width:32px;"><img src="resources/icons/DeletePurple.png" alt="Image" style="width:20px;height:20px;margin:0px 0px 0px -70px;"></button><button OnClick="FloatPanel_AyohaStoreMerchant_AddEditItemShowEdit({ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ')"  class="buttonsHtmlBgTransparent" style="margin:0px -15px 0px 0px;height:32px;width:32px;"><img src="resources/icons/editReview.png" alt="Image" style="width:20px;height:20px;margin:0px 0px 0px 0px;"></button></div>',
+                 ////// + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;">{ModifiedShowStock}<div style="margin:-27px 0px 0px 0px;"><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/><button OnClick="FloatPanel_AyohaStore_AddToCart({ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ')" class="buttonAddToCartMain"><img src="resources/icons/ordercartpurple01.png" alt="Image" style="width:27px;height:27px;margin:-7px"/></button></div>' +
+                
+                // + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;">{ModifiedShowStock}<div style="margin:-27px 0px 0px 0px;"><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/><button OnClick="FloatPanel_AyohaStore_AddToCart({ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ')" class="buttonAddToCartMain"></button></div>' +
+                // + '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;"><div style="margin:-27px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')" class="buttonAddToCartSign">-</button><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/>-<button OnClick="FloatPanel_AyohaStore_AddToCart_ADD({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign"><b>+</b></button></div>' +
+                // + '<div display:none; style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:-28px 0px 0px 10px;width:100%;text-align:right;color:black;height:22px;"><div style="margin:-27px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')" class="buttonAddToCartSign">-</button><input type="number" id="input-FloatPanel_AyohaStore_Qty{ID}" value="1" style="border-radius: 5px;border: 1px solid purple;padding: 2px; width: 30px;height: 27px;font-family:Arial, sans-serif;font-size:15px;font-weight:normal;word-break:normal;color:black;text-align:center;"/>-<button OnClick="FloatPanel_AyohaStore_AddToCart_ADD({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign"><b>+</b></button></div>' +
+
+                 + '{ModifiedDiscount}',
+
+                   emptyText: '<div class="myContent">No Sale Item</div>',
+                   width: '100%',
+                   listeners: {
+
+
+                       itemdoubletap: function (dataview, index, target, record, e, eOpts) {
+
+
+                       },
+
+                       itemsingletap: function (dataview, index, target, record, e, eOpts) {
+
+                       }
+                   }
+
+
+               },
+
+               {
+                   xtype: 'container',
+                   id: 'containerFloatPanel_AyohaStore_SaleItemListColThreeScroll',
+                   style: 'background-color: white',
+                   // hidden: true,
+                   margin: '0 0 0 0',
+                   height: '100%',
+                   width: '100%',
+                   layout: {
+                       type: 'vbox',
+                       pack: 'start',
+                       align: 'center'
+
+                   },
+                   items: [
+                       
+                             {
+                               
+                                 id: 'tableFloatPanel_AyohaStore_SaleItemListColThree',
+                                 store: _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore,
+                                 // grouped: true,
+                                 xtype: 'dataview',
+                                 // xtype: 'list',
+                                 //height: 815,
+                                 scrollable: true,
+                               //  indicators: false,
+                                 scrollable: {
+                                     direction: 'vertical',
+                                     indicators: false,
+                                 },
+                                 inline: true,
+                                 width: '100%',
+                                 plugins: [
+                  {
+                      xclass: 'Ext.plugin.PullRefresh',
+                      pullText: 'Pull down untill..',
+
+                  }
+                                 ],
+                                 cls: 'dataview-item',
+                                 itemTpl: '<div OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{ModifiedDiscountCol}</div>{ModifiedItemCoverImg}</div>',
+
+
+                             },
+
+
+
+                   ]
+               },
+
+
+           ]
+
+       },
+   ]
 
 },
 
@@ -2555,16 +2541,14 @@ if(MembershipTag=="NO"){
 
 
 
-                 ]
+                ]
 
-             },
-
-
+            },
 
 
-         ]
 
 
+        ]
 
 
 
@@ -2578,12 +2562,24 @@ if(MembershipTag=="NO"){
 
 
 
-     });
-    return _FloatPanel_AyohaStore;
 
 
+    });
 
 }
+
+
+
+
+
+// function FloatPanel_AyohaStore() {
+
+   
+//     return _FloatPanel_AyohaStore;
+
+
+
+// }
 
 
 
@@ -2614,13 +2610,39 @@ if(MembershipTag=="NO"){
 
 /////////////////////////////////////////////////////////////////////////////
 function FloatPanel_AyohaStoreShow() {
-    //Dashboard_SearchMerchantListHide();
+
    
-    AddRoutePages("FloatPanel_AyohaStoreHide()");
-    Ext.Viewport.remove(_FloatPanel_AyohaStore);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore());
-    this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStoreHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore());
+    // this.overlay.show();
    
+
+
+
+
+FloatPanel_AyohaStoreCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore', function () {
+ 
+    FloatPanel_AyohaStoreHide(true);
+  });
+}
+
+
+
+
+
+
+
+
+
+
     isFloatPanel_AyohaStoreOpen = 'Y';
     FloatPanel_FloatingAdvertisementHide();
 
@@ -2637,7 +2659,7 @@ FloatLoyaltyCardPointHide();
 //alert(';fjfj')
 
     _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.clearFilter();
-   LoadingPanelShow(getLoadingIcon(), 'Loading....');
+  // LoadingPanelShow(getLoadingIcon(), 'Loading....');
    
 
 
@@ -3031,18 +3053,27 @@ function FloatPanel_AyohaStore_CalculateRating() {
             "EnterpriseAccNo": EnterpriseAccNumber
         };
         // console.log(objn);
-        var _value = Ext.Ajax.request({
+        Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
+
+            // url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewCalculateRating',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
+
 
             url: GetAPIurl() + '/AyohaMerchantReview/AyohaMerchantReviewCalculateRating',
-
-            dataType: "json",
-            data: JSON.stringify(objn),
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
-
             success: function (result, request) {
 
                 //console.log(result.responseText);
@@ -3358,7 +3389,7 @@ function FloatPanel_AyohaStore_CalculateRating() {
     //  Ext.Viewport.unmask();
 
     //   setDashBoardMerchantReviewRate(FiveStar, FourStar, ThreeStar, TwoStar, OneStar);
-    task.delay(500);
+  
 
 
 }
@@ -3469,18 +3500,19 @@ function FloatPanel_AyohaStore_LikeDislikeStore_Save() {
         "EnterpriseAccNo": FloatPanel_AyohaStore_getEnterpriseAccNo(),
         "isLike": likedStatus
     };
-    var _value = Ext.Ajax.request({
+   Ext.Ajax.request({
 
-        type: "POST",
+        
+
+
+
 
         url: GetAPIurl() + '/AyohaStore_LikeStatus/AyohaStoreLikeStatusInsertUpdate',
-
-        dataType: "json",
-        data: JSON.stringify(objn),
+        method: 'POST',                 // ✅ betul
+        jsonData: objn,                 // ✅ auto encode JSON + set body
         headers: {
-            "Content-Type": "application/json; charset=utf-8"
+          'Content-Type': 'application/json; charset=utf-8'
         },
-
         success: function (result, request) {
 
             //console.log(result.responseText);
@@ -3838,13 +3870,37 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
 
 
 
-function FloatPanel_AyohaStoreHide() {
+function FloatPanel_AyohaStoreHide(fromBack,animCfg) {
+    // if (isFloatPanel_AyohaStoreOpen == 'Y') {
+    //     _FloatPanel_AyohaStore.hide(); isFloatPanel_AyohaStoreOpen = 'N';
+    //     _FloatPanel_AyohaStore_isFirstLoad = "N";
+    //     RemovePages("FloatPanel_AyohaStoreHide()");
+    //     FloatPanel_AyohaStore_LikeDislikeStore_Save();
+    // }
+
+
+
+
+
+    
     if (isFloatPanel_AyohaStoreOpen == 'Y') {
-        _FloatPanel_AyohaStore.hide(); isFloatPanel_AyohaStoreOpen = 'N';
-        _FloatPanel_AyohaStore_isFirstLoad = "N";
-        RemovePages("FloatPanel_AyohaStoreHide()");
-        FloatPanel_AyohaStore_LikeDislikeStore_Save();
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore.hide();
+          }
+          isFloatPanel_AyohaStoreOpen = 'N';
+         
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore');
+          }
     }
+
    
 }
 
@@ -4219,7 +4275,7 @@ function FloatPanel_AyohaStore_setSaleListItemColStyle() {
 
 function FloatPanel_AyohaStore_AyohaStoreAnalsysInsertUpdate() {
 
-    Dashboard_VisitorAnalsysInsertUpdate(Modul, Adver_Code,EntAccNo)
+  //  Dashboard_VisitorAnalsysInsertUpdate(Modul, Adver_Code,EntAccNo)
 
 
     var obj = {
@@ -4231,18 +4287,17 @@ function FloatPanel_AyohaStore_AyohaStoreAnalsysInsertUpdate() {
 
     };
     console.log(obj);
-    var _value = Ext.Ajax.request({
+    Ext.Ajax.request({
 
-        type: "POST",
+
+
 
         url: GetAPIurl() + '/AyohaStoreAnalsys/AyohaStoreAnalsysInsertUpdate',
-
-        dataType: "json",
-        data: JSON.stringify(obj),
+        method: 'POST',                 // ✅ betul
+        jsonData: obj,                 // ✅ auto encode JSON + set body
         headers: {
-            "Content-Type": "application/json; charset=utf-8"
+          'Content-Type': 'application/json; charset=utf-8'
         },
-
         success: function (result, request) {
 
             //console.log(result.responseText);
