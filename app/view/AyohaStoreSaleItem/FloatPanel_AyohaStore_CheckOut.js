@@ -6611,6 +6611,8 @@ else{
     
     
     function FloatPanel_AyohaStore_CheckOut_OrderOnly_ReOrder() {
+
+        //alert("Re-Order")
         var Note = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_NoteToSeller').value;
         var add = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_ShippingAddress').value;
     
@@ -6767,18 +6769,27 @@ else{
                 "MembershipCardCode": globalFloatPanelAyohaStore_AyohaUser_MembershipCardCode
             };
             console.log(objn);
-            var _value = Ext.Ajax.request({
+            Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/DiscountCampaing/DiscountCampaingLoadByEnterpriseAccNoMembershipCardCode',
+                // url: GetAPIurl() + '/DiscountCampaing/DiscountCampaingLoadByEnterpriseAccNoMembershipCardCode',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+
+        url: GetAPIurl() + '/DiscountCampaing/DiscountCampaingLoadByEnterpriseAccNoMembershipCardCode',
+
+         method: 'POST',                 // ✅ betul
+         jsonData: objn,                 // ✅ auto encode JSON + set body
+         headers: {
+           'Content-Type': 'application/json; charset=utf-8'
+         },
                 success: function (result, request) {
     
                    
@@ -6883,7 +6894,7 @@ else{
     
         });
         
-        task.delay(500);
+        
     }
     
     

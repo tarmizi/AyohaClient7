@@ -2491,32 +2491,109 @@ if(MembershipTag=="NO"){
                              {
                                
                                  id: 'tableFloatPanel_AyohaStore_SaleItemListColThree',
-                                 store: _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore,
-                                 // grouped: true,
-                                 xtype: 'dataview',
-                                 // xtype: 'list',
-                                 //height: 815,
-                                 scrollable: true,
-                               //  indicators: false,
+                                 store: null,
+                                
+                                 xtype: 'list',
+                                 grouped: true,
+                                 inline: {
+                                     wrap: true
+                                 },
                                  scrollable: {
                                      direction: 'vertical',
-                                     indicators: false,
+                                     indicators: false
                                  },
-                                 inline: true,
+                                 style: {
+                                     background: 'white'
+                                 },
                                  width: '100%',
-                                 plugins: [
-                  {
-                      xclass: 'Ext.plugin.PullRefresh',
-                      pullText: 'Pull down untill..',
-
-                  }
-                                 ],
-                                 cls: 'dataview-item',
-                                 itemTpl: '<div OnClick="FloatPanel_AyohaStore_SaleItemDetailShow({StampRuleAmount},{ID},' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemCoverImg}' + "'" + ',' + "'" + '{ItemName}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{CampaignType}' + "'" + ',' + "'" + '{MembershipCardCode}' + "'" + ',' + "'" + '{ProductCategoryName}' + "'" + ',' + "'" + '{ItemCategoryCode}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{ItemCoverImgName}' + "'" + ',' + "'" + '{Stock}' + "'" + ',' + "'" + '{ShowStock}' + "'" + ',' + "'" + '{StockAlert}' + "'" + ',' + "'" + '{ModifiedItemDescriptions_01}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ')">{ModifiedDiscountCol}</div>{ModifiedItemCoverImg}</div>',
-
+                                 height: '100%',
+                                 itemConfig: {
+                                     xtype: 'component',
+                                     width: '50%',
+                                     style: 'display: inline-block; vertical-align: top; box-sizing: border-box; padding: 8px;',
+                                     tpl: '{ModifiedDiscountCol}{ModifiedItemCoverImg}'
+                                 },
+                                 emptyText: '<div class="myContent" style="padding:20px;text-align:center;">No Sale Items Available</div>',
+                                 disableSelection: false,
+                                 onItemDisclosure: false,
+                                 listeners: {
+                                     painted: function() {
+                                         console.log('=== List Painted ===');
+                                         var store = this.getStore();
+                                         console.log('Store count:', store ? store.getCount() : 'null');
+                                     },
+                                     itemtap: function(list, index, target, record) {
+                                         console.log('Item tapped:', record.get('ItemName'));
+                                     }
+                                 }
 
                              },
+// {
+//   xtype: 'dataview',
+//   itemId: 'tableFloatPanel_AyohaStore_SaleItemListColThree',
+//   store: _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore,
 
+//   width: '100%',
+//   inline: true,
+
+//   cls: 'dataview-item',
+
+//   scrollable: {
+//     direction: 'vertical',
+//     indicators: false
+//   },
+
+//   plugins: [{
+//     type: 'pullrefresh',
+//     pullText: 'Pull down until…',
+//     releaseText: 'Release to refresh…',
+//     loadingText: 'Refreshing…',
+//     refreshFn: function (plugin) {
+//       // works for list/dataview (try both getters)
+//       var view  = plugin.getView ? plugin.getView() : (plugin.getList ? plugin.getList() : null);
+//       var store = view && view.getStore ? view.getStore() : null;
+
+//       if (store) store.reload();
+//     }
+//   }],
+
+//   itemTpl: [
+//     '<div class="saleItemCard">',
+//       // kalau field ni memang dah siap HTML, kekalkan macam ni
+//       '<div class="saleItemDiscount">{ModifiedDiscountCol}</div>',
+//       '<div class="saleItemCover">{ModifiedItemCoverImg}</div>',
+//     '</div>'
+//   ].join(''),
+
+//   listeners: {
+//     itemtap: function (view, index, target, record) {
+//       var d = record.data;
+
+//       FloatPanel_AyohaStore_SaleItemDetailShow(
+//         d.StampRuleAmount,
+//         d.ID,
+//         d.ItemCode,
+//         d.ItemCoverImg,
+//         d.ItemName,
+//         d.ItemPrice,
+//         d.MerchantPoint,
+//         d.AyohaPoint,
+//         d.CampaignType,
+//         d.MembershipCardCode,
+//         d.ProductCategoryName,
+//         d.ItemCategoryCode,
+//         d.MembershipCardName,
+//         d.ItemCoverImgName,
+//         d.Stock,
+//         d.ShowStock,
+//         d.StockAlert,
+//         d.ModifiedItemDescriptions_01,
+//         d.ItemPriceDiscount,
+//         d.ItemPriceDiscountRate
+//       );
+//     }
+//   }
+// }
 
 
                    ]
@@ -2644,7 +2721,7 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
 
 
     isFloatPanel_AyohaStoreOpen = 'Y';
-    FloatPanel_FloatingAdvertisementHide();
+   // FloatPanel_FloatingAdvertisementHide();
 
 
 if(isFloatPanel_PreviewAdvertisementOpen == "Y"){
@@ -2652,14 +2729,17 @@ if(isFloatPanel_PreviewAdvertisementOpen == "Y"){
     Ext.getCmp('FloatPanel_PreviewAdvertisementID').setZIndex(80);
    
 }
-FloatPanel_MembershipCardList_MyMembershipCardHide();
-FloatPanel_MembershipCardList_UpgradeHide();
-FloatPanel_AyohaCardManagement_PreviewCardHide();
-FloatLoyaltyCardPointHide();
-//alert(';fjfj')
+
+
+
+// FloatPanel_MembershipCardList_MyMembershipCardHide();
+// FloatPanel_MembershipCardList_UpgradeHide();
+// FloatPanel_AyohaCardManagement_PreviewCardHide();
+// FloatLoyaltyCardPointHide();
+
 
     _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.clearFilter();
-  // LoadingPanelShow(getLoadingIcon(), 'Loading....');
+  
    
 
 
@@ -2682,15 +2762,14 @@ FloatLoyaltyCardPointHide();
 
 
    
-    //globalFloatPanelMerchantDetailPage_MembershipCardCode, globalFloatPanelMerchantDetailPage_EnterpriseAccNo, MembershipTag,'NA',globalFloatPanelMerchantDetailPage_CountStar,globalFloatPanelMerchantDetailPage_CountReviewer
     
-    FloatPanel_AyohaStore_initTapListner_RateReview();
-    FloatPanel_AyohaStore_initTapListner_MembershipCard();
-    FloatPanel_AyohaStore_initTapListner_LoveStatus();
-    FloatPanel_AyohaStore_initTapListner_ProductCategory();
-    FloatPanel_AyohaStore_CalculateRating();
-    FloatPanel_AyohaStore_initTapListner_SocialMedia();
-    FloatPanel_Advertisement_FloatAdvertisementHide();
+    // FloatPanel_AyohaStore_initTapListner_RateReview();
+    // FloatPanel_AyohaStore_initTapListner_MembershipCard();
+    // FloatPanel_AyohaStore_initTapListner_LoveStatus();
+    // FloatPanel_AyohaStore_initTapListner_ProductCategory();
+    // FloatPanel_AyohaStore_CalculateRating();
+    // FloatPanel_AyohaStore_initTapListner_SocialMedia();
+    // FloatPanel_Advertisement_FloatAdvertisementHide();
 
     FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore("firstload");
 
@@ -2713,16 +2792,15 @@ FloatLoyaltyCardPointHide();
 
 
 
-   // FloatPanel_AyohaStoreAdjustHeight();
-    FloatPanel_PreviewAdvertisementHide();
+   
+   
     globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryCharge = 0.00;
     
-    //FloatPanel_AyohaStore_FloatCartShow();
-    // FloatPanel_AyohaStore_AyohaStoreAnalsysInsertUpdate();
+    
 
     var EntAccNo = FloatPanel_AyohaStore_getEnterpriseAccNo();
     globalEnterpriseAccNo_AyohaMerchantReview = EntAccNo;
-    Dashboard_VisitorAnalsysInsertUpdate("AyohaStore", "NA", EntAccNo);
+  //Dashboard_VisitorAnalsysInsertUpdate("AyohaStore", "NA", EntAccNo);
     globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ColView";
     globalFloatPanel_AyohaStore_AyohaStoreSaleItemDetail_EnterpriseLogoPath = "";
 
@@ -2741,34 +2819,16 @@ FloatLoyaltyCardPointHide();
 
 
 
-    FloatPanel_RewardStore_SearchResultHide();
-
-
-    //var containerViewnamecontainerFloatPanel_AyohaStoreMyPurchaseHistory = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_AyohaStoreMyPurchaseHistory')[0];
-    //var containerViewElnamecontainerFloatPanel_AyohaStoreMyPurchaseHistory = containerViewnamecontainerFloatPanel_AyohaStoreMyPurchaseHistory.element;
-    //containerViewElnamecontainerFloatPanel_AyohaStoreMyPurchaseHistory.on('tap',
-    //  function (event, node, options, eOpts) {
-    //      FloatPanel_AyohaStore_OrderHistoryShow();
-    //      // FloatPanel_AyohaStore_CartShow();
-    //  }
-    //);
-
-
-    //////////var containerViewnameContainerFloatPanel_AyohaStore_AyohaeWallet = Ext.ComponentQuery.query('container[name=nameContainerFloatPanel_AyohaStore_AyohaeWallet')[0];
-    //////////var containerViewElnameContainerFloatPanel_AyohaStore_AyohaeWallet = containerViewnameContainerFloatPanel_AyohaStore_AyohaeWallet.element;
-    //////////containerViewElnameContainerFloatPanel_AyohaStore_AyohaeWallet.on('tap',
-    //////////  function (event, node, options, eOpts) {
-    //////////      FloatPanel_AyohaeWalletShow();
-    //////////  }
-    //////////);
+    //FloatPanel_RewardStore_SearchResultHide();
 
 
 
 
-    FloatPanel_RewardStoreHide();
-    FloatPanel_MerchantDetailPageHide();
-    Dashboard_SearchMerchantListHide();
-    FloatPanel_RewardStoreMembershipCardHide();
+
+    // FloatPanel_RewardStoreHide();
+    // FloatPanel_MerchantDetailPageHide();
+    // Dashboard_SearchMerchantListHide();
+    // FloatPanel_RewardStoreMembershipCardHide();
     
 }
 
@@ -3787,22 +3847,68 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
 // alert(ItemCategoryCode)
 // alert(GetCurrAyohaUserAccountNo())
 
+    console.log('=== Loading Store Data ===');
+    console.log('EnterpriseAccNo:', FloatPanel_AyohaStore_getEnterpriseAccNo());
+    console.log('ItemCategoryCode:', ItemCategoryCode);
+    console.log('SubscriberAccNo:', GetCurrAyohaUserAccountNo());
+    console.log('API URL:', GetAPIurl() + '/AyohaStore_SaleItem/AyohaStoreSaleItemloadByEnterpriseAccNoItemCategory');
 
     _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getProxy().setExtraParam('EnterpriseAccNo',FloatPanel_AyohaStore_getEnterpriseAccNo());
     _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getProxy().setExtraParam('ItemCategoryCode', ItemCategoryCode);
     _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
     _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getProxy().setUrl(GetAPIurl() + '/AyohaStore_SaleItem/AyohaStoreSaleItemloadByEnterpriseAccNoItemCategory');
-    _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.load();
+    
+    _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.load({
+        callback: function(records, operation, success) {
+            console.log('=== Store Load Callback ===');
+            console.log('Success:', success);
+            console.log('Records loaded:', records ? records.length : 0);
+            if (!success) {
+                console.error('Load failed:', operation.getError());
+                return;
+            }
+            
+            // CRITICAL: Bind store to list AFTER data loads
+            var list = Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree');
+            if (list) {
+                console.log('=== Binding Store to List ===');
+                console.log('Store count:', _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getCount());
+                
+                // Check first record data
+                if (records && records.length > 0) {
+                    console.log('=== First Record Check ===');
+                    console.log('ItemName:', records[0].get('ItemName'));
+                    console.log('ItemCoverImg:', records[0].get('ItemCoverImg'));
+                    console.log('ModifiedItemCoverImg:', records[0].get('ModifiedItemCoverImg') ? records[0].get('ModifiedItemCoverImg').substring(0, 100) + '...' : 'NULL');
+                    console.log('ModifiedDiscountCol:', records[0].get('ModifiedDiscountCol') ? records[0].get('ModifiedDiscountCol').substring(0, 50) + '...' : 'NULL');
+                }
+                
+                // Set store and refresh
+                list.setStore(_DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore);
+                
+                // Give it a moment to process
+                Ext.defer(function() {
+                    list.refresh();
+                    console.log('List refreshed after delay');
+                    console.log('List store count:', list.getStore().getCount());
+                }, 100);
+                
+                console.log('List store bound! New store count:', list.getStore().getCount());
+            } else {
+                console.warn('List not found!');
+            }
+        }
+    });
 
-    FloatPanel_AyohaStore_ItemCategoryHide();
-    FloatPanel_AyohaStore_DotMenuItemHide();
+    //FloatPanel_AyohaStore_ItemCategoryHide();
+    //FloatPanel_AyohaStore_DotMenuItemHide();
    // 
     var task = Ext.create('Ext.util.DelayedTask', function () {
 
         var Count = _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getCount();
         var Store = _DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getAt(0);
 
-// alert(Count)
+
         
         if (Count > 0) {
             globalFloatPanelAyohaStore_MembershipCardCount = parseInt(Store.get('AyohaUser_MembershipCardCount'));
@@ -3858,7 +3964,7 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
         FloatPanel_AyohaStoreAdjustHeight();
         document.getElementById("input-FloatPanel_AyohaStore_SearchProduct").addEventListener("keyup", OnKeyUpFloatPanel_AyohaStore_SearchProduct);
         FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore();
-        LoadingPanelHide();
+       
         FloatPanel_AyohaStore_CheckOut_DiscountCampaingLoadByEnterpriseAccNoMembershipCardCodeStore();
     });
     task.delay(800);
