@@ -423,9 +423,5 @@
 });
 
 // Check if dataview exists:
-var dv = Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree');
-console.log(dv);
 
-// Dalam browser console, type:
-_DataStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCategoryStore.getCount()
 // Sepatutnya return number > 0
