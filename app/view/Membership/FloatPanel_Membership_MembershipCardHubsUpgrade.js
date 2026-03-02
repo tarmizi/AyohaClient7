@@ -105,8 +105,16 @@ var AyohaHeroDockHtml =
   
 
 
+var _FloatPanel_Membership_MembershipCardHubsUpgrade = null;
 
- var _FloatPanel_Membership_MembershipCardHubsUpgrade =
+
+
+
+
+function FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded() {
+    if (_FloatPanel_Membership_MembershipCardHubsUpgrade&& !_FloatPanel_Membership_MembershipCardHubsUpgrade.destroyed) return;
+
+ _FloatPanel_Membership_MembershipCardHubsUpgrade =
     Ext.create('Ext.Container', {
         zIndex: 20,
         height: '100%',
@@ -460,6 +468,13 @@ var AyohaHeroDockHtml =
    
 
 
+  }
+
+
+
+
+
+
 
 
 
@@ -499,15 +514,27 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeHide(fromBack, animCfg) 
 function FloatPanel_Membership_MembershipCardHubsUpgradeShow() {
 
 
+
+FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded()
+
   _FloatPanel_Membership_MembershipCardHubsUpgrade.show();
   isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'Y';
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_Membership_MembershipCardHubsUpgrade', function () {
+ 
+       FloatPanel_Membership_MembershipCardHubsUpgradeHide(true);
+  });
+}
+
+
+
    // Dashboard_MembershipCardHub();
 
    FloatPanel_Membership_MembershipCardHubsUpgrade_MembershipCardLoadBySubscriberAccNoDashboardMainStore();
-  AyohaBrowserBack.push('FloatPanel_Membership_MembershipCardHubsUpgrade', function () {
-    // bila user tekan BACK sebenar
-    FloatPanel_Membership_MembershipCardHubsUpgradeHide(true);
-  });
+  // AyohaBrowserBack.push('FloatPanel_Membership_MembershipCardHubsUpgrade', function () {
+  //   // bila user tekan BACK sebenar
+  //   FloatPanel_Membership_MembershipCardHubsUpgradeHide(true);
+  // });
 
 
 

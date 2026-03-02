@@ -3281,3 +3281,125 @@ function AyohaConfirm(options) {
 
 
 
+
+
+
+
+
+
+
+
+function GeneralMsgBox7(MsgTitle, Msg,ContainerID) {
+
+  var fp = Ext.getCmp(ContainerID);
+  if (fp) {
+    fp.setMasked({ xtype: 'mask', cls: 'ayohaModalMask' });
+  }
+
+  var dlg = Ext.create('Ext.Dialog', {
+    cls: 'ayohaPremiumDialog ayohaPremiumDialogUnsub',
+    centered: true,
+    floated: true,
+    modal: true,
+    hideOnMaskTap: false,
+    zIndex: 999999,
+
+    width: '95%',
+    maxWidth: 520,
+
+    items: [{
+      xtype: 'container',
+      cls: 'ayohaDlgWrap',
+      items: [
+        {
+          xtype: 'container',
+          cls: 'ayohaDlgHeader',
+          layout: {
+            type: 'hbox',
+            align: 'center',
+            pack: 'center'   // kalau nak center; tukar 'start' kalau nak kiri
+          },
+          items: [
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderIcon',
+              html:
+                '<div class="ayohaDlgHeaderIconCircle">' +
+                  '<img class="ayohaDlgHeaderIconImg" src="resources/icons/CancelMembershipCard.png" />' +
+                '</div>'
+            },
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderTitle',
+              html: MsgTitle,
+              flex: 1
+            }
+          ]
+        },
+
+        // ✅ PREMIUM HEADER (icon + title)
+        // {
+        //   xtype: 'container',
+        //   cls: 'ayohaDlgHeader',
+        //   items: [
+           
+        //     {
+        //       xtype: 'component',
+        //       cls: 'ayohaDlgHeaderIcon',
+        //       html: '<div class="ayohaDlgHeaderIconCircle">' +
+        //               '<img class="ayohaDlgHeaderIconImg" src="resources/icons/DeletePurple.png" />' +
+        //             '</div>'
+        //       // kalau takde image warningWhite.png, guna emoji:
+        //       // html: '<div class="ayohaDlgHeaderIconCircle">!</div>'
+        //     },
+        //     {
+        //       xtype: 'component',
+        //       cls: 'ayohaDlgHeaderTitle',
+        //       html: 'Confirm Unsubscribe'
+        //     },
+            
+        //   ]
+        // },
+
+        // ✅ BODY (lebih kemas)
+        {
+          xtype: 'component',
+          cls: 'ayohaDlgBody',
+          html:
+            '<div class="ayohaDlgMsg">' +
+              '<div class="ayohaDlgLine">' + Msg + '</div>' +
+            //  '<div class="ayohaDlgLine">You will no longer be able to access this card.</div>' +
+          //    '<div class="ayohaDlgHint">Please think carefully before proceeding.</div>' +
+            '</div>'
+        }
+
+      ]
+    }],
+
+    buttons: [{
+      text: 'CANCEL',
+      cls: 'ayohaDlgBtn ayohaDlgBtnCancel',
+      handler: function () { dlg.destroy(); }
+    },
+{
+  xtype:'spacer'
+},
+    {
+      text: 'YES, UNSUBSCRIBE',
+      cls: 'ayohaDlgBtn ayohaDlgBtnDanger',
+      handler: function () {
+        dlg.destroy();
+        MembershipCardDelete();
+      }
+    }],
+
+    listeners: {
+      destroy: function () {
+        if (fp) fp.setMasked(false);
+      }
+    }
+  });
+
+  if (fp) fp.add(dlg); else Ext.Viewport.add(dlg);
+  dlg.show();
+}

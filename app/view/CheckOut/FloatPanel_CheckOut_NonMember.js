@@ -6,22 +6,14 @@ Ext.define('BuskartApp.view.CheckOut.FloatPanel_CheckOut_NonMember', {
 
 var isFloatPanel_CheckOut_NonMemberOpen = 'N';
 
+var _FloatPanel_CheckOut_NonMember= null;
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-   var _FloatPanel_CheckOut_NonMember =
+function FloatPanel_CheckOut_NonMemberCreateIfNeeded() {
+    if (_FloatPanel_CheckOut_NonMember&& !_FloatPanel_CheckOut_NonMember.destroyed) return;
+_FloatPanel_CheckOut_NonMember =
      Ext.create('Ext.Container', {
 
         height: 347,
@@ -67,51 +59,7 @@ var isFloatPanel_CheckOut_NonMemberOpen = 'N';
          },
       //  style: 'background-color:transparent;',
         style:"background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%)",
-      //   style: 'background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);border-radius:30px 30px 0px 0px',
-         // style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-        //  listeners: {
-        //      initialize: function (c) {
-        //          this.element.on({
-        //              swipe: function (e, node, options) {
-
-        //                  if (e.direction == "down") {
-        //                      _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation({
-        //                         // type: 'slideOut',
-        //                         // direction: 'down',
-        //                         // duration: 420,
-        //                         // easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
-
-
-        //                         type: 'slideOut',
-        //                         direction: 'down',
-        //                         duration: 420,                        // ✅ lebih slow & premium
-        //                         easing: 'cubic-bezier(.2,0,.2,1)',
-        //                         offset: 20  // (optional) kalau version Ext support
-
-        //                      }));
-        //                      isFloatPanel_CheckOut_NonMemberOpen = 'N';
-        //                      AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
-        //                  } 
-                         
-                         
-        //                 //  if (e.direction == "right") {
-        //                 //      _FloatPanel_CheckOut_NonMember.hide(Ext.fx.Animation({
-        //                 //          type: 'slideOut',
-        //                 //          direction: 'right',
-        //                 //          easing: 'cubic-bezier(.7,0,.7,1)',
-        //                 //          duration: 250
-
-        //                 //      }));
-        //                 //      isFloatPanel_CheckOut_NonMemberOpen = 'N';
-        //                 //      AddRoutePages("FloatPanel_CheckOut_NonMemberHide()");
-        //                 //  }
-                        
-        //              }
-        //          });
-        //      }
-        //  },
-
-         //  style: "background-color: #D25959;",
+     
          items: {
 
 
@@ -800,7 +748,20 @@ html: '<div ><img src="resources/icons/reviewstarunrate.png" width="20" height="
 
 
      });
-    
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -811,7 +772,7 @@ function FloatPanel_CheckOut_NonMemberShow() {
 
    
 
-
+FloatPanel_CheckOut_NonMemberCreateIfNeeded();
 
 
 
@@ -820,17 +781,17 @@ function FloatPanel_CheckOut_NonMemberShow() {
     _FloatPanel_CheckOut_NonMember.show();
     isFloatPanel_CheckOut_NonMemberOpen = 'Y';
   
-    //AddRoutePages("FloatPanel_ForgotPasswordHide()");
-  
-    // ✅ penting: push history state supaya BACK browser boleh close overlay
-    AyohaBrowserBack.push('FloatPanel_CheckOut_NonMember', function () {
-      // bila user tekan BACK sebenar
-      FloatPanel_CheckOut_NonMemberHide(true);
-    });
 
 
 
 
+
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_CheckOut_NonMember', function () {
+ 
+    FloatPanel_CheckOut_NonMemberHide(true);
+  });
+}
 
 
 

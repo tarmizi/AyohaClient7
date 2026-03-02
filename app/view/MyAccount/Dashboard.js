@@ -18380,6 +18380,10 @@ function Dashboard_LoadLastCheckIn(){
                AppState.MainDashboard.MainDashboardCheckInCount  = record.get('CheckInCount');
                AppState.MainDashboard.isMember  = record.get('isMember');
                AppState.MainDashboard.EnterpriseAccNo  = record.get('EnterpriseAccNo');
+               AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('CheckIn_MembershipCardCode');
+ AppState.MainDashboard.CheckIn_MembershipCardCode_ApprovalStatus  = record.get('CheckIn_MembershipCardCode_ApprovalStatus');
+
+                 
              
     globalFloatPanelMerchantDetailPage_ID =record.get('ID');
     globalFloatPanelMerchantDetailPage_EnterpriseAccNo = record.get('EnterpriseAccNo');

@@ -62,3 +62,47 @@ var _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAc
     //     }
     // }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _DataStore_MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore_CheckIn = Ext.create('Ext.data.Store', {
+
+     model: 'BuskartApp.model.MembershipCard.MembershipCardModel',
+    id: 'MembershipCard_LoadBySubscriberAccNo_MembershipCardCode_EnterpriseAccNoID',
+    proxy: {
+        type: 'ajax',
+        url: GetAPIurl() + '/MembershipCard/MembershipCard_LoadBySubscriberAccNo_MembershipCardCode_EnterpriseAccNo',
+        actionMethods: {
+            read: 'POST'
+        },
+        reader: {
+            type: 'json',
+            rootProperty: 'results',
+            totalProperty: 'total',
+            successProperty: 'success',
+            messageProperty: 'message'
+        }
+    },
+    // listeners: {
+    //     load: function(store, records, successful, operation, eOpts) {
+    //         // After the store loads data successfully...
+    //         if (successful) {
+    //             // Add the special "Load More" record at the end.
+    //             // It only needs the 'isLoadMore' flag.
+    //             store.add({
+    //                 isLoadMore: true
+    //             });
+    //         }
+    //     }
+    // }
+});

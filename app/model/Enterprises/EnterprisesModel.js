@@ -52,6 +52,8 @@
       'CheckInCountStr',
       'CheckInCode',
       'JenisPerniagaan',
+      'CheckIn_MembershipCardCode',
+      'CheckIn_MembershipCardCode_ApprovalStatus',
       {
         name: 'ModifiedIsMemeber_RecentCheckIn',
         convert: function (value, record) {
