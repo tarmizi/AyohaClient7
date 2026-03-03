@@ -76,7 +76,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStoreCreateIfNeeded() {
                                                          xtype: 'button',
                                                          id: 'btnFloatPanel_AyohaRewardVoucherList_AyohaStoreBack',
                                                          height: 30,
-                                                         width: 35,
+                                                         width: 65,
                                                          margin: '0 0 0 10',
                                                          // iconCls: 'list',
                                                          html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
@@ -245,10 +245,11 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStoreCreateIfNeeded() {
                                                         store: _DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore,
                                                         id: 'FloatPanel_AyohaRewardVoucherList_AyohaStoreListID',
                                                         hidden: true,
+                                                        userCls: 'ayohaVoucherListWhite',
                                                         mode: 'SINGLE',
                                                                 width: '93%',
                                                         height: '100%',
-                                                        style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                                        //style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
                                                         disableSelection: true,
                                                         grouped: true,
                                                         scrollable: {
@@ -262,7 +263,58 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStoreCreateIfNeeded() {
                                                                 }
                                                             }
                                                         },
-                                                        style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',                                                      
+                                                       // style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',                                                      
+                                                     
+//                                                      itemTpl:
+//     '<div class="ayohaVoucherItemWrap" style="width:100%;box-sizing:border-box;background:#fff;padding:10px 12px;">'
+//   +   '<div onclick="FloatPanel_AyohaRewardVoucherList_AyohaStore_Staging('
+//   +        "'" + '{VoucherName}' + "'" + ','
+//   +        "'" + '{VoucherImgPath}' + "'" + ','
+//   +        "'" + '{EntitledVoucherEndDate}' + "'" + ','
+//   +        "'" + '{DayLeft}' + "'" + ','
+//   +        "'" + '{VoucherCode}' + "'" + ','
+//   +        "'" + '{VoucherAmount}' + "'" + ','
+//   +        "'" + '{ItemCartCode}' + "'" + ','
+//   +        "'" + '{MembershipCardCode}' + "'" + ','
+//   +        "'" + '{OrderNo}' + "'" + ','
+//   +        "'" + '{EnterpriseName}' + "'" + ','
+//   +        "'" + '{EnterpriseLogo}' + "'" + ','
+//   +        "'" + '{TotalQuantity}' + "'" + ','
+//   +        "'" + '{EntitledVoucherStatus}' + "'" + ','
+//   +        "'" + '{PaymentAtEnterpriseAccNo}' + "'"
+//   +     ');"'
+//   +     ' style="width:100%;box-sizing:border-box;background:#fff;border-radius:16px;overflow:hidden;'
+//   +     'box-shadow:0 10px 24px rgba(0,0,0,.06);">'
+//   +     
+//   +     '<div style="width:100%;height:170px;'
+//   +     'background:#f3f4f6;'
+//   +     'background-image:url({VoucherImgPath});'
+//   +     'background-size:cover;background-position:center;background-repeat:no-repeat;"></div>'
+//   +
+//   +     '<div style="padding:12px 12px 10px 12px;">'
+//   +       '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;width:100%;">'
+//   +         '<div style="flex:1;min-width:0;">'
+//   +           '<div style="font-size:11px;color:#6b7280;">Voucher Campaign</div>'
+//   +           '<div style="margin-top:4px;font-size:14px;font-weight:800;color:#111827;line-height:18px;'
+//   +           'word-break:break-word;">{VoucherName}</div>'
+//   +         '</div>'
+//   +         '<div style="flex:0 0 auto;text-align:right;">'
+//   +           '<div style="font-size:11px;color:#6b7280;">Expired</div>'
+//   +           '<div style="margin-top:4px;font-size:13px;font-weight:800;color:#111827;">{EntitledVoucherEndDate}</div>'
+//   +         '</div>'
+//   +       '</div>'
+//   +
+//   +       '<div style="margin-top:10px;font-size:12px;color:#111827;">{VoucherUsedStatus}</div>'
+//   +       '<div style="margin-top:8px;font-size:10px;color:#9ca3af;">Tap to view details</div>'
+//   +     '</div>'
+//   +
+//   +   '</div>'
+//   + '</div>',
+// width: '100%',
+                                                     
+                                                     
+                                                     
+                                                     
                                                         itemTpl: '<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:240px;background-color: transparent;">'+
                                                         '<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:196px;background-color: #fac;background-image: url({VoucherImgPath});background-size: 100% 100%;border-radius: 0px 0px 0px 0px;border:3px dashed grey;">' +                                 
                                 

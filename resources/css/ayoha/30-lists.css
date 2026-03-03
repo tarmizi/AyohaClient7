@@ -674,3 +674,21 @@
 
 
 
+/* Putihkan semua layer list */
+.ayohaVoucherListWhite,
+.ayohaVoucherListWhite .x-list-outer-ct,
+.ayohaVoucherListWhite .x-list-inner-ct,
+.ayohaVoucherListWhite .x-scroll-scroller,
+.ayohaVoucherListWhite .x-dataview-container,
+.ayohaVoucherListWhite .x-inner,
+.ayohaVoucherListWhite .x-body-el {
+  background:#fff !important;
+}
+
+/* Force item jadi full width (punca utama “card” jadi sempit) */
+.ayohaVoucherListWhite .x-listitem,
+.ayohaVoucherListWhite .x-listitem .x-innerhtml{
+  width:100% !important;
+  display:block !important;
+  box-sizing:border-box !important;
+}
