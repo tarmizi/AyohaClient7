@@ -3,7 +3,7 @@ Ext.define('BuskartApp.view.AyohaRewardVoucher.FloatPanel_AyohaRewardVoucherList
 
 });
 
-var _FloatPanel_AyohaRewardVoucherList_AyohaStore;
+var _FloatPanel_AyohaRewardVoucherList_AyohaStore=null;
 
 
 var isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
@@ -13,28 +13,22 @@ var isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
 
 
 
-function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
-
-    _FloatPanel_AyohaRewardVoucherList_AyohaStore =
-    Ext.create('Ext.Panel', {
-        zIndex: 100,
-        xtype: 'container',
-        //height: 465,
-        //  height: '100%',
-        width: '100%',
+function FloatPanel_AyohaRewardVoucherList_AyohaStoreCreateIfNeeded() {
+    if (_FloatPanel_AyohaRewardVoucherList_AyohaStore && !_FloatPanel_AyohaRewardVoucherList_AyohaStore.destroyed) return;
+     _FloatPanel_AyohaRewardVoucherList_AyohaStore =
+    Ext.create('Ext.Container', {
+       
         id: 'FloatPanel_AyohaRewardVoucherList_AyohaStoreID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
-        centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-            type: 'fit'
-        },
+             zIndex: 60,
+            floated: true,
+            centered: true,
+            fullscreen: true,
+            //closeAction: 'hide',
+            closeAction: 'destroy',
+            draggable: false,
+            modal: false,
+            styleHtmlContent: true,
+            layout: 'fit',
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -47,70 +41,15 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
         },
         //style: 'border-bottom:1px solid;background-color:#353839;',
         style: 'background-color:white;',
-        // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-        // style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
         listeners: {
-           initialize: function (c) {
-               this.element.on({
-                   swipe: function (e, node, options) {
-                       //if (e.direction == "up") {
-                       //    LoyaltyCardRedeemListHide();
-                       //}
-                       if (e.direction == "left") {
-                           _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(Ext.fx.Animation({
-                               type: 'slideOut',
-                               direction: 'left',
-                               easing: 'cubic-bezier(.7,0,.7,1)',
-                               duration: 250
-
-                           }));
-
-                           isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
-                       } if (e.direction == "right") {
-                           _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(Ext.fx.Animation({
-                               type: 'slideOut',
-                               direction: 'right',
-                               easing: 'cubic-bezier(.7,0,.7,1)',
-                               duration: 250
-
-                           }));
-                           isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
-                       }
-                       RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStoreHide()");
-                     //  RemovePages(_FloatPanel_AyohaRewardVoucherList_AyohaStore, "isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen");
-                      // FloatPanel_AyohaRewardVoucherList_AyohaStore_UpdateVoucherStatus();
-                   }
-               });
-           }
-        },
-
+                hide: function(cmp){
+                  Ext.Viewport.remove(cmp, true); // true = destroy
+                  _FloatPanel_AyohaRewardVoucherList_AyohaStore = null;
+                }
+              } ,
         items: [
 
-
-
-            {
-                xtype: 'container',
-                width: '100%',
-                height: '100%',
-                style: ' background-color:transparent;',
-                // style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-                layout: {
-                    type: 'fit',
-
-                },
-                items: [
-                    {
-                        xtype: 'container',
-
-
-                        layout: {
-                            type: 'vbox',
-                            pack: 'start',
-                            align: 'center'
-
-                        },
-                        items: [
-                            {
+      {
 
                                 xtype: 'container',
                                 width: '100%',
@@ -121,13 +60,8 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
                                 //hidden: true,
 
                                 id: 'containerFloatPanel_AyohaRewardVoucherList_AyohaStoreHeader',
-                                style: {
-                                    // background: '#D25959',
-                                    background: 'transparent',
-                                    // border: '2px'
-                                },
-                                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                                 height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
                                 layout: {
                                     type: 'hbox',
                                     pack: 'center',
@@ -145,20 +79,10 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
                                                          width: 35,
                                                          margin: '0 0 0 10',
                                                          // iconCls: 'list',
-                                                         html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                          ui: 'plain',
                                                          handler: function () {
-                                                             // FloatPanel_AyohaRewardVoucherList_AyohaStoreHide();
-                                                             // FloatPanel_AyohaRewardVoucherList_AyohaStore_AddCardHide();
-                                                             isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
-                                                             _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(Ext.fx.Animation({
-                                                                 type: 'slideOut',
-                                                                 direction: 'left',
-                                                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                 duration: 250
-
-                                                             }));
-                                                             RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStoreHide()");
+                                                                FloatPanel_AyohaRewardVoucherList_AyohaStoreHide(false);
                                                              // FloatPanel_AyohaRewardVoucherList_AyohaStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
                                                              //FloatPanel_AyohaRewardVoucherList_AyohaStore_UpdateVoucherStatus();
 
@@ -176,34 +100,12 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
                                                       {
                                                           margin: '0 15 0 0',
                                                           id: 'htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_TitleHeaderTxt',
-                                                          html: '<font size=2 color=black><b>Ayoha Reward Voucher(s)</b></font>'
+                                                        //  html: '<font size=2 color=black><b>Ayoha Reward Voucher(s)</b></font>'
+                                                           html:ayohaTheme_HeaderText('Ayoha Reward Voucher(s)'),
                                                       },
 
 
-                                                            {
-                                                                xtype: 'button',
-                                                                hidden: true,
-                                                                id: 'btnFloatPanel_AyohaRewardVoucherList_AyohaStore_CardIcon',
-                                                                height: 30,
-                                                                width: 35,
-                                                                // iconCls: 'list',
-                                                                html: '<div ><img src="resources/icons/membershicardwhite.png" width="25" height="20" alt="Company Name"></div>',
-                                                                ui: 'plain',
-                                                                handler: function () {
-
-                                                                    isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
-
-                                                                    _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(Ext.fx.Animation({
-                                                                        type: 'slideOut',
-                                                                        direction: 'right',
-                                                                        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                        duration: 250
-
-                                                                    }));
-                                                                    //RemovePages(_FloatPanel_AyohaRewardVoucherList_AyohaStore, "isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen");
-                                                                    //FloatPanel_AyohaRewardVoucherList_AyohaStore_AddCardHide();
-                                                                }
-                                                            },
+                                                            
 
 
 
@@ -216,26 +118,6 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
                                        ]
 
                             },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -559,38 +441,34 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
                             },
 
 
-                              //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // {
+            //     xtype: 'container',
+            //     width: '100%',
+            //     height: '100%',
+            //     style: ' background-color:transparent;',
+            //     // style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
+            //     layout: {
+            //         type: 'fit',
 
-                              //{
-                              //    xtype: 'tabpanel',
-                              //    // hidden: true,
-                              //    //  hidden:true,
-                              //    id: 'tabpanelFloatPanel_AyohaRewardVoucherList_AyohaStore',
-                              //    // style: 'border-top:2px solid #ECF0F1;background: white;',
-                              //    // style: 'background-color: black;',
-                              //    // margin: '-20 0 0 -26',
-                              //    // margin: '25 0 0 0',
+            //     },
+            //     items: [
+            //         {
+            //             xtype: 'container',
 
-                              //    //width: 200,
-                              //    width: '96%',
-                              //    height: '100%',
-                              //    //height: 120,
-                              //    //height: 50,
-                              //    //  zIndex: 200,
-                              //    //  docked: 'bottom',
-                              //    tabBarPosition: 'top',
-                              //    ui: 'plain',
-                              //    // docked: 'bottom',
 
-                              //    initialize: function (c) {
-                              //        //this.getTabBar().hide();
+            //             layout: {
+            //                 type: 'vbox',
+            //                 pack: 'start',
+            //                 align: 'center'
 
+            //             },
+            //             items: [
+                      
 
-                              //    },
+                            
 
 
 
-                              //    items: [
 
 
 
@@ -633,22 +511,19 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
 
 
 
-                              //    ]
 
-                              //    //}
-                              //},
 
 
 
 
+            //             ]
+            //         },
 
 
 
 
 
 
-                        ]
-                    },
 
 
 
@@ -692,14 +567,8 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
 
 
 
-
-
-
-
-
-
-                ]
-            },
+            //     ]
+            // },
 
 
 
@@ -719,11 +588,17 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
 
 
     });
-    return _FloatPanel_AyohaRewardVoucherList_AyohaStore;
+    }
+
+
+// function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
+
+  
+//     return _FloatPanel_AyohaRewardVoucherList_AyohaStore;
 
 
 
-}
+// }
 
 
 
@@ -733,11 +608,38 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore() {
 
 
 function FloatPanel_AyohaRewardVoucherList_AyohaStoreShow() {
-    AddRoutePages("FloatPanel_AyohaRewardVoucherList_AyohaStoreHide()");
-    Ext.Viewport.remove(_FloatPanel_AyohaRewardVoucherList_AyohaStore);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaRewardVoucherList_AyohaStore());
-    this.overlay.show();
-    //LoadingPanelShow(getLoadingIcon(), 'Loading....');
+    // AddRoutePages("FloatPanel_AyohaRewardVoucherList_AyohaStoreHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaRewardVoucherList_AyohaStore);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaRewardVoucherList_AyohaStore());
+    // this.overlay.show();
+    
+   
+   
+   
+   
+   
+
+    FloatPanel_AyohaRewardVoucherList_AyohaStoreCreateIfNeeded();
+  
+
+    _FloatPanel_AyohaRewardVoucherList_AyohaStore.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_AyohaRewardVoucherList_AyohaStore', function () {
+     
+        FloatPanel_AyohaRewardVoucherList_AyohaStoreHide(true);
+      });
+    }
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
     Ext.getCmp('FloatPanel_AyohaRewardVoucherList_AyohaStoreListID').setHidden(false);
 
        
@@ -784,10 +686,8 @@ function FloatPanel_AyohaRewardVoucherList_MerchantLoyaltyCampaignShow() {
 
 function FloatPanel_AyohaRewardVoucherList_AyohaStore_DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore() {
 
-
-
     _DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
-    _DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore.getProxy().setExtraParam('EnterpriseAccNo', FloatPanel_AyohaStore_getEnterpriseAccNo());
+    _DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore.getProxy().setExtraParam('EnterpriseAccNo', AppState.MainDashboard.EnterpriseAccNo);
     _DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore.getProxy().setUrl(GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistory');
     _DataStore_AyohaRewardVoucherEntitledUserLoadBySubscriberAccNoAyohaStoreVoucherHistoryStore.load();
 
@@ -799,7 +699,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_DataStore_AyohaRewardVouch
               
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                //LoadingPanelHide();
             }
         }
     });
@@ -845,14 +745,36 @@ console.log('FloatPanel_AyohaRewardVoucherList_AyohaStore_DataStore_DataStore_Ay
 
 
 
-function FloatPanel_AyohaRewardVoucherList_AyohaStoreHide() {
+function FloatPanel_AyohaRewardVoucherList_AyohaStoreHide(fromBack,animCfg) {
     // FloatPanel_AyohaRewardVoucherList_AyohaStore_AddCardHide();
-    if (isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen == "Y") {
-        _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(); isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
-        RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStoreHide()");
-        //  FloatPanel_AyohaRewardVoucherList_AyohaStore_UpdateVoucherStatus();
-        // FloatPanel_AyohaRewardVoucherList_AyohaStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
+    // if (isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen == "Y") {
+    //     _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(); isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStoreHide()");
+    //     //  FloatPanel_AyohaRewardVoucherList_AyohaStore_UpdateVoucherStatus();
+    //     // FloatPanel_AyohaRewardVoucherList_AyohaStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
+    // }
+
+
+ 
+    if (isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaRewardVoucherList_AyohaStore.hide();
+          }
+          isFloatPanel_AyohaRewardVoucherList_AyohaStoreOpen = 'N';
+    
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaRewardVoucherList_AyohaStore');
+          }
     }
+
+
+
 
 }
 
@@ -923,6 +845,8 @@ function MembershipsLoadBySubscriberAccNoStoreOnKeyUp() {
 
 
 function FloatPanel_AyohaRewardVoucherList_AyohaStoreAdjustHeight() {
+
+    return;
     var y = parseInt(screen.height);
     var x = parseInt(window.innerHeight);
 

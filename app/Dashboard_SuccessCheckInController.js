@@ -2389,7 +2389,10 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
          // alert(success)
          if (success && records.length > 0) {
         
-           
+ var record = records[0]; // Access only the first record
+ AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('MembershipCardCode');
+ 
+
              Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
             
             

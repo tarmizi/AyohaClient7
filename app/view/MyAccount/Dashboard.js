@@ -18368,7 +18368,7 @@ function Dashboard_LoadLastCheckIn(){
     _DataStore_EnterprisesLoadLastCheckInStore.load({
         callback: function (records, operation, success) {
             if (success && records.length > 0) {
-            // alert('Store loaded successfully, total records: ' + records.length);
+             
                 var record = records[0]; // Access only the first record
                 var RelativeCheckInTime = record.get('RelativeCheckInTime');
                 var AyohaRewardPointCheckIn = record.get('AyohaRewardPointCheckIn');
@@ -18383,7 +18383,8 @@ function Dashboard_LoadLastCheckIn(){
                AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('CheckIn_MembershipCardCode');
  AppState.MainDashboard.CheckIn_MembershipCardCode_ApprovalStatus  = record.get('CheckIn_MembershipCardCode_ApprovalStatus');
 
-                 
+                //  alert('isMember: ' +  record.get('isMember'));
+                //  alert('CheckIn_MembershipCardCode: ' +  record.get('CheckIn_MembershipCardCode'));
              
     globalFloatPanelMerchantDetailPage_ID =record.get('ID');
     globalFloatPanelMerchantDetailPage_EnterpriseAccNo = record.get('EnterpriseAccNo');

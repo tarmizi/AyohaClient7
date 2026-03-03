@@ -4,85 +4,49 @@
     ],
 });
 
-var _FloatPanel_AyohaStore_LikeStatusList;
+var _FloatPanel_AyohaStore_LikeStatusList=null;
 
 
 var isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
 
 
 
+function FloatPanel_AyohaStore_LikeStatusListCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_LikeStatusList&& !_FloatPanel_AyohaStore_LikeStatusList.destroyed) return;
+     _FloatPanel_AyohaStore_LikeStatusList =
+     Ext.create('Ext.Container', {
 
-
-function FloatPanel_AyohaStore_LikeStatusList() {
-
-    _FloatPanel_AyohaStore_LikeStatusList =
-     Ext.create('Ext.Panel', {
-         zIndex: 300,
-         xtype: 'container',
-         // height: '50%',
-         width: '95%',
+id: 'LoadingFloatPanel_AyohaStore_LikeStatusListID',
+ zIndex: 60,
+  width: '95%',
          height: 585,
-         //width: 280,
-         id: 'LoadingFloatPanel_AyohaStore_LikeStatusListID',
-         draggable: false,
-         requires: [
-      'Ext.util.DelayedTask'
-         ],
+        floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: true,
+        styleHtmlContent: true,
+        layout: 'fit',
 
-
-         centered: true,
-         //bottom: 64,         
-         modal: true,
-         //hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
+        
          showAnimation: {
              type: 'popIn',
              duration: 150,
              easing: 'ease-out'
          },
          hideAnimation: {
-             type: 'slideOut',
-             direction: 'down',
-             easing: 'cubic-bezier(.7,0,.7,1)',
-             duration: 250
-         },
+            type: 'popOut',
+            //direction: 'up',
+            //easing: 'cubic-bezier(.7,0,.7,1)',
+            duration: 250
+        },
          //style: 'border-bottom:1px solid;background-color:#353839;',
         style: 'border-bottom:1px none;background-color:white;',
         // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
          //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-         listeners: {
-             initialize: function (c) {
-                 this.element.on({
-                     swipe: function (e, node, options) {
 
-                         if (e.direction == "left") {
-                             _FloatPanel_AyohaStore_LikeStatusList.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'left',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
-                             RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
-                         } if (e.direction == "right") {
-                             _FloatPanel_AyohaStore_LikeStatusList.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'right',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
-                             RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
-                         }
-                       
-                     }
-                 });
-             }
-         },
 
          //  style: "background-color: #D25959;",
          items: {
@@ -98,7 +62,7 @@ function FloatPanel_AyohaStore_LikeStatusList() {
              width: '100%',
              xtype: 'container',
              // style: 'border-bottom:0px solid;background-color:#353839;',
-             style: 'border-bottom:0px solid;background-color:transparent;',
+             style: 'border-bottom:0px solid;background-color:white;',
 
              // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
              layout: {
@@ -126,7 +90,7 @@ function FloatPanel_AyohaStore_LikeStatusList() {
                 id: 'FloatPanel_AyohaStore_LikeStatusListBorderBg',
                 docked: 'top',
                 //   style: 'background-image: url("resources/icons/mileageClaimBorder2.png"); background-size: 100% 100%;background-repeat:no-repeat',
-                style: ' background-color:transparent;',
+                style: ' background-color:white;',
                 height: '100%',
                 width: '100%',
                 // style: 'border:2px solid #D25959;',
@@ -142,6 +106,7 @@ function FloatPanel_AyohaStore_LikeStatusList() {
                              xtype: 'container',
                              width: '100%',
                              docked: 'top',
+                             height: 60,
                              // width: 40,
                              style: ' background-color:transparent;',
                              //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
@@ -170,21 +135,22 @@ function FloatPanel_AyohaStore_LikeStatusList() {
                                                       xtype: 'button',
                                                       id: 'btnFloatPanel_AyohaStore_LikeStatusListBack',
                                                       height: 30,
-                                                      width: 35,
+                                                      margin: '5 0 0 5',
+                                                      width: 65,
                                                       // iconCls: 'list',
-                                                      html: '<div ><img src="resources/icons/backblack.png" width="25" height="20" alt="Company Name"></div>',
+                                                      html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
                                                       ui: 'plain',
                                                       handler: function () {
+ FloatPanel_AyohaStore_LikeStatusListHide(false);
+                                                        //   _FloatPanel_AyohaStore_LikeStatusList.hide(Ext.fx.Animation({
+                                                        //       type: 'slideOut',
+                                                        //       direction: 'left',
+                                                        //       easing: 'cubic-bezier(.7,0,.7,1)',
+                                                        //       duration: 250
 
-                                                          _FloatPanel_AyohaStore_LikeStatusList.hide(Ext.fx.Animation({
-                                                              type: 'slideOut',
-                                                              direction: 'left',
-                                                              easing: 'cubic-bezier(.7,0,.7,1)',
-                                                              duration: 250
-
-                                                          }));
-                                                          isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
-                                                          RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
+                                                        //   }));
+                                                        //   isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
+                                                        //   RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
 
                                                       }
                                                   },
@@ -214,16 +180,7 @@ function FloatPanel_AyohaStore_LikeStatusList() {
                                                 html: '<div ><img src="resources/icons/likeOn.png" width="30" height="30" alt="Company Name"></div>',
                                                 ui: 'plain',
                                                 handler: function () {
-                                                    _FloatPanel_AyohaStore_LikeStatusList.hide(Ext.fx.Animation({
-                                                        type: 'slideOut',
-                                                        direction: 'right',
-                                                        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                        duration: 250
-
-                                                    }));
-
-                                                    isFloatPanel_AyohaStore_LikeStatusListOpen = "N";
-                                                    RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
+                                                  FloatPanel_AyohaStore_LikeStatusListHide(false);
                                                 }
                                             },
 
@@ -241,79 +198,142 @@ function FloatPanel_AyohaStore_LikeStatusList() {
                                     ]
 
                          },
+{
+  xtype: 'list',
+  id: 'FloatPanel_AyohaStore_LikeStatusList',
+  store: _DataStore_AyohaStoreLoadLikeStatusStore,
+  width: '100%',
+  height: '100%',
+  mode: 'SINGLE',
+  disableSelection: true,
+
+  userCls: 'ayohaListWhite',     // ✅ guna userCls (lebih reliable)
+  itemCls: 'ayohaLikeItem',      // ✅ senang target item
+
+  style: 'background-color:#fff;', // root sahaja
+
+  scrollable: {
+    direction: 'vertical',
+    indicators: { y: { autoHide: true }, x: { autoHide: true } }
+  },
+
+itemTpl:
+                        '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:90px;"><tr onclick="FloatPanel_AyohaStore_LikeStatus_OpenMemberImage({ID})"><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 7px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:25%;vertical-align:center"><img src="{Photo}" style="border:1px solid black; width:75px;height:75px;border-radius:50%;" /></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center"><b>{AccountName}</b><br>{ModifiedDate}</td></tr></table>'+
+                     '<br>'+
+                      '<div style="width:100%;text-align:left;margin:-60px 0px 0px 10px;background-color:transparent;"><button  class="buttonsHtmlBgTransparent"><img src="resources/icons/likeOn.png" style="width: 23px; height: 23px; margin:0px 0px 0px 40px;" /></button></div>',
 
 
-                   {
-                       xtype: 'list',
-                       width: '100%',
-                       height: '100%',
-                       // height: '98%',
-                       // flex: 1,
-                       store: _DataStore_AyohaStoreLoadLikeStatusStore,
-                       id: 'FloatPanel_AyohaStore_LikeStatusList',
-                       mode: 'SINGLE',
-                       // width: '100%',
-                       disableSelection: true,
-                       style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                       disableSelection: true,
-                       scrollable: {
-                           direction: 'vertical',
-                           indicators: {
-                               y: {
-                                   autoHide: true
-                               },
-                               x: {
-                                   autoHide: true
-                               }
-                           }
-                       },
-                       itemTpl: '<div class="myContent" style="background-color:white;width:104%">' +
+//   itemTpl:
+//       '<div style="width:100%;display:block;box-sizing:border-box;background:#fff;padding:12px 14px;">'
+//     +   '<div style="display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;">'
+//     +     '<div style="position:relative;flex:0 0 75px;width:75px;height:75px;">'
+//     +       '<img src="{Photo}" style="width:75px;height:75px;border-radius:50%;object-fit:cover;border:1px solid #ddd;display:block;" />'
+//     +       '<img src="resources/icons/likeOn.png" style="position:absolute;left:-6px;bottom:-6px;width:23px;height:23px;" />'
+//     +     '</div>'
+//     +     '<div style="flex:1;min-width:0;">'
+//     +       '<div style="font-weight:700;font-size:15px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{AccountName}</div>'
+//     +       '<div style="margin-top:6px;font-size:12px;color:#6b7280;line-height:16px;">{ModifiedDate}</div>'
+//     +     '</div>'
+//     +   '</div>'
+//     + '</div>',
 
-
-                         '<table style="border-collapse:collapse;border-spacing:0;width:104%;background-color:white;margin:-10px 0px 0px -13px;height:90px;"><tr onclick="FloatPanel_AyohaStore_LikeStatus_OpenMemberImage({ID})"><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 7px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:25%;vertical-align:center"><img src="{Photo}" style="border:1px solid black; width:75px;height:75px;border-radius:50%;" /></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center"><b>{AccountName}</b><br>{ModifiedDate}</td></tr></table>'+
-                       '<br>'+
-                           '<div style="width:104%;text-align:left;margin:-60px 0px 0px 10px;background-color:transparent;"><button  class="buttonsHtmlBgTransparent"><img src="resources/icons/likeOn.png" style="width: 23px; height: 23px; margin:0px 0px 0px 40px;" /></button></div>',
-
-                       emptyText: '<div class="myContent">Be the first to love this Merchant!</div>',
-                       //listeners: {
-                       //    itemsingletap: function (list, idx, target, records, evt) {
-
-                       //        //var EnterpriseHQAccountNo = records.get('CampaignEnterpriseHQAccNo');
-                       //        //var EnterpriseAccountNo = records.get('CampaignEnterpriseAccNo');
-                       //        //var MembershipCardCode = records.get('MembershipCardCode');
-                       //        //var ID = records.get('ID');
-                       //        ////FloatPanel_AyohaNotification_EditCardShow_Edit(ID);
-                       //        //FloatPanel_MembershipCardList_UpgradeShow_MyMembershipCard(EnterpriseHQAccountNo, EnterpriseAccountNo, MembershipCardCode, ID);
-                       //        //setTimeout(function () {
-                       //        //    Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
-                       //        //    // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
-
-                       //        //    Ext.getCmp('htmlFloatPanel_MembershipCardList_Upgrade_TitleHeaderTxt').setHtml('<font size=2 color=white><b>My Membership Card</b></font>');
-                       //        //}, 2000);
+  emptyText: '<div class="myContent">Be the first to love this Merchant!</div>'
 
 
 
-                       //    },
-                       //    deselect: function (list, records) {
+},
 
-                       //    }
-                       //},
-                       listeners: {
-                           itemswipe: function (list, idx, target, record, evt) {
-                               //  To get the selection you should use getSelection() instead
-                               //////var selected = list.getActiveItem();
-                               //////alert(list.getActiveItem());
-                               //////if (!selected) { return; }
+//                    {
+//                        xtype: 'list',
+//                        width: '100%',
+//                        height: '100%',
+//                        store: _DataStore_AyohaStoreLoadLikeStatusStore,
+//                        id: 'FloatPanel_AyohaStore_LikeStatusList',
+//                        mode: 'SINGLE',
+//                        // width: '100%',
+//                        disableSelection: true,
+                      
+//     cls: 'ayohaListWhite',          // ✅ tambah ni
+//     style: 'background:#fff;',      // optional (root sahaja)
 
-                               //////var selectedIndex = selected[0];
-                               //////alert([selectedIndex, idx]);
-                               //Ext.Msg.alert('itemswipe', idx);
+//                        disableSelection: true,
+//                        scrollable: {
+//                            direction: 'vertical',
+//                            indicators: {
+//                                y: {
+//                                    autoHide: true
+//                                },
+//                                x: {
+//                                    autoHide: true
+//                                }
+//                            }
+//                        },
+//                        itemTpl:
+//     '<div  style="'
+//   + 'width:100%;'
+//   + 'box-sizing:border-box;'
+//   + 'background:#fff;'
+//   + 'padding:12px 14px;'
+//   + '">' 
+
+//     // row clickable
+//   +   '<div  style="'
+//   +   'display:flex;'
+//   +   'align-items:center;'
+//   +   'gap:12px;'
+//   +   'width:100%;'
+//   +   'box-sizing:border-box;'
+//   +   '">' 
+
+//         // avatar + like overlay
+//   +     '<div style="position:relative;flex:0 0 75px;width:75px;height:75px;">'
+//   +       '<img src="{Photo}" style="'
+//   +       'width:75px;height:75px;'
+//   +       'border-radius:50%;'
+//   +       'object-fit:cover;'
+//   +       'border:1px solid #ddd;'
+//   +       'display:block;'
+//   +       '" />'
+//   +       '<img src="resources/icons/likeOn.png" style="'
+//   +       'position:absolute;'
+//   +       'left:-6px;'
+//   +       'bottom:-6px;'
+//   +       'width:23px;height:23px;'
+//   +       '" />'
+//   +     '</div>'
+
+//         // text
+//   +     '<div style="flex:1;min-width:0;">'
+//   +       '<div style="'
+//   +       'font-weight:700;'
+//   +       'font-size:15px;'
+//   +       'line-height:18px;'
+//   +       'white-space:nowrap;'
+//   +       'overflow:hidden;'
+//   +       'text-overflow:ellipsis;'
+//   +       '">{AccountName}</div>'
+//   +       '<div style="'
+//   +       'margin-top:6px;'
+//   +       'font-size:12px;'
+//   +       'color:#6b7280;'
+//   +       'line-height:16px;'
+//   +       '">{ModifiedDate}</div>'
+//   +     '</div>'
+
+//   +   '</div>'
+//   + '</div>',
+//                     //    itemTpl: '<div class="ayohaLikeStatusList" style="background-color:white ;width:100%">' +
 
 
-                           } // itemswipe
-                       }
+//                     //      '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:90px;"><tr onclick="FloatPanel_AyohaStore_LikeStatus_OpenMemberImage({ID})"><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 7px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:25%;vertical-align:center"><img src="{Photo}" style="border:1px solid black; width:75px;height:75px;border-radius:50%;" /></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center"><b>{AccountName}</b><br>{ModifiedDate}</td></tr></table>'+
+//                     //    '<br>'+
+//                     //        '<div style="width:100%;text-align:left;margin:-60px 0px 0px 10px;background-color:transparent;"><button  class="buttonsHtmlBgTransparent"><img src="resources/icons/likeOn.png" style="width: 23px; height: 23px; margin:0px 0px 0px 40px;" /></button></div>',
 
-                   },
+//                        emptyText: '<div class="myContent">Be the first to love this Merchant!</div>',
+                     
+                       
+
+//                    },
 
 
   {
@@ -321,7 +341,7 @@ function FloatPanel_AyohaStore_LikeStatusList() {
       xtype: 'container',
       width: '100%',
       docked: 'bottom',
-      height: 30,
+      height: 50,
       // width: 40,
       style: ' background-color:transparent;',
       //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
@@ -338,12 +358,13 @@ function FloatPanel_AyohaStore_LikeStatusList() {
       // style: 'border-bottom:2px solid #D25959;background-color:transparent',
       layout: {
           type: 'hbox',
-          pack: 'left',
+          pack: 'right',
           align: 'center',
       },
       // hidden:true,
       items:
              [
+ 
 
 
                              {
@@ -371,7 +392,10 @@ function FloatPanel_AyohaStore_LikeStatusList() {
                             },
 
                   
-
+{
+                              xtype: 'panel',
+                              width:20
+                          },
 
 
 
@@ -410,22 +434,72 @@ function FloatPanel_AyohaStore_LikeStatusList() {
 
 
      });
-    return _FloatPanel_AyohaStore_LikeStatusList;
+}
+
+
+// function FloatPanel_AyohaStore_LikeStatusList() {
+
+   
+//     return _FloatPanel_AyohaStore_LikeStatusList;
 
 
 
 
 
+// }
+
+
+
+
+
+
+
+
+
+var general_fp;
+function FloatPanel_AyohaStore_LikeStatusListShow() {
+
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_LikeStatusList);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_LikeStatusList());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_LikeStatusListHide()");
+
+
+
+
+
+FloatPanel_AyohaStore_LikeStatusListCreateIfNeeded();
+
+
+
+
+// ✅ push browser back (ikut style kau)
+
+ general_fp = Ext.getCmp('FloatPanel_AyohaStoreID');
+  if (general_fp) {
+    general_fp.setMasked({ xtype: 'mask', cls: 'ayohaModalMask' });
+  }
+
+
+
+
+ if (general_fp) general_fp.add(_FloatPanel_AyohaStore_LikeStatusList); else Ext.Viewport.add(_FloatPanel_AyohaStore_LikeStatusList);
+ 
+ _FloatPanel_AyohaStore_LikeStatusList.show();
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_LikeStatusList', function () {
+ 
+    FloatPanel_AyohaStore_LikeStatusListHide(true);
+  });
 }
 
 
 
-function FloatPanel_AyohaStore_LikeStatusListShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_LikeStatusList);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_LikeStatusList());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_LikeStatusListHide()");
+
+
+
+
     isFloatPanel_AyohaStore_LikeStatusListOpen = 'Y';
 
     Ext.getCmp('htmlFloatPanel_AyohaStore_LikeStatusList_TitleHeaderTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">' + FloatPanel_AyohaStore_getEnterpriseName() + '</div>');
@@ -544,12 +618,33 @@ function FloatPanel_AyohaStore_AyohaStoreLoadLikeStatusStore() {
 
 
 
-function FloatPanel_AyohaStore_LikeStatusListHide() {
-    if (isFloatPanel_AyohaStore_LikeStatusListOpen == "Y") {
-        _FloatPanel_AyohaStore_LikeStatusList.hide(); isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
-    }
+function FloatPanel_AyohaStore_LikeStatusListHide(fromBack,animCfg) {
+    // if (isFloatPanel_AyohaStore_LikeStatusListOpen == "Y") {
+    //     _FloatPanel_AyohaStore_LikeStatusList.hide(); isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaStore_LikeStatusListHide()");
+    // }
     
+
+ 
+    if (isFloatPanel_AyohaStore_LikeStatusListOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_LikeStatusList.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_LikeStatusList.hide();
+          }
+          isFloatPanel_AyohaStore_LikeStatusListOpen = 'N';
+         
+  if (general_fp) general_fp.setMasked(false);
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_LikeStatusList');
+          }
+    }
+
+
 }
 
 

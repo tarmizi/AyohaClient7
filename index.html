@@ -7427,7 +7427,39 @@ width: 100% !important;
 
 </style>
 
+<style>
+  /* ✅ 1) Putihkan SEMUA layer list yang wujud dalam DOM (ikut debug kau) */
+.ayohaListWhite,
+.ayohaListWhite .x-list-outer-ct,
+.ayohaListWhite .x-list-inner-ct,
+.ayohaListWhite .x-list-inner,
+.ayohaListWhite .x-dataview-container,
+.ayohaListWhite .x-scroll-scroller,
+.ayohaListWhite .x-body-el,
+.ayohaListWhite .x-component-body-el {
+  background-color: #fff !important;
+}
 
+/* ✅ 2) Kalau theme guna CSS variable background */
+.ayohaListWhite{
+  --background-color: #fff;      /* ini yang biasa theme pakai */
+}
+
+/* ✅ 3) Paksa ITEM jadi full width (punca card kau jadi sempit) */
+.ayohaListWhite .x-listitem,
+.ayohaListWhite .x-listitem-body-el,
+.ayohaListWhite .x-listitem-inner-el,
+.ayohaListWhite .x-listitem .x-innerhtml {
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* ✅ 4) Buang padding default theme yang kadang buat nampak “tak penuh” */
+.ayohaListWhite .x-listitem-body-el{
+  padding: 0 !important;
+}
+</style>
 
 <link rel="stylesheet" href="resources/css/ayoha/21-buttons.css" />
 <link rel="stylesheet" href="resources/css/ayoha/91-checkin-modal.css" />
