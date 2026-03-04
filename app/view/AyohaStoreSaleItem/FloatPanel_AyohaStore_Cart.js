@@ -6,36 +6,50 @@
 
 
 
-var _FloatPanel_AyohaStore_Cart;
+var _FloatPanel_AyohaStore_Cart=null;
 
 
 var isFloatPanel_AyohaStore_CartOpen = 'N';
 
-function FloatPanel_AyohaStore_Cart() {
 
-    _FloatPanel_AyohaStore_Cart =
+
+
+function FloatPanel_AyohaStore_CartCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_Cart && !_FloatPanel_AyohaStore_Cart.destroyed) return;
+ _FloatPanel_AyohaStore_Cart =
           Ext.create('Ext.Container', {
-              requires: [
-         'Ext.util.DelayedTask',
-              ],
-              xtype: 'container',
-              height: '100%',
-              // height: 615,
-              width: 310,
-              id: 'FloatPanel_AyohaStore_CartID',
-              zIndex: 310,
-              // centered: true,
+                          id: 'FloatPanel_AyohaStore_CartID',
+                          zIndex: 55,
+            floated: true,
+           // centered: true,
+          //  fullscreen: true,
+            //closeAction: 'hide',
+            closeAction: 'destroy',
+            draggable: false,
+           // modal: false,
+            styleHtmlContent: true,
+ height: '100%',
               right: -1,
-              //top:32,
+              width: 310,
               modal: true,
               hideOnMaskTap: true,
               layout: {
                   type: 'fit'
               },
+
+
+
+
+
+
+
+
+
+
               showAnimation: {
                   type: 'slideIn',
                   direction: 'left',
-                  duration: 150,
+                  duration: 350,
                   //easing: 'ease-in'
               },
               hideAnimation: {
@@ -44,31 +58,16 @@ function FloatPanel_AyohaStore_Cart() {
                   type: 'slideOut',
 
                   direction: 'right',
-                  duration: 150
+                  duration: 350
               },
               style: 'background-color:white;',
-              listeners: {
-                  initialize: function (c) {
-                      this.element.on({
-                          swipe: function (e, node, options) {
-                              if (e.direction == "right") {
-                                  FloatPanel_AyohaStore_CartHide();
-                                  //  alert("Hey! I swipe left");
-                                  //Ext.getCmp('tabpanelTrackingOverViewMapPointInfoTblManualTrack').setActiveItem(2);
-                                  //Ext.getCmp('btnSingleTracking_ManualTrackingHeaderMovement').setHtml("<font size=2>Tracking</font>");
-                                  //Ext.getCmp('btnSingleTracking_ManualTrackingHeaderClaim').setHtml("<font size=2>Claim</font>");
-                                  //Ext.getCmp('btnSingleTracking_ManualTrackingHeaderPurpose').setHtml("<font size=3><u><b>Purpose</b></u></font>");
-
-                              } else {
-                                //  FloatPanel_AyohaStore_CartHide();
-
-
-
-                              }
-                          }
-                      });
-                  }
-              },
+               listeners: {
+                hide: function(cmp){
+                  Ext.Viewport.remove(cmp, true); // true = destroy
+                  _FloatPanel_AyohaStore_Cart = null;
+                }
+              } ,
+             
 
             
 
@@ -1530,14 +1529,9 @@ function FloatPanel_AyohaStore_Cart() {
 
 
           });
-
-    return _FloatPanel_AyohaStore_Cart
-
-
-
-
-
 }
+
+
 
 
 
@@ -1545,10 +1539,39 @@ function FloatPanel_AyohaStore_Cart() {
 
 function FloatPanel_AyohaStore_CartShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_Cart);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_Cart());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_CartHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_Cart);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_Cart());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_CartHide()");
+
+
+
+
+
+
+    FloatPanel_AyohaStore_CartCreateIfNeeded();
+  
+
+    _FloatPanel_AyohaStore_Cart.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_AyohaStore_Cart', function () {
+     
+        FloatPanel_AyohaStore_CartHide(true);
+      });
+    }
+   
+
+
+
+
+
+
+
+
+
+
+
     isFloatPanel_AyohaStore_CartOpen = 'Y';
     isFloatPanel_AyohaStore_Cart_AyohaStore_CheckOut_ReOrder = 'N';
     globalFloatPanel_AyohaStore_CheckOut_OrderStatus = "CheckOut";
@@ -1581,7 +1604,7 @@ function FloatPanel_AyohaStore_CartShow() {
     // alert(globalFloatPanel_AyohaStore_SaleItemDetail_OpenFrom);
 
     if (globalFloatPanel_AyohaStore_SaleItemDetail_OpenFrom == 'SaleItemDetail') {
-        Ext.getCmp('FloatPanel_AyohaStore_CartID').setZIndex(320);
+        Ext.getCmp('FloatPanel_AyohaStore_CartID').setZIndex(70);
     }
 
 
@@ -2528,7 +2551,7 @@ function FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore(ItemCartSta
 
 
 
-function FloatPanel_AyohaStore_CartHide() {
+function FloatPanel_AyohaStore_CartHide(fromBack,animCfg) {
     if (isFloatPanel_AyohaStore_CartOpen == 'Y') {
 
         _FloatPanel_AyohaStore_Cart.hide(); isFloatPanel_AyohaStore_CartOpen = 'N';
