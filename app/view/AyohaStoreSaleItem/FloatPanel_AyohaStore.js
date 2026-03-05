@@ -370,7 +370,7 @@ zIndex:10,
   
 },
 {
-   margin: '-3 2 0 0',
+   margin: '-1 2 0 0',
    // hidden: true,
    //zIndex: -10,
    width: 18,
@@ -1969,7 +1969,32 @@ zIndex:10,
                                          console.log('Store count:', store ? store.getCount() : 'null');
                                      },
                                      itemtap: function(list, index, target, record) {
-                                         console.log('Item tapped:', record.get('ItemName'));
+                                        // alert('Item tapped:', record.get('ItemName'));
+                                             var d = record.data;
+
+                                             //alert('Item tapped:' + d.ID);
+      FloatPanel_AyohaStore_SaleItemDetailShow(
+        d.StampRuleAmount,
+        d.ID,
+        d.ItemCode,
+        d.ItemCoverImg,
+        d.ItemName,
+        d.ItemPrice,
+        d.MerchantPoint,
+        d.AyohaPoint,
+        d.CampaignType,
+        d.MembershipCardCode,
+        d.ProductCategoryName,
+        d.ItemCategoryCode,
+        d.MembershipCardName,
+        d.ItemCoverImgName,
+        d.Stock,
+        d.ShowStock,
+        d.StockAlert,
+        d.ModifiedItemDescriptions_01,
+        d.ItemPriceDiscount,
+        d.ItemPriceDiscountRate
+      );
                                      }
                                  }
 

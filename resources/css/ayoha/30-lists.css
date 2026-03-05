@@ -692,3 +692,236 @@
   display:block !important;
   box-sizing:border-box !important;
 }
+
+
+
+
+
+
+
+
+.ayohaReviewList{
+  background:#fff;
+}
+
+.ayohaReviewItem{
+  background:#fff;
+}
+
+
+
+/* ✅ buang separator/border default list item (kalau masih muncul) */
+.ayohaReviewList .x-listitem,
+.ayohaReviewList .x-listitem-inner{
+  border-bottom: none !important;
+}
+
+/* kalau theme anda guna pseudo separator */
+.ayohaReviewList .x-listitem:after{
+  display:none !important;
+}
+
+
+
+
+.ayohaReviewCard{
+ 
+   background:#fff;
+  padding:12px 12px 40px 12px;  /* ✅ tambah bottom padding */
+  border-bottom:1px solid rgba(0,0,0,.08);
+  box-sizing:border-box;
+}
+
+.ayohaReviewRow{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.ayohaReviewAvatarWrap{
+  flex:0 0 52px;
+  width:52px;
+}
+
+.ayohaReviewAvatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:1px solid rgba(0,0,0,.15);
+  object-fit:cover;
+  display:block;
+  background:#f2f2f2;
+}
+
+.ayohaReviewBody{
+  flex:1;
+  min-width:0;
+}
+
+.ayohaReviewTop{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.ayohaReviewName{
+  font-family:Arial, sans-serif;
+  font-size:13px;
+  font-weight:700;
+  color:#111;
+  line-height:1.2;
+}
+
+.ayohaReviewMeta{
+  font-family:Arial, sans-serif;
+  font-size:11px;
+  color:#666;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.ayohaReviewDot{
+  color:#bbb;
+}
+
+.ayohaReviewText{
+  margin-top:8px;
+  font-family:Arial, sans-serif;
+  font-size:12px;
+  color:#111;
+  line-height:1.35;
+  word-break:break-word;
+}
+
+.ayohaReviewActions{
+  margin-top:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* list background putih */
+.ayohaCartList,
+.ayohaCartList .x-innerhtml,
+.ayohaCartList .x-listitem,
+.ayohaCartList .x-listitem-inner{
+  background:#fff !important;
+}
+
+/* buang padding default list item supaya card betul-betul full width */
+.ayohaCartList .x-listitem-inner{
+  padding:0 !important;
+}
+
+/* card */
+.ayohaCartCard{
+  position:relative;
+  width:100%;
+  background:#fff;
+  box-sizing:border-box;
+  padding:12px 12px 10px 12px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+/* delete */
+.ayohaCartDeleteWrap{
+  position:absolute;
+  top:8px;
+  right:-10px;
+  z-index:10;
+}
+.ayohaCartDeleteBtn{ padding:0 !important; }
+.ayohaCartDeleteIcon{
+  width:16px;height:16px;
+  display:block;
+}
+
+/* row */
+.ayohaCartRow{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+/* image */
+.ayohaCartImg{
+  width:92px;
+  height:92px;
+  border-radius:12px;
+  object-fit:cover;
+  flex:0 0 92px;
+}
+
+/* info */
+.ayohaCartInfo{
+  flex:1;
+  min-width:0;
+}
+.ayohaCartTitle{
+  font-family:Arial, sans-serif;
+  font-size:12px;
+  font-weight:800;
+  color:#111;
+  line-height:1.2;
+  padding-right:26px; /* ruang untuk butang delete */
+}
+.ayohaCartDesc{
+  margin-top:6px;
+  font-family:Arial, sans-serif;
+  font-size:10px;
+  color:#444;
+  line-height:1.3;
+  word-break:break-word;
+}
+.ayohaCartMeta{
+  margin-top:4px;
+  font-size:9px;
+  color:#888;
+}
+
+/* bottom controls */
+.ayohaCartBottom{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+}
+.ayohaQtyWrap{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.ayohaCartQtyInput{
+  border-radius:6px;
+  border:1px solid purple;
+  padding:2px;
+  width:34px;
+  height:26px;
+  font-family:Arial, sans-serif;
+  font-size:12px;
+  color:#111;
+  text-align:center;
+  background:#fff;
+}
+.ayohaCartPrice{
+  font-family:Arial, sans-serif;
+  font-size:13px;
+  font-weight:800;
+  color:#c800ff;
+}

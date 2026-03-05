@@ -48,7 +48,7 @@
 
 Ext.define('BuskartApp.model.AyohaStoreCart.AyohaStoreCartReOrderModel', {
     extend: 'Ext.data.Model',
-    config: {
+    //config: {
         fields: [
             'RowNumber',
       'ID',
@@ -274,5 +274,5 @@ Ext.define('BuskartApp.model.AyohaStoreCart.AyohaStoreCartReOrderModel', {
              }
          },
         ]
-    }
+   // }
 });

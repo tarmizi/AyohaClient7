@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaStoreCart.AyohaStoreCartModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
             'RowNumber',
       'ID',
@@ -177,6 +177,8 @@
                  var _result;
                  var ItemDescriptions = record.get('ItemDescriptions');
 
+                 if(ItemDescriptions){
+
                  _value = ItemDescriptions.replace(/(\r\n|\n|\r)/gm, "<br>");
 
 
@@ -192,6 +194,10 @@
                      _result = _value;
                      return _result;
                  }
+                 }else{
+                        _result = "";
+                 }
+
 
 
                  return _result;
@@ -204,27 +210,21 @@
                  var _result;
                  var ItemDescriptions = record.get('ItemDescriptions');
 
-                 _value = ItemDescriptions.replace(/(\r\n|\n|\r)/gm, "<br>");
+                 if(ItemDescriptions){
+   _value = ItemDescriptions.replace(/(\r\n|\n|\r)/gm, "<br>");
+
+                 }else{
+                        _value = "";
+                 }
+
+              
 
 
-                 // matching the pattern
-                 //var count = ItemDescriptions.split(/\r\n|\r|\n/).length;
-
-                 //var count = _value.length;
-
-                 //if (count > 70) {
-                 //    _result = _value.substring(0, 70) + " <font color='blue'><u>See More...</u></font>";
-                 //    console.log(_result);
-                 //    return _result;
-                 //} else {
-                 //    _result = _value;
-                 //    return _result;
-                 //}
-
+                
 
                  return _value;
              }
          },
         ]
-    }
+    //}
 });

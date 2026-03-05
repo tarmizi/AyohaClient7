@@ -3403,3 +3403,399 @@ function GeneralMsgBox7(MsgTitle, Msg,ContainerID) {
   if (fp) fp.add(dlg); else Ext.Viewport.add(dlg);
   dlg.show();
 }
+
+
+
+
+function GeneralMsgBox7_Extended(MsgTitle, Msg,ContainerID) {
+
+  var fp = Ext.getCmp(ContainerID);
+  if (fp) {
+    fp.setMasked({ xtype: 'mask', cls: 'ayohaModalMask' });
+  }
+
+  var dlg = Ext.create('Ext.Dialog', {
+    cls: 'ayohaPremiumDialog ayohaPremiumDialogUnsub',
+   // centered: true,
+    floated: true,
+    modal: true,
+    hideOnMaskTap: false,
+  zIndex: 999999,
+top:350,
+left:60,
+right:10,
+bottom:350,
+    width: '95%',
+    maxWidth: 150,
+
+    items: [{
+      xtype: 'container',
+      cls: 'ayohaDlgWrap',
+      items: [
+        {
+          xtype: 'container',
+          cls: 'ayohaDlgHeader',
+          layout: {
+            type: 'hbox',
+            align: 'center',
+            pack: 'center'   // kalau nak center; tukar 'start' kalau nak kiri
+          },
+          items: [
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderIcon',
+              html:
+                '<div class="ayohaDlgHeaderIconCircle">' +
+                  '<img class="ayohaDlgHeaderIconImg" src="resources/icons/CancelMembershipCard.png" />' +
+                '</div>'
+            },
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderTitle',
+              html: MsgTitle,
+              flex: 1
+            }
+          ]
+        },
+
+       
+        {
+          xtype: 'component',
+          cls: 'ayohaDlgBody',
+          html:
+            '<div class="ayohaDlgMsg">' +
+              '<div class="ayohaDlgLine">' + Msg + '</div>' +
+            //  '<div class="ayohaDlgLine">You will no longer be able to access this card.</div>' +
+          //    '<div class="ayohaDlgHint">Please think carefully before proceeding.</div>' +
+            '</div>'
+        }
+
+      ]
+    }],
+
+    buttons: [{
+      text: 'OK',
+      cls: 'ayohaDlgBtn ayohaDlgBtnCancel',
+      handler: function () { dlg.destroy(); }
+    },
+// {
+//   xtype:'spacer'
+// },
+//     {
+//       text: 'YES, UNSUBSCRIBE',
+//       cls: 'ayohaDlgBtn ayohaDlgBtnDanger',
+//       handler: function () {
+//         dlg.destroy();
+//         MembershipCardDelete();
+//       }
+//     }
+],
+
+    listeners: {
+      destroy: function () {
+        if (fp) fp.setMasked(false);
+      }
+    }
+  });
+
+  if (fp) fp.add(dlg); 
+  else
+     Ext.Viewport.add(dlg);
+  dlg.show();
+}
+
+
+
+
+
+
+function GeneralMsgBox7_Msg(MsgTitle, Msg,ContainerID) {
+
+  var fp = Ext.getCmp(ContainerID);
+  if (fp) {
+    fp.setMasked({ xtype: 'mask', cls: 'ayohaModalMask' });
+  }
+
+  var dlg = Ext.create('Ext.Dialog', {
+    cls: 'ayohaPremiumDialog ayohaPremiumDialogUnsub',
+    centered: true,
+    floated: true,
+    modal: true,
+    hideOnMaskTap: false,
+    height: 200,
+//   zIndex: 999999,
+// top:350,
+// left:60,
+// right:10,
+// bottom:350,
+    width: '95%',
+    maxWidth: 150,
+
+    items: [{
+      xtype: 'container',
+      cls: 'ayohaDlgWrap',
+      items: [
+        {
+          xtype: 'container',
+          cls: 'ayohaDlgHeader',
+          layout: {
+            type: 'hbox',
+            align: 'center',
+            pack: 'center'   // kalau nak center; tukar 'start' kalau nak kiri
+          },
+          items: [
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderIcon',
+              html:
+                '<div class="ayohaDlgHeaderIconCircle">' +
+                  '<img class="ayohaDlgHeaderIconImg" src="resources/icons/CancelMembershipCard.png" />' +
+                '</div>'
+            },
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderTitle',
+              html: MsgTitle,
+              flex: 1
+            }
+          ]
+        },
+
+       
+        {
+          xtype: 'component',
+          cls: 'ayohaDlgBody',
+          html:
+            '<div class="ayohaDlgMsg">' +
+              '<div class="ayohaDlgLine">' + Msg + '</div>' +
+            //  '<div class="ayohaDlgLine">You will no longer be able to access this card.</div>' +
+          //    '<div class="ayohaDlgHint">Please think carefully before proceeding.</div>' +
+            '</div>'
+        }
+
+      ]
+    }],
+
+    buttons: [{
+      text: 'OK',
+      cls: 'ayohaDlgBtn ayohaDlgBtnCancel',
+      handler: function () { dlg.destroy(); }
+    },
+// {
+//   xtype:'spacer'
+// },
+//     {
+//       text: 'YES, UNSUBSCRIBE',
+//       cls: 'ayohaDlgBtn ayohaDlgBtnDanger',
+//       handler: function () {
+//         dlg.destroy();
+//         MembershipCardDelete();
+//       }
+//     }
+],
+
+    listeners: {
+      destroy: function () {
+        if (fp) fp.setMasked(false);
+      }
+    }
+  });
+
+  if (fp) fp.add(dlg); 
+  else
+     Ext.Viewport.add(dlg);
+  dlg.show();
+}
+
+
+
+
+
+
+
+
+
+
+function GeneralMsgBox7_CartDelete(MsgTitle, Msg,ContainerID,ID) {
+
+   // alert("ID to delete: " + ID); // Debug: Check if ID is passed correctly
+  var fp = Ext.getCmp(ContainerID);
+  if (fp) {
+    fp.setMasked({ xtype: 'mask', cls: 'ayohaModalMask' });
+  }
+
+  var dlg = Ext.create('Ext.Dialog', {
+    cls: 'ayohaPremiumDialog ayohaPremiumDialogUnsub',
+   // centered: true,
+    floated: true,
+    modal: true,
+    hideOnMaskTap: false,
+  zIndex: 999999,
+top:350,
+left:60,
+right:10,
+bottom:350,
+    width: '95%',
+    maxWidth: 150,
+
+    items: [{
+      xtype: 'container',
+      cls: 'ayohaDlgWrap',
+      items: [
+        {
+          xtype: 'container',
+          cls: 'ayohaDlgHeader',
+          layout: {
+            type: 'hbox',
+            align: 'center',
+            pack: 'center'   // kalau nak center; tukar 'start' kalau nak kiri
+          },
+          items: [
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderIcon',
+              html:
+                '<div class="ayohaDlgHeaderIconCircle">' +
+                  '<img class="ayohaDlgHeaderIconImg" src="resources/icons/DeletePurple.png" />' +
+                '</div>'
+            },
+            {
+              xtype: 'component',
+              cls: 'ayohaDlgHeaderTitle',
+              html: MsgTitle,
+              flex: 1
+            }
+          ]
+        },
+
+       
+        {
+          xtype: 'component',
+          cls: 'ayohaDlgBody',
+          html:
+            '<div class="ayohaDlgMsg">' +
+              '<div class="ayohaDlgLine">' + Msg + '</div>' +
+            //  '<div class="ayohaDlgLine">You will no longer be able to access this card.</div>' +
+          //    '<div class="ayohaDlgHint">Please think carefully before proceeding.</div>' +
+            '</div>'
+        }
+
+      ]
+    }],
+
+    buttons: [{
+      text: 'NO',
+      cls: 'ayohaDlgBtn ayohaDlgBtnCancel',
+      handler: function () { dlg.destroy(); }
+    },
+{
+  xtype:'spacer'
+},
+    {
+      text: 'YES, DELETE',
+      cls: 'ayohaDlgBtn ayohaDlgBtnDanger',
+      handler: function () {
+        dlg.destroy();
+      LoadingPanelShow("resources/icons/delete01.gif", "Delete cart...")
+
+        var task = Ext.create('Ext.util.DelayedTask', function () {
+            var objn = {
+                "ID": ID,
+                "EnterpriseAccNo": AppState.MainDashboard.EnterpriseAccNo,
+                "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
+               // "MembershipCardCode": globalFloatPanelAyohaStore_AyohaUser_MembershipCardCode
+                "MembershipCardCode": globalFloatPanelAyohaStore_AyohaUser_MembershipCardCode
+            };
+            var _value = Ext.Ajax.request({
+    
+                // type: "POST",
+    
+                // url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
+    
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
+    
+
+             url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
+
+
+
+
+
+                success: function (result, request) {
+    
+                    //console.log(result.responseText);
+    
+    
+                    data = Ext.decode(result.responseText.trim());
+    
+                    if (data.success == "true") {
+   
+
+                       
+                        FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('NewCart');
+                        var task = Ext.create('Ext.util.DelayedTask', function () {
+                            if (isFloatPanel_AyohaStoreOpen == "Y") {
+                                FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore();
+                            }
+                        });
+                        task.delay(500);
+    
+    
+                        // var task = Ext.create('Ext.util.DelayedTask', function () {
+                        //     DashboardAyohaUserMainStore();
+                        // });
+                        // task.delay(500);
+                      
+                        LoadingPanelHide(false);
+                        // FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore(FloatPanel_AyohaStore_getEnterpriseAccNo());
+    
+    
+                    }
+                    else {
+    
+                        alert("Fail!" + result.responseText.trim());
+                        Ext.Viewport.unmask();
+                        LoadingPanelHide(false);
+                    }
+                  //  Ext.Viewport.unmask();
+                    LoadingPanelHide(false);
+                },
+    
+                failure: function (result, request) {
+                    alert("Fail!" + result.responseText.trim());
+                 //   Ext.Viewport.unmask();
+                    LoadingPanelHide(false);
+                }
+    
+            });
+    
+    
+            Ext.Viewport.unmask();
+        });
+        task.delay(500);
+      }
+    }
+],
+
+    listeners: {
+      destroy: function () {
+        if (fp) fp.setMasked(false);
+      }
+    }
+  });
+
+  if (fp) fp.add(dlg); 
+  else
+     Ext.Viewport.add(dlg);
+  dlg.show();
+}
