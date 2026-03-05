@@ -895,18 +895,26 @@
 }
 
 /* bottom controls */
-.ayohaCartBottom{
+/* .ayohaCartBottom{
   margin-top:10px;
   display:flex;
   justify-content:flex-end;
   align-items:center;
   gap:10px;
-}
-.ayohaQtyWrap{
+} */
+/* .ayohaCartBottom{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+} */
+
+/* .ayohaQtyWrap{
   display:flex;
   align-items:center;
   gap:6px;
-}
+} */
 .ayohaCartQtyInput{
   border-radius:6px;
   border:1px solid purple;
@@ -924,4 +932,87 @@
   font-size:13px;
   font-weight:800;
   color:#c800ff;
+  font-variant-numeric: tabular-nums; 
+}
+
+
+
+
+/* ✅ Qty + Price rapat ke kanan & position qty sekata */
+.ayohaCartBottom{
+  margin-top:10px;
+  display:grid;
+  justify-content:end;                 /* semua block melekat kanan */
+  align-items:center;
+  grid-template-columns: max-content 150px;  /* kolum 1 qty, kolum 2 harga (fixed) */
+  column-gap:10px;
+}
+
+/* qty block kekal cantik */
+.ayohaQtyWrap{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* ✅ harga tak ubah posisi, sentiasa kanan & tak wrap */
+.ayohaCartPrice{
+  width:20px;                         /* sama dengan kolum 2 */
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric: tabular-nums;  /* nombor nampak stabil */
+}
+
+
+/* harga sentiasa kanan + lebar fixed supaya stable */
+/* .ayohaCartPrice{
+  min-width:140px;             
+  text-align:right;
+  font-family:Arial, sans-serif;
+  font-size:13px;
+  font-weight:800;
+  color:#c800ff;
+  font-variant-numeric: tabular-nums; 
+}  */
+
+
+
+
+
+
+
+
+/* ✅ grid 2 kolum untuk pastikan semua item sama alignment */
+.ayohaCartGrid_extended{
+  display:grid;
+  grid-template-columns: 92px 1fr; /* kolum gambar fixed */
+  column-gap:12px;
+  align-items:start;
+}
+
+/* info & bottom confirm duduk kolum #2 */
+.ayohaCartInfo_extended{ grid-column:2; min-width:0; }
+.ayohaCartBottom_extended{
+  grid-column:2;
+  margin-top:10px;
+
+  /* qty + price rapat kanan & sekata */
+  display:grid;
+  justify-content:end;
+  grid-template-columns:max-content 150px;  /* kolum price fixed */
+  column-gap:10px;
+  align-items:center;
+}
+
+.ayohaCartPrice_extended{
+  width:50px;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric: tabular-nums;
+   font-family:Arial, sans-serif;
+  font-size:13px;
+  font-weight:800;
+  color:#c800ff;
+  font-variant-numeric: tabular-nums; 
 }

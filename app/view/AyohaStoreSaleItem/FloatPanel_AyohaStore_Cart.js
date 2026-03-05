@@ -684,7 +684,8 @@ height: 50,
             '</div>' +
 
             // ✅ Bottom: qty controls + price (right aligned)
-            '<div class="ayohaCartBottom">' +
+           // '<div class="ayohaCartBottom">' +
+             '<div class="ayohaCartBottom" style="width:100%;display:flex;justify-content:flex-end;align-items:center;gap:10px;box-sizing:border-box;padding-right:50px;">' +
                 '<div class="ayohaQtyWrap">' +
 
                     '<button onclick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' +
@@ -748,8 +749,8 @@ height: 50,
                         {
                             xtype: 'container',
                             width: '100%',
-                            margin: '-3 0 0 0',
-                            height: 1,
+                            margin: '3 0 0 0',
+                            height: 10,
                             style: 'background-color:transparent;',
                             layout: {
                                 type: 'vbox',
@@ -1108,8 +1109,8 @@ height: 50,
                                                   {
                                                       xtype: 'container',
                                                       width: '100%',
-                                                      margin: '-3 0 0 0',
-                                                      height: 1,
+                                                      margin: '3 0 0 0',
+                                                      height: 3,
                                                       style: 'background-color:transparent;',
                                                       layout: {
                                                           type: 'vbox',
@@ -1183,8 +1184,8 @@ height: 50,
                    {
                        xtype: 'container',
                        width: '100%',
-                       margin: '-3 0 0 0',
-                       height: 1,
+                       margin: ' 0 0 0 0',
+                       height: 3,
                        style: 'background-color:transparent;',
                        layout: {
                            type: 'vbox',
@@ -3737,7 +3738,7 @@ function FloatPanel_AyohaStore_Cart_SendMyOrder() {
 
 function FloatPanel_AyohaStore_Cart_CheckOutStaging() {
     var val = document.getElementById('input-FloatPanel_AyohaStore_Cart_DeliveryChargeType').value;
-    
+    FloatPanel_AyohaStore_CartHide(false);
     if (globalFloatPanel_AyohaStore_Cart_TotalItemQuantity == 0) {
        // alert("No Item in Cart!");
        GeneralMsgBox7_Extended("Ayoha Store", "No Item in Cart!","FloatPanel_AyohaStore_CartID");

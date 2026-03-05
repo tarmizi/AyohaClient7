@@ -7,7 +7,7 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut', 
     //    ],
     });
     
-    var _FloatPanel_AyohaStore_CheckOut;
+    var _FloatPanel_AyohaStore_CheckOut=null;
     var isFirstLoad_ViewReceipt = true;
     
     var isFloatPanel_AyohaStore_CheckOutOpen = 'N';
@@ -68,30 +68,23 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut', 
     var globalFloatPanel_AyohaStore_CheckOut_EnterpriseName;
     var globalFloatPanel_AyohaStore_CheckOut_EnterpriseLogo;
     
+
+
     
-    
-    function FloatPanel_AyohaStore_CheckOut() {
-    
-        _FloatPanel_AyohaStore_CheckOut =
+function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_CheckOut && !_FloatPanel_AyohaStore_CheckOut.destroyed) return;
+ _FloatPanel_AyohaStore_CheckOut =
         Ext.create('Ext.Container', {
-            zIndex: 350,
-            xtype: 'Panel',
-            //height: 465,
-            height: '100%',
-            width: '100%',
-            id: 'FloatPanel_AyohaStore_CheckOutID',
-            draggable: false,
-    
-            styleHtmlContent: true,
-    
-            centered: true,
-            //bottom: 64,
-            // zIndex: 100,
-            modal: true,
-            // hideOnMaskTap: true,
-            layout: {
-                type: 'fit'
-            },
+             id: 'FloatPanel_AyohaStore_CheckOutID',
+            floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
             showAnimation: {
                 type: 'popIn',
                 duration: 250,
@@ -938,75 +931,202 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut', 
 
 
 {
-                                                                                            
+    xtype: 'list',
     id: 'FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromCart',
     store: _DataStore_AyohaStoreCartLoadCartAyohaStore,
-    hidden:true,
-    // grouped: true,
-   // xtype: 'dataview',
- xtype: 'list',
-   //height: 340,
- //  height:'100%',
-    scrollable: false,
+
+    width: '100%',
+    height: 468,
+
     mode: 'SINGLE',
     disableSelection: true,
-   //scrollable: 'horizontal',
-   // indicators: false,
-    //inline: true,
-    inline: {
-        wrap: false
-    },
-  //  style: 'background-color:purple',
-  style: 'border-bottom:1px none grey;background-color:white;',
-    width: '96%',                                                               
-  
+
+    // ✅ putih betul
+    cls: 'ayohaCartList',
+    itemCls: 'ayohaCartItem',
+    style: 'background:#fff;',
+
+    // ✅ elak issue height bila description panjang
+    infinite: false,
+    variableHeights: true,
+
+ scrollable: false,
+//     itemTpl:
+//         // ✅ Card wrapper (full width)
+//         '<div class="ayohaCartCard">' +
+
+//             // ✅ Delete button (top-right)
+//             '<div class="ayohaCartDeleteWrap">' +
+//                 '<button onclick="FloatPanel_AyohaStore_Cart_Delete_CheckOut({ID},`{ModifiedItemPrice}`,`{ItemQuantity}`)" class="buttonsHtmlBgDeleteNotificationListTransparent ayohaCartDeleteBtn">' +
+//                     '<img src="resources/icons/xsigncircle04.png" class="ayohaCartDeleteIcon" />' +
+//                 '</button>' +
+//             '</div>' +
+
+//             // ✅ Row: image + info
+//             '<div class="ayohaCartRow">' +
+//                 '<img src="{ItemCoverImg}" class="ayohaCartImg" />' +
+
+//                 '<div class="ayohaCartInfo">' +
+//                     '<div class="ayohaCartTitle">' +
+//                         '<span class="ayohaCartNo">{RowNumber}).</span>' +
+//                         '<span class="ayohaCartName"><u>{ItemName}</u></span>' +
+//                     '</div>' +
+
+//                     '<div class="ayohaCartPoints">{Pointlabel}</div>' +
+
+//                     '<div class="ayohaCartDesc">{ModifiedItemDescriptions}</div>' +
+//                     '<div class="ayohaCartMeta">{OrderSentCreatedDate}</div>' +
+//                 '</div>' +
+//             '</div>' +
+
+//             // ✅ Bottom: qty controls + price (right aligned)
+//           //  '<div class="ayohaCartBottom">' +
+//             '<div class="ayohaCartBottom" style="width:100%;display:flex;justify-content:flex-end;align-items:center;gap:10px;box-sizing:border-box;padding-left:104px;">' +
+//                 '<div class="ayohaQtyWrap">' +
+
+//                     '<button onclick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' +
+//                         "'" + '{MerchantPoint}' + "'" + ',' +
+//                         "'" + '{AyohaPoint}' + "'" + ',' +
+//                         "'" + '{ItemPrice}' + "'" + ',' +
+//                         "'" + '{LoyaltyRewardType}' + "'" + ',' +
+//                         "'" + '{ItemCode}' + "'" + ',' +
+//                         "'" + '{ItemPriceDiscount}' + "'" + ',' +
+//                         "'" + '{ItemPriceDiscountRate}' + "'" + ',' +
+//                         "'" + '{MerchantSumStamp}' + "'" +
+//                     ')" class="buttonAddToCartSign">-</button>' +
+
+//                     '<input type="number" id="input-FloatPanel_AyohaStore_Cart_Qty{ID}" value="{ItemQuantity}" class="ayohaCartQtyInput" />' +
+
+//                     '<button onclick="FloatPanel_AyohaStore_cart_AddToCart_ADD({StampRuleAmount},{ID},' +
+//                         "'" + '{MerchantPoint}' + "'" + ',' +
+//                         "'" + '{AyohaPoint}' + "'" + ',' +
+//                         "'" + '{ItemPrice}' + "'" + ',' +
+//                         "'" + '{LoyaltyRewardType}' + "'" + ',' +
+//                         "'" + '{ItemCode}' + "'" + ',' +
+//                         "'" + '{ItemPriceDiscount}' + "'" + ',' +
+//                         "'" + '{ItemPriceDiscountRate}' + "'" + ',' +
+//                         "'" + '{MerchantSumStamp}' + "'" +
+//                     ')" class="buttonAddToCartSign">+</button>' +
+
+//                 '</div>' +
+
+//                 '<div class="ayohaCartPrice_Extended">x RM{ModifiedItemPriceCheckOut}</div>' +
+//             '</div>' +
+
+//         '</div>',
+
+//     emptyText: '<div style="padding:16px;background:#fff;color:#888;text-align:center;">No Cart Item</div>'
 
 
 
 
+itemTpl:
+  '<div class="ayohaCartCard ayohaCartCardCheckout">' +
 
+    '<div class="ayohaCartDeleteWrap">' +
+      '<button onclick="FloatPanel_AyohaStore_Cart_Delete_CheckOut({ID},`{ModifiedItemPrice}`,`{ItemQuantity}`)" ' +
+      ' class="buttonsHtmlBgDeleteNotificationListTransparent ayohaCartDeleteBtn">' +
+        '<img src="resources/icons/xsigncircle04.png" class="ayohaCartDeleteIcon" />' +
+      '</button>' +
+    '</div>' +
 
+    // ✅ GRID 2 kolum (img | content)
+    '<div class="ayohaCartGrid_extended">' +
 
+      '<img src="{ItemCoverImg}" class="ayohaCartImg" />' +
 
+      '<div class="ayohaCartInfo_extended">' +
+        '<div class="ayohaCartTitle">' +
+          '<span class="ayohaCartNo">{RowNumber}).</span>' +
+          '<span class="ayohaCartName"><u>{ItemName}</u></span>' +
+        '</div>' +
+        '<div class="ayohaCartPoints">{Pointlabel}</div>' +
+        '<div class="ayohaCartDesc">{ModifiedItemDescriptions}</div>' +
+        '<div class="ayohaCartMeta">{OrderSentCreatedDate}</div>' +
+      '</div>' +
 
+      // ✅ Bottom BAR paksa duduk kolum content (bukan bawah gambar)
+      '<div class="ayohaCartBottom_extended">' +
+        '<div class="ayohaQtyWrap">' +
 
+          '<button onclick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' +
+            "'" + '{MerchantPoint}' + "'" + ',' +
+            "'" + '{AyohaPoint}' + "'" + ',' +
+            "'" + '{ItemPrice}' + "'" + ',' +
+            "'" + '{LoyaltyRewardType}' + "'" + ',' +
+            "'" + '{ItemCode}' + "'" + ',' +
+            "'" + '{ItemPriceDiscount}' + "'" + ',' +
+            "'" + '{ItemPriceDiscountRate}' + "'" + ',' +
+            "'" + '{MerchantSumStamp}' + "'" +
+          ')" class="buttonAddToCartSign">-</button>' +
 
+          '<input type="number" id="input-FloatPanel_AyohaStore_Cart_Qty{ID}" value="{ItemQuantity}" class="ayohaCartQtyInput" />' +
 
-   itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
-'<div style="flex: 1; padding-right: 0px;">'+
-'<div style="font-family: Arial; font-size: 12px; color: #6B7280;margin:-40px 0px 0px 0px;font-weight:bold">'+
-'{RowNumber}). {ItemName}'+
-'</div>'+
-'<div style="font-family: Arial; font-size: 12px; color: black; font-weight: bold;padding:0px 0px;">'+
-'RM {ModifiedItemPriceCheckOut}'+
+          '<button onclick="FloatPanel_AyohaStore_cart_AddToCart_ADD({StampRuleAmount},{ID},' +
+            "'" + '{MerchantPoint}' + "'" + ',' +
+            "'" + '{AyohaPoint}' + "'" + ',' +
+            "'" + '{ItemPrice}' + "'" + ',' +
+            "'" + '{LoyaltyRewardType}' + "'" + ',' +
+            "'" + '{ItemCode}' + "'" + ',' +
+            "'" + '{ItemPriceDiscount}' + "'" + ',' +
+            "'" + '{ItemPriceDiscountRate}' + "'" + ',' +
+            "'" + '{MerchantSumStamp}' + "'" +
+          ')" class="buttonAddToCartSign">+</button>' +
 
+        '</div>' +
 
+        '<div class="ayohaCartPrice_extended">x RM{ModifiedItemPriceCheckOut}</div>' +
+      '</div>' +
 
-'<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:#c800ffc9;height:22px;"><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign">-</button><input type="number" id="input-FloatPanel_AyohaStore_Cart_Qty{ID}" value={ItemQuantity} style="border-radius: 2px;border: 1px solid purple;padding: 2px; width: 25px;height: 23px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;color:black;text-align:center"/><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_ADD({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign">+</button></div>'+
-
-'</div>'+
-'</div>'+
-// '<div style="width: 85px; height: 85px; padding: 2px;">'+
-// '<div style="width:100%;text-align:right;margin:-8px 0px 0px -3px;"><button OnClick="FloatPanel_AyohaStore_Cart_Delete({ID})" class="buttonsHtmlBgDeleteNotificationListTransparent" style="margin:-10px 0px 0px 0px;z-index:100;"><img src="resources/icons/xsigncircle04.png" style="width: 16px; height: 16px; margin:-10px 0px 0px -10px;z-index:100;" /></button></div>'+
-// '<img src="{ItemCoverImg}" style="width: 85px; height: 80px; border: 1px solid grey; border-radius: 5px;" />'+
-
-
-
-// '</div>'+
-
-
-'<div style="width: 85px; height: 85px; padding: 2px; position: relative;">' +
-  '<button OnClick="FloatPanel_AyohaStore_Cart_Delete_CheckOut({ID},`{ModifiedItemPrice}`,`{ItemQuantity}`)" class="buttonsHtmlBgDeleteNotificationListTransparent" ' +
-  'style="position: absolute; top: -10px; right: -5px; z-index: 100; background: transparent; border: none; padding: 0;">' +
-    '<img src="resources/icons/xsigncircle04.png" style="width: 16px; height: 16px;" />' +
-  '</button>' +
-  '<img src="{ItemCoverImg}" style="width: 80px; height: 80px; border: 1px solid grey; border-radius: 5px;" />' +
-'</div>'+
-'</div>'
-
-
+    '</div>' + // grid
+  '</div>',
 
 },
+
+
+
+
+
+// {
+                                                                                            
+//     id: 'FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromCart',
+//     store: _DataStore_AyohaStoreCartLoadCartAyohaStore,
+//     hidden:true,
+//  xtype: 'list',
+//     scrollable: false,
+//     mode: 'SINGLE',
+//     disableSelection: true,
+//     inline: {
+//         wrap: false
+//     },
+//   style: 'background-color:white;',
+//     width: '96%',    
+//    itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
+// '<div style="flex: 1; padding-right: 0px;">'+
+// '<div style="font-family: Arial; font-size: 12px; color: #6B7280;margin:-40px 0px 0px 0px;font-weight:bold">'+
+// '{RowNumber}). {ItemName}'+
+// '</div>'+
+// '<div style="font-family: Arial; font-size: 12px; color: black; font-weight: bold;padding:0px 0px;">'+
+// 'RM {ModifiedItemPriceCheckOut}'+
+
+
+
+// '<div style="font-family:Arial, sans-serif;font-size:13px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:#c800ffc9;height:22px;"><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_MINUS({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign">-</button><input type="number" id="input-FloatPanel_AyohaStore_Cart_Qty{ID}" value={ItemQuantity} style="border-radius: 2px;border: 1px solid purple;padding: 2px; width: 25px;height: 23px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;color:black;text-align:center"/><button OnClick="FloatPanel_AyohaStore_cart_AddToCart_ADD({StampRuleAmount},{ID},' + "'" + '{MerchantPoint}' + "'" + ',' + "'" + '{AyohaPoint}' + "'" + ',' + "'" + '{ItemPrice}' + "'" + ',' + "'" + '{LoyaltyRewardType}' + "'" + ',' + "'" + '{ItemCode}' + "'" + ',' + "'" + '{ItemPriceDiscount}' + "'" + ',' + "'" + '{ItemPriceDiscountRate}' + "'" + ',' + "'" + '{MerchantSumStamp}' + "'" + ')"  class="buttonAddToCartSign">+</button></div>'+
+
+// '</div>'+
+// '</div>'+
+// '<div style="width: 85px; height: 85px; padding: 2px; position: relative;">' +
+//   '<button OnClick="FloatPanel_AyohaStore_Cart_Delete_CheckOut({ID},`{ModifiedItemPrice}`,`{ItemQuantity}`)" class="buttonsHtmlBgDeleteNotificationListTransparent" ' +
+//   'style="position: absolute; top: -10px; right: -5px; z-index: 100; background: transparent; border: none; padding: 0;">' +
+//     '<img src="resources/icons/xsigncircle04.png" style="width: 16px; height: 16px;" />' +
+//   '</button>' +
+//   '<img src="{ItemCoverImg}" style="width: 80px; height: 80px; border: 1px solid grey; border-radius: 5px;" />' +
+// '</div>'+
+// '</div>'
+
+
+
+// },
       {
 
           id: 'FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromPurchaseHistory',
@@ -1069,7 +1189,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     items: [
                         {
                             xtype:'spacer',
-                            width:10
+                            width:30
                                                 },
                         {
                             id: 'htmlFloatPanel_AyohaStore_CheckOut_TotalQuantity',
@@ -1088,7 +1208,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                        
                                                    {
                                                     xtype:'spacer',
-                                                    width:10
+                                                    width:30
                                                                         },
                     ]
                 },
@@ -1151,7 +1271,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
         width:10
                         },
                         {
-                            id: 'htmlFloatPanel_AyohaStore_CheckOut_DeliveryChargeType',
+                          //  id: 'htmlFloatPanel_AyohaStore_CheckOut_DeliveryChargeType',
                            // html:'<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:163px;text-align:left;align-items: center;color:white;background-color:transparent;height:25px; padding: 5px 10px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 5px;">Delivery Type:</span></div>',
                             html:'<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:163px;text-align:left;align-items: center;color:black;background-color:transparent;height:25px; padding: 5px 0px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 0px;">Delivery Type:</span></div>',
                             // html: '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">Billing Charges:</div>'
@@ -3309,11 +3429,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
     
     
         });
-        return _FloatPanel_AyohaStore_CheckOut;
+}
     
-    
-    
-    }
     
     
     
@@ -3468,10 +3585,39 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
     
     function FloatPanel_AyohaStore_CheckOutShow() {
     
-        Ext.Viewport.remove(_FloatPanel_AyohaStore_CheckOut);
-        this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_CheckOut());
-        this.overlay.show();
-        AddRoutePages("FloatPanel_AyohaStore_CheckOutHide()");
+        // Ext.Viewport.remove(_FloatPanel_AyohaStore_CheckOut);
+        // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_CheckOut());
+        // this.overlay.show();
+        // AddRoutePages("FloatPanel_AyohaStore_CheckOutHide()");
+
+
+
+
+
+
+
+FloatPanel_AyohaStore_CheckOutCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore_CheckOut.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_CheckOut', function () {
+ 
+    FloatPanel_AyohaStore_CheckOutHide(true);
+  });
+}
+
+
+
+
+
+
+
+
+
+
         isFloatPanel_AyohaStore_CheckOutOpen = 'Y';
         isFloatPanel_AyohaStore_CheckOutOpen_ReOrder = 'N';
        //alert("FloatPanel_AyohaStore_CheckOutShow");
@@ -3850,11 +3996,11 @@ var mainHeightInner;
 var heightlistview;
 
 if(FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed =='Y' && isFloatPanel_AyohaStore_CheckOutOpen =='Y'){
-    heightlistview=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount() * 112;
+    heightlistview=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount() * 182;
    // globalFloatPanel_AyohaStore_Cart_TotalItemQuantity=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount();
 }
 if(FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed =='N' && isFloatPanel_AyohaStore_CheckOutOpen =='Y'){
-    heightlistview=_DataStore_AyohaStoreCartLoadCartAyohaStore.getCount() * 112;
+    heightlistview=_DataStore_AyohaStoreCartLoadCartAyohaStore.getCount() * 182;
    // globalFloatPanel_AyohaStore_Cart_TotalItemQuantity=_DataStore_AyohaStoreCartLoadCartAyohaStore.getCount();
 }
 
@@ -3867,9 +4013,8 @@ Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_TotalQuantity').setHtml('<div sty
 mainHeight= heightlistview+76;
 mainHeightInner= mainHeight-12;
 
-
-  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Main').setHeight(mainHeight);
-  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_InnerMain').setHeight(mainHeightInner);
+  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Main').setHeight(mainHeight+10);
+  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_InnerMain').setHeight(mainHeightInner+10);
 
   //  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Inner').setHeight(theight);
     //Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList').setHeight(theight);
@@ -4008,15 +4153,27 @@ if(globalFloatPanel_AyohaStore_CheckOut_PaymentMethod=="Pay With Online Banking"
             console.log(objn);
             var _value = Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+                // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
+
+
+
+ url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
+
+
     
                 success: function (result, request) {
     
@@ -4078,16 +4235,43 @@ if(globalFloatPanel_AyohaStore_CheckOut_PaymentMethod=="Pay With Online Banking"
     
     
     
-    function FloatPanel_AyohaStore_CheckOutHide() {
+    function FloatPanel_AyohaStore_CheckOutHide(animCfg, fromBack) {
         // FloatPanel_AyohaStore_CheckOut_AddCardHide();
-        if (isFloatPanel_AyohaStore_CheckOutOpen == 'Y') {
-            _FloatPanel_AyohaStore_CheckOut.hide(); isFloatPanel_AyohaStore_CheckOutOpen = 'N';isFloatPanel_AyohaStore_CheckOutOpen_ReOrder= 'N';
-            RemovePages("FloatPanel_AyohaStore_CheckOutHide()");
-            FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed = 'N';
-            FloatPanel_MerchantDetailPageHide();
-            Dashboard_SearchMerchantListHide();
-        }
+        // if (isFloatPanel_AyohaStore_CheckOutOpen == 'Y') {
+        //     _FloatPanel_AyohaStore_CheckOut.hide(); isFloatPanel_AyohaStore_CheckOutOpen = 'N';isFloatPanel_AyohaStore_CheckOutOpen_ReOrder= 'N';
+        //     RemovePages("FloatPanel_AyohaStore_CheckOutHide()");
+        //     FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed = 'N';
+        //     FloatPanel_MerchantDetailPageHide();
+        //     Dashboard_SearchMerchantListHide();
+        // }
        
+
+
+
+
+
+
+        
+    
+    if (isFloatPanel_AyohaStore_CheckOutOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_CheckOut.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_CheckOut.hide();
+          }
+         
+          isFloatPanel_AyohaStore_CheckOutOpen = 'N';isFloatPanel_AyohaStore_CheckOutOpen_ReOrder= 'N';
+         FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed = 'N';
+          //  FloatPanel_MerchantDetailPageHide();
+          //  Dashboard_SearchMerchantListHide();
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_CheckOut');
+          }
+    }
     }
     
     
@@ -5587,16 +5771,28 @@ else{
                     };
                     var _value = Ext.Ajax.request({
     
-                        type: "POST",
+                        // type: "POST",
     
-                        url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderUpdateOrderStatus',
+                        // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderUpdateOrderStatus',
     
-                        dataType: "json",
-                        data: JSON.stringify(objn),
-                        headers: {
-                            "Content-Type": "application/json; charset=utf-8"
-                        },
+                        // dataType: "json",
+                        // data: JSON.stringify(objn),
+                        // headers: {
+                        //     "Content-Type": "application/json; charset=utf-8"
+                        // },
     
+
+
+
+
+                      url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderUpdateOrderStatus',
+    
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
                         success: function (result, request) {
     
                             //console.log(result.responseText);
@@ -5767,16 +5963,25 @@ else{
             console.log(objn);
             var _value = Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/AyohaStorePayment/AyohaStorePaymentInsert',
+                // url: GetAPIurl() + '/AyohaStorePayment/AyohaStorePaymentInsert',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+
+               url: GetAPIurl() + '/AyohaStorePayment/AyohaStorePaymentInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
                 success: function (result, request) {
     
                     //console.log(result.responseText);
@@ -6093,14 +6298,22 @@ else{
     
             var _value = Ext.Ajax.request({
     
-                type: "POST",
-                url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert', 
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // type: "POST",
+                // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert', 
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+             url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert', 
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
                 success: function (result, request) {
     
                     //console.log(result.responseText);
@@ -6445,16 +6658,25 @@ else{
             console.log(objn);
             var _value = Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert',
+                // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+
+             url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
                 success: function (result, request) {
     
                     //console.log(result.responseText);
@@ -6559,16 +6781,25 @@ else{
                     };
                     var _value = Ext.Ajax.request({
     
-                        type: "POST",
+                        // type: "POST",
     
-                        url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderUpdateOrderStatus',
+                        // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderUpdateOrderStatus',
     
-                        dataType: "json",
-                        data: JSON.stringify(objn),
-                        headers: {
-                            "Content-Type": "application/json; charset=utf-8"
-                        },
+                        // dataType: "json",
+                        // data: JSON.stringify(objn),
+                        // headers: {
+                        //     "Content-Type": "application/json; charset=utf-8"
+                        // },
     
+
+
+           url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderUpdateOrderStatus',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
                         success: function (result, request) {
     
                             //console.log(result.responseText);
@@ -6676,16 +6907,24 @@ else{
             console.log(objn);
             var _value = Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+                // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+            url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+
                 success: function (result, request) {
     
                     //console.log(result.responseText);
