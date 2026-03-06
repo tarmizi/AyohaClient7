@@ -79,8 +79,8 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
             floated: true,
         centered: true,
         fullscreen: true,
-        closeAction: 'hide',
-      // closeAction: 'destroy',
+        //closeAction: 'hide',
+       closeAction: 'destroy',
         draggable: false,
         modal: false,
         styleHtmlContent: true,
@@ -274,15 +274,14 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
     
                                 {
                                     xtype: 'container',
-                                    width: '110%',
+                                    //width: '110%',
                                     docked: 'bottom',
-                                    margin: '0 0 0 -5',
-                                    height: 40,
-                                    //style: 'background-color:white;border-top:2px none #f0f2f5;',
-                                    // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:2px solid black;',
-                                  //  style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #f0f2f5;',
-                                    //style: 'background-color:white;border-top:2px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:20px 20px 0px 0px;',
-                                    style: 'background-color:white;border-top:2px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);',
+                                    margin: '0 0 0 0',
+                                  //  height: 40,
+                                     height: 90,
+                        width: '100%',
+                        style: 'border-top:2px solid rgba(124,58,237,.14);border-bottom:2px none #D25959;border-left:2px none #D25959;border-right:2px none #D25959;background-color:white;',
+                                 //   style: 'background-color:white;border-top:2px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);',
                                     layout: {
                                         type: 'vbox',
                                         pack: 'center',
@@ -297,10 +296,10 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                             xtype: 'container',
                                             id: 'containerFloatPanel_AyohaStore_CheckOut_MakePayment_AyohaEwallet',
                                             width: '97%',
-                                            height: 45,
-                                            margin: '9 0 0 0',
+                                            height: 90,
+                                            margin: '0 0 0 0',
                                             // hidden: true,
-                                            style: "background-color: white;border-radius:20px 20px 0px 0px;",
+                                            style: "background-color: white;",
                                           
                                             //style: "background-color: #F35B57;",
                                             // style: 'border-right:1px solid grey;border-left:1px solid grey;border-bottom:1px solid grey;border-top:1px solid grey ;background: white;border-radius: 10px 10px 10px 10px;',
@@ -327,12 +326,8 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                      id: 'containerFloatPanel_AyohaStore_CheckOut_ConfirmPay',
                                                    name: 'namecontainerFloatPanel_AyohaStore_CheckOut_ConfirmPay',
                                                      width: '95%',
-                                                     height: 40,
-                                                     margin: '-20 0 0 -26',
-    
-                                                     style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
-    
-                                                     //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;',
+                                                     height: 90,
+                                                     style: 'background-color:transparent;',
                                                      layout: {
                                                          type: 'hbox',
                                                          pack: 'center',
@@ -340,23 +335,18 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
     
                                                      },
                                                      items: [
-                                                         {
-                                                             margin: '0 0 0 0',
-    
-                                                             width: 24,
-                                                             height: 24,
-                                                             //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                                             html: '<img src="resources/icons/payNowIcon.png" alt="Image" style="width:24px;height:24px;">',
-    
-    
-                                                             // ui:'plain'
-                                                         },
-    
-                                         {
-                                             margin: '12 0 0 5',
-                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_ConfirmPayText_ConfirmPay',
-                                             html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:white;text-align:center;width:100%;" >Confirm And Pay Now </div>'
-                                         },
+
+                                                        {
+                                 width: '100%',
+                                  height: 90,
+                               id: 'htmlFloatPanel_AyohaStore_CheckOut_ConfirmPayText_ConfirmPay',                             
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >Confirm And Pay Now </button>' +
+                              
+                            '</div>' 
+                            },
+                                     
                                                      ]
                                                  },
     
@@ -366,10 +356,10 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                      name: 'namecontainerFloatPanel_AyohaStore_CheckOut_ViewReceipt',
                                                      hidden:true,
                                                      width: '95%',
-                                                     height: 40,
-                                                     margin: '-20 0 0 -26',
-    
-                                                     style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
+                                                     height: 90,
+                                                    // margin: '-20 0 0 -26',
+      style: 'background-color:transparent;',
+                                                     //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
     
                                                      //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;',
                                                      layout: {
@@ -379,23 +369,18 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
     
                                                      },
                                                      items: [
-                                                         {
-                                                             margin: '0 0 0 0',
-    
-                                                             width: 24,
-                                                             height: 24,
-                                                             //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                                             html: '<img src="resources/icons/payNowIcon.png" alt="Image" style="width:24px;height:24px;">',
-    
-    
-                                                             // ui:'plain'
-                                                         },
-    
-                                         {
-                                             margin: '12 0 0 5',
-                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_ViewReceiptText_ViewReceipt',
-                                             html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:white;text-align:center;" >Print Receipt</div>'
-                                         },
+
+                                                        {
+                                 width: '100%',
+                                  height: 90,
+                               id: 'htmlFloatPanel_AyohaStore_CheckOut_ViewReceiptText_ViewReceipt',                             
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >Print Receipt</button>' +
+                              
+                            '</div>' 
+                            },
+                                                        
                                                      ]
                                                  },
 
@@ -407,11 +392,10 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                   name: 'namecontainerFloatPanel_AyohaStore_CheckOut_OrderStatus',
                                                     width: '95%',
                                                     hidden:true,
-                                                    height: 40,
-                                                    margin: '-20 0 0 -26',
-   
-                                                    style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
-   
+                                                     width: '95%',
+                                                     height: 90,
+                                                    // margin: '-20 0 0 -26',
+      style: 'background-color:transparent;',
                                                     //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;',
                                                     layout: {
                                                         type: 'hbox',
@@ -421,22 +405,16 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                     },
                                                     items: [
                                                         {
-                                                            margin: '0 0 0 0',
-   
-                                                            width: 24,
-                                                            height: 24,
-                                                            //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                                            html: '<img src="resources/icons/payNowIcon.png" alt="Image" style="width:24px;height:24px;">',
-   
-   
-                                                            // ui:'plain'
+                                                            width: '100%',
+                                  height: 90,
+                               id: 'htmlFloatPanel_AyohaStore_CheckOut_OrderStatusText_OrderStatus',                             
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >View Order Status Log</button>' +
+                              
+                            '</div>' 
                                                         },
-   
-                                        {
-                                            margin: '12 0 0 5',
-                                            id: 'htmlFloatPanel_AyohaStore_CheckOut_OrderStatusText_OrderStatus',
-                                            html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:white;text-align:center;width:100%;" >View Order Status Log </div>'
-                                        },
+                                                       
                                                     ]
                                                 },
 
@@ -450,11 +428,9 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                      name: 'namecontainerFloatPanel_AyohaStore_CheckOut_OrderOnly',
                                                      hidden:true,
                                                      width: '95%',
-                                                     height: 40,
-                                                     margin: '-20 0 0 -26',
-                                                    
-                                                     style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
-                                                  
+                                                     height: 90,
+                                                    // margin: '-20 0 0 -26',
+      style: 'background-color:transparent;',
                                                      //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;',
                                                      layout: {
                                                          type: 'hbox',
@@ -463,23 +439,18 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
     
                                                      },
                                                      items: [
-                                                         {
-                                                             margin: '0 0 0 0',
-    
-                                                             width: 24,
-                                                             height: 24,
-                                                             //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                                             html: '<img src="resources/icons/sendorderwhite01.png" alt="Image" style="width:24px;height:24px;">',
-    
-    
-                                                             // ui:'plain'
-                                                         },
-    
-                                         {
-                                             margin: '12 0 0 5',
-                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_OrderOnlyText_CancelOrder',
-                                             html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:white;text-align:center;" >Submit Order</div>'
-                                         },
+
+                                                        {
+                                                            width: '100%',
+                                  height: 90,
+                               id: 'htmlFloatPanel_AyohaStore_CheckOut_OrderOnlyText_CancelOrder',                             
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >Submit Order</button>' +
+                              
+                            '</div>' 
+                                                        },
+                                                       
                                                      ]
                                                  },
     
@@ -489,10 +460,9 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                      name: 'namecontainerFloatPanel_AyohaStore_CheckOut_CancelOrder',
                                                      hidden: true,
                                                      width: '95%',
-                                                     height: 40,
-                                                     margin: '-20 0 0 -26',
-                                                     style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: red;border-radius: 5px 5px 5px 5px;',
-    
+                                                     height: 90,
+                                                    // margin: '-20 0 0 -26',
+      style: 'background-color:transparent;',
                                                      //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
     
                                                      //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;',
@@ -503,23 +473,17 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
     
                                                      },
                                                      items: [
-                                                         {
-                                                             margin: '0 0 0 0',
-    
-                                                             width: 24,
-                                                             height: 24,
-                                                             //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                                             html: '<img src="resources/icons/sendorderwhite01.png" alt="Image" style="width:24px;height:24px;">',
-    
-    
-                                                             // ui:'plain'
-                                                         },
-    
-                                         {
-                                             margin: '12 0 0 5',
-                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_CancelOrderText_CancelOrder',
-                                             html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:white;text-align:center;" >Cancel This Orders</div>'
-                                         },
+                                                        {
+                                                            width: '100%',
+                                  height: 90,
+                               id: 'htmlFloatPanel_AyohaStore_CheckOut_CancelOrderText_CancelOrder',                             
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >Cancel This Orders</button>' +
+                              
+                            '</div>' 
+                                                        },
+                                                         
                                                      ]
                                                  },
     
@@ -531,10 +495,9 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                       name: 'namecontainerFloatPanel_AyohaStore_CheckOut_DeleteOrder',
                                                       hidden: true,
                                                       width: '95%',
-                                                      height: 40,
-                                                      margin: '-20 0 0 -26',
-                                                      style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: red;border-radius: 5px 5px 5px 5px;',
-    
+                                                     height: 90,
+                                                    // margin: '-20 0 0 -26',
+      style: 'background-color:transparent;',
                                                       //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
     
                                                       //style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid white ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;',
@@ -545,23 +508,18 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
     
                                                       },
                                                       items: [
-                                                          {
-                                                              margin: '0 0 0 0',
-    
-                                                              width: 24,
-                                                              height: 24,
-                                                              //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                                              html: '<img src="resources/icons/sendorderwhite01.png" alt="Image" style="width:24px;height:24px;">',
-    
-    
-                                                              // ui:'plain'
-                                                          },
-    
-                                          {
-                                              margin: '12 0 0 5',
-                                              id: 'htmlFloatPanel_AyohaStore_CheckOut_DeleteOrderText_DeleteOrder',
-                                              html: '<div style="background: transparent;height:30px;font-size: 12px;font-weight:bold;color:white;text-align:center;" >Delete Order</div>'
-                                          },
+
+                                                        {
+                                                            width: '100%',
+                                  height: 90,
+                               id: 'htmlFloatPanel_AyohaStore_CheckOut_DeleteOrderText_DeleteOrder',                             
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >Delete Order</button>' +
+                              
+                            '</div>' 
+                                                        },
+                                                          
                                                       ]
                                                   },
     
@@ -1534,7 +1492,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
     xtype: 'container',
     width: '100%',
   //  margin: '20 0 0 0',
-    height: 200,
+    height: 210,
     id:'containerFloatPanel_AyohaStore_CheckOut_Charges_Main',
     style: "background-color: transparent;",
     layout: {
@@ -1548,7 +1506,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
             xtype: 'container',
             width: '100%',
           //  margin: '20 0 0 0',
-            height: 190,
+            height: 200,
             style: CoreVariable_CheckOutBoxDesign,        
           //  style: "background-color: transparent;border-top:1px solid grey;border-left:1px solid grey;border-bottom:1px solid grey;border-right:1px solid grey;box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);",
             layout: {
@@ -1589,7 +1547,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     xtype: 'container',
                     width: '100%',
                     height: '100%',
-                    margin: '25 0 0 0',
+                    margin: '15 0 0 0',
                     id:'containerFloatPanel_AyohaStore_CheckOut_BillingDetailInfo',
                     style: "background-color: transparent;border-top:1px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-bottom:2px none #ECF0F1;;",
                     layout: {
@@ -1607,7 +1565,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                       {
                           xtype: 'container',
                           width: '100%',
-                          //  height: 15,
+                          height: 20,
                           layout: {
                               type: 'hbox',
                               pack: 'center',
@@ -1656,7 +1614,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                         {
                             xtype: 'container',
                             width: '100%',
-                          //  height: 15,
+                            height: 20,
                             layout: {
                                 type: 'hbox',
                                 pack: 'center',
@@ -1712,7 +1670,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                 width: '100%',
                                 id:'containerFloatPanel_AyohaStore_CheckOut_DeliveryTypeName',
                                 hidden:true,
-                                //  height: 15,
+                                height: 20,
                                 layout: {
                                     type: 'hbox',
                                     pack: 'center',
@@ -1749,7 +1707,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                         {
                           xtype: 'container',
                           width: '100%',
-                          //  height: 15,
+                          height: 20,
                           layout: {
                               type: 'hbox',
                               pack: 'center',
@@ -1798,8 +1756,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                         {
                             xtype: 'container',
                             width: '100%',
-                            margin:'-1 0 0 0',
-                            //  height: 15,
+                            margin:'0 0 0 0',
+                            height: 20,
                             layout: {
                                 type: 'hbox',
                                 pack: 'center',
@@ -1845,12 +1803,18 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                  },
                             ]
                         },
-              
+              {
+xtype: 'container',
+                              width: '100%',
+                              margin: '0 0 0 0',
+                              height: 5,
+                              style: 'background-color:transparent;',
+              },
                           {
                               xtype: 'container',
                               width: '100%',
-                              margin: '-3 0 0 0',
-                              height: 1,
+                              margin: '0 0 0 0',
+                              height: 2,
                               style: 'background-color:transparent;',
                               layout: {
                                   type: 'vbox',
@@ -1862,8 +1826,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                    {
                                        xtype: 'container',
                                        width: '55%',
-                                       margin: '3 0 0 0',
-                                       height: 1,
+                                       margin: '0 20 0 0',
+                                       height: 2,
                                        style: 'background-color:grey;',
                                    },
                               ]
@@ -1871,7 +1835,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                         {
                             xtype: 'container',
                             width: '100%',
-                          //  height: 38,
+                          height: 40,
                             layout: {
                                 type: 'hbox',
                                 pack: 'center',
@@ -1892,7 +1856,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                     },
                                     items: [
                                          {
-                                             margin: '3 0 0 0',
+                                             margin: '0 0 0 0',
             
                                              html: '<div style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Grand Total(RM):</div>'
                                          }
@@ -1927,8 +1891,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                                                        {
                                                                            xtype: 'container',
                                                                            width: '100%',
-                                                                           margin: '-3 0 0 0',
-                                                                           height: 1,
+                                                                           margin: '0 0 0 0',
+                                                                           height: 2,
                                                                            style: 'background-color:transparent;',
                                                                            layout: {
                                                                                type: 'vbox',
@@ -1940,8 +1904,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                                                                 {
                                                                                     xtype: 'container',
                                                                                     width: '55%',
-                                                                                    margin: '3 0 0 0',
-                                                                                    height: 1,
+                                                                                    margin: '0 20 0 0',
+                                                                                    height: 2,
                                                                                     style: 'background-color:grey;',
                                                                                 },
                                                                            ]
@@ -2151,6 +2115,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
         {
             xtype: 'container',
             width: '100%',
+           //  id:'containerFloatPanel_AyohaStore_CheckOut_PaymentInfo_Inner',
           //  margin: '20 0 0 0',
             height: 130,
             style: CoreVariable_CheckOutBoxDesign,         
@@ -2463,7 +2428,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     xtype: 'container',
                     width: '100%',
                   //  hidden: true,
-                    height: 100,
+                    height: 130,
                     margin: '0 0 0 0',
                     layout: {
                         type: 'vbox',
@@ -2521,8 +2486,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                        {
                            xtype: 'container',
                            width: '100%',
-                           height: 70,
-                           margin: '-5 0 0 0',
+                           height: 80,
+                           margin: '0 0 0 0',
                            style: "background-color: transparent;",
                            //style: "background-color: white;border-right:1px solid #ECF0F1;border-left:1px solid #ECF0F1;border-bottom:1px solid #ECF0F1;border-top:1px solid #ECF0F1;border-radius: 10px 10px 10px 10px;",
                            layout: {
@@ -2536,9 +2501,9 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                     margin: '5 0 0 0',
                                     id: 'htmlFloatPanel_AyohaStore_CheckOut_NoteToSeller',
                                     width: '97%',
-                                    height: 60,
+                                    height: 65,
                                     // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
-                                    html: '<textarea id="input-FloatPanel_AyohaStore_CheckOut_NoteToSeller" style="width:100%;height:70px;padding: 0px 0px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
+                                    html: '<textarea id="input-FloatPanel_AyohaStore_CheckOut_NoteToSeller" style="width:100%;height:60px;padding: 0px 0px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
                                     // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  rows="25" cols="60">'
 
                                 },
@@ -2667,6 +2632,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                              {
                                  xtype: 'radiofield',
                                  name: 'color',
+                                 margin: '-10 0 0 0',
                                  id: 'radioBtnFloatPanel_AyohaStore_CheckOut_OrderOption_ViewReceipt',
                                  value: 'ViewReceipt',
                                  label: 'View Receipt',
@@ -2745,6 +2711,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                       {
                                           xtype: 'radiofield',
                                           value: 'OrderOnly',
+                                           margin: '-10 0 0 0',
                                           hidden:true,
                                           name: 'color',
                                           id: 'radioBtnFloatPanel_AyohaStore_CheckOut_OrderOption_OrderOnly',
@@ -2771,6 +2738,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                           {
                                               xtype: 'radiofield',
                                               value: 'Re-Order',
+                                               margin: '-10 0 0 0',
                                               hidden: true,
                                               name: 'color',
                                               id: 'radioBtnFloatPanel_AyohaStore_CheckOut_OrderOption_Re-Order',
@@ -2849,6 +2817,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                           {
                                             xtype: 'radiofield',
                                             value: 'OrderStatus',
+                                             margin: '-10 0 0 0',
                                             hidden:false,
                                             name: 'color',
                                             id: 'radioBtnFloatPanel_AyohaStore_CheckOut_OrderOption_OrderStatus',
@@ -2879,6 +2848,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                                xtype: 'radiofield',
                                                value: 'DeleteOrder',
                                                hidden: true,
+                                                margin: '-10 0 0 0',
                                                name: 'color',
                                                id: 'radioBtnFloatPanel_AyohaStore_CheckOut_OrderOption_DeleteOrder',
                                                label: 'Delete Order',
@@ -2904,6 +2874,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                         {
                                             xtype: 'radiofield',
                                             value: 'CancelOrder',
+                                             margin: '-10 0 0 0',
                                             hidden:true,
                                             name: 'color',
                                             id: 'radioBtnFloatPanel_AyohaStore_CheckOut_OrderOption_CancelOrder',
@@ -3009,7 +2980,8 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                 xtype: 'container',
                                 width: '100%',
                                 margin:'0 0 0 0',
-                                height: 140,
+                               // height: 140,
+                                 height: 100,
                                 id: 'containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_CarouselMasterOutter',
                                 layout: {
                                     type: 'vbox',
@@ -3022,7 +2994,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                 items: [
 
                                                                 {
-                                                                    margin: '10 0 0 10',
+                                                                    margin: '10 0 0 20',
                                                         id: 'htmlFloatPanel_AyohaStore_CheckOut_PaymentMethodTitle',
                                                       //  html:'<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:250px;text-align:left;align-items: center;color:white;background-color:transparent;height:25px; padding: 5px 10px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 5px;">Membership Point & Stamp Earn</span></div>',
                                                         html:'<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:250px;text-align:left;align-items: center;color:black;background-color:transparent;height:25px; padding: 5px 0px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 0px;">Payment Method:</span></div>',
@@ -3033,7 +3005,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                          width: '100%',
                                          id: 'containerFloatPanel_AyohaStore_CheckOut_SelectPaymentMethod',
                                          margin: '5 0 0 0',
-                                         height: 31,
+                                         height: 32,
                                          //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
                                          style: 'background-color:transparent',
                                          layout: {
@@ -3203,9 +3175,9 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
 
                                                                        },
                                                                         {
-                                                                            margin: '-10 0 0 0',
+                                                                            margin: '0 0 0 0',
                                                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_PaymentMethod_AyohaeWallet_CurrentBalanceTxt',
-                                                                            html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Current Balance</div>'
+                                                                            html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 12px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Current Balance</div>'
                                                                             // html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha Reward</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:-6px 0px 0px 0px">Client V 1.0</div>'
 
 
@@ -3253,19 +3225,25 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                                                     width: '100%',
                                                     id: 'containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_FPX',
                                                     hidden:true,
-                                                    height: 100,
+                                                    height: 120,
                                                     //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
                                                     style: 'background-color:white',
                                                     layout: {
                                                         type: 'vbox',
-                                                        pack: 'start',
-                                                        align: 'left'
+                                                        pack: 'center',
+                                                        align: 'center'
                                                     },
                                                     items: [
                                                         
                                                          {
-                                                             html: 'test'
-                                                         }
+                                                             
+
+                                                                            width: 100,
+                                                                            height: 100,
+
+                                                                            html: '<img src="resources/icons/onlineFPX1.png" alt="Image" style="width:100px;height:100px;">',
+                                                                        }
+                                                         
                                                         
 
                                                     ]

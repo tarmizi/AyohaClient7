@@ -316,14 +316,14 @@ style: 'background:#fff;padding:0;margin:0;',
             '<div class="ayohaVoucherImg" style="background-image:url({VoucherImgPath});"></div>' +
         '</div>' +
 
-        '<div class="ayohaVoucherInfo" onclick="FloatPanel_AyohaRewardVoucherDetailShow(' +
-            "'" + '{VoucherName}' + "'" + ',' +
-            "'" + '{VoucherImgPath}' + "'" + ',' +
-            "'" + '{EntitledVoucherEndDate}' + "'" + ',' +
-            "'" + '{DayLeft}' + "'" + ',' +
-            "'" + '{VoucherCode}' + "'" + ',' +
-            "'" + '{VoucherAmount}' + "'" +
-        ');">' +
+        // '<div class="ayohaVoucherInfo" onclick="FloatPanel_AyohaRewardVoucherDetailShow(' +
+        //     "'" + '{VoucherName}' + "'" + ',' +
+        //     "'" + '{VoucherImgPath}' + "'" + ',' +
+        //     "'" + '{EntitledVoucherEndDate}' + "'" + ',' +
+        //     "'" + '{DayLeft}' + "'" + ',' +
+        //     "'" + '{VoucherCode}' + "'" + ',' +
+        //     "'" + '{VoucherAmount}' + "'" +
+        // ');">' +
 
             '<div class="ayohaVoucherRow ayohaVoucherLabelRow">' +
                 '<div class="ayohaVoucherLabelLeft">Voucher Campaign</div>' +
@@ -463,57 +463,41 @@ style: 'background:#fff;padding:0;margin:0;',
 
 
 
-                            {
-                                xtype: 'container',
-                                id: 'containerFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount',
-                                name: 'namecontainerFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount',
-                               // width: '100%',
-                                docked: 'bottom',
-                                // hidden:true,
-                                height: 60,
-                                // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
-                                // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                                //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid grey;',
-                                style: 'border-right:1px solid white;border-left:1px solid white;border-bottom:1px solid white;border-top:1px solid grey ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 5px 5px 5px 5px;',
-                                width: '100%',
-                                layout: {
-                                    type: 'hbox',
-                                    pack: 'center',
-                                    align: 'center'
-
-                                },
-                                items: [
+{
+                       
+                        xtype: 'container',
+                        margin: '0 0 0 0',
+                       docked:'bottom',  
+                         id: 'containerFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount',
+                                name: 'namecontainerFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount',                  
+                        height: 90,
+                        width: '100%',
+                        style: 'border-top:2px solid rgba(124,58,237,.14);border-bottom:2px none #D25959;border-left:2px none #D25959;border-right:2px none #D25959;background-color:transparent;',
+                        layout: {
+                            type: 'vbox',
+                            pack: 'start',
+                            align: 'center'
+                        },
+                        items:[
+                           
 
 
-
-                                 
-                                               //{
-                                               //    margin: '0 0 0 0',
-
-                                               //    width: 24,
-                                               //    height: 24,
-                                               //    //html: '<img src="resources/icons/whatsappWhite.png" alt="Image" style="width:24px;height:24px;">',
-                                               //    html: '<img src="resources/icons/payNowIcon.png" alt="Image" style="width:24px;height:24px;">',
-
-
-                                               //    // ui:'plain'
-                                               //},
-
-                            {
-                                margin: '0 0 0 0',
+                             {
+                                 width: '90%',
+                                //   height: 80,
+                                //   margin: '-10 0 0 0',
                                 id: 'htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount',
-                                html: '<div style="background: transparent;height:40px;font-size: 16px;font-weight:bold;color:white;text-align:center;margin:8px 0px 0px 0px;" >TOTAL RM:0.00 - Use This Voucher !</div>'
+                              //  html: '<div style="background: transparent;height:40px;font-size: 16px;font-weight:bold;color:white;text-align:center;margin:8px 0px 0px 0px;" >TOTAL RM:0.00 - Use This Voucher !</div>'
+                            html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" onclick="AyohaMerchantReview_AddEditReview();">TOTAL RM:0.00 - Use This Voucher !</button>' +
+                              
+                            '</div>' 
                             },
 
-
-                                     //{
-                                     //    id: 'FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount',
-                                     //    margin: '0 0 0 0',
-                                     //    hidden:true,
-                                     //    width: '70%',
-                                     //    height: 20,
-                                     //    html: '<input type="text" id="input-FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount" placeHolder="RM 0.00" style="border-color:purple;color:black;width:100%;text-align: center;font-size:18px; font-weight:bold;">'
-                                     //},
+                             
+                        ]
+                   },
 
 
 
@@ -522,10 +506,10 @@ style: 'background:#fff;padding:0;margin:0;',
 
 
 
-                                ]
 
-                            },
 
+
+                            
 
                               //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -813,7 +797,16 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStoreCart_DataStore_AyohaRewardV
         }
        
         console.log(globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher);
-        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount').setHtml('<div style="background: transparent;height:40px;font-size: 16px;font-weight:bold;color:white;text-align:center;margin:8px 0px 0px 0px;" >TOTAL:RM ' + globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher.toFixed(2) + '- <font class="blink_me">Use This Voucher!</font></div>');
+       // Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount').setHtml('<div style="background: transparent;height:40px;font-size: 16px;font-weight:bold;color:white;text-align:center;margin:8px 0px 0px 0px;" >TOTAL:RM ' + globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher.toFixed(2) + '- <font class="blink_me">Use This Voucher!</font></div>');
+
+Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount').setHtml( 
+ '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >TOTAL:RM ' + globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher.toFixed(2) + '- <font class="blink_me">Use This Voucher!</font></button>' +
+                              
+                            '</div>' )
+
+
+
 
 
       //  globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher = Amt;
@@ -1036,15 +1029,29 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatusSi
         };
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
 
-            url: GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserAyohaStoreCartUpdateVoucherStatusSingleTap',
+            // url: GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserAyohaStoreCartUpdateVoucherStatusSingleTap',
 
-            dataType: "json",
-            data: JSON.stringify(objn),
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
+
+
+
+
+
+   url: GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserAyohaStoreCartUpdateVoucherStatusSingleTap',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
+
 
             success: function (result, request) {
 
@@ -1055,7 +1062,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatusSi
 
 
 
-                    LoadingPanelHide();
+                 //   LoadingPanelHide();
 
                 }
                 else {
@@ -1152,7 +1159,20 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox(chec
            
         }
     }
-    Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount').setHtml('<div style="background: transparent;height:40px;font-size: 16px;font-weight:bold;color:white;text-align:center;margin:8px 0px 0px 0px;" >TOTAL:RM ' + globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher.toFixed(2) + '- <font class="blink_me">Use This Voucher!</font></div>');
+   // Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount').setHtml('<div style="background: transparent;height:40px;font-size: 16px;font-weight:bold;color:white;text-align:center;margin:8px 0px 0px 0px;" >TOTAL:RM ' + globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher.toFixed(2) + '- <font class="blink_me">Use This Voucher!</font></div>');
+    
+    
+Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalVoucherAmount').setHtml( 
+ '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >TOTAL:RM ' + globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher.toFixed(2) + '- <font class="blink_me">Use This Voucher!</font></button>' +
+                              
+                            '</div>' )
+    
+    
+    
+    
+    
+    
     Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_VoucherDiscount').setHtml('<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">00.00</div>')
 
     if (isFloatPanel_AyohaStore_CartOpen == "Y") {
@@ -1303,15 +1323,26 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AyohaRewardVoucherEnt
         console.log(objn);
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
 
-            url: GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserUpdateEntitledVoucherStatus',
+            // url: GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserUpdateEntitledVoucherStatus',
 
-            dataType: "json",
-            data: JSON.stringify(objn),
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
+  url: GetAPIurl() + '/AyohaRewardVoucher_EntitledUser/AyohaRewardVoucherEntitledUserUpdateEntitledVoucherStatus',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
+
+
+
 
             success: function (result, request) {
 

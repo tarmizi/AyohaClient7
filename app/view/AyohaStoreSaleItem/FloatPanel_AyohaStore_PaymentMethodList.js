@@ -1,39 +1,34 @@
 ﻿Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_PaymentMethodList', {
-    requires: [
-      'Ext.util.DelayedTask'
-    ],
+  
 });
 
-var _FloatPanel_AyohaStore_PaymentMethodList;
+var _FloatPanel_AyohaStore_PaymentMethodList=null;
 
 
 var isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
 
 
+    
+function FloatPanel_AyohaStore_PaymentMethodListCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_PaymentMethodList && !_FloatPanel_AyohaStore_PaymentMethodList.destroyed) return;
+  _FloatPanel_AyohaStore_PaymentMethodList =
+     Ext.create('Ext.Container', {
 
-
-
-function FloatPanel_AyohaStore_PaymentMethodList() {
-
-    _FloatPanel_AyohaStore_PaymentMethodList =
-     Ext.create('Ext.Panel', {
-         zIndex: 360,
-         xtype: 'container',
-         // height: '50%',
-         width: '95%',
+id: 'LoadingFloatPanel_AyohaStore_PaymentMethodListID',
+ floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: true,
+        styleHtmlContent: true,
+        width: '90%',
          height: 360,
-         //width: 280,
-         id: 'LoadingFloatPanel_AyohaStore_PaymentMethodListID',
-         draggable: false,
-     
+        layout: 'fit',
 
-         centered: true,
-         //bottom: 64,         
-         modal: true,
-         hideOnMaskTap: false,
-         layout: {
-             type: 'fit'
-         },
+
+
          showAnimation: {
              type: 'popIn',
              duration: 250,
@@ -49,40 +44,10 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
              //duration: 250
          },
          //style: 'border-bottom:1px solid;background-color:#353839;',
-         style: 'border-bottom:1px none;background-color:white;',
+         style: 'border-bottom:1px none;background-color:white;border-radius: 10px 10px 10px 10px;border:1px solid #dddddd;',
          // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
          //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-         listeners: {
-             initialize: function (c) {
-                 this.element.on({
-                     swipe: function (e, node, options) {
-
-                         if (e.direction == "left") {
-                             _FloatPanel_AyohaStore_PaymentMethodList.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'left',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
-                             RemovePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
-                         } if (e.direction == "right") {
-                             _FloatPanel_AyohaStore_PaymentMethodList.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'right',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
-                             RemovePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
-                         }
-                        
-                     }
-                 });
-             }
-         },
+        
 
          //  style: "background-color: #D25959;",
          items: {
@@ -142,8 +107,8 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                              xtype: 'container',
                              width: '100%',
                              docked: 'top',
-                             // width: 40,
-                             style: ' background-color:transparent;',
+                             height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
                              //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
                              //  title: '<font size="3" color="white">Live Tracking Map</font>',
                              //hidden: true,
@@ -157,9 +122,9 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                              //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
                              // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                              layout: {
-                                 type: 'hbox',
-                                 pack: 'left',
-                                 align: 'left',
+                                  type: 'hbox',
+                                    pack: 'center',
+                                    align: 'center',
                              },
                              // hidden:true,
                              items:
@@ -170,21 +135,22 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                                                       xtype: 'button',
                                                       id: 'btnFloatPanel_AyohaStore_PaymentMethodListBack',
                                                       height: 30,
-                                                      width: 35,
-                                                      // iconCls: 'list',
-                                                      html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                                      width: 65,
+                                                      margin: '0 0 0 10',
+                                                         // iconCls: 'list',
+                                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                       ui: 'plain',
                                                       handler: function () {
+FloatPanel_AyohaStore_PaymentMethodListHide(false);
+                                                        //   _FloatPanel_AyohaStore_PaymentMethodList.hide(Ext.fx.Animation({
+                                                        //       type: 'slideOut',
+                                                        //       direction: 'left',
+                                                        //       easing: 'cubic-bezier(.7,0,.7,1)',
+                                                        //       duration: 250
 
-                                                          _FloatPanel_AyohaStore_PaymentMethodList.hide(Ext.fx.Animation({
-                                                              type: 'slideOut',
-                                                              direction: 'left',
-                                                              easing: 'cubic-bezier(.7,0,.7,1)',
-                                                              duration: 250
-
-                                                          }));
-                                                          isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
-                                                          RemovePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
+                                                        //   }));
+                                                        //   isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
+                                                        //   RemovePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
 
                                                       }
                                                   },
@@ -195,9 +161,10 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
 
 
                                                    {
-                                                       margin: '0 0 0 0',
+                                                        margin: '0 15 0 0',
                                                        id: 'htmlFloatPanel_AyohaStore_PaymentMethodList_TitleHeaderTxt',
-                                                       html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Payment Methods</div>',
+                                                         html:ayohaTheme_HeaderText('Payment Methods'),
+                                                      // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Payment Methods</div>',
 
                                                    },
 
@@ -242,7 +209,7 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
 
                                      xtype: 'container',
                                      width: '90%',
-                                     height: 60,
+                                     height: 70,
                                      //margin: '10 0 0 0',
                                      // zIndex:200,
                                      id: 'containerFloatPanel_AyohaStore_PaymentMethodList_AyohaeWallet',
@@ -298,7 +265,7 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                                                    },
                                          {
                                              xtype: 'spacer',
-                                             width: 10
+                                             width: 15
                                          },
                                           {
                                               //height: 28,
@@ -314,14 +281,14 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                                          {
                                              id: 'htmlFloatPanel_AyohaStore_PaymentMethodList_AyohaeWallet_arrow',
                                              margin: '0 0 0 0',
-                                             html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:15px;font-size: 12px;font-weight:bold;color:black;" >></div>',
+                                             html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:15px;font-size: 16px;font-weight:bold;color:black;" >></div>',
                                              //  height: 20,
                                              //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 12px;font-weight:normal;color:black;height:20px">950 Points</div>'
                                          },
                                          {
                                              id: 'htmlFloatPanel_AyohaStore_PaymentMethodList_AyohaeWallet_Spacer',
                                              xtype: 'spacer',
-                                             width: 33
+                                             width: 23
                                          },
 
                                               ]
@@ -338,7 +305,7 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
 
                                      xtype: 'container',
                                      width: '90%',
-                                     height: 60,
+                                     height: 70,
                                      //margin: '10 0 0 0',
                                      id: 'containerFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking',
                                      name: 'containerViewnamecontainerFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking',
@@ -370,7 +337,7 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                                               xtype: 'container',
                                               width: '100%',
                                               height: 40,
-                                              margin: '4 0 0 0',
+                                              margin: '0 0 0 0',
                                               id: 'containerFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking_inner',
                                               name: 'nameFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking_inner',
                                               //style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 40px 40px 40px 40px;',
@@ -388,7 +355,8 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                                                        //width: 28,
                                                        id: 'htmlFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking_Image',
                                                        //badgeText: "2",
-                                                       html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:40px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/fpx01.jpg"  style="width: 40px; height: 40px; border:2px none white;  margin:0px 0px 0px 0px"></div>',
+                                                       width: 45,
+                                                       html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:40px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/fpx01.jpg"  style="width: 45px; height: 50px; border:2px none white;  margin:-5px 0px 0px 0px"></div>',
                                                    },
                                          {
                                              xtype: 'spacer',
@@ -408,14 +376,14 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
                                          {
                                              id: 'htmlFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking_arrow',
                                              margin: '0 0 0 0',
-                                             html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:15px;font-size: 12px;font-weight:bold;color:black;" >></div>',
+                                             html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:15px;font-size: 16px;font-weight:bold;color:black;" >></div>',
                                              //  height: 20,
                                              //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 12px;font-weight:normal;color:black;height:20px">950 Points</div>'
                                          },
                                          {
                                              id: 'htmlFloatPanel_AyohaStore_PaymentMethodList_OnlineBanking_Spacer',
                                              xtype: 'spacer',
-                                             width: 33
+                                             width: 23
                                          },
 
                                               ]
@@ -688,8 +656,6 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
 
 
      });
-    return _FloatPanel_AyohaStore_PaymentMethodList;
-
 
 
 
@@ -698,12 +664,39 @@ function FloatPanel_AyohaStore_PaymentMethodList() {
 
 
 
+
+
 function FloatPanel_AyohaStore_PaymentMethodListShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_PaymentMethodList);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_PaymentMethodList());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_PaymentMethodList);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_PaymentMethodList());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
+
+
+
+
+
+
+FloatPanel_AyohaStore_PaymentMethodListCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore_PaymentMethodList.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_PaymentMethodList', function () {
+ 
+    FloatPanel_AyohaStore_PaymentMethodListHide(true);
+  });
+}
+
+
+
+
+
+
+
     isFloatPanel_AyohaStore_PaymentMethodListOpen = 'Y';
    // FloatPanel_AyohaStore_PaymentMethodList_PaymentMethodStore();
    
@@ -792,12 +785,34 @@ function FloatPanel_AyohaStore_PaymentMethodList_PaymentMethodStore() {
 
 
 
-function FloatPanel_AyohaStore_PaymentMethodListHide() {
-    if (isFloatPanel_AyohaStore_PaymentMethodListOpen == "Y") {
-        _FloatPanel_AyohaStore_PaymentMethodList.hide(); isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
-    }
+function FloatPanel_AyohaStore_PaymentMethodListHide(animCfg, fromBack) {
+    // if (isFloatPanel_AyohaStore_PaymentMethodListOpen == "Y") {
+    //     _FloatPanel_AyohaStore_PaymentMethodList.hide(); isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaStore_PaymentMethodListHide()");
+    // }
   
+
+
+
+
+    if (isFloatPanel_AyohaStore_PaymentMethodListOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_PaymentMethodList.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_PaymentMethodList.hide();
+          }
+          isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
+          
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_PaymentMethodList');
+          }
+    }
+
+
+
 }
 var globalFloatPanel_AyohaStore_PaymentMethod_Code;
 function FloatPanel_AyohaStore_PaymentMethodListPaymentMethodSelected(ID) {
@@ -808,14 +823,17 @@ function FloatPanel_AyohaStore_PaymentMethodListPaymentMethodSelected(ID) {
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_FPX').setHidden(true);
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_ManualTransfer').setHidden(true);
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_COD').setHidden(true);
+         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_CarouselMasterOutter').setHeight(200);
+    
+
         document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentMethod').value = "Ayoha e-Wallet";
-        FloatPanel_AyohaStore_PaymentMethodListHide();
+        FloatPanel_AyohaStore_PaymentMethodListHide(false);
         Dashboard_LoadAyohaEwallet();
     }
     if (ID == 2) {
        // swalFireDynamicIconWithMessage("resources/icons/paymentNotAvailable.png", "Currently Not Available!", "black", "red");
         globalFloatPanel_AyohaStore_PaymentMethod_Code = 2;
-        FloatPanel_AyohaStore_PaymentMethodListHide();
+        FloatPanel_AyohaStore_PaymentMethodListHide(false);
         // Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_AyohaeWallet').setHidden(true);
         // Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_FPX').setHidden(false);
         // Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_ManualTransfer').setHidden(true);
@@ -830,7 +848,13 @@ function FloatPanel_AyohaStore_PaymentMethodListPaymentMethodSelected(ID) {
         document.getElementById('input-FloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod').value = "Pay With Online Banking";
        }
        
-        
+         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_AyohaeWallet').setHidden(true);
+        Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_FPX').setHidden(false);
+        Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_ManualTransfer').setHidden(true);
+        Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_COD').setHidden(true);
+         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_CarouselMasterOutter').setHeight(200);
+    
+
     }
     if (ID == 3) {
         swalFireDynamicIconWithMessage("resources/icons/paymentNotAvailable.png", "Currently Not Available!", "black", "red");
@@ -1024,15 +1048,23 @@ function ProductInvoice_PaymentGateWayBillMasterInsert_AyohaOnlineStore(billCode
         };
         console.log(objn);
         var _value = Ext.Ajax.request({
-            type: "POST",
-            url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillMasterInsertAyohaOnlineStorePayment',
-           // url: GetAPIurl()+"PaymentGateway/PaymentGatewayCreateBill_MakePayment",
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
+        //     type: "POST",
+        //     url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillMasterInsertAyohaOnlineStorePayment',
+        //    // url: GetAPIurl()+"PaymentGateway/PaymentGatewayCreateBill_MakePayment",
+        //     dataType: "json",
+        //     data: JSON.stringify(objn),
+        //     headers: {
+        //         "Content-Type": "application/json; charset=utf-8"
+        //     },
 
+
+
+          url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillMasterInsertAyohaOnlineStorePayment',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
             success: function (result, request) {
                 
                 
@@ -1243,16 +1275,24 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                console.log(objn)
                 var _value = Ext.Ajax.request({
 
-                    type: "POST",
+                    // type: "POST",
 
-                    url: GetAPIurl() + '/AyohaeWalletTransaction/AyohaeWalletTransaction_Enterprises_LoadBy_eWalletAccNo_TransactionReferenceNo',
+                    // url: GetAPIurl() + '/AyohaeWalletTransaction/AyohaeWalletTransaction_Enterprises_LoadBy_eWalletAccNo_TransactionReferenceNo',
 
-                    dataType: "json",
-                    data: JSON.stringify(objn),
-                    headers: {
-                        "Content-Type": "application/json; charset=utf-8"
-                    },
+                    // dataType: "json",
+                    // data: JSON.stringify(objn),
+                    // headers: {
+                    //     "Content-Type": "application/json; charset=utf-8"
+                    // },
 
+
+
+              url: GetAPIurl() + '/AyohaeWalletTransaction/AyohaeWalletTransaction_Enterprises_LoadBy_eWalletAccNo_TransactionReferenceNo',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
                     success: function (result, request) {
                         data = Ext.decode(result.responseText.trim());
 
@@ -1361,15 +1401,26 @@ function ProductInvoice_CheckPaymentGatewayTransaction_AyohaOnlineStore(billExte
                console.log(objn)
                 var _value = Ext.Ajax.request({
 
-                    type: "POST",
+                    // type: "POST",
 
-                    url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillTransactionloadBybillCodeAndbillExternalReferenceNoAyohaStoreOnline',
+                    // url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillTransactionloadBybillCodeAndbillExternalReferenceNoAyohaStoreOnline',
 
-                    dataType: "json",
-                    data: JSON.stringify(objn),
-                    headers: {
-                        "Content-Type": "application/json; charset=utf-8"
-                    },
+                    // dataType: "json",
+                    // data: JSON.stringify(objn),
+                    // headers: {
+                    //     "Content-Type": "application/json; charset=utf-8"
+                    // },
+
+
+
+
+
+          url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillTransactionloadBybillCodeAndbillExternalReferenceNoAyohaStoreOnline',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
 
                     success: function (result, request) {
                         data = Ext.decode(result.responseText.trim());
@@ -1596,16 +1647,24 @@ function FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAnd
 
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
 
-            url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsertAyohaStoreOnline',
+            // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsertAyohaStoreOnline',
 
-            dataType: "json",
-            data: JSON.stringify(objn),
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
+
+             url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsertAyohaStoreOnline',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
-
             success: function (result, request) {
 
                 //console.log(result.responseText);
@@ -1745,15 +1804,23 @@ function updateSubscriptionStatus(billExternalReferenceNo){
         };
         console.log(objn);
         var _value = Ext.Ajax.request({
-            type: "POST",
-            url: GetAPIurl() + '/Subscriptions/SubscriptionsUpdateSubscriptionStatus',
-           // url: GetAPIurl()+"PaymentGateway/PaymentGatewayCreateBill_MakePayment",
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
+        //     type: "POST",
+        //     url: GetAPIurl() + '/Subscriptions/SubscriptionsUpdateSubscriptionStatus',
+        //    // url: GetAPIurl()+"PaymentGateway/PaymentGatewayCreateBill_MakePayment",
+        //     dataType: "json",
+        //     data: JSON.stringify(objn),
+        //     headers: {
+        //         "Content-Type": "application/json; charset=utf-8"
+        //     },
 
+
+
+          url: GetAPIurl() + '/Subscriptions/SubscriptionsUpdateSubscriptionStatus',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
             success: function (result, request) {
                 FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
                 FloatPanel_MembershipCardList_NotYetSubscribedHide();
@@ -1807,15 +1874,23 @@ function ProductInvoice_PaymentGateWayBillMasterInsert(billCode, billName, billE
         };
         console.log(objn);
         var _value = Ext.Ajax.request({
-            type: "POST",
-            url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillMasterInsertMembershipCardPayment',
-           // url: GetAPIurl()+"PaymentGateway/PaymentGatewayCreateBill_MakePayment",
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
+        //     type: "POST",
+        //     url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillMasterInsertMembershipCardPayment',
+        //    // url: GetAPIurl()+"PaymentGateway/PaymentGatewayCreateBill_MakePayment",
+        //     dataType: "json",
+        //     data: JSON.stringify(objn),
+        //     headers: {
+        //         "Content-Type": "application/json; charset=utf-8"
+        //     },
 
+
+
+          url: GetAPIurl() + '/PaymentGateWayBillTransaction/PaymentGateWayBillMasterInsertMembershipCardPayment',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
             success: function (result, request) {
                 ProductInvoice_CheckPaymentGatewayTransaction(billExternalIDs);
                 // if(globalProductInvoice_Package !="Trial")
@@ -1862,7 +1937,7 @@ function ProductInvoice_PaymentGateWayBillMasterInsert(billCode, billName, billE
 
 
 function FloatPanel_AyohaStore_PaymentMethodList_MembershipCardAgree(billExternalID_ext) {
-    var obj = {
+    var objn = {
         "CampaignEnterpriseAccNo": globalFloatPanelMerchantDetailPage_EnterpriseAccNo,
         "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
         //"MembershipByMethod": "AyohaStoreRequest",
@@ -1872,19 +1947,28 @@ function FloatPanel_AyohaStore_PaymentMethodList_MembershipCardAgree(billExterna
         "CreatedBy":GetCurrAyohaUserAccountNo(),
 
     };
-    console.log(obj);
+    console.log(objn);
     var _value = Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
 
-        url: GetAPIurl() + '/Memberships/MembershipsInsert',
+        // url: GetAPIurl() + '/Memberships/MembershipsInsert',
 
-        dataType: "json",
-        data: JSON.stringify(obj),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+        // dataType: "json",
+        // data: JSON.stringify(obj),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
 
+
+
+
+         url: GetAPIurl() + '/Memberships/MembershipsInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
         success: function (result, request) {
 
             data = Ext.decode(result.responseText.trim());
@@ -1928,7 +2012,7 @@ function FloatPanel_AyohaStore_PaymentMethodList_MembershipCardAgree(billExterna
 }
 
 function FloatPanel_AyohaStore_PaymentMethodList_MembershipsInsertPayAtCounter() {
-    var obj = {
+    var objn = {
         "CampaignEnterpriseAccNo": globalFloatPanelMerchantDetailPage_EnterpriseAccNo,
         "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
         //"MembershipByMethod": "AyohaStoreRequest",
@@ -1940,19 +2024,26 @@ function FloatPanel_AyohaStore_PaymentMethodList_MembershipsInsertPayAtCounter()
         "SubscribedPackage":globalFloatPanel_MembershipCardList_NotYetSubscribed_paymentCycleCode,
         "PackagePrice":globalFloatPanel_MembershipCardList_NotYetSubscribed_price,
     };
-    console.log(obj);
+    console.log(objn);
     var _value = Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
 
-        url: GetAPIurl() + '/Memberships/MembershipsInsertPayAtCounter',
+        // url: GetAPIurl() + '/Memberships/MembershipsInsertPayAtCounter',
 
-        dataType: "json",
-        data: JSON.stringify(obj),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+        // dataType: "json",
+        // data: JSON.stringify(obj),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
 
+
+         url: GetAPIurl() + '/Memberships/MembershipsInsertPayAtCounter',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
         success: function (result, request) {
 
             data = Ext.decode(result.responseText.trim());
@@ -2043,15 +2134,25 @@ function ProductInvoice_SubscriptionsInsertUpdate(){
  console.log(objn)
     var _value = Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
 
-        url: GetAPIurl() + '/Subscriptions/SubscriptionsInsert',
+        // url: GetAPIurl() + '/Subscriptions/SubscriptionsInsert',
 
-        dataType: "json",
-        data: JSON.stringify(objn),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+        // dataType: "json",
+        // data: JSON.stringify(objn),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
+
+
+
+
+          url: GetAPIurl() + '/Subscriptions/SubscriptionsInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
 
         success: function (result, request) {
             data = Ext.decode(result.responseText.trim());
