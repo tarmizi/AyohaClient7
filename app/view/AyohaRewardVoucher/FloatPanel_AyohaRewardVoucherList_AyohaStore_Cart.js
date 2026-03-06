@@ -3,38 +3,29 @@ Ext.define('BuskartApp.view.AyohaRewardVoucher.FloatPanel_AyohaRewardVoucherList
 
 });
 
-var _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart;
+var _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart=null;
 
 
 var isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
 
+function FloatPanel_AyohaRewardVoucherList_AyohaStore_CartCreateIfNeeded() {
+    if (_FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart && !_FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.destroyed) return;
+  _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart =
+    Ext.create('Ext.Container', {
 
-
-
-
-
-function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
-
-    _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart =
-    Ext.create('Ext.Panel', {
-        zIndex: 360,
-        xtype: 'container',
-        //height: 465,
-        //  height: '100%',
-        width: '100%',
-        id: 'FloatPanel_AyohaRewardVoucherList_AyohaStore_CartID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
+ id: 'FloatPanel_AyohaRewardVoucherList_AyohaStore_CartID',
+floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-            type: 'fit'
-        },
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
+
+
+
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -120,13 +111,9 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
                                 //hidden: true,
 
                                 id: 'containerFloatPanel_AyohaRewardVoucherList_AyohaStore_CartHeader',
-                                style: {
-                                    // background: '#D25959',
-                                    background: 'transparent',
-                                    // border: '2px'
-                                },
-                                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                               height: ayoha_HeaderHeight(),
+       //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+                                style: ayohaThemeColor_Header(),
                                 layout: {
                                     type: 'hbox',
                                     pack: 'center',
@@ -141,22 +128,22 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
                                                          xtype: 'button',
                                                          id: 'btnFloatPanel_AyohaRewardVoucherList_AyohaStore_CartBack',
                                                          height: 30,
-                                                         width: 35,
+                                                         width: 65,
                                                          // iconCls: 'list',
-                                                         html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                          ui: 'plain',
                                                          handler: function () {
-                                                             // FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide();
-                                                             // FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AddCardHide();
-                                                             isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
-                                                             _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide(Ext.fx.Animation({
-                                                                 type: 'slideOut',
-                                                                 direction: 'left',
-                                                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                 duration: 250
+                                                              FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(false);
+                                                            //  // FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AddCardHide();
+                                                            //  isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
+                                                            //  _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide(Ext.fx.Animation({
+                                                            //      type: 'slideOut',
+                                                            //      direction: 'left',
+                                                            //      easing: 'cubic-bezier(.7,0,.7,1)',
+                                                            //      duration: 250
 
-                                                             }));
-                                                             RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide()");
+                                                            //  }));
+                                                            //  RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide()");
                                                              // FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
                                                              FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus_Back();
                                                             
@@ -176,32 +163,12 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
                                                           id: 'htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt',
                                                           html: '<font size=2 color=black><b>My Vouchers!</b></font>'
                                                       },
+{
+                xtype: 'spacer',
+                width: 20
+}
 
-
-                                                            {
-                                                                xtype: 'button',
-                                                                hidden: true,
-                                                                id: 'btnFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_CardIcon',
-                                                                height: 30,
-                                                                width: 35,
-                                                                // iconCls: 'list',
-                                                                html: '<div ><img src="resources/icons/membershicardwhite.png" width="25" height="20" alt="Company Name"></div>',
-                                                                ui: 'plain',
-                                                                handler: function () {
-
-                                                                    isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
-
-                                                                    _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide(Ext.fx.Animation({
-                                                                        type: 'slideOut',
-                                                                        direction: 'right',
-                                                                        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                        duration: 250
-
-                                                                    }));
-                                                                    RemovePages(_FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart, "isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen");
-                                                                    //FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AddCardHide();
-                                                                }
-                                                            },
+                                                            
 
 
 
@@ -312,46 +279,175 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
                                                   style: 'background-color:white',
                                                   items: [
                                                       
+{
+    xtype: 'list',
+    id: 'FloatPanel_AyohaRewardVoucherList_AyohaStore_CartListID',
+    store: _DataStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempLoadBySubscriberAccNoEnterpriseAccNoMembershipCardCodeStore,
+
+    width: '100%',
+    mode: 'SINGLE',
+    disableSelection: true,
+
+    cls: 'ayohaVoucherCartList',
+    itemCls: 'ayohaVoucherCartListItem',
+style: 'background:#fff;padding:0;margin:0;',
+    infinite: false,
+    variableHeights: true,
+
+    scrollable: {
+        direction: 'vertical',
+        indicators: {
+            y: { autoHide: true },
+            x: { autoHide: true }
+        }
+    },
+
+    itemTpl:
+    '<div class="ayohaVoucherCard"    style="width:100%;display:block;box-sizing:border-box;">' +
+
+        '<div class="ayohaVoucherImgWrap" style="width:100%;display:block;" onclick="FloatPanel_AyohaRewardVoucherDetailShow(' +
+            "'" + '{VoucherName}' + "'" + ',' +
+            "'" + '{VoucherImgPath}' + "'" + ',' +
+            "'" + '{EntitledVoucherEndDate}' + "'" + ',' +
+            "'" + '{DayLeft}' + "'" + ',' +
+            "'" + '{VoucherCode}' + "'" + ',' +
+            "'" + '{VoucherAmount}' + "'" +
+        ');">' +
+            '<div class="ayohaVoucherImg" style="background-image:url({VoucherImgPath});"></div>' +
+        '</div>' +
+
+        '<div class="ayohaVoucherInfo" onclick="FloatPanel_AyohaRewardVoucherDetailShow(' +
+            "'" + '{VoucherName}' + "'" + ',' +
+            "'" + '{VoucherImgPath}' + "'" + ',' +
+            "'" + '{EntitledVoucherEndDate}' + "'" + ',' +
+            "'" + '{DayLeft}' + "'" + ',' +
+            "'" + '{VoucherCode}' + "'" + ',' +
+            "'" + '{VoucherAmount}' + "'" +
+        ');">' +
+
+            '<div class="ayohaVoucherRow ayohaVoucherLabelRow">' +
+                '<div class="ayohaVoucherLabelLeft">Voucher Campaign</div>' +
+                '<div class="ayohaVoucherLabelRight">Expired:</div>' +
+            '</div>' +
+
+            '<div class="ayohaVoucherRow ayohaVoucherValueRow">' +
+                '<div class="ayohaVoucherName">{VoucherName}</div>' +
+                '<div class="ayohaVoucherExpiry">{EntitledVoucherEndDate}</div>' +
+            '</div>' +
+
+            '<div class="ayohaVoucherRow ayohaVoucherAmountLabelRow">' +
+                '<div class="ayohaVoucherAmountLabel">Voucher Amount (RM)</div>' +
+                '<div class="ayohaVoucherUseText blink_me">Use This Voucher!</div>' +
+            '</div>' +
+
+            '<div class="ayohaVoucherRow ayohaVoucherAmountValueRow">' +
+                '<div class="ayohaVoucherAmount">{VoucherAmount}</div>' +
+                '<div class="ayohaVoucherCheckWrap">' +
+                    '<input type="checkbox" {isThisVoucherUsed} class="largerCheckbox" ' +
+                    'onclick="FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox(this,' +
+                        "'" + '{VoucherCode}' + "'" + ',' +
+                        "'" + '{VoucherAmount}' + "'" +
+                    ')" name="checkbox" />' +
+                '</div>' +
+            '</div>' +
+
+        '</div>' +
+
+    '</div>',
+
+    // itemTpl:
+    //     '<div class="ayohaVoucherCard">' +
+
+    //         // image / voucher preview
+    //         '<div class="ayohaVoucherImgWrap" ' +
+    //             'onclick="FloatPanel_AyohaRewardVoucherDetailShow(' +
+    //                 "'" + '{VoucherName}' + "'" + ',' +
+    //                 "'" + '{VoucherImgPath}' + "'" + ',' +
+    //                 "'" + '{EntitledVoucherEndDate}' + "'" + ',' +
+    //                 "'" + '{DayLeft}' + "'" + ',' +
+    //                 "'" + '{VoucherCode}' + "'" + ',' +
+    //                 "'" + '{VoucherAmount}' + "'" +
+    //             ');">' +
+    //             '<div class="ayohaVoucherImg" style="background-image:url({VoucherImgPath});"></div>' +
+    //         '</div>' +
+
+    //         // info section
+    //         '<div class="ayohaVoucherInfo" ' +
+    //             'onclick="FloatPanel_AyohaRewardVoucherDetailShow(' +
+    //                 "'" + '{VoucherName}' + "'" + ',' +
+    //                 "'" + '{VoucherImgPath}' + "'" + ',' +
+    //                 "'" + '{EntitledVoucherEndDate}' + "'" + ',' +
+    //                 "'" + '{DayLeft}' + "'" + ',' +
+    //                 "'" + '{VoucherCode}' + "'" + ',' +
+    //                 "'" + '{VoucherAmount}' + "'" +
+    //             ');">' +
+
+    //             // row label
+    //             '<div class="ayohaVoucherRow ayohaVoucherLabelRow">' +
+    //                 '<div class="ayohaVoucherLabelLeft">Voucher Campaign</div>' +
+    //                 '<div class="ayohaVoucherLabelRight">Expired:</div>' +
+    //             '</div>' +
+
+    //             // row value
+    //             '<div class="ayohaVoucherRow ayohaVoucherValueRow">' +
+    //                 '<div class="ayohaVoucherName">{VoucherName}</div>' +
+    //                 '<div class="ayohaVoucherExpiry">{EntitledVoucherEndDate}</div>' +
+    //             '</div>' +
+
+    //             // amount row
+    //             '<div class="ayohaVoucherRow ayohaVoucherAmountLabelRow">' +
+    //                 '<div class="ayohaVoucherAmountLabel">Voucher Amount (RM)</div>' +
+    //                 '<div class="ayohaVoucherUseText blink_me">Use This Voucher!</div>' +
+    //             '</div>' +
+
+    //             '<div class="ayohaVoucherRow ayohaVoucherAmountValueRow">' +
+    //                 '<div class="ayohaVoucherAmount">{VoucherAmount}</div>' +
+    //                 '<div class="ayohaVoucherCheckWrap">' +
+    //                     '<input type="checkbox" {isThisVoucherUsed} class="largerCheckbox" ' +
+    //                     'onclick="FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox(this,' +
+    //                         "'" + '{VoucherCode}' + "'" + ',' +
+    //                         "'" + '{VoucherAmount}' + "'" +
+    //                     ')" name="checkbox" />' +
+    //                 '</div>' +
+    //             '</div>' +
+
+    //         '</div>' +
+
+    //     '</div>',
+
+    emptyText: '<div style="padding:16px;background:#fff;color:#888;text-align:center;">No Redeemable Voucher</div>'
+}
 
 
+                                                    //   {
+                                                    //       xtype: 'list',
+                                                    //       store: _DataStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempLoadBySubscriberAccNoEnterpriseAccNoMembershipCardCodeStore,
+                                                    //       id: 'FloatPanel_AyohaRewardVoucherList_AyohaStore_CartListID',
+                                                    //       mode: 'SINGLE',
+                                                    //       style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                                    //       disableSelection: true,
+                                                    //       scrollable: {
+                                                    //           direction: 'vertical',
+                                                    //           indicators: {
+                                                    //               y: {
+                                                    //                   autoHide: true
+                                                    //               },
+                                                    //               x: {
+                                                    //                   autoHide: true
+                                                    //               }
+                                                    //           }
+                                                    //       },
+                                                    //       style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                                    //       itemTpl: '<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:196px;background-color: #fac;background-image: url({VoucherImgPath});background-size: 100% 100%;border-radius: 0px 0px 0px 0px;border:3px dashed grey;">' +
+                                                    //     '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;margin:-15px 0px 0px 0px;" onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;{ModifiedHeaderHeight}" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:-10px 0px 0px 10px;width:100%;text-align:left;font-family:Playball,cursive;font-size:24px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipLevel}</div><br><div style="margin:-34px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedMembershipNo}</div><br><div style="margin:-28px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:16px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedMemberSinceDate}</div><br><div style="margin:-18px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:16px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedUntilDate}</div></td><br><div style="margin:-18px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></table>' +                                                                                      '</div>' +                                                           
+                                                    //       '<br><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="margin:-18px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">Voucher Campaign</div><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="width:100%;text-align:right;margin:-15px 0px 0px -20px">Expired:</div></div>' +
+                                                    //       '<br><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="margin:-24px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">{VoucherName}</div><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="width:100%;text-align:right;margin:-22px 0px 0px -20px;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;">{EntitledVoucherEndDate}</div></div>' +
+                                                    //       '<br><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="margin:-15px 0px 0px 10px;width:100%;text-align:left;color:black;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">Voucher Amount(RM)</div><div style="width:100%;text-align:right;margin:-15px 0px 0px -20px;font-weight:bold;" class="blink_me">Use This Voucher!</div></div>' +
+                                                    //       '<br><div style="margin:-28px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-top: 1px none white;padding:0px 0px"><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');"style="width:50%;text-align:left;color:black;font-family:Arial, sans-serif;font-size:25px;font-weight:bold;">{VoucherAmount}</div><div style="width:100%;text-align:right;margin:-28px 0px 0px -20px;"><input type="checkbox"  {isThisVoucherUsed} class="largerCheckbox" onclick="FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox (this,' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ')" name="checkbox" /></div></div>' +                                                           
+                                                    //       '<br><div style="width:100%;text-align:center;margin:-38px 0px 0px 0px;color:transparent;font-family:Arial, sans-serif;font-size:9px;font-weight:normal;">*Tab to view details</div>',
+                                                    //       width: '100%',
 
-                                                      {
-                                                          xtype: 'list',
-                                                          store: _DataStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempLoadBySubscriberAccNoEnterpriseAccNoMembershipCardCodeStore,
-                                                          id: 'FloatPanel_AyohaRewardVoucherList_AyohaStore_CartListID',
-                                                          mode: 'SINGLE',
-                                                          style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                                          disableSelection: true,
-                                                          scrollable: {
-                                                              direction: 'vertical',
-                                                              indicators: {
-                                                                  y: {
-                                                                      autoHide: true
-                                                                  },
-                                                                  x: {
-                                                                      autoHide: true
-                                                                  }
-                                                              }
-                                                          },
-                                                          style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                                          //itemTpl: '<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:196px;background-color: #fac;background-image: url({VoucherImgPath});background-size: 100% 100%;border-radius: 20px 20px 20px 20px;box-shadow: 5px 2px 18px #888888;">' +
-                                                          itemTpl: '<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:196px;background-color: #fac;background-image: url({VoucherImgPath});background-size: 100% 100%;border-radius: 0px 0px 0px 0px;border:3px dashed grey;">' +
-
-                                                          // '{ModifiedMembershipApprovalStatus}' +
-                                                        '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;margin:-15px 0px 0px 0px;" onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;{ModifiedHeaderHeight}" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:-10px 0px 0px 10px;width:100%;text-align:left;font-family:Playball,cursive;font-size:24px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipLevel}</div><br><div style="margin:-34px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedMembershipNo}</div><br><div style="margin:-28px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:16px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedMemberSinceDate}</div><br><div style="margin:-18px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:16px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedUntilDate}</div></td><br><div style="margin:-18px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></table>' +
-                                                                                      '</div>' +
-                                                                                      // '<br><div style="margin:-20px 0px 0px 0px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-bottom: 1px solid grey;padding:0px 0px">{MembershipCardName}</div>' +
-                                                          '<br><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="margin:-18px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">Voucher Campaign</div><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="width:100%;text-align:right;margin:-15px 0px 0px -20px">Expired:</div></div>' +
-                                                          '<br><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="margin:-24px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">{VoucherName}</div><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="width:100%;text-align:right;margin:-22px 0px 0px -20px;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;">{EntitledVoucherEndDate}</div></div>' +
-
-                                                          '<br><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');" style="margin:-15px 0px 0px 10px;width:100%;text-align:left;color:black;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;">Voucher Amount(RM)</div><div style="width:100%;text-align:right;margin:-15px 0px 0px -20px;font-weight:bold;" class="blink_me">Use This Voucher!</div></div>' +
-                                                          '<br><div style="margin:-28px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-top: 1px none white;padding:0px 0px"><div onclick="FloatPanel_AyohaRewardVoucherDetailShow(' + "'" + '{VoucherName}' + "'" + ',' + "'" + '{VoucherImgPath}' + "'" + ',' + "'" + '{EntitledVoucherEndDate}' + "'" + ',' + "'" + '{DayLeft}' + "'" + ',' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ');"style="width:50%;text-align:left;color:black;font-family:Arial, sans-serif;font-size:25px;font-weight:bold;">{VoucherAmount}</div><div style="width:100%;text-align:right;margin:-28px 0px 0px -20px;"><input type="checkbox"  {isThisVoucherUsed} class="largerCheckbox" onclick="FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox (this,' + "'" + '{VoucherCode}' + "'" + ',' + "'" + '{VoucherAmount}' + "'" + ')" name="checkbox" /></div></div>' +
-                                                            //'<br><div style="margin:-28px 0px 0px 10px;width:100%;text-align:center;color:black;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;border-top: 1px none white;padding:0px 0px"><div style="width:100%;text-align:left;color:black;font-family:Arial, sans-serif;font-size:25px;font-weight:bold;">{VoucherAmount}</div><div style="width:100%;text-align:right;margin:-28px 0px 0px -20px;">{UsedThiVoucher}</div></div>' +
-
-                                                          '<br><div style="width:100%;text-align:center;margin:-38px 0px 0px 0px;color:transparent;font-family:Arial, sans-serif;font-size:9px;font-weight:normal;">*Tab to view details</div>',
-                                                          width: '100%',
-
-                                                      },
+                                                    //   },
                                                   ]
                                               },
 
@@ -374,7 +470,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
                                // width: '100%',
                                 docked: 'bottom',
                                 // hidden:true,
-                                height: 40,
+                                height: 60,
                                 // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
                                 // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
                                 //style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid grey;',
@@ -591,8 +687,6 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
 
 
     });
-    return _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart;
-
 
 
 }
@@ -604,14 +698,41 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart() {
 
 
 
+
+
 function FloatPanel_AyohaRewardVoucherList_AyohaStore_CartShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart());
-    this.overlay.show();
-    //LoadingPanelShow(getLoadingIcon(), 'Loading....');
+    // Ext.Viewport.remove(_FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide()");
+
+
+
+
+
+FloatPanel_AyohaRewardVoucherList_AyohaStore_CartCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.show();
+
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart', function () {
+ 
+    FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(true);
+  });
+}
+
+
+
+
+
+
+
+
     Ext.getCmp('FloatPanel_AyohaRewardVoucherList_AyohaStore_CartListID').setHidden(false);
-    AddRoutePages("FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide()");
     isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'Y';
     globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher = 0;
     globalglobalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_VoucherCode = "";
@@ -625,7 +746,11 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_CartShow() {
           FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus();
       }
     );
-    Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') </font> Redeemable Vouchers!</b></font>');
+   // Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') </font> Redeemable Vouchers!</b></font>');
+    Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml(ayohaTheme_HeaderText('You have  (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') Redeemable Vouchers!'));
+   
+   
+   
     FloatPanel_AyohaRewardVoucherList_AyohaStoreCart_DataStore_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempLoadBySubscriberAccNoEnterpriseAccNoMembershipCardCodeStore();
 }
 
@@ -763,7 +888,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus_B
 
             }
             LoadingPanelHide();
-            FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide();
+            FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(false);
             return;
         }
         globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher = 0.00;
@@ -775,12 +900,15 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus_B
       //  Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_VoucherDiscountLabel').setHtml('<div onclick="FloatPanel_AyohaRewardVoucherList_AyohaStore_CartShow();"  class="blink_me" style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;"><img style="margin:0px 5px -3px 0px;" src="resources/icons/voucher01.png" width="20px" height="16px"/><font color=purple>' + globalFloatPanel_AyohaStore_Cart_VoucherCountOriginal + ' Voucher Available!</font> - Voucher Discount(RM):</div>');
        
        
-        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCountOriginal + ') </font> Redeemable Vouchers!</b></font>');
+       // Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCountOriginal + ') </font> Redeemable Vouchers!</b></font>');
+        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml(ayohaTheme_HeaderText('You have  (' + globalFloatPanel_AyohaStore_Cart_VoucherCountOriginal + ') Redeemable Vouchers!'));
+   
+   
         globalFloatPanel_AyohaStore_Cart_VoucherCount = parseInt(globalFloatPanel_AyohaStore_Cart_VoucherCountOriginal);
        // FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('NewCart');
         //FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('OrderPaid');
        // FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus();
-        FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide();
+        FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(false);
         FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
 
 
@@ -849,7 +977,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus()
               if(isFloatPanel_AyohaStore_CheckOutOpen_ReOrder=='Y'){
                 FloatPanel_AyohaStore_CheckOut_Calculate_GrandTotal_ReOrder();
                 LoadingPanelHide();
-                FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide();
+                FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(false);
                 return
              }
               
@@ -864,7 +992,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus()
 
 
             LoadingPanelHide();
-            FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide();
+            FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(false);
             return;
         }
 
@@ -872,7 +1000,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus()
 
          FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('NewCart');
         //FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('OrderPaid');
-        FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide();
+        FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(false);
 
 
         
@@ -956,15 +1084,37 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatusSi
 }
 
 
-function FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide() {
-    // FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AddCardHide();
-    if (isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen == "Y") {
-        _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide(); isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
-        RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide()");
-      //  FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatus();
-       // FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
-    }
+function FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide(animCfg, fromBack) {
+  
+    // if (isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen == "Y") {
+    //     _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide(); isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaRewardVoucherList_AyohaStore_CartHide()");
+     
+    // }
    
+
+
+
+    
+    
+    if (isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart.hide();
+          }
+         
+          isFloatPanel_AyohaRewardVoucherList_AyohaStore_CartOpen = 'N';
+         
+        
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart');
+          }
+    }
+
 }
 
 var globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher = 0;
@@ -979,8 +1129,9 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox(chec
         globalFloatPanel_AyohaStore_Cart_VoucherCount = parseInt(globalFloatPanel_AyohaStore_Cart_VoucherCount) - 1;
         FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatusSingleTap(VoucherCode, "ShoppingCart");
 
-        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') </font> Redeemable Vouchers!</b></font>');
-       // globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_CountVoucher = globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_CountVoucher + 1;
+       // Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') </font> Redeemable Vouchers!</b></font>');
+        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml(ayohaTheme_HeaderText('You have  (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') Redeemable Vouchers!'));
+        // globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_CountVoucher = globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_CountVoucher + 1;
         if (n) {
 
         } else {
@@ -993,7 +1144,7 @@ function FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_OnChangeCheckbox(chec
     else {
         globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher = parseFloat(globalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TotalAmountVoucher) - parseFloat(VoucherAmount)
         globalFloatPanel_AyohaStore_Cart_VoucherCount = parseInt(globalFloatPanel_AyohaStore_Cart_VoucherCount) + 1;
-        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml('<font size=2 color=black><b>Hi!.You have <font size=3 class="blink_me"> (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') </font> Redeemable Vouchers!</b></font>');
+        Ext.getCmp('htmlFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_TitleHeaderTxt').setHtml(ayohaTheme_HeaderText('You have  (' + globalFloatPanel_AyohaStore_Cart_VoucherCount + ') Redeemable Vouchers!'));
         FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_UpdateVoucherStatusSingleTap(VoucherCode, "Valid");
         var indexs = arrglobalFloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_VoucherCode.indexOf(VoucherCode);
         if (indexs > -1) {

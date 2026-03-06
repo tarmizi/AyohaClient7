@@ -18381,7 +18381,11 @@ function Dashboard_LoadLastCheckIn(){
                AppState.MainDashboard.isMember  = record.get('isMember');
                AppState.MainDashboard.EnterpriseAccNo  = record.get('EnterpriseAccNo');
                AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('CheckIn_MembershipCardCode');
- AppState.MainDashboard.CheckIn_MembershipCardCode_ApprovalStatus  = record.get('CheckIn_MembershipCardCode_ApprovalStatus');
+               AppState.MainDashboard.CheckIn_MembershipCardCode_ApprovalStatus  = record.get('CheckIn_MembershipCardCode_ApprovalStatus');
+               AppState.MainDashboard.CheckIn_EnterpriseName=record.get('EnterpriseName');
+               AppState.MainDashboard.CheckIn_EnterpriseLogo=record.get('EnterpriseLogoPath');
+               AppState.MainDashboard.CheckIn_EnterpriseTagLine=record.get('EnterpriseTagLine');
+               AppState.MainDashboard.CheckIn_EnterpriseFullAddress=record.get('NamaJalan')+','+record.get('Postkod')+' '+record.get('Bandar')+','+record.get('Negeri');
 
                 //  alert('isMember: ' +  record.get('isMember'));
                 //  alert('CheckIn_MembershipCardCode: ' +  record.get('CheckIn_MembershipCardCode'));

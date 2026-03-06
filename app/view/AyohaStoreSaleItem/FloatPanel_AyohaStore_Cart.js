@@ -2829,122 +2829,123 @@ function FloatPanel_AyohaStore_Cart_Delete_CheckOut(ID,ItemPrice,ItemQuantity) {
 
     
     SumPrice=parseFloat(ItemPrice*ItemQuantity);
+    GeneralMsgBox7_CartDelete("Delete Order Item", "Are you sure want to delete?", "FloatPanel_AyohaStore_CheckOutID",ID);
     
-    Swal.fire({
-     title: 'Are you sure want to delete?',
-     //  text: "Delete this card will effect your customer card. They no longer accessible to this card. Think Carefully before proccedd with delete!",
-     //icon: 'warning',
-     //showCancelButton: true,
-     //confirmButtonColor: '#3085d6',
-     //cancelButtonColor: '#d33',
-     imageUrl: "resources/icons/attention1.png",
-     imageWidth: 150,
-     imageHeight: 150,
-     showCloseButton: true,
-     showCancelButton: false,
-     //  confirmButtonColor: '#3085d6',
-     confirmButtonColor: '#9932cc',
-     cancelButtonColor: '#d33',
-     confirmButtonText: 'Yes'
- }).then(function (result) {
-     if (result.isConfirmed) {
+//     Swal.fire({
+//      title: 'Are you sure want to delete?',
+//      //  text: "Delete this card will effect your customer card. They no longer accessible to this card. Think Carefully before proccedd with delete!",
+//      //icon: 'warning',
+//      //showCancelButton: true,
+//      //confirmButtonColor: '#3085d6',
+//      //cancelButtonColor: '#d33',
+//      imageUrl: "resources/icons/attention1.png",
+//      imageWidth: 150,
+//      imageHeight: 150,
+//      showCloseButton: true,
+//      showCancelButton: false,
+//      //  confirmButtonColor: '#3085d6',
+//      confirmButtonColor: '#9932cc',
+//      cancelButtonColor: '#d33',
+//      confirmButtonText: 'Yes'
+//  }).then(function (result) {
+//      if (result.isConfirmed) {
  
-         LoadingPanelShow("resources/icons/delete01.gif", "Delete cart...")
+//          LoadingPanelShow("resources/icons/delete01.gif", "Delete cart...")
  
-         var task = Ext.create('Ext.util.DelayedTask', function () {
-             var objn = {
-                 "ID": ID,
-                 "EnterpriseAccNo": FloatPanel_AyohaStore_getEnterpriseAccNo(),
-                 "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
-                 "MembershipCardCode": globalFloatPanelAyohaStore_AyohaUser_MembershipCardCode
-             };
-             var _value = Ext.Ajax.request({
+//          var task = Ext.create('Ext.util.DelayedTask', function () {
+//              var objn = {
+//                  "ID": ID,
+//                  "EnterpriseAccNo": FloatPanel_AyohaStore_getEnterpriseAccNo(),
+//                  "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
+//                  "MembershipCardCode": globalFloatPanelAyohaStore_AyohaUser_MembershipCardCode
+//              };
+//              var _value = Ext.Ajax.request({
      
-                //  type: "POST",
+//                 //  type: "POST",
      
-                //  url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
+//                 //  url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
      
-                //  dataType: "json",
-                //  data: JSON.stringify(objn),
-                //  headers: {
-                //      "Content-Type": "application/json; charset=utf-8"
-                //  },
+//                 //  dataType: "json",
+//                 //  data: JSON.stringify(objn),
+//                 //  headers: {
+//                 //      "Content-Type": "application/json; charset=utf-8"
+//                 //  },
      
 
 
 
 
-    url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
-            method: 'POST',                 // ✅ betul
-            jsonData: objn,                 // ✅ auto encode JSON + set body
-            headers: {
-              'Content-Type': 'application/json; charset=utf-8'
-            },
+//     url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
+//             method: 'POST',                 // ✅ betul
+//             jsonData: objn,                 // ✅ auto encode JSON + set body
+//             headers: {
+//               'Content-Type': 'application/json; charset=utf-8'
+//             },
 
 
 
-                 success: function (result, request) {
+//                  success: function (result, request) {
      
-                     //console.log(result.responseText);
+//                      //console.log(result.responseText);
      
      
-                     data = Ext.decode(result.responseText.trim());
+//                      data = Ext.decode(result.responseText.trim());
      
-                     if (data.success == "true") {
+//                      if (data.success == "true") {
 
  
-                         if(isFloatPanel_AyohaStore_Cart_AyohaStore_CheckOut_ReOrder == 'Y'){
-                              globalFloatPanel_AyohaStore_Cart_TotalSumPrice=(globalFloatPanel_AyohaStore_Cart_TotalSumPrice-SumPrice.toFixed(2));
-                              FloatPanel_AyohaStore_Cart_AyohaStore_CheckOut_ReOrder();
-                              LoadingPanelHide();
-                              return;
-                          }
+//                          if(isFloatPanel_AyohaStore_Cart_AyohaStore_CheckOut_ReOrder == 'Y'){
+//                               globalFloatPanel_AyohaStore_Cart_TotalSumPrice=(globalFloatPanel_AyohaStore_Cart_TotalSumPrice-SumPrice.toFixed(2));
+//                               FloatPanel_AyohaStore_Cart_AyohaStore_CheckOut_ReOrder();
+//                               LoadingPanelHide();
+//                               return;
+//                           }
  
-                         FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('NewCart');
-                         var task = Ext.create('Ext.util.DelayedTask', function () {
-                             if (isFloatPanel_AyohaStoreOpen == "Y") {
-                                 FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore();
-                             }
-                         });
-                         task.delay(500);
+//                          FloatPanel_AyohaStore_Cart_AyohaStoreCartLoadCartAyohaStore('NewCart');
+//                          var task = Ext.create('Ext.util.DelayedTask', function () {
+//                              if (isFloatPanel_AyohaStoreOpen == "Y") {
+//                                  FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore();
+//                              }
+//                          });
+//                          task.delay(500);
      
      
-                         var task = Ext.create('Ext.util.DelayedTask', function () {
-                             DashboardAyohaUserMainStore();
-                         });
-                         task.delay(500);
+//                          var task = Ext.create('Ext.util.DelayedTask', function () {
+//                              DashboardAyohaUserMainStore();
+//                          });
+//                          task.delay(500);
                        
-                         LoadingPanelHide();
-                         // FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore(FloatPanel_AyohaStore_getEnterpriseAccNo());
+//                          LoadingPanelHide();
+//                          // FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore(FloatPanel_AyohaStore_getEnterpriseAccNo());
      
      
-                     }
-                     else {
+//                      }
+//                      else {
      
-                         swalFireFail("Fail!" + result.responseText.trim());
-                         Ext.Viewport.unmask();
-                         LoadingPanelHide();
-                     }
-                     Ext.Viewport.unmask();
-                     LoadingPanelHide();
-                 },
+//                          swalFireFail("Fail!" + result.responseText.trim());
+//                          Ext.Viewport.unmask();
+//                          LoadingPanelHide();
+//                      }
+//                      Ext.Viewport.unmask();
+//                      LoadingPanelHide();
+//                  },
      
-                 failure: function (result, request) {
-                     swalFireFail("Fail!" + result.responseText.trim());
-                     Ext.Viewport.unmask();
-                     LoadingPanelHide();
-                 }
+//                  failure: function (result, request) {
+//                      swalFireFail("Fail!" + result.responseText.trim());
+//                      Ext.Viewport.unmask();
+//                      LoadingPanelHide();
+//                  }
      
-             });
+//              });
      
      
-             Ext.Viewport.unmask();
-         });
-         task.delay(1000);
+//              Ext.Viewport.unmask();
+//          });
+//          task.delay(1000);
      
  
-     }
- });
+//      }
+//  });
  
  
  

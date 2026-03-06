@@ -52,7 +52,12 @@ var AppState = {
         CheckIn_MembershipCardCode:null,
         CheckIn_MembershipCardCode_ApprovalStatus:null,
       
-    
+               CheckIn_EnterpriseName:null,
+              CheckIn_EnterpriseLogo:null,
+               CheckIn_EnterpriseTagLine:null,
+               CheckIn_EnterpriseFullAddress:null,
+
+
     },
 
 

@@ -7,7 +7,8 @@ var CoreVariable_CheckOutBoxDesign="background-color: white;border-top:1px none 
 
 function FloatPanel_AyohaStore_getEnterpriseAccNo() {
    
-       var EntAccNo;
+       var EntAccNo=AppState.MainDashboard.EnterpriseAccNo;
+       return EntAccNo;
        if (globalFloatPanel_AyohaStore_ModuleTagging == "HotSeatAdvertisement") {
            EntAccNo = globalFloatPanel_PreviewAdvertisement_EnterpriseAccNo;
        }
@@ -75,7 +76,8 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
    function FloatPanel_AyohaStore_getEnterpriseLogo() {
    
    //alert(globalFloatPanel_AyohaStore_ModuleTagging)
-       var EntLogo;
+       var EntLogo=AppState.MainDashboard.CheckIn_EnterpriseLogo;
+        return EntLogo;
        if (globalFloatPanel_AyohaStore_ModuleTagging == "HotSeatAdvertisement") {
            EntLogo = globalFloatPanel_PreviewAdvertisement_EnterpriseLogoPath;
        }
@@ -140,7 +142,7 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
    
        
     //   alert(globalFloatPanelMerchantDetailPage_EnterpriseLogo);
-       return EntLogo;
+      
    }
    
    
@@ -149,7 +151,14 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
    
       
    
-       var EntName;
+       var EntName=AppState.MainDashboard.CheckIn_EnterpriseName;
+       return EntName;
+
+
+
+
+
+
        if (globalFloatPanel_AyohaStore_ModuleTagging == "HotSeatAdvertisement") {
            EntName = globalFloatPanel_PreviewAdvertisement_EnterpriseName;
        }
@@ -219,9 +228,23 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
        return EntName;
    }
    
+    function FloatPanel_AyohaStore_getEnterpriseFullAddress() {
+   
+   
+      
+   
+       var EntNameFullAddress=AppState.MainDashboard.CheckIn_EnterpriseFullAddress;
+       return EntNameFullAddress;
+
+
+
+   }
    function FloatPanel_AyohaStore_getEnterpriseTagLine() {
-      // alert(globalFloatPanel_AyohaStore_ModuleTagging)
-       var EntTagLine;
+     
+       var EntTagLine=AppState.MainDashboard.CheckIn_EnterpriseTagLine;
+ return EntTagLine;
+
+
        if (globalFloatPanel_AyohaStore_ModuleTagging == "HotSeatAdvertisement") {
            EntTagLine = globalFloatPanel_PreviewAdvertisement_AdvertisementTitle;
        }
@@ -275,7 +298,7 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
         EntTagLine = globalFloatPanel_RewardStore_EnterpriseTagLine;
     }
     //  alert(globalFloatPanel_AyohaStore_ModuleTagging)
-       return EntTagLine;
+      
    }
 
 

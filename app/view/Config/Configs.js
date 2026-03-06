@@ -3718,7 +3718,7 @@ bottom:350,
                 //     "Content-Type": "application/json; charset=utf-8"
                 // },
     
-
+             //url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
              url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartDelete',
             method: 'POST',                 // ✅ betul
             jsonData: objn,                 // ✅ auto encode JSON + set body
