@@ -1,46 +1,56 @@
 ﻿Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_DeliveryAddress', {
-    requires: [
-'Ext.carousel.Carousel',
-'Ext.util.DelayedTask',
-'Ext.Video'
-    ],
+  
 });
 
-var _FloatPanel_AyohaStore_DeliveryAddress;
+var _FloatPanel_AyohaStore_DeliveryAddress=null;
 
 
 var isFloatPanel_AyohaStore_DeliveryAddressOpen = 'N';
 
 
 
-
-
-function FloatPanel_AyohaStore_DeliveryAddress() {
-
-    _FloatPanel_AyohaStore_DeliveryAddress =
+    
+function FloatPanel_AyohaStore_DeliveryAddressCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_DeliveryAddress && !_FloatPanel_AyohaStore_DeliveryAddress.destroyed) return;
+   _FloatPanel_AyohaStore_DeliveryAddress =
      Ext.create('Ext.Panel', {
-         zIndex: 360,
-         xtype: 'container',
-         // height: '50%',
-         width: '95%',
-         height: 490,
-         //width: 280,
-         id: 'LoadingFloatPanel_AyohaStore_DeliveryAddressID',
-        // name: 'nameFloatPanel_AyohaStore_DeliveryAddressID',
-         draggable: false,
-         hideOnMaskTap: true,
-         requires: [
-      'Ext.util.DelayedTask'
-         ],
+ id: 'LoadingFloatPanel_AyohaStore_DeliveryAddressID',
+floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: true,
+        styleHtmlContent: true,
+        width: '90%',
+         height: 520,
+        layout: 'fit',
 
 
-         centered: true,
-         //bottom: 64,         
-         modal: true,
-         // hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
+
+    //      zIndex: 360,
+    //      xtype: 'container',
+    //      // height: '50%',
+    //      width: '95%',
+    //      height: 490,
+    //      //width: 280,
+    //      id: 'LoadingFloatPanel_AyohaStore_DeliveryAddressID',
+    //     // name: 'nameFloatPanel_AyohaStore_DeliveryAddressID',
+    //      draggable: false,
+    //      hideOnMaskTap: true,
+    //      requires: [
+    //   'Ext.util.DelayedTask'
+    //      ],
+
+
+    //      centered: true,
+    //      //bottom: 64,         
+    //      modal: true,
+    //      // hideOnMaskTap: true,
+    //      layout: {
+    //          type: 'fit'
+    //      },
          showAnimation: {
              type: 'popIn',
              duration: 150,
@@ -65,49 +75,6 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
 
 
 
-
-         listeners: {
-             initialize: function (c) {
-                 this.element.on({
-                     swipe: function (e, node, options) {
-
-                         if (e.direction == "left") {
-                             _FloatPanel_AyohaStore_DeliveryAddress.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'left',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaStore_DeliveryAddressOpen = 'N';
-                             RemovePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
-                         } if (e.direction == "right") {
-                             _FloatPanel_AyohaStore_DeliveryAddress.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'right',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaStore_DeliveryAddressOpen = 'N';
-                             RemovePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
-                         }
-                       
-                     },
-
-
-
-                 }
-
-
-
-                 );
-
-             },
-
-
-
-         },
 
 
          //  style: "background-color: #D25959;",
@@ -168,11 +135,8 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
                              xtype: 'container',
                              width: '100%',
                              docked: 'top',
-                             // width: 40,
-                             style: ' background-color:transparent;',
-                             //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-                             //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                             //hidden: true,
+                             height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
 
                              id: 'containerFloatPanel_AyohaStore_DeliveryAddressHeader',
                              //style: {
@@ -184,8 +148,8 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
                              // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                              layout: {
                                  type: 'hbox',
-                                 pack: 'left',
-                                 align: 'left',
+                                pack: 'center',
+                                    align: 'center',
                              },
                              // hidden:true,
                              items:
@@ -196,22 +160,14 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
                                                       xtype: 'button',
                                                       id: 'btnFloatPanel_AyohaStore_DeliveryAddressBack',
                                                       height: 30,
-                                                      width: 35,
+                                                      width: 65,
+                                                       margin: '0 0 0 10',
                                                       // iconCls: 'list',
-                                                      html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
+                                                     html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                       ui: 'plain',
                                                       handler: function () {
-
-                                                          _FloatPanel_AyohaStore_DeliveryAddress.hide(Ext.fx.Animation({
-                                                              type: 'slideOut',
-                                                              direction: 'left',
-                                                              easing: 'cubic-bezier(.7,0,.7,1)',
-                                                              duration: 250
-
-                                                          }));
-                                                          isFloatPanel_AyohaStore_DeliveryAddressOpen = 'N';
-                                                          RemovePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
-
+FloatPanel_AyohaStore_DeliveryAddressHide(false);
+                                                        
                                                       }
                                                   },
 
@@ -221,10 +177,11 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
 
 
                                                    {
-                                                       margin: '0 0 0 0',
+                                                       margin: '0 15 0 0',
                                                        id: 'htmlFloatPanel_AyohaStore_DeliveryAddress_TitleHeaderTxt',
+                                                        html:ayohaTheme_HeaderText('Shipping Address'),
                                                        //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
-                                                       html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Shipping Address</div>',
+                                                      // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Shipping Address</div>',
 
                                                        //  html: '<font size=2 color=white><b>Review By Tarmizi Bin Rahim</b></font>'
                                                    },
@@ -706,7 +663,7 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
       xtype: 'container',
       width: '100%',
       docked: 'bottom',
-      height: 45,
+      height: 60,
      // style: 'background-color:white;border-top:1px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);',
       style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #f0f2f5;',
       id: 'containerFloatPanel_AyohaStore_DeliveryAddressFooter',
@@ -718,7 +675,7 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
       //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
       // style: 'border-bottom:2px solid #D25959;background-color:transparent',
       layout: {
-          type: 'hbox',
+          type: 'vbox',
           pack: 'center',
           align: 'right',
       },
@@ -729,7 +686,7 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
                   {
                       id: 'htmFloatPanel_AyohaStore_DeliveryAddress_OK',
                       //margin: '-27 0 0 0',
-                      margin: '3 0 0 0',
+                      margin: '2 15 0 0',
                       html: '<button OnClick="FloatPanel_AyohaStore_DeliveryAddressOK()" class="buttonPayNow">OK</button>'
 
 
@@ -751,11 +708,7 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
 
 
                   //},
-                          {
-                              xtype: 'panel',
-                              width: 10
-                          },
-
+                        
                             
 
 
@@ -798,22 +751,35 @@ function FloatPanel_AyohaStore_DeliveryAddress() {
 
 
      });
-    return _FloatPanel_AyohaStore_DeliveryAddress;
-
-
-
-
-
 }
 
 
 
 function FloatPanel_AyohaStore_DeliveryAddressShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_DeliveryAddress);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_DeliveryAddress());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_DeliveryAddress);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_DeliveryAddress());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+
+
+
+FloatPanel_AyohaStore_DeliveryAddressCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore_DeliveryAddress.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_DeliveryAddress', function () {
+ 
+    FloatPanel_AyohaStore_DeliveryAddressHide(true);
+  });
+}
+
+
+
+
     isFloatPanel_AyohaStore_DeliveryAddressOpen = 'Y';
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressList').setHidden(true);
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressDetail').setHidden(false);
@@ -837,10 +803,24 @@ function FloatPanel_AyohaStore_DeliveryAddressShow() {
 
 function FloatPanel_AyohaStore_DeliveryAddressShow_FromCheckOut() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_DeliveryAddress);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_DeliveryAddress());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_DeliveryAddress);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_DeliveryAddress());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+
+
+
+_FloatPanel_AyohaStore_DeliveryAddress.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_DeliveryAddress', function () {
+ 
+    FloatPanel_AyohaStore_DeliveryAddressHide(true);
+  });
+}
+
+
+
     isFloatPanel_AyohaStore_DeliveryAddressOpen = 'Y';
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressList').setHidden(true);
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressDetail').setHidden(false);
@@ -864,10 +844,34 @@ function FloatPanel_AyohaStore_DeliveryAddressShow_FromCheckOut() {
 
 function FloatPanel_AyohaStore_DeliveryAddressShow_History() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_DeliveryAddress);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_DeliveryAddress());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_DeliveryAddress);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_DeliveryAddress());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+
+
+
+
+
+FloatPanel_AyohaStore_DeliveryAddressCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore_DeliveryAddress.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_DeliveryAddress', function () {
+ 
+    FloatPanel_AyohaStore_DeliveryAddressHide(true);
+  });
+}
+
+
+
+
+
+
+
     isFloatPanel_AyohaStore_DeliveryAddressOpen = 'Y';
     FloatPanel_AyohaStore_DeliveryAddress_AyohaStoreShippingAddressLoadBySubscriberAccNoStore();
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressList').setHidden(false);
@@ -885,11 +889,28 @@ function FloatPanel_AyohaStore_DeliveryAddressShow_History() {
 
 
 
-function FloatPanel_AyohaStore_DeliveryAddressHide() {
+function FloatPanel_AyohaStore_DeliveryAddressHide(animCfg, fromBack) {
+   
+
+
+    
+
     if (isFloatPanel_AyohaStore_DeliveryAddressOpen == 'Y') {
-        _FloatPanel_AyohaStore_DeliveryAddress.hide(); isFloatPanel_AyohaStore_DeliveryAddressOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_DeliveryAddressHide()");
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_DeliveryAddress.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_DeliveryAddress.hide();
+          }
+          isFloatPanel_AyohaStore_DeliveryAddressOpen = 'N';
+          
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_DeliveryAddress');
+          }
     }
+
 }
 
 
@@ -959,16 +980,24 @@ function FloatPanel_AyohaStore_DeliveryAddressOK() {
         };
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
+
+            // url: GetAPIurl() + '/AyohaStore_ShippingAddress/AyohaStoreShippingAddressInsertUpdate',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
 
             url: GetAPIurl() + '/AyohaStore_ShippingAddress/AyohaStoreShippingAddressInsertUpdate',
-
-            dataType: "json",
-            data: JSON.stringify(objn),
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
-
             success: function (result, request) {
 
                 //console.log(result.responseText);
@@ -978,7 +1007,7 @@ function FloatPanel_AyohaStore_DeliveryAddressOK() {
 
                 if (data.success == "true") {
 
-                    FloatPanel_AyohaStore_DeliveryAddressHide();
+                    FloatPanel_AyohaStore_DeliveryAddressHide(false);
 
                     if (isFloatPanel_AyohaStore_CheckOutOpen == 'Y') {
                         document.getElementById('input-FloatPanel_AyohaStore_CheckOut_ShippingAddress').value = StreetName + '\n' + PostCode + ' ' + TownCity + '\n' + State + '.' + Country;
@@ -1012,17 +1041,17 @@ function FloatPanel_AyohaStore_DeliveryAddressOK() {
 
                     swalFireFail("Fail!");
                     Ext.Viewport.unmask();
-                    LoadingPanelHide();
+                    LoadingPanelHide(false);
                 }
                 Ext.Viewport.unmask();
-                LoadingPanelHide();
+                LoadingPanelHide(false);
 
             },
 
             failure: function (result, request) {
                 swalFireFail("Fail!");
                 Ext.Viewport.unmask();
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
 
         });

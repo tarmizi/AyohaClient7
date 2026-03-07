@@ -3226,16 +3226,24 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
             console.log(objn);
             var _value = Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+                // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+
+           url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
                 success: function (result, request) {
     
                     //console.log(result.responseText);
@@ -4412,7 +4420,8 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
         if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
     
         } else {
-            swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+           // swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            swalFireFail("Delivery Type Is Required !");
             return
         }
     
@@ -4628,7 +4637,8 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
         if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
     
         } else {
-            swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            //swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            swalFireFail("Delivery Type Is Required !");
             return
         }
     
@@ -4970,7 +4980,8 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
         if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
     
         } else {
-            swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            swalFireFail("Delivery Type Is Required !");
+            //swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
             return
         }
     
@@ -5432,16 +5443,25 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
             console.log(objn);
             var _value = Ext.Ajax.request({
     
-                type: "POST",
+                // type: "POST",
     
-                url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+                // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
     
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+                // dataType: "json",
+                // data: JSON.stringify(objn),
+                // headers: {
+                //     "Content-Type": "application/json; charset=utf-8"
+                // },
     
+
+
+
+            url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8'
+            },
                 success: function (result, request) {
     
                     //console.log(result.responseText);

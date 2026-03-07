@@ -864,7 +864,8 @@ function FloatPanel_OrderCart_CheckOutStaging() {
     if (val) {
         FloatPanel_AyohaStore_CheckOutShow();
     } else {
+         swalFireFail("Delivery Type Is Required !");
         //  swalFireSuccesDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !");
-        swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+       // swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
     }
 }

@@ -2353,37 +2353,48 @@ function swalFireFailLogin() {
 
 
   function swalFireFail(Msg) {
-    event.preventDefault();
+
+
+ErrorMessagesOverlayShow(Msg);
+
+return;
+
+
+
+
+
+
+//     event.preventDefault();
   
-  var nMssg=Msg.replace("Save Failed!!!<br>","");
-      Swal.fire({
-        title: '<font size=5 color=black>Error!</font><br><font size=3 color=grey>' + nMssg.replace("size=2","size=3") + '</font><br>',
-        //  title: '<font size=4 color=black>Error!</font><br>',
-       //   text: Msg,
-      //     width:200,
-      height:200,
-        width: '400px', /*set width container*/
-         //height: '150px', /*set width container*/
-          imageUrl: "resources/icons/wired-gradient-1140-error.gif",
-         imageWidth: 200,
-         imageHeight: 200,
-          showCloseButton: true,
-          showCancelButton: false,
-          //  confirmButtonColor: '#3085d6',
-          confirmButtonColor: 'purple',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'OK',
-          footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
-      }).then(function (result) {
-          if (result.isConfirmed) {
+//   var nMssg=Msg.replace("Save Failed!!!<br>","");
+//       Swal.fire({
+//         title: '<font size=5 color=black>Error!</font><br><font size=3 color=grey>' + nMssg.replace("size=2","size=3") + '</font><br>',
+//         //  title: '<font size=4 color=black>Error!</font><br>',
+//        //   text: Msg,
+//       //     width:200,
+//       height:200,
+//         width: '400px', /*set width container*/
+//          //height: '150px', /*set width container*/
+//           imageUrl: "resources/icons/wired-gradient-1140-error.gif",
+//          imageWidth: 200,
+//          imageHeight: 200,
+//           showCloseButton: true,
+//           showCancelButton: false,
+//           //  confirmButtonColor: '#3085d6',
+//           confirmButtonColor: 'purple',
+//           cancelButtonColor: '#d33',
+//           confirmButtonText: 'OK',
+//           footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
+//       }).then(function (result) {
+//           if (result.isConfirmed) {
   
   
   
-          }
-      });
+//           }
+//       });
   
   
-      Ext.Viewport.unmask();
+//       Ext.Viewport.unmask();
   }
 
 

@@ -11,7 +11,8 @@ var isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
     
 function FloatPanel_AyohaStore_PaymentMethodListCreateIfNeeded() {
     if (_FloatPanel_AyohaStore_PaymentMethodList && !_FloatPanel_AyohaStore_PaymentMethodList.destroyed) return;
-  _FloatPanel_AyohaStore_PaymentMethodList =
+ 
+    _FloatPanel_AyohaStore_PaymentMethodList =
      Ext.create('Ext.Container', {
 
 id: 'LoadingFloatPanel_AyohaStore_PaymentMethodListID',

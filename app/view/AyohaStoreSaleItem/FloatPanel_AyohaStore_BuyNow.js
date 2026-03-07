@@ -2092,16 +2092,24 @@ function FloatPanel_AyohaStore_BuyNow_OrderOnly_SendOrder() {
         console.log(objn);
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
 
-            url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+            // url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
 
-            dataType: "json",
-            data: JSON.stringify(objn),
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
+
+           url: GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderInsert',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
-
             success: function (result, request) {
 
                 //console.log(result.responseText);

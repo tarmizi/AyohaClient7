@@ -2217,7 +2217,7 @@ xtype: 'container',
                             width: '100%',
                             hidden: true,
                           //  margin: '20 0 0 0',
-                            height: 150,
+                            height: 145,
                             id:'containerFloatPanel_AyohaStore_CheckOut_ShippingAddress_Main',
                             style: "background-color: white;",
                             layout: {
@@ -2230,7 +2230,7 @@ xtype: 'container',
                                     xtype: 'container',
                                     width: '100%',
                                   //  margin: '20 0 0 0',
-                                    height: 143,
+                                    height: 140,
                                     style: CoreVariable_CheckOutBoxDesign,         
                                    // style: "background-color: transparent;border-top:1px solid grey;border-left:1px solid grey;border-bottom:1px solid grey;border-right:1px solid grey;box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);",
                                     layout: {
@@ -2244,7 +2244,7 @@ xtype: 'container',
                                             xtype: 'container',
                                             width: '100%',
                                            // margin: '45 0 0 0',
-                                            height: 95,
+                                            height: 120,
                                            // hidden:true,
                                             layout: {
                                                 type: 'vbox',
@@ -2281,7 +2281,7 @@ xtype: 'container',
                                                         {
                                                             xtype: 'button',
                                                             ui: 'plain',
-                                                            width: 30,
+                                                            width: 55,
                                                             height: 30,
                                                             margin: '1 0 0 0',
                                                             id: 'btnFloatPanel_AyohaStore_CheckOut_DeliveryAddressHistory',
@@ -2295,7 +2295,7 @@ xtype: 'container',
                                                         {
                                                             xtype: 'button',
                                                             ui: 'plain',
-                                                            width: 30,
+                                                            width: 55,
                                                             height: 30,
                                                             margin: '1 0 0 0',
                                                             id: 'btnFloatPanel_AyohaStore_CheckOut_DeliveryAddressHistory_Edit',
@@ -2316,7 +2316,7 @@ xtype: 'container',
                                                    xtype: 'container',
                                                    width: '100%',
                                                    margin:'0 0 0 0',
-                                                   height: 70,
+                                                   height: 100,
                                                   // hidden:true,
                                                    style: "background-color: transparent;",
                                                    //style: "background-color: white;border-right:1px solid #ECF0F1;border-left:1px solid #ECF0F1;border-bottom:1px solid #ECF0F1;border-top:1px solid #ECF0F1;border-radius: 10px 10px 10px 10px;",
@@ -2332,9 +2332,9 @@ xtype: 'container',
                                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_ShippingAddress',
                                                             width: '97%',
                                                            // hidden:true,
-                                                            height: 65,
+                                                            height: 70,
                                                             // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
-                                                            html: '<textarea   onclick="FloatPanel_AyohaStore_CheckOut_ShippingAddress_ReEditAddress()"  readOnly  id="input-FloatPanel_AyohaStore_CheckOut_ShippingAddress" style="width:100%;height:70px;padding: 2px 2px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
+                                                            html: '<textarea   onclick="FloatPanel_AyohaStore_CheckOut_ShippingAddress_ReEditAddress()"  readOnly  id="input-FloatPanel_AyohaStore_CheckOut_ShippingAddress" style="width:100%;height:65px;padding: 2px 2px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
                                                             // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  rows="25" cols="60">'
 
                                                         },
@@ -2344,8 +2344,8 @@ xtype: 'container',
                                                           //  hidden:true,
                                                             // margin: '0 0 0 0',
                                                             //zIndex:100,
-                                                            margin: '7 0 0 0',
-                                                            // height: 20,
+                                                            margin: '0 0 0 0',
+                                                            height: 20,
                                                             style: 'background-color:transparent;',
                                                             layout: {
                                                                 type: 'hbox',
@@ -2356,7 +2356,7 @@ xtype: 'container',
                                                             items: [
                                                                  {
                                                                      xtype: 'panel',
-                                                                     width: 7
+                                                                     width: 10
                                                                  },
                                                                {
                                                                    //  margin: '16 0 0 14',
@@ -2373,7 +2373,7 @@ xtype: 'container',
                                                                 },
                                                                {
                                                                    xtype: 'panel',
-                                                                   width: 7
+                                                                   width: 10
                                                                }
                                                             ]
                                                         },
@@ -4012,8 +4012,15 @@ mainHeightInner= mainHeight-12;
 
     var globalFloatPanel_AyohaStore_CheckOut_PaymentMethod;
     function Staging_FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert() {
-      //  alert('Staging_FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert'+globalFloatPanel_AyohaStore_CheckOut_OrderStatus);
-        // return;
+   //    alert('Staging_FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert'+globalFloatPanel_AyohaStore_CheckOut_OrderStatus);
+        
+       
+       // return;
+
+
+
+
+
         
         if (isFloatPanel_AyohaStore_CheckOutOpen=='Y')
        {
@@ -4025,18 +4032,49 @@ mainHeightInner= mainHeight-12;
        }
     
 if(globalFloatPanel_AyohaStore_CheckOut_PaymentMethod=="Pay With Online Banking"){
+    
+  var add = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_ShippingAddress').value;
+    var PaymentMethod = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentMethod').value;
+    
+
+
+        if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
+    
+        } else {
+            //swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            swalFireFail("Delivery Type Is Required !");
+            return
+        }
+        
+        if (add) {
+    
+        } else {
+            swalFireFail("Shipping Address required!");
+            return;
+        }
+    
+        if (PaymentMethod) {
+    
+        } else {
+            swalFireFail("Payment Method Required !");
+            return;
+        }
+
     ProductInvoice_MakePaymentAyohaOnlineStore();
     return;
 }
 
 
+//alert(globalFloatPanel_AyohaStore_CheckOut_OrderStatus)
+
+        // if (globalDashboardisUserHasEwalletAccount == "N") {
+
+        //   //  FloatPanel_AyohaeWallet_SettingShow_CreateNewAccount();
+        //    // FloatPanel_AyohaeWalletHide();
+        //     return;
+        // }
 
 
-        if (globalDashboardisUserHasEwalletAccount == "N") {
-            FloatPanel_AyohaeWallet_SettingShow_CreateNewAccount();
-            FloatPanel_AyohaeWalletHide();
-            return;
-        }
         if (globalFloatPanel_AyohaStore_CheckOut_OrderStatus == "OrderPaid") {
           //  FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_ReOrder_MakePayment();
     
@@ -5825,7 +5863,8 @@ else{
         if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
     
         } else {
-            swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+          //  swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            swalFireFail("Delivery Type Is Required !");
             return
         }
     
@@ -6050,11 +6089,18 @@ else{
         if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
     
         } else {
-            swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+           // swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+          swalFireFail("Delivery Type Is Required !");
             return
         }
-    
-    
+
+    if(add){
+
+    }else
+    {
+ swalFireFail("Address is Required !");
+            return;
+    }
         if (PaymentMethod) {
     
         } else {
@@ -6092,12 +6138,7 @@ else{
         
     
     
-        if (add) {
-    
-        } else {
-            swalFireFail("Shipping Address required!");
-            return;
-        }
+        
         if (Note) {
             Note = Note;
     
@@ -6367,7 +6408,7 @@ else{
         globalFloatPanel_AyohaeWallet_Passcode_CheckingTaggingModule = "FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert";
         var Note = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_NoteToSeller').value;
         var add = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_ShippingAddress').value;
-    
+    var PaymentMethod = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentMethod').value;
     
     
     
@@ -6375,7 +6416,7 @@ else{
     
         var curreWalletBal = parseFloat(globalDashboardeWalletCurrentBalance);
         document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentAmountCaptured').value = globalFloatPanel_AyohaStore_CheckOut_GrandTotal;
-        var PaymentMethod = document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentMethod').value;
+        
     
     
         var PaymentAmount = parseFloat(document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentAmountCaptured').value);
@@ -6400,8 +6441,16 @@ else{
         if (globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode) {
     
         } else {
-            swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            //swalFireDynamicIconWithMessage("resources/icons/DeliveryTypeRed.png", "Delivery Type Is Required !", "red", "red");
+            swalFireFail("Delivery Type Is Required !");
             return
+        }
+        
+        if (add) {
+    
+        } else {
+            swalFireFail("Shipping Address required!");
+            return;
         }
     
         if (PaymentMethod) {
@@ -6445,12 +6494,6 @@ else{
     
     
     
-        if (add) {
-    
-        } else {
-            swalFireFail("Shipping Address required!");
-            return;
-        }
         if (Note) {
             Note = Note;
     
@@ -6730,7 +6773,7 @@ else{
     
     
     function FloatPanel_AyohaStore_CheckOut_ViewReceipt() {
-        alert('sdfds')
+      //  alert('sdfds')
     }
     
     
