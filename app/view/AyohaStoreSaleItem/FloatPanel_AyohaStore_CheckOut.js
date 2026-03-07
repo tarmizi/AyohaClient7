@@ -2285,7 +2285,7 @@ xtype: 'container',
                                                             height: 30,
                                                             margin: '1 0 0 0',
                                                             id: 'btnFloatPanel_AyohaStore_CheckOut_DeliveryAddressHistory',
-                                                            html: '<img src="resources/icons/History01.png" width="20" height="20" alt="Company Name">',
+                                                            html: '<img src="resources/icons/History01.png"     style="width:20px;height:20px;margin:0px 0px 0px 0px;" alt="Company Name">',
                                                             handler: function () {
                                                                 FloatPanel_AyohaStore_DeliveryAddressShow_History();
                                                              
@@ -2299,7 +2299,7 @@ xtype: 'container',
                                                             height: 30,
                                                             margin: '1 0 0 0',
                                                             id: 'btnFloatPanel_AyohaStore_CheckOut_DeliveryAddressHistory_Edit',
-                                                            html: '<img src="resources/icons/editReview.png" width="20" height="20" alt="Company Name">',
+                                                            html: '<img src="resources/icons/editReview.png"     style="width:20px;height:20px;margin:0px 0px 0px 0px;" alt="Company Name">',
                                                             handler: function () {
 
                                                                 FloatPanel_AyohaStore_DeliveryAddressShow();
@@ -2308,7 +2308,7 @@ xtype: 'container',
                                                         },
                                                         {
                                                             xtype: 'panel',
-                                                            width: 20
+                                                            width: 10
                                                         }
                                                      ]
                                                  },

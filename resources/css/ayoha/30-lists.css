@@ -1222,3 +1222,41 @@
   padding:10px 12px 14px 12px;
   cursor:pointer;
 }
+
+
+
+
+
+
+
+
+
+.stateMasterList,
+.stateMasterList .x-listitem,
+.stateMasterList .x-listitem-body-el,
+.stateMasterList .x-innerhtml{
+    background: #ffffff !important;
+}
+
+.stateMasterList .x-listitem{
+    width: 100% !important;
+    border: none !important;
+}
+
+.stateMasterList .x-listitem-body-el{
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.stateMasterListItem{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 12px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+}

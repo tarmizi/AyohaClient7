@@ -18,13 +18,13 @@ function FloatPanel_AyohaStore_DeliveryAddressCreateIfNeeded() {
 floated: true,
         centered: true,
         fullscreen: true,
-        closeAction: 'hide',
-      // closeAction: 'destroy',
+       // closeAction: 'hide',
+       closeAction: 'destroy',
         draggable: false,
         modal: true,
         styleHtmlContent: true,
         width: '90%',
-         height: 520,
+         height: 630,
         layout: 'fit',
 
 
@@ -53,7 +53,7 @@ floated: true,
     //      },
          showAnimation: {
              type: 'popIn',
-             duration: 150,
+             duration: 250,
              easing: 'ease-out'
          },
          hideAnimation: {
@@ -63,7 +63,7 @@ floated: true,
              //duration: 250
 
              type: 'popOut',
-             duration: 150,
+             duration: 250,
              easing: 'ease-out'
          },
 
@@ -119,7 +119,7 @@ floated: true,
                 id: 'FloatPanel_AyohaStore_DeliveryAddressBorderBg',
                 docked: 'top',
                 //   style: 'background-image: url("resources/icons/mileageClaimBorder2.png"); background-size: 100% 100%;background-repeat:no-repeat',
-                style: ' background-color:transparent;',
+                style: 'background-color:transparent;',
                 height: '100%',
                 width: '100%',
                 // style: 'border:2px solid #D25959;',
@@ -230,7 +230,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                          {
                              xtype: 'container',
                              width: '100%',
-                             height: 520,
+                             height: 600,
                              id: 'containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressDetail',
                              layout: {
                                  type: 'vbox',
@@ -246,7 +246,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                      xtype: 'container',
                                      width: '100%',
                                      margin: '0 0 0 0',
-                                     height: 55,
+                                     height: 70,
                                      layout: {
                                          type: 'vbox',
                                          pack: 'start',
@@ -258,10 +258,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                          {
                                              xtype: 'container',
                                              width: '100%',
-                                             // height: 30,
+                                             height: 70,
                                              layout: {
                                                  type: 'vbox',
-                                                 pack: 'center',
+                                                 pack: 'start',
                                                  align: 'left'
 
                                              },
@@ -278,7 +278,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                                       width: '95%',
                                                       // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
                                                       // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
-                                                      html: '<input type="text" id="input-FloatPanel_AyohaStore_DeliveryAddress_StreetName"   style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border-top: 1px none #ccc;border-bottom: 1px solid #ccc;border-left: 1px none #ccc;border-right: 1px none #ccc;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:left;margin:0px 0px 0px 0px"  placeholder="House No And Street Name">',
+                                                      html: '<input type="text" id="input-FloatPanel_AyohaStore_DeliveryAddress_StreetName"   style="width:100%;height: 35px;padding: 5px 5px;box-sizing: border-box;border-top: 1px none #ccc;border-bottom: 1px solid #ccc;border-left: 1px none #ccc;border-right: 1px none #ccc;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:left;margin:0px 0px 0px 0px"  placeholder="House No And Street Name">',
                                                   },
 
                                              ]
@@ -290,7 +290,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                      xtype: 'container',
                                      width: '100%',
                                      margin: '0 0 0 0',
-                                     height: 55,
+                                     height: 70,
                                      layout: {
                                          type: 'vbox',
                                          pack: 'start',
@@ -302,10 +302,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                          {
                                              xtype: 'container',
                                              width: '100%',
-                                             // height: 30,
+                                            height: 70,
                                              layout: {
                                                  type: 'vbox',
-                                                 pack: 'center',
+                                                 pack: 'start',
                                                  align: 'left'
 
                                              },
@@ -334,7 +334,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                      xtype: 'container',
                                      width: '100%',
                                      margin: '0 0 0 0',
-                                     height: 55,
+                                      height: 70,
                                      layout: {
                                          type: 'vbox',
                                          pack: 'start',
@@ -346,10 +346,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                          {
                                              xtype: 'container',
                                              width: '100%',
-                                             // height: 30,
+                                             height: 70,
                                              layout: {
                                                  type: 'vbox',
-                                                 pack: 'center',
+                                                 pack: 'start',
                                                  align: 'left'
 
                                              },
@@ -378,7 +378,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                      xtype: 'container',
                                      width: '100%',
                                      margin: '0 0 0 0',
-                                     height: 55,
+                                     height: 70,
                                      layout: {
                                          type: 'vbox',
                                          pack: 'start',
@@ -390,10 +390,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                          {
                                              xtype: 'container',
                                              width: '100%',
-                                             // height: 30,
+                                             height: 70,
                                              layout: {
                                                  type: 'vbox',
-                                                 pack: 'center',
+                                                 pack: 'start',
                                                  align: 'left'
 
                                              },
@@ -422,7 +422,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                         xtype: 'container',
                                         width: '100%',
                                         margin: '0 0 0 0',
-                                        height: 55,
+                                        height: 70,
                                         layout: {
                                             type: 'vbox',
                                             pack: 'start',
@@ -434,10 +434,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                             {
                                                 xtype: 'container',
                                                 width: '100%',
-                                                // height: 30,
+                                                height: 70,
                                                 layout: {
                                                     type: 'vbox',
-                                                    pack: 'center',
+                                                    pack: 'start',
                                                     align: 'left'
 
                                                 },
@@ -454,7 +454,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                                          width: '95%',
                                                          // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
                                                          // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
-                                                         html: '<input type="text" id="input-FloatPanel_AyohaStore_DeliveryAddress_Country" readOnly onclick="FloatPanel_CountryShow()" style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border-top: 1px none #ccc;border-bottom: 1px solid #ccc;border-left: 1px none #ccc;border-right: 1px none #ccc;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:left;margin:0px 0px 0px 0px"  placeholder="---Select Country---">',
+                                                         html: '<input type="text" id="input-FloatPanel_AyohaStore_DeliveryAddress_Country" readOnly  style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border-top: 1px none #ccc;border-bottom: 1px solid #ccc;border-left: 1px none #ccc;border-right: 1px none #ccc;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:left;margin:0px 0px 0px 0px" value="MALAYSIA" placeholder="---Select Country---">',
                                                      },
 
                                                 ]
@@ -467,7 +467,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                      xtype: 'container',
                                      width: '100%',
                                      margin: '0 0 0 0',
-                                     height: 55,
+                                     height: 70,
                                      layout: {
                                          type: 'vbox',
                                          pack: 'start',
@@ -479,10 +479,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                          {
                                              xtype: 'container',
                                              width: '100%',
-                                             // height: 30,
+                                             height: 70,
                                              layout: {
                                                  type: 'vbox',
-                                                 pack: 'center',
+                                                 pack: 'start',
                                                  align: 'left'
 
                                              },
@@ -511,7 +511,7 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                      xtype: 'container',
                                      width: '100%',
                                      margin: '0 0 0 0',
-                                     height: 55,
+                                     height: 70,
                                      layout: {
                                          type: 'vbox',
                                          pack: 'start',
@@ -523,10 +523,10 @@ FloatPanel_AyohaStore_DeliveryAddressHide(false);
                                          {
                                              xtype: 'container',
                                              width: '100%',
-                                             // height: 30,
+                                             height: 70,
                                              layout: {
                                                  type: 'vbox',
-                                                 pack: 'center',
+                                                 pack: 'start',
                                                  align: 'left'
 
                                              },
@@ -784,8 +784,12 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressList').setHidden(true);
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressDetail').setHidden(false);
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddressFooter').setHidden(false);
-    
-   // FloatPanel_AyohaStore_DeliveryAddress_AyohaStoreShippingAddressLoadBySubscriberAccNoStore();
+     Ext.getCmp('htmlFloatPanel_AyohaStore_DeliveryAddress_TitleHeaderTxt').setHtml(ayohaTheme_HeaderText('Shipping Address'));
+//    Ext.getCmp('LoadingFloatPanel_AyohaStore_DeliveryAddressID').setHeight(630);
+//    Ext.getCmp('LoadingFloatPanel_AyohaStore_DeliveryAddressID').setWidth('90%');
+  
+  
+     // FloatPanel_AyohaStore_DeliveryAddress_AyohaStoreShippingAddressLoadBySubscriberAccNoStore();
 
 
     //Ext.getCmp('htmlFloatPanel_AyohaStore_DeliveryAddress_TitleHeaderTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">' + FloatPanel_AyohaStore_getEnterpriseName() + '</div>');
@@ -877,9 +881,11 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressList').setHidden(false);
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddress_RecentlyUsedAddressDetail').setHidden(true);
     Ext.getCmp('containerFloatPanel_AyohaStore_DeliveryAddressFooter').setHidden(true);
-    Ext.getCmp('htmlFloatPanel_AyohaStore_DeliveryAddress_TitleHeaderTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Recently Used Shipping Address</div>');
+    Ext.getCmp('htmlFloatPanel_AyohaStore_DeliveryAddress_TitleHeaderTxt').setHtml(ayohaTheme_HeaderText('Recently Used Shipping Address'));
     
-   
+//    Ext.getCmp('LoadingFloatPanel_AyohaStore_DeliveryAddressID').setHeight('100%');
+//    Ext.getCmp('LoadingFloatPanel_AyohaStore_DeliveryAddressID').setWidth('100%');
+  
 
 
 
@@ -920,7 +926,7 @@ var globalFloatPanel_AyohaStore_DeliveryAddress_StreetName;
 var globalFloatPanel_AyohaStore_DeliveryAddress_TownCity;
 var globalFloatPanel_AyohaStore_DeliveryAddress_PostCode;
 var globalFloatPanel_AyohaStore_DeliveryAddress_State;
-var globalFloatPanel_AyohaStore_DeliveryAddress_Country;
+var globalFloatPanel_AyohaStore_DeliveryAddress_Country="MALAYSIA";
 var globalFloatPanel_AyohaStore_DeliveryAddress_ContactPerson;
 var globalFloatPanel_AyohaStore_DeliveryAddress_PhoneNo;
 function FloatPanel_AyohaStore_DeliveryAddressOK() {

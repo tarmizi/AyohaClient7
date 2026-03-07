@@ -3,38 +3,31 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_AyohaPointC
 
 });
 
-var _FloatPanel_AyohaStore_AyohaPointCollectedAnim;
+var _FloatPanel_AyohaStore_AyohaPointCollectedAnim=null;
 
 
 var isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'N';
 
 
+function FloatPanel_AyohaStore_AyohaPointCollectedAnimCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_AyohaPointCollectedAnim && !_FloatPanel_AyohaStore_AyohaPointCollectedAnim.destroyed) return;
 
-
-
-
-function FloatPanel_AyohaStore_AyohaPointCollectedAnim() {
-
-    _FloatPanel_AyohaStore_AyohaPointCollectedAnim =
+_FloatPanel_AyohaStore_AyohaPointCollectedAnim =
     Ext.create('Ext.Container', {
-       zIndex: 200,
-       // zIndex: 1061,
-        xtype: 'container',
-        height: '100%',
-        //  height: 350,
-        width: '100%',
-        id: 'FloatPanel_AyohaStore_AyohaPointCollectedAnimID',
-        draggable: false,
 
-        styleHtmlContent: true,
-
+         id: 'FloatPanel_AyohaStore_AyohaPointCollectedAnimID',
+floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
+        fullscreen: true,
+       // closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
         modal: false,
-        layout: {
-            type: 'fit'
-        },
+        styleHtmlContent: true,
+      height: '100%',
+        width: '100%',
+        layout: 'fit',
+
         showAnimation: {
             //type: 'popIn',
             //duration: 250,
@@ -44,7 +37,7 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnim() {
             direction: 'down',
             easing: 'ease-in',
             //easing: 'cubic-bezier(1.97,0,1.97,1.97)',
-            duration: 1500
+            duration: 1000
         },
         hideAnimation: {
             //type: 'popOut',
@@ -59,39 +52,7 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnim() {
         //  style: 'border-bottom:1px solid;background-color:white;',
         // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
         style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-        listeners: {
-            initialize: function (c) {
-                this.element.on({
-                    swipe: function (e, node, options) {
-                        //if (e.direction == "up") {
-                        //    LoyaltyCardRedeemListHide();
-                        //}
-                        if (e.direction == "left") {
-                            _FloatPanel_AyohaStore_AyohaPointCollectedAnim.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'left',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
-
-                            }));
-                            RemovePages("FloatPanel_AyohaStore_AyohaPointCollectedAnimHide()");
-                            isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'N';
-                        } if (e.direction == "right") {
-                            _FloatPanel_AyohaStore_AyohaPointCollectedAnim.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'right',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
-
-                            }));
-                            isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'N';
-                            RemovePages("FloatPanel_AyohaStore_AyohaPointCollectedAnimHide()");
-                        }
-                       
-                    }
-                });
-            }
-        },
+        
 
         items: [
              {
@@ -151,11 +112,10 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnim() {
 
 
     });
-    return _FloatPanel_AyohaStore_AyohaPointCollectedAnim;
-
-
 
 }
+
+
 
 
 
@@ -166,10 +126,36 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnim() {
 
 function FloatPanel_AyohaStore_AyohaPointCollectedAnimShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_AyohaPointCollectedAnim);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_AyohaPointCollectedAnim());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_AyohaPointCollectedAnimHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_AyohaPointCollectedAnim);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_AyohaPointCollectedAnim());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_AyohaPointCollectedAnimHide()");
+
+
+
+
+FloatPanel_AyohaStore_AyohaPointCollectedAnimCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore_AyohaPointCollectedAnim.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_AyohaPointCollectedAnim', function () {
+ 
+    FloatPanel_AyohaStore_AyohaPointCollectedAnimHide(true);
+  });
+}
+
+
+
+
+
+
+
+
+
+
     isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'Y';
 
     // FloatPanel_AyohaStore_AyohaPointCollectedAnimAdjustHeight();
@@ -178,7 +164,7 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnimShow() {
     containerViewElclickableContainerFloatPanel_AyohaStore_AyohaPointCollectedAnim.on('tap',
       function (event, node, options, eOpts) {
 
-          FloatPanel_AyohaStore_AyohaPointCollectedAnimHide();
+          FloatPanel_AyohaStore_AyohaPointCollectedAnimHide(false);
       }
     );
   //  FloatPanel_AyohaStore_AyohaPointCollectedAnim_LatestAyohaPoint();
@@ -188,16 +174,37 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnimShow() {
 
 
 
-function FloatPanel_AyohaStore_AyohaPointCollectedAnimHide() {
+function FloatPanel_AyohaStore_AyohaPointCollectedAnimHide(animCfg, fromBack){
     // FloatPanel_AyohaStore_AyohaPointCollectedAnim_AddCardHide();
    
+    // if (isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen == 'Y') {
+    //     _FloatPanel_AyohaStore_AyohaPointCollectedAnim.hide(); isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaStore_AyohaPointCollectedAnimHide()");
+      
+    //     FloatPanel_AyohaStore_AyohaPointCollectedAnim_startCounter();
+    // }
+
+
+
+
     if (isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen == 'Y') {
-        _FloatPanel_AyohaStore_AyohaPointCollectedAnim.hide(); isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_AyohaPointCollectedAnimHide()");
-      //document.getElementById("Dashboard_AyohaRewardPoint").textContent = globalFloatPanel_AyohaStore_AyohaPointCollectedAnim_LatestAyohaPoint;
-      //  Ext.getCmp('Dashboard_AyohaRewardPoint').setHtml('<div  class="example-1"  style="background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9); border-radius: 50%;border:2px solid #fac;text-align:center;margin:-30px 0px 0px 0px;height:230px;width:230px"><div id="odometera" class="odometer" style="color:white;text-align: center;font-size:48px;width:100%;margin:70px 0px 0px 0px;"><b>' + globalFloatPanel_AyohaStore_AyohaPointCollectedAnim_LatestAyohaPoint + '</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-38px 0px 0px 0px"><b>Collected Ayoha Points</b></div></div>');
-        FloatPanel_AyohaStore_AyohaPointCollectedAnim_startCounter();
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_AyohaPointCollectedAnim.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_AyohaPointCollectedAnim.hide();
+          }
+          isFloatPanel_AyohaStore_AyohaPointCollectedAnimOpen = 'N';
+            FloatPanel_AyohaStore_AyohaPointCollectedAnim_startCounter();
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_AyohaPointCollectedAnim');
+          }
     }
+
+
+
 
 }
 
@@ -219,16 +226,24 @@ function FloatPanel_AyohaStore_AyohaPointCollectedAnim_LatestAyohaPoint_NotUsed(
         // console.log(objn);
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
+
+            // url: GetAPIurl() + '/DashboardAyohaUser/DashboardAyohaUserMaingetAyohaPoint',
+
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
 
             url: GetAPIurl() + '/DashboardAyohaUser/DashboardAyohaUserMaingetAyohaPoint',
-
-            dataType: "json",
-            data: JSON.stringify(objn),
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
-
             success: function (result, request) {
 
                 //console.log(result.responseText);
