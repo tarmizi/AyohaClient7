@@ -873,7 +873,7 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                         items: [
                             {
             xtype:'spacer',
-            width:10
+            width:20
                             },
                             {
                                 id: 'htmlFloatPanel_AyohaStore_CheckOut_OrderItem',
@@ -1228,7 +1228,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     items: [
                         {
         xtype:'spacer',
-        width:10
+        width:20
                         },
                         {
                           //  id: 'htmlFloatPanel_AyohaStore_CheckOut_DeliveryChargeType',
@@ -1250,7 +1250,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     // height: 30,
                     layout: {
                         type: 'vbox',
-                        pack: 'center',
+                        pack: 'start',
                         align: 'left'
         
                     },
@@ -1258,7 +1258,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                        
                          {
                              xtype: 'container',
-                             margin: '8 0 0 0',
+                             margin: '4 0 0 0',
                              width: '100%',
                              // height: 30,
                              layout: {
@@ -1278,7 +1278,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
         margin: '0 0 0 0',
         
         // zIndex: -10,
-        width: '95%',
+        width: '90%',
         // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
         // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
         html: '<input type="text" id="input-FloatPanel_AyohaStore_CheckOut_DeliveryChargeType"  onClick="FloatPanel_AyohaStore_Cart_DeliveryChargeTypeOpen()" readOnly style="width:100%;height: 32px;padding: 5px 5px; border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 0px"  placeholder="--- Select Delivery ---">',
@@ -1290,7 +1290,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
             margin: '0 0 0 0',
             
             // zIndex: -10,
-            width: '95%',
+            width: '90%',
             // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
             // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
             html: '<input type="text" id="input-FloatPanel_AyohaStore_CheckOut_DeliveryChargeTypeReceipt"   readOnly style="width:100%;height: 32px;padding: 5px 5px; border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 0px"  placeholder="--- Select Delivery ---">',
@@ -1364,7 +1364,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     items: [
                         {
         xtype:'spacer',
-        width:10
+        width:20
                         },
                         {
                             id: 'htmlFloatPanel_AyohaStore_CheckOut_VoucherTypeTxt',                        
@@ -1533,7 +1533,7 @@ itemTpl:'<div style="display: flex; align-items: center; margin: 0px -16px;">'+
                     items: [
                         {
         xtype:'spacer',
-        width:10
+        width:20
                         },
                         {
                             id: 'htmlFloatPanel_AyohaStore_CheckOut_Charges',
@@ -1976,7 +1976,7 @@ xtype: 'container',
                     items: [
                         {
         xtype:'spacer',
-        width:10
+        width:20
                         },
                         {
                             id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipPointPerk',
@@ -1992,7 +1992,7 @@ xtype: 'container',
         
                 {
                     xtype: 'container',
-                    width: '100%',
+                    width: '90%',
                     height: 80,
                     style: "background-color: transparent;",
                     // height: 30,
@@ -2027,7 +2027,7 @@ xtype: 'container',
                                     items: [
                                          {
                                              id:'htmlFloatPanel_AyohaStore_CheckOut_MerchantPointEarnLbl',
-                                             html: '<div onclick="FloatPanel_AyohaStore_CheckOut_openMembershipCard()" style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:#6B7280;">Merchant Point Earn</div>'
+                                             html: '<div onclick="FloatPanel_AyohaStore_CheckOut_openMembershipCard()" style="font-family:Arial, sans-serif;font-size:10px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:#6B7280;">Merchant Point Earn</div>'
                                          },
                                          {
                                             margin: '0 0 0 0',
@@ -2049,7 +2049,7 @@ xtype: 'container',
                                     items: [
                                          {
                                              id:'htmlFloatPanel_AyohaStore_CheckOut_StampedCollectedLbl',
-                                             html: '<div onclick="FloatPanel_AyohaStore_CheckOut_openMembershipCard()" style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:#6B7280;">Stamped Collected:</div>'
+                                             html: '<div onclick="FloatPanel_AyohaStore_CheckOut_openMembershipCard()" style="font-family:Arial, sans-serif;font-size:10px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:#6B7280;">Stamped Collected:</div>'
                                          },{
                                             margin: '0 0 0 0',
                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_StampedCollected',
@@ -2071,7 +2071,7 @@ xtype: 'container',
                                     items: [
                                          {
                 
-                                             html: '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:#6B7280;" onclick="FloatPanel_AyohaReward_PointTransactionsShow();">Ayoha Point Earn:</div>'
+                                             html: '<div style="font-family:Arial, sans-serif;font-size:10px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:#6B7280;" onclick="FloatPanel_AyohaReward_PointTransactionsShow();">Ayoha Point Earn:</div>'
                                          },
                                          {
                                             margin: '0 0 0 0',
@@ -2144,7 +2144,7 @@ xtype: 'container',
                     items: [
                         {
         xtype:'spacer',
-        width:10
+        width:20
                         },
                         {
                             id: 'htmlFloatPanel_AyohaStore_CheckOut_PaymentInfoTitle',
@@ -2272,7 +2272,7 @@ xtype: 'container',
                                                      },
                                                      items: [
                                                         {
-                                                            //  margin: '16 0 0 14',
+                                                             margin: '0 0 0 12',
                                                             html:'<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:250px;text-align:left;align-items: center;color:black;background-color:transparent;height:25px; padding: 5px 0px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 0px;">Shipping Address:</span></div>',
                                                             //html: '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Shipping Address</div>'
                                                         },
@@ -2331,7 +2331,7 @@ xtype: 'container',
                                                         {
                                                             margin: '5 0 0 0',
                                                             id: 'htmlFloatPanel_AyohaStore_CheckOut_ShippingAddress',
-                                                            width: '97%',
+                                                            width: '90%',
                                                            // hidden:true,
                                                             height: 70,
                                                             // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
@@ -2357,7 +2357,7 @@ xtype: 'container',
                                                             items: [
                                                                  {
                                                                      xtype: 'panel',
-                                                                     width: 10
+                                                                     width: 20
                                                                  },
                                                                {
                                                                    //  margin: '16 0 0 14',
@@ -2374,7 +2374,7 @@ xtype: 'container',
                                                                 },
                                                                {
                                                                    xtype: 'panel',
-                                                                   width: 10
+                                                                   width: 20
                                                                }
                                                             ]
                                                         },
@@ -2444,7 +2444,7 @@ xtype: 'container',
                              xtype: 'container',
                              width: '100%',
                              // margin: '0 0 0 0',
-                             margin: '7 0 0 10',
+                             margin: '7 0 0 0',
                              // height: 20,
                              style: 'background-color:transparent;',
                              layout: {
@@ -2454,8 +2454,12 @@ xtype: 'container',
 
                              },
                              items: [
+                                 {
+                                    xtype: 'panel',
+                                    width: 20
+                                },
                                 {
-                                    //  margin: '16 0 0 14',
+                                  //  margin: ' 0 14 0 0',
                                     html:'<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:250px;text-align:left;align-items: center;color:black;background-color:transparent;height:25px; padding: 5px 0px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 0px;">Note To Seller:</span></div>',
                                     //html: '<div id="test" style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Note To Seller/Sender</div>'
                                 },
@@ -2501,7 +2505,7 @@ xtype: 'container',
                                 {
                                     margin: '5 0 0 0',
                                     id: 'htmlFloatPanel_AyohaStore_CheckOut_NoteToSeller',
-                                    width: '97%',
+                                    width: '90%',
                                     height: 65,
                                     // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
                                     html: '<textarea id="input-FloatPanel_AyohaStore_CheckOut_NoteToSeller" style="width:100%;height:60px;padding: 0px 0px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
@@ -2565,7 +2569,7 @@ xtype: 'container',
                         items: [
                             {
             xtype:'spacer',
-            width:10
+            width:20
                             },
                             {
                                 id: 'htmlFloatPanel_AyohaStore_CheckOut_OrderOptionTitle',
@@ -2995,7 +2999,7 @@ xtype: 'container',
                                 items: [
 
                                                                 {
-                                                                    margin: '10 0 0 20',
+                                                                    margin: '10 0 0 25',
                                                         id: 'htmlFloatPanel_AyohaStore_CheckOut_PaymentMethodTitle',
                                                       //  html:'<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:250px;text-align:left;align-items: center;color:white;background-color:transparent;height:25px; padding: 5px 10px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 5px;">Membership Point & Stamp Earn</span></div>',
                                                         html:'<div style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:250px;text-align:left;align-items: center;color:black;background-color:transparent;height:25px; padding: 5px 0px;border-radius:5px 5px 0px 0px;border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;"> <span style="margin-left: 0px;">Payment Method:</span></div>',
@@ -3020,7 +3024,7 @@ xtype: 'container',
                                                  margin: '0 0 0 0',
 
                                                  // zIndex: -10,
-                                                 width: '95%',
+                                                 width: '90%',
                                                  // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
                                                  // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
                                                 // html: '<input type="text" id="input-FloatPanel_AyohaStore_CheckOut_PaymentMethod" readOnly onClick="FloatPanel_AyohaStore_PaymentMethodListShow()" style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 3px"  placeholder="--- Select Payment Method ---">',
@@ -3978,6 +3982,7 @@ var itemRowCount;
 var defaultHeightScrollView=1500;
 var adjustHeightScrollView=0;
 var mainFormScrollViewHeight;
+var shippingAddressHeight=130;
 
 if(FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed =='Y' && isFloatPanel_AyohaStore_CheckOutOpen =='Y'){
     heightlistview=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount() * 182;
@@ -4002,7 +4007,7 @@ Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_TotalQuantity').setHtml('<div sty
 mainHeight= heightlistview+76;
 mainHeightInner= mainHeight-12;
 
-
+//alert("globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName:"+globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName)
 
 Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Main').setHeight(mainHeight+10);
   Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_InnerMain').setHeight(mainHeightInner+10);
@@ -4012,13 +4017,29 @@ Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Main').setHe
 
   Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(defaultHeightScrollView);
 
+
+
+
+
 if(itemRowCount>1){
     adjustHeightScrollView=((itemRowCount-1)*180) ;
- //   alert("adjustHeightScrollView:"+adjustHeightScrollView)
    mainFormScrollViewHeight=defaultHeightScrollView+adjustHeightScrollView;
     Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(mainFormScrollViewHeight);
+    
+if(globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName){
+    if(globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName !="DINE IN"){
+      //  alert("Delivery Name:"+globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName)
+ Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(mainFormScrollViewHeight+shippingAddressHeight);
+ //Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(mainFormScrollViewHeight);
+    }else{
+        document.getElementById('input-FloatPanel_AyohaStore_CheckOut_ShippingAddress').value="DINE IN";
+    }
+}
+
 }
 //RowNumber
+
+
 
 
   

@@ -309,20 +309,20 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
    },
    items: [
          {
-             xtype: 'button',
+             xtype: 'component',
              height: 30,
              width: 30,
-             margin: '3 0 0 -7',
+             margin: '8 0 0 11',
              id: 'btnFloatPanel_AyohaStoreMyPurchaseHistory',
              //badgeText: "2",
-             html: '<img src="resources/icons/purchase01.png" width="20" height="20" alt="Company Name">',
-             ui: 'plain',
-             handler: function () {
-               //  FloatPanel_AyohaStore_DotMenuItemHide();
-                 FloatPanel_AyohaStore_OrderHistoryShow();
-                 // FloatPanel_AyohaStoreMerchant_AddEditItemShow();
+             html: '<img onclick="FloatPanel_AyohaStore_OrderHistoryShow()" src="resources/icons/purchase01.png" width="20" height="20" alt="Company Name">',
+            //  ui: 'plain',
+            //  handler: function () {
+            //    //  FloatPanel_AyohaStore_DotMenuItemHide();
+            //      FloatPanel_AyohaStore_OrderHistoryShow();
+            //      // FloatPanel_AyohaStoreMerchant_AddEditItemShow();
 
-             }
+            //  }
          },
 
 //{

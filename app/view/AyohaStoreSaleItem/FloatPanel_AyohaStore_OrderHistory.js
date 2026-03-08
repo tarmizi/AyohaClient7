@@ -2,39 +2,29 @@
 
 });
 
-var _FloatPanel_AyohaStore_OrderHistory;
+var _FloatPanel_AyohaStore_OrderHistory= null;
 
 
 var isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
 
 
-
-
-
-function FloatPanel_AyohaStore_OrderHistory() {
-
-    _FloatPanel_AyohaStore_OrderHistory =
-     Ext.create('Ext.Panel', {
-         zIndex: 340,
-         xtype: 'container',
-         // height: '50%',
+   
+function FloatPanel_AyohaStore_OrderHistoryCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_OrderHistory && !_FloatPanel_AyohaStore_OrderHistory.destroyed) return;
+_FloatPanel_AyohaStore_OrderHistory =
+     Ext.create('Ext.Container', {
+         id: 'LoadingFloatPanel_AyohaStore_OrderHistoryID',
+floated: true,
+        centered: true,
+        fullscreen: true,
+        closeAction: 'hide',
+      // closeAction: 'destroy',
+        draggable: false,
+        modal: true,
+        styleHtmlContent: true,
          width: '100%',
          height: '100%',
-         styleHtmlContent: true,
-         //width: 280,
-         id: 'LoadingFloatPanel_AyohaStore_OrderHistoryID',
-         // name: 'nameFloatPanel_AyohaStore_OrderHistoryID',
-         draggable: false,
-         //hideOnMaskTap: true,
-     
-
-         centered: true,
-         //bottom: 64,         
-         modal: true,
-         // hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
+        layout: 'fit',
          showAnimation: {
              type: 'popIn',
              duration: 150,
@@ -74,13 +64,9 @@ function FloatPanel_AyohaStore_OrderHistory() {
 
                            xtype: 'container',
                            width: '100%',
-                           docked: 'top',
-                           // width: 40,
-                           style: ' background-color:transparent;',
-                           //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-                           //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                           //hidden: true,
-
+                            docked: 'top',
+                             height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
                            id: 'containerFloatPanel_AyohaStore_OrderHistoryHeader',
                            //style: {
                            //    // background: '#D25959',
@@ -91,8 +77,8 @@ function FloatPanel_AyohaStore_OrderHistory() {
                            // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                            layout: {
                                type: 'hbox',
-                               pack: 'left',
-                               align: 'left',
+                                    pack: 'center',
+                                    align: 'center',
                            },
                            // hidden:true,
                            items:
@@ -103,21 +89,22 @@ function FloatPanel_AyohaStore_OrderHistory() {
                                                     xtype: 'button',
                                                     id: 'btnFloatPanel_AyohaStore_OrderHistoryBack',
                                                     height: 30,
-                                                    width: 35,
-                                                    // iconCls: 'list',
-                                                    html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
+                                                      width: 65,
+                                                      margin: '0 0 0 10',
+                                                         // iconCls: 'list',
+                                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                     ui: 'plain',
                                                     handler: function () {
+FloatPanel_AyohaStore_OrderHistoryHide(false);
+                                                        // _FloatPanel_AyohaStore_OrderHistory.hide(Ext.fx.Animation({
+                                                        //     type: 'slideOut',
+                                                        //     direction: 'left',
+                                                        //     easing: 'cubic-bezier(.7,0,.7,1)',
+                                                        //     duration: 250
 
-                                                        _FloatPanel_AyohaStore_OrderHistory.hide(Ext.fx.Animation({
-                                                            type: 'slideOut',
-                                                            direction: 'left',
-                                                            easing: 'cubic-bezier(.7,0,.7,1)',
-                                                            duration: 250
-
-                                                        }));
-                                                        isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
-                                                        RemovePages("FloatPanel_AyohaStore_OrderHistoryHide()");
+                                                        // }));
+                                                        // isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
+                                                        // RemovePages("FloatPanel_AyohaStore_OrderHistoryHide()");
 
                                                     }
                                                 },
@@ -128,11 +115,11 @@ function FloatPanel_AyohaStore_OrderHistory() {
 
 
                                                  {
-                                                     margin: '0 0 0 0',
+                                                     margin: '0 15 0 0',
                                                      id: 'htmlFloatPanel_AyohaStore_OrderHistory_TitleHeaderTxt',
                                                      //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
-                                                     html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Purchase History</div>',
-
+                                                   //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Purchase History</div>',
+   html:ayohaTheme_HeaderText('Purchase History'),
                                                      //  html: '<font size=2 color=white><b>Review By Tarmizi Bin Rahim</b></font>'
                                                  },
 
@@ -153,34 +140,20 @@ function FloatPanel_AyohaStore_OrderHistory() {
                        },
                  {
                      xtype: 'tabpanel',
-                     // hidden: true,
-                     //  hidden:true,
+                      style: "background-color: transparent;",    
                      id: 'tabpanelFloatPanel_AyohaStore_OrderHistory_MasterContent',
-                     // style: 'border-top:2px solid #ECF0F1;background: white;',
-                     // style: 'background-color: black;',
-                     // margin: '-20 0 0 -26',
-                     // margin: '25 0 0 0',
-
-                     //width: 200,
+                    
                      width: '100%',
                      height: '100%',
-                     //height: 120,
-                     //height: 50,
-                     //  zIndex: 200,
-                     //  docked: 'bottom',
                      tabBarPosition: 'top',
                      ui: 'plain',
-                     initialize: function (c) {
-                         //this.getTabBar().hide();
-
-
-                     },
+                     
 
                      items: [
                          {
                              xtype: 'container',
                              width: '100%',
-                             id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSent',
+                             id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSent_Main',
                              height: '100%',
                              //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
                            
@@ -901,9 +874,6 @@ function FloatPanel_AyohaStore_OrderHistory() {
 
 
      });
-    return _FloatPanel_AyohaStore_OrderHistory;
-
-
 
 
 
@@ -911,15 +881,43 @@ function FloatPanel_AyohaStore_OrderHistory() {
 
 
 
+
 function FloatPanel_AyohaStore_OrderHistoryShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_OrderHistory);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_OrderHistory());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_OrderHistoryHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_OrderHistory);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_OrderHistory());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_OrderHistoryHide()");
+
+
+
+
+
+FloatPanel_AyohaStore_OrderHistoryCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaStore_OrderHistory.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_OrderHistory', function () {
+ 
+    FloatPanel_AyohaStore_OrderHistoryHide(true);
+  });
+}
+
+
+
+
+
+
+
+
+
+
     isFloatPanel_AyohaStore_OrderHistoryOpen = 'Y';
     Ext.getCmp('containerFloatPanel_AyohaStore_OrderHistoryFooter').setHidden(false);
-    Ext.getCmp('tabpanelFloatPanel_AyohaStore_OrderHistory_MasterContent').getTabBar().hide();
+  Ext.getCmp('tabpanelFloatPanel_AyohaStore_OrderHistory_MasterContent').getTabBar().hide();
     FloatPanel_AyohaStore_OrderHistory_AyohaStoreOrderLoadBySubscriberAccNoAndOrderStatusStore("NewOrder");
    // Ext.getCmp('tabpanelFloatPanel_AyohaStore_OrderHistory_MasterContent').setActiveItem(0);
 
@@ -1068,11 +1066,33 @@ function FloatPanel_AyohaStore_OrderHistoryAdjustHeight() {
 }
 
 
-function FloatPanel_AyohaStore_OrderHistoryHide() {
+function FloatPanel_AyohaStore_OrderHistoryHide(animCfg, fromBack) {
+    // if (isFloatPanel_AyohaStore_OrderHistoryOpen == 'Y') {
+    //     _FloatPanel_AyohaStore_OrderHistory.hide(); isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaStore_OrderHistoryHide()");
+    // }
+
+
+
     if (isFloatPanel_AyohaStore_OrderHistoryOpen == 'Y') {
-        _FloatPanel_AyohaStore_OrderHistory.hide(); isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_OrderHistoryHide()");
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_OrderHistory.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_OrderHistory.hide();
+          }
+          isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
+          
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_OrderHistory');
+          }
     }
+
+
+
+
 }
 
 

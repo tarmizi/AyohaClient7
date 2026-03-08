@@ -1591,7 +1591,16 @@ function FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAnd
 
 
 
+if(globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName=="DINE IN"){
+    globalFloatPanel_AyohaStore_DeliveryAddress_StreetName="NA";
+    globalFloatPanel_AyohaStore_DeliveryAddress_TownCity="NA";
+    globalFloatPanel_AyohaStore_DeliveryAddress_PostCode=0;
+    globalFloatPanel_AyohaStore_DeliveryAddress_State=0;
+    globalFloatPanel_AyohaStore_DeliveryAddress_Country=0;
+    globalFloatPanel_AyohaStore_DeliveryAddress_ContactPerson="NA";
+    globalFloatPanel_AyohaStore_DeliveryAddress_PhoneNo="NA";
 
+}
 
 
     //console.log(PaymentAmount)
@@ -1681,12 +1690,12 @@ function FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAnd
 
 
                    // FloatPanel_AyohaStore_CheckOut_PlayAyohaPointSound();
-                    FloatPanel_AyohaStore_AyohaPointCollectedAnimShow();                   
-                    FloatPanel_AyohaStoreHide();
-                    FloatPanel_AyohaStore_SaleItemDetailHide_AyohaStoreOnlinePayment();
-                    FloatPanel_AyohaStore_CartHide();
-                    FloatPanel_AyohaStore_CheckOutHide_AyohaStoreOnlinePayment();
-                    FloatPanel_OrderCartHide();
+                    FloatPanel_AyohaStore_AyohaPointCollectedAnimShow(false);                   
+                    FloatPanel_AyohaStoreHide(false);
+                    FloatPanel_AyohaStore_SaleItemDetailHide_AyohaStoreOnlinePayment(false);
+                    FloatPanel_AyohaStore_CartHide(false);
+                    FloatPanel_AyohaStore_CheckOutHide_AyohaStoreOnlinePayment(false);
+                    FloatPanel_OrderCartHide(false);
             
                   //  FloatPanel_AyohaStore_SaleItemDetailHide();                   
                   //  FloatPanel_AyohaStore_OrderHistoryHide();
@@ -1733,7 +1742,7 @@ function FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAnd
 
                     var task = Ext.create('Ext.util.DelayedTask', function () {
                         DashboardAyohaUserMainStore();
-                        LoadingPanelHide();
+                        LoadingPanelHide(false);
                        
                     });
                 task.delay(1000);
@@ -1759,8 +1768,8 @@ function FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAnd
                 else {
 
                    // swalFireFail("Fail! "+ result.responseText.trim());
-                   LoadingPanelHide();
-                    swalFireLoginFailed("Failed!" + result.responseText.trim());
+                   LoadingPanelHide(false);
+                    swalFireFail("Failed!" + result.responseText.trim());
                     globalFloatPanel_AyohaStore_CartSumItemSumPrice = 0.00;
                     globalFloatPanel_AyohaStore_CartTotalItemQuantity = 0;
                     globalFloatPanel_AyohaStore_Cart_ItemCartCode = "NewItemCartCode";
@@ -1786,7 +1795,7 @@ function FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderAyohaStorePaymentOrderAnd
         });
 
         Ext.Viewport.unmask();
-        LoadingPanelHide();
+        LoadingPanelHide(false);
     });
     task.delay(1000);
 }

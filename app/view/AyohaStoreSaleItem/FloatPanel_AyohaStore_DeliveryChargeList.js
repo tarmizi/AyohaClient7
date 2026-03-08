@@ -11,8 +11,6 @@ var _FloatPanel_AyohaStore_DeliveryChargeList_isFirstLoad = "N";
 
 
 
-
-
 function FloatPanel_AyohaStore_DeliveryChargeListCreateIfNeeded() {
     if (_FloatPanel_AyohaStore_DeliveryChargeList && !_FloatPanel_AyohaStore_DeliveryChargeList.destroyed) return;
     _FloatPanel_AyohaStore_DeliveryChargeList =
@@ -109,7 +107,11 @@ function FloatPanel_AyohaStore_DeliveryChargeListCreateIfNeeded() {
 
 
 
+ {
+                                                xtype: 'spacer',
+                                                width:10
 
+                                            },
 
 
 
@@ -135,7 +137,7 @@ function FloatPanel_AyohaStore_DeliveryChargeListCreateIfNeeded() {
                              },
 
                             {
-                                margin: '-10 -2 0 0',
+                             //   margin: '-10 -2 0 0',
                                 id: 'htmlFloatPanel_AyohaStore_DeliveryChargeList_TitleTxt',
                                 html: ayohaTheme_HeaderText('Delivery Charge List'),
 
@@ -144,7 +146,11 @@ function FloatPanel_AyohaStore_DeliveryChargeListCreateIfNeeded() {
                             },
 
 
-
+  {
+                                                            xtype: 'spacer',
+                                                            width:15
+  
+                                                        },
 
 
 
@@ -489,7 +495,7 @@ function FloatPanel_AyohaStore_DeliveryChargeList_List(DeliveryName, Rate, Charg
     // globalFloatPanel_AyohaStore_Cart_GrandTotal = result.toFixed(2);
  
     FloatPanel_AyohaStore_CheckOut_SetDeliveryCharge();
-    
+    FloatPanel_AyohaStore_CheckOutSetHeightOrderList();
     //Ext.getCmp('htmlFloatPanel_AyohaStore_Cart_Delivery').setHtml('<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryCharge + '</div>');
     //Ext.getCmp('htmlFloatPanel_AyohaStore_Cart_GrandTotal').setHtml('<div style="font-family:Arial, sans-serif;font-size:16px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + result .toFixed(2)+ '</div>');
 
