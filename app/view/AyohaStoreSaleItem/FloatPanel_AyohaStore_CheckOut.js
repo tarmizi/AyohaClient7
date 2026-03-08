@@ -665,7 +665,8 @@ function FloatPanel_AyohaStore_CheckOutCreateIfNeeded() {
                                                 xtype: 'container',
                                                 width: '100%',
                                               //  height: 1800,
-                                                height: 2000,
+                                              id:'containerFloatPanel_AyohaStore_CheckOut_MainForm',
+                                                height: 1500,
                                                 style: "background-color: white;",
                                                 layout: {
                                                     type: 'vbox',
@@ -2622,7 +2623,7 @@ xtype: 'container',
                                             // FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_Proccessing(globalFloatPanel_AyohaStore_CheckOut_TotalStampEarn,
                                             //     ItemCartCode, MembershipCardCode, OrderNo, EnterpriseName, EnterpriseLogo);
                                             
-                                               
+                                             FloatPanel_AyohaStore_CheckOutSetHeightOrderList();  
 
                                         }
                                     }
@@ -3973,13 +3974,19 @@ function FloatPanel_AyohaStore_CheckOutSetHeightOrderList(){
 var mainHeight;
 var mainHeightInner;
 var heightlistview;
+var itemRowCount;
+var defaultHeightScrollView=1500;
+var adjustHeightScrollView=0;
+var mainFormScrollViewHeight;
 
 if(FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed =='Y' && isFloatPanel_AyohaStore_CheckOutOpen =='Y'){
     heightlistview=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount() * 182;
+    itemRowCount=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount();
    // globalFloatPanel_AyohaStore_Cart_TotalItemQuantity=_DataStore_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore.getCount();
 }
 if(FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed =='N' && isFloatPanel_AyohaStore_CheckOutOpen =='Y'){
     heightlistview=_DataStore_AyohaStoreCartLoadCartAyohaStore.getCount() * 182;
+    itemRowCount=_DataStore_AyohaStoreCartLoadCartAyohaStore.getCount();
    // globalFloatPanel_AyohaStore_Cart_TotalItemQuantity=_DataStore_AyohaStoreCartLoadCartAyohaStore.getCount();
 }
 
@@ -3989,20 +3996,40 @@ Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_BillToEmail').setHtml('<div style
 //alert(globalFloatPanel_AyohaStore_Cart_TotalItemQuantity)
 Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_TotalQuantity').setHtml('<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;align-items: center;color:#6B7280;background-color:transparent;height:15px; padding: 0px 0px;border-radius:5px 5px 0px 0px"> <span style="margin-left: 0px;">Total Items:' + globalFloatPanel_AyohaStore_Cart_TotalItemQuantity + '</span></div>');
   
+
+
+
 mainHeight= heightlistview+76;
 mainHeightInner= mainHeight-12;
 
-  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Main').setHeight(mainHeight+10);
+
+
+Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Main').setHeight(mainHeight+10);
   Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_InnerMain').setHeight(mainHeightInner+10);
 
-  //  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList_Inner').setHeight(theight);
+   Ext.getCmp('FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromCart').setHeight(heightlistview);
+   Ext.getCmp('FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromPurchaseHistory').setHeight(heightlistview);
+
+  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(defaultHeightScrollView);
+
+if(itemRowCount>1){
+    adjustHeightScrollView=((itemRowCount-1)*180) ;
+ //   alert("adjustHeightScrollView:"+adjustHeightScrollView)
+   mainFormScrollViewHeight=defaultHeightScrollView+adjustHeightScrollView;
+    Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(mainFormScrollViewHeight);
+}
+//RowNumber
+
+
+  
+
+  //  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MainForm').setHeight(theight);
     //Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_OrderedItemList').setHeight(theight);
    
    
    //alert(heightlistview)
    
-   Ext.getCmp('FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromCart').setHeight(heightlistview);
-   Ext.getCmp('FloatPanel_AyohaStore_CheckOut_PurchasedItem_FromPurchaseHistory').setHeight(heightlistview);
+  
     
     
 }

@@ -1084,13 +1084,13 @@ function FloatPanel_AyohaStore_DeliveryAddress_AyohaStoreShippingAddressLoadBySu
     _DataStore_AyohaStoreShippingAddressLoadBySubscriberAccNoStore.load({
         callback: function (records, operation, success) {
             if (success && records.length > 0) {
-                var Count = _DataStore_AyohaStoreShippingAddressLoadBySubscriberAccNoStore.getCount();
+                var Count = records.length;
                 if (Count <= 0) {
            
                     return;
                 }
                 var Store = records[0]; // Access only the first record
-                if (isFloatPanel_AyohaStore_CheckOutOpen == 'Y' && isFloatPanel_AyohaStore_CartOpen == 'Y') {
+                if (isFloatPanel_AyohaStore_CheckOutOpen == 'Y') {
                     document.getElementById('input-FloatPanel_AyohaStore_CheckOut_ShippingAddress').value = Store.get('StreetName') + '\n' + Store.get('PostCode') + ' ' + Store.get('Town') + '\n' + Store.get('StateCode') + '.' + Store.get('CountryCode');
                     Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_ContactPerson').setHtml('<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Contact Person:' + Store.get('ContactPersonName') + '</div>');
                     Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_PhoneNo').setHtml('<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Phone No:' + Store.get('PhoneNo') + '</div>');
