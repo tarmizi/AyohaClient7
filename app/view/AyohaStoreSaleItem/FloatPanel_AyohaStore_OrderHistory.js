@@ -11,6 +11,43 @@ var isFloatPanel_AyohaStore_OrderHistoryOpen = 'N';
    
 function FloatPanel_AyohaStore_OrderHistoryCreateIfNeeded() {
     if (_FloatPanel_AyohaStore_OrderHistory && !_FloatPanel_AyohaStore_OrderHistory.destroyed) return;
+
+
+    function AyohaBottomMenuItem(cfg) {
+        return {
+          xtype: 'container',
+          id: cfg.containerId,
+          cls: 'ayohaBottomNavItem' + (cfg.active ? ' is-active' : ''),
+          layout: { type: 'vbox', pack: 'center', align: 'center' },
+          items: [
+            {
+              xtype: 'button',
+              id: cfg.btnId,
+              ui: 'plain',
+              width: 34,
+              height: 34,
+      
+              cls: 'ayohaBottomNavBtn',
+      
+              // ✅ guna icon config (ExtJS akan set background-image pada .x-icon-el)
+              icon: cfg.icon,
+      
+              handler: cfg.handler
+            },
+            {
+              xtype: 'component',
+              id: cfg.txtId,
+              cls: 'ayohaBottomNavTxt',
+              html:
+                '<div class="l1">' + cfg.line1 + '</div>' +
+                '<div class="l2">' + cfg.line2 + '</div>'
+            }
+          ]
+        };
+      }
+
+
+
 _FloatPanel_AyohaStore_OrderHistory =
      Ext.create('Ext.Container', {
          id: 'LoadingFloatPanel_AyohaStore_OrderHistoryID',
@@ -180,7 +217,7 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                        },
                                        items: [
                                            {
-                                               margin: '0 0 0 0',
+                                               margin: '0 0 0 20',
                                                html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:red;text-align:left;" >UnPaid Order</div>',
                                            },
                                        ]
@@ -269,7 +306,7 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                         },
                                         items: [
                                             {
-                                                margin: '0 0 0 0',
+                                                 margin: '0 0 0 20',
                                                 html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:Orange;text-align:left;" >Order Received&Confirm</div>',
                                             },
                                         ]
@@ -346,7 +383,7 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                         },
                                         items: [
                                             {
-                                                margin: '0 0 0 0',
+                                              margin: '0 0 0 20',
                                                 html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:#3399ff;text-align:left;" >Order Paid</div>',
                                             },
                                         ]
@@ -421,7 +458,7 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                           },
                                           items: [
                                               {
-                                                  margin: '0 0 0 0',
+                                                  margin: '0 0 0 20',
                                                   html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:green;text-align:left;" >Order Completed</div>',
                                               },
                                           ]
@@ -495,7 +532,7 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                              },
                                              items: [
                                                  {
-                                                     margin: '0 0 0 0',
+                                                    margin: '0 0 0 20',
                                                      html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:red;text-align:left;" >Order Cancel</div>',
                                                  },
                                              ]
@@ -569,7 +606,7 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                               },
                                               items: [
                                                   {
-                                                      margin: '0 0 0 0',
+                                                      margin: '0 0 0 20',
                                                       html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:#ff0066;text-align:left;" >Order Rejected</div>',
                                                   },
                                               ]
@@ -626,24 +663,13 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                      xtype: 'container',
                      width: '100%',
                      docked: 'bottom',
-                     height: 40,
-                     // style: 'background-color:white;border-top:1px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);',
-                     style: 'background-color:white;',
+                     height: 60,
+                    
                      id: 'containerFloatPanel_AyohaStore_OrderHistoryFooter',
-                     style: 'background-color:white',
-                     //style: {
-                     //    // background: '#D25959',
-                     //    background: 'transparent',
-                     //    // border: '2px'
-                     //},
-                     //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                     // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                     layout: {
-                         type: 'hbox',
-                         pack: 'center',
-                         align: 'center',
-                     },
-
+                      cls: 'ayohaBottomNav',
+                  
+ layout: 'fit',
+                      
                      // hidden:true,
                      items:
                             [
@@ -666,44 +692,46 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
 
                                 {
                                     xtype: 'container',
-                                    width: '100%',
+                                  
                                     id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSent',
-                                    height: 40,
-                                    //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-                                    style: 'background-color:white',
-                                    layout: {
-                                        type: 'hbox',
-                                        pack: 'center',
-                                        align: 'center'
-                                    },
-                                    scrollable: {
-                                        direction: 'horizontal',
-                                        directionLock: true,
-                                        indicators: false
-                                    },
+                            width: '100%',
+                            cls: 'ayohaBottomNavScroll',
+                            style: 'background-color: transparent;',
+                            height: 60,
+                      
+                            scrollable: {
+                              direction: 'horizontal',
+                              directionLock: true,
+                              indicators: false
+                            },
+                      
+                            layout: { type: 'hbox', pack: 'start', align: 'center' },
+
+
+
+                                    // height: 60,
+                                    // //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
+                                    // style: 'background-color:white',
+                                    // layout: {
+                                    //     type: 'hbox',
+                                    //     pack: 'center',
+                                    //     align: 'center'
+                                    // },
+                                    // scrollable: {
+                                    //     direction: 'horizontal',
+                                    //     directionLock: true,
+                                    //     indicators: false
+                                    // },
                                     items: [
 
-                                         {
-                                             xtype: 'container',
-                                             //width: 600,
-                                             width: 650,
-                                             // width: 650,
-                                             style: "background-color: transparent",
-                                             height: 40,
-                                             layout: {
-                                                 type: 'hbox',
-                                                 pack: 'center',
-                                                 align: 'center',
-                                             },
-                                             items: [
-                                                 {
+  {
                                                      xtype: 'container',
                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
-                                                     flex: 1,
-                                                     height: 40,
+                                                     width: 150,
+                                                   height: 60,
                                                      layout: {
                                                          type: 'vbox',
                                                          pack: 'center',
@@ -725,8 +753,8 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                                  id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderRecConfirmTitle',
                                                  name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderRecConfirmTitle',
                                                  style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
-                                                 flex: 1,
-                                                 height: 40,
+                                                 width: 150,
+                                                 height: 60,
                                                  layout: {
                                                      type: 'vbox',
                                                      pack: 'center',
@@ -748,8 +776,8 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                                    id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderPaidTitle',
                                                    name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderPaidTitle',
                                                    style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
-                                                   flex: 1,
-                                                   height: 40,
+                                                   width: 150,
+                                                   height: 60,
                                                    layout: {
                                                        type: 'vbox',
                                                        pack: 'center',
@@ -771,8 +799,8 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                                    id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderCompletedTitle',
                                                    name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderCompletedTitle',
                                                    style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
-                                                   flex: 1,
-                                                   height: 40,
+                                                   width: 150,
+                                                   height: 60,
                                                    layout: {
                                                        type: 'vbox',
                                                        pack: 'center',
@@ -795,8 +823,8 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                                    id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderCancelTitle',
                                                    name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderCancelTitle',
                                                    style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
-                                                   flex: 1,
-                                                   height: 40,
+                                                   width: 150,
+                                                   height: 60,
                                                    layout: {
                                                        type: 'vbox',
                                                        pack: 'center',
@@ -818,8 +846,8 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderRejectedTitle',
                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderRejectedTitle',
                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
-                                                     flex: 1,
-                                                     height: 40,
+                                                     width: 150,
+                                                     height: 60,
                                                      layout: {
                                                          type: 'vbox',
                                                          pack: 'center',
@@ -835,8 +863,28 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
 
 
                                                  },
-                                             ]
-                                         },
+
+
+
+
+
+
+                                        //  {
+                                        //      xtype: 'container',
+                                        //      //width: 600,
+                                        //      width: 600,
+                                        //      // width: 650,
+                                        //      style: "background-color: transparent",
+                                        //      height: 60,
+                                        //      layout: {
+                                        //          type: 'hbox',
+                                        //          pack: 'start',
+                                        //          align: 'center',
+                                        //      },
+                                        //      items: [
+                                               
+                                        //      ]
+                                        //  },
 
 
 
@@ -860,6 +908,197 @@ FloatPanel_AyohaStore_OrderHistoryHide(false);
                             ]
 
                  },
+
+
+
+
+
+
+
+
+
+
+
+//                    {
+//                         xtype: 'container',
+//                         width: '100%',
+//                         docked: 'bottom',
+//                         height: 60,
+//                           id: 'containerFloatPanel_AyohaStore_OrderHistoryFooter',
+                      
+//                         // ✅ ganti style border5.png -> CSS premium
+//                         cls: 'ayohaBottomNav',
+                      
+//                         layout: 'fit',
+                      
+//                         items: [
+//                           {
+//                             xtype: 'container',
+//                             id: 'containerFloatPanel_AyohaStore_OrderHistoryFooterInner',
+//                             width: '100%',
+//                             cls: 'ayohaBottomNavScroll',
+//                             style: 'background-color: transparent;',
+//                             height: 60,
+                      
+//                             scrollable: {
+//                               direction: 'horizontal',
+//                               directionLock: true,
+//                               indicators: false
+//                             },
+                      
+//                             layout: { type: 'hbox', pack: 'start', align: 'center' },
+                      
+//                             items: [
+                        
+
+//                                  {
+//                                                      xtype: 'container',
+//                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
+//                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
+//                                                      width: 100,
+//                                                    height: 60,
+//                                                      layout: {
+//                                                          type: 'vbox',
+//                                                          pack: 'center',
+//                                                          align: 'center'
+//                                                      },
+//                                                      items: [
+//                                                          {
+//                                                              margin: '0 0 0 0',
+//                                                              id: 'htmlFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                              html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:black;text-align:center;" ><u>UnPaid Order</u></div>',
+//                                                          }
+//                                                      ]
+
+
+//                                                  },
+//  {
+//                                                      xtype: 'container',
+//                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle1',
+//                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
+//                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
+//                                                      width: 100,
+//                                                    height: 60,
+//                                                      layout: {
+//                                                          type: 'vbox',
+//                                                          pack: 'center',
+//                                                          align: 'center'
+//                                                      },
+//                                                      items: [
+//                                                          {
+//                                                              margin: '0 0 0 0',
+//                                                            //  id: 'htmlFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                              html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:black;text-align:center;" ><u>UnPaid Order</u></div>',
+//                                                          }
+//                                                      ]
+
+
+//                                                  },
+
+//  {
+//                                                      xtype: 'container',
+//                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle2',
+//                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
+//                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
+//                                                      width: 100,
+//                                                    height: 60,
+//                                                      layout: {
+//                                                          type: 'vbox',
+//                                                          pack: 'center',
+//                                                          align: 'center'
+//                                                      },
+//                                                      items: [
+//                                                          {
+//                                                              margin: '0 0 0 0',
+//                                                            //  id: 'htmlFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                              html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:black;text-align:center;" ><u>UnPaid Order</u></div>',
+//                                                          }
+//                                                      ]
+
+
+//                                                  },
+//  {
+//                                                      xtype: 'container',
+//                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle3',
+//                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
+//                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
+//                                                      width: 100,
+//                                                    height: 60,
+//                                                      layout: {
+//                                                          type: 'vbox',
+//                                                          pack: 'center',
+//                                                          align: 'center'
+//                                                      },
+//                                                      items: [
+//                                                          {
+//                                                              margin: '0 0 0 0',
+//                                                            //  id: 'htmlFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                              html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:black;text-align:center;" ><u>UnPaid Order</u></div>',
+//                                                          }
+//                                                      ]
+
+
+//                                                  },
+//                                                   {
+//                                                      xtype: 'container',
+//                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle4',
+//                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
+//                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
+//                                                      width: 100,
+//                                                    height: 60,
+//                                                      layout: {
+//                                                          type: 'vbox',
+//                                                          pack: 'center',
+//                                                          align: 'center'
+//                                                      },
+//                                                      items: [
+//                                                          {
+//                                                              margin: '0 0 0 0',
+//                                                          //    id: 'htmlFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                              html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:black;text-align:center;" ><u>UnPaid Order</u></div>',
+//                                                          }
+//                                                      ]
+
+
+//                                                  },
+//                                                   {
+//                                                      xtype: 'container',
+//                                                      id: 'containerFloatPanel_AyohaStore_OrderHistory_OrderSentTitle5',
+//                                                      name: 'nameFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                      style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
+//                                                     // style: 'background-color:#fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-right:2px solid #fac;border-left:2px solid #fac;',
+//                                                      width: 100,
+//                                                    height: 60,
+//                                                      layout: {
+//                                                          type: 'vbox',
+//                                                          pack: 'center',
+//                                                          align: 'center'
+//                                                      },
+//                                                      items: [
+//                                                          {
+//                                                              margin: '0 0 0 0',
+//                                                           //   id: 'htmlFloatPanel_AyohaStore_OrderHistory_OrderSentTitle',
+//                                                              html: '<div style="background: transparent;width:100%;font-size: 12px;font-weight:bold;color:black;text-align:center;" ><u>UnPaid Order</u></div>',
+//                                                          }
+//                                                      ]
+
+
+//                                                  },
+
+                              
+                      
+                            
+                      
+//                             ]
+//                           }
+//                         ]
+//                       }
                    ]
                },
          ],

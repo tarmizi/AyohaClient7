@@ -5,11 +5,10 @@
 
 
 
-var _FloatPanel_AyohaStore_PaymentReceipt;
+var _FloatPanel_AyohaStore_PaymentReceipt=null;
 
 
 var isFloatPanel_AyohaStore_PaymentReceiptOpen = 'N';
-
 
 
 
@@ -18,23 +17,20 @@ function FloatPanel_AyohaStore_PaymentReceipt() {
 
     _FloatPanel_AyohaStore_PaymentReceipt =
      Ext.create('Ext.Container', {
-         zIndex: 360,
-         xtype: 'container',
-         // height: '50%',
-         width: '100%',
-         height: '100%',
-         //width: 280,
+        
          id: 'LoadingFloatPanel_AyohaStore_PaymentReceiptID',
-         draggable: false,
-         modal: false,
 
-         centered: true,
-         //bottom: 64,         
-         //modal: true,
-        // hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
+
+ floated: true,
+        centered: true,
+        fullscreen: true,
+        //closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
+
          showAnimation: {
              type: 'popIn',
              duration: 150,
@@ -203,7 +199,7 @@ function FloatPanel_AyohaStore_PaymentReceipt() {
 
 
      });
-    return _FloatPanel_AyohaStore_PaymentReceipt;
+   // return _FloatPanel_AyohaStore_PaymentReceipt;
 
 
 
@@ -543,10 +539,10 @@ function FloatPanel_AyohaStore_PaymentReceipt_PrintHtml() {
 
 
 
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });
@@ -586,17 +582,32 @@ function FloatPanel_AyohaStore_PaymentReceipt_PrintHtml() {
 
 function FloatPanel_AyohaStore_PaymentReceiptShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_PaymentReceipt);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_PaymentReceipt());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_PaymentReceiptHide()");
-    isFloatPanel_AyohaStore_PaymentReceiptOpen = 'Y';
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_PaymentReceipt);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_PaymentReceipt());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_PaymentReceiptHide()");
+  
+
+
+
+    
+
+FloatPanel_AyohaStore_PaymentReceipt();
+
+
+
+_FloatPanel_AyohaStore_PaymentReceipt.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_PaymentReceipt', function () {
+ 
+    FloatPanel_AyohaStore_PaymentReceiptHide(true);
+  });
+}
+
+
+  isFloatPanel_AyohaStore_PaymentReceiptOpen = 'Y';
     FloatPanel_AyohaStore_PaymentReceipt_PrintHtml();
-
-
-
-
-
 
 
 
@@ -604,12 +615,40 @@ function FloatPanel_AyohaStore_PaymentReceiptShow() {
 }
 
 
-function FloatPanel_AyohaStore_PaymentReceiptHide() {
+function FloatPanel_AyohaStore_PaymentReceiptHide(animCfg, fromBack) {
 
 
+    // if (isFloatPanel_AyohaStore_PaymentReceiptOpen == 'Y') {
+    //     _FloatPanel_AyohaStore_PaymentReceipt.hide(); isFloatPanel_AyohaStore_PaymentReceiptOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaStore_PaymentReceiptHide()");
+    // }
+
+
+
+
+
+    
+    
     if (isFloatPanel_AyohaStore_PaymentReceiptOpen == 'Y') {
-        _FloatPanel_AyohaStore_PaymentReceipt.hide(); isFloatPanel_AyohaStore_PaymentReceiptOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_PaymentReceiptHide()");
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_PaymentReceipt.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_PaymentReceipt.hide();
+          }
+         
+          isFloatPanel_AyohaStore_PaymentReceiptOpen = 'N';
+          _FloatPanel_AyohaStore_PaymentReceipt.destroy();
+          _FloatPanel_AyohaStore_PaymentReceipt = null;
+
+         //  FloatPanel_MerchantDetailPageHide();
+          //  Dashboard_SearchMerchantListHide();
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_PaymentReceipt');
+          }
     }
 }
 

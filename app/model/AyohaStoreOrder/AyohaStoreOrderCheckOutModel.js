@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaStoreOrder.AyohaStoreOrderCheckOutModel', {
     extend: 'Ext.data.Model',
-    config: {
+   // config: {
         fields: [
         'ID',
         'Row_num',
@@ -79,5 +79,5 @@
         },
       
         ]
-    }
+   // }
 });
