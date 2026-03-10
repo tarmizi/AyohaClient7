@@ -40,8 +40,8 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
         },
         // style: 'border-bottom:1px solid;background-color:#353839;',
         //style: 'border-bottom:1px solid;background-color:black;',
-        style: 'border-bottom:1px none;background-color:white;',
-      
+      //  style: 'border-bottom:1px none;background-color:white;',
+        style:ayohaThemeColor_Body_ThemeColor(),
 
         items: [
 
@@ -1706,7 +1706,7 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
    //docked: 'top',   
    style: {
       
-       background: 'white',
+       background: 'transparent',
        position: 'relative',
        //zIndex: 200
      
@@ -1724,8 +1724,8 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
            id: 'containerFloatPanel_AyohaStoreMasterHeader',
            width: '100%',
            height: 90,
-           style: 'background-color:transparent;position:relative;z-index:200;',
-          
+          // style: 'background-color:transparent;position:relative;z-index:200;',
+           style: 'background-color:transparent;',
 
            layout: {
                type: 'vbox',
@@ -1747,9 +1747,9 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
   margin: '20 0 20 0',
   height: 80,
   width: '90%',
-  style: 'position: relative; z-index: 250; background-color: white;',
+  style: 'position: relative; z-index: 250; background-color: transparent !important;',
   html:
-    '<div style="position: relative; z-index: 250; background-color: white; padding: 15px 0; margin: 0; width: 100%;">' +
+    '<div style="position: relative; z-index: 250; background-color: transparent !important; padding: 15px 0; margin: 0; width: 100%;">' +
       '<input type="text" ' +
         'id="input-FloatPanel_AyohaStore_SearchProduct" ' +
         'style="' +
@@ -1913,7 +1913,7 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
                {
                    xtype: 'container',
                    id: 'containerFloatPanel_AyohaStore_SaleItemListColThreeScroll',
-                   style: 'background-color: white',
+                   style: 'background-color: transparent !important;',
                    // hidden: true,
                    margin: '0 0 0 0',
                     scrollable:false,    
@@ -1938,16 +1938,16 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
                                  inline: {
                                      wrap: true
                                  },
-                                 scrollable:false,                               
-                                 style: {
-                                     background: 'transparent',
-                                 },
+                                  cls: 'ayohaSaleTransparentList',
+                                 scrollable:false,  
+                                  style: 'background-color: transparent !important;',                             
+                                 
                                  width: '100%',
                                 height: '100%',
                                  itemConfig: {
                                      xtype: 'component',
                                      width: '50%',
-                                     style: 'display: inline-block; vertical-align: top; box-sizing: border-box; padding: 8px 4px;',
+                                     style: 'display: inline-block; vertical-align: top; box-sizing: border-box; padding: 8px 4px;background-color: transparent !important;',
                                      tpl: '{ModifiedDiscountCol}{ModifiedItemCoverImg}'
                                  },
                                  emptyText: '<div class="myContent" style="padding:20px;text-align:center;">No Sale Items Available</div>',

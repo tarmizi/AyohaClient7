@@ -1341,3 +1341,26 @@
     font-weight: 700;
     color: #000000;
 }
+
+
+
+
+
+
+
+
+
+
+.ayohaSaleTransparentList,
+.ayohaSaleTransparentList .x-body,
+.ayohaSaleTransparentList .x-inner,
+.ayohaSaleTransparentList .x-scroll-container,
+.ayohaSaleTransparentList .x-dataview-container,
+.ayohaSaleTransparentList .x-listcontainer,
+.ayohaSaleTransparentList .x-listitem,
+.ayohaSaleTransparentList .x-listitem-body,
+.ayohaSaleTransparentList .x-listitem-inner,
+.ayohaSaleTransparentList .x-group-header,
+.ayohaSaleTransparentList .x-group-header-wrap {
+    background: transparent !important;
+}

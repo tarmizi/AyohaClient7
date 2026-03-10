@@ -400,7 +400,7 @@
                              ModifiedItemName = ItemName;
                          }
                          
-                         _value = '<div style="position:relative; background:white; border:1px solid #e0e0e0; border-radius:8px; padding:10px; box-sizing:border-box; min-height:320px; height:100%; display:flex; flex-direction:column;">' +
+                         _value = '<div style="position:relative; background:white !important; border:1px solid #e0e0e0; border-radius:8px; padding:10px; box-sizing:border-box; min-height:320px; height:100%; display:flex; flex-direction:column;">' +
                                   '<div style="text-align:center; margin-bottom:8px; flex-shrink:0; height:150px; display:flex; align-items:center; justify-content:center;">' +
                                   '<img src="' + ItemCoverImg + '" style="max-width:100%; max-height:150px; width:auto; height:auto; border-radius:5px; object-fit:contain;" />' +
                                   '</div>' +

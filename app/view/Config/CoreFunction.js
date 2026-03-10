@@ -998,7 +998,35 @@ function CoreFunction_DashboardMerchantDetailPage_EnterprisesCoverMediaLoadByEnt
 
 
 
-     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.removeAll();
+    
+
+
+var oldCarousel = Ext.getCmp('CarouselDashboard_MerchantDetailPage');
+    if (oldCarousel) {
+        var parentContainer = oldCarousel.getParent();
+        parentContainer.remove(oldCarousel, true);
+        FloatPanel_MerchantPageDetail = parentContainer.insert(0, {
+            xtype: 'carousel',
+            id: 'CarouselDashboard_MerchantDetailPage',
+            name: 'nameCarouselDashboard_MerchantDetailPage',
+           width: '95%',
+           // height: 310,
+               height: 340,
+            style: 'background-color:transparent',
+            //height: '100%',
+            indicator: true,
+            margin: '0 0 0 0',
+            listeners: {
+                activeitemchange: function (container, newCard, oldCard, index) {
+                }
+            }
+        });
+    }
+
+
+
+
+
     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getProxy().setExtraParam('EnterpriseAccNo', EnterpriseAccNo);
     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getProxy().setExtraParam('Today', day);
     _DataStore_EnterprisesCoverMediaLoadByEnterpriseAccNoStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());

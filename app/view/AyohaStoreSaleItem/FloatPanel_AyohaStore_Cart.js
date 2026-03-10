@@ -182,8 +182,9 @@ function FloatPanel_AyohaStore_CartCreateIfNeeded() {
     width: '100%',
     docked: 'bottom',
     margin: '0 0 0 0',
-    height: 43,
-    style: 'background-color:white;border-top:1px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19)',
+    height: 60,
+     style: 'background:#fff;box-shadow:0 -6px 18px rgba(0,0,0,.10);',
+   // style: 'background-color:white;border-top:1px solid #f0f2f5;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19)',
    // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:2px solid black;',
    // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #f0f2f5;box-shadow:1px 0px 3px 3px #EEEDED ;',
     layout: {
@@ -404,48 +405,7 @@ function FloatPanel_AyohaStore_CartCreateIfNeeded() {
 
             },
             items: [
-                //{
-                //    xtype: 'panel',
-                //    width: 5
-                //},
-//                {
-//                    xtype: 'container',
-//                    id: 'containerFloatPanel_AyohaStore_Cart_MakePayment_OnlineBanking',
-//                    width: '41%',
-//                    height: 35,
-//                    margin: '0 0 0 0',
-//                    // hidden: true,
-//                    // style: "background-color: transparent",
-//                    //style: "background-color: #F35B57;",
-//                    style: 'border-right:1px solid grey;border-left:1px solid grey;border-bottom:1px solid grey;border-top:1px solid grey ;background: white;border-radius: 10px 10px 10px 10px;',
-//                    layout: {
-//                        type: 'hbox',
-//                        pack: 'center',
-//                        align: 'center'
-
-//                    },
-//                    items: [
-
-//                         {
-//                             margin: '0 0 0 0',
-
-//                             width: 24,
-//                             height: 24,
-//                             html: '<img src="resources/icons/onlineBanking.png" alt="Image" style="width:24px;height:24px;">',
-//                             // ui:'plain'
-//                         },
-
-//{
-//    margin: '12 0 0 5',
-//    id: 'htmlFloatPanel_AyohaStore_Cart_onlineBankingText',
-//    html: '<div style="background: transparent;height:30px;font-size: 10px;font-weight:normal;color:black;text-align:center;" >Online Banking</div>'
-//},
-//                    ]
-//                },
-                //{
-                //    xtype: 'panel',
-                //    width: 10
-                //},
+         
                {
                    xtype: 'container',
                    id: 'containerFloatPanel_AyohaStore_Cart_MakePayment_AyohaEwallet',
@@ -477,63 +437,7 @@ height: 50,
 
 
                         },
-                        // {
-                        //     xtype: 'spacer',
-                        //     width: 5
-                        // },
-                        // {
-                        //     xtype: 'container',
-                        //     width: 2,
-                        //     height: 30,
-                        //     style: "background-color: #f0f2f5;",
-                        // },
-                        //  {
-                        //      xtype: 'spacer',
-                        //      width: 5
-                        //  },
-                        //{
-                        //    margin: '0 0 0 0',
-
-                        //    width: 30,
-                        //    height: 30,
-
-                        //    html: '<img src="resources/icons/ayohaewallet01.png" alt="Image" style="width:30px;height:30px;">',
-                        //    // ui:'plain'
-                        //},
-
-
-
-
-
-                        //{
-                        //    xtype: 'container',
-                        //   // id: 'containerFloatPanel_AyohaStore_Cart_MakePayment_AyohaEwallet',
-                        //    width: 100,
-                        //    height: 45,
-                        //    margin: '0 0 0 0',
-                        //    // hidden: true,
-                        //    style: "background-color: transparent",
-                        //    //style: "background-color: #F35B57;",
-                        //    // style: 'border-right:1px solid grey;border-left:1px solid grey;border-bottom:1px solid grey;border-top:1px solid grey ;background: white;border-radius: 10px 10px 10px 10px;',
-                        //    layout: {
-                        //        type: 'vbox',
-                        //        pack: 'start',
-                        //        align: 'left'
-
-                        //    },
-                        //    items: [
-                        //        {
-                        //            margin: '10 0 0 5',
-                        //            id: 'htmlFloatPanel_AyohaStore_Cart_AyohaEwalletTextAmount',
-                        //            html: '<div style="background: transparent;font-size: 16px;font-weight:bold;color:black;text-align:center;" >RM0.00</div>'
-                        //        },
-                        //        {
-                        //            margin: '-3 0 0 5',
-                        //            id: 'htmlFloatPanel_AyohaStore_Cart_AyohaEwalletText',
-                        //            html: '<div style="background: transparent;font-size: 10px;font-weight:normal;color:black;text-align:center;" >Ayoha e-Wallet</div>'
-                        //        },
-                        //    ]
-                        //},
+                      
                          
 
                    ]
@@ -1931,7 +1835,7 @@ if(MerchantPoint){
                    
                     swalFireFail("Fail!->" + result.responseText.trim());
                     Ext.Viewport.unmask();
-                    LoadingPanelHide();
+                    LoadingPanelHide(false);
                 }
                 Ext.Viewport.unmask();
 
@@ -1941,7 +1845,7 @@ if(MerchantPoint){
                
                 swalFireFail("Fail!" + result.responseText.trim());
                 Ext.Viewport.unmask();
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
 
         });
@@ -2626,8 +2530,8 @@ function FloatPanel_AyohaStore_CartHide(fromBack,animCfg) {
           }
           isFloatPanel_AyohaStore_CartOpen = 'N';
          
-        _FloatPanel_AyohaStore_Cart.destroyed;
-        _FloatPanel_AyohaStore_Cart=null;
+        // _FloatPanel_AyohaStore_Cart.destroyed;
+        // _FloatPanel_AyohaStore_Cart=null;
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_AyohaStore_Cart');
@@ -2695,11 +2599,11 @@ function FloatPanel_AyohaStore_Cart_Delete(ID) {
 
 
 
+DeleteMessageOverlayShow("Are you sure want to delete?",ID);
 
 
 
-
-GeneralMsgBox7_CartDelete("Delete Cart", "Are you sure want to delete?", "FloatPanel_AyohaStore_CartID",ID);
+//GeneralMsgBox7_CartDelete("Delete Cart", "Are you sure want to delete?", "FloatPanel_AyohaStore_CartID",ID);
 
 
 
@@ -2830,7 +2734,13 @@ function FloatPanel_AyohaStore_Cart_Delete_CheckOut(ID,ItemPrice,ItemQuantity) {
 
     
     SumPrice=parseFloat(ItemPrice*ItemQuantity);
-    GeneralMsgBox7_CartDelete("Delete Order Item", "Are you sure want to delete?", "FloatPanel_AyohaStore_CheckOutID",ID);
+
+
+
+
+
+
+  GeneralMsgBox7_CartDelete("Delete Order Item", "Are you sure want to delete?", "FloatPanel_AyohaStore_CheckOutID",ID);
     
 //     Swal.fire({
 //      title: 'Are you sure want to delete?',

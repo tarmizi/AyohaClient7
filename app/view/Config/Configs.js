@@ -3542,7 +3542,8 @@ function GeneralMsgBox7_Msg(MsgTitle, Msg,ContainerID) {
     width: '95%',
     maxWidth: 150,
 
-    items: [{
+    items: [
+        {
       xtype: 'container',
       cls: 'ayohaDlgWrap',
       items: [
@@ -3585,7 +3586,14 @@ function GeneralMsgBox7_Msg(MsgTitle, Msg,ContainerID) {
         }
 
       ]
-    }],
+    }
+
+
+
+]
+    
+    
+    ,
 
     buttons: [{
       text: 'OK',

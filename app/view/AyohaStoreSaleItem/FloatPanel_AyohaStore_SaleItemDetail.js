@@ -17,7 +17,7 @@ var _FloatPanel_AyohaStore_SaleItemDetail=null;
 
 
 function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
-    if (_FloatPanel_AyohaStore_SaleItemDetail&& !_FloatPanel_AyohaStore_SaleItemDetail.destroyed) return;
+ if (_FloatPanel_AyohaStore_SaleItemDetail&& !_FloatPanel_AyohaStore_SaleItemDetail.destroyed) return;
   
   
     _FloatPanel_AyohaStore_SaleItemDetail = Ext.create('Ext.Container',
@@ -182,6 +182,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
 
                                       xtype: 'container',
                                       width: '100%',
+                                       zIndex: 10,
                                       // width: 40,
                                       //zIndex:-10,
                                       //  title: '<font size="3" color="white">Live Tracking Map</font>',
@@ -189,7 +190,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                       height: 60,
                                      // docked: 'top',
                                       id: 'containerFloatPanel_AyohaStore_SaleItemDetailHeader1',
-                                      style: "background-color: black;",
+                                      style: "background-color: transparent !important;",
                                       //style: {
                                       //    // background: '#D25959',
                                       //    background: 'transparent',
@@ -216,11 +217,14 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                  {
                                                      xtype: 'button',
                                                      id: 'btnFloatPanel_AyohaStore_SaleItemDetailBack_1',
-                                                     height: 50,
-                                                     width: 65,
+                                                     height: 55,
+                                                     width: 85,
                                                      margin: '0 0 0 0',
                                                      // iconCls: 'list',
-                                                     html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
+                                                     //html: '<div style="text-align:center;height:45px;width:45px;background: white;border-radius: 50%;"><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
+                                                    html:'<div style="display:flex;align-items:center;justify-content:center;height:45px;width:45px;background:linear-gradient(180deg,#ffffff,#faf5ff);border-radius:50%;border:1.5px solid #d8b4fe;box-shadow:0 6px 14px rgba(168,85,247,0.15);box-sizing:border-box;">' +
+    '<img src="resources/icons/backblack02.png" style="width:18px;height:18px;display:block;object-fit:contain;" alt="Back">' +
+'</div>',
                                                      ui: 'plain',
                                                      handler: function () {
 
@@ -245,64 +249,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
 
                                                             },
 
-                                                           
-//{
-//    xtype: 'container',
-//    zIndex:100,
-//    height: 35,
-//    width: 35,
-//    margin: '-3 0 0 5',
-//    id: 'containerFloatPanel_AyohaStore_SaleItemDetail_MyCartCountbadge',
-//    name: 'namecontainerFloatPanel_AyohaStore_SaleItemDetailMyCart',
-//    style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
-//    layout: {
-//        type: 'vbox',
-//        pack: 'center',
-//        align: 'center'
-
-//    },
-//    items: [
-
-//{
-//    margin: '-1 0 0 0',
-//    id: 'htmlFloatPanel_AyohaStore_SaleItemDetail_MyCartCountbadgeText',
-//    html: '<div style="background: transparent;height:10px;font-size: 12px;font-weight:normal;color:black;text-align:center;" ><b>0</b></div>'
-//},
-//{
-//    margin: '2 2 0 0',
-//    // hidden: true,
-//    width: 18,
-//    height: 18,
-//    html: '<img src="resources/icons/myCart02.png" alt="Image" style="width:18px;height:18px;">',
-//    // ui:'plain'
-//},
-//{
-//    margin: '0 0 0 0',
-//    id: 'htmlFloatPanel_AyohaStore_SaleItemDetail_MyCartCountbadgeTextItem',
-//    hidden: true,
-//    html: '<div style="background: transparent;height:5px;font-size: 8px;font-weight:normal;color:black;text-align:center;" >Item</div>'
-//},
-
-//    ]
-//},
-
-                                                     //{
-                                                     //    xtype: 'button',
-                                                     //    id: 'btnbtnFloatPanel_AyohaStore_SaleItemDetailFakeButton',
-                                                     //    height: 35,
-                                                     //    width: 120,
-                                                     //    zIndex: 100,
-                                                     //    // badgeText:'0',
-                                                     //    // iconCls: 'list',
-                                                     //    margin: '0 -115 0 0',
-                                                     //    //  html: '<div><img src="resources/icons/AyohaStoreWhite.png" width="25" height="25" alt="Company Name"></div>',
-                                                     //    ui: 'plain',
-                                                     //    handler: function () {
-                                                     //        FloatPanel_AyohaStore_CartShow();
-                                                     //    }
-                                                     //},
-
-
+              
 
                                                           {
                                                               xtype: 'container',
@@ -311,7 +258,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                               hidden: true,
                                                               width: 110,
                                                               height: 30,
-                                                              zIndex: 100,
+                                                            //  zIndex: 100,
                                                               margin: '0 0 0 0',
                                                               // hidden: true,
                                                               style: "background-color: transparent",
@@ -346,44 +293,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                                         // ui:'plain'
                                                                     },
 
-                                                                  //  {
-                                                                  //      xtype: 'container',
-                                                                  //      height: 35,
-                                                                  //      width: 35,
-                                                                  //      margin: '-3 0 0 5',
-                                                                  //      id: 'containerFloatPanel_AyohaStore_SaleItemDetail_MyCartCountbadge',
-                                                                  //      style: 'border-right:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-top:1px solid black ;background-color: white;border-radius: 50%;',
-                                                                  //      layout: {
-                                                                  //          type: 'vbox',
-                                                                  //          pack: 'center',
-                                                                  //          align: 'center'
-
-                                                                  //      },
-                                                                  //      items: [
-
-                                                                  //{
-                                                                  //    margin: '-4 0 0 0',
-                                                                  //    id: 'htmlFloatPanel_AyohaStore_SaleItemDetail_MyCartCountbadgeText',
-                                                                  //    html: '<div style="background: transparent;height:10px;font-size: 12px;font-weight:normal;color:black;text-align:center;" ><b>0</b></div>'
-                                                                  //},
-                                                                  // {
-                                                                  //     margin: '2 0 0 2',
-                                                                  //    // hidden: true,
-                                                                  //     width: 24,
-                                                                  //     height: 24,
-                                                                  //     html: '<img src="resources/icons/myCart02.png" alt="Image" style="width:20px;height:20px;">',
-                                                                  //     // ui:'plain'
-                                                                  // },
-                                                                  //{
-                                                                  //    margin: '0 0 0 0',
-                                                                  //    id: 'htmlFloatPanel_AyohaStore_SaleItemDetail_MyCartCountbadgeTextItem',
-                                                                  //    hidden:true,
-                                                                  //    html: '<div style="background: transparent;height:5px;font-size: 8px;font-weight:normal;color:black;text-align:center;" >Item</div>'
-                                                                  //},
-
-                                                                  //      ]
-                                                                  //  },
-
+                                                              
 
 
 
@@ -409,241 +319,17 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
 
 
 
-                                  {
 
-                                      xtype: 'container',
-                                      width: '100%',
-                                      hidden:true,
-                                     // docked: 'top',
-                                      height: 30,
-                                      id: 'containerFloatPanel_AyohaStore_SaleItemDetailHeader',
-                                      style: "background-color: transparent;",
-                                      layout: {
-                                          type: 'hbox',
-                                          pack: 'center',
-                                          align: 'center',
-                                      },
-                                      // hidden:true,
-                                      items:
-                                             [
-
-
-
-
-
-
-
-
-                                                 {
-                                                     xtype: 'button',
-                                                     id: 'btnFloatPanel_AyohaStore_SaleItemDetailBack',
-                                                     height: 30,
-                                                     width: 65,
-                                                     margin: '0 0 0 0',
-                                                     // iconCls: 'list',
-                                                     html: '<div ><img src="resources/icons/backFullWhite.png" width="25" height="20" alt="Company Name"></div>',
-                                                     ui: 'plain',
-                                                     handler: function () {
-
-                                                         //var panel = Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemDetail_MasterOuter');
-                                                         //panel.getScrollable().getScroller().scrollTo(0, 0, true);
-
-
-                                                         //var content = Ext.get('containerFloatPanel_AyohaStore_SaleItemDetail_Master');
-                                                         //var bottom = content.getHeight();                                                     
-
-
-                                                         //var panel = Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemDetail_MasterOuter');
-                                                         //panel.getScrollable().getScroller().scrollTo(0, bottom, true);
-
-
-
-
-                                                         //panel.setDisabled(true);
-                                                       //  panel.setDisabled(false);
-
-
-                                                         _FloatPanel_AyohaStore_SaleItemDetail.hide(Ext.fx.Animation({
-                                                             type: 'slideOut',
-                                                             direction: 'left',
-                                                             easing: 'cubic-bezier(.7,0,.7,1)',
-                                                             duration: 250
-
-                                                         }));
-                                                         is_FloatPanel_AyohaStore_SaleItemDetailOpen = 'N';
-                                                         RemovePages("FloatPanel_AyohaStore_SaleItemDetailHide()");
-                                                         globalFloatPanel_AyohaStore_SaleItemDetail_OpenFrom = 'SaleItemDetail';
-                                                         FloatPanel_AyohaStore_ShareAndWhatsappHide();
-                                                     }
-                                                 },
-
-                                                   //{
-                                                   //   xtype: 'button',
-                                                   //    height: 35,
-                                                   //    width: 310,
-                                                   //    //height: 30,
-                                                   //    //width: '100%',
-                                                   //    //margin: '-1 0 0 0',
-                                                   //    id: 'btnFloatPanel_AyohaStore_DotMenuItemExpandShrinkTxtx',
-                                                   //    //badgeText: "2",
-                                                   //    //html: '<font size=2 color=black><b>Cawan Hikmat</b></font>',
-                                                   //    html: '<div style="height:35px;color:black;text-align: center;font-size:12px;width:100%;font-weight:bold;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background-color:white;border-radius: 20px 0px 20px 0px;padding:8px 0px 0px 0px;">Aslam cucu angah rahem..</div>',
-                                                   //    ui: 'plain',
-                                                   //    handler: function () {
-                                                   //        //FloatPanel_AyohaStore_DotMenuItemHide();
-                                                   //        // FloatPanel_AyohaStore_SearchProductShow();
-                                                   //    }
-                                                   //},
-                                                       //{
-                                                       //    xtype: 'container',
-                                                       //    margin: '0 0 0 0',
-                                                       //    style: "background-color: transparent;",
-                                                       //  //  style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background:black;border-radius: 20px 20px 20px 20px;',
-                                                       //    height: 30,
-                                                       //    width:300,
-                                                       //    // margin: '70 0 0 0',
-                                                       //    id: 'containerFloatPanel_AyohaStore_DotMenuItemSearchTxtInnerx',
-                                                       //    layout: {
-
-                                                       //        type: 'hbox',
-                                                       //        pack: 'center',
-                                                       //        align: 'center'
-                                                       //    },
-                                                       //    items: [
-
-
-                                                                 
-
-
-                                                       //    ]
-                                                       //},
-                                                            {
-                                                                xtype: 'spacer',
-
-                                                            },
-
-                                                           
-
-                                                  {
-                                                      xtype: 'button',
-                                                      id: 'btnFloatPanel_AyohaStore_SaleItemDetailDiscountImgXXX',
-                                                      height: 100,
-                                                      width: 70,
-                                                     hidden: true,
-                                                      // iconCls: 'list',
-                                                      margin: '10 3 0 0',
-                                                      html: '<img class="blink_me" src="resources/icons/DiscountPurple04.png" alt="Image" style="width:60px;height:90px;margin:0px 0px 0px 0px;"><br><div class="blink_me" style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:-60px 0px 0px 10px;width:100%;text-align:left;color:white;height:90px;">50%</div>',
-                                                      ui: 'plain',
-                                                      handler: function () {
-                                                          _FloatPanel_AyohaStore_SaleItemDetail.hide(Ext.fx.Animation({
-                                                              type: 'slideOut',
-                                                              direction: 'right',
-                                                              easing: 'cubic-bezier(.7,0,.7,1)',
-                                                              duration: 250
-
-                                                          }));
-                                                          is_FloatPanel_AyohaStore_SaleItemDetailOpen = 'N';
-                                                          RemovePages("FloatPanel_AyohaStore_SaleItemDetailHide()");
-                                                      }
-                                                  },
-
-
-
-
-                                                  {
-                                                      xtype: 'panel',
-                                                      width:10
-                                                  }
-
-
-
-
-
-
-
-                                             ]
-
-                                  },
-
-
-                                  //{
-
-                                  //    xtype: 'container',
-                                  //    width: '100%',
-                                  //    // docked: 'top',
-                                  //    height: 30,
-                                  //    id: 'containerFloatPanel_AyohaStore_SaleItemDetailHeaderxx',
-                                  //    style: "background-color: transparent;",
-                                  //    layout: {
-                                  //        type: 'vbox',
-                                  //        pack: 'center',
-                                  //        align: 'right',
-                                  //    },
-                                  //    // hidden:true,
-                                  //    items:
-                                  //           [
-
-
-
-
-
-
-
-
-                                                 
-                                                       
-
-                                                        
-
-                                  //                {
-                                  //                    xtype: 'button',
-                                  //                    id: 'btnFloatPanel_AyohaStore_SaleItemDetailDiscountImg',
-                                  //                    height: 100,
-                                  //                    width: 70,
-                                  //                    hidden: true,
-                                  //                    // iconCls: 'list',
-                                  //                    margin: '10 13 0 0',
-                                  //                    html: '<img class="blink_me" src="resources/icons/DiscountPurple04.png" alt="Image" style="width:60px;height:90px;margin:0px 0px 0px 0px;"><br><div class="blink_me" style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:-60px 0px 0px 10px;width:100%;text-align:left;color:white;height:90px;">50%</div>',
-                                  //                    ui: 'plain',
-                                  //                    handler: function () {
-                                  //                        _FloatPanel_AyohaStore_SaleItemDetail.hide(Ext.fx.Animation({
-                                  //                            type: 'slideOut',
-                                  //                            direction: 'right',
-                                  //                            easing: 'cubic-bezier(.7,0,.7,1)',
-                                  //                            duration: 250
-
-                                  //                        }));
-                                  //                        is_FloatPanel_AyohaStore_SaleItemDetailOpen = 'N';
-                                  //                        RemovePages(_FloatPanel_AyohaStore_SaleItemDetail, "is_FloatPanel_AyohaStore_SaleItemDetailOpen");
-                                  //                    }
-                                  //                },
-
-
-
-
-                                  //                //{
-                                  //                //    xtype: 'panel',
-                                  //                //    width: 10
-                                  //                //}
-
-
-
-
-
-
-
-                                  //           ]
-
-                                  //},
                                   
                           
                         {
                             xtype: 'container',
                             width: '100%',
                             id: 'containerFloatPanel_AyohaStore_SaleItemDetail_MasterOuter',
-                           // zIndex: 100,
+                          
                             // hidden:true,
-                            margin: '-50 0 0 0',
+                           margin: '-60 0 0 0',
+                           // margin: '0 0 0 0',
                             height: '100%',
                             //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
                             style: 'background-color:white',
@@ -686,42 +372,12 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                //width: '100%',
                                                //height: '100%',
                                                width: '100%',
-                                               height: 350,
+                                              // height: 400,
                                                style: 'background-color:white',
-                                               //height: '100%',
+                                               height: '100%',
                                                indicator: true,
-                                               requires: [
-                'Ext.carousel.Carousel',
-                'Ext.util.DelayedTask',
-                'Ext.Video'
-                                               ],
-                                               listeners: {
-                                                   //initialize: function (c) {
-                                                   //    this.element.on({
-                                                   //        tap: function (e, node, options) {
-                                                   //            FloatPanel_PreviewAdvertisementShow("Dashboard_PreviewVIAAdvertisement");
-                                                   //        }
-                                                   //    });
-                                                   //},
-                                                   //initialize: function (c) {
-                                                   //    this.element.on({
-                                                   //        swipe: function (e, node, options) {
-                                                   //            if (e.direction == "left") {
-                                                   //                swipeDirection = "Left";
-
-                                                   //            } else {
-                                                   //                swipeDirection = "Right";
-                                                   //            }
-                                                   //        }
-                                                   //    });
-                                                   //},
-                                                   activeitemchange: function (container, newCard, oldCard, index) {
-
-
-                                                   },
-
-                                               },
-
+                                              
+                                               
 
 
                                                margin: '0 0 0 0',
@@ -1104,6 +760,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                                             name:'namecontainerFloatPanel_AyohaStore_SaleItemDetail_ProductDescTitle',
                                                                             style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-right:2px solid #D3D3D3;border-left:2px solid #D3D3D3;',
                                                                             flex:1,
+                                                                            height: 35,
                                                                             layout: {
                                                                                 type: 'vbox',
                                                                                 pack: 'center',
@@ -1126,6 +783,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                                               name: 'namecontainerFloatPanel_AyohaStore_SaleItemDetail_ReviewAndRateTitle',
                                                                               style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
                                                                               flex: 1,
+                                                                              height: 35,
                                                                               layout: {
                                                                                   type: 'vbox',
                                                                                   pack: 'center',
@@ -1148,6 +806,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                                               name: 'namecontainerFloatPanel_AyohaStore_SaleItemDetail_SellerInfoTitle',
                                                                               style: 'background-color: white;border-right:2px solid #D3D3D3;border-bottom:1px solid #D3D3D3;',
                                                                               flex: 1,
+                                                                              height: 35,
                                                                               layout: {
                                                                                   type: 'vbox',
                                                                                   pack: 'center',
@@ -1178,11 +837,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                                style: 'background-color:white',
                                                                //height: '100%',
                                                                indicator: false,
-                                                               requires: [
-                                'Ext.carousel.Carousel',
-                                'Ext.util.DelayedTask',
-                                'Ext.Video'
-                                                               ],
+                                                              
                                                                listeners: {
                                                                    //initialize: function (c) {
                                                                    //    this.element.on({
@@ -1285,7 +940,7 @@ function FloatPanel_AyohaStore_SaleItemDetailCreateIfNeeded() {
                                                                              //},
                                                                              {
                                                                                  id: 'htmlFloatPanel_AyohaStore_SaleItemDetail_ProductDesc',
-                                                                                 margin: '0 0 0 10',
+                                                                                 margin: '10 0 0 10',
 
                                                                                  // zIndex: -10,
                                                                                  width: '100%',
@@ -1917,8 +1572,8 @@ html: '<input type="text"  id="input-FloatPanel_AyohaStore_SaleItemDetail_Seller
     id: 'containerFloatPanel_AyohaStore_SaleItemDetail_bottomInfo',
     docked: 'bottom',
     width: '100%',
-    height: 50,
-    padding: '8 10',
+    height: 60,
+    padding: '0 7',
     style: 'background:#fff;box-shadow:0 -6px 18px rgba(0,0,0,.10);',
     layout: { type: 'hbox', align: 'middle' },
 
@@ -1942,9 +1597,9 @@ html: '<input type="text"  id="input-FloatPanel_AyohaStore_SaleItemDetail_Seller
               '<div style="display:flex;justify-content:flex-end;align-items:center;gap:8px;font-family:Arial,sans-serif;">'
             +   '<button onclick="FloatPanel_AyohaStore_SaleItemDetail_UpdateQuantity(-1)" class="buttonAddMinusToCartSign">-</button>'
             +   '<input type="number" id="input-FloatPanel_AyohaStore_SaleItemDetail" value="1" readOnly '
-            +     'style="border-radius:8px;border:1px solid purple;padding:2px;width:44px;height:30px;'
+            +     'style="border-radius:8px;border:1px solid purple;padding:2px;width:44px;height:42px;'
             +     'font-size:15px;color:#111;text-align:center;background:#fff;" />'
-            +   '<button onclick="FloatPanel_AyohaStore_SaleItemDetail_UpdateQuantity(1)" class="buttonAddMinusToCartSign">+</button>'
+            +   '<button onclick="FloatPanel_AyohaStore_SaleItemDetail_UpdateQuantity(1)" class="buttonAddMinusToCartSign">+</button>&nbsp;'
             +   '<button onclick="FloatPanel_AyohaStore_SaleItemDetailAddToCart();" class="buttonAddToCartLarge">'
             +     'Add to Cart <img src="resources/icons/myCart03.png" style="width:13px;height:13px;vertical-align:middle;margin-left:6px;">'
             +   '</button>'
@@ -2739,7 +2394,8 @@ function FloatPanel_AyohaStore_SaleItemDetailHide(fromBack,animCfg) {
           }
           is_FloatPanel_AyohaStore_SaleItemDetailOpen = 'N';
          
-        
+        //_FloatPanel_AyohaStore_SaleItemDetail.destroyed;
+       // _FloatPanel_AyohaStore_SaleItemDetail = null;
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_AyohaStore_SaleItemDetail');
