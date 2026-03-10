@@ -2,7 +2,7 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_OrderHistor
 
 });
 
-var _FloatPanel_AyohaStore_OrderHistory_Single;
+var _FloatPanel_AyohaStore_OrderHistory_Single=null;
 
 
 var isFloatPanel_AyohaStore_OrderHistory_SingleOpen = 'N';
@@ -14,27 +14,18 @@ var isFloatPanel_AyohaStore_OrderHistory_SingleOpen = 'N';
 function FloatPanel_AyohaStore_OrderHistory_Single() {
 
     _FloatPanel_AyohaStore_OrderHistory_Single =
-     Ext.create('Ext.Panel', {
-         zIndex: 360,
-         xtype: 'container',
-         // height: '50%',
-         width: '90%',
-         height: '60%',
-         styleHtmlContent: true,
-         //width: 280,
+     Ext.create('Ext.Container', {
+      
          id: 'LoadingFloatPanel_AyohaStore_OrderHistory_SingleID',
-         // name: 'nameFloatPanel_AyohaStore_OrderHistory_SingleID',
-         draggable: false,
-         //hideOnMaskTap: true,
-     
-
-         centered: true,
-         //bottom: 64,         
-         modal: true,
-         // hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
+         floated: true,
+        centered: true,
+        fullscreen: true,
+        //closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
          showAnimation: {
              type: 'popIn',
              duration: 150,
@@ -75,11 +66,8 @@ function FloatPanel_AyohaStore_OrderHistory_Single() {
                            xtype: 'container',
                            width: '100%',
                            docked: 'top',
-                           // width: 40,
-                           style: ' background-color:transparent;',
-                           //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-                           //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                           //hidden: true,
+                            height: ayoha_HeaderHeight(),
+                           style: ayohaThemeColor_Header(),
 
                            id: 'containerFloatPanel_AyohaStore_OrderHistory_SingleHeader',
                            //style: {
@@ -91,34 +79,30 @@ function FloatPanel_AyohaStore_OrderHistory_Single() {
                            // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                            layout: {
                                type: 'hbox',
-                               pack: 'left',
-                               align: 'left',
+                               pack: 'center',
+                                        align: 'center',
                            },
                            // hidden:true,
                            items:
                                   [
+ {
+                                                xtype: 'spacer',
+                                                width:10
 
+                                            },
 
                                                 {
                                                     xtype: 'button',
                                                     id: 'btnFloatPanel_AyohaStore_OrderHistory_SingleBack',
                                                     height: 30,
-                                                    width: 35,
-                                                    // iconCls: 'list',
-                                                    html: '<div ><img src="resources/icons/backblack02.png" width="25" height="20" alt="Company Name"></div>',
+                                                    width: 65,
+                                                             // iconCls: 'list',
+                                                             html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+                                                             ui: 'plain',
                                                     ui: 'plain',
                                                     handler: function () {
-
-                                                        _FloatPanel_AyohaStore_OrderHistory_Single.hide(Ext.fx.Animation({
-                                                            type: 'slideOut',
-                                                            direction: 'left',
-                                                            easing: 'cubic-bezier(.7,0,.7,1)',
-                                                            duration: 250
-
-                                                        }));
-                                                        isFloatPanel_AyohaStore_OrderHistory_SingleOpen = 'N';
-                                                        RemovePages("FloatPanel_AyohaStore_OrderHistory_SingleHide()");
-
+FloatPanel_AyohaStore_OrderHistory_SingleHide(false);
+                                                        
                                                     }
                                                 },
 
@@ -130,15 +114,21 @@ function FloatPanel_AyohaStore_OrderHistory_Single() {
                                                  {
                                                      margin: '0 0 0 0',
                                                      id: 'htmlFloatPanel_AyohaStore_OrderHistory_Single_TitleHeaderTxt',
+                                                      html: ayohaTheme_HeaderText('Order Status Log'),
                                                      //  html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:black;margin:10px 0px 0px 0px">Ayoha Members who love </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">DREAL CHOCLATE</div>',
-                                                     html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Purchase History</div>',
+                                                    // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Purchase History</div>',
 
                                                      //  html: '<font size=2 color=white><b>Review By Tarmizi Bin Rahim</b></font>'
                                                  },
 
 
 
-
+ {
+                                                            xtype: 'spacer',
+                                                            width:15
+  
+                                                        },
+    
 
 
 
@@ -178,6 +168,8 @@ function FloatPanel_AyohaStore_OrderHistory_Single() {
                                id: 'FloatPanel_AyohaStore_OrderHistory_Single_OrderSentListID',
                                mode: 'SINGLE',
                                disableSelection: false,
+                              // grouped: true,
+                              // groupFooterTpl: 'Total Order Item: {TotalQuantity} | Grand Total(RM): {GrandTotal}',
                                style: 'background-color:rgba(255, 255, 255, 10);border-radius: 0px 0px 0px 0px;',
                                scrollable: {
                                    direction: 'vertical',
@@ -236,7 +228,7 @@ function FloatPanel_AyohaStore_OrderHistory_Single() {
 
 
      });
-    return _FloatPanel_AyohaStore_OrderHistory_Single;
+  //  return _FloatPanel_AyohaStore_OrderHistory_Single;
 
 
 
@@ -248,10 +240,36 @@ function FloatPanel_AyohaStore_OrderHistory_Single() {
 
 function FloatPanel_AyohaStore_OrderHistory_SingleShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaStore_OrderHistory_Single);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_OrderHistory_Single());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaStore_OrderHistory_SingleHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaStore_OrderHistory_Single);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_OrderHistory_Single());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaStore_OrderHistory_SingleHide()");
+
+
+
+
+
+
+
+FloatPanel_AyohaStore_OrderHistory_Single();
+
+
+
+_FloatPanel_AyohaStore_OrderHistory_Single.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaStore_OrderHistory_Single', function () {
+ 
+    FloatPanel_AyohaStore_OrderHistory_SingleHide(true);
+  });
+}
+
+
+
+
+
+
+
     isFloatPanel_AyohaStore_OrderHistory_SingleOpen = 'Y';
     FloatPanel_AyohaStoreOrderLoadByOrderNoSubscriberAccNoStore();
    
@@ -265,11 +283,33 @@ function FloatPanel_AyohaStore_OrderHistory_SingleShow() {
 
 
 
-function FloatPanel_AyohaStore_OrderHistory_SingleHide() {
-    if (isFloatPanel_AyohaStore_OrderHistory_SingleOpen == 'Y') {
-        _FloatPanel_AyohaStore_OrderHistory_Single.hide(); isFloatPanel_AyohaStore_OrderHistory_SingleOpen = 'N';
-        RemovePages("FloatPanel_AyohaStore_OrderHistory_SingleHide()");
+function FloatPanel_AyohaStore_OrderHistory_SingleHide(animCfg, fromBack) {
+   
+
+
+ if (isFloatPanel_AyohaStore_OrderHistory_SingleOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_OrderHistory_Single.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_OrderHistory_Single.hide();
+          }
+         
+          isFloatPanel_AyohaStore_OrderHistory_SingleOpen = 'N';         
+          _FloatPanel_AyohaStore_OrderHistory_Single.destroy();
+          _FloatPanel_AyohaStore_OrderHistory_Single = null;
+
+         //  FloatPanel_MerchantDetailPageHide();
+          //  Dashboard_SearchMerchantListHide();
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_OrderHistory_Single');
+          }
     }
+
+
 }
 
 
@@ -287,31 +327,25 @@ function FloatPanel_AyohaStoreOrderLoadByOrderNoSubscriberAccNoStore() {
     _DataStore_AyohaStoreOrderLoadByOrderNoSubscriberAccNoStore.getProxy().setUrl(GetAPIurl() + '/AyohaStoreOrder/AyohaStoreOrderLoadByOrderNoSubscriberAccNo');
     _DataStore_AyohaStoreOrderLoadByOrderNoSubscriberAccNoStore.load();
 
+  _DataStore_AyohaStoreOrderLoadByOrderNoSubscriberAccNoStore.load({
+            callback: function (records, operation, success) {
+                if (success && records.length > 0) {
+                  
+                } else {
+                    console.error('Failed to load store data or no record found.');
+                   // LoadingPanelHide();
+                }
+            }
+        });
 
 
-    var task = Ext.create('Ext.util.DelayedTask', function () {
-
-        var count = _DataStore_AyohaStoreOrderLoadByOrderNoSubscriberAccNoStore.getCount();
-      //  alert(count);
-        //if (OrderStatus == "All Orders") {
-        //    Ext.getCmp('htmlFloatPanel_AyohaStore_OrderHistory_TitleHeaderTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Received Order List-YEAR (' + globalFloatPanel_AyohaStore_OrderHistory_Year + ')</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 16px;font-weight:bold;color:' + color + ';margin:-28px 0px 0px 0px">' + OrderStatus + ' (' + count + ')</div><br><div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:blue;margin:-28px 0px 0px 0px">Order Paid (28) | <font color="red">Order UnPaid (1)</font></div>');
-
-        //} else {
-        //    Ext.getCmp('htmlFloatPanel_AyohaStore_OrderHistory_TitleHeaderTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px">Received Order List-YEAR (' + globalFloatPanel_AyohaStore_OrderHistory_Year + ')</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 16px;font-weight:bold;color:' + color + ';margin:-28px 0px 0px 0px">' + OrderStatus + ' (' + count + ')</div>');
-
-        //}
-
-        // FloatPanel_AyohaStore_OrderHistory_AyohaStoreOrderCountOrderStatusMerchant();
-       
-      
-       
-       // FloatPanel_AyohaNotification_UpdateIsReadNotification(ID);
-
-    });
-    task.delay(500);
 
 
-    Ext.Viewport.setMasked(false);
+
+
+
+
+
 }
 
 

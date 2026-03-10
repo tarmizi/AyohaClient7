@@ -225,6 +225,10 @@ Ext.define('BuskartApp.model.AyohaStoreCart.AyohaStoreCartReOrderModel', {
                  var _result;
                  var ItemDescriptions = record.get('ItemDescriptions');
 
+
+                 if(ItemDescriptions)
+                 {
+
                  _value = ItemDescriptions.replace(/(\r\n|\n|\r)/gm, "<br>");
 
 
@@ -240,6 +244,11 @@ Ext.define('BuskartApp.model.AyohaStoreCart.AyohaStoreCartReOrderModel', {
                      _result = _value;
                      return _result;
                  }
+                 }else
+                 {
+                        _result = "";
+                 }
+
 
 
                  return _result;
@@ -252,7 +261,13 @@ Ext.define('BuskartApp.model.AyohaStoreCart.AyohaStoreCartReOrderModel', {
                  var _result;
                  var ItemDescriptions = record.get('ItemDescriptions');
 
-                 _value = ItemDescriptions.replace(/(\r\n|\n|\r)/gm, "<br>");
+                 if(ItemDescriptions){
+ _value = ItemDescriptions.replace(/(\r\n|\n|\r)/gm, "<br>");
+                 }else{
+                        _value = "";
+                 }
+
+                
 
 
                  // matching the pattern

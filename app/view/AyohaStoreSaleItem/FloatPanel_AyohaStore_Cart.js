@@ -2626,7 +2626,8 @@ function FloatPanel_AyohaStore_CartHide(fromBack,animCfg) {
           }
           isFloatPanel_AyohaStore_CartOpen = 'N';
          
-        
+        _FloatPanel_AyohaStore_Cart.destroyed;
+        _FloatPanel_AyohaStore_Cart=null;
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_AyohaStore_Cart');
