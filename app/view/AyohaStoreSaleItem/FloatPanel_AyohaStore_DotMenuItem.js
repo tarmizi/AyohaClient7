@@ -215,24 +215,24 @@ function FloatPanel_AyohaStore_DotMenuItem() {
                                               html: '<font size=2 color=black><b>List View</b></font>',
                                               ui: 'plain',
                                               handler: function () {
-                                                  FloatPanel_AyohaStore_DotMenuItemHide();
-                                                  if (globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn == "ColView") {
-                                                      Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>Colum View</b></font>');
-                                                      Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/BoxMenu.png" width="30" height="30" alt="Company Name">');
-                                                      Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
-                                                      Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
-                                                      Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight('100%');
-                                                      globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ListView";
-                                                      return;
-                                                  } else {
-                                                      Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>List View</b></font>');
-                                                      Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/ListMenu.png" width="30" height="30" alt="Company Name">');
-                                                      Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
-                                                      Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
-                                                      globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ColView";
-                                                      FloatPanel_AyohaStoreAdjustHeight();
-                                                      return;
-                                                  }
+                                                //  FloatPanel_AyohaStore_DotMenuItemHide();
+                                                //   if (globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn == "ColView") {
+                                                //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>Colum View</b></font>');
+                                                //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/BoxMenu.png" width="30" height="30" alt="Company Name">');
+                                                //       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
+                                                //       Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
+                                                //       Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight('100%');
+                                                //       globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ListView";
+                                                //       return;
+                                                //   } else {
+                                                //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>List View</b></font>');
+                                                //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/ListMenu.png" width="30" height="30" alt="Company Name">');
+                                                //       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
+                                                //       Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
+                                                //       globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ColView";
+                                                //       FloatPanel_AyohaStoreAdjustHeight();
+                                                //       return;
+                                                //   }
 
                                               }
                                           },
@@ -274,28 +274,30 @@ function FloatPanel_AyohaStore_DotMenuItem() {
                                           html: '<img src="resources/icons/ListMenu.png" width="30" height="30" alt="Company Name">',
                                           ui: 'plain',
                                           handler: function () {
-                                              FloatPanel_AyohaStore_DotMenuItemHide();
-                                              //Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
-                                              //Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight('100%');
-                                              //Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
-                                              if (globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn == "ColView") {
-                                                  Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>List View</b></font>');
-                                                  Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/ListMenu.png" width="30" height="30" alt="Company Name">');
-                                                  Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
-                                                  Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
-                                                  Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight('100%');
-                                                  globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ListView";
-                                                  return;
-                                              } else {
+                                              //FloatPanel_AyohaStore_DotMenuItemHide();
+                                              
 
-                                                  Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>Colum View</b></font>');
-                                                  Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/BoxMenu.png" width="30" height="30" alt="Company Name">');
-                                                  Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
-                                                  Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
-                                                  globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ColView";
-                                                  FloatPanel_AyohaStoreAdjustHeight();
-                                                  return;
-                                              }
+
+
+
+                                            //   if (globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn == "ColView") {
+                                            //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>List View</b></font>');
+                                            //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/ListMenu.png" width="30" height="30" alt="Company Name">');
+                                            //       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(true);
+                                            //       Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(false);
+                                            //       Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight('100%');
+                                            //       globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ListView";
+                                            //       return;
+                                            //   } else {
+
+                                            //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewTxt').setHtml('<font size=2 color=black><b>Colum View</b></font>');
+                                            //       Ext.getCmp('btnFloatPanel_AyohaStore_DotMenuItemListViewBtn').setHtml('<img src="resources/icons/BoxMenu.png" width="30" height="30" alt="Company Name">');
+                                            //       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHidden(false);
+                                            //       Ext.getCmp('FloatPanel_AyohaStore_SaleItemList').setHidden(true);
+                                            //       globalFloatPanel_AyohaStore_DotMenuItemColListViewBtn = "ColView";
+                                            //       FloatPanel_AyohaStoreAdjustHeight();
+                                            //       return;
+                                            //   }
                                           }
                                       },
 

@@ -21,8 +21,8 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
         floated: true,
         centered: true,
         fullscreen: true,
-        closeAction: 'hide',
-      // closeAction: 'destroy',
+       // closeAction: 'hide',
+      closeAction: 'destroy',
         draggable: false,
         modal: false,
         styleHtmlContent: true,
@@ -63,32 +63,21 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
             outOfBoundRestrictFactor: 0,
             //threshold: 20,
             scroller: {
-                listeners: {
-                    scroll: function (scroller, x, y, eOpts) {
-                      //  console.log('[scrollable][on scroll]x=' + x + ', y=' + y);
-                        if (y <= 0) {
+                // listeners: {
+                //     scroll: function (scroller, x, y, eOpts) {
+                //       //  console.log('[scrollable][on scroll]x=' + x + ', y=' + y);
+                //         if (y <= 0) {
                          
-                           // console.log('sampai scrollable')
-                            scroller.scrollTo({
-                                x: 0,
-                                y: 0
-                            });
-                            return
-                        }
-                    },
-                    //scrollend: function (scroller, x, y, eOpts) {
-                    //    //console.log('[scrollable][on scrollend]x=' + x + ', y=' + y);
-                    //    //if (y <= 0) {
-                    //    //    console.log('sampai')
-                    //    //    scroller.scrollTo({
-                    //    //        x: 0,
-                    //    //        y: 0
-                    //    //    });
-                    //    //}
-
-                       
-                    //}
-                }
+                //            // console.log('sampai scrollable')
+                //             scroller.scrollTo({
+                //                 x: 0,
+                //                 y: 0
+                //             });
+                //             return
+                //         }
+                //     },
+                   
+                // }
             }
         },
     
@@ -1819,7 +1808,7 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
    id: 'containerFloatPanel_AyohaStore_SaleItemMaster',
    style: 'background-color: transparent',
    // margin: '-11 0 0 0',
-   height: '100%',
+  // height: 1500,
    width: '95%',
    layout: {
        type: 'vbox',
@@ -1827,6 +1816,11 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
        align: 'left'
 
    },
+//    scrollable: {
+//                direction: 'vertical',
+//                directionLock: true,
+//                indicators: false
+//            },
 
    items: [
        {
@@ -1834,7 +1828,7 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
            id: 'containerFloatPanel_AyohaStore_SaleItem',
            style: ' background-color: transparent',
            // margin: '-11 0 0 0',
-           height: '100%',
+          // height: '100%',
            width: '100%',
            layout: {
                type: 'vbox',
@@ -1922,7 +1916,8 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
                    style: 'background-color: white',
                    // hidden: true,
                    margin: '0 0 0 0',
-                   height: '100%',
+                    scrollable:false,    
+                    height: '100%',
                    width: '100%',
                    layout: {
                        type: 'vbox',
@@ -1937,21 +1932,18 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
                                  id: 'tableFloatPanel_AyohaStore_SaleItemListColThree',
                                  store: null,
                                 
-                                 xtype: 'list',
+                                xtype: 'list',
+                                  // xtype: 'dataview',
                                  grouped: true,
                                  inline: {
                                      wrap: true
                                  },
-                                 scrollable:false,
-                                //  scrollable: {
-                                //      direction: 'vertical',
-                                //      indicators: false
-                                //  },
+                                 scrollable:false,                               
                                  style: {
-                                     background: 'white'
+                                     background: 'transparent',
                                  },
                                  width: '100%',
-                                 height: '100%',
+                                height: '100%',
                                  itemConfig: {
                                      xtype: 'component',
                                      width: '50%',
@@ -1966,6 +1958,9 @@ function FloatPanel_AyohaStoreCreateIfNeeded() {
                                          console.log('=== List Painted ===');
                                          var store = this.getStore();
                                          console.log('Store count:', store ? store.getCount() : 'null');
+
+
+                                         
                                      },
                                      itemtap: function(list, index, target, record) {
                                         // alert('Item tapped:', record.get('ItemName'));
@@ -3704,7 +3699,7 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
 // alert(FloatPanel_AyohaStore_getEnterpriseAccNo())
 // alert(ItemCategoryCode)
 // alert(GetCurrAyohaUserAccountNo())
-
+var rowCount;
     console.log('=== Loading Store Data ===');
     console.log('EnterpriseAccNo:', FloatPanel_AyohaStore_getEnterpriseAccNo());
     console.log('ItemCategoryCode:', ItemCategoryCode);
@@ -3721,6 +3716,7 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
             console.log('=== Store Load Callback ===');
             console.log('Success:', success);
             console.log('Records loaded:', records ? records.length : 0);
+            rowCount = records ? records.length : 0;
             if (!success) {
                 console.error('Load failed:', operation.getError());
                 return;
@@ -3746,10 +3742,24 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
                 
                 // Give it a moment to process
                 Ext.defer(function() {
+
+
+
+
+
+
+
+
+
+
+// Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemMaster').setHeight(1500);
+// Ext.getCmp('containerFloatPanel_AyohaStore_SaleItem').setHeight(1450);
+
                     list.refresh();
                     console.log('List refreshed after delay');
                     console.log('List store count:', list.getStore().getCount());
-                }, 100);
+                   
+                }, 500);
                 
                 console.log('List store bound! New store count:', list.getStore().getCount());
             } else {
@@ -3819,7 +3829,7 @@ function FloatPanel_AyohaStore_AyohaStoreSaleItemloadByEnterpriseAccNoItemCatego
 
         }
      
-        FloatPanel_AyohaStoreAdjustHeight();
+        FloatPanel_AyohaStoreAdjustHeight(rowCount);
         document.getElementById("input-FloatPanel_AyohaStore_SearchProduct").addEventListener("keyup", OnKeyUpFloatPanel_AyohaStore_SearchProduct);
         FloatPanel_AyohaStore_AyohaStoreSaleItemAyohaStoreFrontPageStore();
        
@@ -3858,7 +3868,8 @@ function FloatPanel_AyohaStoreHide(fromBack,animCfg) {
           }
           isFloatPanel_AyohaStoreOpen = 'N';
          
-        
+        _FloatPanel_AyohaStore.destroyed;
+        _FloatPanel_AyohaStore=null;
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_AyohaStore');
@@ -3872,7 +3883,57 @@ function FloatPanel_AyohaStoreHide(fromBack,animCfg) {
 
 
 var globalFloatPanel_AyohaStoreAdjustHeight_containerFloatPanel_AyohaStore_SaleItemListThreeColInside;
-function FloatPanel_AyohaStoreAdjustHeight() {
+function FloatPanel_AyohaStoreAdjustHeight(recordsLength) {
+
+
+//alert('FloatPanel_AyohaStoreAdjustHeight ' + recordsLength)
+
+
+if(recordsLength == 2){
+    Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemMaster').setHeight(780);
+    Ext.getCmp('containerFloatPanel_AyohaStore_SaleItem').setHeight(830);
+    return;
+}
+
+var itemCount = recordsLength || 0;
+var itemsPerRow = 2;
+var rowHeight = 450;
+var rowGap = 10;
+var headerHeight = 50;
+
+var rowCount = Math.ceil(itemCount / itemsPerRow);
+var totalGap = rowCount > 0 ? (rowCount - 1) * rowGap : 0;
+var bodyHeight = (rowCount * rowHeight) + totalGap;
+var totalHeight = headerHeight + bodyHeight;
+
+Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemMaster').setHeight(totalHeight);
+Ext.getCmp('containerFloatPanel_AyohaStore_SaleItem').setHeight(bodyHeight);
+
+
+
+//var dflHeight = 190; // Default height per item
+// var itemCount = records.length;
+// var rowCount = Math.ceil(itemCount / 2);
+// var newHeight = rowCount * dflHeight;
+
+
+
+// Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight(210);
+// Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHeight(190);
+// if(globalFloatPanel_AyohaStore_CountItemCategory>1){
+
+//      newHeight = globalFloatPanel_AyohaStore_CountItemCategory * 400;
+//      Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight(newHeight);
+//       Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHeight(newHeight);
+// }
+ 
+ 
+
+
+return;
+
+
+
    //////// var y = parseInt(screen.height);
    //////// var x = parseInt(window.innerHeight);
 
@@ -3899,8 +3960,10 @@ function FloatPanel_AyohaStoreAdjustHeight() {
     Ext.getCmp('FloatPanel_AyohaStoreID').setHeight(x + 6);
     globalFloatPanel_AyohaStoreAdjustHeight = newHeights - 4;
     var FloatPanel_AyohaStore_SaleItemListColThreeHeight = newHeights + 54;
-    Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHeight(FloatPanel_AyohaStore_SaleItemListColThreeHeight);
-    Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight(FloatPanel_AyohaStore_SaleItemListColThreeHeight);
+
+   // alert(FloatPanel_AyohaStore_SaleItemListColThreeHeight);
+   // Ext.getCmp('tableFloatPanel_AyohaStore_SaleItemListColThree').setHeight(FloatPanel_AyohaStore_SaleItemListColThreeHeight);
+   // Ext.getCmp('containerFloatPanel_AyohaStore_SaleItemListColThreeScroll').setHeight(FloatPanel_AyohaStore_SaleItemListColThreeHeight);
 
 
     // Ext.getCmp('FloatPanel_AyohaStoreID').setHeight(y - 64);
