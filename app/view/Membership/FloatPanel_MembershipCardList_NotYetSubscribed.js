@@ -23,12 +23,12 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
     Ext.create('Ext.Container', {
        
         id: 'FloatPanel_MembershipCardList_NotYetSubscribedID',
-        zIndex: 65,
+      //  zIndex: 65,
         floated: true,
         centered: true,
         fullscreen: true,
-        closeAction: 'hide',
-      // closeAction: 'destroy',
+       // closeAction: 'hide',
+       closeAction: 'destroy',
         draggable: false,
         modal: false,
         styleHtmlContent: true,
@@ -47,7 +47,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
             duration: 250,
             easing: 'ease-out'
         },
-        style: ' background-color:white;',    
+      //  style: ' background-color:white;',    
+          style:ayohaThemeColor_Body_ThemeColor(),
         // listeners: {
         //     hide: function(cmp){
         //       Ext.Viewport.remove(cmp, true); // true = destroy
@@ -71,7 +72,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                 xtype: 'container',
                 width: '100%',
                 docked: 'bottom',
-                height: 60,
+                 height: 90,
                 //hidden:true,
                 // width: 40,
 
@@ -90,8 +91,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                 // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #d3d3d3;',
                 layout: {
                     //type: 'fit',
-                    type: 'hbox',
-                    pack: 'center',
+                    type: 'vbox',
+                    pack: 'start',
                     align: 'center',
                 },
                 // hidden:true,
@@ -103,13 +104,27 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                                 ////  align: 'stretch',
 
                                 //ui: 'plain',
-                                width: '85%',
-                                margin:'5 0 0 0',
-                                height: 50,
+                                width: '90%',
+                                margin:'0 0 0 0',
+                                 // height: 90,
                                 id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_GetMembershipCard',
                                 //hidden: true,
                               
-                                html: '<button class="button3getMembershipCard">Get Membership Card NOW !</button>',
+                             //   html: '<button class="button3getMembershipCard">Get Membership Card NOW !</button>',
+                              
+                             html:
+                             '<div class="ayohaMActions">' +
+                               '<button class="ayohaCheckOutBtn" >Get it NOW !</button>' +
+                              
+                            '</div>' 
+                             
+                             
+                           //  html: '<button class="ayohaCheckOutBtn">Get Membership Card NOW !</button>',
+                             
+                             
+                             
+                             
+                             
                                 //handler: function () {
                                 //    getMembershipCard();
                                 //    // FloatPanel_MembershipCardManagement_NewCardAdd_Save();
@@ -167,11 +182,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                 //hidden: true,
 
                 id: 'containerFloatPanel_MembershipCardList_NotYetSubscribedHeader',
-                style: {
-                    // background: '#D25959',
-                    background: 'transparent',
-                    // border: '2px'
-                },
+                 height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
                 //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
                 // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                 layout: {
@@ -188,12 +200,13 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                                          xtype: 'button',
                                          id: 'btnFloatPanel_MembershipCardList_NotYetSubscribedBack',
                                          height: 30,
-                                         width: 35,
-                                         // iconCls: 'list',
-                                         html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                          width: 65,
+                                                      margin: '0 0 0 10',
+                                                         // iconCls: 'list',
+                                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                          ui: 'plain',
                                          handler: function () {
-                                             FloatPanel_MembershipCardList_NotYetSubscribedHide();
+                                             FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
 
                                              //FloatPanel_MembershipCardList_NotYetSubscribed_AddCardHide();
                                              //_FloatPanel_MembershipCardList_NotYetSubscribed.hide(Ext.fx.Animation({
@@ -213,33 +226,13 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                                       },
 
                                        {
-                                           margin: '-8 20 0 0',                                          
+                                            margin: '0 15 0 0',                                       
                                            id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_TitleHeaderTxt',
-                                           html: '<font size=2 color=black><b>Membership Card</b></font>'
+                                             html:ayohaTheme_HeaderText('Membership Card'),
+                                         
                                        },
 
-                                            {
-                                                xtype: 'button',
-                                                //  id: 'btnFloatPanel_MembershipCardManagement_CardIcon',
-                                                height: 30,
-                                                width: 35,
-                                                hidden:true,
-                                                // iconCls: 'list',
-                                                html: '<div ><img src="resources/icons/membershicardwhite.png" width="25" height="20" alt="Company Name"></div>',
-                                                ui: 'plain',
-                                                handler: function () {
-                                                    _FloatPanel_MembershipCardList_NotYetSubscribed.hide(Ext.fx.Animation({
-                                                        type: 'slideOut',
-                                                        direction: 'right',
-                                                        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                        duration: 250
-
-                                                    }));
-                                                    isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N';
-                                                    _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
-                                                    RemovePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
-                                                }
-                                            },
+                                            
 
 
 
@@ -996,7 +989,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
     margin: '0 0 0 0',
     height: '100%',
     //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-    style: 'background-color:white',
+   style: 'background-color: transparent',
     scrollable: {
         direction: 'vertical',
         directionLock: true,
@@ -1018,7 +1011,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
             margin: '0 0 0 0',
             height: 1500,
             //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-            style: 'background-color:white',
+            style: 'background-color: transparent',
             layout: {
                 type: 'vbox',
                 pack: 'start',
@@ -1035,143 +1028,131 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                 },
 
 
-                {
-                    xtype: 'container',
-                    id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading',
-                    width: '100%',
-                    height: 200,
-                    //hidden:true,
-                     style: "background-color: transparent",
-                    //style: "background-color: #F35B57;",
-                 //   style: 'background-image: url("resources/icons/previewcardloadinglatest.gif"); background-size: 80% 80%;',
-                    layout: {
-                        type: 'vbox',
-                        pack: 'center',
-                        align: 'center'
-
-                    },
-                    items: [
-                          {
-                              xtype: 'container',
-                              id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_LoadingInner',
-                              width: '100%',
-                              height: 200,
-                              //hidden:true,
-                              // style: "background-color: transparent",
-                              //style: "background-color: #F35B57;",
-                              style: 'background-image: url("resources/icons/loadingBlade01.gif"); background-size: 100% 100%;background-repeat: no-repeat;',
-                              
-                          },
-
-                    ]
-
-                },
+                
                
               
 
+
                 {
-                   // xtype: 'carousel',
-                    xtype: 'container',
-                    hidden: true,
-                    id: 'FloatPanel_MembershipCardList_NotYetSubscribed_Carousel',
-                    style: 'background-color: transparent',
-                    width: '94%',
-                    height: 212,
-                    //indicator: false,
-                    //disabled: true, // disables swipe gestures
-                    // scrollable: {
-                    //     direction: 'horizontal',
-                    //     disabled: true // disables scrolling entirely
-                    // },
-                    // listeners: {
-
-                    //     //initialize: function (c) {
-                    //     //    this.element.on({
-                    //     //        swipe: function (e, node, options) {
-                    //     //            if (e.direction == "left") {
-                    //     //                swipeDirection = "Left";
-
-                    //     //            } else {
-                    //     //                swipeDirection = "Right";
-                    //     //            }
-                    //     //        }
-                    //     //    });
-                    //     //},
-                    //     activeitemchange: function (container, newCard, oldCard, index) {
-                          
-
-                    //     },
-
-                    // },
+  
+  id: 'FloatPanel_MembershipCardList_NotYetSubscribed_Carousel',
+  margin: '15 0 0 0',
+  xtype: 'dataview',
+  
+ // store:_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore,
+height: 230,
+//height: 325,
+// height: 0,
+  style: "background-color: rgba(0, 0, 0, 0);",
+  inline: {
+      wrap: false
+  },
+  scrollable: {
+      direction: 'horizontal',
+      indicators: false,
+  },
+  width: '93%',
 
 
-                    margin: '0 0 0 0',
-                    items: [
+itemTpl: new Ext.XTemplate(
+'<div class="ayohaCardItem">',
+
+'<div class="ayohaCardWrap">',
+
+// ===== CARD FACE =====
+'<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size:100% 100%;background-position:center center;background-repeat:no-repeat;">',
+
+'<div class="ayohaCardOverlay"></div>',
+'<div class="ayohaCardInnerRim"></div>',
+
+'<div class="ayohaCardContent">',
+
+'<table class="ayohaCardTable" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
+  '<tbody>',
+
+    '<tr>',
+      '<td class="ayohaCardTop" colspan="3">',
+        '<div class="ayohaTopRow">',
+          '<div class="ayohaTopLogo">{ModifiedEnterprisesLogo}</div>',
+          '<div class="ayohaTopName">{ModifiedEnterprisesName}</div>',
+        '</div>',
+      '</td>',
+    '</tr>',
+
+    '<tr>',
+      '<td class="ayohaCardMid" colspan="3"><br><br>',
+        '<div class="ayohaCardType">{MembershipCardType}</div>',
+        '<div class="ayohaCardNo">123 4567</div>',
+        '<div class="ayohaCardName">YOUR NAME</div>',
+      '</td>',
+    '</tr>',
+
+    '<tr>',
+      '<td class="ayohaCardColL" colspan="2">',
+        '<div class="k">Member Since</div>',
+         '<div class="v">..</div>',
+        '<div class="v">After Approved</div>',
+      '</td>',
+      '<td class="ayohaCardColR">',
+        '<div class="k">Valid Until</div>',
+        '<div class="v">{ModifiedStrExpiredDate}</div>',
+      '</td>',
+    '</tr>',
+
+  '</tbody>',
+'</table>',
+
+'</div>', // end ayohaCardContent
+'</div>',   // end card face
 
 
 
-                        
-                      {
-                          xtype: 'container',
-                          id: 'carouselFloatPanel_MembershipCardList_NotYetSubscribed_0',
-                          style: ' background-color: transparent',
-                          hidden:true,
-                          // html: '<div class="myContent" style="margin:0px 0px 0px -7px;width:104%;background-color: #fac;background-image: url({MembershipCardBackgroundImg});background-size: 100% 100%;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;">' +
-                          html: '<div class="myContent" style="margin:0px 0px 0px -7px;height: 255px;width:104%;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;">' +
-                             //'<div style="width:50%;text-align:right;margin:15px 0px 0px 150px;background-color: transparent;height:5px;"><img src="{BusinessTypeIconPath}" alt="Image" style="width:22px;height:22px;margin:0px 0px -15px 0px;"></font></div>' +
-                                              //     '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><thead><tr><th style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:0px 15px;text-align:left;vertical-align:top;word-break:normal;color:white;" colspan="4"><div style="margin:1px 0px 0px 0px;width:100%;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Campaign End:{EndDateOnly}<br><div style="margin:-4px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Fees:RM{StampCampaignFees}({FeesCycle})</div></div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:center;color:white;font-family:Courier New;font-size:24px;font-weight:bold;border-top: 1px solid white;padding:6px 0px">TARMIZI RAHIM</div></th></tr></thead><tbody><tr><td style="background-color: transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 10px;text-align:center;vertical-align:middle;word-break:normal" rowspan="3"><br><img src="{EnterpriseLogo}" alt="Image" style="width:100px;height:100px;border-radius: 50%;border: 1px solid black;margin:-15px 0px 0px 10px"></td><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:middle;word-break:normal;color:white" colspan="3"><div style="width:95%;margin:17px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;">{EnterpriseName}</div></td></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px 0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white" colspan="3" rowspan="2"><div style="width:85%;margin:-3px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:11px;font-weight:normal">{EnterpriseAddress}</div></td></tr><tr></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:5px 0px;text-align:center;vertical-align:middle;word-break:normal;color:white" colspan="4"><div style="margin:0px 0px 0px 0px;width:100%;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;color:white;font-weight:bold;"><i>{StampCampaignName}</i><hr style="width:80%;text-align:center;margin-top:0;color:white;background-color:white"></div><br><div style="margin:-30px 0px 0px 0px;width:100%">Stamp <font size=4>{Stamps}</font></div></td></tr><tr><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 0px 20px;" colspan="2">Last Stamp:{LastStampedDate}</td><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 5px;text-align:right;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 20px 0px;" colspan="2">{ModifiedNextRedeem}</td></tr></tbody></table>' +
-// '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;height:80px" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:30px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:22px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAyohaUserAccountNo}</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{AyohaUserAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:20px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-25px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2021</div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:20px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-25px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2022</div></td><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                              '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;{ModifiedHeaderHeight}" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:0px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:22px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAyohaUserAccountNo}</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{AyohaUserAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:20px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-25px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2021</div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:20px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-25px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2022</div></td><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                '</div>' +
-                               '<div style="width:100%;text-align:right;margin:-185px 0px 0px 3px;background-color: transparent;height:100px"><img src="{AyohaUserPhoto}" alt="Image" style="width:90px;height:100px;border-radius: 10%;border: 1px solid white;margin:0px 10px 0px 0px"></div>',
-                          //'<div style="width:100%;text-align:right;margin:0px 0px 0px 0px;background-color: transparent;height:30px"></div>',
-                          height: 250,
-                          width: '100%',
-                          //  mode: 'image'
-                      },
-                    //   {
-                    //       xtype: 'container',
-                    //       id: 'carouselFloatPanel_MembershipCardList_NotYetSubscribed_1',
-                    //       hidden: true,                                    
-                    //       height: 250,
-                    //       width: '100%',
-                         
-                    //   },
-                   //{
-                   //    xtype: 'container',
-                   //    id: 'carouselFloatPanel_MembershipCardList_NotYetSubscribed_2',
-                   //    hidden: true,                                 
-                   //    height: 250,
-                   //    width: '100%',
-                     
-                   //},
-                   //  {
-                   //      xtype: 'container',
-                   //      id: 'carouselFloatPanel_MembershipCardList_NotYetSubscribed_3',
-                   //      hidden: true,
-                   //      height: 250,
-                   //      width: '100%',
-                       
-                   //  }, {
-                   //      xtype: 'container',
-                   //      id: 'carouselFloatPanel_MembershipCardList_NotYetSubscribed_4',
-                   //      hidden: true,                                    
-                   //      height: 250,
-                   //      width: '100%',
-                       
-                   //  },
+// ===== PRICE ROW (FLEX SIDE-BY-SIDE) =====
 
-                    ]
-                },
 
+
+
+
+'</div>', // ✅ end ayohaCardWrap (tutup selepas priceRow)
+'</div>',    // end ayohaCardItem
+
+// '<div class="ayohaCardPriceRow" style="width:100%;height:60px; display:flex; align-items:center;  box-sizing:border-box;">' ,
+
+
+// '<div class="priceLeft">' ,
+// '<div class="price">RM{MembershipCardFee}</div>' ,
+// '<div class="priceSub">Membership Fees</div>' ,
+// '</div>',
+
+
+// '<div style="margin-left:auto;">' ,
+// '<button class="ayohaCtaGetItNow" ',
+// 'onclick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">' ,
+// '<span class="ayohaCtaText">Get It Now!</span>' ,
+// '<span class="ayohaCtaArrow">→</span>' ,
+// '</button>',
+// '</div>' ,
+
+'</div>'
+),
+
+
+
+
+
+  //emptyText: '<div  style="background-color:transparent;width: 100%; height: 400px;margin:20px 0px 0px 0px;padding:5px 10px"><img src="resources/icons/NoMembershipEvent.jpg" style="width: 100%; height: 400px;"/></div>',
+
+},
+
+             
 /////////////////////////////////////////////// latest Add Rate Review
 
 {
 xtype: 'container',
 width: '93%',
-hidden:true,
-margin: '10 0 0 0',
-height: 40,
+//hidden:true,
+margin: '0 0 0 0',
+height: 85,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
 style: "background-color: transparent;",
 layout: {
@@ -1183,15 +1164,15 @@ align: 'center'
 items:[
 {
 xtype: 'container',
-width: '50%',
+width: '70%',
 // name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_StarOutterMaster',
 margin: '0 0 0 0',
-height: 23,
+height: 85,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
 style: "background-color: transparent;",
 layout: {
     type: 'hbox',
-    pack: 'center',
+    pack: 'start',
     align: 'left'
     
     },
@@ -1201,7 +1182,7 @@ items:[
     {
         xtype: 'container',
         width: '100%',
-        height:23,
+        height:85,
         hidden: false,
         margin: '0 0 0 0',
         style: 'background-color:transparent',
@@ -1212,49 +1193,106 @@ items:[
         // },
         layout: {
         type: 'hbox',
-        pack: 'center',
+        pack: 'start',
         align: 'left',
         },
         items: [
-{
-    xtype: 'container',
-    width: '25%',
-    hidden:true,
-    height:23,
-    name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage',
-    margin: '0 0 0 0',
-    style: 'background-color:transparent',
-    // scrollable: {
-    //     direction: 'horizontal',
-    //     directionLock: true,
-    //     indicators: false
-    // },
-    layout: {
-    type: 'vbox',
-    pack: 'center',
-    align: 'center',
+
+
+
+
+
+ {
+        xtype: 'container',
+        height: 85,
+        width: '100%',
+        layout: {
+            type: 'vbox',
+            pack: 'start',
+            align: 'left'
+        },
+        items: [
+
+            {
+    xtype: 'component',
+    id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_CardInfo',
+  //  margin: '12 16 0 16',
+    width: '100%',
+    html: [
+        '<div class="ayohaCardInfoWrap">',
+
+            '<div class="ayohaCardInfoRow">',
+                '<div class="ayohaCardInfoLabel">Card Name</div>',
+                '<div class="ayohaCardInfoValue">Barbegal</div>',
+            '</div>',
+
+            '<div class="ayohaCardInfoRow" style="margin-top:10px;">',
+                '<div class="ayohaCardInfoLabel">Card Level</div>',
+                '<div class="ayohaCardLevelBadge">GOLD</div>',
+            '</div>',
+
+        '</div>'
+    ].join('')
+}
+            //  {
+            //      margin: '0 0 0 0', 
+            //               width: '100%',                
+            //      id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemNamex',
+            //      html: '<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:left;width:200px;">Card Name:Barbegal</div>',
+            //  },
+            //  {
+            //      margin: '5 0 0 0', 
+            //               width: '100%',                
+            //      id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevelx',
+            //      html: '<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:left;width:200px;" >Card Level:GOLD</div>',
+            //  },
+          
+             
+
+        ]
     },
-    items:[
-        {
+
+
+            
+// {
+//     xtype: 'container',
+//     width: '25%',
+//     hidden:true,
+//     height:23,
+//     name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage',
+//     margin: '0 0 0 0',
+//     style: 'background-color:transparent',
+//     // scrollable: {
+//     //     direction: 'horizontal',
+//     //     directionLock: true,
+//     //     indicators: false
+//     // },
+//     layout: {
+//     type: 'vbox',
+//     pack: 'center',
+//     align: 'center',
+//     },
+//     items:[
+//         {
             
 
 
-            html:'<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; font-family: sans-serif;">'+ 
-            '<img src="resources/icons/Enterprisepage.png" style="width: 22px; height: 22px;" />'+ 
-            '<div style="font-size: 8px; font-weight: normal; color: black; text-align: center;">'+ 
-            'Merchant<br>'+ 
-            '<span style="display: block; margin-top: -4px;">Page</span>'+ 
-            '</div>'+ 
-            '</div>'
+//             html:'<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; font-family: sans-serif;">'+ 
+//             '<img src="resources/icons/Enterprisepage.png" style="width: 22px; height: 22px;" />'+ 
+//             '<div style="font-size: 8px; font-weight: normal; color: black; text-align: center;">'+ 
+//             'Merchant<br>'+ 
+//             '<span style="display: block; margin-top: -4px;">Page</span>'+ 
+//             '</div>'+ 
+//             '</div>'
              
                     
-                    }
-    ]
-},
+//                     }
+//     ]
+// },
 {
     xtype: 'container',
     width: '25%',
-    height:23,
+    height:50,
     hidden:true,
     name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_OnlineStore',
     margin: '0 0 0 0',
@@ -1267,7 +1305,7 @@ items:[
     layout: {
     type: 'vbox',
     pack: 'center',
-    align: 'center',
+    align: 'left',
     },
     items:[
         {
@@ -1276,10 +1314,10 @@ items:[
 
 
                 html:'<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; font-family: sans-serif;">'+ 
-                '<img src="resources/icons/onlineStore.jpg" style="width: 22px; height: 22px;" />'+ 
-                '<div style="font-size: 8px; font-weight: normal; color: black; text-align: center;">'+ 
+                '<img src="resources/icons/onlineStore.jpg" style="width: 25px; height: 22px;" />'+ 
+                '<div style="font-size: 10px; font-weight: normal; color: black; text-align: center;margin-top: 1px;">'+ 
                 'Online<br>'+ 
-                '<span style="display: block; margin-top: -4px;">Store</span>'+ 
+                '<span style="display: block; margin-top: -1px;">Store</span>'+ 
                 '</div>'+ 
                 '</div>'
                  
@@ -1296,8 +1334,8 @@ items:[
 {
     xtype: 'container',
     width: '25%',
-    height:23,
-    hidden:true,
+    height:50,
+   hidden:true,
     id:'containerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantVoucher',
     name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantVoucher',
     margin: '0 0 0 0',
@@ -1310,7 +1348,7 @@ items:[
     layout: {
     type: 'vbox',
     pack: 'center',
-    align: 'center',
+    align: 'left',
     },
     items:[
         {
@@ -1319,10 +1357,10 @@ items:[
 
 
                 html:'<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; font-family: sans-serif;">'+ 
-                '<img src="resources/icons/VoucherFeature02.png" style="width: 22px; height: 22px;" />'+ 
-                '<div style="font-size: 8px; font-weight: normal; color: black; text-align: center;">'+ 
+                '<img src="resources/icons/VoucherFeature02.png" style="width: 25px; height: 22px;" />'+ 
+                '<div style="font-size: 10px; font-weight: normal; color: black; text-align: center;margin-top: 1px;">'+ 
                 'Loyalty<br>'+ 
-                '<span style="display: block; margin-top: -4px;">Voucher</span>'+ 
+                '<span style="display: block; margin-top: -1px;">Voucher</span>'+ 
                 '</div>'+ 
                 '</div>'
                  
@@ -1334,7 +1372,7 @@ items:[
 
 {
     xtype: 'container',
-    width: '25%',
+    width: '15%',
     height:23,
     margin: '0 0 0 0',
     style: 'background-color:transparent',
@@ -1350,17 +1388,17 @@ items:[
 
 {
 xtype: 'container',
-width: '50%',
+width: '30%',
 //name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_StarOutterMaster',
 // name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_StarOutterMaster',
-margin: '0 0 0 0',
-height: 35,
+margin: '0 0 0 10',
+height: 50,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
 style: "background-color: transparent;",
 layout: {
 // type: 'fit',
 type: 'vbox',
-pack: 'center',
+pack: 'start',
 align: 'center'
 
 },
@@ -1371,20 +1409,20 @@ xtype: 'container',
 width: 130,
 //width: '100%',
 name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_StarOutterMaster',
-margin: '0 0 0 80',
-height: 35,
+margin: '0 0 0 0',
+height: 50,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
 style: "background-color: transparent;",
 layout: {
     type: 'vbox',
-    pack: 'center',
+    pack: 'start',
     align: 'center'
 
 },
 items: [
     {  width: 120,
         height: 14,
-        margin: '3 0 0 0',
+        margin: ' 0 0 0 0',
         id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_ReviewAndRateCountOutter',
         html: '<div  style="color:black;text-align: center;font-size:16px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;">0.0</div>',
         
@@ -1393,7 +1431,7 @@ items: [
         xtype: 'container',
         width: 120,
         margin: '0 0 0 0',
-        height: 15,
+        height: 20,
         // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
         style: "background-color: transparent;",
         layout: {
@@ -1406,35 +1444,35 @@ items: [
 
             {
                 id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_Star1Outter',
-                height: 13,
+                height: 18,
                 width: 13,
                 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="12" alt="Company Name"></div>',
             },
 {
 id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_Star2Outter',
 
-height: 13,
+height: 18,
 width: 13,
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="12" alt="Company Name"></div>',
 },
 {
 id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_Star3Outter',
 
-height: 13,
+height: 18,
 width: 13,
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="12" alt="Company Name"></div>',
 },
 {
 id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_Star4Outter',
 
-height: 13,
+height: 18,
 width: 13,
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="12" alt="Company Name"></div>',
 },
 {
 id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_Star5Outter',
 
-height: 13,
+height: 18,
 width: 13,
 html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="12" alt="Company Name"></div>',
 
@@ -1448,9 +1486,10 @@ html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="
     },
     
     {
-     margin: '17 0 0 0',
+     margin: '0 0 0 0',
+     height: 13,
      id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_TotalReviewsOutter',
-     html: '<div  style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;0 Reviews</div>'
+     html: '<div  style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;color:black;font-weight:bold;overflow:hidden;margin:0px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:10px;height:10px;">&nbsp;&nbsp;&nbsp;0 Reviews</div>'
  },
 
      {
@@ -1468,13 +1507,24 @@ html: '<div ><img src="resources/icons/reviewstarunrate.png" width="12" height="
 ]
 },
 
+
+
+{
+xtype: 'container',
+width: '100%',
+margin: '0 0 0 0',
+height: 40,
+//style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
+style: 'background-color:transparent',
+},
 ///////////////////////Merchant Info
 
 {
     xtype: 'container',
     width: '95%',
-    margin:'30 0 0 0',
-    style: 'background-color:white',
+    margin:'0 0 0 0',
+   // style: 'background-color:white',
+    style: 'background-color: transparent',
   //  hidden:true,
   //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
     layout: {
@@ -1500,7 +1550,7 @@ width:10
             },
             {
              //   id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_EntitiledReward',
-                html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Merchant</div>',
+                html: ayohaThemeColor_TitleTextColor('Merchant'),
             },
 
         
@@ -1511,6 +1561,7 @@ width:10
 
 {
 xtype:'container',
+hidden:true,
 width:'90%',
 height:1,
 style: 'background-color:grey',
@@ -1518,7 +1569,7 @@ style: 'background-color:grey',
 {
 xtype: 'container',
 id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseInfolist',
-style: ' background-color: transparent',
+style: 'background-color: transparent',
 height: 190,
 width: '100%',
 layout: {
@@ -1528,64 +1579,87 @@ align: 'center'
 
 },
 items: [
-{
-xtype: 'list',
-//flex:1,
-scrollable:false,
-height: 190,
-// store: 'MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore',
-store:_DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
-id: 'FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseInfoList',
-mode: 'SINGLE',
-//  grouped: true,
-disableSelection: true,
-style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-// scrollable: {
-// direction: 'vertical',
-// indicators: {
-// y: {
-// autoHide: true
-// },
-// x: {
-// autoHide: true
-// }
-// }
-// },
-itemTpl: '<div class="myContent"  style="background-color:white;width:104%">' +
-//'<table style="border-collapse:collapse;border-spacing:10;width:99%;background-color:white;" ><thead><tr><th style="background-color:transparent;border-radius: 10px 0px 0px 10px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;font-color:white;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal" rowspan="2"><img src="{EnterpriseLogoPath}"style="width: 60px; height: 60px; margin-top: 5px; border:1px none #A2CDF5; border-radius: 50%; max-width:100px; " /></th><th style="background-color:transparent;border-color:transparent;border-right:1px none grey;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;color:black;overflow:hidden;padding:5px 5px;text-align:left;vertical-align:top;word-break:normal" rowspan="2"><font size=3><b>{EnterpriseName}</b></font><br>{EnterpriseAddress}<br><br>Current Campaign:RAMADHAN 2021</div><br>Start:01/10/2020<div style="width:100%;text-align:right;margin:-16px 0px 0px 0px">End:01/10/2021</div></th></tr><tr></tr></thead></table>' +
-'<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:3px 0px 0px -13px;" ><thead><tr><th style="background-color:transparent;border-radius: 0px 0px 0px 0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;font-color:white;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal" rowspan="2"><img src="{EnterpriseLogo}"style="width: 80px; height: 80px; margin-top: 5px; border:1px none #A2CDF5; border-radius: 50%; max-width:100px; " /></th><th style="background-color:transparent;border-color:transparent;border-right:1px none grey;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:5px 5px;text-align:left;vertical-align:top;word-break:normal" rowspan="2"><font size=3><b>{EnterpriseName}</b></font><br><div style="width:100%;text-align:left;margin:-3px 0px 0px 0px"><font size=1><b>({EnterpriseRegistrationNo})-{EnterpriseType}</b></font></div><br><div style="width:100%;text-align:left;margin:-15px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">{EnterpriseAddress}<br>Phone No:{EnterprisePhoneNo}<br>Email:{EnterpriseEmail}</div></div></th></tr><tr></tr></thead></table>' +
 
 
-'</div>',
-width: '90%',
-listeners: {
-itemsingletap: function (list, idx, target, records, evt) {
+   {
+    xtype: 'list',
+    id: 'FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseInfoList',
+    store: _DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
+    scrollable: false,
+    height: 190,
+    width: '100%',
+    mode: 'SINGLE',
+    disableSelection: true,
+    variableHeights: true,
+    cls: 'ayohaMerchantList',
+    itemCls: 'ayohaMerchantListItem',
+    style: 'background-color:#ffffff !important;border-radius:18px !important;',
 
+    itemTpl: [
+        '<div class="ayohaMerchantCard">',
+            '<div class="ayohaMerchantLogoWrap">',
+                '<img src="{EnterpriseLogo}" class="ayohaMerchantLogo" />',
+            '</div>',
 
+            '<div class="ayohaMerchantInfo">',
+                '<div class="ayohaMerchantName">{EnterpriseName}</div>',
+                '<div class="ayohaMerchantMeta">({EnterpriseRegistrationNo}) - {EnterpriseType}</div>',
 
+                '<div class="ayohaMerchantAddress">{EnterpriseAddress}</div>',
 
+                '<tpl if="EnterprisePhoneNo">',
+                    '<div class="ayohaMerchantLine"><span>Phone No:</span> {EnterprisePhoneNo}</div>',
+                '</tpl>',
 
-},
-deselect: function (list, records) {
-
+                '<tpl if="EnterpriseEmail">',
+                    '<div class="ayohaMerchantLine"><span>Email:</span> {EnterpriseEmail}</div>',
+                '</tpl>',
+            '</div>',
+        '</div>'
+    ].join('')
 }
-},
+// {
+// xtype: 'list',
+// scrollable:false,
+// height: 190,
+// store:_DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
+// id: 'FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseInfoList',
+// mode: 'SINGLE',
+// //  grouped: true,
+// disableSelection: true,
+// style: 'background-color:white !important;',
 
-},
+// itemTpl: '<div class="myContent"  style="background-color:white;width:104%">' +
+
+// '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:3px 0px 0px -13px;" ><thead><tr><th style="background-color:transparent;border-radius: 0px 0px 0px 0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;font-color:white;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal" rowspan="2"><img src="{EnterpriseLogo}"style="width: 80px; height: 80px; margin-top: 5px; border:1px none #A2CDF5; border-radius: 50%; max-width:100px; " /></th><th style="background-color:transparent;border-color:transparent;border-right:1px none grey;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:5px 5px;text-align:left;vertical-align:top;word-break:normal" rowspan="2"><font size=3><b>{EnterpriseName}</b></font><br><div style="width:100%;text-align:left;margin:-3px 0px 0px 0px"><font size=1><b>({EnterpriseRegistrationNo})-{EnterpriseType}</b></font></div><br><div style="width:100%;text-align:left;margin:-15px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">{EnterpriseAddress}<br>Phone No:{EnterprisePhoneNo}<br>Email:{EnterpriseEmail}</div></div></th></tr><tr></tr></thead></table>' +
+
+
+// '</div>',
+// width: '90%',
+
+
+// },
 
 ]
 
 },
 
 
-
-
+{
+xtype: 'container',
+width: '100%',
+margin: '0 0 0 0',
+height: 20,
+//style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
+style: 'background-color:transparent',
+}
+,
 ////////////////////
 {
 xtype: 'container',
 width: '100%',
-margin: '35 0 0 0',
-height: 50,
+margin: ' 0 0 0 0',
+height: 80,
 //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
 style: 'background-color:transparent',
 layout: {
@@ -1598,7 +1672,7 @@ items:[
     {
         xtype: 'container',
         width: '95%',
-        style: 'background-color:white',
+        style: 'background-color: transparent',
       //  hidden:true,
       //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
         layout: {
@@ -1624,7 +1698,8 @@ width:10
                 },
                 {
                  //   id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_EntitiledReward',
-                    html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Membership Card Offered</div>',
+                   html: ayohaThemeColor_TitleTextColor('Membership Card Offered'),
+                  //  html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Membership Card Offered</div>',
                 },
 
             
@@ -1635,6 +1710,7 @@ width:10
 
 {
 xtype:'container',
+hidden:true,
 width:'90%',
 height:1,
 style: 'background-color:grey',
@@ -1661,6 +1737,8 @@ items: [
     },
     {
         xtype: 'container',
+        height: 70,
+        width: '100%',
         layout: {
             type: 'vbox',
             pack: 'start',
@@ -1668,12 +1746,14 @@ items: [
         },
         items: [
              {
-                 margin: '-3 0 0 0',                            
+                 margin: '0 0 0 0', 
+                                          
                  id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemName',
                  html: '<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;">Card Name:Barbegal</div>',
              },
              {
-                 margin: '-3 0 0 0',
+                 margin: '5 0 0 0', 
+                
                  id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel',
                  html: '<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;black:white;text-align:center;" >Card Level:25.00</div>',
              },
@@ -1716,7 +1796,7 @@ items: [
                                         //hidden: true,
                                         id: 'FloatPanel_MembershipCardList_NotYetSubscribed_CarouselEntitleReward_EntitleEnterprise',
                                        // style: 'background-color:#f7f7f7',
-                                        style: 'background-color:white',
+                                        style: 'background-color:transparent',
                                         width: '100%',
                                         height: '70%',
                                       //  indicator: true,
@@ -1775,7 +1855,7 @@ items: [
                                                         {
                                                             xtype: 'container',
                                                             width: '95%',
-                                                            style: 'background-color:white',
+                                                           style: 'background-color: transparent',
                                                           //  hidden:true,
                                                           //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
                                                             layout: {
@@ -1801,7 +1881,8 @@ items: [
                                                                     },
                                                                     {
                                                                      //   id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_EntitiledReward',
-                                                                        html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Membership Payment Plan</div>',
+                                                                     html: ayohaThemeColor_TitleTextColor('Membership Payment Plan'),
+                                                                       // html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Membership Payment Plan</div>',
                                                                     },
                                                 
                                                                 
@@ -1813,6 +1894,7 @@ items: [
 {
     xtype:'container',
     width:'90%',
+    hidden:true,
     height:1,
     style: 'background-color:grey',
 },
@@ -1820,7 +1902,7 @@ items: [
     xtype:'container',
     width:'90%',
     height:210,
-    margin:'0 0 0 0',
+    margin:'-10 0 0 0',
     style: 'background-color:transparent',
     layout: {
         type: 'vbox',
@@ -1895,7 +1977,7 @@ items: [
                                                         {
                                                             xtype: 'container',
                                                             width: '95%',
-                                                            style: 'background-color:white',
+                                                          style: 'background-color: transparent',
                                                           //  hidden:true,
                                                           //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
                                                             layout: {
@@ -1921,7 +2003,8 @@ items: [
                                                                     },
                                                                     {
                                                                         id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_EntitiledReward',
-                                                                        html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Membership Privileges</div>',
+                                                                       /// html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Membership Privileges</div>',
+                                                                        html: ayohaThemeColor_TitleTextColor('Membership Privileges'),
                                                                     },
                             
                                                                      {
@@ -1958,151 +2041,311 @@ items: [
                                                         {
                                                             xtype:'container',
                                                             width:'90%',
+                                                            hidden:true,
                                                             height:1,
                                                             style: 'background-color:grey',
                                                         },
-                                                        {
-                                                            xtype: 'list',
-                                                            //  flex: 1,
-                                                           // hidden:true,
-                                                          //  margin: '1 0 0 0',
-                                                            width: '90%',
-                                                            // store: 'EnterprisegetAllStore',
-                                                            store: _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore,
-                                                           // store: 'MembershipCardCampaingEntitledLoadByMembershipCardCodeStore',
-                                                            id: 'FloatPanel_MembershipCardList_NotYetSubscribed_Campaignlist',
-                                                            scrollable:false,
-                                                            // grouped: true,
-                                                            mode: 'SINGLE',
-                                                            //  indexBar: true,
-                                                            disableSelection: true,
-                                                            style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                                            // scrollable: {
-                                                            //     direction: 'vertical',
-                                                            //     directionLock: true,
-                                                            //     indicators: {
-                                                            //         y: {
-                                                            //             autoHide: true
-                                                            //         },
-                                                            //         x: {
-                                                            //             autoHide: true
-                                                            //         }
-                                                            //     }
-                                                            // },
-                                                                 
-                                                          
-                                                        //     itemTpl: '{ModifiedCampaignTypeShorted}' +                                              
-                                                        //    '<br><div style="width:100%;text-align:center;margin:-10px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black">{ModifiedCampaignType}</div>' +
-                                                        //        '<br><div style="width:100%;text-align:center;margin:-30px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{CampaignName}</div>' +
-                                                        //         '<br><div style="width:100%;text-align:center;margin:-25px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{ModifiedCountLoyaltyStamped}</div>' +
-                                                        //           '{ModifiedisRequiredStartEndDate}' +
-                                                        //                                                      // '<br><div style="width:100%;text-align:center;margin:-25px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black">Day Left:{CampaignDayLeft}</div>' +
-        
-                                                        //     '</div>',
-        
-        
-                                                        itemTpl: '<div class="myContent" style="background-color:transparent;">' +
-                    
-        
-                                                       '<table  style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:0px 0px 0px 0px;height:60px;"><tr><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:20%;vertical-align:center"><div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 0px;width:30px;height:30px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url({ModifiedCampaignType}); background-size: 100% 100%;"></div></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center">{ModifiedCampaignTypeShorted}<br><font style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">{CampaignName} - {ModifiedCountLoyaltyStamped}</font></td></tr></table>'
-                                                       // '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:90px;"><tr onclick="openNotificationPanel(' + ID + ',' + "'" + NotificationType + "'" + ',' + "'" + NotificationCode + "'" + ',' + "'" + EnterpriseAccNo + "'" + ',' + "'" + IsReadStatus + "'" + ')"><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 7px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:25%;vertical-align:center"><img src="' + EnterpriseLogoPath + '" style="border:1px solid white; width:75px;height:75px;" /></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center">{ModifiedCampaignTypeShorted}<br><font style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;">{CampaignName} - {ModifiedCountLoyaltyStamped}</font></td></tr></table>'   
-                                                       
-                                                       
-                                                       + '</div>',
-        
-        
-        
-        
-        
-        
-                                                           
-                                                            // itemTpl: '<div class="myContent" style="background-color:transparent;height:125px">' +
-                    
-                                                            //    '<div style="width:100%;text-align:center;margin:0px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black"><u>{ModifiedCampaignTypeShorted}</u></div>' +
-                                                            //                                                                            // '<br><div style="width:100%;text-align:right;margin:-30px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;font-weight:bold;color:black"></div>' +
-                                                            //     '<br><div style="width:100%;text-align:center;margin:-10px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black">{ModifiedCampaignType}</div>' +
-                                                            //         '<br><div style="width:100%;text-align:center;margin:-30px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{CampaignName}</div>' +
-                                                            //          '<br><div style="width:100%;text-align:center;margin:-25px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{ModifiedCountLoyaltyStamped}</div>' +
-                                                                     
-                                                            //      '</div>',
-                                                            height: 100,
-                                                           //height: '100%',
-                                                            listeners: {
-                                                                itemsingletap: function (list, idx, target, records, evt) {
-        
-                                                                    //var Stamps = records.get('Stamps');
-                                                                    //var StampsArr = Stamps.split('/');
-        
-        
-                                                                    var CampaignCode = records.get('CampaignCode');
-                                                                    var EnterpriseHQAccNo = records.get('EnterpriseHQAccNo');
-                                                                    var StartDate = records.get('CampaignStartDate');
-                                                                    var EndDate = records.get('CampaignEndDate');
-                                                                    var SubscriberAccNo = GetCurrAyohaUserAccountNo();
-                                                                    //var EnterpriseName = records.get('EnterpriseName');     
-                                                                    var EnterpriseName = records.get('EnterpriseName');
-                                                                    var StampRuleRemarks = records.get('Remarks');
-                                                                    var isStampRulePopUp = records.get('isRulePopUp');
-                                                                    var CampaignName = records.get('CampaignName');
-                                                                    var Stamp = records.get('Stamp');
-                                                                    var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
-                                                                    //var EnterpriseLogo = records.get('EnterpriseLogo');
-                                                                    var EnterpriseLogo = records.get('EnterpriseLogo');
-                                                                    var CampaignType = records.get('CampaignType');
-                                                                    var EnterpriseAccNo = records.get('EnterpriseAccNo');
-        
-                                                                    var isRequiredStartEndDate = records.get('isRequiredStartEndDate');
-                                                                    var isCampaignExpired = records.get('isCampaignExpired');
-                                                                    var CampaignDayLeft = records.get('CampaignDayLeft');
-        
-                                                                    //  FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks);
-        
-        
-        
-                                                                    //var StampedCampaignCode = records.get('StampedCampaignCode');
-                                                                    //var EnterpriseAccNo = records.get('EnterpriseAccNo');
-                                                                    //var StartDate = records.get('StartDate');
-                                                                    //var EndDate = records.get('EndDate');
-                                                                    //var SubscriberAccNo = records.get('SubscriberAccNo');
-                                                                    //var EnterpriseName = records.get('EnterpriseName');
-                                                                    //var StampRuleRemarks = records.get('StampRuleRemarks');
-                                                                    //var isStampRulePopUp = records.get('isStampRulePopUp');
-                                                                    //var StampCampaignName = records.get('StampCampaignName');
-                                                                    //var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
-                                                                    //var CountStampCardRowShow = records.get('CountStampCardRowShow');
-                                                                    localStorage.setItem('StampCampaignCode', CampaignCode);
-        
-                                                                    localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
-                                                                    localStorage.setItem('CountStampCardRowShow', Stamp);
-                                                                     
-                                                                
-        
-        
-        
-                                                                   
-                                                                    if (MembershipTag == 'NO') {
-                                                                        
-                                                                      
 
-                                                                        setMessage_NotYetMembershipMessage();
+{
+                                                            xtype:'container',
+                                                            width:'100%',
+                                                          //  hidden:true,
+                                                            height:13,
+                                                            style: 'background-color:transparent',
+                                                        },
+
+ {
+                                                    xtype: 'list',
+                                                    width: '95%',
+                                                    margin:'0 0 0 0',
+                                                    store: _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore,
+                                                  
+                                                    id: 'FloatPanel_MembershipCardList_NotYetSubscribed_Campaignlist',
+                                                    cls: 'perkList',
+                                                  
+                                                    mode: 'SINGLE',
+                                                
+                                                    disableSelection: true,
+                                                    itemHeight: 70,          // sebab padding 6+6 + min-height 56 (roughly 68-72)
+variableHeights: false,
+itemConfig: { 
+  style: 'padding:0 !important;margin:0 !important;width:100% !important;' 
+ 
+},
+                                                   
+                                                      style: 'background:#fff !important;',
+                                                      
+                                                   // style: 'background-color:white !important;border-radius: 0px 0px 0px 0px;',
+                                                    scrollable: {
+                                                        direction: 'vertical',
+                                                        directionLock: true,
+                                                        indicators: {
+                                                            y: {
+                                                                autoHide: true
+                                                            },
+                                                            x: {
+                                                                autoHide: true
+                                                            }
+                                                        }
+                                                    },
+                                                         
+                                                    itemTpl: new Ext.XTemplate(
+                                                        // ✅ FULL WIDTH + GAP VERTICAL
+                                                        '<div class="myContent" style="'
+                                                      + 'background:transparent;'
+                                                      + 'width:100%;'
+                                                      + 'box-sizing:border-box;'
+                                                      + 'padding:0 14px;'          // side spacing kiri/kanan
+                                                      + 'margin:0 0 12px 0;'       // ✅ gap vertical antara item
+                                                      + '">' +
+                                                      
+                                                          // ✅ CARD FULL WIDTH
+                                                          '<div style="'
+                                                        + 'display:flex;align-items:center;gap:12px;'
+                                                        + 'width:100%;min-height:86px;'
+                                                        + 'background:#fff;'
+                                                        + 'border-radius:18px;'
+                                                        + 'border:1px solid rgba(124,58,237,.14);'
+                                                        + 'box-shadow:0 10px 26px rgba(17,24,39,.06);'
+                                                        + 'padding:12px 12px 12px 10px;'
+                                                        + 'position:relative;'
+                                                        + 'box-sizing:border-box;'
+                                                        + '">' +
+                                                      
+                                                            // left accent bar
+                                                            '<div style="'
+                                                          + 'width:6px;align-self:stretch;border-radius:999px;'
+                                                          + 'background:{[this.getAccent(values.ModifiedCampaignTypeShorted)]};'
+                                                          + '"></div>' +
+                                                      
+                                                            // icon bubble
+                                                            '<div style="'
+                                                          + 'flex:0 0 44px;width:44px;height:44px;border-radius:14px;'
+                                                          + 'background:{[this.getBubble(values.ModifiedCampaignTypeShorted)]};'
+                                                          + 'display:flex;align-items:center;justify-content:center;'
+                                                          + 'box-shadow:inset 0 1px 0 rgba(255,255,255,.85);'
+                                                          + '">' +
+                                                              '<div style="'
+                                                            + 'width:28px;height:28px;border-radius:10px;'
+                                                            + 'background-image:url({ModifiedCampaignType});'
+                                                            + 'background-size:cover;background-position:center;background-repeat:no-repeat;'
+                                                            + '"></div>' +
+                                                            '</div>' +
+                                                      
+                                                            // text area (3 lines)
+                                                            '<div style="flex:1;min-width:0;line-height:1.2;">' +
+                                                      
+                                                              // LINE 1: title
+                                                              '<div style="display:flex;align-items:center;gap:10px;">' +
+                                                                '<div style="'
+                                                              + 'font-family:Arial,sans-serif;'
+                                                              + 'font-size:15px;font-weight:900;'
+                                                              + 'color:#111827;'
+                                                              + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
+                                                              + '">{ModifiedCampaignTypeShorted}</div>' +
+                                                              '</div>' +
+                                                      
+                                                              // LINE 2: microcopy
+                                                              '<div style="margin-top:4px;'
+                                                            + 'font-family:Arial,sans-serif;'
+                                                            + 'font-size:12.5px;font-weight:700;'
+                                                            + 'color:#4B5563;'
+                                                            + 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
+                                                            + '">{CampaignName}</div>' +
+                                                      
+                                                              // LINE 3: badge (moved here)
+                                                              '<tpl if="this.hasBadge(values)">' +
+                                                                '<div style="margin-top:7px;display:flex;align-items:center;gap:8px;min-width:0;">' +
+                                                                  '<div style="{[this.getBadgeStyle(values)]}">'
+                                                                    + '{[this.getBadgeText(values)]}'
+                                                                  + '</div>' +
+                                                                '</div>' +
+                                                              '</tpl>' +
+                                                      
+                                                            '</div>' +
+                                                      
+                                                            // chevron
+                                                            '<div style="color:#9CA3AF;font-size:24px;line-height:1;flex:0 0 auto;padding-left:2px;">›</div>' +
+                                                      
+                                                          '</div>' +
+                                                        '</div>',
+                                                      {
+                                                        getAccent: function (t) {
+                                                          t = (t || '').toLowerCase();
+                                                          if (t.indexOf('stamp') > -1) return '#7C3AED';
+                                                          if (t.indexOf('discount') > -1) return '#22C55E';
+                                                          if (t.indexOf('contest') > -1) return '#F59E0B';
+                                                          if (t.indexOf('event') > -1) return '#3B82F6';
+                                                          if (t.indexOf('point') > -1) return '#EC4899';
+                                                          return '#7C3AED';
+                                                        },
+                                                      
+                                                        getBubble: function (t) {
+                                                          t = (t || '').toLowerCase();
+                                                          if (t.indexOf('stamp') > -1) return 'rgba(124,58,237,.12)';
+                                                          if (t.indexOf('discount') > -1) return 'rgba(34,197,94,.12)';
+                                                          if (t.indexOf('contest') > -1) return 'rgba(245,158,11,.14)';
+                                                          if (t.indexOf('event') > -1) return 'rgba(59,130,246,.12)';
+                                                          if (t.indexOf('point') > -1) return 'rgba(236,72,153,.12)';
+                                                          return 'rgba(124,58,237,.12)';
+                                                        },
+                                                      
+                                                        getBadgeBg: function (t) {
+                                                          t = (t || '').toLowerCase();
+                                                          if (t.indexOf('discount') > -1) return 'rgba(34,197,94,.12)';
+                                                          if (t.indexOf('contest') > -1) return 'rgba(245,158,11,.16)';
+                                                          if (t.indexOf('event') > -1) return 'rgba(59,130,246,.12)';
+                                                          if (t.indexOf('point') > -1) return 'rgba(236,72,153,.12)';
+                                                          return 'rgba(124,58,237,.10)';
+                                                        },
+                                                      
+                                                        hasBadge: function (v) {
+                                                          return !!(v && v.ModifiedCountLoyaltyStamped && String(v.ModifiedCountLoyaltyStamped).trim());
+                                                        },
+                                                      
+                                                        getBadgeText: function (v) {
+                                                          return v.ModifiedCountLoyaltyStamped;
+                                                        },
+                                                      
+                                                        // ✅ badge auto cantik walau text panjang (contoh Entitled 40% discount...)
+                                                        getBadgeStyle: function (v) {
+                                                          var t = v.ModifiedCampaignTypeShorted || '';
+                                                          var accent = this.getAccent(t);
+                                                          var bg = this.getBadgeBg(t);
+                                                          var text = (v.ModifiedCountLoyaltyStamped || '').toString();
+                                                          var isLong = text.length > 22;
+                                                      
+                                                          return [
+                                                            'max-width:100%;',
+                                                            'padding:6px 10px;',
+                                                            'background:' + bg + ';',
+                                                            'color:' + accent + ';',
+                                                            'font-weight:900;',
+                                                            'font-size:12px;',
+                                                            'box-sizing:border-box;',
+                                                            isLong
+                                                              ? 'border-radius:12px;white-space:normal;line-height:1.15;'
+                                                              : 'border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'
+                                                          ].join('');
+                                                        }
+                                                      }),
+
+                                                
+                                                    height: '100%',
+                                                   //height: '100%',
+                                                    listeners: {
+                                                        itemsingletap: function (list, idx, target, records, evt) {
+
+                                                            //var Stamps = records.get('Stamps');
+                                                            //var StampsArr = Stamps.split('/');
+
+
+                                                            var CampaignCode = records.get('CampaignCode');
+                                                            var EnterpriseHQAccNo = records.get('EnterpriseHQAccNo');
+                                                            var StartDate = records.get('CampaignStartDate');
+                                                            var EndDate = records.get('CampaignEndDate');
+                                                            var SubscriberAccNo = GetCurrAyohaUserAccountNo();
+                                                            //var EnterpriseName = records.get('EnterpriseName');     
+                                                            var EnterpriseName = records.get('EnterpriseName');
+                                                            var StampRuleRemarks = records.get('Remarks');
+                                                            var isStampRulePopUp = records.get('isRulePopUp');
+                                                            var CampaignName = records.get('CampaignName');
+                                                            var Stamp = records.get('Stamp');
+                                                            var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                                            //var EnterpriseLogo = records.get('EnterpriseLogo');
+                                                            var EnterpriseLogo = records.get('EnterpriseLogo');
+                                                            var CampaignType = records.get('CampaignType');
+                                                            var EnterpriseAccNo = records.get('EnterpriseAccNo');
+
+                                                            var isRequiredStartEndDate = records.get('isRequiredStartEndDate');
+                                                            var isCampaignExpired = records.get('isCampaignExpired');
+                                                            var CampaignDayLeft = records.get('CampaignDayLeft');
+
+                                                            //  FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks);
 
 
 
-                                                                        
+                                                            //var StampedCampaignCode = records.get('StampedCampaignCode');
+                                                            //var EnterpriseAccNo = records.get('EnterpriseAccNo');
+                                                            //var StartDate = records.get('StartDate');
+                                                            //var EndDate = records.get('EndDate');
+                                                            //var SubscriberAccNo = records.get('SubscriberAccNo');
+                                                            //var EnterpriseName = records.get('EnterpriseName');
+                                                            //var StampRuleRemarks = records.get('StampRuleRemarks');
+                                                            //var isStampRulePopUp = records.get('isStampRulePopUp');
+                                                            //var StampCampaignName = records.get('StampCampaignName');
+                                                            //var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                                            //var CountStampCardRowShow = records.get('CountStampCardRowShow');
+                                                            
+                                                            
+                                                            
+                                                            // localStorage.setItem('StampCampaignCode', CampaignCode);
+
+                                                            // localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
+                                                            // localStorage.setItem('CountStampCardRowShow', Stamp);
+                                                             
+                                                      
+
+                                                          //  FloatPanel_ScannedMerchantHide();
+
+                                                         //alert(MembershipTag)
+                                                            if (MembershipTag == 'YES') {
+
+
                                                                 if (CampaignType == "Stamp Reward Loyalty Card") {
 
                                                                     //alert(CampaignType);
                                                                    // FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow, EnterpriseLogo, isRequiredStartEndDate, isCampaignExpired, CampaignDayLeft, AdvertismentTitle) {
 
-                                                                    FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp, EnterpriseLogo);
+                                                                    FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp, EnterpriseLogo,isRequiredStartEndDate,isCampaignExpired,CampaignDayLeft,"NA");
+                                                                   // FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow, EnterpriseLogo, isRequiredStartEndDate, isCampaignExpired, CampaignDayLeft, AdvertismentTitle)
+                                                                    
                                                                     //Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>' + CountLoyaltyStamped + '/' + Stamp + '</b></font>');
                                                                     Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>' + CountLoyaltyStamped + '</b></font>');
                                                                 }
                                                                 if (CampaignType == "Point Reward Loyalty Card") {
-                                                                    LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                  //  LoadingPanelShow(getLoadingIcon(), 'Loading....');
                                                                     FloatLoyaltyCardPointShow(CampaignName, CampaignCode, EnterpriseLogo, EnterpriseName, EnterpriseAccNo, EndDate, isRequiredStartEndDate, isCampaignExpired);
                                                                    // FloatLoyaltyCardPointShow(StampCampaignName, StampCampaignCode, EnterprisesLogo, EnterpriseName, EnterpriseAccNo, EndDate, isRequiredStartEndDate, PointisCampaignExpired);
                                                                 }
+                                                                if (CampaignType == "Membership Card Discount") {
+                                                                  //  LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                    FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
+                                                                }
+                                                                if (CampaignType == "Membership Card Contest") {
+                                                                   // LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                    FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
+                                                                   // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
+                                                                }
+                                                                if (CampaignType == "Membership Card Event") {
+                                                                   // LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                                   // FloatPanel_DashboardMerchantReward_MembershipEventDetailShow(EnterpriseLogo, EnterpriseName, EventCoverPhoto, EventName, EventStartDate_Day, EventStartDate_Month, EventStartTime, EventEndDate_Day, EventEndDate_Month, EventEndTime, EventLocationName, ModifiedWidth, EventDescription, EventLocationCoordinate, EventUrlTicket, EventCode, EnterpriseAccNo, RespondStatus,ID);
+                                                                   //alert(CampaignCode)
+                                                                   
+                                                                    FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMembershipCardList_Upgrade(CampaignCode,EnterpriseLogo, EnterpriseName);
+                                                                   // FloatPanel_DashboardMerchantReward_MembershipEventDetailShow
+                                                                   
+//FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
+                                                                   // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
+                                                                }
+                                                               // 
+
+
+
+                                                            }
+                                                            if (MembershipTag == 'NO') {
+                                                                //   FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp);
+
+                                                              
+                                                                if (CampaignType == "Stamp Reward Loyalty Card") {                                                                 
+
+                                                                    FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks, EnterpriseLogo, EnterpriseName);
+                                                                    Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>0/' + Stamp + '</b></font>');
+                                                                }
+                                                                if (CampaignType == "Point Reward Loyalty Card") {
+                                                                    FloatLoyaltyCardPointShow(CampaignName, CampaignCode, EnterpriseLogo, EnterpriseName, EnterpriseAccNo);
+                                                                }
+                                                               
                                                                 if (CampaignType == "Membership Card Discount") {
                                                                     LoadingPanelShow(getLoadingIcon(), 'Loading....');
                                                                     FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
@@ -2121,30 +2364,270 @@ items: [
                                                                     // FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
                                                                    // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
                                                                 }
-                                                                    }
+                                                            }
+
+                                                          //  //var Stamps = records.get('Stamps');
+                                                          //  //var StampsArr = Stamps.split('/');
+
+
+                                                          //  var CampaignCode = records.get('CampaignCode');
+                                                          //  var EnterpriseHQAccNo = records.get('EnterpriseHQAccNo');
+                                                          //  var StartDate = records.get('CampaignStartDate');
+                                                          //  var EndDate = records.get('CampaignEndDate');
+                                                          //  var SubscriberAccNo = GetCurrAyohaUserAccountNo();
+                                                          //  //var EnterpriseName = records.get('EnterpriseName');     
+                                                          //  var EnterpriseName = global_FloatPanel_MembershipCardList_Upgrade_EnterprisesName;
+                                                          //  var StampRuleRemarks = records.get('StampRuleRemarks');
+                                                          //  var isStampRulePopUp = records.get('isStampRulePopUp');
+                                                          //  var CampaignName = records.get('CampaignName');
+                                                          //  var Stamp = records.get('Stamp');
+                                                          //  var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                                          //  //var EnterpriseLogo = records.get('EnterpriseLogo');
+                                                          //  var EnterpriseLogo = global_FloatPanel_MembershipCardList_Upgrade_EnterprisesLogo;
+                                                         
+                                                           
+                                                    
+                                                          ////  FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks);
+                                                          
+
+                                                            
+
+
+                                                          //  //var StampedCampaignCode = records.get('StampedCampaignCode');
+                                                          //  //var EnterpriseAccNo = records.get('EnterpriseAccNo');
+                                                          //  //var StartDate = records.get('StartDate');
+                                                          //  //var EndDate = records.get('EndDate');
+                                                          //  //var SubscriberAccNo = records.get('SubscriberAccNo');
+                                                          //  //var EnterpriseName = records.get('EnterpriseName');
+                                                          //  //var StampRuleRemarks = records.get('StampRuleRemarks');
+                                                          //  //var isStampRulePopUp = records.get('isStampRulePopUp');
+                                                          //  //var StampCampaignName = records.get('StampCampaignName');
+                                                          //  //var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                                          //  //var CountStampCardRowShow = records.get('CountStampCardRowShow');
+                                                          //  localStorage.setItem('StampCampaignCode', CampaignCode);
+
+                                                          //  localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
+                                                          //  localStorage.setItem('CountStampCardRowShow', Stamp);
+                                                          //  //alert(StampRuleRemarks); alert(isStampRulePopUp);
+
+                                                          //  console.log(MembershipTag);
+
+                                                          //  if (MembershipTag == 'YES') {
+                                                          //      FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp, EnterpriseLogo);
+                                                          //      Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>' + CountLoyaltyStamped + '/' + Stamp + '</b></font>');
+
+                                                          //  }
+                                                          //  if (MembershipTag == 'NO') {
+                                                          //   //   FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp);
+
+                                                          //      FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks, EnterpriseLogo, EnterpriseName);
+                                                          //      Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>0/' + Stamp + '</b></font>');
+
+                                                          //  }
+
+                                                        },
+                                                        deselect: function (list, records) {
+
+                                                        }
+                                                    },
+
+                                                },
+
+
+
+
+
+
+                                                    //     {
+                                                    //         xtype: 'list',
+                                                    //         //  flex: 1,
+                                                    //        // hidden:true,
+                                                    //       //  margin: '1 0 0 0',
+                                                    //         width: '90%',
+                                                    //         // store: 'EnterprisegetAllStore',
+                                                    //         store: _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore,
+                                                    //        // store: 'MembershipCardCampaingEntitledLoadByMembershipCardCodeStore',
+                                                    //         id: 'FloatPanel_MembershipCardList_NotYetSubscribed_Campaignlist',
+                                                    //         scrollable:false,
+                                                    //         // grouped: true,
+                                                    //         mode: 'SINGLE',
+                                                    //         //  indexBar: true,
+                                                    //         disableSelection: true,
+                                                    //         style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                                    //         // scrollable: {
+                                                    //         //     direction: 'vertical',
+                                                    //         //     directionLock: true,
+                                                    //         //     indicators: {
+                                                    //         //         y: {
+                                                    //         //             autoHide: true
+                                                    //         //         },
+                                                    //         //         x: {
+                                                    //         //             autoHide: true
+                                                    //         //         }
+                                                    //         //     }
+                                                    //         // },
+                                                                 
+                                                          
+                                                    //     //     itemTpl: '{ModifiedCampaignTypeShorted}' +                                              
+                                                    //     //    '<br><div style="width:100%;text-align:center;margin:-10px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black">{ModifiedCampaignType}</div>' +
+                                                    //     //        '<br><div style="width:100%;text-align:center;margin:-30px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{CampaignName}</div>' +
+                                                    //     //         '<br><div style="width:100%;text-align:center;margin:-25px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{ModifiedCountLoyaltyStamped}</div>' +
+                                                    //     //           '{ModifiedisRequiredStartEndDate}' +
+                                                    //     //                                                      // '<br><div style="width:100%;text-align:center;margin:-25px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black">Day Left:{CampaignDayLeft}</div>' +
+        
+                                                    //     //     '</div>',
+        
+        
+                                                    //     itemTpl: '<div class="myContent" style="background-color:transparent;">' +
+                    
+        
+                                                    //    '<table  style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:0px 0px 0px 0px;height:60px;"><tr><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:20%;vertical-align:center"><div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 0px;width:30px;height:30px;color:white;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url({ModifiedCampaignType}); background-size: 100% 100%;"></div></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center">{ModifiedCampaignTypeShorted}<br><font style="font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">{CampaignName} - {ModifiedCountLoyaltyStamped}</font></td></tr></table>'
+                                                    //    // '<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:90px;"><tr onclick="openNotificationPanel(' + ID + ',' + "'" + NotificationType + "'" + ',' + "'" + NotificationCode + "'" + ',' + "'" + EnterpriseAccNo + "'" + ',' + "'" + IsReadStatus + "'" + ')"><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 7px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:25%;vertical-align:center"><img src="' + EnterpriseLogoPath + '" style="border:1px solid white; width:75px;height:75px;" /></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center">{ModifiedCampaignTypeShorted}<br><font style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;">{CampaignName} - {ModifiedCountLoyaltyStamped}</font></td></tr></table>'   
+                                                       
+                                                       
+                                                    //    + '</div>',
+        
+        
+        
+        
+        
+        
+                                                           
+                                                    //         // itemTpl: '<div class="myContent" style="background-color:transparent;height:125px">' +
+                    
+                                                    //         //    '<div style="width:100%;text-align:center;margin:0px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black"><u>{ModifiedCampaignTypeShorted}</u></div>' +
+                                                    //         //                                                                            // '<br><div style="width:100%;text-align:right;margin:-30px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:10px;font-weight:bold;color:black"></div>' +
+                                                    //         //     '<br><div style="width:100%;text-align:center;margin:-10px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black">{ModifiedCampaignType}</div>' +
+                                                    //         //         '<br><div style="width:100%;text-align:center;margin:-30px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{CampaignName}</div>' +
+                                                    //         //          '<br><div style="width:100%;text-align:center;margin:-25px 0px 0px 0px;background-color: transparent;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;color:black">{ModifiedCountLoyaltyStamped}</div>' +
+                                                                     
+                                                    //         //      '</div>',
+                                                    //         height: 100,
+                                                    //        //height: '100%',
+                                                    //         listeners: {
+                                                    //             itemsingletap: function (list, idx, target, records, evt) {
+        
+                                                    //                 //var Stamps = records.get('Stamps');
+                                                    //                 //var StampsArr = Stamps.split('/');
+        
+        
+                                                    //                 var CampaignCode = records.get('CampaignCode');
+                                                    //                 var EnterpriseHQAccNo = records.get('EnterpriseHQAccNo');
+                                                    //                 var StartDate = records.get('CampaignStartDate');
+                                                    //                 var EndDate = records.get('CampaignEndDate');
+                                                    //                 var SubscriberAccNo = GetCurrAyohaUserAccountNo();
+                                                    //                 //var EnterpriseName = records.get('EnterpriseName');     
+                                                    //                 var EnterpriseName = records.get('EnterpriseName');
+                                                    //                 var StampRuleRemarks = records.get('Remarks');
+                                                    //                 var isStampRulePopUp = records.get('isRulePopUp');
+                                                    //                 var CampaignName = records.get('CampaignName');
+                                                    //                 var Stamp = records.get('Stamp');
+                                                    //                 var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                                    //                 //var EnterpriseLogo = records.get('EnterpriseLogo');
+                                                    //                 var EnterpriseLogo = records.get('EnterpriseLogo');
+                                                    //                 var CampaignType = records.get('CampaignType');
+                                                    //                 var EnterpriseAccNo = records.get('EnterpriseAccNo');
+        
+                                                    //                 var isRequiredStartEndDate = records.get('isRequiredStartEndDate');
+                                                    //                 var isCampaignExpired = records.get('isCampaignExpired');
+                                                    //                 var CampaignDayLeft = records.get('CampaignDayLeft');
+        
+                                                    //                 //  FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks);
+        
+        
+        
+                                                    //                 //var StampedCampaignCode = records.get('StampedCampaignCode');
+                                                    //                 //var EnterpriseAccNo = records.get('EnterpriseAccNo');
+                                                    //                 //var StartDate = records.get('StartDate');
+                                                    //                 //var EndDate = records.get('EndDate');
+                                                    //                 //var SubscriberAccNo = records.get('SubscriberAccNo');
+                                                    //                 //var EnterpriseName = records.get('EnterpriseName');
+                                                    //                 //var StampRuleRemarks = records.get('StampRuleRemarks');
+                                                    //                 //var isStampRulePopUp = records.get('isStampRulePopUp');
+                                                    //                 //var StampCampaignName = records.get('StampCampaignName');
+                                                    //                 //var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                                    //                 //var CountStampCardRowShow = records.get('CountStampCardRowShow');
+                                                    //                 localStorage.setItem('StampCampaignCode', CampaignCode);
+        
+                                                    //                 localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
+                                                    //                 localStorage.setItem('CountStampCardRowShow', Stamp);
+                                                                     
+                                                                
+        
+        
+        
+                                                                   
+                                                    //                 if (MembershipTag == 'NO') {
+                                                                        
+                                                                      
+
+                                                    //                     setMessage_NotYetMembershipMessage();
+
+
+
+                                                                        
+                                                    //             if (CampaignType == "Stamp Reward Loyalty Card") {
+
+                                                    //                 //alert(CampaignType);
+                                                    //                // FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow, EnterpriseLogo, isRequiredStartEndDate, isCampaignExpired, CampaignDayLeft, AdvertismentTitle) {
+
+                                                    //                 FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp, EnterpriseLogo);
+                                                    //                 //Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>' + CountLoyaltyStamped + '/' + Stamp + '</b></font>');
+                                                    //                 Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>' + CountLoyaltyStamped + '</b></font>');
+                                                    //             }
+                                                    //             if (CampaignType == "Point Reward Loyalty Card") {
+                                                    //                 LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                    //                 FloatLoyaltyCardPointShow(CampaignName, CampaignCode, EnterpriseLogo, EnterpriseName, EnterpriseAccNo, EndDate, isRequiredStartEndDate, isCampaignExpired);
+                                                    //                // FloatLoyaltyCardPointShow(StampCampaignName, StampCampaignCode, EnterprisesLogo, EnterpriseName, EnterpriseAccNo, EndDate, isRequiredStartEndDate, PointisCampaignExpired);
+                                                    //             }
+                                                    //             if (CampaignType == "Membership Card Discount") {
+                                                    //                 LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                    //                 FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
+                                                    //             }
+                                                    //             if (CampaignType == "Membership Card Contest") {
+                                                    //                 LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                    //                 FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
+                                                    //                // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
+                                                    //             }
+                                                    //             if (CampaignType == "Membership Card Event") {
+                                                    //                 LoadingPanelShow(getLoadingIcon(), 'Loading....');
+                                                    //                 //FloatPanel_DashboardMerchantReward_MembershipEventDetailShow(EnterpriseLogo, EnterpriseName, EventCoverPhoto, EventName, EventStartDate_Day, EventStartDate_Month, EventStartTime, EventEndDate_Day, EventEndDate_Month, EventEndTime, EventLocationName, ModifiedWidth, EventDescription, EventLocationCoordinate, EventUrlTicket, EventCode, EnterpriseAccNo, RespondStatus,ID);
+                                                    //                 FloatPanel_DashboardMerchantReward_MembershipEventDetailShow_FromMembershipCardList_Upgrade(CampaignCode,EnterpriseLogo, EnterpriseName);
+                                                                   
+                                                                   
+                                                    //                 // FloatPanel_DashboardMerchantReward_MembershipContestDetailShow_FromMembershipCardList_Upgrade(CampaignCode);
+                                                    //                // FloatPanel_MerchantDiscountLoyaltyDescriptionShow(CampaignCode,EnterpriseAccNo);
+                                                    //             }
+                                                    //                 }
         
                                                                 
         
-                                                                },
-                                                                deselect: function (list, records) {
+                                                    //             },
+                                                    //             deselect: function (list, records) {
         
-                                                                }
-                                                            },
+                                                    //             }
+                                                    //         },
         
-                                                        },
+                                                    //     },
 
 
 
 
 
 
-
+{
+xtype: 'container',
+                                                            width: '100%',
+                                                            margin:' 0 0 0 0',
+                                                            height: 70,
+                                                            style: 'background-color:transparent;',
+},
 
                                                         {
                                                             xtype: 'container',
                                                             width: '95%',
-                                                            margin:'30 0 0 0',
-                                                            style: 'background-color:white',
+                                                            margin:'0 0 0 0',
+                                                            style: 'background-color:transparent',
                                                           //  hidden:true,
                                                           //  style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
                                                             layout: {
@@ -2170,7 +2653,8 @@ items: [
                                                                     },
                                                                     {
                                                                      //   id: 'btnFloatPanel_MembershipCardList_NotYetSubscribed_EntitiledReward',
-                                                                        html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Entitle Outlet</div>',
+                                                                      //  html: '<div style="width:100%;text-align:left;color:purple;font-family: Arial; font-size:13px;font-weight:bold;">Entitle Outlet</div>',
+                                                                        html: ayohaThemeColor_TitleTextColor('Entitle Outlet'),
                                                                     },
                                                 
                                                                 
@@ -2183,13 +2667,21 @@ items: [
     xtype:'container',
     width:'90%',
     height:1,
+    hidden:true,
     style: 'background-color:grey',
+},
+ {
+    xtype:'container',
+    width:'100%',
+    height:10,
+   // hidden:true,
+    style: 'background-color:transparent',
 },
 {
     xtype: 'container',
     id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_Enterpriselist',
-    style: ' background-color: transparent',
-    height: 300,
+    style: 'background-color: transparent;border-radius: 8px 8px 8px 8px;',
+    height: 170,
     width: '100%',
     layout: {
         type: 'vbox',
@@ -2198,18 +2690,19 @@ items: [
 
     },
     items: [
+       
         {
             xtype: 'list',
             //flex:1,
             scrollable:false,
-            height: 300,
+            height: 170,
            // store: 'MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore',
             store:_DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
             id: 'FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseEntitledList',
             mode: 'SINGLE',
             //  grouped: true,
             disableSelection: true,
-            style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+            style: 'background-color:rgba(255,255,255, 10);border-radius: 18px 18px 18px 18px;',
             scrollable: {
                 direction: 'vertical',
                 indicators: {
@@ -2227,7 +2720,7 @@ items: [
 
 
                            '</div>',
-            width: '90%',
+            width: '93%',
             listeners: {
                 itemsingletap: function (list, idx, target, records, evt) {
 
@@ -2265,206 +2758,206 @@ items: [
                                              
                                          
                                          ///////////////////////////////////////////////////////
-                                         {
-                                             xtype: 'container',
-                                             id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_CardTransaction',
-                                             style: ' background-color: transparent',
-                                            // height: '95%',
-                                             width: '100%',
-                                             layout: {
-                                                 type: 'vbox',
-                                                 pack: 'start',
-                                                 align: 'center'
+                                        //  {
+                                        //      xtype: 'container',
+                                        //      id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_CardTransaction',
+                                        //      style: ' background-color: transparent',
+                                        //     // height: '95%',
+                                        //      width: '100%',
+                                        //      layout: {
+                                        //          type: 'vbox',
+                                        //          pack: 'start',
+                                        //          align: 'center'
         
-                                             },
-                                             items: [
-                                                 {
-        
-        
-                                                     xtype: 'list',
-                                                     // height: '64%',
-                                                     // height: '100%',
-                                                     // height: 200,
-                                                     //   flex: 2,
-                                                     store: 'AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore',
-                                                     id: 'FloatPanel_MembershipCardList_NotYetSubscribed_CardTransactionList',
-                                                     mode: 'SINGLE',
-                                                     disableSelection: true,
-                                                     grouped: true,
-                                                     // disableSelection: true,
-                                                     scrollable:false,
-                                                     style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                                    //  scrollable: {
-                                                    //      direction: 'vertical',
-                                                    //      indicators: {
-                                                    //          y: {
-                                                    //              autoHide: true
-                                                    //          },
-                                                    //          x: {
-                                                    //              autoHide: true
-                                                    //          }
-                                                    //      }
-                                                    //  },
-                                                     itemTpl: '<div class="myContent">' +
+                                        //      },
+                                        //      items: [
+                                        //          {
         
         
-                                                                             '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;"><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{AyohaPointType}</div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:1px 0px 0px 0px;"><b>{CampaignName}</b></div><br><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-16px 0px 0px 0px;">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div></td><td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right">{ModifiedTypeCRDBExtent}</div></td></tr></table>' +
+                                        //              xtype: 'list',
+                                        //              // height: '64%',
+                                        //              // height: '100%',
+                                        //              // height: 200,
+                                        //              //   flex: 2,
+                                        //              store: 'AyohaRewardPointLoadBySubscriberAccNoEnterpriseAccNoMCCStore',
+                                        //              id: 'FloatPanel_MembershipCardList_NotYetSubscribed_CardTransactionList',
+                                        //              mode: 'SINGLE',
+                                        //              disableSelection: true,
+                                        //              grouped: true,
+                                        //              // disableSelection: true,
+                                        //              scrollable:false,
+                                        //              style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                        //             //  scrollable: {
+                                        //             //      direction: 'vertical',
+                                        //             //      indicators: {
+                                        //             //          y: {
+                                        //             //              autoHide: true
+                                        //             //          },
+                                        //             //          x: {
+                                        //             //              autoHide: true
+                                        //             //          }
+                                        //             //      }
+                                        //             //  },
+                                        //              itemTpl: '<div class="myContent">' +
         
-                                                     '</div>',
-                                                     emptyText: '<div class="myContent">No Transactions</div>',
-                                                     width: '90%',
-                                                     // height: 600,
-                                                     // height: '100%',
         
-                                                     listeners: {
+                                        //                                      '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;"><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{AyohaPointType}</div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:1px 0px 0px 0px;"><b>{CampaignName}</b></div><br><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-16px 0px 0px 0px;">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div></td><td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right">{ModifiedTypeCRDBExtent}</div></td></tr></table>' +
         
+                                        //              '</div>',
+                                        //              emptyText: '<div class="myContent">No Transactions</div>',
+                                        //              width: '90%',
+                                        //              // height: 600,
+                                        //              // height: '100%',
         
-                                                         itemdoubletap: function (dataview, index, target, record, e, eOpts) {
-        
-        
-                                                         },
-        
-                                                         itemsingletap: function (dataview, index, target, record, e, eOpts) {
-        
-                                                         }
-                                                     }
+                                        //              listeners: {
         
         
+                                        //                  itemdoubletap: function (dataview, index, target, record, e, eOpts) {
+        
+        
+                                        //                  },
+        
+                                        //                  itemsingletap: function (dataview, index, target, record, e, eOpts) {
+        
+                                        //                  }
+                                        //              }
         
         
         
         
-                                                 },
-                                                 //{
-                                                 //    xtype: 'list',
-                                                 //    height: '100%',
-                                                 //    // store: 'LoyaltyStampLoadBySubscriberAccNoStore',
-                                                 //    store:'LoyaltyStampLoadBySubscriberAccNoAndMembershipCardCodeStore',
-                                                 //    id: 'FloatPanel_MembershipCardList_NotYetSubscribed_StampHistoryList',
-                                                 //    mode: 'SINGLE',
-                                                 //    grouped: true,
-                                                 //    disableSelection: true,
-                                                 //    itemTpl: '<div class="myContent">' +
-        
-                                                 //    //  '<table style="border-collapse:collapse;border-spacing:0;margin:2px 0px 0px 0px;table-layout: fixed; width: 100%; height:20px;" class="tg"><colgroup><col style="width: 78%"><col style="width: 22%"></colgroup><thead><tr><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</th><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal">{LastStampBy}</th></tr></thead></table>' +
-                                                 //     '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</div>' +
         
         
+                                        //          },
+                                        //          //{
+                                        //          //    xtype: 'list',
+                                        //          //    height: '100%',
+                                        //          //    // store: 'LoyaltyStampLoadBySubscriberAccNoStore',
+                                        //          //    store:'LoyaltyStampLoadBySubscriberAccNoAndMembershipCardCodeStore',
+                                        //          //    id: 'FloatPanel_MembershipCardList_NotYetSubscribed_StampHistoryList',
+                                        //          //    mode: 'SINGLE',
+                                        //          //    grouped: true,
+                                        //          //    disableSelection: true,
+                                        //          //    itemTpl: '<div class="myContent">' +
         
-                                                 //      '</div>',
-                                                 //    width: '100%',
-                                                 //    listeners: {
-                                                 //        itemsingletap: function (list, idx, target, records, evt) {
-        
-                                                 //            var StampedCampaignCode = records.get('StampedCampaignCode');
-                                                 //            var EnterpriseAccNo = records.get('EnterpriseAccNo');
-                                                 //            var StartDate = records.get('StartDate');
-                                                 //            var EndDate = records.get('EndDate');
-                                                 //            var SubscriberAccNo = records.get('SubscriberAccNo');
-                                                 //            var EnterpriseName = records.get('EnterpriseName');
-                                                 //            var StampRuleRemarks = records.get('StampRuleRemarks');
-                                                 //            var isStampRulePopUp = records.get('isStampRulePopUp');
-                                                 //            var StampCampaignName = records.get('StampCampaignName');
-                                                 //            var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
-                                                 //            var CountStampCardRowShow = records.get('CountStampCardRowShow');
-                                                 //            localStorage.setItem('StampCampaignCode', StampedCampaignCode);
-        
-                                                 //            localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
-                                                 //            localStorage.setItem('CountStampCardRowShow', CountStampCardRowShow);
-                                                 //            //alert(StampRuleRemarks); alert(isStampRulePopUp);
-        
-                                                 //            FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow);
+                                        //          //    //  '<table style="border-collapse:collapse;border-spacing:0;margin:2px 0px 0px 0px;table-layout: fixed; width: 100%; height:20px;" class="tg"><colgroup><col style="width: 78%"><col style="width: 22%"></colgroup><thead><tr><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</th><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal">{LastStampBy}</th></tr></thead></table>' +
+                                        //          //     '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</div>' +
         
         
-                                                 //        },
-                                                 //        deselect: function (list, records) {
         
-                                                 //        }
-                                                 //    },
+                                        //          //      '</div>',
+                                        //          //    width: '100%',
+                                        //          //    listeners: {
+                                        //          //        itemsingletap: function (list, idx, target, records, evt) {
         
-                                                 //},
+                                        //          //            var StampedCampaignCode = records.get('StampedCampaignCode');
+                                        //          //            var EnterpriseAccNo = records.get('EnterpriseAccNo');
+                                        //          //            var StartDate = records.get('StartDate');
+                                        //          //            var EndDate = records.get('EndDate');
+                                        //          //            var SubscriberAccNo = records.get('SubscriberAccNo');
+                                        //          //            var EnterpriseName = records.get('EnterpriseName');
+                                        //          //            var StampRuleRemarks = records.get('StampRuleRemarks');
+                                        //          //            var isStampRulePopUp = records.get('isStampRulePopUp');
+                                        //          //            var StampCampaignName = records.get('StampCampaignName');
+                                        //          //            var CountLoyaltyStamped = records.get('CountLoyaltyStamped');
+                                        //          //            var CountStampCardRowShow = records.get('CountStampCardRowShow');
+                                        //          //            localStorage.setItem('StampCampaignCode', StampedCampaignCode);
         
-                                             ]
+                                        //          //            localStorage.setItem('CountLoyaltyStamped', CountLoyaltyStamped);
+                                        //          //            localStorage.setItem('CountStampCardRowShow', CountStampCardRowShow);
+                                        //          //            //alert(StampRuleRemarks); alert(isStampRulePopUp);
         
-                                         },
+                                        //          //            FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow);
+        
+        
+                                        //          //        },
+                                        //          //        deselect: function (list, records) {
+        
+                                        //          //        }
+                                        //          //    },
+        
+                                        //          //},
+        
+                                        //      ]
+        
+                                        //  },
         
         
         
                                             ///////////////////////////////////////////////////////
-                                         {
-                                             xtype: 'container',
-                                             id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_CardDetails',
-                                             style: ' background-color: white',
-                                             // height: '95%',
-                                            // height: 412,
-                                             width: '100%',
-                                             layout: {
-                                                 type: 'vbox',
-                                                 pack: 'start',
-                                                 align: 'center'
+                                        //  {
+                                        //      xtype: 'container',
+                                        //      id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_CardDetails',
+                                        //     style: 'background-color: transparent',
+                                        //      // height: '95%',
+                                        //     // height: 412,
+                                        //      width: '100%',
+                                        //      layout: {
+                                        //          type: 'vbox',
+                                        //          pack: 'start',
+                                        //          align: 'center'
         
-                                             },
-                                             items: [
-                                                 {
-                                                     xtype: 'list',
-                                                     scrollable:false,
-                                                   //  height: 480,
-                                                     id: 'FloatPanel_MembershipCardList_NotYetSubscribed_CardDetails',
-                                                     // store: 'LoyaltyStampLoadBySubscriberAccNoStore',
-                                                     store: 'MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore',                                            
-                                                     mode: 'SINGLE',
-                                                     style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                                    // grouped: true,
-                                                     disableSelection: true,
-                                                     itemTpl: '<div class="myContent">' +
+                                        //      },
+                                        //      items: [
+                                        //          {
+                                        //              xtype: 'list',
+                                        //              scrollable:false,
+                                        //            //  height: 480,
+                                        //              id: 'FloatPanel_MembershipCardList_NotYetSubscribed_CardDetails',
+                                        //              // store: 'LoyaltyStampLoadBySubscriberAccNoStore',
+                                        //              store: 'MembershipCardLoadBySubscriberAccNoMembershipCardCodeEnterpriseAccNoStore',                                            
+                                        //              mode: 'SINGLE',
+                                        //              style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                        //             // grouped: true,
+                                        //              disableSelection: true,
+                                        //              itemTpl: '<div class="myContent">' +
         
-                                                     //  '<table style="border-collapse:collapse;border-spacing:0;margin:2px 0px 0px 0px;table-layout: fixed; width: 100%; height:20px;" class="tg"><colgroup><col style="width: 78%"><col style="width: 22%"></colgroup><thead><tr><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</th><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal">{LastStampBy}</th></tr></thead></table>' +
-                                                      '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Membership Card Name</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardName}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Level</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardType}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFee}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees Payment Cycle</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFeePaymentCycle}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Expiry (Month)</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{StrExpiredDate}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">is Required Approval?</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{isRequiredApproval}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{CreatedDate}</div>' +
-                                                       //'<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
-                                                       //'<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipDate}</div>' +
-                                                        '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Method</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipByMethod}</div>' +
-                                                        '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Date</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembrshipApprovalDate}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval By</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalBy}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Status</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalStatus}</div>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Paid Fees Amount</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{ReceivedAmount}</div>' +
-                                                        '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Remarks</div><br>' +
-                                                       '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{Remarks}</div>' +
-                                                     '</div>',
-                                                     width: '90%',
-                                                     listeners: {
-                                                         itemsingletap: function (list, idx, target, records, evt) {
+                                        //              //  '<table style="border-collapse:collapse;border-spacing:0;margin:2px 0px 0px 0px;table-layout: fixed; width: 100%; height:20px;" class="tg"><colgroup><col style="width: 78%"><col style="width: 22%"></colgroup><thead><tr><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{StampedByDate}<br>{StampedBy}</th><th style="background-color:#ffffff;border-color:#ffffff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:5px 5px;text-align:center;vertical-align:middle;word-break:normal">{LastStampBy}</th></tr></thead></table>' +
+                                        //               '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Membership Card Name</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardName}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Level</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardType}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFee}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Fees Payment Cycle</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipCardFeePaymentCycle}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Card Expiry (Month)</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{StrExpiredDate}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">is Required Approval?</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{isRequiredApproval}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{CreatedDate}</div>' +
+                                        //                //'<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Date</div><br>' +
+                                        //                //'<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipDate}</div>' +
+                                        //                 '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Registration/Request Method</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipByMethod}</div>' +
+                                        //                 '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Date</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembrshipApprovalDate}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval By</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalBy}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Status</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{MembershipApprovalStatus}</div>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Paid Fees Amount</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{ReceivedAmount}</div>' +
+                                        //                 '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:5px 0px 0px 0px;">Approval Remarks</div><br>' +
+                                        //                '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;color:black;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;margin:-23px 0px 0px 0px;">{Remarks}</div>' +
+                                        //              '</div>',
+                                        //              width: '90%',
+                                        //              listeners: {
+                                        //                  itemsingletap: function (list, idx, target, records, evt) {
         
                                                            
         
-                                                         },
-                                                         deselect: function (list, records) {
+                                        //                  },
+                                        //                  deselect: function (list, records) {
         
-                                                         }
-                                                     },
+                                        //                  }
+                                        //              },
         
-                                                 },
+                                        //          },
         
-                                             ]
+                                        //      ]
         
-                                         },
+                                        //  },
         
         
         
@@ -2824,7 +3317,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(M
     globalFloatPanel_MembershipCardList_NotYetSubscribed_ItemCoverImg="";
     FloatPanel_MembershipCardList_NotYetSubscribedAdjustHeight();
   
-    AddRoutePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
+    //AddRoutePages("FloatPanel_MembershipCardList_NotYetSubscribedHide()");
     if(isFloatPanel_RewardStoreMembershipCardOpen == 'Y'){
         Ext.getCmp('FloatPanel_MembershipCardList_NotYetSubscribedID').setZIndex(185);
     }
@@ -2884,6 +3377,7 @@ if(CountStar=="NaN"){
     
     FloatPanel_MembershipCardList_NotYetSubscribed_RateAndReview(CountStar,CountReviewer);
     FloatPanel_MembershipCardList_NotYetSubscribed_initEventContainer();
+    FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard();
 }
 
 
@@ -3076,19 +3570,21 @@ function FloatPanel_MembershipCardList_NotYetSubscribedHide(fromBack,animCfg) {
 function FloatPanel_MembershipCardList_NotYetSubscribed_initEventContainer(){
     globalFloatPanel_AyohaStore_ModuleTagging = "FloatPanel_MembershipCardList_NotYetSubscribed";
     globalFloatPanelMerchantDetailPage_EnterpriseAccNo=_FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo;
-    var containerViewnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage]')[0];
-    var containerViewElnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage = containerViewnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage.element;
-    containerViewElnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage.on('tap',
-      function (event, node, options, eOpts) {
+   
+   
+    // var containerViewnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage]')[0];
+    // var containerViewElnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage = containerViewnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage.element;
+    // containerViewElnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_MerchantPage.on('tap',
+    //   function (event, node, options, eOpts) {
     
 
 
 
 
-                                 FloatPanelMerchantDetailPage_EnterprisesStageLoad(_FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo);
+    //                              FloatPanelMerchantDetailPage_EnterprisesStageLoad(_FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo);
 
-      }
-    );
+    //   }
+    // );
 
 
     var containerViewnamecontainerFloatPanel_MembershipCardList_NotYetSubscribed_OnlineStore = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_OnlineStore]')[0];
@@ -3189,18 +3685,6 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
             
             
 
-            Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHidden(false);
-            Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHtml('<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:222px;background-color: #fac;background-image: url(' + MembershipCardBackgroundImg + ');background-size: 100% 100%;border-radius: 20px 20px 20px 20px;">' +
-                                         //'<div style="width:50%;text-align:right;margin:15px 0px 0px 150px;background-color: transparent;height:5px;"><img src="{BusinessTypeIconPath}" alt="Image" style="width:22px;height:22px;margin:0px 0px -15px 0px;"></font></div>' +
-                                                          //     '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><thead><tr><th style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:0px 15px;text-align:left;vertical-align:top;word-break:normal;color:white;" colspan="4"><div style="margin:1px 0px 0px 0px;width:100%;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Campaign End:{EndDateOnly}<br><div style="margin:-4px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Fees:RM{StampCampaignFees}({FeesCycle})</div></div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:center;color:white;font-family:Courier New;font-size:24px;font-weight:bold;border-top: 1px solid white;padding:6px 0px">TARMIZI RAHIM</div></th></tr></thead><tbody><tr><td style="background-color: transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 10px;text-align:center;vertical-align:middle;word-break:normal" rowspan="3"><br><img src="{EnterpriseLogo}" alt="Image" style="width:100px;height:100px;border-radius: 50%;border: 1px solid black;margin:-15px 0px 0px 10px"></td><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:middle;word-break:normal;color:white" colspan="3"><div style="width:95%;margin:17px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;">{EnterpriseName}</div></td></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px 0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white" colspan="3" rowspan="2"><div style="width:85%;margin:-3px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:11px;font-weight:normal">{EnterpriseAddress}</div></td></tr><tr></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:5px 0px;text-align:center;vertical-align:middle;word-break:normal;color:white" colspan="4"><div style="margin:0px 0px 0px 0px;width:100%;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;color:white;font-weight:bold;"><i>{StampCampaignName}</i><hr style="width:80%;text-align:center;margin-top:0;color:white;background-color:white"></div><br><div style="margin:-30px 0px 0px 0px;width:100%">Stamp <font size=4>{Stamps}</font></div></td></tr><tr><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 0px 20px;" colspan="2">Last Stamp:{LastStampedDate}</td><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 5px;text-align:right;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 20px 0px;" colspan="2">{ModifiedNextRedeem}</td></tr></tbody></table>' +
-     // '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;height:80px" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:30px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:22px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAyohaUserAccountNo}</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{AyohaUserAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:20px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-25px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2021</div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:20px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-25px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2022</div></td><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                             '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;' + ModifiedHeaderHeight + '" colspan="3">' + ModifiedEnterprisesLogo + ' ' + ModifiedEnterprisesName + '</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:0px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">' + MembershipCardType + '</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:18px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedAyohaUserAccountNo + '</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:12px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + AyohaUserAccountName + '</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:30px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">00/0000</div><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">00/0000</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:30px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedUntilDate + '</div></td><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                                                                      '</div>' +
-
-
-
-
-                                           '</div>');
             //  '<div style="width:100%;text-align:right;
 
 
@@ -3217,7 +3701,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
         _FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCode = MembershipCode;
         FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore(MembershipCode);
       //  FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(MembershipCode, EnterpriseAccountNo);
-        Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
+       // Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
         Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_CardLevel').setHtml('<div style="margin:0px 0px 0px 0px;width:100%;text-align:left;color:white;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;border-bottom: 1px none white;padding:0px 0px">1.' + MembershipCardTypes + '</div>');
      
 
@@ -3320,18 +3804,6 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
 
 
 
-            Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHidden(false);
-            Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHtml('<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:212px;background-color: #fac;background-image: url(' + MembershipCardBackgroundImg + ');background-size: 100% 100%;border-radius: 20px 20px 20px 20px;">' +
-                                         //'<div style="width:50%;text-align:right;margin:15px 0px 0px 150px;background-color: transparent;height:5px;"><img src="{BusinessTypeIconPath}" alt="Image" style="width:22px;height:22px;margin:0px 0px -15px 0px;"></font></div>' +
-                                                          //     '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><thead><tr><th style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:0px 15px;text-align:left;vertical-align:top;word-break:normal;color:white;" colspan="4"><div style="margin:1px 0px 0px 0px;width:100%;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Campaign End:{EndDateOnly}<br><div style="margin:-4px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Fees:RM{StampCampaignFees}({FeesCycle})</div></div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:center;color:white;font-family:Courier New;font-size:24px;font-weight:bold;border-top: 1px solid white;padding:6px 0px">TARMIZI RAHIM</div></th></tr></thead><tbody><tr><td style="background-color: transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 10px;text-align:center;vertical-align:middle;word-break:normal" rowspan="3"><br><img src="{EnterpriseLogo}" alt="Image" style="width:100px;height:100px;border-radius: 50%;border: 1px solid black;margin:-15px 0px 0px 10px"></td><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:middle;word-break:normal;color:white" colspan="3"><div style="width:95%;margin:17px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;">{EnterpriseName}</div></td></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px 0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white" colspan="3" rowspan="2"><div style="width:85%;margin:-3px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:11px;font-weight:normal">{EnterpriseAddress}</div></td></tr><tr></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:5px 0px;text-align:center;vertical-align:middle;word-break:normal;color:white" colspan="4"><div style="margin:0px 0px 0px 0px;width:100%;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;color:white;font-weight:bold;"><i>{StampCampaignName}</i><hr style="width:80%;text-align:center;margin-top:0;color:white;background-color:white"></div><br><div style="margin:-30px 0px 0px 0px;width:100%">Stamp <font size=4>{Stamps}</font></div></td></tr><tr><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 0px 20px;" colspan="2">Last Stamp:{LastStampedDate}</td><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 5px;text-align:right;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 20px 0px;" colspan="2">{ModifiedNextRedeem}</td></tr></tbody></table>' +
-     // '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;height:80px" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:30px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:22px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAyohaUserAccountNo}</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{AyohaUserAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:20px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-25px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2021</div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:20px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-25px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2022</div></td><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                             '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;' + ModifiedHeaderHeight + '" colspan="3">' + ModifiedEnterprisesLogo + ' ' + ModifiedEnterprisesName + '</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:0px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">' + MembershipCardType + '</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:18px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedAyohaUserAccountNo + '</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:12px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + AyohaUserAccountName + '</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:30px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">00/0000</div><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">00/0000</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:30px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedUntilDate + '</div></td><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                                                                      '</div>' +
-
-
-
-
-                                           '</div>');
             //  '<div style="width:100%;text-align:right;
 
 
@@ -3348,7 +3820,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
         _FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCode = MembershipCode;
         FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore(MembershipCode);
         //  FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(MembershipCode, EnterpriseAccountNo);
-        Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
+        //Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
         Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_CardLevel').setHtml('<div style="margin:0px 0px 0px 0px;width:100%;text-align:left;color:white;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;border-bottom: 1px none white;padding:0px 0px">1.' + MembershipCardTypes + '</div>');
 
 
@@ -3438,18 +3910,18 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
        
        
        
-                   Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHidden(false);
-                   Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHtml('<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:212px;background-color: #fac;background-image: url(' + MembershipCardBackgroundImg + ');background-size: 100% 100%;border-radius: 20px 20px 20px 20px;">' +
+                 //  Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHidden(false);
+                  // Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_' + i).setHtml('<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:212px;background-color: #fac;background-image: url(' + MembershipCardBackgroundImg + ');background-size: 100% 100%;border-radius: 20px 20px 20px 20px;">' +
                                                 //'<div style="width:50%;text-align:right;margin:15px 0px 0px 150px;background-color: transparent;height:5px;"><img src="{BusinessTypeIconPath}" alt="Image" style="width:22px;height:22px;margin:0px 0px -15px 0px;"></font></div>' +
                                                                  //     '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><thead><tr><th style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:0px 15px;text-align:left;vertical-align:top;word-break:normal;color:white;" colspan="4"><div style="margin:1px 0px 0px 0px;width:100%;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Campaign End:{EndDateOnly}<br><div style="margin:-4px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Fees:RM{StampCampaignFees}({FeesCycle})</div></div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:center;color:white;font-family:Courier New;font-size:24px;font-weight:bold;border-top: 1px solid white;padding:6px 0px">TARMIZI RAHIM</div></th></tr></thead><tbody><tr><td style="background-color: transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 10px;text-align:center;vertical-align:middle;word-break:normal" rowspan="3"><br><img src="{EnterpriseLogo}" alt="Image" style="width:100px;height:100px;border-radius: 50%;border: 1px solid black;margin:-15px 0px 0px 10px"></td><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:middle;word-break:normal;color:white" colspan="3"><div style="width:95%;margin:17px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;">{EnterpriseName}</div></td></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px 0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white" colspan="3" rowspan="2"><div style="width:85%;margin:-3px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:11px;font-weight:normal">{EnterpriseAddress}</div></td></tr><tr></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:5px 0px;text-align:center;vertical-align:middle;word-break:normal;color:white" colspan="4"><div style="margin:0px 0px 0px 0px;width:100%;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;color:white;font-weight:bold;"><i>{StampCampaignName}</i><hr style="width:80%;text-align:center;margin-top:0;color:white;background-color:white"></div><br><div style="margin:-30px 0px 0px 0px;width:100%">Stamp <font size=4>{Stamps}</font></div></td></tr><tr><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 0px 20px;" colspan="2">Last Stamp:{LastStampedDate}</td><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 5px;text-align:right;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 20px 0px;" colspan="2">{ModifiedNextRedeem}</td></tr></tbody></table>' +
             // '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;height:80px" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:30px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:22px;font-weight:normal;border-top: 1px none white;padding:0px 0px">1234567</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Name</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:20px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-25px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2021</div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:20px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-25px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2022</div></td><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                                    '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;' + ModifiedHeaderHeight + '" colspan="3">' + ModifiedEnterprisesLogo + ' ' + ModifiedEnterprisesName + '</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:0px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:14px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">' + MembershipCardType + '</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:18px;font-weight:normal;border-top: 1px none white;padding:0px 0px">1234567</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:12px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Name</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:30px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">00/0000</div><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">00/0000</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:30px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">00/00/0000</div></td><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                                                                             '</div>' +
+                                                 //   '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;' + ModifiedHeaderHeight + '" colspan="3">' + ModifiedEnterprisesLogo + ' ' + ModifiedEnterprisesName + '</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:0px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:14px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">' + MembershipCardType + '</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:18px;font-weight:normal;border-top: 1px none white;padding:0px 0px">1234567</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:12px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Name</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:30px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">00/0000</div><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">00/0000</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:30px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">00/00/0000</div></td><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
+                                                                                         //    '</div>' +
        
        
        
        
-                                                  '</div>');
+                                                //  '</div>');
                    //  '<div style="width:100%;text-align:right;
        
        
@@ -3457,8 +3929,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
                }
                
               // htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel
-               Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemName').setHtml('<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Name:'+MembershipCardName+'</div>');
-               Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel').setHtml('<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Level:'+MembershipCardType+'</div>');
+               Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemName').setHtml('<div style="height:18px;background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Name:'+MembershipCardName+'</div>');
+               Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel').setHtml('<div style="height:18px;background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Level:'+MembershipCardType+'</div>');
                Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemPrice').setHtml('<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;black;text-align:center;" >Price (RM):'+MembershipCardFee+' ('+MembershipCardFeePaymentCycle+')</div>');
        
                global_FloatPanel_MembershipCardList_NotYetSubscribed_CardName=MembershipCardName;
@@ -3481,7 +3953,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
                FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCalculateRating(_FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo,MembershipCode)
              //  FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore(MembershipCode);
                //  FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(MembershipCode, EnterpriseAccountNo);
-               Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
+             //  Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
                Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_CardLevel').setHtml('<div style="margin:0px 0px 0px 0px;width:100%;text-align:left;color:white;font-family:Arial, sans-serif;font-size:12px;font-weight:bold;border-bottom: 1px none white;padding:0px 0px">1.' + MembershipCardTypes + '</div>');
        
        
@@ -3688,18 +4160,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardLoadByEnte
         
         MmcCode.push(MembershipCardCode);
 
-       Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_0').setHidden(false);
-       Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_0').setHtml('<div class="myContent" style="margin:0px 0px 0px 0px;width:100%;height:212px;background-color: #fac;background-image: url(' + MembershipCardBackgroundImg + ');background-size: 100% 100%;border-radius: 20px 20px 20px 20px;">' +
-                                     //'<div style="width:50%;text-align:right;margin:15px 0px 0px 150px;background-color: transparent;height:5px;"><img src="{BusinessTypeIconPath}" alt="Image" style="width:22px;height:22px;margin:0px 0px -15px 0px;"></font></div>' +
-                                                      //     '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><thead><tr><th style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:0px 15px;text-align:left;vertical-align:top;word-break:normal;color:white;" colspan="4"><div style="margin:1px 0px 0px 0px;width:100%;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Campaign End:{EndDateOnly}<br><div style="margin:-4px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;">Fees:RM{StampCampaignFees}({FeesCycle})</div></div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:center;color:white;font-family:Courier New;font-size:24px;font-weight:bold;border-top: 1px solid white;padding:6px 0px">TARMIZI RAHIM</div></th></tr></thead><tbody><tr><td style="background-color: transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 10px;text-align:center;vertical-align:middle;word-break:normal" rowspan="3"><br><img src="{EnterpriseLogo}" alt="Image" style="width:100px;height:100px;border-radius: 50%;border: 1px solid black;margin:-15px 0px 0px 10px"></td><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:middle;word-break:normal;color:white" colspan="3"><div style="width:95%;margin:17px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;">{EnterpriseName}</div></td></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px 0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white" colspan="3" rowspan="2"><div style="width:85%;margin:-3px 0px 0px 0px;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:11px;font-weight:normal">{EnterpriseAddress}</div></td></tr><tr></tr><tr><td style="background-color:transparent;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:5px 0px;text-align:center;vertical-align:middle;word-break:normal;color:white" colspan="4"><div style="margin:0px 0px 0px 0px;width:100%;border-bottom: 2px none white;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;color:white;font-weight:bold;"><i>{StampCampaignName}</i><hr style="width:80%;text-align:center;margin-top:0;color:white;background-color:white"></div><br><div style="margin:-30px 0px 0px 0px;width:100%">Stamp <font size=4>{Stamps}</font></div></td></tr><tr><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 0px 20px;" colspan="2">Last Stamp:{LastStampedDate}</td><td style="background-color:#E5E7E9;border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 5px;text-align:right;vertical-align:middle;word-break:normal;color:black;border-radius: 0px 0px 20px 0px;" colspan="2">{ModifiedNextRedeem}</td></tr></tbody></table>' +
- // '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;height:80px" colspan="3">{ModifiedEnterprisesLogo}{ModifiedEnterprisesName}</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:30px 0px 0px 10px;width:100%;text-align:left;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">{MembershipCardType}</div><br><div style="margin:-24px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:22px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{ModifiedAyohaUserAccountNo}</div><br><div style="margin:-25px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">{AyohaUserAccountName}</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:20px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-25px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2021</div><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:20px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-25px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px">02/2022</div></td><br><div style="margin:-15px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                         '<table style="border-collapse:collapse;border-spacing:0;border:none;width:100%;margin:-7px 0px 0px 0px;" ><tr><td style="background-color:transparent;border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:middle;word-break:normal;width:100%;' + ModifiedHeaderHeight + '" colspan="3">' + ModifiedEnterprisesLogo + ' ' + ModifiedEnterprisesName + '</td></tr><tbody><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;width:100%;" colspan="3"><div style="margin:0px 0px 0px 10px;width:100%;text-align:left;font-family:Playball,cursive;font-size:24px;font-weight:normal;border-top: 1px none white;color:white;padding:0px 0px;">' + MembershipCardType + '</div><br><div style="margin:-30px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedMembershipNo + '</div><br><div style="margin:-30px 0px 0px 10px;width:100%;text-align:left;color:white;font-family:Orbitron;font-size:16px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + AyohaUserAccountName + '</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal;width:5%;"></td></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal" colspan="2"><div style="margin:30px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Member Since</div><br><div style="margin:-21px 0px 0px 15px;width:100%;text-align:left;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedMemberSinceDate + '</div><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></td><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;text-align:right;vertical-align:top;word-break:normal"><div style="margin:30px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">Valid Until</div><br><div style="margin:-15px 0px 0px -15px;width:100%;text-align:right;color:white;font-family:Orbitron,sans-serif;font-size:7px;font-weight:normal;border-top: 1px none white;padding:0px 0px">' + ModifiedUntilDate + '</div></td><br><div style="margin:-10px 0px 0px 0px;width:100%;text-align:left;color:transparent;font-family:Orbitron,sans-serif;font-size:11px;font-weight:normal;border-top: 1px none white;padding:0px 0px;height:5px">02/2021</div></tr></tbody></table>' +
-                                                                                  '</div>' +
-
-
-
-
-                                       '</div>');
+     
        // Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_1').setHidden(false);
        // Ext.getCmp('carouselFloatPanel_MembershipCardList_NotYetSubscribed_1').setHtml('<div style="margin:0px 0px 0px 0px;width:100%;height:212px;background-color: #fac;background-image: url(' + MembershipCardBackgroundImg_back + ');background-size: 100% 100%;border-radius: 20px 20px 20px 20px;border-color:white;border-style:solid;border-width:1px;"/>');
 
@@ -3711,7 +4172,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardLoadByEnte
        // alert(MembershipCode)
         FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore(MembershipCode);
         //  FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore(MembershipCode, EnterpriseAccountNo);
-        Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
+        //Ext.getCmp('containerFloatPanel_MembershipCardList_NotYetSubscribed_Loading').setHidden(true);
 
         _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "Y";
 
@@ -3782,22 +4243,22 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCampaingEn
                 if (success) {
                     console.log('Store loaded successfully, total records: ' + records.length);
         
-                    var Count = _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore.getCount();
+                    var Count = records.length;
 
-                    var heightlist =(Count *100)-20;
+                    var heightlist =(Count *100);
                             Ext.getCmp('FloatPanel_MembershipCardList_NotYetSubscribed_Campaignlist').setHeight(heightlist)
                        
                           //  _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore = Ext.getStore('MembershipCardCampaingEntitledLoadByMembershipCardCodeStore');
                          // FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardCalculateRating(MMCCode);
                     
                          FloatPanel_MembershipCardList_NotYetSubscribed_loadEnterprise();
-                          LoadingPanelHide();
+                          LoadingPanelHide(false);
 
 
                   
                 } else {
                     console.error('Failed to load store data.');
-                    LoadingPanelHide();
+                    LoadingPanelHide(false);
                 }
             }
         });
@@ -4749,7 +5210,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_RateAndReview(RateReview
     
 
    
-    Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_TotalReviewsOutter').setHtml('<div  style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:8px;color:black;font-weight:normal;overflow:hidden;margin:-13px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:8px;height:8px;">&nbsp;&nbsp;&nbsp;'+Reviewer+' Reviews</div>');
+    Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_TotalReviewsOutter').setHtml('<div  style="width100%;text-align:right;background-color: transparent;font-family:Arial, sans-serif;font-size:8px;color:black;font-weight:normal;overflow:hidden;margin:0px 10px 10px 0px;"><img src="resources/icons/merchantrateusAccountImg.png" alt="Image" style="width:8px;height:8px;">&nbsp;&nbsp;&nbsp;'+Reviewer+' Reviews</div>');
     Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ReviewAndRateCountOutter').setHtml('<div  style="color:black;text-align: center;font-size:14px;width:100%;font-weight:normal;margin:0px 0px 0px 0px;">'+RateReviews+'</div>');
     if (RateReviews == 5) {                           
         Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_Star1Outter').setHtml('<div ><img src="resources/icons/star.png" width="12" height="12" alt="Company Name"></div>');
@@ -5250,3 +5711,44 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_RateAndReview(RateReview
    // return _value
 }
 
+
+
+
+
+function FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard() {
+
+
+ _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setExtraParam('EnterpriseAccNo', globalFloatPanelMerchantDetailPage_EnterpriseAccNo);
+ _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
+ _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setUrl(GetAPIurl() + '/MembershipCard/MembershipCardLoadByEnterpriseAccNo_DashboardMain');
+
+
+
+ _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.load({
+     callback: function (records, operation, success) {
+         // alert(records.length)
+         // alert(success)
+         if (success && records.length > 0) {
+        
+ var record = records[0]; // Access only the first record
+ AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('MembershipCardCode');
+ 
+
+             Ext.getCmp('FloatPanel_MembershipCardList_NotYetSubscribed_Carousel').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
+            
+           
+             // setScreenWidthMembershipCardCheckIn(count,jenis)
+            setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
+           
+            
+         } else {
+            
+           //  globalisSuccessCheckinController_Dashboard_LoadVoucherPerksOpen="N";
+           
+         }
+     }
+ });
+
+
+
+}

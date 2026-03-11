@@ -16,6 +16,15 @@ if (typeof window !== 'undefined') {
 
 
 
+
+
+function ayohaThemeColor_TitleTextColor(Title){
+   
+    var value="<div style=\"color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px\"><b>" + Title + "</b></div>";
+      return value;
+  }
+
+
 function ayohaThemeColor_Background(){
     var value="background-color:#491A7F;";
     //  var value="background: linear-gradient(90deg, #491A7F 0%, #7027A5 100%, #9537C8 50%);";

@@ -1364,3 +1364,166 @@
 .ayohaSaleTransparentList .x-group-header-wrap {
     background: transparent !important;
 }
+
+
+
+
+
+
+
+
+
+
+.ayohaMerchantList,
+.ayohaMerchantList .x-listitem,
+.ayohaMerchantList .x-listitem-inner {
+    /* background: #ffffff !important; */
+      background: transparent !important;
+}
+
+.ayohaMerchantList .x-listitem {
+    border: 0 !important;
+}
+
+.ayohaMerchantList .x-listitem-inner {
+    padding: 10px 12px !important;
+}
+
+.ayohaMerchantListItem {
+    background: transparent !important;
+}
+
+.ayohaMerchantCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+      background: transparent;
+    /* box-sizing: border-box; */
+    /* background: #ffffff; */
+    /* border-radius: 18px; */
+    padding: 16px 18px;
+    /* box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0; */
+}
+
+.ayohaMerchantLogoWrap {
+    width: 86px;
+    min-width: 86px;
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ayohaMerchantLogo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    background: #f7f7f7;
+}
+
+.ayohaMerchantInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.ayohaMerchantName {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.25;
+    margin-bottom: 4px;
+}
+
+.ayohaMerchantMeta {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.ayohaMerchantAddress {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.ayohaMerchantLine {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333333;
+}
+
+.ayohaMerchantLine span {
+    font-weight: 700;
+    color: #111111;
+}
+
+
+
+
+
+
+
+
+
+
+.ayohaCardInfoWrap{
+    width:100%;
+    box-sizing:border-box;
+    background:#ffffff;
+    border-radius:16px;
+    padding:7px 8px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    border:1px solid #eee6f5;
+}
+
+.ayohaCardInfoRow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    width:100%;
+}
+
+.ayohaCardInfoLabel{
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+    color:#7a7a7a;
+    text-transform:uppercase;
+    letter-spacing:0.8px;
+}
+
+.ayohaCardInfoValue{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:700;
+    color:#1f1f1f;
+    text-align:right;
+}
+
+.ayohaCardLevelBadge{
+    display:inline-block;
+    min-width:88px;
+    text-align:center;
+    padding:5px 7px;
+    border-radius:999px;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+    color:#8a6200;
+    background:linear-gradient(180deg,#fff3bf 0%,#f7d774 100%);
+    border:1px solid #e2bf52;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.65), 0 3px 8px rgba(190,150,40,0.18);
+    letter-spacing:0.8px;
+}
