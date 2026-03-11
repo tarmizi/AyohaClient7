@@ -2401,10 +2401,13 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
              if (AppState.MainDashboard.isMember=="YES"){
                 Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setHidden(false);
                 Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setHidden(true);
+                Ext.getCmp('containerDividerCheckInNonMember').setHidden(true);
+
              }
              if (AppState.MainDashboard.isMember=="NO"){
                 Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setHidden(true);
                 Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setHidden(false);
+                Ext.getCmp('containerDividerCheckInNonMember').setHidden(false);
              }
              // setScreenWidthMembershipCardCheckIn(count,jenis)
             setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");

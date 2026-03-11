@@ -4501,6 +4501,16 @@ itemTpl: new Ext.XTemplate(
      ]
 },
 
+
+////////////divider non member
+{
+    xtype: 'container',
+    id:'containerDividerCheckInNonMember',
+    hidden:true,
+    width: '100%',
+     style: 'background-color: transparent;',
+      height:50,
+},
  ///////////////////////////////////Merchant Page////////
  {
     xtype: 'container',
@@ -4518,12 +4528,65 @@ itemTpl: new Ext.XTemplate(
     },
     items:[
 
-//    {
-//  xtype: 'container',
-//     width: '100%',
-//     height:45,
-//     style: 'background: transparent;',
-//         },
+ 
+{
+            xtype: 'container',
+            width: '100%',
+            height:40,
+        
+           // margin: '0 0 0 0',
+           margin: '0 0 0 0',
+            // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
+            //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+            style: 'background-color:transparent',
+            //style: "background-color: white;",
+            layout: {
+                type: 'hbox',
+                pack: 'center',
+                align: 'center',
+            },
+            items: [
+                
+                 {
+                    
+                     margin: '0 0 0 14',
+                    
+                 html: '<div     style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🏪 Merchant Information</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Explore exciting perks and offers from this merchant!</div>'
+   
+                     //width: '100%',
+                    
+                     //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
+                   // html: '<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🏪 Merchant Information</b></div>'
+                  //  html: '<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:10px 0px 0px 10px"><b>Welcome To</b></div>'
+                    
+                    // html: '<span style="font-size:10px;color:#16a34a;background:#ecfdf5;border:1px solid #bbf7d0;padding:3px 6px;border-radius:999px;white-space:nowrap;">Get available perks in selected Check-In Merchant!</span><br><div style="color:white;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">One Hub • Double Reward,Get your exiciting perks!</div>'
+                     
+                 },
+                 {
+                     xtype: 'spacer',
+                    // hidden:true,
+                 },
+                 {
+                    xtype: 'component',
+                     hidden:true,
+                    html:
+                    '<div style="position:absolute;top:-80px;right:20px;background-color:transparent;border-radius:50%;' +
+                         'width:130px;height:150px;z-index:5;display:flex;align-items:center;justify-content:center;">' +
+                      '<img src="resources/icons/maskotCheckIn_Success03.png" ' +
+                           'style="width:130px;height:150px;display:block;" ' +
+                           'alt="Company Name" />' +
+                    '</div>'
+                },
+          
+          
+            ]
+          },
+   {
+ xtype: 'container',
+    width: '100%',
+    height:10,
+    style: 'background: transparent;',
+        },
         {
  xtype: 'container',
     width: '97%',
@@ -4550,7 +4613,7 @@ itemTpl: new Ext.XTemplate(
             xtype: 'container',
             width: '100%',
             height:20,
-        
+        hidden:true,
            // margin: '0 0 0 0',
            margin: '0 0 0 0',
             // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
@@ -5719,166 +5782,6 @@ xtype: 'container',
 
 
 
-// {
-//     xtype: 'component',
-//      width: '100%',
-//      hidden:true,
-//             //height:auto,
-//     html:
-//   '<div class="ayohaStoreSection">' +
-//     '<style>' +
-
-//       '.ayohaStoreSection{width:100%;padding:10px 12px 14px;box-sizing:border-box;}' +
-
-//       /* row scroller */
-//       '.ayohaStoreRow{' +
-//         'display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;' +
-//         '-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;' +
-//         'padding:6px 2px 10px;scrollbar-width:none;' +
-//       '}' +
-//       '.ayohaStoreRow::-webkit-scrollbar{display:none;}' +
-
-//       /* card */
-//       '.storeCard{' +
-//         'min-width:168px;max-width:168px;flex:0 0 auto;' +
-//         'display:flex;align-items:center;gap:10px;' +
-//         'padding:12px 12px;border-radius:18px;' +
-//         'background:linear-gradient(180deg,#fff 0%, #f7f2ff 100%);' +
-//         'border:1px solid rgba(124,58,237,.16);' +
-//         'box-shadow:0 10px 22px rgba(17,24,39,.10);' +
-//         'scroll-snap-align:start;position:relative;overflow:hidden;' +
-//         'text-decoration:none;cursor:pointer;' +
-//       '}' +
-
-//       /* subtle highlight line */
-//       '.storeCard:before{' +
-//         'content:\"\";position:absolute;left:10px;right:10px;top:10px;height:1px;' +
-//         'background:rgba(255,255,255,.75);' +
-//       '}' +
-
-//       /* logo */
-//       '.storeLogoWrap{' +
-//         'width:44px;height:44px;border-radius:14px;' +
-//         'background:#fff;display:flex;align-items:center;justify-content:center;' +
-//         'box-shadow:0 8px 16px rgba(124,58,237,.12);' +
-//         'border:1px solid rgba(124,58,237,.12);' +
-//         'overflow:hidden;flex:0 0 44px;' +
-//       '}' +
-//       '.storeLogoWrap img{max-width:30px;max-height:30px;width:auto;height:auto;display:block;}' +
-//       '.storeLogoFallback{' +
-//         'font:900 14px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//         'color:#6d28d9;' +
-//       '}' +
-
-//       /* text */
-//       '.storeText{flex:1;min-width:0;}' +
-//       '.storeName{' +
-//         'font:900 13px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//         'color:#2b0a66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' +
-//       '}' +
-//       '.storeMeta{margin-top:6px;display:flex;align-items:center;gap:8px;}' +
-//       '.storeBadge{' +
-//         'font:900 10px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//         'padding:5px 8px;border-radius:999px;' +
-//         'border:1px solid rgba(124,58,237,.18);' +
-//         'background:rgba(124,58,237,.10);color:#5b21b6;' +
-//       '}' +
-//       '.storeBadge.external{' +
-//         'border-color:rgba(99,102,241,.18);background:rgba(99,102,241,.10);color:#3730a3;' +
-//       '}' +
-
-//       /* chevron */
-//       '.storeGo{' +
-//         'width:26px;height:26px;border-radius:12px;' +
-//         'display:flex;align-items:center;justify-content:center;' +
-//         'background:rgba(124,58,237,.10);border:1px solid rgba(124,58,237,.14);' +
-//         'color:#5b21b6;font:900 16px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;' +
-//         'flex:0 0 26px;' +
-//       '}' +
-
-//       /* highlight official store */
-//       '.storeCard.official{' +
-//         'background:linear-gradient(135deg,rgba(255,0,222,.12),rgba(200,0,255,.10),#ffffff 70%);' +
-//         'border:1px solid rgba(255,0,222,.18);' +
-//       '}' +
-//       '.storeCard.official .storeGo{' +
-//         'background:linear-gradient(135deg,rgba(255,0,222,.18),rgba(200,0,255,.14));' +
-//         'border-color:rgba(255,0,222,.18);color:#4c1d95;' +
-//       '}' +
-
-//     '</style>' +
-
-//     '<div class="ayohaStoreRow">' +
-
-//       // 1) Ayoha Official Store (internal)
-//       '<div class="storeCard official" onclick="Ayoha_OpenStoreLink(\'ayoha\',\'https://YOUR-AYOHA-STORE-LINK\')">' +
-//         '<div class="storeLogoWrap">' +
-//           '<span class="storeLogoFallback">A</span>' +
-//         '</div>' +
-//         '<div class="storeText">' +
-//           '<div class="storeName">Ayoha Official</div>' +
-//           '<div class="storeMeta">' +
-//             '<span class="storeBadge">OFFICIAL</span>' +
-//           '</div>' +
-//         '</div>' +
-//         '<div class="storeGo">›</div>' +
-//       '</div>' +
-
-//       // 2) Shopee
-//       '<div class="storeCard" onclick="Ayoha_OpenStoreLink(\'shopee\',\'https://shopee.com.my/...\')">' +
-//         '<div class="storeLogoWrap">' +
-//           '<img src="resources/icons/store_shopee.png" alt="Shopee"/>' +
-//         '</div>' +
-//         '<div class="storeText">' +
-//           '<div class="storeName">Shopee</div>' +
-//           '<div class="storeMeta"><span class="storeBadge external">EXTERNAL</span></div>' +
-//         '</div>' +
-//         '<div class="storeGo">›</div>' +
-//       '</div>' +
-
-//       // 3) Lazada
-//       '<div class="storeCard" onclick="Ayoha_OpenStoreLink(\'lazada\',\'https://www.lazada.com.my/...\')">' +
-//         '<div class="storeLogoWrap">' +
-//           '<img src="resources/icons/store_lazada.png" alt="Lazada"/>' +
-//         '</div>' +
-//         '<div class="storeText">' +
-//           '<div class="storeName">Lazada</div>' +
-//           '<div class="storeMeta"><span class="storeBadge external">EXTERNAL</span></div>' +
-//         '</div>' +
-//         '<div class="storeGo">›</div>' +
-//       '</div>' +
-
-//       // 4) Mudah
-//       '<div class="storeCard" onclick="Ayoha_OpenStoreLink(\'mudah\',\'https://www.mudah.my/...\')">' +
-//         '<div class="storeLogoWrap">' +
-//           '<img src="resources/icons/store_mudah.png" alt="Mudah"/>' +
-//         '</div>' +
-//         '<div class="storeText">' +
-//           '<div class="storeName">Mudah</div>' +
-//           '<div class="storeMeta"><span class="storeBadge external">EXTERNAL</span></div>' +
-//         '</div>' +
-//         '<div class="storeGo">›</div>' +
-//       '</div>' +
-
-//       // 5) Kiah Store (website sendiri)
-//       '<div class="storeCard" onclick="Ayoha_OpenStoreLink(\'kiah\',\'https://kiahstore.com\')">' +
-//         '<div class="storeLogoWrap">' +
-//           '<span class="storeLogoFallback">K</span>' +
-//         '</div>' +
-//         '<div class="storeText">' +
-//           '<div class="storeName">Kiah Store</div>' +
-//           '<div class="storeMeta"><span class="storeBadge external">EXTERNAL</span></div>' +
-//         '</div>' +
-//         '<div class="storeGo">›</div>' +
-//       '</div>' +
-
-//     '</div>' +
-//   '</div>'
-
-// }
-
-
-
 
 
 
@@ -6066,7 +5969,7 @@ xtype: 'container',
     width: '100%',
     height: 230,
     id:'containerDashboard_RecentVisitor_CheckIn',
-    margin: '0 0 0 0',   
+    margin: '30 0 0 0',   
      style: 'background-color:white',
      layout: {
          type: 'vbox',
@@ -7897,6 +7800,7 @@ itemTpl: new Ext.XTemplate(
   // html: '<div  style="color:black;text-align: left;font-size:14px;width:100%;margin:0px 0px 0px 0px"><b>Check-In Rewards</b></div><br><div style="color:black;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">Tap “Check-In” to redeem at<b> <u>kopi surat cinta-putrajaya!</u></b></div>'
   // html: '<span style="font-size:10px;color:#16a34a;background:#ecfdf5;border:1px solid #bbf7d0;padding:3px 6px;border-radius:999px;white-space:nowrap;">Get available perks in selected Check-In Merchant!</span><br><div style="color:white;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">One Hub • Double Reward,Get your exiciting perks!</div>'
   margin: '0 0 0 0',
+  id: 'htmlDashboard_NeoDataXInfoBottom',
   //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
  html: '<div     style="color:#BFBFC1;text-align: center;font-size:12px;width:100%;margin:0px 0px 0px 0px;font-weight:bold;">Ayoha Reward is one of the product brands developed by NeoDataX.ai</div>'
 
@@ -7907,6 +7811,7 @@ itemTpl: new Ext.XTemplate(
   width: '100%',
   height:60,
   margin: '5 0 0 0',
+  id: 'containerDashboard_NeoDataXLogo',
   style: 'background-color:transparent',
   layout: {
     type: 'hbox',
@@ -18556,11 +18461,15 @@ Ext.getCmp('containerDashboard_merchantVIPAdvertismentMain').setHidden(true);
 Ext.getCmp('containerDashboard_HotSeatPromotion').setHidden(true); 
 Ext.getCmp('containerDashboard_HotSeatPromotionImage').setHidden(true); 
 
-//Ext.getCmp('containerDashboard_RecentlyCheckInTitle').setHidden(true); 
+Ext.getCmp('containerDashboard_Your_Activity').setHidden(true); 
+Ext.getCmp('containerDashboard_MembershipLoyaltyProgramReward').setHidden(true); 
+Ext.getCmp('containerDashboard_MembershipExclusiveDeal').setHidden(true); 
+
 Ext.getCmp('containerRecentlyCheckIn').setHidden(true); 
 Ext.getCmp('containerCheckInRewardspacer01').setHidden(true); 
 
-
+Ext.getCmp('htmlDashboard_NeoDataXInfoBottom').setHidden(true); 
+Ext.getCmp('containerDashboard_NeoDataXLogo').setHidden(true); 
 
 //14/1/2026
 // Ext.getCmp('Dashboard_Carousel_takCheckIn').setHidden(true); 
@@ -18621,6 +18530,14 @@ Ext.getCmp('containerDashboard_MembershipInsight').setHidden(false);
 Ext.getCmp('Dashboard_MyAccount_MembershipPerksList').setHidden(false); 
 Ext.getCmp('containerDashboard_AyohaMerchantMembershipCardList').setHidden(false); 
 Ext.getCmp('Dashboard_MyAccount_UnSubscribedMembershipCardList_front').setHidden(false); 
+Ext.getCmp('containerDashboard_Your_Activity').setHidden(false); 
+Ext.getCmp('containerDashboard_MembershipLoyaltyProgramReward').setHidden(false); 
+Ext.getCmp('containerDashboard_MembershipExclusiveDeal').setHidden(false); 
+
+Ext.getCmp('htmlDashboard_NeoDataXInfoBottom').setHidden(false); 
+Ext.getCmp('containerDashboard_NeoDataXLogo').setHidden(false); 
+
+
 //Ext.getCmp('containerSelectedPremiumperksbyAyoha').setHidden(false); 
 //Ext.getCmp('Dashboard_premiumperksByAyoha').setHidden(false); 
 //Ext.getCmp('containerDashboard_AyohaMerchantLoyaltyCampaignList').setHidden(false); 

@@ -922,7 +922,7 @@ function AyohaMerchantReviewHide(fromBack, animCfg) {
 
     if (isAyohaMerchantReviewOpen == 'Y') {
        
-        _AyohaMerchantReview.hide();
+       // _AyohaMerchantReview.hide();
 
 
 

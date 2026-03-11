@@ -7,7 +7,7 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
     //    ],
     });
     
-    var _FloatPanel_AyohaStore_CheckOut_MembershipCard;
+    var _FloatPanel_AyohaStore_CheckOut_MembershipCard = null;
     
     
     var isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'N';
@@ -68,30 +68,27 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
     var globalFloatPanel_AyohaStore_CheckOut_MembershipCardEnterpriseName;
     var globalFloatPanel_AyohaStore_CheckOut_MembershipCardEnterpriseLogo;
     
+
+
     
-    
-    function FloatPanel_AyohaStore_CheckOut_MembershipCard() {
-    
-        _FloatPanel_AyohaStore_CheckOut_MembershipCard =
-        Ext.create('Ext.Panel', {
-            zIndex: 350,
-            xtype: 'container',
-            //height: 465,
-            height: '100%',
-            width: '100%',
-            id: 'FloatPanel_AyohaStore_CheckOut_MembershipCardID',
-            draggable: false,
-    
-            styleHtmlContent: true,
-    
-            centered: true,
-            //bottom: 64,
-            // zIndex: 100,
-            modal: true,
-            // hideOnMaskTap: true,
-            layout: {
-                type: 'fit'
-            },
+function FloatPanel_AyohaStore_CheckOut_MembershipCardCreateIfNeeded() {
+    if (_FloatPanel_AyohaStore_CheckOut_MembershipCard && !_FloatPanel_AyohaStore_CheckOut_MembershipCard.destroyed) return;
+ _FloatPanel_AyohaStore_CheckOut_MembershipCard =
+        Ext.create('Ext.Container', {
+
+ id: 'FloatPanel_AyohaStore_CheckOut_MembershipCardID',
+ floated: true,
+        centered: true,
+        fullscreen: true,
+       // closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
+
+
+
             showAnimation: {
                 type: 'popIn',
                 duration: 250,
@@ -108,7 +105,17 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
            
             },
             //style: 'border-bottom:1px solid;background-color:#353839;',
-            style: 'border-bottom:1px solid;background-color:white;',
+            style:ayohaThemeColor_Body_ThemeColor(),
+            listeners: {
+ 
+
+            // ✅ kalau user tap mask, close macam standard
+            beforehide: function () {
+              // kalau hide dipanggil bukan dari function kita, block dulu
+              // (optional: boleh allow kalau kau nak)
+              return true;
+            }
+          },
             // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
             //listeners: {
             //    initialize: function (c) {
@@ -180,11 +187,8 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
                                     //hidden: true,
     
                                     id: 'containerFloatPanel_AyohaStore_CheckOut_MembershipCardHeader',
-                                    style: {
-                                        // background: '#D25959',
-                                        background: 'transparent',
-                                        // border: '2px'
-                                    },
+                                    height: ayoha_HeaderHeight(),
+                style:ayohaThemeColor_Header(),
                                     //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
                                     // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                                     layout: {
@@ -201,22 +205,24 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
                                                              xtype: 'button',
                                                              id: 'btnFloatPanel_AyohaStore_CheckOut_MembershipCardBack',
                                                              height: 30,
-                                                             width: 35,
-                                                             // iconCls: 'list',
-                                                             html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                                            margin: '5 0 0 10',
+                                         width: 65,
+                                         // iconCls: 'list',
+                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                              ui: 'plain',
                                                              handler: function () {
-                                                                 // FloatPanel_AyohaStore_CheckOutHide();
-                                                                 // FloatPanel_AyohaStore_CheckOut_MembershipCardAddCardHide();
-                                                                 isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'N';
-                                                                 _FloatPanel_AyohaStore_CheckOut_MembershipCard.hide(Ext.fx.Animation({
-                                                                     type: 'slideOut',
-                                                                     direction: 'left',
-                                                                     easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                     duration: 250
+                                                                FloatPanel_AyohaStore_CheckOut_MembershipCardHide(false);
+                                                                //  // FloatPanel_AyohaStore_CheckOutHide();
+                                                                //  // FloatPanel_AyohaStore_CheckOut_MembershipCardAddCardHide();
+                                                                //  isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'N';
+                                                                //  _FloatPanel_AyohaStore_CheckOut_MembershipCard.hide(Ext.fx.Animation({
+                                                                //      type: 'slideOut',
+                                                                //      direction: 'left',
+                                                                //      easing: 'cubic-bezier(.7,0,.7,1)',
+                                                                //      duration: 250
     
-                                                                 }));
-                                                                 RemovePages("FloatPanel_AyohaStore_CheckOut_MembershipCardHide()");
+                                                                //  }));
+                                                                //  RemovePages("FloatPanel_AyohaStore_CheckOut_MembershipCardHide()");
                                                                //  FloatPanel_AyohaRewardVoucherList_AyohaStore_Cart_AyohaRewardVoucherEntitledUserEntitledVoucherStatusTempUpdateEntitledVoucherStatus_BackButton();
                                                                  //  FloatPanel_AyohaStore_CheckOut_MembershipCardAddCardHide();
     
@@ -230,22 +236,22 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
     
     
                                                           {
-                                                              margin: '-2 0 0 0',
-                                                              hidden: true,
+                                                               margin: '0 15 0 0',
                                                               id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt',
-                                                              html: '<font size=2 color=black><b>Check-Out</b></font>'
+                                                              //html: '<font size=2 color=black><b>Check-Out</b></font>'
+                                                                html:ayohaTheme_HeaderText('Check-Out'),
                                                           },
     
-                                                           {
-                                                               margin: '-18 0 0 0',
-                                                               hidden:true,
-                                                               id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder',
-                                                               html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:17px 0px 0px 0px">Loading Status.. </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-25px 0px 0px 0px">Please Wait...</div>',
+                                                        //    {
+                                                        //        margin: '0 15 0 0',
+                                                        //        hidden:true,
+                                                        //        id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder',
+                                                        //        html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:17px 0px 0px 0px">Loading Status.. </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-25px 0px 0px 0px">Please Wait...</div>',
     
-                                                               // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">(2)LOVES</div>',
+                                                        //        // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">(2)LOVES</div>',
     
-                                                               //  html: '<font size=2 color=white><b>Review By Tarmizi Bin Rahim</b></font>'
-                                                           },
+                                                        //        //  html: '<font size=2 color=white><b>Review By Tarmizi Bin Rahim</b></font>'
+                                                        //    },
                                                                 
     
     
@@ -1604,307 +1610,16 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
     
                                                   /////////////////////
     
-                                                  {
-                                                      xtype: 'container',
-                                                      id: 'containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentInfo',
-                                                      hidden:true,
-                                                      width: '100%',
-                                                      height: 90,
-                                                      margin: '20 0 0 0',
-                                                      layout: {
-                                                          type: 'vbox',
-                                                          pack: 'start',
-                                                          align: 'left'
-    
-                                                      },
-                                                      style: 'background-color:transparent',
-                                                      items: [
-    
-                                                           {
-                                                               xtype: 'container',
-                                                               width: '100%',
-                                                               // margin: '0 0 0 0',
-                                                               margin: '0 0 0 10',
-                                                               // height: 20,
-                                                               style: 'background-color:transparent;',
-                                                               layout: {
-                                                                   type: 'hbox',
-                                                                   pack: 'center',
-                                                                   align: 'center'
-    
-                                                               },
-                                                               items: [
-                                                                  {
-                                                                      //  margin: '16 0 0 14',
-                                                                      html: '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Payment Info</div>'
-                                                                  },
-                                                                  {
-                                                                      xtype: 'spacer'
-                                                                  },
-                                                                  
-                                                               ]
-                                                           },
-                                                         {
-                                                             xtype: 'container',
-                                                             width: '100%',
-                                                             height: 60,
-                                                             margin: '-10 0 0 0',
-                                                             style: "background-color: transparent;",
-                                                             //style: "background-color: white;border-right:1px solid #ECF0F1;border-left:1px solid #ECF0F1;border-bottom:1px solid #ECF0F1;border-top:1px solid #ECF0F1;border-radius: 10px 10px 10px 10px;",
-                                                             layout: {
-                                                                 type: 'vbox',
-                                                                 pack: 'start',
-                                                                 align: 'center'
-    
-                                                             },
-                                                             items: [
-                                                                  {
-                                                                      margin: '5 0 0 0',
-                                                                      id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentInfo',
-                                                                      width: '97%',
-                                                                      height: 60,
-                                                                      // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
-                                                                      html: '<textarea id="input-FloatPanel_AyohaStore_CheckOut_MembershipCardPaymentInfo" style="width:100%;height:80px;padding: 5px 5px;box-sizing: border-box;border: 1px none grey;border-radius: 4px;background-color: transparent;color:black;font-size: 12px;font-weight:bold" wrap="hard">Payment Method:Ayoha eWallet\nPayment Amount(RM):25:00\nPaymentStatus:FullPaid\nPayment No:145a4s4\nOrder No:ON-qiwuwu</textarea>'
-                                                                      // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  rows="25" cols="60">'
-    
-                                                                  },
-    
-                                                             ]
-                                                         }
-                                                      ]
-    
-                                                  },
+                                                 
     
                                                   ////////////////////
     
-                                                   {
-                                                       xtype: 'container',
-                                                       width: '100%',
-                                                       hidden:true,
-                                                       margin: '45 0 0 0',
-                                                       height: 95,
-                                                       layout: {
-                                                           type: 'vbox',
-                                                           pack: 'start',
-                                                           align: 'left'
-    
-                                                       },
-                                                       style: 'background-color:transparent',
-                                                       items: [
-                                                           
-                                                            {
-                                                                xtype: 'container',
-                                                                width: '100%',
-                                                                // margin: '0 0 0 0',
-                                                                margin: '0 0 0 10',
-                                                               // height: 20,
-                                                                style: 'background-color:transparent;',
-                                                                layout: {
-                                                                    type: 'hbox',
-                                                                    pack: 'center',
-                                                                    align: 'center'
-    
-                                                                },
-                                                                items: [
-                                                                   {
-                                                                       //  margin: '16 0 0 14',
-                                                                       html: '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Shipping Address</div>'
-                                                                   },
-                                                                   {
-                                                                       xtype: 'spacer'
-                                                                   },
-                                                                   {
-                                                                       xtype: 'button',
-                                                                       ui: 'plain',
-                                                                       width: 30,
-                                                                       height: 30,
-                                                                       margin: '1 0 0 0',
-                                                                       id: 'btnFloatPanel_AyohaStore_CheckOut_MembershipCardDeliveryAddressHistory',
-                                                                       html: '<img src="resources/icons/History01.png" width="20" height="20" alt="Company Name">',
-                                                                       handler: function () {
-                                                                           FloatPanel_AyohaStore_DeliveryAddressShow_History();
-                                                                        
-    
-                                                                       }
-                                                                   },
-                                                                   {
-                                                                       xtype: 'button',
-                                                                       ui: 'plain',
-                                                                       width: 30,
-                                                                       height: 30,
-                                                                       margin: '1 0 0 0',
-                                                                       id: 'btnFloatPanel_AyohaStore_CheckOut_MembershipCardDeliveryAddressHistory_Edit',
-                                                                       html: '<img src="resources/icons/editReview.png" width="20" height="20" alt="Company Name">',
-                                                                       handler: function () {
-    
-                                                                           FloatPanel_AyohaStore_DeliveryAddressShow();
-    
-                                                                       }
-                                                                   },
-                                                                   {
-                                                                       xtype: 'panel',
-                                                                       width: 20
-                                                                   }
-                                                                ]
-                                                            },
-                                                          {
-                                                              xtype: 'container',
-                                                              width: '100%',
-                                                              margin:'-10 0 0 0',
-                                                              height: 70,
-                                                              style: "background-color: transparent;",
-                                                              //style: "background-color: white;border-right:1px solid #ECF0F1;border-left:1px solid #ECF0F1;border-bottom:1px solid #ECF0F1;border-top:1px solid #ECF0F1;border-radius: 10px 10px 10px 10px;",
-                                                              layout: {
-                                                                  type: 'vbox',
-                                                                  pack: 'start',
-                                                                  align: 'center'
-    
-                                                              },
-                                                              items: [
-                                                                   {
-                                                                       margin: '5 0 0 0',
-                                                                       id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardShippingAddress',
-                                                                       width: '97%',
-                                                                       height: 65,
-                                                                       // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
-                                                                       html: '<textarea   onclick="FloatPanel_AyohaStore_CheckOut_MembershipCardShippingAddress_ReEditAddress()"  readOnly  id="input-FloatPanel_AyohaStore_CheckOut_MembershipCardShippingAddress" style="width:100%;height:65px;padding: 2px 2px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
-                                                                       // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  rows="25" cols="60">'
-    
-                                                                   },
-                                                                   {
-                                                                       xtype: 'container',
-                                                                       width: '100%',
-                                                                       // margin: '0 0 0 0',
-                                                                       //zIndex:100,
-                                                                       margin: '0 0 0 0',
-                                                                       // height: 20,
-                                                                       style: 'background-color:transparent;',
-                                                                       layout: {
-                                                                           type: 'hbox',
-                                                                           pack: 'center',
-                                                                           align: 'center'
-    
-                                                                       },
-                                                                       items: [
-                                                                            {
-                                                                                xtype: 'panel',
-                                                                                width: 7
-                                                                            },
-                                                                          {
-                                                                              //  margin: '16 0 0 14',
-                                                                              id:'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardContactPerson',
-                                                                              html: '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Contact Person:Tarmizi</div>'
-                                                                          },
-                                                                          {
-                                                                              xtype: 'spacer'
-                                                                          },
-                                                                           {
-                                                                               //  margin: '16 0 0 14',
-                                                                               id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardPhoneNo',
-                                                                               html: '<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Phone No:0133376958</div>'
-                                                                           },
-                                                                          {
-                                                                              xtype: 'panel',
-                                                                              width: 7
-                                                                          }
-                                                                       ]
-                                                                   },
-                                                              ]
-                                                          }
-                                                       ]
-    
-                                                   },
+                                                   
     
                                                    //////////////////
     
     
-                                                   {
-                                                       xtype: 'container',
-                                                       width: '100%',
-                                                       hidden:true,
-                                                       height: 90,
-                                                       margin: '30 0 0 0',
-                                                       layout: {
-                                                           type: 'vbox',
-                                                           pack: 'start',
-                                                           align: 'left'
-    
-                                                       },
-                                                       style: 'background-color:transparent',
-                                                       items: [
-    
-                                                            {
-                                                                xtype: 'container',
-                                                                width: '100%',
-                                                                // margin: '0 0 0 0',
-                                                                margin: '0 0 0 10',
-                                                                // height: 20,
-                                                                style: 'background-color:transparent;',
-                                                                layout: {
-                                                                    type: 'hbox',
-                                                                    pack: 'center',
-                                                                    align: 'center'
-    
-                                                                },
-                                                                items: [
-                                                                   {
-                                                                       //  margin: '16 0 0 14',
-                                                                       html: '<div id="test" style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:right;color:black;">Note To Seller/Sender</div>'
-                                                                   },
-                                                                   {
-                                                                       xtype: 'spacer'
-                                                                   },
-                                                                   {
-                                                                       xtype: 'button',
-                                                                       hidden:true,
-                                                                       ui: 'plain',
-                                                                       width: 30,
-                                                                       height: 30,
-                                                                       margin: '1 0 0 0',
-                                                                       id: 'btnFloatPanel_AyohaStore_CheckOut_MembershipCardNoteToSellerSender',
-                                                                       html: '<img src="resources/icons/History01.png" width="20" height="20" alt="Company Name">',
-                                                                       handler: function () {
-                                                                          // FloatPanel_AyohaStore_PaymentReceiptShow();
-                                                                          // savepdf();
-    
-                                                                       }
-                                                                   },
-                                                                   {
-                                                                       xtype: 'panel',
-                                                                       width: 20
-                                                                   }
-                                                                ]
-                                                            },
-                                                          {
-                                                              xtype: 'container',
-                                                              width: '100%',
-                                                              height: 70,
-                                                              margin: '-5 0 0 0',
-                                                              style: "background-color: transparent;",
-                                                              //style: "background-color: white;border-right:1px solid #ECF0F1;border-left:1px solid #ECF0F1;border-bottom:1px solid #ECF0F1;border-top:1px solid #ECF0F1;border-radius: 10px 10px 10px 10px;",
-                                                              layout: {
-                                                                  type: 'vbox',
-                                                                  pack: 'start',
-                                                                  align: 'center'
-    
-                                                              },
-                                                              items: [
-                                                                   {
-                                                                       margin: '5 0 0 0',
-                                                                       id: 'htmlFloatPanel_AyohaStore_CheckOut_MembershipCardNoteToSeller',
-                                                                       width: '97%',
-                                                                       height: 60,
-                                                                       // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  style="border-color:white;color:white;width:100%;height:35px;text-align: left;font-size:12px;word-wrap:break-word;">'
-                                                                       html: '<textarea id="input-FloatPanel_AyohaStore_CheckOut_MembershipCardNoteToSeller" style="width:100%;height:60px;padding: 0px 0px;box-sizing: border-box;border: 1px solid grey;border-radius: 4px;background-color: #F2F3F5;color:black;font-size: 12px;font-weight:bold" wrap="hard"></textarea>'
-                                                                       // html: '<input type="textarea" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_Address" wrap="hard"  rows="25" cols="60">'
-    
-                                                                   },
-                                                                   
-                                                              ]
-                                                          }
-                                                       ]
-    
-                                                   },
+                                                   
                                                    /////////////////////////
                                                    {
                                                        xtype: 'container',
@@ -1952,79 +1667,10 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
                                                                }
                                                            },
     
-                                                            {
-                                                                xtype: 'radiofield',
-                                                                name: 'color',
-                                                                id: 'radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_ViewReceipt',
-                                                                value: 'ViewReceipt',
-                                                                label: 'View Receipt',
-                                                                hidden:true,
-                                                                checked: false,
-                                                                labelWidth: '80%',
-                                                                labelAlign: 'right',
-                                                                listeners: {
-                                                                    check: function (radioFld, event, obj) {
-                                                                        if (radioFld.isChecked()) {
-                                                                            globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption = 'ViewReceipt';
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_CarouselMasterOutter').setHidden(true);
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardSelectPaymentMethod').setHidden(true);
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentInfo').setHidden(false);
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOnly').setHidden(true);
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay').setHidden(true);
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardCancelOrder').setHidden(true);
-                                                                            Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardViewReceipt').setHidden(false);
-                                                                            //  Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOnly').setHidden(true);
-                                                                            if (FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed == "Y") {
-    
-    
-                                                                               // alert(globalFloatPanel_AyohaStore_CheckOut_MembershipCardGrandTotal)
-                                                                                Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardGrandTotal').setHtml('<div style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + globalFloatPanel_AyohaStore_CheckOut_MembershipCardGrandTotal + '</div>')
-                                                                                Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardVoucherDiscount').setHtml('<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + localStorage.getItem("VoucherDiscount") + '</div>')
-    
-                                                                                if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "NewOrder") {
-                                                                                    Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:red;margin:17px 0px 0px 0px">Invoice</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:red;margin:-25px 0px 0px 0px">UNPAID</div>');
-                                                                                    //  Ext.getCmp('radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_OrderOnly').setLabel('Cancel Order  ');
-    
-                                                                                } if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "OrderPaid") {
-                                                                                    Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:green;margin:17px 0px 0px 0px">Invoice</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:green;margin:-25px 0px 0px 0px">PAID</div>');
-                                                                                   
-                                                                                    //Store.get('PaymentAmount')
-                                                                                    //Store.get('PaymentMethod')
-                                                                                    //Store.get('PaymentNoDisplay')
-                                                                                    //Store.get('PaymentStatus')
-                                                                                    //Store.get('DisplayOrderNo')
-    
-    
-    
-    
-                                                                                } if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "Order_Cancel") {
-                                                                                    Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:red;margin:17px 0px 0px 0px">Invoice </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:red;margin:-25px 0px 0px 0px">CANCEL</div>');
-                                                                                   
-                                                                                }
-    
-    
-                                                                                var ItemCartCode = globalFloatPanel_AyohaStore_CheckOut_MembershipCardItemCartCode;
-                                                                                var MembershipCardCode = globalFloatPanel_AyohaStore_CheckOut_MembershipCardMembershipCardCode;
-                                                                                var OrderNo = globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderNo;
-                                                                                var EnterpriseName = globalFloatPanel_AyohaStore_CheckOut_MembershipCardEnterpriseName;
-                                                                                var EnterpriseLogo = globalFloatPanel_AyohaStore_CheckOut_MembershipCardEnterpriseLogo;
-    
-                                                                                FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_OrderPlaced(ItemCartCode, MembershipCardCode, OrderNo, EnterpriseName, EnterpriseLogo);
-    
-                                                                               
-                                                                            }
-    
-    
-    
-    
-                                                                        }
-                                                                    }
-                                                                }
-                                                            },
+                                                          
                                                                      {
                                                                          xtype: 'radiofield',
                                                                          value: 'OrderOnly',
-                                                                         hidden:true,
                                                                          name: 'color',
                                                                          id: 'radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_OrderOnly',
                                                                          label: 'Order Only',
@@ -2069,134 +1715,9 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
                                                                              }
                                                                          }
                                                                      },
-                                                                         {
-                                                                             xtype: 'radiofield',
-                                                                             value: 'Re-Order',
-                                                                             hidden: true,
-                                                                             name: 'color',
-                                                                             id: 'radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_Re-Order',
-                                                                             label: 'Re-Order and Make Payment',
-                                                                             checked: false,
-                                                                             labelWidth: '80%',
-                                                                             labelAlign: 'right',
-                                                                             listeners: {
-                                                                                 check: function (radioFld, event, obj) {
-                                                                                     if (radioFld.isChecked()) {
-                                                                                         globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption = 'Re-Order';
-                                                                                         globalFloatPanel_AyohaStore_DeliveryChargeList_ChargeTypeCode = "";
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_CarouselMasterOutter').setHidden(false);
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardSelectPaymentMethod').setHidden(false);
-                                                                                        // globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption = 'MakePayment';
-    
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOnly').setHidden(true);
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay').setHidden(false);
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardCancelOrder').setHidden(true);
-                                                                                         //Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay').setHidden(true);
-                                                                                         //Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOnly').setHidden(false);
-                                                                                         //Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardCancelOrder').setHidden(true);
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardViewReceipt').setHidden(true);
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardDeleteOrder').setHidden(true);
-                                                                                         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentInfo').setHidden(true);
-                                                                                         Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:red;margin:17px 0px 0px 0px">Invoice</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:red;margin:-25px 0px 0px 0px">UNPAID</div>');
-    
-                                                                                         /////////////////////
-    
-                                                                                      //  alert(FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed)
-                                                                                         if (FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed == "Y") {
-    
-    
-                                                                                             Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardGrandTotal').setHtml('<div style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + globalFloatPanel_AyohaStore_CheckOut_MembershipCardGrandTotal + '</div>')
-                                                                                             Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardVoucherDiscount').setHtml('<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + localStorage.getItem("VoucherDiscount") + '</div>')
-    
-                                                                                             if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "NewOrder") {
-                                                                                                 Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:red;margin:17px 0px 0px 0px">Invoice</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:red;margin:-25px 0px 0px 0px">UNPAID</div>');
-                                                                                                 //  Ext.getCmp('radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_OrderOnly').setLabel('Cancel Order  ');
-    
-                                                                                             } if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "OrderPaid") {
-                                                                                                // Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:green;margin:17px 0px 0px 0px">Invoice</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:green;margin:-25px 0px 0px 0px">PAID</div>');
-                                                                                                 Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:red;margin:17px 0px 0px 0px">Invoice</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:red;margin:-25px 0px 0px 0px">UNPAID</div>');
-    
-    
-    
-                                                                                             } if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "Order_Cancel") {
-                                                                                                 Ext.getCmp('htmlFloatPanel_AyohaStore_CheckOut_MembershipCardTitleHeaderTxt_AfterOrder').setHtml('<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 17px;font-weight:bold;color:red;margin:17px 0px 0px 0px">Invoice </div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:red;margin:-25px 0px 0px 0px">CANCEL</div>');
-    
-                                                                                             }
-    
-                                                                                             Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardDeliveryChargeType').setHidden(false);
-                                                                                             Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardDeliveryTypeName').setHidden(true);
-    
-                                                                                             FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaRewardVoucherEntitledUserLoadBySubscriberAccNoEnterpriseAccNoMembershipCardCodeStore_OrderPlaced();
-    
-    
-    
-                                                                                         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                                                                                        
-                                                                                     }
-                                                                                 }
-                                                                             }
-                                                                         },
-                                                                          {
-                                                                              xtype: 'radiofield',
-                                                                              value: 'DeleteOrder',
-                                                                              hidden: true,
-                                                                              name: 'color',
-                                                                              id: 'radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_DeleteOrder',
-                                                                              label: 'Delete Order',
-                                                                              checked: false,
-                                                                              labelWidth: '80%',
-                                                                              labelAlign: 'right',
-                                                                              listeners: {
-                                                                                  check: function (radioFld, event, obj) {
-                                                                                      if (radioFld.isChecked()) {
-                                                                                          globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption = 'DeleteOrder';
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_CarouselMasterOutter').setHidden(true);
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardSelectPaymentMethod').setHidden(true);
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay').setHidden(true);
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOnly').setHidden(true);
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardCancelOrder').setHidden(true);
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardViewReceipt').setHidden(true);
-                                                                                          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardDeleteOrder').setHidden(false);
-    
-                                                                                      }
-                                                                                  }
-                                                                              }
-                                                                          },
-                                                                       {
-                                                                           xtype: 'radiofield',
-                                                                           value: 'CancelOrder',
-                                                                           hidden:true,
-                                                                           name: 'color',
-                                                                           id: 'radioBtnFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption_CancelOrder',
-                                                                           label: 'Cancel Order  ',
-                                                                           checked: false,
-                                                                           labelWidth: '80%',
-                                                                           labelAlign: 'right',
-                                                                           listeners: {
-                                                                               check: function (radioFld, event, obj) {
-                                                                                   if (radioFld.isChecked()) {
-                                                                                       globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOption = 'OrderOnly';
-                                                                                       Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_CarouselMasterOutter').setHidden(true);
-                                                                                       Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardSelectPaymentMethod').setHidden(true);
-                                                                                       Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay').setHidden(true);
-                                                                                       Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardOrderOnly').setHidden(true);
-                                                                                       Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_MembershipCardCancelOrder').setHidden(false);
-                                                                                       
-    
-    
-                                                                                   }
-                                                                               }
-                                                                           }
-                                                                       },
+                                                                         
+                                                                          
+                                                                       
                                                        ]
                                                    },
                                                    ////////////////////////////////////////////
@@ -2435,73 +1956,10 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
                                                                                  }
                                                                              ]
                                                                          },
-                                                                         {
-                                                                             xtype: 'container',
-                                                                             width: '100%',
-                                                                             id: 'containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_FPX',
-                                                                             hidden:true,
-                                                                             height: 100,
-                                                                             //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-                                                                             style: 'background-color:white',
-                                                                             layout: {
-                                                                                 type: 'vbox',
-                                                                                 pack: 'start',
-                                                                                 align: 'left'
-                                                                             },
-                                                                             items: [
-                                                                                 
-                                                                                  {
-                                                                                      html: 'test'
-                                                                                  }
-                                                                                 
+                                                                         
     
-                                                                             ]
-    
-                                                                         },
-    
-    
-                                                                         {
-                                                                             xtype: 'container',
-                                                                             width: '100%',
-                                                                             hidden: true,
-                                                                             id: 'containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_ManualTransfer',
-                                                                             height: 100,
-                                                                             //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-                                                                             style: 'background-color:white',
-                                                                             layout: {
-                                                                                 type: 'vbox',
-                                                                                 pack: 'start',
-                                                                                 align: 'left'
-                                                                             },
-                                                                             items: [
-                                                                                 
-    
-                                                                              {
-                                                                                  html: 'test'
-                                                                              }
-                                                                             ]
-                                                                         },
-                                                                           {
-                                                                               xtype: 'container',
-                                                                               width: '100%',
-                                                                               hidden: true,
-                                                                               id: 'containerFloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod_COD',
-                                                                               height: 100,
-                                                                               //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
-                                                                               style: 'background-color:white',
-                                                                               layout: {
-                                                                                   type: 'vbox',
-                                                                                   pack: 'start',
-                                                                                   align: 'left'
-                                                                               },
-                                                                               items: [
-    
-    
-                                                                                {
-                                                                                    html: 'test'
-                                                                                }
-                                                                               ]
-                                                                           },
+                                                                         
+                                                                           
     
                                                                      ]
                                                                  },
@@ -2638,11 +2096,17 @@ Ext.define('BuskartApp.view.AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_Me
     
     
         });
-        return _FloatPanel_AyohaStore_CheckOut_MembershipCard;
+}
+    
+    
+    // function FloatPanel_AyohaStore_CheckOut_MembershipCard() {
+    
+       
+    //     return _FloatPanel_AyohaStore_CheckOut_MembershipCard;
     
     
     
-    }
+    // }
     
     
     
@@ -2762,16 +2226,39 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
                            
 
      
-    LoadingPanelHide();
+    LoadingPanelHide(false);
     }
     
     
     function FloatPanel_AyohaStore_CheckOut_MembershipCardShow() {
     
-        Ext.Viewport.remove(_FloatPanel_AyohaStore_CheckOut_MembershipCard);
-        this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_CheckOut_MembershipCard());
-        this.overlay.show();
-        AddRoutePages("FloatPanel_AyohaStore_CheckOut_MembershipCardHide()");
+        // Ext.Viewport.remove(_FloatPanel_AyohaStore_CheckOut_MembershipCard);
+        // this.overlay = Ext.Viewport.add(FloatPanel_AyohaStore_CheckOut_MembershipCard());
+        // this.overlay.show();
+        // AddRoutePages("FloatPanel_AyohaStore_CheckOut_MembershipCardHide()");
+
+
+
+
+
+    FloatPanel_AyohaStore_CheckOut_MembershipCardCreateIfNeeded();
+
+
+   _FloatPanel_AyohaStore_CheckOut_MembershipCard.show();
+   // ✅ push browser back (ikut style kau)
+   if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+     AyohaBrowserBack.push('FloatPanel_AyohaStore_CheckOut_MembershipCard', function () {
+    
+        FloatPanel_AyohaStore_CheckOut_MembershipCardHide(true);
+     });
+   }
+
+
+
+
+
+
+
         isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'Y';
        //alert("FloatPanel_AyohaStore_CheckOutShow");
         Ext.getCmp('FloatPanel_AyohaStore_CheckOut_MembershipCardPurchasedItem_FromCart').setHidden(false);
@@ -3304,15 +2791,41 @@ FloatPanel_AyohaStore_CheckOut_MembershipCardLoadByMembershipCardCode();
     
     
     
-    function FloatPanel_AyohaStore_CheckOut_MembershipCardHide() {
+    function FloatPanel_AyohaStore_CheckOut_MembershipCardHide(fromBack, animCfg) {
         // FloatPanel_AyohaStore_CheckOut_MembershipCardAddCardHide();
-        if (isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen == 'Y') {
-            _FloatPanel_AyohaStore_CheckOut_MembershipCard.hide(); isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'N';
-            RemovePages("FloatPanel_AyohaStore_CheckOut_MembershipCardHide()");
-          //  FloatPanel_MerchantDetailPageHide();
-           // Dashboard_SearchMerchantListHide();
-        }
+        // if (isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen == 'Y') {
+        //     _FloatPanel_AyohaStore_CheckOut_MembershipCard.hide(); isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'N';
+        //     RemovePages("FloatPanel_AyohaStore_CheckOut_MembershipCardHide()");
+        //   //  FloatPanel_MerchantDetailPageHide();
+        //    // Dashboard_SearchMerchantListHide();
+        // }
        
+
+
+
+        
+    if (isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen == 'Y') {
+       
+       
+
+
+
+        if (animCfg) {
+            _FloatPanel_AyohaStore_CheckOut_MembershipCard.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaStore_CheckOut_MembershipCard.hide();
+          }
+          isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen = 'N';
+                                         
+       _FloatPanel_AyohaStore_CheckOut_MembershipCard.destroy();
+       _FloatPanel_AyohaStore_CheckOut_MembershipCard = null;
+         // RemovePages("FloatPanel_ForgotPasswordHide()");
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaStore_CheckOut_MembershipCard');
+          }
+    }
     }
     
     

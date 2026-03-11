@@ -1152,7 +1152,7 @@ xtype: 'container',
 width: '93%',
 //hidden:true,
 margin: '0 0 0 0',
-height: 85,
+height: 105,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
 style: "background-color: transparent;",
 layout: {
@@ -1167,7 +1167,7 @@ xtype: 'container',
 width: '70%',
 // name:'namecontainerFloatPanel_MembershipCardList_NotYetSubscribed_StarOutterMaster',
 margin: '0 0 0 0',
-height: 85,
+height: 105,
 // style: 'background-color:rgba(255, 255, 255, 0.3);border-radius: 10px 10px 10px 10px;',
 style: "background-color: transparent;",
 layout: {
@@ -1182,7 +1182,7 @@ items:[
     {
         xtype: 'container',
         width: '100%',
-        height:85,
+        height:105,
         hidden: false,
         margin: '0 0 0 0',
         style: 'background-color:transparent',
@@ -1204,7 +1204,7 @@ items:[
 
  {
         xtype: 'container',
-        height: 85,
+        height: 105,
         width: '100%',
         layout: {
             type: 'vbox',
@@ -1216,19 +1216,19 @@ items:[
             {
     xtype: 'component',
     id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_CardInfo',
-  //  margin: '12 16 0 16',
+   margin: '10 0 0 0',
     width: '100%',
     html: [
         '<div class="ayohaCardInfoWrap">',
 
             '<div class="ayohaCardInfoRow">',
-                '<div class="ayohaCardInfoLabel">Card Name</div>',
-                '<div class="ayohaCardInfoValue">Barbegal</div>',
+                '<div class="ayohaCardInfoLabel">Card Name:</div>',
+                '<div id="ayohaCardInfoValue" class="ayohaCardInfoValue">Barbegal</div>',
             '</div>',
 
             '<div class="ayohaCardInfoRow" style="margin-top:10px;">',
-                '<div class="ayohaCardInfoLabel">Card Level</div>',
-                '<div class="ayohaCardLevelBadge">GOLD</div>',
+                '<div class="ayohaCardInfoLabel">Card Level:</div>',
+                '<div id="ayohaCardLevelValue" class="ayohaCardLevelBadge">GOLD</div>',
             '</div>',
 
         '</div>'
@@ -1570,7 +1570,7 @@ style: 'background-color:grey',
 xtype: 'container',
 id: 'containerFloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseInfolist',
 style: 'background-color: transparent',
-height: 190,
+height: 170,
 width: '100%',
 layout: {
 type: 'vbox',
@@ -1586,7 +1586,7 @@ items: [
     id: 'FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseInfoList',
     store: _DataStore_MembershipCardEnterprisesEntitledLoadByMembershipCardCodeStore,
     scrollable: false,
-    height: 190,
+    height: 170,
     width: '100%',
     mode: 'SINGLE',
     disableSelection: true,
@@ -1649,6 +1649,7 @@ items: [
 xtype: 'container',
 width: '100%',
 margin: '0 0 0 0',
+hidden:true,
 height: 20,
 //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
 style: 'background-color:transparent',
@@ -1660,6 +1661,7 @@ xtype: 'container',
 width: '100%',
 margin: ' 0 0 0 0',
 height: 80,
+hidden:true,
 //style: 'background-color:rgba(0, 0, 0, 0.0);border-radius: 0px 0px 0px 0px;',
 style: 'background-color:transparent',
 layout: {
@@ -1720,7 +1722,7 @@ xtype: 'container',
 style: 'background-color:transparent;',
 width: '95%',
 margin:'10 0 0 0',
-// hidden:true,
+hidden:true,
 // margin:'-100 0 0 0',
 //zIndex: 100,
 height: 80,
@@ -3557,7 +3559,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribedHide(fromBack,animCfg) {
           }
           isFloatPanel_MembershipCardList_NotYetSubscribedOpen = 'N';
           _FloatPanel_MembershipCardList_NotYetSubscribed_isFirstLoad = "N";
-        
+        _FloatPanel_MembershipCardList_NotYetSubscribed.destroy();
+        _FloatPanel_MembershipCardList_NotYetSubscribed = null;
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_MembershipCardList_NotYetSubscribed');
@@ -3929,8 +3932,12 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
                }
                
               // htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel
-               Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemName').setHtml('<div style="height:18px;background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Name:'+MembershipCardName+'</div>');
-               Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel').setHtml('<div style="height:18px;background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Level:'+MembershipCardType+'</div>');
+              // Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemName').setHtml('<div style="height:18px;background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Name:'+MembershipCardName+'</div>');
+              // Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemCardLevel').setHtml('<div style="height:18px;background: transparent;width:100%;font-size: 14px;font-weight:bold;color:black;text-align:center;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)" >Card Level:'+MembershipCardType+'</div>');
+             document.getElementById('ayohaCardInfoValue').innerHTML = MembershipCardName;
+              document.getElementById('ayohaCardLevelValue').innerHTML = MembershipCardType;
+             
+             
                Ext.getCmp('htmlFloatPanel_MembershipCardList_NotYetSubscribed_ItemPrice').setHtml('<div style="background: transparent;width:100%;font-size: 14px;font-weight:bold;black;text-align:center;" >Price (RM):'+MembershipCardFee+' ('+MembershipCardFeePaymentCycle+')</div>');
        
                global_FloatPanel_MembershipCardList_NotYetSubscribed_CardName=MembershipCardName;
@@ -4833,16 +4840,22 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
         //  console.log(objn)
           var _value = Ext.Ajax.request({
   
-              type: "POST",
+            //   type: "POST",
   
-              url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartInsertUpdate',
+            //   url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartInsertUpdate',
   
-              dataType: "json",
-              data: JSON.stringify(objn),
-              headers: {
-                  "Content-Type": "application/json; charset=utf-8"
-              },
+            //   dataType: "json",
+            //   data: JSON.stringify(objn),
+            //   headers: {
+            //       "Content-Type": "application/json; charset=utf-8"
+            //   },
   
+
+                  
+   url: GetAPIurl() + '/AyohaStore_Cart/AyohaStoreCartInsertUpdate',
+  method: 'POST',
+  jsonData: objn,
+  headers: { 'Content-Type': 'application/json; charset=utf-8' },
               success: function (result, request) {
   
                   //console.log(result.responseText);
@@ -4919,16 +4932,21 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
  console.log(objn)
     var _value = Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
 
-        url: GetAPIurl() + '/Subscriptions/SubscriptionsInsert',
+        // url: GetAPIurl() + '/Subscriptions/SubscriptionsInsert',
 
-        dataType: "json",
-        data: JSON.stringify(objn),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+        // dataType: "json",
+        // data: JSON.stringify(objn),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
 
+                       
+   url: GetAPIurl() + '/Subscriptions/SubscriptionsInsert',
+  method: 'POST',
+  jsonData: objn,
+  headers: { 'Content-Type': 'application/json; charset=utf-8' },
         success: function (result, request) {
             data = Ext.decode(result.responseText.trim());
           
@@ -4992,16 +5010,24 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_CheckExistSubscriptionCo
         };
         var _value = Ext.Ajax.request({
 
-            type: "POST",
+            // type: "POST",
 
-            url: GetAPIurl() + '/Subscriptions/SubscriptionscheckBySubscriptionCode',
+            // url: GetAPIurl() + '/Subscriptions/SubscriptionscheckBySubscriptionCode',
 
-            dataType: "json",
-            data: JSON.stringify(objn),
+            // dataType: "json",
+            // data: JSON.stringify(objn),
+            // headers: {
+            //     "Content-Type": "application/json; charset=utf-8"
+            // },
+
+
+            
+             url: GetAPIurl() + '/Subscriptions/SubscriptionscheckBySubscriptionCode',
+            method: 'POST',                 // ✅ betul
+            jsonData: objn,                 // ✅ auto encode JSON + set body
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+              'Content-Type': 'application/json; charset=utf-8'
             },
-
             success: function (result, request) {
 
                 //console.log(result.responseText);

@@ -1482,7 +1482,7 @@
     box-sizing:border-box;
     background:#ffffff;
     border-radius:16px;
-    padding:7px 8px;
+    padding:10px 16px;
     box-shadow:0 6px 18px rgba(0,0,0,0.08);
     border:1px solid #eee6f5;
 }
@@ -1491,7 +1491,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:6px;
+    gap:12px;
     width:100%;
 }
 
@@ -1509,14 +1509,14 @@
     font-size:14px;
     font-weight:700;
     color:#1f1f1f;
-    text-align:right;
+    text-align:left;
 }
 
 .ayohaCardLevelBadge{
     display:inline-block;
     min-width:88px;
     text-align:center;
-    padding:5px 7px;
+    padding:8px 7px;
     border-radius:999px;
     font-family:Arial, sans-serif;
     font-size:12px;
