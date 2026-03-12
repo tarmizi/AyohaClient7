@@ -127,13 +127,13 @@ Ext.application({
     'AyohaStoreSaleItem.FloatPanel_AyohaStore_MembershipEventList', 'AyohaStoreSaleItem.FloatPanel_AyohaStore_MembershipContestList', 'AyohaRewardVoucher.FloatPanel_AyohaRewardVoucherList_AyohaRewardHome', 'AyohaRewardVoucher.FloatPanel_AyohaRewardVoucherList_AyohaStore',
     'MyAccount.FloatPanel_MerchantDetailPage', 'AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_BusinessHour', 'MyAccount.Scan_QRCode_StampCard', 'MyAccount.FloatPanel_AyohaMembershipAdvantages', 'AyohaeWallet.FloatPanel_AyohaeWallet_CashOut',
     'AyohaeWallet.FloatPanel_AyohaeWallet_CashOutConfirm', 'Master.FloatPanel_BankAccountName', 'Master.FloatPanel_BankAccountType','AyohaRewardMerchantDiscountLoyalty.FloatPanel_MerchantDiscountLoyaltyDescription','Dashboard.FloatPanel_DashboardMerchantReward_UploadedReceipt',
-    'Membership.FloatPanel_Membership_MembershipCardSaleDetail','Membership.FloatPanel_MembershipCardList_NotYetSubscribed','AyohaStoreSaleItem.FloatPanel_AyohaStore_CheckOut_MembershipCard','Config.CoreVariable','Membership.FloatPanel_Membership_MembershipCardHubs',
+    'Membership.FloatPanel_Membership_MembershipCardSaleDetail','Membership.FloatPanel_MembershipCardList_NotYetSubscribed','Config.CoreVariable','Membership.FloatPanel_Membership_MembershipCardHubs',
 'AyohaStoreSaleItem.FloatPanel_MainDashboard_PendingOrder','MyAccount.FloatPanel_ShoppingBagOrder','AyohaStoreSaleItem.FloatPanel_AyohaStore_OrderHistory_Single','Menu.DrawerMenu','MyAccount.FloatPanel_MyAccount_AllTransactionHistory',
 'AyohaEnterpriseAccount.FloatPanel_AyohaEnterpriseRewardItem','Menu.FloatPanel_ScannedMerchant','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_LoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram',
 'AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_ContestCardLoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_EventCardLoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram',
 'AyohaReward.FloatPanel_AyohaReward_MainDashboard','Membership.FloatPanel_Membership_CheckInPage','Membership.FloatPanel_Membership_CheckInPage_Confirmed','AyohaReward.FloatPanel_AyohaReward','Config.CoreFunction','Membership.FloatPanel_Membership_MembershipCardHubsUpgrade',
 'AyohaMerchant.AyohaMerchantReward','Membership.MembershipCardList','Membership.SideMenuMembershipCardList','AyohaMerchant.SideMenuAyohaMerchantReward','CheckOut.FloatPanel_CheckOut_NonMember','CheckOut.FloatPanel_CheckOut_ConfirmedCheckOut','Config.AppStyle','Membership.FloatPanel_CheckInModal',
-'common.OverlayConfirm','common.AyohaBackManager','common.ErrorMessagesOverlay','common.DeleteMessageOverlay'],
+'common.OverlayConfirm','common.AyohaBackManager','common.ErrorMessagesOverlay','common.DeleteMessageOverlay','Membership.FloatPanel_CheckOut_MembershipCard'],
 
 
 

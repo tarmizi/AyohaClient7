@@ -1,0 +1,85 @@
+.ayohaOrderSummaryWrap{
+    width:100%;
+    box-sizing:border-box;
+    background:#ffffff;
+    padding:6px 2px 2px 2px;
+}
+
+.ayohaOrderSummaryTitle{
+    font-family:Arial, sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:#111111;
+    margin-bottom:26px;
+}
+
+.ayohaOrderSummaryRows{
+    width:100%;
+}
+
+.ayohaOrderSummaryRow{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    margin-bottom:8px;
+}
+
+.ayohaOrderSummaryLabel{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#6b7280;
+    text-align:right;
+    margin-right:6px;
+}
+
+.ayohaOrderSummaryValue{
+    min-width:65px;
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#6b7280;
+    text-align:right;
+}
+
+.ayohaOrderSummaryDivider{
+    width:58%;
+    height:3px;
+    background:#8a8a8a;
+    margin:8px 0 10px auto;
+}
+
+.ayohaOrderSummaryGrandRow{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+}
+
+.ayohaOrderSummaryGrandLabel{
+    font-family:Arial, sans-serif;
+    font-size:22px;
+    font-weight:800;
+    color:#000000;
+    text-align:right;
+    margin-right:6px;
+    letter-spacing:-0.3px;
+}
+
+.ayohaOrderSummaryGrandValue{
+    min-width:85px;
+    font-family:Arial, sans-serif;
+    font-size:22px;
+    font-weight:800;
+    color:#000000;
+    text-align:right;
+    letter-spacing:-0.3px;
+}
+
+.ayohaOrderSummaryBottomDivider{
+    width:58%;
+    height:3px;
+    background:#8a8a8a;
+    margin:10px 0 0 auto;
+}

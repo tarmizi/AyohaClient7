@@ -1231,7 +1231,8 @@ function GetAPIurl() {
     // var _value = 'http://192.168.0.107:9018';
    // var _value = 'https://BuskartApp.com/webapiresit/webapiresit/';
     //var _value = 'https://42.1.63.57/CRMOBILEAPI/';
-    var _value = 'https://setkita.com/CRMOBILEAPI/';
+   var _value = 'https://setkita.com/CRMOBILEAPI/';
+    // var _value = '/CRMOBILEAPI/';
    // var _value = 'https://setkita.com/AyohaMobile/';
   //  var _value = 'http://tarmizi-004-site6.etempurl.com/webapiresit/webapiresit/';
   //  var _value = 'http://cloudreceipts.sytes.net:9018/'

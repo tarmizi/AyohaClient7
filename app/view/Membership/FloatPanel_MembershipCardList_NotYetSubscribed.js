@@ -3608,7 +3608,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_initEventContainer(){
         FloatPanelMerchantDetailPage_OpenMerchantReview();
       }
     );
-    LoadingPanelHide();
+    LoadingPanelHide(false);
 }
 
 
@@ -4295,7 +4295,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardEnterprise
               
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });
@@ -4630,7 +4630,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStore() {
         //  FloatPanel_OrderCartHide();
        // FloatPanel_RewardStore_OpenStore_FromFloatPanel_MembershipCardList_NotYetSubscribed(ID);
         FloatPanel_RewardStore_OpenStore_FromFloatPanel_MembershipCardList_Upgrade(ID);
-        LoadingPanelHide();
+        LoadingPanelHide(false);
 
 
     });
@@ -4717,7 +4717,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardPaymentPla
       
     //     FloatPanel_MembershipCardList_NotYetSubscribed_loadEnterprise()
 
-    //     LoadingPanelHide();
+    //     LoadingPanelHide(false);
 
 
     // });
@@ -4759,10 +4759,10 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardPaymentPla
     
                 // Optionally continue your task after loading
              
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             } else {
                 console.error('Failed to load store data.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });
@@ -4870,7 +4870,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
                       var task = Ext.create('Ext.util.DelayedTask', function () {
                        // FloatPanel_MembershipCardList_NotYetSubscribed_SubscriptionsInsertUpdate();
                      //  alert(globalFloatPanel_AyohaStore_SaleItemDetail_CampaignType);
-                       FloatPanel_AyohaStore_CheckOut_MembershipCardShow();
+                       FloatPanel_CheckOut_MembershipCardShow();
                         //FloatPanel_MembershipCardList_NotYetSubscribed_CheckOutShow();
                       });
                       task.delay(150);
@@ -4879,7 +4879,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
   
   
   
-                    // LoadingPanelHide();
+                    // LoadingPanelHide(false);
   
   
                   }
@@ -4887,7 +4887,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
                      
                       swalFireFail("Fail!->" + result.responseText.trim());
                       Ext.Viewport.unmask();
-                      LoadingPanelHide();
+                      LoadingPanelHide(false);
                   }
                   Ext.Viewport.unmask();
   
@@ -4897,7 +4897,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
                  
                   swalFireFail("Fail!" + result.responseText.trim());
                   Ext.Viewport.unmask();
-                  LoadingPanelHide();
+                  LoadingPanelHide(false);
               }
   
           });
@@ -4953,13 +4953,13 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
             if (data.success == "true") {
                 FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert();
                 
-              LoadingPanelHide();
+              LoadingPanelHide(false);
               return;
             //  FloatPanel_AyohaStore_AyohaPointCollectedAnimHide();
             }
             else {
                // alert( data.message)
-                LoadingPanelHide();
+                LoadingPanelHide(false);
                 swalFireLoginFailed("Subscribtion Failed!" + data.message);
                
             }
@@ -4968,7 +4968,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert() 
         },
 
         failure: function (result, request) {
-            LoadingPanelHide();
+            LoadingPanelHide(false);
          // alert( data.message)
             swalFireLoginFailed("Subscribtion failure!" + result.responseText.trim());
 
@@ -4989,7 +4989,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_CheckExistSubscriptionCo
 //  {
 //     if(globalFloatPanel_MembershipCardList_NotYetSubscribed_plan !="FOC"){
 //         swalFireFail("Select Membership Payment Plan!");
-//         LoadingPanelHide();
+//         LoadingPanelHide(false);
 //         return;
 //     }else{
         
@@ -5042,7 +5042,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_CheckExistSubscriptionCo
                     if (count > 0) {
                        // alert('Already Exsit')
                       //  swalFireFail("Already Exist!");
-                       // FloatPanel_AyohaStore_CheckOut_MembershipCardShow();
+                       // FloatPanel_CheckOut_MembershipCardShow();
                        FloatPanel_MembershipCardList_NotYetSubscribed_AyohaStoreCart_Insert();
                         return;
                     }else{
@@ -5057,7 +5057,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_CheckExistSubscriptionCo
                 else {
                    
                    swalFireFail("Fail!->" + result.responseText.trim());
-                   LoadingPanelHide();
+                   LoadingPanelHide(false);
                     Ext.Viewport.unmask();
                   
                 }
@@ -5069,7 +5069,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_CheckExistSubscriptionCo
                
                 swalFireFail("Fail!" + result.responseText.trim());
                 Ext.Viewport.unmask();
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
 
         });
@@ -5618,7 +5618,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_RateAndReview(RateReview
     }
 
 
-    LoadingPanelHide();
+    LoadingPanelHide(false);
 
 
 

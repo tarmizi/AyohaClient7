@@ -19,8 +19,8 @@ id: 'LoadingFloatPanel_AyohaStore_PaymentMethodListID',
  floated: true,
         centered: true,
         fullscreen: true,
-        closeAction: 'hide',
-      // closeAction: 'destroy',
+       // closeAction: 'hide',
+      closeAction: 'destroy',
         draggable: false,
         modal: true,
         styleHtmlContent: true,
@@ -743,9 +743,9 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
 
 
 
-   if(isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen == 'Y')
+   if(isFloatPanel_CheckOut_MembershipCardOpen == 'Y')
    {
-    Ext.getCmp('containerFloatPanel_AyohaStore_PaymentMethodList_AyohaeWalletinner').setHidden(true);
+    Ext.getCmp('containerFloatPanel_AyohaStore_PaymentMethodList_AyohaeWalletinner').setHidden(false);
    }
 
     
@@ -806,6 +806,8 @@ function FloatPanel_AyohaStore_PaymentMethodListHide(animCfg, fromBack) {
             _FloatPanel_AyohaStore_PaymentMethodList.hide();
           }
           isFloatPanel_AyohaStore_PaymentMethodListOpen = 'N';
+          _FloatPanel_AyohaStore_PaymentMethodList.destroy();
+          _FloatPanel_AyohaStore_PaymentMethodList = null;
           
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_AyohaStore_PaymentMethodList');
@@ -819,6 +821,11 @@ var globalFloatPanel_AyohaStore_PaymentMethod_Code;
 function FloatPanel_AyohaStore_PaymentMethodListPaymentMethodSelected(ID) {
    
     if (ID == 1) {
+         if(isFloatPanel_CheckOut_MembershipCardOpen=='Y'){
+swalFireFail("Currently Not Available!,Comming Soon!");
+        return;
+         }
+        
         globalFloatPanel_AyohaStore_PaymentMethod_Code = 1;
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_AyohaeWallet').setHidden(false);
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_FPX').setHidden(true);
@@ -843,17 +850,24 @@ function FloatPanel_AyohaStore_PaymentMethodListPaymentMethodSelected(ID) {
        if (isFloatPanel_AyohaStore_CheckOutOpen=='Y')
        {
         document.getElementById('input-FloatPanel_AyohaStore_CheckOut_PaymentMethod').value = "Pay With Online Banking";
-       }
-       
-       if(isFloatPanel_AyohaStore_CheckOut_MembershipCardOpen=='Y'){
-        document.getElementById('input-FloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod').value = "Pay With Online Banking";
-       }
-       
-         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_AyohaeWallet').setHidden(true);
+       Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_AyohaeWallet').setHidden(true);
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_FPX').setHidden(false);
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_ManualTransfer').setHidden(true);
         Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_COD').setHidden(true);
          Ext.getCmp('containerFloatPanel_AyohaStore_CheckOut_PaymentMethod_CarouselMasterOutter').setHeight(200);
+    
+    }
+       
+       if(isFloatPanel_CheckOut_MembershipCardOpen=='Y'){
+        document.getElementById('input-FloatPanel_CheckOut_MembershipCard_PaymentMethod').value = "Pay With Online Banking";
+        Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_PaymentMethod_AyohaeWallet').setHidden(true);
+        Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_PaymentMethod_FPX').setHidden(false);
+      //  Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_PaymentMethod_ManualTransfer').setHidden(true);
+       // Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_PaymentMethod_COD').setHidden(true);
+         Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_PaymentMethod_CarouselMasterOutter').setHeight(200);
+    }
+       
+        
     
 
     }
@@ -879,8 +893,8 @@ function FloatPanel_AyohaStore_PaymentMethodListPaymentMethodSelected(ID) {
        
   
 
-        document.getElementById('input-FloatPanel_AyohaStore_CheckOut_MembershipCardPaymentMethod').value = "Pay At Counter";
-        FloatPanel_AyohaStore_PaymentMethodListHide();
+        document.getElementById('input-FloatPanel_CheckOut_MembershipCard_PaymentMethod').value = "Pay At Counter";
+        FloatPanel_AyohaStore_PaymentMethodListHide(false);
     }
 }
 
