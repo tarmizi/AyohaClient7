@@ -3868,7 +3868,7 @@ function FloatPanel_AyohaStoreHide(fromBack,animCfg) {
           }
           isFloatPanel_AyohaStoreOpen = 'N';
          
-        _FloatPanel_AyohaStore.destroyed;
+        _FloatPanel_AyohaStore.destroy();
         _FloatPanel_AyohaStore=null;
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {

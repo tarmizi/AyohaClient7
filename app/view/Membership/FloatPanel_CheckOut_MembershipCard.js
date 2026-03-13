@@ -2146,7 +2146,7 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
       
         //Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_SubTotal').setHtml('<div style="font-family:Arial, sans-serif;font-size:11px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:#6B7280;">' + TotalSumPrice.toFixed(2) + '</div>');
        
-       // Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_GrandTotal').setHtml('<div style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:black;">' + globalFloatPanel_AyohaStore_Cart_GrandTotal.toFixed(2) + '</div>');
+        Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_TitleHeaderTxt').setHidden(false);
       
         Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_MerchantPointEarn').setHtml('<div style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:#6B7280;">' + globalFloatPanel_AyohaStore_Cart_TotalMerchantPoint + '</div>');
         Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_AyohaPointEarn').setHtml('<div style="font-family:Arial, sans-serif;font-size:22px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;width:100%;text-align:left;color:#6B7280;">' + globalFloatPanel_AyohaStore_Cart_TotalAyohaPoint + '</div>');
@@ -2178,9 +2178,28 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
         containerViewElnamecontainerFloatPanel_CheckOut_MembershipCard_ConfirmPay.on('tap',
           function (event, node, options, eOpts) {
     
-              
-              Staging_FloatPanel_CheckOut_MembershipCard_AyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert();
-    
+           if(globalFloatPanel_AyohaStore_PaymentMethod_Code)
+           {
+ if(globalFloatPanel_AyohaStore_PaymentMethod_Code==2){
+              ProductInvoice_MakePayment();
+                //ProductInvoice_SubscriptionsInsertUpdate();
+                return;
+              }
+              if(globalFloatPanel_AyohaStore_PaymentMethod_Code==4){
+                FloatPanel_AyohaStore_PaymentMethodList_MembershipsInsertPayAtCounter();
+                  //ProductInvoice_SubscriptionsInsertUpdate();
+                  return;
+                }
+           }else{
+            swalFireFail("Please select payment method.!")
+           }
+
+
+//Staging_FloatPanel_CheckOut_MembershipCard_PaymentOrderAndConfirmPayInsert();
+             
+
+
+
              
           }
         );
@@ -2351,3 +2370,50 @@ function FloatPanel_CheckOut_MembershipCard_LoadMembershipCard() {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+ function Staging_FloatPanel_CheckOut_MembershipCard_PaymentOrderAndConfirmPayInsert() {
+        //alert(globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus);
+        ////return;
+       
+    
+        if (globalDashboardisUserHasEwalletAccount == "N") {
+            FloatPanel_AyohaeWallet_SettingShow_CreateNewAccount();
+            FloatPanel_AyohaeWalletHide();
+            return;
+        }
+        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "OrderPaid") {
+          //  FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_ReOrder_MakePayment();
+    
+            FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_ReOrder_MakePayment_Validate()
+            return
+        }
+        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "CheckOut") {
+            FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_Validate();
+            return
+        }
+    
+       
+        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "NewOrder") {
+            //FloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay();
+            FloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay_Validate();
+            return;
+        }
+    
+        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "Order_Confirmed") {
+            FloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay_Validate();
+         //   FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_Validate();
+            return
+        }
+    
+       
+    }

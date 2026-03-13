@@ -203,7 +203,9 @@ Ext.define('BuskartApp.view.Membership.FloatPanel_CheckInModal', {
                     element: 'element',
                     tap: function (e) {
                       if (e && e.stopEvent) e.stopEvent();
-                      FloatPanel_CheckInModalHide(false);
+                        FloatPanel_CheckInModalHide(false);
+                       swalFireHoorayMessage("Welcome aboard! 🚀 Your membership was successful. You can now view your card in the Membership Card List.");
+                    
                     }
                   }
                 }

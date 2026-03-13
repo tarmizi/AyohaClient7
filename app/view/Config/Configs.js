@@ -836,28 +836,54 @@ function swalFireSuccessStampedCardMsg(Msg) {
 }
 
 function swalFireHoorayMessage(Msg) {
-    event.preventDefault();
-    Swal.fire({
-      // title: 'Are you sure want to delete?',
-        text: Msg,
+
+FloatPanel_MembershipSuccessModalShow({
+    logoUrl: 'resources/icons/Logo/AyohaLogofullOrange.png',
+    brandTitle: 'AYOHA REWARD',
+    brandTagline: 'We Double Your Reward',
+    title: 'Welcome to Ayoha Reward! 🎉',
+    subtitle: 'Your membership is now active',
+    badgeText: 'Membership Activated',
+    message: 'A world of rewards, perks, and exclusive privileges is now yours to enjoy.',
+    buttonText: 'Start Exploring',
+    onConfirmFn: function () {
+        // contoh:
+        // FloatPanel_MembershipCardListShow();
+        // CoreFunction_DashboardAyohaUser();
+         FloatPanel_MembershipSuccessModalHide(false) ;
+    },
+    onCancelFn: function () {
+        // optional
+        FloatPanel_MembershipSuccessModalHide(false) ;
+    }
+});
+
+
+
+
+
+    // event.preventDefault();
+    // Swal.fire({
+    //   // title: 'Are you sure want to delete?',
+    //     text: Msg,
        
-        //icon: 'warning',
-        //showCancelButton: true,
-        //confirmButtonColor: '#3085d6',
-        //cancelButtonColor: '#d33',
-        imageUrl: "resources/icons/redeemAnimatedOne.gif",
-        imageWidth: 150,
-        imageHeight: 150,
-        showCloseButton: true,
-        showCancelButton: false,
-        //  confirmButtonColor: '#3085d6',
-        confirmButtonColor: '#9932cc',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK',
-        footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
-    }).then(function (result) {
+    //     //icon: 'warning',
+    //     //showCancelButton: true,
+    //     //confirmButtonColor: '#3085d6',
+    //     //cancelButtonColor: '#d33',
+    //     imageUrl: "resources/icons/redeemAnimatedOne.gif",
+    //     imageWidth: 150,
+    //     imageHeight: 150,
+    //     showCloseButton: true,
+    //     showCancelButton: false,
+    //     //  confirmButtonColor: '#3085d6',
+    //     confirmButtonColor: '#9932cc',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'OK',
+    //     footer: '<img src="resources/icons/Logo/AyohaLogofullOrange.png" width="100" height="70" alt="Company Name"/>'
+    // }).then(function (result) {
        
-    });
+    // });
 
     
 }
@@ -3011,6 +3037,8 @@ function FloatPanel_Membership_CheckInPageShow(logoUrl,EnterpriseName,Enterprise
             // --- I HAVE REMOVED THE OLD PLACEHOLDER FUNCTION CALL FROM HERE ---
 
         } else if (result.isDismissed) {
+
+             
             // User clicked "Maybe Later" or closed the modal
             // The popup also closes automatically here.
         }

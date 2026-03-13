@@ -1,0 +1,211 @@
+.ayohaMembershipSuccessModal {
+    background: transparent !important;
+}
+
+.ayohaMembershipSuccessWrap {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.ayohaMembershipSuccessShell {
+    position: relative;
+    width: 98%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.ayohaMembershipSuccessCard {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 90px 22px 22px 22px;
+    box-shadow:
+        0 20px 60px rgba(122, 44, 255, 0.25),
+        0 10px 25px rgba(122, 44, 255, 0.14);
+    border: 1px solid rgba(186, 112, 255, 0.18);
+}
+
+.ayohaMembershipSuccessCard:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(90deg, #ff00de 0%, #b245ff 50%, #7b2cff 100%);
+}
+
+.ayohaMembershipSuccessClose {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 999px;
+    background: #f4eefe;
+    color: #b6a9c7;
+    font-size: 26px;
+    font-weight: 300;
+    z-index: 20;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(123, 44, 255, 0.08);
+}
+
+.ayohaMembershipSuccessIconTop {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 15;
+    text-align: center;
+}
+
+.ayohaMembershipSuccessGiftAura {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f7ebff 38%, #eedcff 100%);
+    box-shadow:
+        0 14px 35px rgba(160, 83, 255, 0.22),
+        inset 0 0 0 1px rgba(188, 115, 255, 0.14);
+}
+
+.ayohaMembershipSuccessGift {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    line-height: 1;
+}
+
+.ayohaMembershipSuccessSpark {
+    position: absolute;
+    color: #c64bff;
+    font-size: 14px;
+    opacity: .9;
+}
+
+.ayohaMembershipSuccessSpark.spark1 {
+    top: 16px;
+    left: 16px;
+}
+
+.ayohaMembershipSuccessSpark.spark2 {
+    right: 16px;
+    bottom: 18px;
+}
+
+.ayohaMembershipSuccessHeader {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.18;
+    color: #47404f;
+    letter-spacing: -0.4px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.ayohaMembershipSuccessSubTitle {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #7b2cff;
+    margin-bottom: 14px;
+}
+
+.ayohaMembershipSuccessBadge {
+    display: inline-block;
+    margin: 0 auto 18px auto;
+    align-self: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f7eaff 0%, #f2e3ff 100%);
+    color: #9333ea;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgba(168, 85, 247, 0.15);
+}
+
+.ayohaMembershipSuccessMessage {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #6c6672;
+    margin-bottom: 22px;
+    padding: 0 6px;
+}
+
+.ayohaMembershipSuccessBtn {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px 18px;
+    border-radius: 16px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #d43cff 0%, #943dff 55%, #6f2dff 100%);
+    box-shadow:
+        0 14px 28px rgba(145, 53, 255, 0.28),
+        inset 0 -2px 0 rgba(0,0,0,.08);
+    cursor: pointer;
+}
+
+.ayohaMembershipSuccessMaybeLater {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #a28ab7;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.ayohaMembershipSuccessFooter {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #f1e8f8;
+    text-align: center;
+}
+
+.ayohaMembershipSuccessLogo {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.ayohaMembershipSuccessLogo img {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+}
+
+.ayohaMembershipSuccessBrandTitle {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    background: linear-gradient(135deg, #c219d8 0%, #7b2cff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ayohaMembershipSuccessBrandTagline {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a46ec9;
+    margin-top: 4px;
+}
+
+
+

@@ -1635,10 +1635,10 @@ function FloatPanel_AyohaeWallet_Setting_Insert() {
                    
                     FloatPanel_AyohaeWallet_SettingHide();
                     FloatPanel_AyohaStore_CheckOut_PlayAyohaPointSound();
-                    FloatPanel_AyohaStore_CartHide();
-                    FloatPanel_AyohaStore_CheckOutHide();
-                    FloatPanel_AyohaStore_SaleItemDetailHide();
-                    FloatPanel_AyohaStoreHide();
+                    FloatPanel_AyohaStore_CartHide(false);
+                    FloatPanel_AyohaStore_CheckOutHide(false);
+                    FloatPanel_AyohaStore_SaleItemDetailHide(false);
+                    FloatPanel_AyohaStoreHide(false);
                     // swalFireSuccesDynamicIconWithMessage("resources/icons/orderplacedAnim.gif", "Order has been submit successfully!");
                    
                     FloatPanel_AyohaeWallet_Setting_LoadAyohaEwallet();
@@ -1749,10 +1749,10 @@ function FloatPanel_AyohaeWallet_Setting_Update() {
 
                     FloatPanel_AyohaeWallet_SettingHide();
                    // FloatPanel_AyohaStore_CheckOut_PlayAyohaPointSound();
-                    FloatPanel_AyohaStore_CartHide();
-                    FloatPanel_AyohaStore_CheckOutHide();
-                    FloatPanel_AyohaStore_SaleItemDetailHide();
-                    FloatPanel_AyohaStoreHide();
+                    FloatPanel_AyohaStore_CartHide(false);
+                    FloatPanel_AyohaStore_CheckOutHide(false);
+                    FloatPanel_AyohaStore_SaleItemDetailHide(false);
+                    FloatPanel_AyohaStoreHide(false);
                     // swalFireSuccesDynamicIconWithMessage("resources/icons/orderplacedAnim.gif", "Order has been submit successfully!");
 
                    // FloatPanel_AyohaeWallet_Setting_LoadAyohaEwallet();
@@ -1846,12 +1846,12 @@ function FloatPanel_AyohaeWallet_Setting_UpdateDebitLimit() {
 
                 if (data.success == "true") {
 
-                    FloatPanel_AyohaeWallet_SettingHide();
+                    FloatPanel_AyohaeWallet_SettingHide(false);
                    // FloatPanel_AyohaStore_CheckOut_PlayAyohaPointSound();
-                    FloatPanel_AyohaStore_CartHide();
-                    FloatPanel_AyohaStore_CheckOutHide();
-                    FloatPanel_AyohaStore_SaleItemDetailHide();
-                    FloatPanel_AyohaStoreHide();
+                    FloatPanel_AyohaStore_CartHide(false);
+                    FloatPanel_AyohaStore_CheckOutHide(false);
+                    FloatPanel_AyohaStore_SaleItemDetailHide(false);
+                    FloatPanel_AyohaStoreHide(false);
                     // swalFireSuccesDynamicIconWithMessage("resources/icons/orderplacedAnim.gif", "Order has been submit successfully!");
 
                    // FloatPanel_AyohaeWallet_Setting_LoadAyohaEwallet();

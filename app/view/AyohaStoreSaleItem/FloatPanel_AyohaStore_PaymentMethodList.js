@@ -985,10 +985,10 @@ orders = strOrder.replace("undefined", "");
 if( GetCurrentPhoneNumber()){
 
 }else{
-    FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
+    FloatPanel_CheckOut_MembershipCardHide(false);
     swalFireFail("Please Update Your Mobile Phone No!");
     SingleTap_Open_EditProfile();
-  //  LoadingPanelHide();
+  //  LoadingPanelHide(false);
     return;
 }
     
@@ -1209,8 +1209,8 @@ alert("error value globalFloatPanel_MembershipCardList_NotYetSubscribed_paymentC
 if( GetCurrentPhoneNumber()){
 
 }else{
-    LoadingPanelHide();
-    FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
+    LoadingPanelHide(false);
+  //  FloatPanel_CheckOut_MembershipCardHide(false)();
     swalFireFail("Please Update Your Mobile Phone No!");
     SingleTap_Open_EditProfile();
     
@@ -1319,13 +1319,13 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                                 clearInterval(CheckPaymentGatewayTransaction_timer);
                                 no = 0;
                                
-                               FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
-                               FloatPanel_MembershipCardList_NotYetSubscribedHide();
-                               FloatPanel_MembershipCardManagement_TermAndConditionHide();              
-                               FloatPanel_MembershipCardList_UpgradeHide();
-                               FloatPanel_RewardStoreMembershipCardHide();                           
-                               FloatPanel_RewardStoreMembershipCardHide();
-                               FloatPanel_OrderCartHide();
+                               FloatPanel_CheckOut_MembershipCardHide(false);
+                               FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
+                               FloatPanel_MembershipCardManagement_TermAndConditionHide(false);              
+                               FloatPanel_MembershipCardList_UpgradeHide(false);
+                               FloatPanel_RewardStoreMembershipCardHide(false);                           
+                               FloatPanel_RewardStoreMembershipCardHide(false);
+                               FloatPanel_OrderCartHide(false);
                                updateSubscriptionStatus(billExternalID_ext);
                              //Disabled 22/12/2025,tak perlu reload list ni sebab page akn direct ke merchant perk atau check In // FloatPanel_AyohaStore_PaymentMethodList_MembershipCardLoadBySubscriberAccNoDashboardMainStore(billExternalID_ext);
                
@@ -1341,7 +1341,7 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                                
                                 
                                 if (popUpExternalwindow)
-                                LoadingPanelHide();
+                                LoadingPanelHide(false);
                                 popUpExternalwindow.close(); 
                                
                                                       
@@ -1357,8 +1357,8 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
 
                         }
                         else {
-                            LoadingPanelHide();
-                            swalFireLoginFailed("Reading Failed!" + result.responseText.trim());
+                            LoadingPanelHide(false);
+                            swalFireFail("Reading Failed!" + result.responseText.trim());
                            
                         }
 
@@ -1366,8 +1366,8 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                     },
 
                     failure: function (result, request) {
-                        LoadingPanelHide();
-                        swalFireLoginFailed("Reading Failed!" + result.responseText.trim());
+                        LoadingPanelHide(false);
+                        swalFireFail("Reading Failed!" + result.responseText.trim());
 
                     }
 
@@ -1379,7 +1379,7 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                 if (popUpExternalwindow.closed) {
                     clearInterval(CheckPaymentGatewayTransaction_timer);
                                 no = 0;
-                                LoadingPanelHide();
+                                LoadingPanelHide(false);
                     // You can add any additional actions to take once the window is closed here
                 }
 
@@ -1461,8 +1461,8 @@ function ProductInvoice_CheckPaymentGatewayTransaction_AyohaOnlineStore(billExte
 
                         }
                         else {
-                            LoadingPanelHide();
-                            swalFireLoginFailed("Reading Failed!" + result.responseText.trim());
+                            LoadingPanelHide(false);
+                            swalFireFail("Reading Failed!" + result.responseText.trim());
                            
                         }
 
@@ -1470,8 +1470,8 @@ function ProductInvoice_CheckPaymentGatewayTransaction_AyohaOnlineStore(billExte
                     },
 
                     failure: function (result, request) {
-                        LoadingPanelHide();
-                        swalFireLoginFailed("Reading Failed!" + result.responseText.trim());
+                        LoadingPanelHide(false);
+                        swalFireFail("Reading Failed!" + result.responseText.trim());
 
                     }
 
@@ -1483,7 +1483,7 @@ function ProductInvoice_CheckPaymentGatewayTransaction_AyohaOnlineStore(billExte
                 if (popUpExternalwindow.closed) {
                     clearInterval(CheckPaymentGatewayTransaction_timer);
                                 no = 0;
-                                LoadingPanelHide();
+                                LoadingPanelHide(false);
                     // You can add any additional actions to take once the window is closed here
                 }
 
@@ -1733,12 +1733,12 @@ if(globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName=="DINE IN"){
                    // FloatPanel_RewardStoreHide();        
                   //  FloatPanel_OrderHistoryHide();
                   //  FloatPanel_OrderCartHide();
-                 //   FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
+                 //   FloatPanel_CheckOut_MembershipCardHide(false)();
                   //  FloatPanel_MembershipCardList_NotYetSubscribedHide();
                  //   FloatPanel_MembershipCardManagement_TermAndConditionHide();              
                   //  FloatPanel_MembershipCardList_UpgradeHide();
                  //   FloatPanel_RewardStoreMembershipCardHide();                           
-                  //  LoadingPanelHide();
+                  //  LoadingPanelHide(false);
                   //  FloatPanel_AyohaStore_PaymentMethodList_MembershipCardLoadBySubscriberAccNoDashboardMainStore(billExternalID_ext);
     
     
@@ -1791,19 +1791,19 @@ if(globalFloatPanel_AyohaStore_DeliveryChargeList_DeliveryName=="DINE IN"){
                    
                 }
                 Ext.Viewport.unmask();
-                LoadingPanelHide();
+                LoadingPanelHide(false);
 
             },
 
             failure: function (result, request) {
-                LoadingPanelHide();
+                LoadingPanelHide(false);
                 swalFireFail("failure! " + result.responseText.trim());
-               // swalFireLoginFailed("Reading Failed!" + result.responseText.trim());
+               // swalFireFail("Reading Failed!" + result.responseText.trim());
                 globalFloatPanel_AyohaStore_CartSumItemSumPrice = 0.00;
                 globalFloatPanel_AyohaStore_CartTotalItemQuantity = 0;
                 globalFloatPanel_AyohaStore_Cart_ItemCartCode = "NewItemCartCode";
                 Ext.Viewport.unmask();
-               // LoadingPanelHide();
+               // LoadingPanelHide(false);
             }
 
         });
@@ -1846,7 +1846,7 @@ function updateSubscriptionStatus(billExternalReferenceNo){
               'Content-Type': 'application/json; charset=utf-8'
             },
             success: function (result, request) {
-                FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
+                FloatPanel_CheckOut_MembershipCardHide(false);
                 FloatPanel_MembershipCardList_NotYetSubscribedHide();
                 swalFireHoorayMessage("Welcome aboard! 🚀 Your membership was successful. You can now view your card in the Membership Card List.");
                // FloatPanel_AyohaStore_PaymentMethodList_MembershipCardAgree();
@@ -2077,7 +2077,7 @@ function FloatPanel_AyohaStore_PaymentMethodList_MembershipsInsertPayAtCounter()
               
                 FloatPanel_MembershipCardList_UpgradeHide();
                 FloatPanel_RewardStoreMembershipCardHide();
-                FloatPanel_AyohaStore_CheckOut_MembershipCardHide();
+                FloatPanel_CheckOut_MembershipCardHide(false);
                 FloatPanel_MembershipCardList_NotYetSubscribedHide();
                 FloatPanel_RewardStoreMembershipCardHide();
                 FloatPanel_OrderCartHide();
@@ -2127,7 +2127,7 @@ function FloatPanel_AyohaStore_PaymentMethodList_MembershipCardLoadBySubscriberA
         Ext.getCmp('Dashboard_MyAccount_UnSubscribedMembershipCardList').setStore(_DataStore_MembershipCardLoadBySubscriberAccNoDashboardMainStore);
        // alert(count);
        updateSubscriptionStatus(billExternalID_ext);
-        LoadingPanelHide();
+        LoadingPanelHide(false);
 
     });
     task.delay(500);
@@ -2183,14 +2183,14 @@ function ProductInvoice_SubscriptionsInsertUpdate(){
           
             if (data.success == "true") {
                ProductInvoice_MakePayment();
-              LoadingPanelHide();
+              LoadingPanelHide(false);
               return;
             //  FloatPanel_AyohaStore_AyohaPointCollectedAnimHide();
             }
             else {
                // alert( data.message)
-                LoadingPanelHide();
-                swalFireLoginFailed("Subscribtion Failed!" + data.message);
+                LoadingPanelHide(false);
+                swalFireFail("Subscribtion Failed!" + data.message);
                
             }
 
@@ -2198,9 +2198,9 @@ function ProductInvoice_SubscriptionsInsertUpdate(){
         },
 
         failure: function (result, request) {
-            LoadingPanelHide();
+            LoadingPanelHide(false);
          // alert( data.message)
-            swalFireLoginFailed("Subscribtion failure!" + result.responseText.trim());
+            swalFireFail("Subscribtion failure!" + result.responseText.trim());
 
         }
 
