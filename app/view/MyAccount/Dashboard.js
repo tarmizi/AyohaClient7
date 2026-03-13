@@ -18490,7 +18490,7 @@ Ext.getCmp('containerDashboard_CheckOut').setHidden(false);
 //Ext.getCmp('MainMaincontainerDashbord').setHeight(2330); 
 Ext.getCmp('MainMaincontainerDashbord').setHeight(3100); 
             Dashboard_MerchantDetailPageShow();
-            LoadingPanelHide();
+            LoadingPanelHide(false);
 //alert('checkin')
 
 

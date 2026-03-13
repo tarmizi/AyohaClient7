@@ -325,6 +325,7 @@ function FloatPanel_CheckOut_MembershipCardCreateIfNeeded() {
                                                      xtype: 'container',
                                                      id: 'containerFloatPanel_CheckOut_MembershipCard_ConfirmPay',
                                                    name: 'namecontainerFloatPanel_CheckOut_MembershipCard_ConfirmPay',
+                                                   hidden:true,
                                                      width: '95%',
                                                      height: 90,
                                                      style: 'background-color:transparent;',
@@ -349,6 +350,38 @@ function FloatPanel_CheckOut_MembershipCardCreateIfNeeded() {
                                      
                                                      ]
                                                  },
+
+
+
+                                                 {
+                                                    xtype: 'container',
+                                                    id: 'containerFloatPanel_CheckOut_MembershipCard_FreeMembership',
+                                                    hidden:true,
+                                                  name: 'namecontainerFloatPanel_CheckOut_MembershipCard_FreeMembership',
+                                                    width: '95%',
+                                                    height: 90,
+                                                    style: 'background-color:transparent;',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        pack: 'center',
+                                                        align: 'center'
+   
+                                                    },
+                                                    items: [
+
+                                                       {
+                                width: '100%',
+                                 height: 90,
+                              id: 'htmlFloatPanel_CheckOut_MembershipCard_ConfirmPayText_FreeMembership',                             
+                           html:
+                            '<div class="ayohaMActions">' +
+                              '<button class="ayohaCheckOutBtn" >🎉 100% FREE, Just a Tab Away! </button>' +
+                             
+                           '</div>' 
+                           },
+                                    
+                                                    ]
+                                                },
     
                                                  {
                                                      xtype: 'container',
@@ -1739,6 +1772,7 @@ itemTpl: new Ext.XTemplate(
                                          items: [
                                              {
                                                  id: 'htmlFloatPanel_CheckOut_MembershipCard_PaymentMethod',
+                                                 hidden:true,
                                                  margin: '0 0 0 0',
 
                                                  // zIndex: -10,
@@ -1750,6 +1784,22 @@ itemTpl: new Ext.XTemplate(
                                              
                                              
                                                 },
+
+
+                                                {
+                                                    id: 'htmlFloatPanel_CheckOut_MembershipCard_PaymentMethod_FOC',
+                                                    hidden:true,
+                                                    margin: '0 0 0 0',
+   
+                                                    // zIndex: -10,
+                                                    width: '90%',
+                                                    // html: '<textarea id="input-FloatPanel_AyohaStore_SearchProduct" style="width:97%;height: 30px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 4px;background-color: #f8f8f8;font-size: 12px;resize: none;" placeholder="Search Product"></textarea>',
+                                                    // html: '<input type="text"  id="input-FloatPanel_AyohaStoreMerchant_AddEditItem_Descriptions"  style="border-color:black;color:black;width:100%;text-align: left;font-size:14px;font-weight:bold;width:90%;height:30px;">'
+                                                   // html: '<input type="text" id="input-FloatPanel_CheckOut_MembershipCard_PaymentMethod" readOnly onClick="FloatPanel_AyohaStore_PaymentMethodListShow()" style="width:100%;height: 32px;padding: 5px 5px;box-sizing: border-box;border: 1px solid #ccc;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 3px"  placeholder="--- Select Payment Method ---">',
+                                                    html: '<input type="text" id="input-FloatPanel_CheckOut_MembershipCard_PaymentMethod_FOC" readOnly  style="width:100%;height: 32px;padding: 5px 5px; border-top:1px none grey;border-left:1px none grey;border-right:1px none grey;border-bottom:1px none grey;border-radius: 0px;background-color: #f0f2f5;font-size: 12px;color: black;font-weight:bold;text-align:center;margin:0px 0px 0px 0px"  placeholder="--- No Payment Needed ! FREE Membership ---">',
+                                                
+                                                
+                                                   },
                                          ]
                                      },
                                        {
@@ -2160,6 +2210,30 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
         
        // Ext.getCmp('radioBtnFloatPanel_CheckOut_MembershipCard_OrderOption_CancelOrder').setHidden(true);
         Ext.getCmp('radioBtnFloatPanel_CheckOut_MembershipCard_OrderOption_OrderOnly').setHidden(false);
+
+        Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_ConfirmPay').setHidden(true);
+        Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_FreeMembership').setHidden(false);
+
+        Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_PaymentMethod').setHidden(true);
+        Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_PaymentMethod_FOC').setHidden(false);
+
+        Ext.getCmp('radioBtnFloatPanel_CheckOut_MembershipCard_OrderOption_MakePayment').setChecked(false);
+        Ext.getCmp('radioBtnFloatPanel_CheckOut_MembershipCard_OrderOption_MakePayment').setDisabled(true);
+
+if(globalFloatPanel_MembershipCardList_NotYetSubscribed_price>0){
+    Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_ConfirmPay').setHidden(false);
+    Ext.getCmp('containerFloatPanel_CheckOut_MembershipCard_FreeMembership').setHidden(true);
+    Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_PaymentMethod').setHidden(false);
+        Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_PaymentMethod_FOC').setHidden(true);
+
+        Ext.getCmp('radioBtnFloatPanel_CheckOut_MembershipCard_OrderOption_MakePayment').setChecked(true);
+        Ext.getCmp('radioBtnFloatPanel_CheckOut_MembershipCard_OrderOption_MakePayment').setDisabled(false);
+
+
+}
+
+
+
     
         var containerViewnamecontainerFloatPanel_CheckOut_MembershipCard_OrderOnly = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_CheckOut_MembershipCard_OrderOnly]')[0];
         var containerViewElnamecontainerFloatPanel_CheckOut_MembershipCard_OrderOnly = containerViewnamecontainerFloatPanel_CheckOut_MembershipCard_OrderOnly.element;
@@ -2205,6 +2279,23 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
         );
     
         
+
+
+
+        var containerViewnamecontainerFloatPanel_CheckOut_MembershipCard_FreeMembership = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_CheckOut_MembershipCard_FreeMembership]')[0];
+        var containerViewElnamecontainerFloatPanel_CheckOut_MembershipCard_FreeMembership = containerViewnamecontainerFloatPanel_CheckOut_MembershipCard_FreeMembership.element;
+        containerViewElnamecontainerFloatPanel_CheckOut_MembershipCard_FreeMembership.on('tap',
+          function (event, node, options, eOpts) {
+    
+              // FloatPanel_AyohaStore_Cart_Order_viaWhatsApp();
+             // FloatPanel_CheckOut_MembershipCard_OrderOnly_SendOrder();
+             FloatPanel_CheckOut_MembershipCard_MembershipsInsertPayFOC();
+          }
+        );
+
+
+
+
     
         var containerViewnamecontainerFloatPanel_CheckOut_MembershipCard_PaymentMethod_AyohaeWalletInner_AddeWallet = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_CheckOut_MembershipCard_PaymentMethod_AyohaeWalletInner_AddeWallet]')[0];
         var containerViewElnamecontainerFloatPanel_CheckOut_MembershipCard_PaymentMethod_AyohaeWalletInner_AddeWallet = containerViewnamecontainerFloatPanel_CheckOut_MembershipCard_PaymentMethod_AyohaeWalletInner_AddeWallet.element;
@@ -2350,11 +2441,21 @@ function FloatPanel_CheckOut_MembershipCard_LoadMembershipCard() {
         
  var record = records[0]; // Access only the first record
  AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('MembershipCardCode');
+ AppState.MainDashboard.MembershipCardFeePaymentCycle  = record.get('MembershipCardFeePaymentCycle');
+ AppState.MainDashboard.CountStar  = record.get('CountStar');
+ AppState.MainDashboard.CountReviewer  = record.get('CountReviewer');
+ globalFloatPanel_MembershipCardList_NotYetSubscribed_price=parseInt(record.get('MembershipCardFee'));
+ document.getElementById('ayohaOrderSummaryMembershipFee').textContent = "00.00";
+ document.getElementById('ayohaOrderSummaryGrandTotal').textContent = "00.00";
+ if(record.get('MembershipCardFee')){
+    document.getElementById('ayohaOrderSummaryMembershipFee').textContent = parseFloat(record.get('MembershipCardFee')).toFixed(2);
+    document.getElementById('ayohaOrderSummaryGrandTotal').textContent = parseFloat(record.get('MembershipCardFee')).toFixed(2);
+ }
  
 
              Ext.getCmp('FloatPanel_CheckOut_MembershipCard_PurchasedMembershipCard').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
             
-           
+            
              // setScreenWidthMembershipCardCheckIn(count,jenis)
             setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
            
@@ -2381,39 +2482,87 @@ function FloatPanel_CheckOut_MembershipCard_LoadMembershipCard() {
 
 
 
- function Staging_FloatPanel_CheckOut_MembershipCard_PaymentOrderAndConfirmPayInsert() {
-        //alert(globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus);
-        ////return;
-       
+
+
+
+
+
+
+
+
+
     
-        if (globalDashboardisUserHasEwalletAccount == "N") {
-            FloatPanel_AyohaeWallet_SettingShow_CreateNewAccount();
-            FloatPanel_AyohaeWalletHide();
-            return;
-        }
-        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "OrderPaid") {
-          //  FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_ReOrder_MakePayment();
-    
-            FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_ReOrder_MakePayment_Validate()
-            return
-        }
-        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "CheckOut") {
-            FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_Validate();
-            return
-        }
-    
-       
-        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "NewOrder") {
-            //FloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay();
-            FloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay_Validate();
-            return;
-        }
-    
-        if (globalFloatPanel_AyohaStore_CheckOut_MembershipCardOrderStatus == "Order_Confirmed") {
-            FloatPanel_AyohaStore_CheckOut_MembershipCardConfirmPay_Validate();
-         //   FloatPanel_AyohaStore_CheckOut_MembershipCardAyohaStoreOrderAyohaStorePaymentOrderAndConfirmPayInsert_Validate();
-            return
-        }
-    
-       
+function FloatPanel_CheckOut_MembershipCard_MembershipsInsertPayFOC() {
+
+    if(globalFloatPanel_MembershipCardList_NotYetSubscribed_price){
+
+    }else{
+        globalFloatPanel_MembershipCardList_NotYetSubscribed_price="00.00"
     }
+    var objn = {
+        "CampaignEnterpriseAccNo":AppState.MainDashboard.EnterpriseAccNo,
+        "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
+        //"MembershipByMethod": "AyohaStoreRequest",
+        "MembershipByMethod": 'FromMainPage_HScroller',        
+        "ReferalSubscriberAccNo": "NA",
+        "MembershipCardCode": AppState.MainDashboard.CheckIn_MembershipCardCode,
+        "CreatedBy":GetCurrAyohaUserAccountNo(),
+        "SubscriptionCode": GetCurrAyohaUserAccountNo()+'-'+AppState.MainDashboard.EnterpriseAccNo+'-'+AppState.MainDashboard.CheckIn_MembershipCardCode,
+        "SubscribedPackage":AppState.MainDashboard.MembershipCardFeePaymentCycle,
+        "PackagePrice":globalFloatPanel_MembershipCardList_NotYetSubscribed_price,
+    };
+    console.log(objn);
+
+
+
+
+    Ext.Ajax.request({
+
+        // type: "POST",
+
+        // url: GetAPIurl() + '/Memberships/MembershipsInsertMembershipCardFOCFee',
+
+        // dataType: "json",
+        // data: JSON.stringify(obj),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
+
+        
+        url: GetAPIurl() + '/Memberships/MembershipsInsertMembershipCardFOCFee',
+        method: 'POST',                 // ✅ betul
+        jsonData: objn,                 // ✅ auto encode JSON + set body
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        success: function (result, request) {
+
+            data = Ext.decode(result.responseText.trim());
+
+            if (data.success == "true") {
+                swalFireHoorayMessage("Success As Membership");
+               // FloatPanel_CheckOut_MembershipCardHide(false);
+              //  FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
+              //  FloatPanel_MembershipCardManagement_TermAndConditionHide(false);              
+                // FloatPanel_MembershipCardList_UpgradeHide(false);
+                // FloatPanel_RewardStoreMembershipCardHide(false);                           
+                // FloatPanel_RewardStoreMembershipCardHide(false);
+                // FloatPanel_OrderCartHide(false);
+               // updateSubscriptionStatus(billExternalID_ext);
+              
+            }
+            else {
+
+                swalFireFail("Membership Card Failed!!!" + "<br><font size=1>" + result.responseText.trim() + "</font>");
+            }
+            Ext.Viewport.unmask();
+
+        },
+
+        failure: function (result, request) {
+            Ext.Viewport.unmask();
+            swalFireFail("Membership Card Failure!!!" + "<br><font size=1>" + result.responseText.trim() + "</font>");
+        }
+
+    });
+}

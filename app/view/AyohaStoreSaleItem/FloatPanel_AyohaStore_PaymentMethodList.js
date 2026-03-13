@@ -1319,13 +1319,13 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                                 clearInterval(CheckPaymentGatewayTransaction_timer);
                                 no = 0;
                                
-                               FloatPanel_CheckOut_MembershipCardHide(false);
-                               FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
-                               FloatPanel_MembershipCardManagement_TermAndConditionHide(false);              
-                               FloatPanel_MembershipCardList_UpgradeHide(false);
-                               FloatPanel_RewardStoreMembershipCardHide(false);                           
-                               FloatPanel_RewardStoreMembershipCardHide(false);
-                               FloatPanel_OrderCartHide(false);
+                            //    FloatPanel_CheckOut_MembershipCardHide(false);
+                            //    FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
+                            //    FloatPanel_MembershipCardManagement_TermAndConditionHide(false);              
+                            //    FloatPanel_MembershipCardList_UpgradeHide(false);
+                            //    FloatPanel_RewardStoreMembershipCardHide(false);                           
+                            //    FloatPanel_RewardStoreMembershipCardHide(false);
+                            //    FloatPanel_OrderCartHide(false);
                                updateSubscriptionStatus(billExternalID_ext);
                              //Disabled 22/12/2025,tak perlu reload list ni sebab page akn direct ke merchant perk atau check In // FloatPanel_AyohaStore_PaymentMethodList_MembershipCardLoadBySubscriberAccNoDashboardMainStore(billExternalID_ext);
                
@@ -1380,6 +1380,7 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                     clearInterval(CheckPaymentGatewayTransaction_timer);
                                 no = 0;
                                 LoadingPanelHide(false);
+                                swalFireHoorayMessage("Success As Membership");
                     // You can add any additional actions to take once the window is closed here
                 }
 

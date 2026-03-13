@@ -21,7 +21,7 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
         height: '100%',
         width: '100%',
         centered: true,
-
+        closeAction: 'destroy',
         floated: true,
         fullscreen: true,
         modal: true,
@@ -32,14 +32,14 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
       //  style: 'background: rgba(20,10,30,.50);backdrop-filter: blur(3px);-webkit-backdrop-filter: blur(3px);',
         style: 'background: rgba(20,10,30,.45); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);',
 
-        showAnimation: { type: 'popIn', duration: 180, easing: 'ease-out' },
-        hideAnimation: { type: 'popOut', duration: 250, easing: 'ease-out' },
+        showAnimation: { type: 'popIn', duration: 350, easing: 'ease-out' },
+        hideAnimation: { type: 'popOut', duration: 350, easing: 'ease-out' },
 
         _data: {
             logoUrl: '',
             brandTitle: 'AYOHA REWARD',
             brandTagline: 'We Double Your Reward',
-            title: 'Welcome to Ayoha Reward! 🎉',
+            title: '',
             subtitle: 'Your membership is now active',
             badgeText: 'Membership Activated',
             message: 'A world of rewards, perks, and exclusive privileges is now yours to enjoy.',
@@ -62,13 +62,18 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
         indicators: false
     },
             layout: { type: 'vbox', pack: 'center', align: 'center' },
-            padding: 18,
+            padding: 8,
             style: 'background:transparent;',
             items: [{
                 xtype: 'container',
                 cls: 'ayohaMembershipSuccessShell',
                 items: [
-
+                    {
+                        xtype: 'component',
+                        itemId: 'cmpMembershipSuccessConfetti',
+                        cls: 'ayohaMembershipSuccessConfettiHost',
+                        html: ''
+                    },
                     {
                         xtype: 'component',
                         cls: 'ayohaMembershipSuccessClose',
@@ -95,12 +100,14 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
 
                     {
                         xtype: 'component',
+                        itemId: 'cmpMembershipSuccessIconTop',
                         cls: 'ayohaMembershipSuccessIconTop',
                         html:
                             '<div class="ayohaMembershipSuccessGiftAura">' +
                                 '<div class="ayohaMembershipSuccessSpark spark1">✦</div>' +
                                 '<div class="ayohaMembershipSuccessSpark spark2">✦</div>' +
-                                '<div class="ayohaMembershipSuccessGift">🎁</div>' +
+                               // '<div class="ayohaMembershipSuccessGift">🎁</div>' +
+                                '<div class="ayohaMembershipSuccessGift"><img src="'+AppState.MainDashboard.CheckIn_EnterpriseLogo+'" style="width:90px;height:90px;border-radius:50%;margin:8px 0px 0px 0px;" alt="Company Name"/></div>' +
                             '</div>'
                     },
 
@@ -114,9 +121,14 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                 xtype: 'component',
                                 cls: 'ayohaMembershipSuccessHeader',
                                 itemId: 'cmpMembershipSuccessTitle',
-                                html: 'Welcome to Ayoha Reward! 🎉'
+                                html: ''
                             },
-
+                            {
+                                xtype: 'component',
+                                cls: 'ayohaMembershipSuccessHeaderCongratulation',
+                                itemId: 'cmpMembershipSuccessTitleCongratulation',
+                                html: 'Congratulation! 🎉'
+                            },
                             {
                                 xtype: 'component',
                                 cls: 'ayohaMembershipSuccessSubTitle',
@@ -135,14 +147,14 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                 xtype: 'component',
                                 cls: 'ayohaMembershipSuccessMessage',
                                 itemId: 'cmpMembershipSuccessMessage',
-                                html: 'A world of rewards, perks, and exclusive privileges is now yours to enjoy.'
+                                html:  'You’re officially in. Enjoy a more rewarding experience with exclusive member benefits.'
                             },
 
                             {
                                 xtype: 'component',
                                 cls: 'ayohaMembershipSuccessBtn',
                                 itemId: 'cmpMembershipSuccessBtn',
-                                html: 'Start Exploring',
+                                html: 'View My Benefits',
                                 listeners: {
                                     element: 'element',
                                     tap: function (e) {
@@ -152,12 +164,27 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                         var view = cmp.up('#FloatPanel_MembershipSuccessModalID');
 
                                         if (!view) return;
-
-                                        FloatPanel_MembershipSuccessModalHide(false);
-
+                                      
                                         if (view._data && Ext.isFunction(view._data.onConfirmFn)) {
                                             view._data.onConfirmFn();
                                         }
+
+
+
+                                        FloatPanel_MembershipSuccessModalHide(false);
+ FloatPanel_CheckOut_MembershipCardHide(false);
+               FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
+
+                                       // FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)
+                                        FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(AppState.MainDashboard.CheckIn_MembershipCardCode
+                                            ,AppState.MainDashboard.EnterpriseAccNo
+                                            ,'YES'
+                                            ,AppState.MainDashboard.MembershipCardFeePaymentCycle
+                                            ,AppState.MainDashboard.CountStar
+                                            ,AppState.MainDashboard.CountReviewer);
+
+                                           // Dashboard_LoadLastCheckIn();
+
                                     }
                                 }
                             },
@@ -179,36 +206,40 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                         if (view._data && Ext.isFunction(view._data.onCancelFn)) {
                                             view._data.onCancelFn();
                                         }
-
+                                        Dashboard_LoadLastCheckIn();
                                         FloatPanel_MembershipSuccessModalHide(false);
+                                        FloatPanel_CheckOut_MembershipCardHide(false);
+                                                      FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
                                     }
                                 }
                             },
 
-                            {
-                                xtype: 'container',
-                                cls: 'ayohaMembershipSuccessFooter',
-                                items: [
-                                    {
-                                        xtype: 'component',
-                                        itemId: 'cmpMembershipSuccessLogo',
-                                        cls: 'ayohaMembershipSuccessLogo',
-                                        html: ''
-                                    },
-                                    {
-                                        xtype: 'component',
-                                        itemId: 'cmpMembershipSuccessBrandTitle',
-                                        cls: 'ayohaMembershipSuccessBrandTitle',
-                                        html: 'AYOHA REWARD'
-                                    },
-                                    {
-                                        xtype: 'component',
-                                        itemId: 'cmpMembershipSuccessBrandTagline',
-                                        cls: 'ayohaMembershipSuccessBrandTagline',
-                                        html: 'We Double Your Reward'
-                                    }
-                                ]
-                            }
+                            // {
+                            //     xtype: 'container',
+                            //     cls: 'ayohaMembershipSuccessFooter',
+                            //     items: [
+                            //         {
+                            //             xtype: 'component',
+                            //             itemId: 'cmpMembershipSuccessLogo',
+                            //             cls: 'ayohaMembershipSuccessLogo',
+                            //             html: ''
+                            //         },
+                            //         // {
+                            //         //     xtype: 'component',
+                            //         //     hidden:true,
+                            //         //     itemId: 'cmpMembershipSuccessBrandTitle',
+                            //         //     cls: 'ayohaMembershipSuccessBrandTitle',
+                            //         //     html: 'AYOHA REWARD'
+                            //         // },
+                            //         // {
+                            //         //     xtype: 'component',
+                            //         //       hidden:true,
+                            //         //     itemId: 'cmpMembershipSuccessBrandTagline',
+                            //         //     cls: 'ayohaMembershipSuccessBrandTagline',
+                            //         //     html: 'We Double Your Reward'
+                            //         // }
+                            //     ]
+                            // }
                         ]
                     }
                 ]
@@ -230,11 +261,11 @@ function FloatPanel_MembershipSuccessModalShow(cfg) {
     _FloatPanel_MembershipSuccessModal._data.logoUrl       = cfg.logoUrl || '';
     _FloatPanel_MembershipSuccessModal._data.brandTitle    = cfg.brandTitle || 'AYOHA REWARD';
     _FloatPanel_MembershipSuccessModal._data.brandTagline  = cfg.brandTagline || 'We Double Your Reward';
-    _FloatPanel_MembershipSuccessModal._data.title         = cfg.title || 'Welcome to Ayoha Reward! 🎉';
+    _FloatPanel_MembershipSuccessModal._data.title         = cfg.title || 'Welcome to CheGu Restaurant';
     _FloatPanel_MembershipSuccessModal._data.subtitle      = cfg.subtitle || 'Your membership is now active';
     _FloatPanel_MembershipSuccessModal._data.badgeText     = cfg.badgeText || 'Membership Activated';
     _FloatPanel_MembershipSuccessModal._data.message       = cfg.message || 'A world of rewards, perks, and exclusive privileges is now yours to enjoy.';
-    _FloatPanel_MembershipSuccessModal._data.buttonText    = cfg.buttonText || 'Start Exploring';
+    _FloatPanel_MembershipSuccessModal._data.buttonText    = cfg.buttonText || 'View My Benefits';
     _FloatPanel_MembershipSuccessModal._data.onConfirmFn   = cfg.onConfirmFn || null;
     _FloatPanel_MembershipSuccessModal._data.onCancelFn    = cfg.onCancelFn || null;
 
@@ -258,6 +289,10 @@ function FloatPanel_MembershipSuccessModalShow(cfg) {
 
     _FloatPanel_MembershipSuccessModal.show();
     _FloatPanel_MembershipSuccessModalisOpen = 'Y';
+    Ext.defer(function () {
+      //  alert('asdsasasad')
+        AyohaMembershipSuccessConfettiBurstFromLogo();
+    }, 500);
 
     if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
         AyohaBrowserBack.push('FloatPanel_MembershipSuccessModal', function () {
@@ -298,7 +333,135 @@ function FloatPanel_MembershipSuccessModalHide(fromBack, animCfg) {
             AyohaBrowserBack.close('FloatPanel_MembershipSuccessModal');
         }
     }
+ //   _FloatPanel_MembershipSuccessModal.destroy();
+  //  _FloatPanel_MembershipSuccessModal = null;
+   
+}
 
-    _FloatPanel_MembershipSuccessModal.destroy();
-    _FloatPanel_MembershipSuccessModal = null;
+
+
+
+
+
+function AyohaMembershipSuccessConfettiBurstFromLogo() {
+
+    if (!_FloatPanel_MembershipSuccessModal || _FloatPanel_MembershipSuccessModal.destroyed) {
+        console.log('burst stop: modal not ready');
+        return;
+    }
+
+    var hostCmp = _FloatPanel_MembershipSuccessModal.down('#cmpMembershipSuccessConfetti');
+    var iconCmp = _FloatPanel_MembershipSuccessModal.down('#cmpMembershipSuccessIconTop');
+
+    console.log('hostCmp=', hostCmp);
+    console.log('iconCmp=', iconCmp);
+
+    if (!hostCmp || !iconCmp || !hostCmp.el || !iconCmp.el) {
+        console.log('burst stop: host/icon/el missing');
+        return;
+    }
+
+    var hostEl = hostCmp.el.dom;
+    var iconEl = iconCmp.el.dom.querySelector('.ayohaMembershipSuccessGiftAura') || iconCmp.el.dom;
+
+    var hostRect = hostEl.getBoundingClientRect();
+    var iconRect = iconEl.getBoundingClientRect();
+
+    console.log('hostRect=', hostRect);
+    console.log('iconRect=', iconRect);
+
+    var originX = (iconRect.left - hostRect.left) + (iconRect.width / 2);
+    var originY = (iconRect.top - hostRect.top) + (iconRect.height / 2);
+
+    var colors = ['ayohaBurstPurple', 'ayohaBurstPink', 'ayohaBurstGold', 'ayohaBurstLilac', 'ayohaBurstWhite'];
+    var shapes = ['rect', 'rect', 'dot', 'diamond', 'ribbon'];
+
+    var html = '<div class="ayohaLogoBurstLayer">';
+
+    html += '<div class="ayohaLogoBurstGlow" style="left:' + (originX - 55) + 'px;top:' + (originY - 55) + 'px;"></div>';
+    html += '<div class="ayohaLogoBurstRing" style="left:' + (originX - 45) + 'px;top:' + (originY - 45) + 'px;"></div>';
+
+    var sparkles = [
+        { x: -36, y: -28, dx: -8,  dy: -18, delay: 0.00 },
+        { x:  28, y: -24, dx:  12, dy: -15, delay: 0.08 },
+        { x: -18, y:  10, dx: -12, dy:  10, delay: 0.12 },
+        { x:  22, y:  14, dx:  14, dy:  12, delay: 0.18 }
+    ];
+
+    for (var s = 0; s < sparkles.length; s++) {
+        html +=
+            '<div class="ayohaLogoBurstSpark" style="' +
+                'left:' + (originX + sparkles[s].x) + 'px;' +
+                'top:' + (originY + sparkles[s].y) + 'px;' +
+                '--sx:' + sparkles[s].dx + 'px;' +
+                '--sy:' + sparkles[s].dy + 'px;' +
+                'animation-delay:' + sparkles[s].delay + 's;' +
+            '">✦</div>';
+    }
+
+    for (var i = 0; i < 30; i++) {
+        var angleDeg = 18 + Math.random() * 144;
+        var angleRad = angleDeg * Math.PI / 180;
+        var distance = 80 + Math.random() * 165;
+
+        var tx = Math.cos(angleRad) * distance;
+        var ty = Math.sin(angleRad) * distance;
+
+        var delay = (Math.random() * 0.18).toFixed(2);
+        var dur = (0.95 + Math.random() * 0.55).toFixed(2);
+        var rot = ((Math.random() * 720) - 360).toFixed(0) + 'deg';
+
+        var colorCls = colors[Math.floor(Math.random() * colors.length)];
+        var shapeCls = shapes[Math.floor(Math.random() * shapes.length)];
+
+        html +=
+            '<span class="ayohaLogoBurstPiece ' + shapeCls + ' ' + colorCls + '" style="' +
+                'left:' + originX + 'px;' +
+                'top:' + originY + 'px;' +
+                '--tx:' + tx.toFixed(0) + 'px;' +
+                '--ty:' + ty.toFixed(0) + 'px;' +
+                '--rot:' + rot + ';' +
+                '--delay:' + delay + 's;' +
+                '--dur:' + dur + 's;' +
+            '"></span>';
+    }
+
+    for (var j = 0; j < 10; j++) {
+        var angleDeg2 = 200 + Math.random() * 140;
+        var angleRad2 = angleDeg2 * Math.PI / 180;
+        var distance2 = 22 + Math.random() * 45;
+
+        var tx2 = Math.cos(angleRad2) * distance2;
+        var ty2 = Math.sin(angleRad2) * distance2;
+
+        var delay2 = (Math.random() * 0.10).toFixed(2);
+        var dur2 = (0.70 + Math.random() * 0.25).toFixed(2);
+        var rot2 = ((Math.random() * 360) - 180).toFixed(0) + 'deg';
+
+        var colorCls2 = colors[Math.floor(Math.random() * colors.length)];
+        var shapeCls2 = shapes[Math.floor(Math.random() * shapes.length)];
+
+        html +=
+            '<span class="ayohaLogoBurstPiece ' + shapeCls2 + ' ' + colorCls2 + '" style="' +
+                'left:' + originX + 'px;' +
+                'top:' + originY + 'px;' +
+                '--tx:' + tx2.toFixed(0) + 'px;' +
+                '--ty:' + ty2.toFixed(0) + 'px;' +
+                '--rot:' + rot2 + ';' +
+                '--delay:' + delay2 + 's;' +
+                '--dur:' + dur2 + 's;' +
+            '"></span>';
+    }
+
+    html += '</div>';
+
+    hostCmp.setHtml(html);
+
+    Ext.defer(function () {
+        if (hostCmp && !hostCmp.destroyed) {
+            hostCmp.setHtml('');
+        }
+
+      
+    }, 1800);
 }

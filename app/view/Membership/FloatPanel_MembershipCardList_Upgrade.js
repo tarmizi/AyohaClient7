@@ -2083,8 +2083,8 @@ function FloatPanel_MembershipCardList_UpgradeShow_MyMembershipCard(EnterpriseHQ
    // FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadByEnterpriseAccNoStore(EnterpriseHQAccountNo, EnterpriseAccountNo);
     FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadByEnterpriseAccNoMembershipCardCodeStore(EnterpriseHQAccountNo, EnterpriseAccountNo, MembershipCardCode)
     
-    FloatPanel_MerchantDetailPageHide();
-    Dashboard_SearchMerchantListHide();
+   // FloatPanel_MerchantDetailPageHide();
+   // Dashboard_SearchMerchantListHide();
 
 
 }
@@ -2982,7 +2982,7 @@ function FloatPanel_MembershipCardList_Upgrade_StampCampaignLoadByEnterpriseAccN
 function FloatPanel_MembershipCardList_Upgrade_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore(MMCCode) {
   
   //  Ext.getStore('MembershipCardCampaingEntitledLoadByMembershipCardCodeStore').removeAll();
-    _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore.removeAll();
+  //  _DataStore_MembershipCardCampaingEntitledLoadByMembershipCardCodeStore.removeAll();
    
 
 
@@ -3008,10 +3008,10 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardCampaingEntitledLoa
         
                   
                    
-                    LoadingPanelHide();
+                    LoadingPanelHide(false);
                 } else {
                     console.error('Failed to load store data or no record found.');
-                    LoadingPanelHide();
+                    LoadingPanelHide(false);
                 }
             }
         });

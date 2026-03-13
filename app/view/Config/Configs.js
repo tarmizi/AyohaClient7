@@ -841,19 +841,21 @@ FloatPanel_MembershipSuccessModalShow({
     logoUrl: 'resources/icons/Logo/AyohaLogofullOrange.png',
     brandTitle: 'AYOHA REWARD',
     brandTagline: 'We Double Your Reward',
-    title: 'Welcome to Ayoha Reward! 🎉',
+    title:  AppState.MainDashboard.CheckIn_EnterpriseName ,
     subtitle: 'Your membership is now active',
     badgeText: 'Membership Activated',
-    message: 'A world of rewards, perks, and exclusive privileges is now yours to enjoy.',
-    buttonText: 'Start Exploring',
+    message: 'You’re officially in. Enjoy a more rewarding experience with exclusive member benefits.',
+    buttonText: 'View My Benefits',
     onConfirmFn: function () {
         // contoh:
         // FloatPanel_MembershipCardListShow();
         // CoreFunction_DashboardAyohaUser();
+        Dashboard_LoadLastCheckIn();
          FloatPanel_MembershipSuccessModalHide(false) ;
     },
     onCancelFn: function () {
         // optional
+        Dashboard_LoadLastCheckIn();
         FloatPanel_MembershipSuccessModalHide(false) ;
     }
 });

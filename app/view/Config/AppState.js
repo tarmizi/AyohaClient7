@@ -56,7 +56,9 @@ var AppState = {
               CheckIn_EnterpriseLogo:null,
                CheckIn_EnterpriseTagLine:null,
                CheckIn_EnterpriseFullAddress:null,
-
+               MembershipCardFeePaymentCycle:null,
+               CountStar:null,
+              CountReviewer:null,
 
     },
 

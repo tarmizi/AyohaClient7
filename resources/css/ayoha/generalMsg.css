@@ -4,7 +4,7 @@
 
 .ayohaMembershipSuccessWrap {
     width: 100%;
-    height: 100%;
+    height: 80%;
     background: transparent;
 }
 
@@ -20,7 +20,7 @@
     overflow: hidden;
     background: #ffffff;
     border-radius: 28px;
-    padding: 90px 22px 22px 22px;
+    padding: 70px 22px 22px 22px;
     box-shadow:
         0 20px 60px rgba(122, 44, 255, 0.25),
         0 10px 25px rgba(122, 44, 255, 0.14);
@@ -104,13 +104,28 @@
 
 .ayohaMembershipSuccessHeader {
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
     line-height: 1.18;
     color: #47404f;
     letter-spacing: -0.4px;
-    margin-top: 2px;
-    margin-bottom: 10px;
+    margin-top: -4px;
+    margin-bottom: 30px;
+    z-index: 20;
+}
+
+
+
+.ayohaMembershipSuccessHeaderCongratulation {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.18;
+    color: #7b2cff;
+    letter-spacing: -0.4px;
+    margin-top: -4px;
+    margin-bottom: 6px;
+    z-index: 20;
 }
 
 .ayohaMembershipSuccessSubTitle {
@@ -141,7 +156,7 @@
     font-weight: 400;
     line-height: 1.6;
     color: #6c6672;
-    margin-bottom: 22px;
+    margin-bottom: 62px;
     padding: 0 6px;
 }
 
@@ -172,14 +187,14 @@
 }
 
 .ayohaMembershipSuccessFooter {
-    margin-top: 22px;
-    padding-top: 18px;
+    margin-top: 12px;
+    padding-top: 8px;
     border-top: 1px solid #f1e8f8;
     text-align: center;
 }
 
 .ayohaMembershipSuccessLogo {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     text-align: center;
 }
 
@@ -209,3 +224,178 @@
 
 
 
+
+
+
+
+
+
+
+.ayohaMembershipSuccessShell{
+    position:relative;
+    overflow:visible;
+}
+
+.ayohaMembershipSuccessConfettiHost{
+    position:absolute !important;
+    left:0;
+    right:0;
+    top:-70px;
+    bottom:0;
+    z-index:25;
+    pointer-events:none;
+    overflow:visible;
+}
+
+.ayohaLogoBurstLayer{
+    position:absolute;
+    inset:0;
+    overflow:visible;
+    pointer-events:none;
+}
+.ayohaLogoBurstRing{
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:2px solid rgba(196,82,255,.22);
+    background:radial-gradient(circle, rgba(196,82,255,.12) 0%, rgba(196,82,255,0) 70%);
+    opacity:0;
+    animation: ayohaLogoBurstRing 700ms ease-out forwards;
+}
+
+.ayohaLogoBurstGlow{
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,79,216,.18) 0%, rgba(123,44,255,0) 72%);
+    filter:blur(8px);
+    opacity:0;
+    animation: ayohaLogoBurstGlow 900ms ease-out forwards;
+}
+
+.ayohaLogoBurstPiece{
+    position:absolute;
+    left:0;
+    top:0;
+    opacity:0;
+    pointer-events:none;
+    animation: ayohaLogoBurstFly var(--dur) cubic-bezier(.18,.84,.2,1) forwards;
+    animation-delay:var(--delay);
+    filter:drop-shadow(0 5px 12px rgba(141,53,255,.18));
+}
+
+.ayohaLogoBurstPiece.rect{
+    width:10px;
+    height:18px;
+    border-radius:4px;
+}
+
+.ayohaLogoBurstPiece.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.ayohaLogoBurstPiece.ribbon{
+    width:6px;
+    height:20px;
+    border-radius:999px;
+}
+
+.ayohaLogoBurstPiece.diamond{
+    width:12px;
+    height:12px;
+    border-radius:3px;
+}
+
+.ayohaBurstPurple{
+    background:linear-gradient(180deg,#c83cff 0%,#7b2cff 100%);
+}
+
+.ayohaBurstPink{
+    background:linear-gradient(180deg,#ff4fd8 0%,#d93cff 100%);
+}
+
+.ayohaBurstGold{
+    background:linear-gradient(180deg,#ffd86a 0%,#ffb800 100%);
+}
+
+.ayohaBurstLilac{
+    background:linear-gradient(180deg,#f4ddff 0%,#d9b8ff 100%);
+}
+
+.ayohaBurstWhite{
+    background:linear-gradient(180deg,#ffffff 0%,#f4efff 100%);
+}
+
+.ayohaLogoBurstSpark{
+    position:absolute;
+    color:#cf5cff;
+    font-size:14px;
+    line-height:1;
+    opacity:0;
+    animation: ayohaLogoBurstSpark 900ms ease-out forwards;
+}
+
+@keyframes ayohaLogoBurstFly{
+    0%{
+        opacity:0;
+        transform:translate(0,0) scale(.25) rotate(0deg);
+    }
+    10%{
+        opacity:1;
+        transform:translate(0,0) scale(.9) rotate(20deg);
+    }
+    75%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot));
+    }
+}
+
+@keyframes ayohaLogoBurstRing{
+    0%{
+        opacity:0;
+        transform:scale(.35);
+    }
+    25%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.18);
+    }
+}
+
+@keyframes ayohaLogoBurstGlow{
+    0%{
+        opacity:0;
+        transform:scale(.55);
+    }
+    35%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.25);
+    }
+}
+
+@keyframes ayohaLogoBurstSpark{
+    0%{
+        opacity:0;
+        transform:translate(0,8px) scale(.3) rotate(0deg);
+    }
+    30%{
+        opacity:1;
+        transform:translate(0,0) scale(1) rotate(16deg);
+    }
+    100%{
+        opacity:0;
+        transform:translate(var(--sx), var(--sy)) scale(.8) rotate(35deg);
+    }
+}
