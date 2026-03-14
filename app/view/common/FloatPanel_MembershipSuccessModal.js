@@ -158,32 +158,46 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                 listeners: {
                                     element: 'element',
                                     tap: function (e) {
-                                        if (e && e.stopEvent) e.stopEvent();
 
-                                        var cmp = Ext.Component.from(this);
-                                        var view = cmp.up('#FloatPanel_MembershipSuccessModalID');
-
-                                        if (!view) return;
-                                      
-                                        if (view._data && Ext.isFunction(view._data.onConfirmFn)) {
-                                            view._data.onConfirmFn();
-                                        }
-
-
-
+                                        LoadingPanelShow("resources/icons/loadingBlade01.gif", "Loading...");
                                         FloatPanel_MembershipSuccessModalHide(false);
- FloatPanel_CheckOut_MembershipCardHide(false);
-               FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
+                                       
+                                
+                                            
+                                        
 
-                                       // FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)
-                                        FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(AppState.MainDashboard.CheckIn_MembershipCardCode
+
+
+                                         FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(AppState.MainDashboard.CheckIn_MembershipCardCode
                                             ,AppState.MainDashboard.EnterpriseAccNo
                                             ,'YES'
                                             ,AppState.MainDashboard.MembershipCardFeePaymentCycle
                                             ,AppState.MainDashboard.CountStar
                                             ,AppState.MainDashboard.CountReviewer);
+                                            Dashboard_LoadLastCheckIn();
+                                            FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
+                                        //  Ext.defer(function () {
+                                          
+                                        //   }, 5500);
+                                       
+                                         // FloatPanel_CheckOut_MembershipCardHide(false);
 
-                                           // Dashboard_LoadLastCheckIn();
+
+                                        // if (e && e.stopEvent) e.stopEvent();
+
+                                        // var cmp = Ext.Component.from(this);
+                                        // var view = cmp.up('#FloatPanel_MembershipSuccessModalID');
+
+                                        // if (!view) return;
+                                      
+                                        // if (view._data && Ext.isFunction(view._data.onConfirmFn)) {
+                                        //     view._data.onConfirmFn();
+                                        // }
+
+
+
+                                       
+                                      
 
                                     }
                                 }
@@ -192,7 +206,7 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                             {
                                 xtype: 'component',
                                 cls: 'ayohaMembershipSuccessMaybeLater',
-                                html: 'Maybe Later',
+                                html: 'Continue Check-In Here !',
                                 listeners: {
                                     element: 'element',
                                     tap: function (e) {
@@ -206,10 +220,13 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                         if (view._data && Ext.isFunction(view._data.onCancelFn)) {
                                             view._data.onCancelFn();
                                         }
-                                        Dashboard_LoadLastCheckIn();
+                                        LoadingPanelShow("resources/icons/loadingBlade01.gif", "Loading...");
+                                       
                                         FloatPanel_MembershipSuccessModalHide(false);
                                         FloatPanel_CheckOut_MembershipCardHide(false);
                                                       FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
+                                                      FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
+                                                      Dashboard_LoadLastCheckIn();
                                     }
                                 }
                             },
@@ -288,7 +305,7 @@ function FloatPanel_MembershipSuccessModalShow(cfg) {
     } catch (e) {}
 
     _FloatPanel_MembershipSuccessModal.show();
-    _FloatPanel_MembershipSuccessModalisOpen = 'Y';
+   // _FloatPanel_MembershipSuccessModalisOpen = 'Y';
     Ext.defer(function () {
       //  alert('asdsasasad')
         AyohaMembershipSuccessConfettiBurstFromLogo();
@@ -311,10 +328,10 @@ function FloatPanel_MembershipSuccessModalHide(fromBack, animCfg) {
         return;
     }
 
-    if (!_FloatPanel_MembershipSuccessModal || _FloatPanel_MembershipSuccessModal.destroyed) {
-        _FloatPanel_MembershipSuccessModalisOpen = 'N';
-        return;
-    }
+    // if (!_FloatPanel_MembershipSuccessModal || _FloatPanel_MembershipSuccessModal.destroyed) {
+    //     _FloatPanel_MembershipSuccessModalisOpen = 'N';
+    //     return;
+    // }
 
     if (animCfg) {
         _FloatPanel_MembershipSuccessModal.hide(Ext.fx.Animation(animCfg));

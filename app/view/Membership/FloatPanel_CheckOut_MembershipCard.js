@@ -2353,17 +2353,25 @@ if(globalFloatPanel_MembershipCardList_NotYetSubscribed_price>0){
             _FloatPanel_CheckOut_MembershipCard.hide();
           }
          
-          isFloatPanel_CheckOut_MembershipCardOpen = 'N';isFloatPanel_CheckOut_MembershipCardOpen_ReOrder= 'N';
-         FloatPanel_CheckOut_MembershipCard_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed = 'N';
-          _FloatPanel_CheckOut_MembershipCard.destroy();
-          _FloatPanel_CheckOut_MembershipCard = null;
-
+          isFloatPanel_CheckOut_MembershipCardOpen = 'N';
+        //  isFloatPanel_CheckOut_MembershipCardOpen_ReOrder= 'N';
+        // FloatPanel_CheckOut_MembershipCard_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo_isUsed = 'N';
+         
          //  FloatPanel_MerchantDetailPageHide();
           //  Dashboard_SearchMerchantListHide();
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+
+
           if (fromBack !== true) {
-            AyohaBrowserBack.close('FloatPanel_CheckOut_MembershipCard');
-          }
+            if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.close) {
+                AyohaBrowserBack.close('FloatPanel_CheckOut_MembershipCard');
+            }
+        }
+
+        _FloatPanel_CheckOut_MembershipCard.destroy();
+       _FloatPanel_CheckOut_MembershipCard = null;
+
+
     }
     }
     

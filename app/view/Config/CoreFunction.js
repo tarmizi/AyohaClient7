@@ -490,11 +490,11 @@ function CoreFunction_DashboardLoadEnterprisesFavorite() {
 
                 Ext.getCmp('DataView_FavoriteCheckins').setStore(_DataStore_EnterprisesFavorite_LoadFavoriteStore)
                 
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             } else {
                  //alert(records.length)
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });
@@ -525,10 +525,10 @@ function CoreFunction_DashboardEnterprises_LoadRecentlyCheckIn() {
               
                 Ext.getCmp('DataView_RecentCheckins').setStore(_DataStore_EnterprisesLoadRecentlyCheckInStore)
                 
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });

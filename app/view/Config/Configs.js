@@ -847,16 +847,20 @@ FloatPanel_MembershipSuccessModalShow({
     message: 'You’re officially in. Enjoy a more rewarding experience with exclusive member benefits.',
     buttonText: 'View My Benefits',
     onConfirmFn: function () {
-        // contoh:
-        // FloatPanel_MembershipCardListShow();
-        // CoreFunction_DashboardAyohaUser();
-        Dashboard_LoadLastCheckIn();
-         FloatPanel_MembershipSuccessModalHide(false) ;
+      
+       // Dashboard_LoadLastCheckIn();
+        // FloatPanel_MembershipSuccessModalHide(false) ;
+
+
+
+
+
+            
     },
     onCancelFn: function () {
         // optional
-        Dashboard_LoadLastCheckIn();
-        FloatPanel_MembershipSuccessModalHide(false) ;
+       // Dashboard_LoadLastCheckIn();
+       // FloatPanel_MembershipSuccessModalHide(false) ;
     }
 });
 

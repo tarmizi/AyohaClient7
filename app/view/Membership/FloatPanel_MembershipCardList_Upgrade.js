@@ -2251,7 +2251,8 @@ function FloatPanel_MembershipCardList_UpgradeHide(fromBack,animCfg){
           }
           isFloatPanel_MembershipCardList_UpgradeOpen = 'N';
           _FloatPanel_MembershipCardList_Upgrade_isFirstLoad = "N";
-         
+          FloatPanel_CheckOut_MembershipCardHide(false);
+          FloatPanel_MembershipCardList_NotYetSubscribedHide(false);
         
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
           if (fromBack !== true) {

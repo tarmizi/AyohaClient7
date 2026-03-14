@@ -399,3 +399,132 @@
         transform:translate(var(--sx), var(--sy)) scale(.8) rotate(35deg);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaMicroTopLayer{
+    position:absolute;
+    top:12px;
+    left:12px;
+    right:12px;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    z-index:8;
+    pointer-events:none;
+  }
+  
+  .ayohaMicroFavBtn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:999px;
+    background:rgba(255,255,255,0.96);
+    box-shadow:0 8px 18px rgba(124,58,237,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    pointer-events:auto;
+    padding:0;
+  }
+  
+  .ayohaMicroFavBtn svg{
+    width:21px;
+    height:21px;
+    stroke:#d946ef;
+    stroke-width:2.2;
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  
+  .ayohaMicroFavBtn.isActive svg{
+    fill:#f5b3ef;
+    stroke:#d946ef;
+  }
+  
+  .ayohaMicroMemberTag{
+    display:none;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    min-height:38px;
+    border-radius:999px;
+    background:linear-gradient(180deg,#ffe4af 0%, #efb458 100%);
+    box-shadow:0 8px 18px rgba(239,180,88,0.28);
+    border:1px solid rgba(255,255,255,0.42);
+    pointer-events:auto;
+  }
+  
+  .ayohaMicroMemberText{
+    font-size:12px;
+    font-weight:800;
+    color:#5e3900;
+    letter-spacing:0.2px;
+    line-height:1;
+  }
+  
+  .ayohaMicroMemberDot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#fff7ea;
+    box-shadow:0 0 0 0 rgba(255,255,255,0.85);
+    flex-shrink:0;
+    animation:ayohaMemberDotPulse 1.8s ease-out infinite;
+  }
+  
+  .ayohaPulseSoft{
+    animation:ayohaMemberTagBreath 2.8s ease-in-out infinite;
+    transform-origin:center;
+  }
+  
+  @keyframes ayohaMemberDotPulse{
+    0%{
+      transform:scale(0.95);
+      box-shadow:0 0 0 0 rgba(255,255,255,0.75);
+    }
+    60%{
+      transform:scale(1.08);
+      box-shadow:0 0 0 8px rgba(255,255,255,0);
+    }
+    100%{
+      transform:scale(0.95);
+      box-shadow:0 0 0 0 rgba(255,255,255,0);
+    }
+  }
+  
+  @keyframes ayohaMemberTagBreath{
+    0%,100%{
+      transform:translateY(0) scale(1);
+    }
+    50%{
+      transform:translateY(-1px) scale(1.02);
+    }
+  }

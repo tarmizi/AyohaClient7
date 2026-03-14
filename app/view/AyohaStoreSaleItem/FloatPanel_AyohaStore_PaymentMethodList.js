@@ -1379,7 +1379,7 @@ function ProductInvoice_CheckPaymentGatewayTransaction(billExternalID_ext) {
                 if (popUpExternalwindow.closed) {
                     clearInterval(CheckPaymentGatewayTransaction_timer);
                                 no = 0;
-                                LoadingPanelHide(false);
+                               // LoadingPanelHide(false);
                                 swalFireHoorayMessage("Success As Membership");
                     // You can add any additional actions to take once the window is closed here
                 }
@@ -1847,9 +1847,9 @@ function updateSubscriptionStatus(billExternalReferenceNo){
               'Content-Type': 'application/json; charset=utf-8'
             },
             success: function (result, request) {
-                FloatPanel_CheckOut_MembershipCardHide(false);
-                FloatPanel_MembershipCardList_NotYetSubscribedHide();
-                swalFireHoorayMessage("Welcome aboard! 🚀 Your membership was successful. You can now view your card in the Membership Card List.");
+               // FloatPanel_CheckOut_MembershipCardHide(false);
+               // FloatPanel_MembershipCardList_NotYetSubscribedHide();
+               // swalFireHoorayMessage("Welcome aboard! 🚀 Your membership was successful. You can now view your card in the Membership Card List.");
                // FloatPanel_AyohaStore_PaymentMethodList_MembershipCardAgree();
             },
 

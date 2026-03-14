@@ -454,6 +454,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
           }
         
           isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
+          FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
          // RemovePages("FloatPanel_ForgotPasswordHide()");
         
           // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
@@ -469,7 +470,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
 
 
 
-function FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop(){
+function FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTopOri(){
     var cmp = Ext.getCmp('MainMaincontainerDashbord');
     if (!cmp) return;
   
@@ -493,6 +494,33 @@ function FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop(){
     }
   }
   
+
+  function FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop() {
+    var cmp = Ext.getCmp('MainMaincontainerDashbord');
+    if (!cmp) return false;
+
+    var cur = cmp;
+    var scroller, maxPos;
+
+    while (cur) {
+        scroller = cur.getScrollable ? cur.getScrollable() : null;
+
+        if (scroller && scroller.getMaxPosition) {
+            maxPos = scroller.getMaxPosition();
+
+            if (maxPos && maxPos.y > 0) {
+                scroller.scrollTo(0, 0, {
+                    duration: 650
+                });
+                return true;
+            }
+        }
+
+        cur = cur.getParent ? cur.getParent() : null;
+    }
+
+    return false;
+}
   
 
   function AyohaScrollToTop_AutoFind(startCmpId){
