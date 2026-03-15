@@ -2699,7 +2699,7 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadByEnterpriseAcc
                         var ModifiedMembershipNo = modelRecorded.get('ModifiedMembershipNo');
                         var ValidUntilDateMonthYearOnly = modelRecorded.get('ValidUntilDateMonthYearOnly');
                 
-                        var ModifiedUntilDate = modelRecorded.get('ModifiedUntilDate');
+                        var ModifiedUntilDate = modelRecorded.get('ModifiedUntilDate_Extend');
                         var ModifiedMemberSinceDate = modelRecorded.get('ModifiedMemberSinceDate');
                         var MembershipCardBackgroundImg_back = modelRecorded.get('MembershipCardBackgroundImg_back');
                 

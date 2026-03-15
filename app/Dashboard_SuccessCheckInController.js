@@ -2376,7 +2376,7 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo()
 
 function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPerks() {
 
-
+ //alert('SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPerks' + globalFloatPanelMerchantDetailPage_EnterpriseAccNo + ' - ' + GetCurrAyohaUserAccountNo()  )    
  _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setExtraParam('EnterpriseAccNo', globalFloatPanelMerchantDetailPage_EnterpriseAccNo);
  _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
  _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setUrl(GetAPIurl() + '/MembershipCard/MembershipCardLoadByEnterpriseAccNo_DashboardMain');
@@ -2385,7 +2385,7 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
 
  _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.load({
      callback: function (records, operation, success) {
-         // alert(records.length)
+        // alert(records.length)
          // alert(success)
          if (success && records.length > 0) {
         
@@ -2398,6 +2398,21 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
             
              Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
              
+
+
+Ext.getCmp('html_Dashboard_2ndline').setHtml('<div style="text-align:center;width:100%;">' +
+            '<span style="display:inline-block;padding:4px 10px;border-radius:999px;background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);color:#6B4300;font-size:10px;font-weight:800;letter-spacing:0.8px;vertical-align:middle;box-shadow:0 4px 10px rgba(255,194,45,0.20);">'+record.get('MembershipCardType')+'</span>' +
+            '<span style="display:inline-block;margin:0 8px;color:rgba(255,255,255,0.55);font-size:12px;vertical-align:middle;">•</span>' +
+            '<span style="display:inline-block;color:rgba(255,255,255,0.94);font-size:13px;font-weight:700;letter-spacing:0.2px;vertical-align:middle;">'+record.get('MembershipCardName')+'</span>' +
+          '</div>'
+);
+
+
+Ext.getCmp('html_Dashboard_3rdline').setHtml('<div style="color:rgba(255,255,255,0.78);text-align:center;font-size:11px;line-height:1.35;font-weight:600;letter-spacing:0.2px;width:100%;">Member ID '+record.get('MembershipNo')+' &nbsp;&nbsp;•&nbsp;&nbsp; Since '+record.get('MembershipStartDate_MonthYearOnly')+' </div>');
+
+
+
+            // alert(AppState.MainDashboard.isMember)
              if (AppState.MainDashboard.isMember=="YES"){
                 Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setHidden(false);
                 Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setHidden(true);
@@ -2414,7 +2429,7 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
             SuccessCheckinController_DashboardSuccessCheckIn_LoadVIEWMerchantDashboard_StoreActivity();
             
          } else {
-            
+             SuccessCheckinController_DashboardSuccessCheckIn_LoadVIEWMerchantDashboard_StoreActivity();
            //  globalisSuccessCheckinController_Dashboard_LoadVoucherPerksOpen="N";
            
          }

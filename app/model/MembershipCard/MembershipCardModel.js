@@ -42,6 +42,9 @@
       'ValidUntilDate',
       'MembershipDate',
       'TodayCheckInCount',
+      'MembershipStartDate',
+      'MembershipStartDate_MonthYearOnly',
+      'MembershipSince',
       {
         name: 'ModifiedTodayCheckInCount',
         convert: function (value, record) {
@@ -914,7 +917,7 @@ if(str){
                        }
                    }
                    , {
-                       name: 'ModifiedUntilDate',
+                       name: 'ModifiedUntilDate_Extend',
                        convert: function (value, record) {
                            // Mizi - 01113218926 - 9309422 - MMC - 02 - 23
                            // 0111 3218 9269
