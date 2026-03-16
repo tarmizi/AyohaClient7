@@ -2,7 +2,7 @@
 
 });
 
-var _FloatPanel_AyohaReward_PointTransactions;
+var _FloatPanel_AyohaReward_PointTransactions= null;
 
 
 var isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
@@ -12,33 +12,22 @@ var _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
 
 
 
+function FloatPanel_AyohaReward_PointTransactionsCreateIfNeeded() {
+    if (_FloatPanel_AyohaReward_PointTransactions && !_FloatPanel_AyohaReward_PointTransactions.destroyed) return;
 
 
-
-
-
-function FloatPanel_AyohaReward_PointTransactions() {
-
-    _FloatPanel_AyohaReward_PointTransactions =
-     Ext.create('Ext.Panel', {
-
-         xtype: 'container',
-         //height: 465,
-         height: '100%',
-         width: '100%',
-         id: 'FloatPanel_AyohaReward_PointTransactionsID',
-         draggable: false,
-         zIndex: 140,
-
-
-         centered: true,
-         //bottom: 64,
-         // zIndex: 100,
-         modal: true,
-         // hideOnMaskTap: true,
-         layout: {
-             type: 'fit'
-         },
+     _FloatPanel_AyohaReward_PointTransactions =
+     Ext.create('Ext.Container', {
+id: 'FloatPanel_AyohaReward_PointTransactionsID',
+         floated: true,
+        centered: true,
+        fullscreen: true,
+      //  closeAction: 'hide',
+      closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
          showAnimation: {
              type: 'popIn',
              duration: 250,
@@ -55,39 +44,16 @@ function FloatPanel_AyohaReward_PointTransactions() {
        // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
          style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
 
-         listeners: {
-             initialize: function (c) {
-                 this.element.on({
-                     swipe: function (e, node, options) {
-                         //if (e.direction == "up") {
-                         //    FloatPanel_AyohaReward_PointTransactionsHide();
-                         //}
-                         if (e.direction == "left") {
-                             _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'left',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
+           listeners: {
+ 
 
-                             }));
-                             isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-                             RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
-                         } if (e.direction == "right") {
-                             _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
-                                 type: 'slideOut',
-                                 direction: 'right',
-                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                 duration: 250
-
-                             }));
-                             isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-                             RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
-                         }
-                        
-                     }
-                 });
-             }
-         },
+            // ✅ kalau user tap mask, close macam standard
+            beforehide: function () {
+              // kalau hide dipanggil bukan dari function kita, block dulu
+              // (optional: boleh allow kalau kau nak)
+              return true;
+            }
+          },
 
 
          items: [
@@ -112,21 +78,12 @@ function FloatPanel_AyohaReward_PointTransactions() {
 
                         xtype: 'container',
                         width: '100%',
-                        // width: 40,
-                        //zIndex:-10,
-                        //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                        //hidden: true,
+                       height: ayoha_HeaderHeight(),
+                   style:ayohaThemeColor_Header(),
                         docked: 'top',
-                       height:50,
+                      
                         id: 'containerFloatPanel_AyohaReward_PointTransactionsHeader1',
-                        style: "background-color: transparent;",
-                        //style: {
-                        //    // background: '#D25959',
-                        //    background: 'transparent',
-                        //    // border: '2px'
-                        //},
-                        //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                        // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+                        
                         layout: {
                             type: 'hbox',
                             pack: 'center',
@@ -147,22 +104,24 @@ function FloatPanel_AyohaReward_PointTransactions() {
                                        xtype: 'button',
                                        id: 'btnFloatPanel_AyohaReward_PointTransactionsBack',
                                        height: 30,
-                                       width: 35,
-                                       margin: '0 0 0 0',
-                                       // iconCls: 'list',
-                                       html: '<div ><img src="resources/icons/backwhite03Ori.png"   width="25" height="20" alt="Company Name"></div>',
-                                       ui: 'plain',
+                                         width: 65,
+                                         margin: '0 0 0 10',
+                                         // iconCls: 'list',
+                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+                                         ui: 'plain',
                                        handler: function () {
-                                           _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
-                                               type: 'slideOut',
-                                               direction: 'left',
-                                               easing: 'cubic-bezier(.7,0,.7,1)',
-                                               duration: 250
+
+                                        FloatPanel_AyohaReward_PointTransactionsHide(false)
+                                        //    _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
+                                        //        type: 'slideOut',
+                                        //        direction: 'left',
+                                        //        easing: 'cubic-bezier(.7,0,.7,1)',
+                                        //        duration: 250
         
-                                           }));
-                                           isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-                                           _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
-                                           RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+                                        //    }));
+                                        //    isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
+                                        //    _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
+                                        //    RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
                                        }
                                    },
         
@@ -174,20 +133,22 @@ function FloatPanel_AyohaReward_PointTransactions() {
                                               {
                                                   xtype: 'button',
                                                   margin: '-10 -13 0 0',
-                                                  zIndex: 100,
-                                                  html: '<font size=2 color=white><b>Ayoha Points(AP)</b></font>',
+                                                 // zIndex: 100,
+                                                 // html: '<font size=2 color=white><b>Ayoha Points(AP)</b></font>',
+                                                   html:ayohaTheme_HeaderText('Ayoha Points(AP)'),
                                                   ui: 'plain',
                                                   handler: function () {
-                                                      _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
-                                                          type: 'slideOut',
-                                                          direction: 'right',
-                                                          easing: 'cubic-bezier(.7,0,.7,1)',
-                                                          duration: 250
+                                                     FloatPanel_AyohaReward_PointTransactionsHide(false);
+                                                    //   _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
+                                                    //       type: 'slideOut',
+                                                    //       direction: 'right',
+                                                    //       easing: 'cubic-bezier(.7,0,.7,1)',
+                                                    //       duration: 250
         
-                                                      }));
-                                                      isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-                                                      _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
-                                                      RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+                                                    //   }));
+                                                    //   isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
+                                                    //   _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
+                                                    //   RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
                                                   }
                                               },
         
@@ -195,22 +156,23 @@ function FloatPanel_AyohaReward_PointTransactions() {
                                         xtype: 'button',
                                         id: 'btnbtnFloatPanel_AyohaReward_PointTransactionsBacksLogo',
                                         height: 35,
-                                        width: 35,
+                                        width: 65,
                                         // iconCls: 'list',
                                         margin: '-5 3 0 0',
                                         html: '<div><img src="resources/icons/Logo/LogoWhiteSimplifed.png" width="25" height="25" alt="Company Name"></div>',
                                         ui: 'plain',
                                         handler: function () {
-                                            _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
-                                                type: 'slideOut',
-                                                direction: 'right',
-                                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                                duration: 250
+                                              FloatPanel_AyohaReward_PointTransactionsHide(false);
+                                            // _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation({
+                                            //     type: 'slideOut',
+                                            //     direction: 'right',
+                                            //     easing: 'cubic-bezier(.7,0,.7,1)',
+                                            //     duration: 250
         
-                                            }));
-                                            isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-                                            _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
-                                            RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+                                            // }));
+                                            // isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
+                                            // _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
+                                            // RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
                                         }
                                     },
         
@@ -774,32 +736,54 @@ function FloatPanel_AyohaReward_PointTransactions() {
 
 
      });
-    return _FloatPanel_AyohaReward_PointTransactions;
-
-
-
 }
+
+
+
+
+
 
 
 
 function FloatPanel_AyohaReward_PointTransactionsShow() {
    
-    Ext.Viewport.remove(_FloatPanel_AyohaReward_PointTransactions);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaReward_PointTransactions());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaReward_PointTransactions);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaReward_PointTransactions());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+
+
+
+
+
+
+    FloatPanel_AyohaReward_PointTransactionsCreateIfNeeded();
+
+
+    _FloatPanel_AyohaReward_PointTransactions.show();
+    // ✅ push browser back (ikut style kau)
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+      AyohaBrowserBack.push('FloatPanel_AyohaReward_PointTransactions', function () {
+     
+        FloatPanel_AyohaReward_PointTransactionsHide(true);
+      });
+    }
+
+
+
+
+
     isFloatPanel_AyohaReward_PointTransactionsOpen = 'Y';
+
+
+
+
+
     FloatPanel_AyohaReward_PointTransactionsAdjustHeight();
    
     FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointLoadBySubscriberAccNoStore();
 
 
-    //Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>' + localStorage.getItem("AyohaPoint") + '</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-38px 0px 0px 0px"><b>Ayoha Point</b></div><br>');
-
-
-
-    //Ext.getCmp('containerRedeemListItems').setHeight(adjustHeight());
-    //AyohaRedeemPrizeLoadByAyohaUserGroupCodeStore();
 
 
 if(isFloatPanel_AyohaStore_CheckOutOpen=="Y"){
@@ -812,13 +796,37 @@ if(isFloatPanel_AyohaStore_CheckOutOpen=="Y"){
 
 
 
-function FloatPanel_AyohaReward_PointTransactionsHide() {
+function FloatPanel_AyohaReward_PointTransactionsHide(fromBack,animCfg) {
 
-    if (isFloatPanel_AyohaReward_PointTransactionsOpen == "Y") {
-        _FloatPanel_AyohaReward_PointTransactions.hide(); isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-        _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
-        RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+    // if (isFloatPanel_AyohaReward_PointTransactionsOpen == "Y") {
+    //     _FloatPanel_AyohaReward_PointTransactions.hide(); isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
+    //     _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
+    //     RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
+    // }
+
+
+
+
+    
+    if (isFloatPanel_AyohaReward_PointTransactionsOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaReward_PointTransactions.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaReward_PointTransactions.hide();
+          }
+         isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
+         _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
+        
+        
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaReward_PointTransactions');
+          }
     }
+ 
 
  
 }
@@ -879,7 +887,7 @@ function FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointLoadBySubscrib
                 }
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });

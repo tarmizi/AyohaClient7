@@ -59,6 +59,12 @@ var AppState = {
                MembershipCardFeePaymentCycle:null,
                CountStar:null,
               CountReviewer:null,
+              isMembershipCardSubscribed:null,
+
+
+
+
+
 
     },
 

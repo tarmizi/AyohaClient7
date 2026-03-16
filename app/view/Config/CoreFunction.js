@@ -336,9 +336,40 @@ function CoreFunction_DashboardAyohaUser() {
               document.getElementById("Dashboard_AyohaRewardPoint").textContent = AyohaPoint;
              // document.getElementById("Dashboard_AyohaRewardPoint").textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
               document.getElementById('Dashboard_userPts').textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
+           //   document.getElementById('Dashboard_userPts_CheckIn').textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
+
+
+
+
+Ext.getCmp('html_Dashboard_AyohaRewardPts').setHtml( '<div  onclick="Dashboard_ayoharedeem_page()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+                                                          '<div style="text-align:right;color:white;">' +
+                                                            '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">'+AyohaPoint+'</span>' +
+                                                            '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
+                                                          '</div>' +
+                                                          '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
+                                                               'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
+                                                               'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
+                                                            'A' +
+                                                          '</div>' +
+                                                        '</div>');
+
+
+            //    id:'html_Dashboard_AyohaRewardPts',
+            //                                             html:
+            //                                             '<div  onclick="Dashboard_ayoharedeem_page()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+            //                                               '<div style="text-align:right;color:white;">' +
+            //                                                 '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
+            //                                                 '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
+            //                                               '</div>' +
+            //                                               '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
+            //                                                    'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
+            //                                                    'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
+            //                                                 'A' +
+            //                                               '</div>' +
+            //                                             '</div>',
               
             
-              
+            
   
   if (convertDateToDayMonthYear(globalLogginAyohaUser_UserVerifiedDate)=="Non Ayoha Member"){
       document.getElementById("txtDashboard_MembershipTier").style.visibility = "hidden";

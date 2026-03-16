@@ -2700,7 +2700,7 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadByEnterpriseAcc
                         var ValidUntilDateMonthYearOnly = modelRecorded.get('ValidUntilDateMonthYearOnly');
                 
                         var ModifiedUntilDate = modelRecorded.get('ModifiedUntilDate_Extend');
-                        var ModifiedMemberSinceDate = modelRecorded.get('ModifiedMemberSinceDate');
+                        var ModifiedMemberSinceDate = modelRecorded.get('MembershipStartDate_MonthYearOnly');
                         var MembershipCardBackgroundImg_back = modelRecorded.get('MembershipCardBackgroundImg_back');
                 
                         global_FloatPanel_MembershipCardList_Upgrade_EnterprisesName = modelRecorded.get('EnterprisesName');
@@ -2801,7 +2801,7 @@ function FloatPanel_MembershipCardList_Upgrade_MembershipCardLoadByEnterpriseAcc
                                                          + 'font-family:Arial,sans-serif;text-shadow:0 2px 10px rgba(0,0,0,.55);">Valid Until</div>' +
                                                            '<div style="margin-top:2px;color:#fff;font-size:10px;font-weight:700;'
                                                          + 'font-family:Arial,sans-serif;text-shadow:0 2px 10px rgba(0,0,0,.55);">'
-                                                         + ModifiedUntilDate +
+                                                         + ValidUntilDateMonthYearOnly +
                                                            '</div>' +
                                                          '</div>' +
                                                      

@@ -343,7 +343,7 @@ Ext.define('BuskartApp.view.MyAccount.Dashboard', {
                                                       {
                                                         margin: '15 0 0 0',
                                                         html:
-                                                        '<div  onclick="Dashboard_ayoharedeem_page()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+                                                        '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
                                                           '<div style="text-align:right;color:white;">' +
                                                             '<span id="Dashboard_userPts" style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
                                                             '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
@@ -361,7 +361,7 @@ Ext.define('BuskartApp.view.MyAccount.Dashboard', {
                                                        hidden:true,
                                                        id: 'htmlMyAccount_Dashboard_TitleHeaderTxtAyohapoint',
                                                       // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha e-Wallet</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 16px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">RM 00.00</div>'
-                                                      // html: '<div id="Dashboard_userPts" onclick="Dashboard_ayoharedeem_page();" style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 12px;font-weight:bold;color:black;margin:0px 0px 0px 0px">2355 pts</div><br><div onclick="Dashboard_ayoharedeem_page();" style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 10px;font-weight:normal;color:black;margin:-26px 0px 0px 0px">Ayoha Points</div>'
+                                                      // html: '<div id="Dashboard_userPts" onclick="FloatPanel_AyohaReward_PointTransactionsShow()();" style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 12px;font-weight:bold;color:black;margin:0px 0px 0px 0px">2355 pts</div><br><div onclick="FloatPanel_AyohaReward_PointTransactionsShow()();" style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 10px;font-weight:normal;color:black;margin:-26px 0px 0px 0px">Ayoha Points</div>'
                                                       
        
                                                    },
@@ -720,48 +720,114 @@ style: "background-color: transparent;",
         items:
                [
 
-                 {
-                                         xtype: 'button',
-                                         id: 'btnMyAccount_DashboardHeader_MerchantCheckInUpgradeBack',
-                                         height: 30,
-                                         width: 65,
-                                         margin: '0 0 0 10',
-                                         // iconCls: 'list',
-                                         html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
-                                         ui: 'plain',
-                                         handler: function () {
-                                           // FloatPanel_MembershipCardList_UpgradeHide(false);
+                //  {
+                //                          xtype: 'button',
+                //                          id: 'btnMyAccount_DashboardHeader_MerchantCheckInUpgradeBack',
+                //                          height: 30,
+                //                          width: 65,
+                //                          margin: '0 0 0 10',
+                //                          // iconCls: 'list',
+                //                          html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+                //                          ui: 'plain',
+                //                          handler: function () {
+                                         
 
-                                             //FloatPanel_MembershipCardList_Upgrade_AddCardHide();
-                                             //_FloatPanel_MembershipCardList_Upgrade.hide(Ext.fx.Animation({
-                                             //    type: 'slideOut',
-                                             //    direction: 'left',
-                                             //    easing: 'cubic-bezier(.7,0,.7,1)',
-                                             //    duration: 250
-
-                                             //}));
-
-                                         }
-                                     },
+                //                          }
+                //                      },
+                {
+                            xtype: 'spacer',
+                            width: 15,
+                         },
+                                      {
+                                           margin: '0 15 0 0',                                          
+                                           id: 'htmlMyAccount_DashboardHeader_MerchantCheckIn_TitleHeaderTxtLeft',
+                                         //  html: '<font size=2 color=black><b>Membership Card</b></font>'
+                                           html:ayohaTheme_HeaderText('Merchant Check-In'),
+                                       },
 
                                       {
                                           xtype: 'spacer',
 
                                       },
 
-                                       {
-                                           margin: '0 15 0 0',                                          
-                                           id: 'htmlMyAccount_DashboardHeader_MerchantCheckIn_TitleHeaderTxt',
-                                         //  html: '<font size=2 color=black><b>Membership Card</b></font>'
-                                           html:ayohaTheme_HeaderText('Merchant Check-In'),
-                                       },
+                                      {
+                                   xtype: 'container',
+                                   id: 'containerMyAccount_Dashboard_MenuBottom_NotificationX',
+                                   name: 'namecontainerMyAccount_Dashboard_MenuBottom_Notification',
+                                 
+                                  //ori margin: '-10 0 0 0',
+                                   margin: '0 0 0 0',
+                                  width: 50,
+                                  height: 40,
+                                   style: "background-color: transparent",
+                                   //style: "background-color: #F35B57;",
+       
+                                   layout: {
+                                       type: 'vbox',
+                                       pack: 'center',
+                                       align: 'center'
+       
+                                   },
+                                   items: [
+       
+                                        {
+                                       
+                                            // id: 'btn_MyAccount_Dashboard_MenuBottom_Notification',
+                                            // margin: '0 0 0 0',
+       
+                                            // height: 20,
+                                            // width: 20,
+                                            // html: '<img src="resources/icons/Notification.png" width="22" height="22" alt="Company Name">',
+                                         
+                                        
+                                        xtype: 'component',
+  id: 'btn_MyAccount_Dashboard_MenuBottom_NotificationX',
+  width: 20,
+  height: 20,
+  style: 'background:transparent; overflow:visible;',   // penting
+  html:
+    '<div class="ayohaNotifWrap">' +
+      '<img src="resources/icons/presentboxwhite.png" class="ayohaNotifIcon" />' +
+      '<div class="ayohaNotifBadge" id="ayohaNotifBadgeUnread" style="display:block;">0</div>' +
+    '</div>'
+                                        
+                                        
+                                        
+                                        
+                                        },
+                                        
+       
+       
+                                   ]
+                               },
+{
+                            xtype: 'spacer',
+                            width: 10,
+                         },
 
 
 
+{
+                                                        margin: '15 0 0 0',
+                                                        id:'html_Dashboard_AyohaRewardPts',
+                                                        html:
+                                                        '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+                                                          '<div style="text-align:right;color:white;">' +
+                                                            '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
+                                                            '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
+                                                          '</div>' +
+                                                          '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
+                                                               'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
+                                                               'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
+                                                            'A' +
+                                                          '</div>' +
+                                                        '</div>',
+                                                      },
 
-
-
-                         
+                         {
+                            xtype: 'spacer',
+                            width: 20,
+                         }
 
 
 
@@ -1037,6 +1103,8 @@ items:[
 {
   xtype: 'container',
   width: '100%',
+  id:'containerCheckInRewardProgress_GreetingMembership',
+  name: 'namecontainerCheckInRewardProgress_GreetingMembership',
   //height:120,
  height:180,
 
@@ -16418,6 +16486,19 @@ function initializeContainerSingleTapEvent() {
 
 
 
+    var containerViewnamecontainerCheckInRewardProgress_GreetingMembership = Ext.ComponentQuery.query('container[name=namecontainerCheckInRewardProgress_GreetingMembership]')[0];
+    var containerViewElcontainerCheckInRewardProgress_GreetingMembership = containerViewnamecontainerCheckInRewardProgress_GreetingMembership.element;
+    containerViewElcontainerCheckInRewardProgress_GreetingMembership.on('tap',
+      function (event, node, options, eOpts) {
+      
+        FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(AppState.MainDashboard.CheckIn_MembershipCardCode
+,AppState.MainDashboard.EnterpriseAccNo
+,AppState.MainDashboard.isMembershipCardSubscribed
+,AppState.MainDashboard.MembershipCardFeePaymentCycle
+,AppState.MainDashboard.CountStar
+,AppState.MainDashboard.CountReviewer);
+      }
+    );
     
 }
 
@@ -19237,11 +19318,11 @@ function Dashboard_SearchMerchantList_EnterprisesLoadAyohaMerchantListStore_Fron
 }
 
 
-function Dashboard_ayoharedeem_page(){
-    //FloatPanel_AyohaRewardShow();
-   // AyohaMerchantReward_Reset();
-    Ext.getCmp('tabpanelMyAccount_Dashboard').setActiveItem(1);
-}
+// function FloatPanel_AyohaReward_PointTransactionsShow()(){
+//     //FloatPanel_AyohaRewardShow();
+//    // AyohaMerchantReward_Reset();
+//     Ext.getCmp('tabpanelMyAccount_Dashboard').setActiveItem(1);
+// }
 
 
 

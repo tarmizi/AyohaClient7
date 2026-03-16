@@ -2391,7 +2391,10 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
         
  var record = records[0]; // Access only the first record
  AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('MembershipCardCode');
- 
+AppState.MainDashboard.MembershipCardFeePaymentCycle  = record.get('MembershipCardFeePaymentCycle');
+ AppState.MainDashboard.CountStar  = record.get('CountStar');
+AppState.MainDashboard.CountReviewer  = record.get('CountReviewer');
+AppState.MainDashboard.isMembershipCardSubscribed  = record.get('isMembershipCardSubscribed');
 
              Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
             
@@ -2400,12 +2403,32 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPe
              
 
 
-Ext.getCmp('html_Dashboard_2ndline').setHtml('<div style="text-align:center;width:100%;">' +
-            '<span style="display:inline-block;padding:4px 10px;border-radius:999px;background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);color:#6B4300;font-size:10px;font-weight:800;letter-spacing:0.8px;vertical-align:middle;box-shadow:0 4px 10px rgba(255,194,45,0.20);">'+record.get('MembershipCardType')+'</span>' +
-            '<span style="display:inline-block;margin:0 8px;color:rgba(255,255,255,0.55);font-size:12px;vertical-align:middle;">•</span>' +
-            '<span style="display:inline-block;color:rgba(255,255,255,0.94);font-size:13px;font-weight:700;letter-spacing:0.2px;vertical-align:middle;">'+record.get('MembershipCardName')+'</span>' +
-          '</div>'
-);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Ext.getCmp('html_Dashboard_2ndline').setHtml('<div style="text-align:center;width:100%;">' +
+//             '<span style="display:inline-block;padding:4px 10px;border-radius:999px;background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);color:#6B4300;font-size:10px;font-weight:800;letter-spacing:0.8px;vertical-align:middle;box-shadow:0 4px 10px rgba(255,194,45,0.20);">'+record.get('MembershipCardType')+'</span>' +
+//             '<span style="display:inline-block;margin:0 8px;color:rgba(255,255,255,0.55);font-size:12px;vertical-align:middle;">•</span>' +
+//             '<span style="display:inline-block;color:rgba(255,255,255,0.94);font-size:13px;font-weight:700;letter-spacing:0.2px;vertical-align:middle;">'+record.get('MembershipCardName')+'</span>' +
+//           '</div>'
+// );
+
+
+Ext.getCmp('html_Dashboard_2ndline').setHtml(Dashboard_SuccessCheckInController_renderMembershipCardLine(record));
+
+
+
 
 
 Ext.getCmp('html_Dashboard_3rdline').setHtml('<div style="color:rgba(255,255,255,0.78);text-align:center;font-size:11px;line-height:1.35;font-weight:600;letter-spacing:0.2px;width:100%;">Member ID '+record.get('MembershipNo')+' &nbsp;&nbsp;•&nbsp;&nbsp; Since '+record.get('MembershipStartDate_MonthYearOnly')+' </div>');
@@ -3517,4 +3540,98 @@ function Dashboard_SuccessCheckInController_Ayoha_CelebrationReward(checkInNo, p
      }
    });
  }, 30);
+}
+
+
+
+
+
+
+
+
+function Dashboard_SuccessCheckInController_renderMembershipCardLine(record) {
+    var membershipType = record.get('MembershipCardType') || 'MEMBER';
+    var membershipName = record.get('MembershipCardName') || '';
+    var badgeStyle = getMembershipTypeBadgeStyle(membershipType);
+
+    return '<div style="text-align:center;width:100%;">' +
+                '<span style="' +
+                    'display:inline-block;' +
+                    'padding:4px 10px;' +
+                    'border-radius:999px;' +
+                    'background:' + badgeStyle.bg + ';' +
+                    'color:' + badgeStyle.color + ';' +
+                    'font-size:10px;' +
+                    'font-weight:800;' +
+                    'letter-spacing:0.8px;' +
+                    'vertical-align:middle;' +
+                    'box-shadow:' + badgeStyle.shadow + ';' +
+                '">' + Ext.String.htmlEncode(membershipType) + '</span>' +
+
+                '<span style="display:inline-block;margin:0 8px;color:rgba(255,255,255,0.55);font-size:12px;vertical-align:middle;">•</span>' +
+
+                '<span style="display:inline-block;color:rgba(255,255,255,0.94);font-size:13px;font-weight:700;letter-spacing:0.2px;vertical-align:middle;">' +
+                    Ext.String.htmlEncode(membershipName) +
+                '</span>' +
+           '</div>';
+}
+
+
+
+
+
+
+function getMembershipTypeBadgeStyle(cardType) {
+    var type = (cardType || '').toString().trim().toUpperCase();
+
+    switch (type) {
+        case 'GOLD':
+            return {
+                bg: 'linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%)',
+                color: '#6B4300',
+                shadow: '0 4px 10px rgba(255,194,45,0.20)'
+            };
+
+        case 'PLATINUM':
+            return {
+                bg: 'linear-gradient(180deg,#F5F7FA 0%,#CFD6DF 100%)',
+                color: '#3E4A59',
+                shadow: '0 4px 10px rgba(160,170,185,0.22)'
+            };
+
+        case 'SILVER':
+            return {
+                bg: 'linear-gradient(180deg,#F4F6F8 0%,#BFC7D1 100%)',
+                color: '#4E5B6A',
+                shadow: '0 4px 10px rgba(170,180,190,0.20)'
+            };
+
+        case 'BRONZE':
+            return {
+                bg: 'linear-gradient(180deg,#F6D1B0 0%,#C47A3A 100%)',
+                color: '#5A2E0B',
+                shadow: '0 4px 10px rgba(196,122,58,0.22)'
+            };
+
+        case 'DIAMOND':
+            return {
+                bg: 'linear-gradient(180deg,#E8FBFF 0%,#9BE7F5 100%)',
+                color: '#0F4C5C',
+                shadow: '0 4px 10px rgba(114,220,240,0.24)'
+            };
+
+        case 'VIP':
+            return {
+                bg: 'linear-gradient(180deg,#2D2D2D 0%,#111111 100%)',
+                color: '#FFD76A',
+                shadow: '0 4px 10px rgba(0,0,0,0.28)'
+            };
+
+        default:
+            return {
+                bg: 'linear-gradient(180deg,#F3F4F6 0%,#E5E7EB 100%)',
+                color: '#374151',
+                shadow: '0 4px 10px rgba(0,0,0,0.10)'
+            };
+    }
 }
