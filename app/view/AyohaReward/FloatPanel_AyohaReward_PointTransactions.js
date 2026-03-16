@@ -35,15 +35,12 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
          },
          hideAnimation: {
              type: 'popOut',
-             //direction: 'up',
+         //direction: 'up',
              //easing: 'cubic-bezier(.7,0,.7,1)',
              duration: 250
          },
-         // style: 'border-bottom:1px solid;background-color:#353839;',
-         // style: 'border-bottom:1px solid;background-color:white;',
-       // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-         style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-
+       
+ style: ayohaThemeColor_Hero(),
            listeners: {
  
 
@@ -64,13 +61,10 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
                  xtype: 'container',
                  width: '100%',
                  height: '100%',
-                 //  style: "background-color: transparent;",
-               // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-                style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-                 // style: 'background-image: url("resources/icons/pointbackdrop.png"); background-size: 100% 30%;background-repeat: no-repeat;',
+                 style: "background-color: transparent;",            
                  layout: {
                      type: 'vbox',
-                     pack: 'center',
+                     pack: 'start',
                      align: 'center'
                  },
                  items: [
@@ -79,7 +73,7 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
                         xtype: 'container',
                         width: '100%',
                        height: ayoha_HeaderHeight(),
-                   style:ayohaThemeColor_Header(),
+                   style: "background-color: transparent;",
                         docked: 'top',
                       
                         id: 'containerFloatPanel_AyohaReward_PointTransactionsHeader1',
@@ -191,515 +185,465 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
         
                     },
         
+//    {
+//                                                 xtype: 'container',
+                                             
+//                                                 margin: '0 0 0 0',
+//                                                 width: '100%',
+//                                                 //zIndex: 90,
+//                                                 style: 'background-color: transparent;',
+//                                                 height: 90,
 
-                     {
-                         xtype: 'container',
-                        // height: 135,
-                         height: 120,
-                         //  hidden:true,
-                         //flex: 1,
-                         // height:'35%',
-                         //height: 198,
+//                                                 id: 'containerFloatPanel_AyohaReward_PointTransactionsPointsCollected',
+//                                                 layout: {
 
-                         //  height: 173,
-                         width: '100%',
-                         id: 'containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeaderMaster',
-                         docked: 'top',
-                         style: "background-color: transparent;",
-                         //   style: 'background-image: url("resources/icons/pointbackdropwhite.png"); background-size: 100% 100%;border-bottom:1px none;border-radius: 20px 20px 20px 20px;',
-                         //style: {
+//                                                     type: 'vbox',
+//                                                     pack: 'start',
+//                                                     align: 'center'
+//                                                 },
+//                                                 items: [
 
-                         //    background: 'transparent',
-
-                         //},
-
-                         layout: {
-                             type: 'vbox',
-                             pack: 'center',
-                             align: 'center'
-
-                         },
-                         items: [
+//                                                     {
+                                                       
+// width: '100%',
+//                                                         margin: '0 0 0 0',
+//                                                         id: 'htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected',
+//                                                          height: 60,
+//                                                         html: '<div style="color:white;text-align: center;font-size:58px;width:100%;margin:0px 0px 0px 0px;"><b>2560</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-8px 0px 0px 0px"><b>Ayoha Point</b></div><br>'
+//                                                     },
 
 
 
-                             {
+//                                                 ]
+//                                             },
+                  
+{
+    xtype: 'container',
+    margin: '4 0 6 0',
+    width: '100%',
+    style: 'background-color: transparent;',
+    height: 145,
+    id: 'containerFloatPanel_AyohaReward_PointTransactionsPointsCollected',
+    layout: {
+        type: 'vbox',
+        pack: 'center',
+        align: 'center'
+    },
+    items: [
+        {
+            xtype: 'component',
+            id: 'htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected',
+            width: '100%',
+            height: 135,
+            html: buildAyohaPointCollectedHtmlPremium(2560)
+        }
+    ]
+},
 
-                                 xtype: 'container',
-                                 margin: '-31 0 0 0',
-                                 //width: '100%',
-                                 // zIndex: 190,
-                                 //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                                 //hidden: true,
-                                 docked: 'top',
-                                 id: 'containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeader',
-                                 style: "background-color: transparent;",
-                                 //style: {
-                                 //    // background: '#D25959',
-                                 //    background: 'transparent',
-                                 //    // border: '2px'
-                                 //},
+// {
+//     xtype: 'container',
+//     id: 'containerFloatPanel_AyohaReward_PointTransactionsMasterHeaderTop',
+     
+//     width: '95%',
+//     height: 35,
+    
+//     style: {
+//         // background: '#D25959',
+//         background: 'transparent',
+//         // border: '2px'
+//     },
+//     layout: {
+//         type: 'hbox',
+//         pack: 'center',
+//         align: 'center'
 
-                                 // style: 'border-bottom:2px solid #D25959;background-color:transparent',
-                                 layout: {
-                                     type: 'vbox',
-                                     pack: 'center',
-                                     align: 'center',
-                                 },
-                                 // hidden:true,
-                                 items:
-                                        [
+//     },
+//     items: [
+//         {
+//             xtype: 'container',
+//             id: 'containerFloatPanel_AyohaReward_PointTransactionsMasterHeader',
+//             width: '100%',
+//             height: 35,
+//             // style: "background-color: white",
+//             // style: 'border-bottom:1px solid #D25959;background-color:transparent',
+//             style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
+//             // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
+//             //style: "background-color: #F35B57;",
 
+//             layout: {
+//                 type: 'hbox',
+//                 pack: 'center',
+//                 align: 'center'
 
-                                                 {
-                                                     xtype: 'container',
-                                                     width: '100%',
-                                                   //  hidden:true,
-                                                     layout: {
-                                                         type: 'hbox',
-                                                         pack: 'center',
-                                                         align: 'center'
+//             },
+//             items: [
 
-                                                     },
-                                                     items: [
+//                 {
+//                     width: 20,
+//                     height: 20,
+//                     margin: '0 0 0 10',
+//                     id: 'htmlFloatPanel_AyohaReward_PointTransactionsMasterHeaderIcon',
+//                     html: '<img src="resources/icons/transaction01.png" width="15" height="15" alt="Company Name">',
+//                 },
+//                 {
+//                     //  width: 150,
+//                     margin: '-5 0 0 -5',
+//                     id: 'htmlFloatPanel_AyohaReward_PointTransactionsMasterHeaderTxt',
+//                     html: '<font size=1 color=black>Ayoha Point Transaction</font>'
+//                 },
+//                 {
+//                     xtype: 'spacer'
+//                 },
+//                  {
+//                      xtype: 'button',
+//                      id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize',
+//                      //  badgeText: '1',
+//                      margin: '-2 10 0 0',
+//                    //  hidden: true,
+//                      height: 30,
+//                      width: 30,
+//                      html: '<img src="resources/icons/filterPurpleThree.png" width="20" height="20" alt="Company Name">',
+//                      ui: 'plain',
+//                      handler: function () {
+//                          FloatPanel_YearOnlyShow();
+//                          //////Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize').setHidden(false);
+//                          //////Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize').setHidden(true);
+//                          //////Ext.getCmp('containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeaderMaster').setHidden(true);
+//                          //////var a = adjustHeight() + 135;
+//                          //////Ext.getCmp('List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory').setHeight(a);
 
-                                                         {
-                                                             width: 16,
-                                                             height: 16,
-                                                             html: '<div style="margin:30px 0px 0px 40px"><img src="resources/icons/shiningIcon.png" width="16" height="16" alt="Company Name"></div>',
-                                                         },
-                                                         {
-                                                             xtype: 'spacer'
-                                                         },
-                                                         {
-                                                             width: 30,
-                                                             height: 30,
-                                                             html: '<div style="margin:5px 0px 0px 20px"><img src="resources/icons/shiningIcon.png" width="30" height="30" alt="Company Name"></div>',
-                                                         },
-                                                          {
-                                                              xtype: 'spacer'
-                                                          },
-                                                          {
-                                                              width: 36,
-                                                              height: 36,
-                                                              hidden:true,
-                                                              html: '<div style="margin:20px 0px 0px -40px"><img src="resources/icons/shiningIcon.png" width="36" height="36" alt="Company Name"></div>',
-                                                          },
-                                                         {
-                                                             xtype: 'spacer'
-                                                         },
-                                                         {
-                                                             width: 26,
-                                                             height: 26,
-                                                             html: '<div style="margin:20px 0px 0px -40px"><img src="resources/icons/shiningIcon.png" width="26" height="26" alt="Company Name"></div>',
-                                                         },
-                                                     ]
-
-                                                 },
-
-
-
-
-
-                                            {
-                                                xtype: 'container',
-                                                styleHtmlContent: true,
-                                                // hidden:true,
-                                                //margin: '-1 0 0 0',
-                                                //margin: '20 0 0 -20',
-                                                // margin: '-85 0 0 -28',
-                                                margin: '-55 0 0 0',
-                                                width: '100%',
-                                                //zIndex: 90,
-                                                style: 'background-color: transparent;',
-
-                                                //  style: 'background-image: url("resources/icons/pointbackdrop.png"); background-size: 100% 80%;background-repeat: no-repeat;',
-                                                //  style: 'border-right:4px none #fac;border-left:4px none #fac;border-bottom:4px none #fac;border-top:2px none #ECF0F1 ;background-image: url("resources/icons/pointbackdrop.png"); background-size: 100% 30%;background-repeat: no-repeat;border-radius: 0px 0px 250px 250px;',
-
-
-                                                //style: 'border-right:4px solid #fac;border-left:4px solid #fac;border-bottom:4px solid #fac;border-top:2px none #ECF0F1 ;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 0px 0px 250px 250px;',
-
-
-
-
-                                                //zIndex: 80,
-                                                //height: 90,
-                                                //width: 90,
-                                                // margin: '70 0 0 0',
-                                                id: 'containerFloatPanel_AyohaReward_PointTransactionsCompanyLogo',
-                                                layout: {
-
-                                                    type: 'vbox',
-                                                    pack: 'center',
-                                                    align: 'center'
-                                                },
-                                                items: [
-
-                                                    {
-                                                        //xtype: 'button',
-
-                                                        //  width: 150,
-
-                                                        margin: '0 0 0 0',
-                                                        id: 'htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected',
-                                                        //badgeText: "2",
-                                                        // hidden:true,
-                                                        //html: '<div style="margin:3px 0px 0px 0px"><img src="resources/icons/ayohaReward01.gif" width="150" height="150" alt="Company Name"></div>',
-                                                        html: '<div style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>2560</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-28px 0px 0px 0px"><b>Ayoha Point</b></div><br>'
-                                                    },
+//                          //
+//                      }
+//                  },
+//                    {
+//                        xtype: 'button',
+//                        id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize',
+//                        //  badgeText: '1',
+//                        margin: '-2 10 0 0',
+//                        hidden: true,
+//                        height: 25,
+//                        width: 25,
+//                        html: '<img src="resources/icons/minimizepurple.png" width="15" height="15" alt="Company Name">',
+//                        ui: 'plain',
+//                        handler: function () {
+//                            // FloatLoyaltyCardStampShow();
+//                            // FloatPanel_AyohaReward_PointTransactions_MoveCarousel(2);
+//                            Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize').setHidden(true);
+//                            Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize').setHidden(false);
 
 
+//                            Ext.getCmp('containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeaderMaster').setHidden(false);
+//                            var a = adjustHeight();
+//                            Ext.getCmp('List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory').setHeight(a);
 
-                                                ]
-                                            },
+//                            //
+//                        }
+//                    },
+//                 //{
+//                 //    id: 'FloatPanel_AyohaReward_PointTransactionsMasterHeader_PointHistorySearchTxt',
+//                 //    margin: '-5 10 0 0',
+//                 //    width: 120,
+//                 //    height: 16,
+//                 //    html: '<input type="text" id="input-RedeemListHistorySearchTxt" placeholder="Search " style="border-color:purple;color:black;width:120px;text-align: center">'
+//                 //}
+//             ]
 
-
-                                             {
-                                                 xtype: 'container',
-                                                 width: '100%',
-                                               //  hidden: true,
-                                                 margin: '-30 0 0 0',
-                                                 layout: {
-                                                     type: 'hbox',
-                                                     pack: 'center',
-                                                     align: 'center'
-
-                                                 },
-                                                 items: [
-
-                                                     {
-                                                         width: 46,
-                                                         height: 46,
-                                                         hidden:true,
-                                                         html: '<div style="margin:-60px 0px 0px 20px"><img src="resources/icons/shiningIcon.png" width="46" height="46" alt="Company Name"></div>',
-                                                     },
-                                                     {
-                                                         xtype: 'spacer'
-                                                     },
-                                                      {
-                                                          width: 36,
-                                                          height: 36,
-                                                          html: '<div style="margin:5px 0px 0px -120px"><img src="resources/icons/shiningIcon.png" width="30" height="30" alt="Company Name"></div>',
-                                                      },
-                                                     {
-                                                         width: 30,
-                                                         height: 30,
-                                                         html: '<div style="margin:22px 0px 0px 40px"><img src="resources/icons/shiningIcon.png" width="20" height="20" alt="Company Name"></div>',
-                                                     },
-                                                      {
-                                                          xtype: 'spacer'
-                                                      },
-                                                     {
-                                                         width: 20,
-                                                         height: 20,
-                                                         html: '<div style="margin:-20px 0px 0px -20px"><img src="resources/icons/shiningIcon.png" width="20" height="20" alt="Company Name"></div>',
-                                                     },
-                                                 ]
-
-                                             },
+//         },
+//     ]
+// },
 
 
 
-
-
-                                                            {
-                                                                margin: '0 0 0 0',
-                                                                id: 'htmlFloatPanel_AyohaReward_PointTransactionsPointsCollectedx',
-                                                                hidden: true,
-                                                                html: '<div style="background-color:transparent;border-color:#ffffff;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:40px;font-weight:bold;overflow:hidden;text-align:center;vertical-align:middle;word-break:normal;color:white;width:100%;height:110px">1005</div>',
-
-                                                                //  html: '<font size=13 color=black><b>1005</b></font>'
-                                                            },
-                                                            {
-                                                                margin: '-70 0 0 0',
-                                                                hidden: true,
-                                                                // html: '<font size=2 color=white><b>Ayoha Rewards Points</b></font>'
-                                                                html: '<div style="color:white;text-align: center;font-size:12px;width:100%;"><b>Points</b></div>'
-                                                            },
-
-                                        ]
-
-                             },
-
-
-                         ]
-                     },
-                 
 
 
 {
     xtype: 'container',
     id: 'containerFloatPanel_AyohaReward_PointTransactionsMasterHeaderTop',
-    // hidden:true,
-    width: '100%',
-    height: 25,
-    docked: 'top',
-    //  zIndex: 90,
-
-    // style: "background-color: transparent;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 20px 20px 0px 0px;",
-    // style: 'border-bottom:1px solid #D25959;background-color:transparent',
-    //   style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 20px 20px 0px 0px;',
-    // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
-    style: {
-        // background: '#D25959',
-        background: 'transparent',
-        // border: '2px'
-    },
+    width: '95%',
+    height: 58,
+    margin: '2 0 0 0',
+    style: 'background-color: transparent;',
     layout: {
         type: 'hbox',
         pack: 'center',
         align: 'center'
-
     },
     items: [
         {
             xtype: 'container',
             id: 'containerFloatPanel_AyohaReward_PointTransactionsMasterHeader',
             width: '100%',
-            height: 25,
-            // style: "background-color: white",
-            // style: 'border-bottom:1px solid #D25959;background-color:transparent',
-            style: 'background-image: url("resources/icons/border7.png"); background-size: 100% 100%;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-radius: 10px 10px 0px 0px;',
-            // style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 20px 20px 20px 20px;box-shadow: 5px 10px 18px #888888;',
-            //style: "background-color: #F35B57;",
-
+            height: 52,
+            style:
+                'position:relative;' +
+                'background:linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,245,252,0.94) 100%);' +
+                'border:1px solid rgba(255,255,255,0.75);' +
+                'border-radius:18px 18px 0 0;' +
+                'box-shadow:0 10px 26px rgba(44,0,90,0.16), inset 0 1px 0 rgba(255,255,255,0.85);',
             layout: {
                 type: 'hbox',
-                pack: 'center',
+                pack: 'start',
                 align: 'center'
-
             },
             items: [
-
                 {
-                    width: 20,
-                    height: 20,
+                    xtype: 'component',
+                    width: 36,
+                    height: 36,
                     margin: '0 0 0 10',
                     id: 'htmlFloatPanel_AyohaReward_PointTransactionsMasterHeaderIcon',
-                    html: '<img src="resources/icons/transaction01.png" width="15" height="15" alt="Company Name">',
+                    html:
+                        '<div style="' +
+                            'width:36px;height:36px;border-radius:12px;' +
+                            'background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);' +
+                            'box-shadow:0 8px 18px rgba(255,194,45,0.24), inset 0 1px 0 rgba(255,255,255,0.60);' +
+                            'display:flex;align-items:center;justify-content:center;position:relative;">' +
+                                '<div style="position:absolute;top:6px;left:8px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.38);filter:blur(1px);"></div>' +
+                                '<img src="resources/icons/transaction01.png" width="16" height="16" style="filter:drop-shadow(0 1px 0 rgba(255,255,255,0.35));">' +
+                        '</div>'
                 },
                 {
-                    //  width: 150,
-                    margin: '-5 0 0 -5',
+                    xtype: 'component',
+                    flex: 1,
+                    margin: '0 0 0 10',
                     id: 'htmlFloatPanel_AyohaReward_PointTransactionsMasterHeaderTxt',
-                    html: '<font size=1 color=black>Ayoha Point Transaction</font>'
+                    html:
+                        '<div style="line-height:1.1;">' +
+                            '<div style="font-size:13px;font-weight:800;color:#3A125D;letter-spacing:0.2px;">Ayoha Point Transaction</div>' +
+                            '<div style="font-size:10px;color:#8C7AA5;margin-top:3px;">Track your earned & redeemed points</div>' +
+                        '</div>'
                 },
                 {
-                    xtype: 'spacer'
+                    xtype: 'component',
+                    width: 26,
+                    height: 26,
+                    margin: '0 8 0 0',
+                    html:
+                        '<div style="text-align:center;color:rgba(136,102,177,0.55);font-size:10px;">✦</div>'
                 },
-                 {
-                     xtype: 'button',
-                     id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize',
-                     //  badgeText: '1',
-                     margin: '-2 10 0 0',
-                   //  hidden: true,
-                     height: 30,
-                     width: 30,
-                     html: '<img src="resources/icons/filterPurpleThree.png" width="20" height="20" alt="Company Name">',
-                     ui: 'plain',
-                     handler: function () {
-                         FloatPanel_YearOnlyShow();
-                         //////Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize').setHidden(false);
-                         //////Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize').setHidden(true);
-                         //////Ext.getCmp('containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeaderMaster').setHidden(true);
-                         //////var a = adjustHeight() + 135;
-                         //////Ext.getCmp('List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory').setHeight(a);
-
-                         //
-                     }
-                 },
-                   {
-                       xtype: 'button',
-                       id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize',
-                       //  badgeText: '1',
-                       margin: '-2 10 0 0',
-                       hidden: true,
-                       height: 25,
-                       width: 25,
-                       html: '<img src="resources/icons/minimizepurple.png" width="15" height="15" alt="Company Name">',
-                       ui: 'plain',
-                       handler: function () {
-                           // FloatLoyaltyCardStampShow();
-                           // FloatPanel_AyohaReward_PointTransactions_MoveCarousel(2);
-                           Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize').setHidden(true);
-                           Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize').setHidden(false);
-
-
-                           Ext.getCmp('containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeaderMaster').setHidden(false);
-                           var a = adjustHeight();
-                           Ext.getCmp('List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory').setHeight(a);
-
-                           //
-                       }
-                   },
-                //{
-                //    id: 'FloatPanel_AyohaReward_PointTransactionsMasterHeader_PointHistorySearchTxt',
-                //    margin: '-5 10 0 0',
-                //    width: 120,
-                //    height: 16,
-                //    html: '<input type="text" id="input-RedeemListHistorySearchTxt" placeholder="Search " style="border-color:purple;color:black;width:120px;text-align: center">'
-                //}
+                {
+                    xtype: 'button',
+                    id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize',
+                    margin: '0 10 0 0',
+                    height: 34,
+                    width: 34,
+                    ui: 'plain',
+                    style:
+                        'border-radius:12px;' +
+                        'background:linear-gradient(180deg,#FFFFFF 0%,#F3ECFB 100%);' +
+                        'border:1px solid rgba(136,102,177,0.18);' +
+                        'box-shadow:0 6px 14px rgba(72,20,130,0.10);',
+                    html:
+                        '<div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;">' +
+                            '<div style="position:absolute;top:5px;right:6px;color:rgba(255,201,79,0.75);font-size:8px;">✦</div>' +
+                            '<img src="resources/icons/filterPurpleThree.png" width="18" height="18">' +
+                        '</div>',
+                    handler: function () {
+                        FloatPanel_YearOnlyShow();
+                    }
+                },
+                {
+                    xtype: 'button',
+                    id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize',
+                    hidden: true,
+                    margin: '0 10 0 0',
+                    height: 34,
+                    width: 34,
+                    ui: 'plain',
+                    style:
+                        'border-radius:12px;' +
+                        'background:linear-gradient(180deg,#FFFFFF 0%,#F3ECFB 100%);' +
+                        'border:1px solid rgba(136,102,177,0.18);' +
+                        'box-shadow:0 6px 14px rgba(72,20,130,0.10);',
+                    html: '<img src="resources/icons/minimizepurple.png" width="16" height="16">',
+                    handler: function () {
+                        Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Minimize').setHidden(true);
+                        Ext.getCmp('btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize').setHidden(false);
+                        Ext.getCmp('containerFloatPanel_AyohaReward_PointTransactionsCompanyLogoHeaderMaster').setHidden(false);
+                        var a = adjustHeight();
+                        Ext.getCmp('List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory').setHeight(a);
+                    }
+                }
             ]
-
-        },
+        }
     ]
 },
 
 
-//{
-
-
-//    xtype: 'list',
-//    // height: '64%',
-//    // height: '100%',
-//    // height: 200,
-//    //   flex: 2,
-//    store: 'AyohaRewardPointLoadBySubscriberAccNoStore',
-//    id: 'List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory',
-//    mode: 'SINGLE',
-//    disableSelection: true,
-//    grouped: true,
-//    // disableSelection: true,
-
-
-//    itemTpl: '<div class="myContent">' +
-
-
-//                            '<table style="border-collapse:collapse;border-spacing:0;background-color:transparent;width:100%;margin:0px 0px 0px 0px;"><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:0px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;text-align:left" colspan="3"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-1px 0px 0px 0px;">{EnterpriseName}</div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-1px 0px 0px 0px;">{CreatedDate_DateOnly} {CreatedDate_TimeOnly}</div><br><div style="font-family:Arial, sans-serif;font-size:11px;font-weight:normal;word-break:normal;margin:-10px 0px 0px 0px;"><b>({AyohaPointType})</b></div></td><td style="font-family:Arial, sans-serif;font-size:11px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:transparent;color:black;background-color:transparent;font-weight:normal;vertical-align:top;width:50%;"><div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right">{ModifiedTypeCRDB}{AyohaPoint} Point(s)</div></td></tr></table>' +
-
-//    '</div>',
-//    emptyText: '<div class="myContent">No Transactions</div>',
-//    width: '100%',
-//    // height: 600,
-//    // height: '100%',
-
-//    listeners: {
-
-
-//        itemdoubletap: function (dataview, index, target, record, e, eOpts) {
-
-
-//        },
-
-//        itemsingletap: function (dataview, index, target, record, e, eOpts) {
-
-//        }
-//    }
-
-
-
-
-
-
-//},
-
-
-//{
-//    xtype: 'carousel',
-
-//    //hidden: true,
-//    id: 'carouselFloatPanel_AyohaReward_PointTransactions_AyohaPointHistory',
-//    style: 'background-color:#f7f7f7',
-//    width: '100%',
-//    height: '100%',
-//    indicator: false,
-//    items: [
-      
-
-//    ]
-//},
-
 
       {
           xtype: 'container',
-          id: 'containerFloatPanel_AyohaReward_PointTransactions_AyohaPointHistory',
-          style: ' background-color: transparent',
-          margin: '0 0 0 0',
-          height: '100%',
-          width: '100%',
+    id: 'containerFloatPanel_AyohaReward_PointTransactions_AyohaPointHistory',
+    style:
+        'background:linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(250,248,252,0.96) 100%);' +
+        'border-radius:0 0 18px 18px;' +
+        'box-shadow:0 12px 28px rgba(44,0,90,0.12);',
+    margin: '0 0 0 0',
+    height: '100%',
+    width: '95%',
           layout: {
               type: 'vbox',
               pack: 'start',
-              align: 'left'
+              align: 'center'
 
           },
           items: [
+             
+
+
+
+
+
+
               {
+    xtype: 'list',
+    store: _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore,
+    id: 'List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory',
+    mode: 'SINGLE',
+    disableSelection: true,
+    grouped: true,
+    //cls: 'ayohaPointHistoryListPlain ayohaPointHistoryListPremium',
+    userCls: 'ayohaPointHistoryListPlain ayohaPointHistoryListPremium',
+    style: 'background:transparent;',
+    scrollable: {
+        direction: 'vertical',
+        indicators: {
+            y: { autoHide: true },
+            x: { autoHide: true }
+        }
+    },
 
+    itemTpl: new Ext.XTemplate(
 
-                  xtype: 'list',
-                  // height: '64%',
-                  // height: '100%',
-                  // height: 200,
-                  //   flex: 2,
-                  store: _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore,
-                  id: 'List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory',
-                  mode: 'SINGLE',
-                  disableSelection: true,
-                  grouped: true,
-                  scrollable: {
-                      direction: 'vertical',
-                      indicators: {
-                          y: {
-                              autoHide: true
-                          },
-                          x: {
-                              autoHide: true
-                          }
-                      }
-                  },
-                  // disableSelection: true,
+        '<div onclick="FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail({TotalStampEarn},'
+        + "'" + '{ItemCartCode}' + "'" + ','
+        + "'" + '{MembershipCardCode_AyohaStore_Order}' + "'" + ','
+        + "'" + '{AyohaPointType}' + "'" + ','
+        + "'" + '{GUIDRow}' + "'" + ','
+        + "'" + '{PaymentNo}' + "'" + ','
+        + "'" + '{EnterpriseLogo}' + "'" + ','
+        + "'" + '{PointAmountEquation}' + "'" + ','
+        + "'" + '{PaymentAmount}' + "'" + ','
+        + "'" + '{PaymentNoDisplay}' + "'" + ','
+        + "'" + '{MembershipCardImg}' + "'" + ','
+        + "'" + '{MembershipCardName}' + "'" + ','
+        + "'" + '{PaymentNote}' + "'" + ','
+        + "'" + '{EnterpriseName}' + "'" + ','
+        + "'" + '{EnterpriseAccNo}' + "'" + ','
+        + "'" + '{CreatedDate}' + "'" + ','
+        + "'" + '{OrderNo}' + "'" + ','
+        + "'" + '{CreatedBy}' + "'" + ','
+        + "'" + '{EnterpriseAddress}' + "'" + ','
+        + "'" + '{EnterpriseTagLine}' + "'" + ')" '
+        + 'style="width:100%;box-sizing:border-box;padding:14px 6px 14px 18px;'
+        + 'border-bottom:1px solid rgba(123,84,170,0.10);background:transparent;">'
 
-                  itemTpl: '<div class="myContent" style="background-color:white;width:108%;height:90px;">' +
-                //  itemTpl: '<div class="myContent">' +
+            + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;">'
 
+                + '<div style="flex:1;min-width:0;padding-right:4px;">'
+                    + '<div style="font-family:Arial,sans-serif;font-size:13px;font-weight:800;color:#1F2430;line-height:18px;">'
+                        + '{ModifiedMembershipCardName}'
+                    + '</div>'
 
-                                       
+                    + '<div style="font-family:Arial,sans-serif;font-size:12px;color:#111827;line-height:17px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
+                        + '{ModifiedEnterpriseName}'
+                    + '</div>'
 
-                                        // '<table onclick="FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail({TotalStampEarn},' + "'" + '{ItemCartCode}' + "'" + ',' + "'" + '{MembershipCardCode_AyohaStore_Order}' + "'" + ',' + "'" + '{AyohaPointType}' + "'" + ',' + "'" + '{GUIDRow}' + "'" + ',' + "'" + '{PaymentNo}' + "'" + ',' + "'" + '{EnterpriseLogo}' + "'" + ',' + "'" + '{PointAmountEquation}' + "'" + ',' + "'" + '{PaymentAmount}' + "'" + ',' + "'" + '{PaymentNoDisplay}' + "'" + ',' + "'" + '{MembershipCardImg}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{PaymentNote}' + "'" + ',' + "'" + '{EnterpriseName}' + "'" + ',' + "'" + '{EnterpriseAccNo}' + "'" + ',' + "'" + '{CreatedDate}' + "'" + ',' + "'" + '{OrderNo}' + "'" + ',' + "'" + '{CreatedBy}' + "'" + ',' + "'" + '{EnterpriseAddress}' + "'" + ',' + "'" + '{EnterpriseTagLine}' + "'" + ')" style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:100px;" ><thead><tr><th style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:bottom;word-break:normal"><div style="margin:5px 0px 0px 0px">{ModifiedEnterpriseName}</div></th><th style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:right;vertical-align:middle;word-break:normal" rowspan="3">{ModifiedTypeCRDB}</th></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:top;word-break:normal">{ModifiedMembershipCardName}<br><div style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;margin:0px 0px 0px 0px">{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}</div></td></tr></thead></table>' +
-  '<table onclick="FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail({TotalStampEarn},' + "'" + '{ItemCartCode}' + "'" + ',' + "'" + '{MembershipCardCode_AyohaStore_Order}' + "'" + ',' + "'" + '{AyohaPointType}' + "'" + ',' + "'" + '{GUIDRow}' + "'" + ',' + "'" + '{PaymentNo}' + "'" + ',' + "'" + '{EnterpriseLogo}' + "'" + ',' + "'" + '{PointAmountEquation}' + "'" + ',' + "'" + '{PaymentAmount}' + "'" + ',' + "'" + '{PaymentNoDisplay}' + "'" + ',' + "'" + '{MembershipCardImg}' + "'" + ',' + "'" + '{MembershipCardName}' + "'" + ',' + "'" + '{PaymentNote}' + "'" + ',' + "'" + '{EnterpriseName}' + "'" + ',' + "'" + '{EnterpriseAccNo}' + "'" + ',' + "'" + '{CreatedDate}' + "'" + ',' + "'" + '{OrderNo}' + "'" + ',' + "'" + '{CreatedBy}' + "'" + ',' + "'" + '{EnterpriseAddress}' + "'" + ',' + "'" + '{EnterpriseTagLine}' + "'" + ')" style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:100px;" ><thead><tr><th style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:bottom;word-break:normal"><div style="margin:5px 0px 0px 0px;">{ModifiedMembershipCardName}</div></th><th style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 10px;text-align:right;vertical-align:middle;word-break:normal" rowspan="3">{ModifiedTypeCRDB}</th></tr><tr><td style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:15px;font-weight:bold;overflow:hidden;padding:0px 10px;text-align:left;vertical-align:top;word-break:normal">{ModifiedEnterpriseName}<div style="border-color:black;border-style:none;border-width:1px;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;margin:0px 0px 0px 0px;font-weight:normal;">{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}</div></td></tr></thead></table>' +
+                    + '<div style="font-family:Arial,sans-serif;font-size:11px;color:#6B7280;line-height:16px;margin-top:3px;">'
+                        + '{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}'
+                    + '</div>'
+                + '</div>'
 
+                + '<div style="width:118px;min-width:118px;display:flex;justify-content:flex-end;align-items:center;flex-shrink:0;padding-right:2px;">'
+                    + '{[this.renderPointBadge(values)]}'
+                + '</div>'
 
+            + '</div>'
 
-                '</div>',
-                  emptyText: '<div class="myContent">No Transactions</div>',
-                  width: '100%',
-                  // height: 600,
-                  // height: '100%',
+        + '</div>',
 
-                  //listeners: {
+        {
+            cleanPointText: function (value) {
+                var raw = value || '';
+                raw = String(raw);
 
+                raw = raw.replace(/<br\s*\/?>/gi, ' ');
+                raw = raw.replace(/&nbsp;/gi, ' ');
+                raw = Ext.String.htmlDecode(raw);
+                raw = raw.replace(/<[^>]*>/g, '');
+                raw = raw.replace(/\s+/g, ' ').trim();
 
-                  //    itemdoubletap: function (dataview, index, target, record, e, eOpts) {
-                  //        var AyohaPointType = record.get('AyohaPointType');
-                  //        var RedeemHistoryCode = record.get('GUIDRow');
-                  //        var str = AyohaPointType;
-                  //        var boolAyohaPointType = str.includes("Ayoha Point Redemption");
-                  //        if (boolAyohaPointType) {
-                  //            FloatPanel_AyohaReward_RedemptionHistoryShow_FromFloatPanel_AyohaReward_PointTransaction(RedeemHistoryCode);
-                  //        }
-                         
+                return raw;
+            },
 
-                  //    },
+            renderPointBadge: function (values) {
+                var raw = values.PointAmountEquation || values.ModifiedTypeCRDB || '';
+                raw = this.cleanPointText(raw);
 
-                  //    itemsingletap: function (dataview, index, target, record, e, eOpts) {
-                  //        var AyohaPointType = record.get('AyohaPointType');
-                  //        var RedeemHistoryCode = record.get('GUIDRow');
-                  //        var str = AyohaPointType;
-                  //        var boolAyohaPointType = str.includes("Ayoha Point Redemption");
-                  //        if (boolAyohaPointType) {
-                  //            FloatPanel_AyohaReward_RedemptionHistoryShow_FromFloatPanel_AyohaReward_PointTransaction(RedeemHistoryCode);
-                  //        }
+                if (!raw) {
+                    raw = '0 Point';
+                }
 
-                  //    }
-                  //}
+                var pointType = (values.AyohaPointType || '').toString().toLowerCase();
+                var detectText = (raw + ' ' + pointType).toLowerCase();
 
+                var isRedeem =
+                    raw.indexOf('-') === 0 ||
+                    detectText.indexOf('redeem') !== -1 ||
+                    detectText.indexOf('redemption') !== -1 ||
+                    detectText.indexOf('debit') !== -1 ||
+                    detectText.indexOf('use point') !== -1 ||
+                    detectText.indexOf('spent') !== -1;
 
+                var isEarn =
+                    raw.indexOf('+') === 0 ||
+                    detectText.indexOf('earn') !== -1 ||
+                    detectText.indexOf('credit') !== -1 ||
+                    detectText.indexOf('check-in') !== -1 ||
+                    detectText.indexOf('complimentary') !== -1 ||
+                    detectText.indexOf('follower') !== -1 ||
+                    detectText.indexOf('reward') !== -1 ||
+                    detectText.indexOf('bonus') !== -1;
 
+                var bg = 'linear-gradient(180deg,#F9FAFB 0%,#F3F4F6 100%)';
+                var border = '#E5E7EB';
+                var color = '#374151';
+                var dot = '#9CA3AF';
 
+                if (isEarn) {
+                    bg = 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 100%)';
+                    border = '#BBF7D0';
+                    color = '#15803D';
+                    dot = '#22C55E';
+                }
 
+                if (isRedeem) {
+                    bg = 'linear-gradient(180deg,#FEF2F2 0%,#FEE2E2 100%)';
+                    border = '#FECACA';
+                    color = '#DC2626';
+                    dot = '#EF4444';
+                }
 
-              },
+                return ''
+                    + '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;'
+                    + 'min-width:96px;max-width:110px;padding:7px 10px;border-radius:999px;'
+                    + 'background:' + bg + ';'
+                    + 'border:1px solid ' + border + ';'
+                    + 'box-sizing:border-box;'
+                    + 'box-shadow:inset 0 1px 0 rgba(255,255,255,0.55);'
+                    + 'font-family:Arial,sans-serif;font-size:12px;font-weight:800;'
+                    + 'color:' + color + ';line-height:14px;white-space:nowrap;text-align:center;">'
+                        + '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + dot + ';flex-shrink:0;"></span>'
+                        + '<span style="display:inline-block;overflow:hidden;text-overflow:ellipsis;">' + Ext.String.htmlEncode(raw) + '</span>'
+                    + '</div>';
+            }
+        }
+    ),
+
+    emptyText: '<div style="padding:20px;text-align:center;color:#6B7280;">No Transactions</div>',
+    width: '100%',
+    height: '100%'
+}
           ]
 
       },
@@ -789,7 +733,8 @@ function FloatPanel_AyohaReward_PointTransactionsShow() {
 if(isFloatPanel_AyohaStore_CheckOutOpen=="Y"){
     Ext.getCmp('FloatPanel_AyohaReward_PointTransactionsID').setZIndex(400);
 }
-
+Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected')
+    .setHtml(buildAyohaPointCollectedHtmlPremium(2560));
 }
 
 
@@ -836,7 +781,11 @@ function FloatPanel_AyohaReward_PointTransactionsHide(fromBack,animCfg) {
 
 
 function FloatPanel_AyohaReward_PointTransactionsAdjustHeight() {
+
+    return;
     var y = parseInt(screen.height);
+
+
     var x = parseInt(window.innerHeight);
     isFloatPanel_AyohaStore_Cart_AyohaStore_CheckOut_ReOrder='N';
 
@@ -878,11 +827,11 @@ function FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointLoadBySubscrib
                 var store = records[0]; // Access only the first record
                 var count = _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getCount();
                 if (count > 0) {
-                   // var store = _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getAt(0);
-                    Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div  style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>' + store.get('AyohaPoint_Yearly') + '</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
+                  
+                   // Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div  style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>' + store.get('AyohaPoint_Yearly') + '</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
         
                 } else {
-                    Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div  style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>0</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
+                  //  Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div  style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>0</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
         
                 }
             } else {
@@ -1089,4 +1038,196 @@ function FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail(TotalStam
         FloatPanel_AyohaeWallet_Transaction_DetailShow(CreatedDate, EnterpriseName, EnterpriseLogo, EnterpriseAccNo, PaymentNote, modifiedPayAmount, "AyohaRewardContest_TapAndWin", "NA", "NA", "NA", EnterpriseName, PaymentNo)
     }
    
+}
+
+
+
+
+function buildAyohaPointCollectedHtmlPremium(totalPoint) {
+    var pointValue = parseInt(totalPoint || 0, 10);
+    if (isNaN(pointValue)) pointValue = 0;
+
+    var pointDisplay = Ext.util.Format.number(pointValue, '0,000');
+
+    return ''
+    + '<div style="position:relative;width:100%;height:135px;overflow:hidden;pointer-events:none;">'
+
+        // big ambient glow belakang
+        + '<div style="position:absolute;left:50%;top:-58px;transform:translateX(-50%);'
+        + 'width:300px;height:300px;border-radius:50%;'
+        + 'background:radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 34%, rgba(255,255,255,0.00) 74%);"></div>'
+
+        // gold reward glow kiri
+        + '<div style="position:absolute;left:20px;top:52px;'
+        + 'width:70px;height:70px;border-radius:50%;'
+        + 'background:radial-gradient(circle, rgba(255,215,106,0.22) 0%, rgba(255,215,106,0.08) 45%, rgba(255,215,106,0) 78%);"></div>'
+
+        // gold reward glow kanan
+        + '<div style="position:absolute;right:18px;top:18px;'
+        + 'width:84px;height:84px;border-radius:50%;'
+        + 'background:radial-gradient(circle, rgba(255,201,79,0.22) 0%, rgba(255,201,79,0.07) 46%, rgba(255,201,79,0) 76%);"></div>'
+
+        // blurred light dots
+        + '<div style="position:absolute;left:38px;top:22px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);filter:blur(1px);"></div>'
+        + '<div style="position:absolute;left:62px;top:42px;width:6px;height:6px;border-radius:50%;background:rgba(255,223,140,0.45);filter:blur(1px);"></div>'
+        + '<div style="position:absolute;right:56px;top:26px;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.32);filter:blur(1px);"></div>'
+        + '<div style="position:absolute;right:32px;top:52px;width:6px;height:6px;border-radius:50%;background:rgba(255,223,140,0.42);filter:blur(1px);"></div>'
+
+        // sparkle cluster kiri atas
+        + '<div style="position:absolute;left:24px;top:14px;color:rgba(255,255,255,0.70);font-size:13px;text-shadow:0 0 10px rgba(255,255,255,0.25);">✦</div>'
+        + '<div style="position:absolute;left:42px;top:26px;color:rgba(255,241,196,0.78);font-size:9px;text-shadow:0 0 8px rgba(255,215,106,0.30);">✧</div>'
+        + '<div style="position:absolute;left:56px;top:10px;color:rgba(255,255,255,0.42);font-size:8px;">✦</div>'
+        + '<div style="position:absolute;left:68px;top:34px;color:rgba(255,215,106,0.55);font-size:10px;">✶</div>'
+
+        // sparkle cluster kiri bawah
+        + '<div style="position:absolute;left:18px;top:88px;color:rgba(255,255,255,0.58);font-size:10px;">✦</div>'
+        + '<div style="position:absolute;left:40px;top:102px;color:rgba(255,233,163,0.62);font-size:8px;">✧</div>'
+        + '<div style="position:absolute;left:62px;top:92px;color:rgba(255,255,255,0.34);font-size:7px;">✦</div>'
+
+        // sparkle cluster kanan atas
+        + '<div style="position:absolute;right:26px;top:14px;color:rgba(255,255,255,0.72);font-size:12px;text-shadow:0 0 10px rgba(255,255,255,0.25);">✦</div>'
+        + '<div style="position:absolute;right:46px;top:30px;color:rgba(255,233,163,0.78);font-size:9px;text-shadow:0 0 8px rgba(255,215,106,0.30);">✧</div>'
+        + '<div style="position:absolute;right:60px;top:8px;color:rgba(255,255,255,0.40);font-size:7px;">✦</div>'
+        + '<div style="position:absolute;right:74px;top:40px;color:rgba(255,215,106,0.52);font-size:10px;">✶</div>'
+
+        // sparkle cluster kanan bawah
+        + '<div style="position:absolute;right:22px;top:90px;color:rgba(255,255,255,0.56);font-size:10px;">✦</div>'
+        + '<div style="position:absolute;right:44px;top:102px;color:rgba(255,233,163,0.60);font-size:8px;">✧</div>'
+        + '<div style="position:absolute;right:68px;top:94px;color:rgba(255,255,255,0.32);font-size:7px;">✦</div>'
+
+        // center tiny sparkles atas nombor
+        + '<div style="position:absolute;left:50%;top:18px;transform:translateX(-78px);color:rgba(255,255,255,0.28);font-size:7px;">✦</div>'
+        + '<div style="position:absolute;left:50%;top:14px;transform:translateX(74px);color:rgba(255,233,163,0.42);font-size:8px;">✧</div>'
+        + '<div style="position:absolute;left:50%;top:94px;transform:translateX(-92px);color:rgba(255,255,255,0.24);font-size:6px;">✦</div>'
+        + '<div style="position:absolute;left:50%;top:98px;transform:translateX(88px);color:rgba(255,215,106,0.36);font-size:7px;">✶</div>'
+
+        // main premium card
+        + '<div style="position:absolute;left:50%;top:8px;transform:translateX(-50%);'
+        + 'width:90%;max-width:350px;height:112px;border-radius:28px;'
+        + 'background:linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.07) 100%);'
+        + 'border:1px solid rgba(255,255,255,0.24);'
+        + 'box-shadow:0 18px 38px rgba(44,0,90,0.28), inset 0 1px 0 rgba(255,255,255,0.25);'
+        + 'backdrop-filter:blur(6px);">'
+
+            // highlight top line
+            + '<div style="position:absolute;left:16px;right:16px;top:0;height:1px;'
+            + 'background:linear-gradient(90deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.62) 50%, rgba(255,255,255,0.00) 100%);"></div>'
+
+            // soft shimmer bawah
+            + '<div style="position:absolute;left:22px;right:22px;bottom:10px;height:12px;'
+            + 'border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.00) 100%);"></div>'
+
+            // top row
+            + '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 0 14px;">'
+
+                + '<div style="display:inline-block;padding:5px 12px;border-radius:999px;'
+                + 'background:rgba(255,255,255,0.14);color:#F8EFFF;'
+                + 'font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">'
+                + 'AP Balance'
+                + '</div>'
+
+                + '<div style="position:relative;width:34px;height:34px;border-radius:50%;'
+                + 'background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);'
+                + 'box-shadow:0 8px 18px rgba(255,194,45,0.28), inset 0 1px 0 rgba(255,255,255,0.65);'
+                + 'text-align:center;line-height:34px;color:#6B4300;font-weight:900;font-size:11px;">'
+                    + '<div style="position:absolute;left:7px;top:5px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.45);filter:blur(1px);"></div>'
+                    + 'AP'
+                + '</div>'
+
+            + '</div>'
+
+            // value
+            + '<div style="width:100%;text-align:center;margin-top:2px;'
+            + 'font-size:54px;line-height:54px;font-weight:900;color:#FFFFFF;'
+            + 'letter-spacing:0.5px;text-shadow:0 10px 24px rgba(0,0,0,0.20);">'
+            + pointDisplay
+            + '</div>'
+
+            // subtitle
+            + '<div style="width:100%;text-align:center;margin-top:5px;">'
+                + '<span style="display:inline-block;padding:5px 12px;border-radius:999px;'
+                + 'background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);'
+                + 'color:#6B4300;font-size:10px;font-weight:800;letter-spacing:0.6px;'
+                + 'box-shadow:0 6px 14px rgba(255,194,45,0.22);">'
+                + 'Ready to Redeem'
+                + '</span>'
+            + '</div>'
+
+        + '</div>'
+
+    + '</div>';
+}
+
+function buildAyohaPointCollectedHtmlPremiumX(totalPoint) {
+    var pointValue = parseInt(totalPoint || 0, 10);
+    if (isNaN(pointValue)) pointValue = 0;
+
+    var pointDisplay = Ext.util.Format.number(pointValue, '0,000');
+
+    return ''
+    + '<div style="position:relative;width:100%;height:135px;overflow:hidden;">'
+
+        // soft glow belakang
+        + '<div style="position:absolute;left:50%;top:-55px;transform:translateX(-50%);'
+        + 'width:280px;height:280px;border-radius:50%;'
+        + 'background:radial-gradient(circle, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.06) 32%, rgba(255,255,255,0.00) 72%);"></div>'
+
+        // sparkle kiri
+        + '<div style="position:absolute;left:26px;top:16px;color:rgba(255,255,255,0.55);font-size:12px;">✦</div>'
+        + '<div style="position:absolute;left:42px;top:28px;color:rgba(255,255,255,0.35);font-size:9px;">✦</div>'
+
+        // sparkle kanan
+        + '<div style="position:absolute;right:34px;top:20px;color:rgba(255,255,255,0.52);font-size:11px;">✦</div>'
+        + '<div style="position:absolute;right:22px;top:35px;color:rgba(255,255,255,0.32);font-size:8px;">✦</div>'
+
+        // main premium card
+        + '<div style="position:absolute;left:50%;top:8px;transform:translateX(-50%);'
+        + 'width:90%;max-width:350px;height:112px;border-radius:28px;'
+        + 'background:linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.07) 100%);'
+        + 'border:1px solid rgba(255,255,255,0.24);'
+        + 'box-shadow:0 18px 38px rgba(44,0,90,0.28), inset 0 1px 0 rgba(255,255,255,0.25);'
+        + 'backdrop-filter:blur(6px);">'
+
+            // highlight top line
+            + '<div style="position:absolute;left:16px;right:16px;top:0;height:1px;'
+            + 'background:linear-gradient(90deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.62) 50%, rgba(255,255,255,0.00) 100%);"></div>'
+
+            // top row
+            + '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 0 14px;">'
+
+                + '<div style="display:inline-block;padding:5px 12px;border-radius:999px;'
+                + 'background:rgba(255,255,255,0.14);color:#F8EFFF;'
+                + 'font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">'
+                + 'AP Balance'
+                + '</div>'
+
+                + '<div style="width:34px;height:34px;border-radius:50%;'
+                + 'background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);'
+                + 'box-shadow:0 8px 18px rgba(255,194,45,0.28), inset 0 1px 0 rgba(255,255,255,0.65);'
+                + 'text-align:center;line-height:34px;color:#6B4300;font-weight:900;font-size:11px;">'
+                + 'AP'
+                + '</div>'
+
+            + '</div>'
+
+            // value
+            + '<div style="width:100%;text-align:center;margin-top:2px;'
+            + 'font-size:54px;line-height:54px;font-weight:900;color:#FFFFFF;'
+            + 'letter-spacing:0.5px;text-shadow:0 10px 24px rgba(0,0,0,0.20);">'
+            + pointDisplay
+            + '</div>'
+
+            // subtitle
+            + '<div style="width:100%;text-align:center;margin-top:5px;">'
+                + '<span style="display:inline-block;padding:5px 12px;border-radius:999px;'
+                + 'background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);'
+                + 'color:#6B4300;font-size:10px;font-weight:800;letter-spacing:0.6px;'
+                + 'box-shadow:0 6px 14px rgba(255,194,45,0.22);">'
+                + 'Ready to Redeem'
+                + '</span>'
+            + '</div>'
+
+        + '</div>'
+
+    + '</div>';
 }

@@ -1527,3 +1527,101 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.65), 0 3px 8px rgba(190,150,40,0.18);
     letter-spacing:0.8px;
 }
+
+
+
+
+
+
+.ayohaPointHistoryListPlain,
+.ayohaPointHistoryListPlain .x-list-inner,
+.ayohaPointHistoryListPlain .x-listitem,
+.ayohaPointHistoryListPlain .x-listitem-inner{
+    background: white !important;
+}
+
+.ayohaPointHistoryListPlain .x-listitem{
+    border: none !important;
+}
+
+.ayohaPointHistoryListPlain .x-listitem-inner{
+    padding: 0 !important;
+}
+
+.ayohaPointHistoryListPlain .x-listitem.x-item-selected .x-listitem-inner,
+.ayohaPointHistoryListPlain .x-listitem.x-item-pressed .x-listitem-inner{
+    background: rgba(123,84,170,0.03) !important;
+}
+
+
+/* =========================
+   PREMIUM GROUP HEADER
+   ========================= */
+
+/* cover beberapa kemungkinan class group header ExtJS Modern */
+.ayohaPointHistoryListPremium .x-listitemheader,
+.ayohaPointHistoryListPremium .x-dataview-group-header,
+.ayohaPointHistoryListPremium .x-list-group-header,
+.ayohaPointHistoryListPremium .x-groupheader,
+.ayohaPointHistoryListPremium .x-headercontainer{
+    position: relative !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 16px 14px 14px 14px !important;
+    margin: 0 !important;
+
+    color: #24123B !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: uppercase !important;
+}
+
+/* kalau text header duduk dalam inner wrapper */
+.ayohaPointHistoryListPremium .x-listitemheader *,
+.ayohaPointHistoryListPremium .x-dataview-group-header *,
+.ayohaPointHistoryListPremium .x-list-group-header *,
+.ayohaPointHistoryListPremium .x-groupheader *,
+.ayohaPointHistoryListPremium .x-headercontainer *{
+    color: #24123B !important;
+    font-weight: 900 !important;
+    background: transparent !important;
+}
+
+/* divider line bawah */
+.ayohaPointHistoryListPremium .x-listitemheader:after,
+.ayohaPointHistoryListPremium .x-dataview-group-header:after,
+.ayohaPointHistoryListPremium .x-list-group-header:after,
+.ayohaPointHistoryListPremium .x-groupheader:after,
+.ayohaPointHistoryListPremium .x-headercontainer:after{
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(123,84,170,0.00) 0%,
+        rgba(123,84,170,0.18) 20%,
+        rgba(123,84,170,0.18) 80%,
+        rgba(123,84,170,0.00) 100%
+    );
+}
+
+/* sparkle kiri */
+.ayohaPointHistoryListPremium .x-listitemheader:before,
+.ayohaPointHistoryListPremium .x-dataview-group-header:before,
+.ayohaPointHistoryListPremium .x-list-group-header:before,
+.ayohaPointHistoryListPremium .x-groupheader:before,
+.ayohaPointHistoryListPremium .x-headercontainer:before{
+    content: "✦";
+    display: inline-block;
+    margin-right: 8px;
+    color: #B89AD9 !important;
+    font-size: 10px;
+    vertical-align: middle;
+}
