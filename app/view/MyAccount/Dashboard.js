@@ -811,7 +811,7 @@ style: "background-color: transparent;",
                                                         margin: '15 0 0 0',
                                                         id:'html_Dashboard_AyohaRewardPts',
                                                         html:
-                                                        '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+                                                        '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow();" style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
                                                           '<div style="text-align:right;color:white;">' +
                                                             '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
                                                             '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
@@ -17340,8 +17340,22 @@ function DashboardAyohaUserMainStore() {
            
           //  document.getElementById("txtDashboard_AyohaPoint").textContent = AyohaPoint;
             document.getElementById("Dashboard_AyohaRewardPoint").textContent = AyohaPoint;
+           // alert("AyohaPoint:" + AyohaPoint);
             document.getElementById('Dashboard_userPts').textContent = `${AyohaPoint.toLocaleString('en-MY')}`;
             
+AppState.MainDashboard.AyohaPoint=AyohaPoint;
+Ext.getCmp('html_Dashboard_AyohaRewardPts').setHtml( '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow();" style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+                                                          '<div style="text-align:right;color:white;">' +
+                                                            '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">'+AyohaPoint+'</span>' +
+                                                            '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
+                                                          '</div>' +
+                                                          '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
+                                                               'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
+                                                               'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
+                                                            'A' +
+                                                          '</div>' +
+                                                        '</div>');
+
            
             
 
@@ -19293,10 +19307,10 @@ function Dashboard_SearchMerchantList_EnterprisesLoadAyohaMerchantListStore_Fron
              //   id: 'DashboardMain_SearchMerchantListLoadAllStoreID'
                 Ext.getCmp('DashboardMain_SearchMerchantListLoadAllStoreID').setStore(_DataStore_EnterprisesLoadByMerchantCategory_temp_front);
                 //Dashboard_LoadLastCheckIn();
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });

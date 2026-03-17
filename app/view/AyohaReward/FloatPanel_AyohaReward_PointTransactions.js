@@ -235,7 +235,7 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
             id: 'htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected',
             width: '100%',
             height: 135,
-            html: buildAyohaPointCollectedHtmlPremium(2560)
+            html: buildAyohaPointCollectedHtmlPremium(AppState.MainDashboard.AyohaPoint)
         }
     ]
 },
@@ -361,7 +361,7 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
     id: 'containerFloatPanel_AyohaReward_PointTransactionsMasterHeaderTop',
     width: '95%',
     height: 58,
-    margin: '2 0 0 0',
+    margin: ' 0 0 0 0',
     style: 'background-color: transparent;',
     layout: {
         type: 'hbox',
@@ -426,7 +426,7 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
                     id: 'btn_FloatPanel_AyohaReward_PointTransactionsMasterHeader_Maximize',
                     margin: '0 10 0 0',
                     height: 34,
-                    width: 34,
+                    width: 64,
                     ui: 'plain',
                     style:
                         'border-radius:12px;' +
@@ -491,18 +491,13 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
              
 
 
-
-
-
-
-              {
+{
     xtype: 'list',
     store: _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore,
     id: 'List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory',
     mode: 'SINGLE',
     disableSelection: true,
     grouped: true,
-    //cls: 'ayohaPointHistoryListPlain ayohaPointHistoryListPremium',
     userCls: 'ayohaPointHistoryListPlain ayohaPointHistoryListPremium',
     style: 'background:transparent;',
     scrollable: {
@@ -513,129 +508,225 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
         }
     },
 
+    listeners: {
+        itemsingletap: function (dataview, index, target, record, e, eOpts) {
+
+            FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail(
+                record.get('TotalStampEarn'),
+                record.get('ItemCartCode'),
+                record.get('MembershipCardCode_AyohaStore_Order'),
+                record.get('AyohaPointType'),
+                record.get('GUIDRow'),
+                record.get('PaymentNo'),
+                record.get('EnterpriseLogo'),
+                record.get('PointAmountEquation'),
+                record.get('PaymentAmount'),
+                record.get('PaymentNoDisplay'),
+                record.get('MembershipCardImg'),
+                record.get('MembershipCardName'),
+                record.get('PaymentNote'),
+                record.get('EnterpriseName'),
+                record.get('EnterpriseAccNo'),
+                record.get('CreatedDate'),
+                record.get('OrderNo'),
+                record.get('CreatedBy'),
+                record.get('EnterpriseAddress'),
+                record.get('EnterpriseTagLine'),
+                record.get('CampaignName'),
+                record.get('TypeCRDB'),
+                record.get('CampaignCode'),
+                record.get('AyohaPoint'),
+                record.get('ModifiedTypeCRDB'),
+                record.get('ModifiedMembershipCardName')
+            );
+
+        }
+    },
+
     itemTpl: new Ext.XTemplate(
 
-        '<div onclick="FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail({TotalStampEarn},'
-        + "'" + '{ItemCartCode}' + "'" + ','
-        + "'" + '{MembershipCardCode_AyohaStore_Order}' + "'" + ','
-        + "'" + '{AyohaPointType}' + "'" + ','
-        + "'" + '{GUIDRow}' + "'" + ','
-        + "'" + '{PaymentNo}' + "'" + ','
-        + "'" + '{EnterpriseLogo}' + "'" + ','
-        + "'" + '{PointAmountEquation}' + "'" + ','
-        + "'" + '{PaymentAmount}' + "'" + ','
-        + "'" + '{PaymentNoDisplay}' + "'" + ','
-        + "'" + '{MembershipCardImg}' + "'" + ','
-        + "'" + '{MembershipCardName}' + "'" + ','
-        + "'" + '{PaymentNote}' + "'" + ','
-        + "'" + '{EnterpriseName}' + "'" + ','
-        + "'" + '{EnterpriseAccNo}' + "'" + ','
-        + "'" + '{CreatedDate}' + "'" + ','
-        + "'" + '{OrderNo}' + "'" + ','
-        + "'" + '{CreatedBy}' + "'" + ','
-        + "'" + '{EnterpriseAddress}' + "'" + ','
-        + "'" + '{EnterpriseTagLine}' + "'" + ')" '
-        + 'style="width:100%;box-sizing:border-box;padding:14px 6px 14px 18px;'
-        + 'border-bottom:1px solid rgba(123,84,170,0.10);background:transparent;">'
+    '<div style="width:100%;box-sizing:border-box;padding:14px 0 14px 18px;'
+    + 'border-bottom:1px solid rgba(123,84,170,0.10);background:transparent;">'
 
-            + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;">'
+        + '<div style="position:relative;width:100%;min-height:58px;box-sizing:border-box;padding-right:116px;">'
 
-                + '<div style="flex:1;min-width:0;padding-right:4px;">'
-                    + '<div style="font-family:Arial,sans-serif;font-size:13px;font-weight:800;color:#1F2430;line-height:18px;">'
-                        + '{ModifiedMembershipCardName}'
-                    + '</div>'
-
-                    + '<div style="font-family:Arial,sans-serif;font-size:12px;color:#111827;line-height:17px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
-                        + '{ModifiedEnterpriseName}'
-                    + '</div>'
-
-                    + '<div style="font-family:Arial,sans-serif;font-size:11px;color:#6B7280;line-height:16px;margin-top:3px;">'
-                        + '{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}'
-                    + '</div>'
+            + '<div style="min-width:0;padding-right:8px;">'
+                + '<div style="font-family:Arial,sans-serif;font-size:13px;font-weight:800;color:#1F2430;line-height:18px;">'
+                    + '{ModifiedMembershipCardName}'
                 + '</div>'
 
-                + '<div style="width:118px;min-width:118px;display:flex;justify-content:flex-end;align-items:center;flex-shrink:0;padding-right:2px;">'
-                    + '{[this.renderPointBadge(values)]}'
+                + '<div style="font-family:Arial,sans-serif;font-size:12px;color:#111827;line-height:17px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
+                    + '{ModifiedEnterpriseName}'
                 + '</div>'
 
+                + '<div style="font-family:Arial,sans-serif;font-size:11px;color:#6B7280;line-height:16px;margin-top:3px;">'
+                    + '{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}'
+                + '</div>'
             + '</div>'
 
-        + '</div>',
+            + '<div style="position:absolute;top:0;right:0;display:flex;justify-content:flex-end;align-items:flex-start;">'
+                + '{[this.renderPointBadge(values)]}'
+            + '</div>'
+
+        + '</div>'
+
+    + '</div>',
+
+//    itemTpl: new Ext.XTemplate(
+
+//     '<div style="width:100%;box-sizing:border-box;padding:14px 0px 14px 18px;'
+//     + 'border-bottom:1px solid rgba(123,84,170,0.10);background:transparent;">'
+
+//         + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;">'
+
+//             + '<div style="flex:1;min-width:0;padding-right:10px;">'
+//                 + '<div style="font-family:Arial,sans-serif;font-size:13px;font-weight:800;color:#1F2430;line-height:18px;">'
+//                     + '{ModifiedMembershipCardName}'
+//                 + '</div>'
+
+//                 + '<div style="font-family:Arial,sans-serif;font-size:12px;color:#111827;line-height:17px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
+//                     + '{ModifiedEnterpriseName}'
+//                 + '</div>'
+
+//                 + '<div style="font-family:Arial,sans-serif;font-size:11px;color:#6B7280;line-height:16px;margin-top:3px;">'
+//                     + '{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}'
+//                 + '</div>'
+//             + '</div>'
+
+//             + '<div style="width:auto;min-width:auto;margin-left:auto;display:flex;justify-content:flex-end;align-items:flex-start;flex-shrink:0;padding-right:0px;padding-top:2px;">'
+//                 + '{[this.renderPointBadge(values)]}'
+//             + '</div>'
+
+//         + '</div>'
+
+//     + '</div>',
 
         {
-            cleanPointText: function (value) {
-                var raw = value || '';
-                raw = String(raw);
+            renderPointBadge: function (values) {
+                var meta = this.getPointBadgeMetaByOriginalRule(values);
 
-                raw = raw.replace(/<br\s*\/?>/gi, ' ');
-                raw = raw.replace(/&nbsp;/gi, ' ');
-                raw = Ext.String.htmlDecode(raw);
-                raw = raw.replace(/<[^>]*>/g, '');
-                raw = raw.replace(/\s+/g, ' ').trim();
+                // return ''
+                //     + '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;'
+                //     + 'min-width:96px;max-width:110px;padding:7px 10px;border-radius:999px;'
+                //     + 'background:' + meta.bg + ';'
+                //     + 'border:1px solid ' + meta.border + ';'
+                //     + 'box-sizing:border-box;'
+                //     + 'box-shadow:inset 0 1px 0 rgba(255,255,255,0.55);'
+                //     + 'font-family:Arial,sans-serif;font-size:12px;font-weight:800;'
+                //     + 'color:' + meta.color + ';line-height:14px;white-space:nowrap;text-align:center;">'
+                //         + '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + meta.dot + ';flex-shrink:0;"></span>'
+                //         + '<span style="display:inline-block;overflow:hidden;text-overflow:ellipsis;">' + Ext.String.htmlEncode(meta.raw) + '</span>'
+                //     + '</div>';
 
-                return raw;
+return ''
+    + '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;'
+    + 'padding:7px 12px;border-radius:999px;'
+    + 'background:' + meta.bg + ';'
+    + 'border:1px solid ' + meta.border + ';'
+    + 'box-sizing:border-box;'
+    + 'box-shadow:inset 0 1px 0 rgba(255,255,255,0.55);'
+    + 'font-family:Arial,sans-serif;font-size:12px;font-weight:800;'
+    + 'color:' + meta.color + ';line-height:14px;white-space:nowrap;text-align:center;">'
+        + '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + meta.dot + ';flex-shrink:0;"></span>'
+        + '<span style="display:inline-block;">' + Ext.String.htmlEncode(meta.raw) + '</span>'
+    + '</div>';
             },
 
-            renderPointBadge: function (values) {
-                var raw = values.PointAmountEquation || values.ModifiedTypeCRDB || '';
-                raw = this.cleanPointText(raw);
-
-                if (!raw) {
-                    raw = '0 Point';
-                }
-
-                var pointType = (values.AyohaPointType || '').toString().toLowerCase();
-                var detectText = (raw + ' ' + pointType).toLowerCase();
-
-                var isRedeem =
-                    raw.indexOf('-') === 0 ||
-                    detectText.indexOf('redeem') !== -1 ||
-                    detectText.indexOf('redemption') !== -1 ||
-                    detectText.indexOf('debit') !== -1 ||
-                    detectText.indexOf('use point') !== -1 ||
-                    detectText.indexOf('spent') !== -1;
-
-                var isEarn =
-                    raw.indexOf('+') === 0 ||
-                    detectText.indexOf('earn') !== -1 ||
-                    detectText.indexOf('credit') !== -1 ||
-                    detectText.indexOf('check-in') !== -1 ||
-                    detectText.indexOf('complimentary') !== -1 ||
-                    detectText.indexOf('follower') !== -1 ||
-                    detectText.indexOf('reward') !== -1 ||
-                    detectText.indexOf('bonus') !== -1;
+            getPointBadgeMetaByOriginalRule: function (values) {
+                var str = (values.TypeCRDB || '').toString();
+                var campaignCode = (values.CampaignCode || '').toString();
+                var ayohaPoint = this.normalizePointAmount(values.AyohaPoint);
+                var raw = '0 Point';
 
                 var bg = 'linear-gradient(180deg,#F9FAFB 0%,#F3F4F6 100%)';
                 var border = '#E5E7EB';
                 var color = '#374151';
                 var dot = '#9CA3AF';
 
-                if (isEarn) {
+                if (str === 'Credit') {
+                    raw = '+' + ayohaPoint + ' Point';
+                    if (campaignCode === 'AyohaPointRedemptionCancel') {
+                        raw = '+' + ayohaPoint + ' Point';
+                    }
+                    if (campaignCode === '001-AP_CheckIn') {
+                        raw = '+' + ayohaPoint + ' Point';
+                    }
+
                     bg = 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 100%)';
                     border = '#BBF7D0';
                     color = '#15803D';
                     dot = '#22C55E';
                 }
+                else if (str === 'Debit') {
+                    raw = '-' + ayohaPoint + ' Point';
+                    if (campaignCode === 'AyohaPointRedemption') {
+                        raw = '-' + ayohaPoint + ' Point';
+                    }
 
-                if (isRedeem) {
                     bg = 'linear-gradient(180deg,#FEF2F2 0%,#FEE2E2 100%)';
                     border = '#FECACA';
                     color = '#DC2626';
                     dot = '#EF4444';
                 }
+                else {
+                    raw = values.PointAmountEquation || values.ModifiedTypeCRDB || '';
+                    raw = this.cleanPointText(raw);
 
-                return ''
-                    + '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;'
-                    + 'min-width:96px;max-width:110px;padding:7px 10px;border-radius:999px;'
-                    + 'background:' + bg + ';'
-                    + 'border:1px solid ' + border + ';'
-                    + 'box-sizing:border-box;'
-                    + 'box-shadow:inset 0 1px 0 rgba(255,255,255,0.55);'
-                    + 'font-family:Arial,sans-serif;font-size:12px;font-weight:800;'
-                    + 'color:' + color + ';line-height:14px;white-space:nowrap;text-align:center;">'
-                        + '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + dot + ';flex-shrink:0;"></span>'
-                        + '<span style="display:inline-block;overflow:hidden;text-overflow:ellipsis;">' + Ext.String.htmlEncode(raw) + '</span>'
-                    + '</div>';
+                    if (!raw) {
+                        raw = '0 Point';
+                    }
+
+                    if (raw.indexOf('+') === 0) {
+                        bg = 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 100%)';
+                        border = '#BBF7D0';
+                        color = '#15803D';
+                        dot = '#22C55E';
+                    }
+
+                    if (raw.indexOf('-') === 0) {
+                        bg = 'linear-gradient(180deg,#FEF2F2 0%,#FEE2E2 100%)';
+                        border = '#FECACA';
+                        color = '#DC2626';
+                        dot = '#EF4444';
+                    }
+                }
+
+                return {
+                    raw: raw,
+                    bg: bg,
+                    border: border,
+                    color: color,
+                    dot: dot
+                };
+            },
+
+            normalizePointAmount: function (value) {
+                var raw = value || '0';
+                raw = String(raw);
+                raw = raw.replace(/<br\s*\/?>/gi, ' ');
+                raw = raw.replace(/&nbsp;/gi, ' ');
+                raw = Ext.String.htmlDecode(raw);
+                raw = raw.replace(/<[^>]*>/g, '');
+                raw = raw.replace(/\s+/g, ' ').trim();
+                raw = raw.replace(/^[+-]/, '').trim();
+                raw = raw.replace(/\s*Point\s*$/i, '').trim();
+
+                if (!raw) {
+                    raw = '0';
+                }
+
+                return raw;
+            },
+
+            cleanPointText: function (value) {
+                var raw = value || '';
+                raw = String(raw);
+                raw = raw.replace(/<br\s*\/?>/gi, ' ');
+                raw = raw.replace(/&nbsp;/gi, ' ');
+                raw = Ext.String.htmlDecode(raw);
+                raw = raw.replace(/<[^>]*>/g, '');
+                raw = raw.replace(/\s+/g, ' ').trim();
+                return raw;
             }
         }
     ),
@@ -644,6 +735,303 @@ id: 'FloatPanel_AyohaReward_PointTransactionsID',
     width: '100%',
     height: '100%'
 }
+
+
+
+//               {
+//     xtype: 'list',
+//     store: _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore,
+//     id: 'List_FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointHistory',
+//     mode: 'SINGLE',
+//     disableSelection: true,
+//     grouped: true,
+//     //cls: 'ayohaPointHistoryListPlain ayohaPointHistoryListPremium',
+//     userCls: 'ayohaPointHistoryListPlain ayohaPointHistoryListPremium',
+//     style: 'background:transparent;',
+//     scrollable: {
+//         direction: 'vertical',
+//         indicators: {
+//             y: { autoHide: true },
+//             x: { autoHide: true }
+//         }
+//     },
+
+//     itemTpl: new Ext.XTemplate(
+
+//         '<div onclick="FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail({TotalStampEarn},'
+//         + "'" + '{ItemCartCode}' + "'" + ','
+//         + "'" + '{MembershipCardCode_AyohaStore_Order}' + "'" + ','
+//         + "'" + '{AyohaPointType}' + "'" + ','
+//         + "'" + '{GUIDRow}' + "'" + ','
+//         + "'" + '{PaymentNo}' + "'" + ','
+//         + "'" + '{EnterpriseLogo}' + "'" + ','
+//         + "'" + '{PointAmountEquation}' + "'" + ','
+//         + "'" + '{PaymentAmount}' + "'" + ','
+//         + "'" + '{PaymentNoDisplay}' + "'" + ','
+//         + "'" + '{MembershipCardImg}' + "'" + ','
+//         + "'" + '{MembershipCardName}' + "'" + ','
+//         + "'" + '{PaymentNote}' + "'" + ','
+//         + "'" + '{EnterpriseName}' + "'" + ','
+//         + "'" + '{EnterpriseAccNo}' + "'" + ','
+//         + "'" + '{CreatedDate}' + "'" + ','
+//         + "'" + '{OrderNo}' + "'" + ','
+//         + "'" + '{CreatedBy}' + "'" + ','
+//         + "'" + '{EnterpriseAddress}' + "'" + ','
+//         + "'" + '{EnterpriseTagLine}' + "'" + ','
+//         + "'" + '{CampaignName}' + "'" + ','
+//         + "'" + '{TypeCRDB}' + "'" + ','
+//         + "'" + '{CampaignCode}' + "'" + ','
+//         + "'" + '{AyohaPoint}' + "'" + ','
+//          + "'" + '{ModifiedTypeCRDB}' + "'" + ')" '
+//         + 'style="width:100%;box-sizing:border-box;padding:14px 6px 14px 18px;'
+//         + 'border-bottom:1px solid rgba(123,84,170,0.10);background:transparent;">'
+
+//             + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;">'
+
+//                 + '<div style="flex:1;min-width:0;padding-right:4px;">'
+//                     + '<div style="font-family:Arial,sans-serif;font-size:13px;font-weight:800;color:#1F2430;line-height:18px;">'
+//                         + '{ModifiedMembershipCardName}'
+//                     + '</div>'
+
+//                     + '<div style="font-family:Arial,sans-serif;font-size:12px;color:#111827;line-height:17px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
+//                         + '{ModifiedEnterpriseName}'
+//                     + '</div>'
+
+//                     + '<div style="font-family:Arial,sans-serif;font-size:11px;color:#6B7280;line-height:16px;margin-top:3px;">'
+//                         + '{ModifiedCreatedDate_DateOnly} {ModifiedCreatedDate_TimeOnly}'
+//                     + '</div>'
+//                 + '</div>'
+
+//                 + '<div style="width:118px;min-width:118px;display:flex;justify-content:flex-end;align-items:center;flex-shrink:0;padding-right:2px;">'
+//                     + '{[this.renderPointBadge(values)]}'
+//                 + '</div>'
+
+//             + '</div>'
+
+//         + '</div>',
+
+//         {
+//             // cleanPointText: function (value) {
+//             //     var raw = value || '';
+//             //     raw = String(raw);
+
+//             //     raw = raw.replace(/<br\s*\/?>/gi, ' ');
+//             //     raw = raw.replace(/&nbsp;/gi, ' ');
+//             //     raw = Ext.String.htmlDecode(raw);
+//             //     raw = raw.replace(/<[^>]*>/g, '');
+//             //     raw = raw.replace(/\s+/g, ' ').trim();
+
+//             //     return raw;
+//             // },
+
+//             // renderPointBadge: function (values) {
+//             //     var raw = values.PointAmountEquation || values.ModifiedTypeCRDB || '';
+//             //     raw = this.cleanPointText(raw);
+
+//             //     if (!raw) {
+//             //         raw = '0 Point';
+//             //     }
+
+//             //     var pointType = (values.AyohaPointType || '').toString().toLowerCase();
+//             //     var detectText = (raw + ' ' + pointType).toLowerCase();
+
+//             //     var isRedeem =
+//             //         raw.indexOf('-') === 0 ||
+//             //         detectText.indexOf('redeem') !== -1 ||
+//             //         detectText.indexOf('redemption') !== -1 ||
+//             //         detectText.indexOf('debit') !== -1 ||
+//             //         detectText.indexOf('use point') !== -1 ||
+//             //         detectText.indexOf('spent') !== -1;
+
+//             //     var isEarn =
+//             //         raw.indexOf('+') === 0 ||
+//             //         detectText.indexOf('earn') !== -1 ||
+//             //         detectText.indexOf('credit') !== -1 ||
+//             //         detectText.indexOf('check-in') !== -1 ||
+//             //         detectText.indexOf('complimentary') !== -1 ||
+//             //         detectText.indexOf('follower') !== -1 ||
+//             //         detectText.indexOf('reward') !== -1 ||
+//             //         detectText.indexOf('bonus') !== -1;
+
+//             //     var bg = 'linear-gradient(180deg,#F9FAFB 0%,#F3F4F6 100%)';
+//             //     var border = '#E5E7EB';
+//             //     var color = '#374151';
+//             //     var dot = '#9CA3AF';
+
+//             //     if (isEarn) {
+//             //         bg = 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 100%)';
+//             //         border = '#BBF7D0';
+//             //         color = '#15803D';
+//             //         dot = '#22C55E';
+//             //     }
+
+//             //     if (isRedeem) {
+//             //         bg = 'linear-gradient(180deg,#FEF2F2 0%,#FEE2E2 100%)';
+//             //         border = '#FECACA';
+//             //         color = '#DC2626';
+//             //         dot = '#EF4444';
+//             //     }
+
+//             //     return ''
+//             //         + '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;'
+//             //         + 'min-width:96px;max-width:110px;padding:7px 10px;border-radius:999px;'
+//             //         + 'background:' + bg + ';'
+//             //         + 'border:1px solid ' + border + ';'
+//             //         + 'box-sizing:border-box;'
+//             //         + 'box-shadow:inset 0 1px 0 rgba(255,255,255,0.55);'
+//             //         + 'font-family:Arial,sans-serif;font-size:12px;font-weight:800;'
+//             //         + 'color:' + color + ';line-height:14px;white-space:nowrap;text-align:center;">'
+//             //             + '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + dot + ';flex-shrink:0;"></span>'
+//             //             + '<span style="display:inline-block;overflow:hidden;text-overflow:ellipsis;">' + Ext.String.htmlEncode(raw) + '</span>'
+//             //         + '</div>';
+//             // }
+
+
+
+
+//             renderPointBadge: function (values) {
+//     var meta = this.getPointBadgeMetaByOriginalRule(values);
+
+//     return ''
+//         + '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;'
+//         + 'min-width:96px;max-width:110px;padding:7px 10px;border-radius:999px;'
+//         + 'background:' + meta.bg + ';'
+//         + 'border:1px solid ' + meta.border + ';'
+//         + 'box-sizing:border-box;'
+//         + 'box-shadow:inset 0 1px 0 rgba(255,255,255,0.55);'
+//         + 'font-family:Arial,sans-serif;font-size:12px;font-weight:800;'
+//         + 'color:' + meta.color + ';line-height:14px;white-space:nowrap;text-align:center;">'
+//             + '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + meta.dot + ';flex-shrink:0;"></span>'
+//             + '<span style="display:inline-block;overflow:hidden;text-overflow:ellipsis;">' + Ext.String.htmlEncode(meta.raw) + '</span>'
+//         + '</div>';
+// },
+
+// getPointBadgeMetaByOriginalRule: function (values) {
+//     var str = (values.TypeCRDB || '').toString();
+//     var campaignCode = (values.CampaignCode || '').toString();
+//     var ayohaPoint = this.normalizePointAmount(values.AyohaPoint);
+//     var raw = '0 Point';
+
+//     // default neutral
+//     var bg = 'linear-gradient(180deg,#F9FAFB 0%,#F3F4F6 100%)';
+//     var border = '#E5E7EB';
+//     var color = '#374151';
+//     var dot = '#9CA3AF';
+
+//     // =========================
+//     // FOLLOW ORIGINAL RULE
+//     // =========================
+//     if (str === 'Credit') {
+//         raw = '+' + ayohaPoint + ' Point';
+
+//         // original special rules
+//         if (campaignCode === 'AyohaPointRedemptionCancel') {
+//             raw = '+' + ayohaPoint + ' Point';
+//         }
+
+//         if (campaignCode === '001-AP_CheckIn') {
+//             raw = '+' + ayohaPoint + ' Point';
+//         }
+
+//         bg = 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 100%)';
+//         border = '#BBF7D0';
+//         color = '#15803D';
+//         dot = '#22C55E';
+//     }
+//     else if (str === 'Debit') {
+//         raw = '-' + ayohaPoint + ' Point';
+
+//         // original special rule
+//         if (campaignCode === 'AyohaPointRedemption') {
+//             raw = '-' + ayohaPoint + ' Point';
+//         }
+
+//         bg = 'linear-gradient(180deg,#FEF2F2 0%,#FEE2E2 100%)';
+//         border = '#FECACA';
+//         color = '#DC2626';
+//         dot = '#EF4444';
+//     }
+//     else {
+//         // fallback kalau data tak lengkap
+//         raw = values.PointAmountEquation || values.ModifiedTypeCRDB || '';
+//         raw = this.cleanPointText(raw);
+
+//         if (!raw) {
+//             raw = '0 Point';
+//         }
+
+//         if (raw.indexOf('+') === 0) {
+//             bg = 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 100%)';
+//             border = '#BBF7D0';
+//             color = '#15803D';
+//             dot = '#22C55E';
+//         }
+
+//         if (raw.indexOf('-') === 0) {
+//             bg = 'linear-gradient(180deg,#FEF2F2 0%,#FEE2E2 100%)';
+//             border = '#FECACA';
+//             color = '#DC2626';
+//             dot = '#EF4444';
+//         }
+//     }
+
+//     return {
+//         raw: raw,
+//         bg: bg,
+//         border: border,
+//         color: color,
+//         dot: dot
+//     };
+// },
+
+// normalizePointAmount: function (value) {
+//     var raw = value || '0';
+//     raw = String(raw);
+
+//     raw = raw.replace(/<br\s*\/?>/gi, ' ');
+//     raw = raw.replace(/&nbsp;/gi, ' ');
+//     raw = Ext.String.htmlDecode(raw);
+//     raw = raw.replace(/<[^>]*>/g, '');
+//     raw = raw.replace(/\s+/g, ' ').trim();
+
+//     // buang + / - depan kalau ada
+//     raw = raw.replace(/^[+-]/, '').trim();
+
+//     // buang perkataan Point kalau dah ada
+//     raw = raw.replace(/\s*Point\s*$/i, '').trim();
+
+//     if (!raw) {
+//         raw = '0';
+//     }
+
+//     return raw;
+// },
+
+// cleanPointText: function (value) {
+//     var raw = value || '';
+//     raw = String(raw);
+
+//     raw = raw.replace(/<br\s*\/?>/gi, ' ');
+//     raw = raw.replace(/&nbsp;/gi, ' ');
+//     raw = Ext.String.htmlDecode(raw);
+//     raw = raw.replace(/<[^>]*>/g, '');
+//     raw = raw.replace(/\s+/g, ' ').trim();
+
+//     return raw;
+// }
+//         }
+//     ),
+
+//     emptyText: '<div style="padding:20px;text-align:center;color:#6B7280;">No Transactions</div>',
+//     width: '100%',
+//     height: '100%'
+// }
+
+
+
+
+
+
           ]
 
       },
@@ -734,7 +1122,7 @@ if(isFloatPanel_AyohaStore_CheckOutOpen=="Y"){
     Ext.getCmp('FloatPanel_AyohaReward_PointTransactionsID').setZIndex(400);
 }
 Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected')
-    .setHtml(buildAyohaPointCollectedHtmlPremium(2560));
+    .setHtml(buildAyohaPointCollectedHtmlPremium(AppState.MainDashboard.AyohaPoint));
 }
 
 
@@ -743,12 +1131,7 @@ Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected')
 
 function FloatPanel_AyohaReward_PointTransactionsHide(fromBack,animCfg) {
 
-    // if (isFloatPanel_AyohaReward_PointTransactionsOpen == "Y") {
-    //     _FloatPanel_AyohaReward_PointTransactions.hide(); isFloatPanel_AyohaReward_PointTransactionsOpen = 'N';
-    //     _FloatPanel_AyohaReward_PointTransactions_isFirstLoad = "N";
-    //     RemovePages("FloatPanel_AyohaReward_PointTransactionsHide()");
-    // }
-
+  
 
 
 
@@ -770,6 +1153,8 @@ function FloatPanel_AyohaReward_PointTransactionsHide(fromBack,animCfg) {
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_AyohaReward_PointTransactions');
           }
+          _FloatPanel_AyohaReward_PointTransactions.destroy();
+          _FloatPanel_AyohaReward_PointTransactions = null;
     }
  
 
@@ -877,7 +1262,7 @@ function FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointLoadBySubscrib
 
  
     Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsMasterHeaderTxt').setHtml('<font size=1 color=black>Ayoha Point Transaction - Year ' + Year + '</font>');
-    FloatPanel_YearOnlyHide();
+    FloatPanel_YearOnlyHide(false);
     _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
     _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getProxy().setExtraParam('Year', Year);
     _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getProxy().setUrl(GetAPIurl() + '/AyohaRewardPoint/AyohaRewardPointLoadBySubscriberAccNo');
@@ -889,10 +1274,10 @@ function FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointLoadBySubscrib
         var count = _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getCount();
         if (count > 0) {
             var store = _DataStore_AyohaRewardPointLoadBySubscriberAccNoStore.getAt(0);
-            Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>' + store.get('AyohaPoint_Yearly') + '</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
+         //   Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>' + store.get('AyohaPoint_Yearly') + '</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
 
         } else {
-            Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>0</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
+          //  Ext.getCmp('htmlFloatPanel_AyohaReward_PointTransactionsPointsCollected').setHtml('<div style="color:white;text-align: center;font-size:58px;width:100%;margin:50px 0px 0px 0px;"><b>0</b></div><br><div style="color:white;text-align: center;font-size:11px;width:100%;margin:-40px 0px 0px 0px"><b>Ayoha Point</b></div>');
 
         }
       
@@ -908,23 +1293,22 @@ function FloatPanel_AyohaReward_PointTransactions_AyohaRewardPointLoadBySubscrib
 }
 
 
-function FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail(TotalStampEarn,ItemCartCode, MembershipCardCode_AyohaStore_Order, AyohaPointType, GUIDRow, PaymentNo, EnterpriseLogo, PointAmountEquation, PaymentAmount, PaymentNoDisplay, MembershipCardImg, MembershipCardName, PaymentNote, EnterpriseName, EnterpriseAccNo, CreatedDate,OrderNo,CreatedBy,EnterpriseAddress,EnterpriseTagLine) {
+function FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetailX(TotalStampEarn,ItemCartCode, MembershipCardCode_AyohaStore_Order, AyohaPointType, GUIDRow, PaymentNo, EnterpriseLogo, PointAmountEquation, PaymentAmount, PaymentNoDisplay, MembershipCardImg, MembershipCardName, PaymentNote, EnterpriseName, EnterpriseAccNo, CreatedDate,OrderNo,CreatedBy,EnterpriseAddress,EnterpriseTagLine,ModifiedMembershipCardName) {
     globalFloatPanel_AyohaStore_ModuleTagging = "FloatPanel_AyohaStore_CheckOut";
-    //var AyohaPointType = record.get('AyohaPointType');
-    //var RedeemHistoryCode = record.get('GUIDRow');
-   
+  
     globalFloatPanel_AyohaStore_CheckOut_EnterpriseAccNo = EnterpriseAccNo;
     glonbalDashboard_SearchMerchantList_FullCompanyAddress=EnterpriseAddress;
     globalFloatPanel_AyohaStore_CheckOut_EnterpriseTagLine = EnterpriseTagLine;
 
-    localStorage.setItem("EnterpriseAccNo",EnterpriseAccNo);
-    localStorage.setItem("PaymentNo",PaymentNo);
-//FloatPanel_AyohaReward_PointTransactionsHide();
+   // localStorage.setItem("EnterpriseAccNo",EnterpriseAccNo);
+  //  localStorage.setItem("PaymentNo",PaymentNo);
 
 
 
-// alert(ItemCartCode)
-// alert(PaymentNo)
+
+alert(ModifiedMembershipCardName)
+
+if(AyohaPointType){
     if (AyohaPointType == "(Point Loyalty Card)") {
 
 
@@ -1015,7 +1399,11 @@ function FloatPanel_AyohaReward_PointTransaction_ShowTransactionDetail(TotalStam
         return;
     }
     
-
+}
+else{
+//alert(AyohaPointType)
+//alert(ItemCartCode)
+}
     var str = AyohaPointType;
     var boolAyohaPointType;
     boolAyohaPointType = str.includes("Ayoha Point Redemption");

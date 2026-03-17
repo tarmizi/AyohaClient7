@@ -60,7 +60,7 @@ var AppState = {
                CountStar:null,
               CountReviewer:null,
               isMembershipCardSubscribed:null,
-
+AyohaPoint:null,
 
 
 

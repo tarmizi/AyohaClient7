@@ -68,8 +68,7 @@
               }
 
               if (str == "Debit") {
-                  //  _value = '<font size=3 color=red><b>-</b></font> ' + AyohaPoint;
-                 // _value = '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:-6px 0px 0px 0px;text-align:right;color:red"><font size=2 color=red><b>-</b></font><strike>' + AyohaPoint + ' Point</strike></div><br><div style="font-family:Arial, sans-serif;font-size:10px;font-weight:bold;word-break:normal;margin:-10px 0px 0px 0px;text-align:right;color:red">' + ModifiedBy + '</div>';
+                 
                   _value = '<div style="font-family:Arial, sans-serif;font-size:15px;font-weight:bold;word-break:normal;margin:0px 0px 0px 0px;text-align:right;color:red"><font size=4 color=red><b>-</b></font><strike>' + AyohaPoint + ' Point</strike></div><br><div style="font-family:Arial, sans-serif;font-size:10px;font-weight:bold;word-break:normal;margin:-16px 0px 0px 0px;text-align:right;color:red">' + ModifiedBy + '</div><br><div style="font-family:Arial, sans-serif;font-size:10px;font-weight:bold;word-break:normal;margin:-13px 0px 0px 0px;text-align:right;color:red;">' + ModifiedDateTime + '</div>';
                   if (CampaignCode == "AyohaPointRedemption") {
 
@@ -259,16 +258,16 @@
                    // method = "-<img src=resources/icons/Logo/LogoOrangeSimplifed.png width=25 height=20 alt=Company Name><font size=1 color=black>-Complementary Point</font>";
 
                      if (str == "Point") {
-                         method = "-<img src=resources/icons/StampLoyaltyCard.png width=25 height=20 alt=Company Name>";
+                         method = "-<font size=1 color=black>-Loyalty Point</font>";
                      }
                      if (str == "Stamp" && CreatedBy !="Auto-PaidOnline" ) {
-                         method = "-<img src=resources/icons/scanQrCodePurple.png width=25 height=20 alt=Company Name><font size=1 color=black>-QR Code digital Stamp</font>";
+                         method = "-<font size=1 color=black>-QR Code digital Stamp</font>";
                      }
                      if (str == "Stamp" && CreatedBy =="Auto-PaidOnline" ) {
-                        method = "-<img src=resources/icons/Logo/LogoOrangeSimplifed.png width=25 height=20 alt=Company Name><font size=1 color=black>-Complementary Point</font>";
+                        method = "-<font size=1 color=black>(Complementary Point)</font>";
                     }
                  }
-                 _value = _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:-1px 0px 0px 0px;color:black">' + EnterpriseName +  method + '</div>'
+                 _value = _value = '<div style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;word-break:normal;margin:-1px 0px 0px 0px;color:black">' + EnterpriseName +   method + '</div>'
 
                  if (str == "Cancel") {
                  //    _value = '<font color=red>' + EnterpriseName + '</font>';
@@ -340,11 +339,13 @@ console.log(CampaignCode);
                 var MembershipCardName = record.get('MembershipCardName');
                 var CampaignCode = record.get('CampaignCode');
                 if (CampaignCode == "AyohaPointGreetingPoint") {
-                    _value= "Opening Ayoha Account!-<img src=resources/icons/Logo/LogoOrangeSimplifed.png width=25 height=20 alt=Company Name>"
+                  //  _value= "Opening Ayoha Account!-<img src=resources/icons/Logo/LogoOrangeSimplifed.png width=25 height=20 alt=Company Name>"
+                     _value= "Opening Ayoha Account"
+                   
                     return _value;
 
                 }if (CampaignCode == "AyohaPointToken-eWalletOpeningAccount") {
-                    _value= "Ayoha eWalllet Account!-<img src=resources/icons/AyohaeWallet02.png width=25 height=20 alt=Company Name>"
+                    _value= "Ayoha eWalllet Account"
                    // _value= "Ayoha eWalllet Account"
                     return _value;
 

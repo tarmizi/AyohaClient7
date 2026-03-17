@@ -341,7 +341,7 @@ function CoreFunction_DashboardAyohaUser() {
 
 
 
-Ext.getCmp('html_Dashboard_AyohaRewardPts').setHtml( '<div  onclick="Dashboard_ayoharedeem_page()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+Ext.getCmp('html_Dashboard_AyohaRewardPts').setHtml( '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow();" style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
                                                           '<div style="text-align:right;color:white;">' +
                                                             '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">'+AyohaPoint+'</span>' +
                                                             '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +

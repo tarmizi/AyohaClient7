@@ -1625,3 +1625,20 @@
     font-size: 10px;
     vertical-align: middle;
 }
+
+
+
+
+.ayohaPointHistoryListPremium .x-listitem-inner{
+    padding-right: 0 !important;
+}
+
+
+.ayohaPointHistoryListPremium .x-listitem-inner{
+    padding: 0 !important;
+}
+
+.ayohaPointHistoryListPremium .x-innerhtml{
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
