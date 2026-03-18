@@ -1642,3 +1642,35 @@
     width: 100% !important;
     box-sizing: border-box !important;
 }
+
+
+
+
+
+
+.FloatPanelYearOnlyListCls,
+.FloatPanelYearOnlyListCls .x-listitem,
+.FloatPanelYearOnlyListCls .x-listitem-inner {
+    background: #ffffff !important;
+}
+
+.FloatPanelYearOnlyListCls .x-listitem-inner {
+    padding: 0 !important;
+}
+
+.FloatPanelYearOnlyListCls .x-listitem {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+}
+
+
+
+
+.FloatPanelYearOnlyListCls .x-listitem-inner{
+    padding:0 !important;
+}
+
+.FloatPanelYearOnlyListCls .x-innerhtml{
+    width:100% !important;
+}

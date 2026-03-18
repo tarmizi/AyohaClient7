@@ -280,10 +280,10 @@ function buildAyohaPointTransactionDetailHtmlPremium(data) {
                     + 'Point Information'
                 + '</div>'             
               //  + Ayoha_PointDetailRow('Point Amount',Ayoha_PointDetailGetPointBadge(data))
-                + Ayoha_PointDetailRowHtml('Point Amount', Ayoha_PointDetailGetPointBadge(data))
-                + Ayoha_PointDetailRow('Total Point Balance', AppState.MainDashboard.AyohaPoint)
+                + Ayoha_PointDetailRowHtml('Point Collected', Ayoha_PointDetailGetPointBadge(data))
+                + Ayoha_PointDetailRow('Current Total Point', AppState.MainDashboard.AyohaPoint)
                 + Ayoha_PointDetailRow('Payment Amount', data.PaymentAmount)
-                + Ayoha_PointDetailRow('Payment No', data.PaymentNoDisplay || data.PaymentNo)
+                + Ayoha_PointDetailRow('Point Code', data.PaymentNoDisplay || data.PaymentNo)
             + '</div>'
 
             // REFERENCE CARD
@@ -318,13 +318,22 @@ function FloatPanel_AyohaReward_PointTransactionDetail_ViewDetail() {
 
     var d = _AyohaReward_PointTransactionDetail_CurrentData;
 
-    Ext.Msg.alert(
-        'Transaction Detail',
-        'Order No: ' + Ayoha_PointDetailSafe(d.OrderNo) + '<br>' +
-        'Payment No: ' + Ayoha_PointDetailSafe(d.PaymentNoDisplay || d.PaymentNo) + '<br>' +
-        'Campaign: ' + Ayoha_PointDetailSafe(d.CampaignName) + '<br>' +
-        'Point: ' + Ayoha_PointDetailSafe(Ayoha_PointDetailCleanText(d.PointAmountEquation))
-    );
+
+FloatPanel_AyohaStore_CheckOut_AyohaStoreOrderLoadByItemCartCodeAndMembershipCardCodeStore_WithOrderNo(d.TotalStampEarn
+    ,d.ItemCartCode, d.MembershipCardCode_AyohaStore_Order, d.OrderNo, d.EnterpriseName, d.EnterpriseLogo);
+
+//alert('View Detail for Order No: ' + Ayoha_PointDetailSafe(d.OrderNo) + ', Payment No: ' + Ayoha_PointDetailSafe(d.PaymentNoDisplay || d.PaymentNo));
+
+
+
+
+    // Ext.Msg.alert(
+    //     'Transaction Detail',
+    //     'Order No: ' + Ayoha_PointDetailSafe(d.OrderNo) + '<br>' +
+    //     'Payment No: ' + Ayoha_PointDetailSafe(d.PaymentNoDisplay || d.PaymentNo) + '<br>' +
+    //     'Campaign: ' + Ayoha_PointDetailSafe(d.CampaignName) + '<br>' +
+    //     'Point: ' + Ayoha_PointDetailSafe(Ayoha_PointDetailCleanText(d.PointAmountEquation))
+    // );
 }
 
 
@@ -531,8 +540,9 @@ function FloatPanel_AyohaReward_PointTransactionDetailCreateIfNeeded() {
                                             xtype: 'button',
                                             id: 'btnFloatPanel_AyohaReward_PointTransactionDetailClose',
                                             height: 44,
-                                            width: 110,
-                                            margin: '0 10 0 0',
+                                           // width: 110,
+                                            flex: 1,
+                                           margin: '0 10 0 0',
                                             ui: 'plain',
                                             style:
                                                 'border-radius:14px;' +
@@ -548,6 +558,7 @@ function FloatPanel_AyohaReward_PointTransactionDetailCreateIfNeeded() {
                                         {
                                             xtype: 'button',
                                             id: 'btnFloatPanel_AyohaReward_PointTransactionDetailViewDetail',
+                                            hidden: true,
                                             flex: 1,
                                             height: 44,
                                             ui: 'plain',
@@ -664,6 +675,20 @@ ModifiedMembershipCardName: ModifiedMembershipCardName
 
 
     isFloatPanel_AyohaReward_PointTransactionDetailOpen = 'Y';
+//alert('FloatPanel_AyohaReward_PointTransactionDetailShowTransactionDetail called with Order No: ' + _AyohaReward_PointTransactionDetail_CurrentData.PaymentNo);   
+
+   // alert('Showing transaction detail for Order No: ' + PaymentNoDisplay(OrderNo) + ', Payment No: ' + Ayoha_PointDetailSafe(PaymentNoDisplay || PaymentNo));
+
+var _value = _AyohaReward_PointTransactionDetail_CurrentData.PaymentNo;
+//alert('Payment No: ' + _value);
+if (_value){
+if (_value.indexOf('PN') === 0) {
+   // Ext.Msg.alert('Info', 'Text start dengan PN');
+  //   id: 'btnFloatPanel_AyohaReward_PointTransactionDetailViewDetail',
+    
+      Ext.getCmp('btnFloatPanel_AyohaReward_PointTransactionDetailViewDetail').setHidden(false);
+}
+}
 
 
 
