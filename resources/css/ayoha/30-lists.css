@@ -1674,3 +1674,224 @@
 .FloatPanelYearOnlyListCls .x-innerhtml{
     width:100% !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.checkIn_ayohaHubRow{
+    width:100%;
+    box-sizing:border-box;
+    padding:2px 14px 2px 14px;
+}
+
+.checkIn_ayohaMiniCard{
+    position:relative;
+    width:100%;
+    height:100px;
+    /* min-height:138px; */
+    border-radius:22px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    margin:0 0 0 6px;
+
+    border:1.5px solid rgba(255,255,255,0.42);
+    box-shadow:
+        0 10px 22px rgba(0,0,0,0.20),
+        0 2px 8px rgba(0,0,0,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.35),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.checkIn_ayohaMiniCard:before{
+    content:'';
+    position:absolute;
+    top:4px;
+    left:4px;
+    right:4px;
+    bottom:4px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.12);
+    pointer-events:none;
+    z-index:1;
+}
+
+.checkIn_ayohaMiniOverlay{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.08) 0%,
+            rgba(0,0,0,0.18) 28%,
+            rgba(0,0,0,0.42) 65%,
+            rgba(0,0,0,0.66) 100%
+        );
+    z-index:1;
+}
+
+.checkIn_ayohaMiniContent{
+    position:relative;
+    z-index:2;
+    height:138px;
+    min-height:138px;
+    padding:9px 10px 8px 10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-sizing:border-box;
+    color:#fff;
+}
+
+.checkIn_ayohaMiniTop{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:6px;
+}
+
+.checkIn_ayohaMiniBrandWrap{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    min-width:0;
+    width:100%;
+}
+
+.checkIn_ayohaMiniBrandWrap img{
+    width:24px;
+    height:24px;
+    border-radius:8px;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,0.52);
+    background:rgba(255,255,255,0.16);
+    box-shadow:0 2px 6px rgba(0,0,0,0.18);
+}
+
+.checkIn_ayohaMiniMid{
+    margin-top:auto;
+}
+
+.checkIn_ayohaMiniType{
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    font-weight:700;
+    line-height:12px;
+    color:rgba(255,255,255,0.86);
+    margin-bottom:3px;
+    text-shadow:0 1px 2px rgba(0,0,0,0.30);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.checkIn_ayohaMiniNo{
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    font-weight:800;
+    line-height:15px;
+    color:#ffffff;
+    letter-spacing:0.25px;
+    margin-bottom:2px;
+    text-shadow:0 1px 6px rgba(0,0,0,0.32);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.checkIn_ayohaMiniName{
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    font-weight:700;
+    line-height:12px;
+    color:rgba(255,255,255,0.95);
+    text-shadow:0 1px 4px rgba(0,0,0,0.28);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.checkIn_ayohaMiniBottom{
+    margin-top:8px;
+    padding-top:6px;
+    border-top:1px solid rgba(255,255,255,0.18);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:6px;
+}
+
+.checkIn_ayohaMiniCol{
+    flex:1;
+    min-width:0;
+}
+
+.checkIn_ayohaMiniCol.right{
+    text-align:right;
+}
+
+.checkIn_ayohaMiniLabel{
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:rgba(255,255,255,0.72);
+    margin-bottom:2px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.checkIn_ayohaMiniValue{
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    font-weight:700;
+    line-height:11px;
+    color:#ffffff;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.checkIn_ayohaHubList,
+.checkIn_ayohaHubList .x-listitem,
+.checkIn_ayohaHubList .x-listitem-inner{
+    background:transparent !important;
+}
+
+.checkIn_ayohaHubList .x-listitem-inner{
+    padding:0 !important;
+    border:none !important;
+}
+
+
+
+
+.checkIn_ayohaMiniCard:after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-20%;
+    width:70%;
+    height:55%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+    transform:skewX(-18deg);
+    pointer-events:none;
+    z-index:1;
+}

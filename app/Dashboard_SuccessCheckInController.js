@@ -2402,6 +2402,8 @@ AppState.MainDashboard.isMembershipCardSubscribed  = record.get('isMembershipCar
              Ext.getCmp('listDashboard_MembershipCard_CheckIn_Member').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
              
 
+  Ext.getCmp('listDashboard_MembershipCard_CheckIn_NonMember_HeroSection').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
+             
 
 
 

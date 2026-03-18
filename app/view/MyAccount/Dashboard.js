@@ -1094,15 +1094,267 @@ style: 'background:transparent;',
 
 items:[
  
-// {
-//       width: '100%',
-//       margin: '10 0 0 0',
-//       html: '<div style="color:white; text-align:center; font-size:18px; width:100%;"><b>You\'ve Arrived!</b></div>'
-//   },
+{
+xtype: 'container',
+  width: '100%',
+  hidden:false,
+  id:'containerCheckInRewardProgress_PromotingMembershipCard',
+  name: 'namecontainerCheckInRewardProgress_PromotingMembershipCard',
+  
+ height:180,
+
+  style: 'background:transparent;',
+  layout: {
+
+    type: 'vbox',
+    pack: 'start',
+    align: 'left'
+},
+items:[
+
+   {
+xtype: 'container',
+  width: '100%',
+  height:50,
+  style: 'background:transparent;',
+  layout: {
+
+    type: 'hbox',
+    pack: 'center',
+    align: 'center'
+},
+items:[
+ {
+    width: '100%',
+    height:40,
+   // margin: '0 0 0 30',
+    id: 'html_Dashboard_1stline_nonMember',
+   html:
+    '<div style="'
+        + 'width:100%;'
+      //  + 'min-height:260px;'
+    //    + 'box-sizing:border-box;'
+       + 'padding:0px 0px 0px 40px;'
+        + 'position:relative;'
+        + 'overflow:hidden;'
+      //  + 'background:linear-gradient(180deg,#5B1FA6 0%, #6A28B8 55%, #7A35C7 100%);'
+         + 'background:transparent;'
+       // + 'border-radius:0 0 28px 28px;'
+          + 'border-radius:0 0 0px 0px;'
+    + '">' +
+
+      
+
+
+          
+
+               
+
+                    '<div style="'
+                        + 'font-family:Arial,sans-serif;'
+                        + 'font-size:20px;'
+                        + 'font-weight:800;'
+                     //   + 'line-height:32px;'
+                        + 'letter-spacing:-0.4px;'
+                        + 'color:#FFFFFF;'
+                       // + 'text-shadow:0 3px 12px rgba(0,0,0,0.30);'
+                      //  + 'margin:0 0 6px 0;'
+                    + '">'
+                        + 'Unlock Premium Perks'
+                    + '</div>' +
+
+                    '<div style="'
+                        + 'font-family:Arial,sans-serif;'
+                        + 'font-size:16px;'
+                        + 'font-weight:400;'
+                        + 'line-height:29px;'
+                        + 'color:#F6F1FF;'
+                        + 'text-shadow:0 2px 10px rgba(0,0,0,0.25);'
+                        + 'margin:0 0 6px 0;'
+                    + '">'
+                        + 'at Kopi Surat Cinta'
+                    + '</div>' +
+
+                    // '<div style="'
+                    //     + 'font-family:Arial,sans-serif;'
+                    //     + 'font-size:12px;'
+                    //     + 'font-weight:400;'
+                    //     + 'line-height:25px;'
+                    //     + 'color:rgba(255,255,255,0.92);'
+                    //     + 'text-shadow:0 2px 8px rgba(0,0,0,0.22);'
+                    //     + 'margin:0;'
+                    // + '">'
+                    //     + 'Become a Platinum Member for<br>'
+                    //     + 'Special Rewards &amp; Exclusive Offers'
+                    // + '</div>' +
+
+              
+
+           
+
+          
+
+     
+
+    '</div>'
+  },
+]
+   },
+ 
+   
+{
+  
+  id: 'listDashboard_MembershipCard_CheckIn_NonMember_HeroSection',
+  margin: '0 0 0 5',
+  xtype: 'dataview',
+// height: 290,
+height: 325,
+// height: 0,
+  style: "background-color: rgba(0, 0, 0, 0);",
+  cls: 'checkIn_ayohaHubList',
+  inline: {
+      wrap: false
+  },
+  scrollable: {
+      direction: 'horizontal',
+      indicators: false,
+  },
+  width: '93%',
+
+itemTpl: [
+    '<div class="checkIn_ayohaHubRow">',
+        '<div class="checkIn_ayohaMiniCard" style="background-image:url({MembershipCardBackgroundImg});">',
+            
+            '<div class="checkIn_ayohaMiniOverlay"></div>',
+            
+            '<div class="checkIn_ayohaMiniContent">',
+                
+                '<div class="checkIn_ayohaMiniTop">',
+                    '<div class="checkIn_ayohaMiniBrandWrap">',
+                        '{ModifiedEnterprisesLogoDesignOneTwo}',
+                        '{ModifiedEnterprisesNameDesignOneTwo}',
+                    '</div>',
+                '</div>',
+
+                '<div class="checkIn_ayohaMiniMid">',
+                    '<div class="checkIn_ayohaMiniType">{MembershipCardType}</div>',
+                    '<div class="checkIn_ayohaMiniNo">{ModifiedMembershipNo}</div>',
+                    '<div class="checkIn_ayohaMiniName">{ModifiedAyohaUserAccountName}</div>',
+                '</div>',
+
+                '<div class="checkIn_ayohaMiniBottom">',
+                    '<div class="checkIn_ayohaMiniCol">',
+                        '<div class="checkIn_ayohaMiniLabel">Member Since</div>',
+                        '<div class="checkIn_ayohaMiniValue">{ModifiedMembershipDate}</div>',
+                    '</div>',
+                    '<div class="checkIn_ayohaMiniCol right">',
+                        '<div class="checkIn_ayohaMiniLabel">Valid Until</div>',
+                        '<div class="checkIn_ayohaMiniValue">{ValidUntilDateMonthYearOnly}</div>',
+                    '</div>',
+                '</div>',
+
+            '</div>',
+        '</div>',
+    '</div>'
+].join(''),
+// itemTpl: new Ext.XTemplate(
+// '<div class="ayohaCardItem">',
+
+// '<div class="ayohaCardWrap">',
+
+// // ===== CARD FACE =====
+// '<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size:100% 100%;background-position:center center;background-repeat:no-repeat;">',
+
+// '<div class="ayohaCardOverlay"></div>',
+// '<div class="ayohaCardInnerRim"></div>',
+
+// '<div class="ayohaCardContent">',
+
+// '<table class="ayohaCardTable" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
+//   '<tbody>',
+
+//     '<tr>',
+//       '<td class="ayohaCardTop" colspan="3">',
+//         '<div class="ayohaTopRow">',
+//           '<div class="ayohaTopLogo">{ModifiedEnterprisesLogo}</div>',
+//           '<div class="ayohaTopName">{ModifiedEnterprisesName}</div>',
+//         '</div>',
+//       '</td>',
+//     '</tr>',
+
+//     '<tr>',
+//       '<td class="ayohaCardMid" colspan="3"><br>',
+//         '<div class="ayohaCardType">{MembershipCardType}</div>',
+//         '<div class="ayohaCardNo">123 4567</div>',
+//         '<div class="ayohaCardName">YOUR NAME</div>',
+//       '</td>',
+//     '</tr>',
+
+//     '<tr>',
+//       '<td class="ayohaCardColL" colspan="2">',
+//         '<div class="k">Member Since</div>',
+//         '<div class="v">After Approved</div>',
+//       '</td>',
+//       '<td class="ayohaCardColR">',
+//         '<div class="k">Valid Until</div>',
+//         '<div class="v">{ModifiedStrExpiredDate}</div>',
+//       '</td>',
+//     '</tr>',
+
+//   '</tbody>',
+// '</table>',
+
+// '</div>', // end ayohaCardContent
+// '</div>',   // end card face
+
+
+
+// // ===== PRICE ROW (FLEX SIDE-BY-SIDE) =====
+
+
+
+
+
+// '</div>', // ✅ end ayohaCardWrap (tutup selepas priceRow)
+// '</div>',    // end ayohaCardItem
+
+// '<div class="ayohaCardPriceRow" style="width:100%;height:60px; display:flex; align-items:center;  box-sizing:border-box;">' ,
+
+// // Bahagian Kiri (Harga)
+// // Kita buang style pelik-pelik, biar simple
+// '<div class="priceLeft">' ,
+// '<div class="price">RM{MembershipCardFee}</div>' ,
+// '<div class="priceSub">Membership Fees</div>' ,
+// '</div>',
+
+// // Bahagian Kanan (Button)
+// // PENTING: "margin-left: auto" di sini akan memaksa kotak ini pergi sejauh mungkin ke kanan
+// '<div style="margin-left:auto;">' ,
+// '<button class="ayohaCtaGetItNow" ',
+// 'onclick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">' ,
+// '<span class="ayohaCtaText">Get It Now!</span>' ,
+// '<span class="ayohaCtaArrow">→</span>' ,
+// '</button>',
+// '</div>' ,
+
+// '</div>'
+// ),
+
+
+
+
+
+  emptyText: '<div  style="background-color:transparent;width: 100%; height: 400px;margin:20px 0px 0px 0px;padding:5px 10px"><img src="resources/icons/NoMembershipEvent.jpg" style="width: 100%; height: 400px;"/></div>',
+
+},
+]
+},
+
 
 {
   xtype: 'container',
   width: '100%',
+  hidden:true,
   id:'containerCheckInRewardProgress_GreetingMembership',
   name: 'namecontainerCheckInRewardProgress_GreetingMembership',
   //height:120,
@@ -1849,596 +2101,7 @@ html:
 }, 
 ]
 },
-//////////Check In Info//////////////////////
-//  {
-//     xtype: 'container',
-//     width: '100%',
-//     margin:'0px 0px 0px 0px',
-//    // margin:'-215px 0px 0px 0px',
-//    zIndex:1,
-  
-//    //height:330,
-//    height:430,
-//     //hidden:true,
-//     id:'containerCheckInRewardProgress',
-//    // style: ayohaThemeColor_Hero(),
-//     // style: 'background:transparent;',
-//    style: 'background: white;',
-//    layout: {
 
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'center'
-// },
-// items:[
-    
-//    {
-//  xtype: 'container',
-//     width: '100%',
-//     margin:'0px 0px 0px 0px',
-   
-//    // height:310,
-//     height:410,
-//     style: 'background:transparent;',
-//   //  style: ayohaThemeColor_Hero(),
-//    },
-// {
-//     xtype: 'container',
-//     width: '100%',
-//    margin:'-380px 0px 0px 0px',
-//    // margin:'-215px 0px 0px 0px',
-//    // zIndex:1,
-//    // height:198,
-//     height:530,
-//    zIndex:10,
-//   style: 'background:blue;',
-//  // style: 'background:transparent;',
-//    layout: {
-
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'center'
-// },
-
-// items:[
-// {
-//   xtype: 'container',
-//   width: '100%',
-//   height:30,
-//   style: 'background:transparent;',
-// },
-
-// {
-//   xtype: 'container',
-//   width: '100%',
-//   height:95,
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'hbox',
-//     pack: 'start',
-//     align: 'center'
-// },
-// items:[
-// {
-//   xtype: 'container',
-//   width: '30%',
-//   height:95,
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'right'
-// },
-// items:[
-//   {
-//     height: 70,
-//     width: 70,
-//    margin: '0 0 0 0',                                                       
-//     // iconCls: 'list',
-//     //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
-//     html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:70px;height:70px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
-//   }
-// ]
-  
-// },
-// {
-//   xtype: 'container',
-//   width: '60%',
-//   height:100,
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'left'
-// },
-// items:[
-
-
-//   {
-//     width: '100%',
-//     margin: '0 0 0 0',
-//     id: 'html_Dashboard_1stline',
-//     html: '<div style="color:#FFFFFF;text-align:center;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:-0.35px;width:100%;text-shadow:0 2px 10px rgba(0,0,0,0.10);">Welcome back, Member</div>'
-//   },
-//   {
-//     width: '100%',
-//     margin: '7 0 0 0',
-//     id: 'html_Dashboard_2ndline',
-//     html: '<div style="text-align:center;width:100%;">' +
-//             '<span style="display:inline-block;padding:4px 10px;border-radius:999px;background:linear-gradient(180deg,#FFE9A3 0%,#FFC94F 100%);color:#6B4300;font-size:10px;font-weight:800;letter-spacing:0.8px;vertical-align:middle;box-shadow:0 4px 10px rgba(255,194,45,0.20);">GOLD</span>' +
-//             '<span style="display:inline-block;margin:0 8px;color:rgba(255,255,255,0.55);font-size:12px;vertical-align:middle;">•</span>' +
-//             '<span style="display:inline-block;color:rgba(255,255,255,0.94);font-size:13px;font-weight:700;letter-spacing:0.2px;vertical-align:middle;">Fanboy Card</span>' +
-//           '</div>'
-//   },
-//   {
-//     width: '100%',
-//     margin: '6 0 0 0',
-//     id: 'html_Dashboard_3rdline',
-//     html: '<div style="color:rgba(255,255,255,0.78);text-align:center;font-size:11px;line-height:1.35;font-weight:600;letter-spacing:0.2px;width:100%;">Member ID #123345 &nbsp;&nbsp;•&nbsp;&nbsp; Since Jun 2025</div>'
-//   },
-     
-// ]
-// },
-// {
-//   xtype: 'container',
-//   width: '10%',
-//   height:105,
-//   style: 'background:transparent;',
-// }
-// ]
-// },
-
-
-
-   
-//     {
-// xtype: 'container',
-//     width: '90%',
-//     margin:'0px 0px 0px 0px',   
-//     height:390,
-//     // height:410,
-//       zIndex:999,
-//       style:"border-radius:22px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06),    0 18px 44px -18px rgba(17,24,39,.18),    0 48px 120px -64px rgba(124,58,237,.22);",
-//       layout: {
-
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'center'
-// },
-//      items:[
-//  {
-//         width: '100%',
-//         height:430,
-//         hidden:true,    
-//        id:'html_DashboardCheckInRewardProgress',
-//  margin:'0px 0px 0px 0px',
-
-//        html:   
-//        '<div id="keepEarningCard" class="ayohaMCard">' +
-//          '<div class="ayohaMGlow"></div>' + 
-//          // '<div class="ayohaMStars"></div>' + 
-     
-//          '<div class="ayohaMContent">' +
-     
-//              // =========================================================
-//              // BAHAGIAN 1: MERCHANT PROFILE (HEADER)
-//              // =========================================================
-//              '<div style="display:flex; flex-direction:column; align-items:center; width:100%; margin-bottom:12px; padding-bottom:12px; border-bottom:1px dashed #e5e7eb;">' +
-                 
-//                  // LOGO
-//                  '<div class="ayohaHeroMerchantLogo" style="margin-bottom:8px;">' +
-//                      '<img id="ayohaCardLogo" src="resources/icons/communityCoffea.png" style="width:60px; height:60px; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 2px 5px rgba(0,0,0,0.05); object-fit:cover;" alt="Logo">' +
-//                  '</div>' +
-     
-//                  // TEXT WRAPPER
-//                  '<div class="ayohaHeroMerchantText" style="text-align:center; width:100%;">' +
-                     
-//                      // NAMA KEDAI
-//                      '<div id="ayohaCardName" class="ayohaHeroMerchantName" style="font-size:16px; font-weight:700; color:#111827; line-height:1.2;">Ayu Kuala Sepetang</div>' +
-                     
-//                      // TAGLINE
-//                      '<div id="ayohaCardTagline" class="ayohaHeroMerchantTagline" style="font-size:12px; color:#6b7280; margin-top:2px;">📍 Kuala Sepetang • 🍽️ Cafe & Bakery</div>' +
-                     
-//                      // CHECK-IN STATUS
-//                      '<div class="ayohaHeroMerchantCheckInCount" style="margin-top:8px;">' +
-//                          '<span id="ayohaCardStatusSpan" style="background:#f3f0ff; color:#7c3aed; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; border:1px solid rgba(124,58,237,0.2);">' +
-//                              '✅ 1st Check-In Today • 12:00 AM' +
-//                          '</span>' +
-//                      '</div>' +
-//                  '</div>' +
-//              '</div>' +
-     
-//              // =========================================================
-//              // BAHAGIAN 2: PROGRESS & EARNING (BODY) - DENGAN MASKOT
-//              // =========================================================
-             
-//              // Tambah 'position: relative' pada wrapper ini supaya maskot boleh reference dia
-//              '<div class="ayohaMHead" style="position:relative;">' + 
-                 
-//                  // --- MASKOT (Floating Image) ---
-//                  // Gantikan 'resources/images/mascot_plus10.png' dengan path sebenar gambar maskot anda
-//                  '<img src="resources/icons/maskotCheckIn_Success04.png" style="' +
-//                      'position: absolute;' + // Terapung
-//                      'right: 1px;' +       // Jarak dari kanan (boleh adjust)
-//                      'top: -10px;' +         // Jarak dari atas (boleh adjust supaya 'mengintai')
-//                      'width: 70px;' +        // Saiz maskot (adjust ikut kesesuaian)
-//                      'height: auto;' +
-//                      'z-index: 20;' +        // Pastikan dia duduk di atas teks
-//                      'filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));' + // Sedikit bayang untuk timbul
-//                  '" alt="+10 Point Mascot">' +
-//                  // -------------------------------
-     
-//                  '<div style="flex:1;min-width:0">' +
-//                      // Tambah padding-right supaya teks tak tertindih dengan maskot
-//                      '<div class="ayohaMTitle" style="margin-bottom:2px; padding-right: 60px;">🚀 Keep earning!</div>' +
-//                      '<div class="ayohaMSub" style="padding-right: 60px;">You’re on track! Finish all 3 check-ins to earn 30 Ayoha Points.</div>' +
-//                  '</div>' +
-//              '</div>' +
-     
-//              '<div class="ayohaMProgressWrap">' +
-//                  '<div class="ayohaMProgTop">' +
-//                      '<span>Today\'s Check-ins</span>' +
-//                      '<span data-ayoha="usedText">1/3 used</span>' +
-//                  '</div>' +
-//                  '<div class="ayohaMBar">' +
-//                      '<div class="ayohaMFill" data-ayoha="fill"></div>' +
-//                  '</div>' +
-//              '</div>' +
-     
-//              // =========================================================
-//              // BAHAGIAN 3: ACTIONS & FOOTER
-//              // =========================================================
-//              '<div class="ayohaMActions" style="margin-top:16px;">' +
-//                  '<button class="ayohaMBtn" onclick="Ayoha_CheckInAgain && Ayoha_CheckInAgain();">Unlock +10 (2/3)</button>' +
-//                  '<button class="ayohaMBtnGhost" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();">Explore Nearby</button>' +
-//              '</div>' +
-     
-//              // FOOTER BARU (Pill Shape & Center)
-//             //  '<div style="width:100%; display:flex; justify-content:center; margin-top:12px; margin-bottom:4px;padding: 0px 12px">' +
-//             //      '<div style="' +
-//             //          'display:flex; align-items:center; gap:6px;' +
-//             //          'font-family: system-ui, -apple-system, sans-serif;' +
-//             //          'font-size: 11px; font-weight: 500;' +
-//             //          'color: #6b7280;' + 
-//             //          'background: #f9fafb;' +
-//             //          'padding: 6px 12px;' +
-//             //          'border-radius: 20px;' +
-//             //          'border: 1px solid #f3f4f6;' +
-//             //      '">' +         
-//             //          '<span style="font-size:12px">🔒</span>' +
-//             //          '<span>Complete 1 Mission to Unlock</span>' +
-//             //      '</div>'+
-//             //  '</div>' +
-
-             
-//              '<div style="width:100%; display:flex; justify-content:flex-start; margin-top:12px; margin-bottom:16px; padding: 0px 12px 14px;">' +
-//              '<div style="' +
-//                  'display:flex; align-items:left; gap:6px;' +
-//                  'font-family: system-ui, -apple-system, sans-serif;' +
-//                  'font-size: 11px; font-weight: bold;' +
-//                  'color: #6b7280;' +
-//                  //'background: #f9fafb;' +
-//                  'background: transparent;' +
-//                  'padding: 6px 12px;' +
-//                  'border-radius: 20px;' +
-//                  'border: 1px solid #f3f4f6;' +
-//              '">' +
-//                '<u><span style="font-size:12px">🔒</span>' +
-//                '<span>Complete 1 Mission to Unlock</span></u>' +
-//              '</div>' +
-//            '</div>' +
-
-        
-
-//          '</div>' + // Tutup ayohaMContent
-//        '</div>'  // Tutup keepEarningCard
- 
-
-//     },
-
-//   {
-//         width: '90%',
-//          height:410,
-//         hidden:true,    
-//         id:'html_DashboardCheckInRewardProgressMaxReached',       
-//        html: 
-//        '<div id="maxEarningCard" class="ayohaMCard ayohaMMax">' +
-         
-//          // Background Effects
-//          '<div class="ayohaMGlow"></div>' + 
-//          // '<div class="ayohaMStars"></div>' + // Boleh uncomment jika mahu stars
-     
-//          '<div class="ayohaMContent">' +
-     
-//              // =========================================================
-//              // BAHAGIAN 1: MERCHANT PROFILE (HEADER)
-//              // =========================================================
-//              '<div style="display:flex; flex-direction:column; align-items:center; width:100%; margin-bottom:16px; padding-bottom:16px; border-bottom:1px dashed #e5e7eb;">' +
-                 
-//                  // LOGO
-//                  '<div class="ayohaHeroMerchantLogo" style="margin-bottom:8px;">' +
-//                      '<img id="ayohaCardLogo_MaxReached" src="resources/icons/communityCoffea.png" style="width:60px; height:60px; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 2px 5px rgba(0,0,0,0.05); object-fit:cover;" alt="Logo">' +
-//                  '</div>' +
-     
-//                  // TEXT WRAPPER
-//                  '<div class="ayohaHeroMerchantText" style="text-align:center; width:100%;">' +
-//                      // NAMA KEDAI
-//                      '<div id="ayohaCardName_MaxReached" class="ayohaHeroMerchantName" style="font-size:16px; font-weight:700; color:#111827; line-height:1.2;">Ayu Kuala Sepetang</div>' +
-                     
-//                      // TAGLINE
-//                      '<div id="ayohaCardTagline_MaxReached" class="ayohaHeroMerchantTagline" style="font-size:12px; color:#6b7280; margin-top:2px;">📍 Kuala Sepetang • 🍽️ Cafe & Bakery</div>' +
-                     
-//                      // CHECK-IN STATUS
-//                      '<div class="ayohaHeroMerchantCheckInCount" style="margin-top:8px;">' +
-//                          '<span id="ayohaCardStatusSpan_MaxReached" style="background:#f3f0ff; color:#7c3aed; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; border:1px solid rgba(124,58,237,0.2);">' +
-//                              '✅ 1st Check-In Today • 12:00 AM' +
-//                          '</span>' +
-//                      '</div>' +
-//                  '</div>' +
-//              '</div>' +
-     
-//              // =========================================================
-//              // BAHAGIAN 2: MAX REACHED BODY (TROPHY & MESSAGE)
-//              // =========================================================
-             
-//              // Wrapper untuk Trophy & Text (Side-by-side)
-//              '<div class="ayohaMHead" style="padding:0 10px; display:flex; align-items:center; gap:12px;">' +
-                 
-               
-     
-//                  // Teks Mesej
-//                  '<div style="flex:1;">' +
-//                     '<div class="ayohaMTitle" style="font-size:15px; font-weight:800; color:#111827;">Daily Champion Unlocked!</div>' +
-//                     '<div class="ayohaMSub" style="text-align:left; margin-top:-2px; font-size:12px; ">You\'ve earned maximum points here today. You\'re truly a loyal fan!!</div>' +
-//                  '</div>' +
-
-
-//   // Animated Trophy Icon
-//   '<div class="ayohaMIcon" style="flex-shrink:0;">' +
-//   '<div class="ayohaMPinDot"></div>' +
-//   '<svg class="ayohaMTrophy" viewBox="0 0 24 24" aria-hidden="true" style="width:48px; height:48px;">' +
-//     '<path class="tCup" d="M7 4h10v4c0 3.3-2.7 6-6 6s-6-2.7-6-6V4z" fill="#FFD700"/>' + // Gold color
-//     '<path class="tHandle" d="M7 6H4v2c0 2.2 1.8 4 4 4V10c-1.1 0-2-.9-2-2V8h1V6zm10 0h3v2c0 2.2-1.8 4-4 4V10c1.1 0 2-.9 2-2V8h-1V6z" fill="#DAA520"/>' +
-//     '<rect class="tStem" x="10" y="14" width="4" height="3" rx="1" fill="#DAA520"/>' +
-//     '<rect class="tBase" x="8" y="18" width="8" height="2" rx="1" fill="#DAA520"/>' +
-//     '<path class="tHi" d="M9 6h2v4c0 1.5-.8 2.9-2 3.7V6z" fill="rgba(255,255,255,0.4)"/>' +
-//   '</svg>' +
-//   '<span class="ayohaMTrophyText">30 Points</span>' +
-// '</div>' +
-
-
-
-//              '</div>' +
-     
-//              // =========================================================
-//              // BAHAGIAN 3: PROGRESS BAR (FULL)
-//              // =========================================================
-//              '<div class="ayohaMProgressWrap" style="padding:0 10px; margin-top:16px;">' +
-//                  '<div class="ayohaMProgTop">' +
-//                      '<span>Today\'s Activity</span>' +
-//                      '<span style="color:#7c3aed; font-weight:700;">3/3 </span>' +
-//                  '</div>' +
-//                  '<div class="ayohaMBar">' +
-//                      // Fill width 100% sebab dah max
-//                      '<div class="ayohaMFill" style="width:100%;"></div>' +
-//                  '</div>' +
-//              '</div>' +
-     
-//              // =========================================================
-//              // BAHAGIAN 4: BUTTON
-//              // =========================================================
-
-//              '<div class="ayohaMActions" style="padding:10px 10px; margin-top:2px; display:flex; gap:12px;">' +
-            
-//              // BUTTON KIRI: CHECK IN AGAIN (White Surface Style)
-//              // Nampak hidup sebab ada background putih & shadow, bukan sekadar outline kosong
-//              '<button class="ayohaMBtnGhost" onclick="Ayoha_CheckInAgain && Ayoha_CheckInAgain();" style="' +
-//                  'flex:1;' + 
-//                  'background: #ffffff;' + // Background Putih
-//                  'border: 1px solid #e5e7eb;' + // Border halus kelabu cair
-//                  'box-shadow: 0 2px 5px rgba(0,0,0,0.05);' + // Shadow lembut supaya timbul
-//                  'color: #111827;' + // Tulisan Hitam Pekat (Serius/Jelas)
-//                  'font-weight: 700;' + 
-//                  'padding: 12px 0;' +
-//                  'border-radius: 14px;' +
-//                  'cursor: pointer;' +
-//                  'font-family: system-ui, -apple-system, sans-serif;' +
-//                  'font-size: 13px;' +
-//              '">' +
-//                  'Check-in Again' +
-//              '</button>' +
- 
-//              // BUTTON KANAN: FIND OTHERS (Short & Punchy)
-//              // Teks dipendekkan supaya kemas
-//              '<button class="ayohaMBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="' +
-//                  'flex:1;' +
-//                  'background:linear-gradient(180deg,#7c3aed,#5b21b6);' +
-//                  'box-shadow:0 4px 12px rgba(124,58,237,0.25);' +
-//                  'border: 0;' +
-//                  'color: #fff;' +
-//                  'font-weight: 700;' +
-//                  'padding: 12px 0;' +
-//                  'border-radius: 14px;' +
-//                  'cursor: pointer;' +
-//                  'font-family: system-ui, -apple-system, sans-serif;' +
-//                  'font-size: 13px;' +
-//              '">' +
-//                  'Find Others' + // Pendek & Padat
-//              '</button>' +
- 
-//          '</div>' +
-
-
-//             //  '<div class="ayohaMActions" style="padding:10px 20px;margin-top:3px;">' +
-//             //      '<button class="ayohaMBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="background:linear-gradient(180deg,#7c3aed,#5b21b6);">Find Other Merchants</button>' +
-//             //  '</div>' +
-     
-//          '</div>' + // Tutup ayohaMContent
-//        '</div>'   // Tutup maxEarningCard
-     
-
-//     },
-//     {
-//         width: '90%',
-//         height:410,
-//         hidden:true,    
-//         id:'html_DashboardCheckInRewardProgress_OverMaxReached',
-     
-//        html: 
-//        '<div id="maxEarningCard" class="ayohaMCard ayohaMMax">' +
-         
-//          // Background Effects
-//          '<div class="ayohaMGlow"></div>' + 
-//          // '<div class="ayohaMStars"></div>' + // Boleh uncomment jika mahu stars
-     
-//          '<div class="ayohaMContent">' +
-     
-//              // =========================================================
-//              // BAHAGIAN 1: MERCHANT PROFILE (HEADER)
-//              // =========================================================
-//              '<div style="display:flex; flex-direction:column; align-items:center; width:100%; margin-bottom:16px; padding-bottom:16px; border-bottom:1px dashed #e5e7eb;">' +
-                 
-//                  // LOGO
-//                  '<div class="ayohaHeroMerchantLogo" style="margin-bottom:8px;">' +
-//                      '<img id="ayohaCardLogo_OverMaxReached" src="resources/icons/communityCoffea.png" style="width:60px; height:60px; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 2px 5px rgba(0,0,0,0.05); object-fit:cover;" alt="Logo">' +
-//                  '</div>' +
-     
-//                  // TEXT WRAPPER
-//                  '<div class="ayohaHeroMerchantText" style="text-align:center; width:100%;">' +
-//                      // NAMA KEDAI
-//                      '<div id="ayohaCardName_OverMaxReached" class="ayohaHeroMerchantName" style="font-size:16px; font-weight:700; color:#111827; line-height:1.2;">Ayu Kuala Sepetang</div>' +
-                     
-//                      // TAGLINE
-//                      '<div id="ayohaCardTagline_OverMaxReached" class="ayohaHeroMerchantTagline" style="font-size:12px; color:#6b7280; margin-top:2px;">📍 Kuala Sepetang • 🍽️ Cafe & Bakery</div>' +
-                     
-//                      // CHECK-IN STATUS
-//                      '<div class="ayohaHeroMerchantCheckInCount" style="margin-top:8px;">' +
-//                          '<span id="ayohaCardStatusSpan_OverMaxReached" style="background:#f3f0ff; color:#7c3aed; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; border:1px solid rgba(124,58,237,0.2);">' +
-//                              '✅ 1st Check-In Today • 12:00 AM' +
-//                          '</span>' +
-//                      '</div>' +
-//                  '</div>' +
-//              '</div>' +
-     
-//            // =========================================================
-// // BAHAGIAN BODY: OVERDRIVE MODE (4th+ Check-in)
-// // =========================================================
-
-// '<div class="ayohaMHead" style="padding:0 20px; display:flex; align-items:center; gap:12px;">' +
-    
-// // ICON: TUKAR JADI API (FIRE) - Simbolik "On Fire"
-// '<div class="ayohaMIcon" style="flex-shrink:0;">' +
-//    '<div class="ayohaMPinDot" style="background:#ef4444;"></div>' + // Dot merah (Hot)
-//    // SVG FIRE ICON
-//    '<svg class="ayohaMTrophy" viewBox="0 0 24 24" aria-hidden="true" style="width:48px; height:48px;">' +
-//      '<path d="M12 22c4.97 0 9-4.03 9-9-1.38 0-2.24-2.23-2.24-2.23.65 2.18-.38 4.23-1.43 4.23-.97 0-1.29-1.89-2.03-3.66C14.05 8.79 12.38 5 12 5c-.38 0-2.05 3.79-3.3 6.34-.74 1.77-1.06 3.66-2.03 3.66-1.05 0-2.08-2.05-1.43-4.23 0 0-.86 2.23-2.24 2.23 0 4.97 4.03 9 9 9z" fill="#f59e0b"/>' + // Warna Orange/Api
-//      '<path d="M12 18c2.21 0 4-1.79 4-4 0-2.21-1.79-4-4-4s-4 1.79-4 4c0 2.21 1.79 4 4 4z" fill="#fcd34d" opacity="0.6"/>' + // Core api
-//    '</svg>' +
-// '</div>' +
-
-// // TEXT: COPYWRITING YANG "WORLD CLASS"
-// '<div style="flex:1;">' +
-//    '<div class="ayohaMTitle" style="font-size:15px; font-weight:800; color:#111827;">You\'re Unstoppable! 🔥</div>' +
-//    '<div class="ayohaMSub" style="text-align:left; margin-top:2px; font-size:12px; line-height:1.3;">' +
-//       'You’ve exceeded the daily point limit, but we love your dedication!' +
-//    '</div>' +
-// '</div>' +
-// '</div>' +
-
-// // =========================================================
-// // PROGRESS BAR (OVERDRIVE STATE)
-// // =========================================================
-// '<div class="ayohaMProgressWrap" style="padding:0 20px; margin-top:16px;">' +
-// '<div class="ayohaMProgTop">' +
-//     '<span>Total Visits Today</span>' +
-//     // Tunjukkan nombor sebenar (4, 5, 6...)
-//     '<span id="OverMaxReachCount" style="color:#ef4444; font-weight:700;">4 (Super Fan)</span>' +
-// '</div>' +
-// '<div class="ayohaMBar">' +
-//     // Tukar warna bar jadi Orange/Merah untuk tunjuk "Hot/Overload"
-//     '<div class="ayohaMFill" style="width:100%; background:linear-gradient(90deg, #f59e0b, #ef4444);"></div>' +
-// '</div>' +
-// '</div>' +
-     
-//              // =========================================================
-//              // BAHAGIAN 4: BUTTON
-//              // =========================================================
-
-//              '<div class="ayohaMActions" style="padding:10px 10px; margin-top:2px; display:flex; gap:12px;">' +
-            
-//              // BUTTON KIRI: CHECK IN AGAIN (White Surface Style)
-//              // Nampak hidup sebab ada background putih & shadow, bukan sekadar outline kosong
-//              '<button class="ayohaMBtnGhost" onclick="Ayoha_CheckInAgain && Ayoha_CheckInAgain();" style="' +
-//                  'flex:1;' + 
-//                  'background: #ffffff;' + // Background Putih
-//                  'border: 1px solid #e5e7eb;' + // Border halus kelabu cair
-//                  'box-shadow: 0 2px 5px rgba(0,0,0,0.05);' + // Shadow lembut supaya timbul
-//                  'color: #111827;' + // Tulisan Hitam Pekat (Serius/Jelas)
-//                  'font-weight: 700;' + 
-//                  'padding: 12px 0;' +
-//                  'border-radius: 14px;' +
-//                  'cursor: pointer;' +
-//                  'font-family: system-ui, -apple-system, sans-serif;' +
-//                  'font-size: 13px;' +
-//              '">' +
-//                  'Check-in Again' +
-//              '</button>' +
- 
-//              // BUTTON KANAN: FIND OTHERS (Short & Punchy)
-//              // Teks dipendekkan supaya kemas
-//              '<button class="ayohaMBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="' +
-//                  'flex:1;' +
-//                  'background:linear-gradient(180deg,#7c3aed,#5b21b6);' +
-//                  'box-shadow:0 4px 12px rgba(124,58,237,0.25);' +
-//                  'border: 0;' +
-//                  'color: #fff;' +
-//                  'font-weight: 700;' +
-//                  'padding: 12px 0;' +
-//                  'border-radius: 14px;' +
-//                  'cursor: pointer;' +
-//                  'font-family: system-ui, -apple-system, sans-serif;' +
-//                  'font-size: 13px;' +
-//              '">' +
-//                  'Find Others' + // Pendek & Padat
-//              '</button>' +
- 
-//          '</div>' +
-
-
-//             //  '<div class="ayohaMActions" style="padding:10px 20px;margin-top:3px;">' +
-//             //      '<button class="ayohaMBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="background:linear-gradient(180deg,#7c3aed,#5b21b6);">Find Other Merchants</button>' +
-//             //  '</div>' +
-     
-//          '</div>' + // Tutup ayohaMContent
-//        '</div>'   // Tutup maxEarningCard
-     
-
-//     },
-
-//      ]
-//     },
-   
-  
-// ]
-
-
-
-
-// },
-
-
-
-
-   
-// ]
-//   }, 
-  
-
-  
-  ///////////////////////////////// End Check-In /////
 
 ///////////////////////////////////Perks you can enjoy here////////
 {
@@ -19398,12 +19061,20 @@ function Dashboard_LoadLastCheckIn(){
       Ext.getCmp('Dashboard_MembershipCardTxt').setHtml('<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🌟 Member Privileges Enabled</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Your exclusive perks are active — enjoy the premium experience ✨</div>');
       Ext.getCmp('Dashboard_PerksText').setHtml('<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎉 Your Member Benefits</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Welcome back, member! Your perks are ready to enjoy here 🎁✨</div>');
    
+
+Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(true);
+Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(false);
+
+
     }
    
 
     if(record.get('isMember')=="NO"){
       Ext.getCmp('Dashboard_MembershipCardTxt').setHtml('<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🔓 Unlock Premium Access</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Get this store’s membership card for premium access</div>');
       Ext.getCmp('Dashboard_PerksText').setHtml('<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎁 Perks you can enjoy here</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Collect stamps, earn points & claim vouchers here</div>');
+    
+Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(false);
+Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(true);
     }
    
   
@@ -19553,6 +19224,7 @@ Ext.getCmp('containerMyAccount_DashboardHeader_MerchantCheckIn').setHidden(false
 
 Ext.getCmp('html_Dashboard_1stlinePicProfile').setHtml('<img src="'+AppState.LoginAyohaUser.AyohaUserPicProfile+'" style="width:60px;height:60px;border-radius:50%;border:2px solid white;" alt="Company Name"> </img>');
 Ext.getCmp('html_Dashboard_1stline').setHtml('<div style="color:#FFFFFF;text-align:center;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:-0.35px;width:100%;text-shadow:0 2px 10px rgba(0,0,0,0.10);">Welcome back, '+AppState.LoginAyohaUser.AyohaUserAccountNames+' </div>');
+
 
 
 //14/1/2026
