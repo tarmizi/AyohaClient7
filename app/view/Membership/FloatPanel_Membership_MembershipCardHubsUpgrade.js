@@ -777,6 +777,10 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShowORI(logo
    
 function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl,EnterpriseName,EnterpriseTagline,StrCheckInCount,EnterpiseAccNo) {
   // var CheckInCount = parseInt(StrCheckInCount, 10) || 0;
+
+
+
+
    var CheckInCount = parseInt(StrCheckInCount);
    if (CheckInCount <= 2) {
  
@@ -886,7 +890,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl
    
        } else {
          swalFireFail("Fail!->" + (response.responseText || '').trim());
-         LoadingPanelHide();
+         LoadingPanelHide(false);
          Ext.Viewport.unmask();
          return;
        }
@@ -896,7 +900,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl
      failure: function (response) {
        swalFireFail("Fail!" + (response.responseText || '').trim());
        Ext.Viewport.unmask();
-       LoadingPanelHide();
+       LoadingPanelHide(false);
      }
    });
  

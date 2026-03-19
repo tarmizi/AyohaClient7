@@ -3,7 +3,7 @@ Ext.define('BuskartApp.view.AyohaNotification.FloatPanel_AyohaNotification', {
 
 });
 
-var _FloatPanel_AyohaNotification;
+var _FloatPanel_AyohaNotification=null;
 
 
 var isFloatPanel_AyohaNotificationOpen = 'N';
@@ -11,30 +11,20 @@ var isFloatPanel_AyohaNotificationOpen = 'N';
 
 
 
-
-
-function FloatPanel_AyohaNotification() {
-
-    _FloatPanel_AyohaNotification =
-    Ext.create('Ext.Panel', {
-        zIndex: 50,
-        xtype: 'container',
-        //height: 465,
-      //  height: '100%',
-        width: '100%',
+function FloatPanel_AyohaNotificationCreateIfNeeded() {
+    if (_FloatPanel_AyohaNotification && !_FloatPanel_AyohaNotification.destroyed) return;
+     _FloatPanel_AyohaNotification =
+    Ext.create('Ext.Container', {
         id: 'FloatPanel_AyohaNotificationID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
+        floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-            type: 'fit'
-        },
+        fullscreen: true,
+      //  closeAction: 'hide',
+      closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -54,39 +44,16 @@ function FloatPanel_AyohaNotification() {
         //style: 'border-bottom:1px solid;background-color:#353839;',
        style: 'background-color:white;',
        // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-        listeners: {
-            initialize: function (c) {
-                this.element.on({
-                    swipe: function (e, node, options) {
-                        //if (e.direction == "up") {
-                        //    LoyaltyCardRedeemListHide();
-                        //}
-                        if (e.direction == "left") {
-                            _FloatPanel_AyohaNotification.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'left',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
+       listeners: {
+ 
 
-                            }));
-                            RemovePages("FloatPanel_AyohaNotificationHide()");
-                            isFloatPanel_AyohaNotificationOpen = 'N';
-                        } if (e.direction == "right") {
-                            _FloatPanel_AyohaNotification.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'right',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
-
-                            }));
-                            isFloatPanel_AyohaNotificationOpen = 'N';
-                            RemovePages("FloatPanel_AyohaNotificationHide()");
-                        }
-                       
-                    }
-                });
+            // ✅ kalau user tap mask, close macam standard
+            beforehide: function () {
+              // kalau hide dipanggil bukan dari function kita, block dulu
+              // (optional: boleh allow kalau kau nak)
+              return true;
             }
-        },
+          },
 
         items: [
 
@@ -119,18 +86,11 @@ function FloatPanel_AyohaNotification() {
                                 xtype: 'container',
                                 width: '100%',
                                 docked: 'top',
-                                // width: 40,
-                               // height:40,
-
-                                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                                //hidden: true,
+                                  height: ayoha_HeaderHeight(),
+                        style:ayohaThemeColor_Header(),
 
                                 id: 'containerFloatPanel_AyohaNotificationHeader',
-                                style: {
-                                    // background: '#D25959',
-                                    background: 'transparent',
-                                    // border: '2px'
-                                },
+                               
                                 //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
                                 // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                                 layout: {
@@ -147,24 +107,25 @@ function FloatPanel_AyohaNotification() {
                                                          xtype: 'button',
                                                          id: 'btnFloatPanel_AyohaNotificationBack',
                                                          height: 55,
-                                                         width: 55,
-                                                         margin: '10 0 0 0',
-                                                         // iconCls: 'list',
-                                                         html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                                         width: 65,
+                                                 margin: '5 0 0 10',
+                                                 // iconCls: 'list',
+                                                 html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                                          ui: 'plain',
                                                          handler: function () {
-                                                             // FloatPanel_AyohaNotificationHide();
-                                                             // FloatPanel_AyohaNotification_AddCardHide();
-                                                             isFloatPanel_AyohaNotificationOpen = 'N';
-                                                             RemovePages("FloatPanel_AyohaNotificationHide()");
-                                                             _FloatPanel_AyohaNotification.hide(Ext.fx.Animation({
-                                                                 type: 'slideOut',
-                                                                 direction: 'left',
-                                                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                 duration: 250
+                                                            FloatPanel_AyohaNotificationHide(false);
+                                                            //  // FloatPanel_AyohaNotificationHide();
+                                                            //  // FloatPanel_AyohaNotification_AddCardHide();
+                                                            //  isFloatPanel_AyohaNotificationOpen = 'N';
+                                                            //  RemovePages("FloatPanel_AyohaNotificationHide()");
+                                                            //  _FloatPanel_AyohaNotification.hide(Ext.fx.Animation({
+                                                            //      type: 'slideOut',
+                                                            //      direction: 'left',
+                                                            //      easing: 'cubic-bezier(.7,0,.7,1)',
+                                                            //      duration: 250
 
-                                                             }));
-                                                             //  FloatPanel_AyohaNotification_AddCardHide();
+                                                            //  }));
+                                                            //  //  FloatPanel_AyohaNotification_AddCardHide();
 
                                                          }
                                                      },
@@ -176,36 +137,13 @@ function FloatPanel_AyohaNotification() {
 
 
                                                       {
-                                                          margin: '0 10 0 0',
-                                                          id: 'htmlFloatPanel_AyohaNotification_TitleHeaderTxt',
-                                                          html: '<font size=2 color=black><b>Notifications List</b></font>'
+                                                          margin: '0 15 0 0',
+                                                          id: 'htmlFloatPanel_AyohaNotification_TitleHeaderTxt',                                                         
+                                                           html:ayohaTheme_HeaderText('Notifications List'),
                                                       },
 
 
-                                                            {
-                                                                xtype: 'button',
-                                                                id: 'btnFloatPanel_AyohaNotification_CardIcon',
-                                                                hidden:true,
-                                                                height: 30,
-                                                                width: 35,
-                                                                // iconCls: 'list',
-                                                                html: '<div ><img src="resources/icons/Notification.png" width="25" height="20" alt="Company Name"></div>',
-                                                                ui: 'plain',
-                                                                handler: function () {
-
-                                                                    isFloatPanel_AyohaNotificationOpen = 'N';
-
-                                                                    _FloatPanel_AyohaNotification.hide(Ext.fx.Animation({
-                                                                        type: 'slideOut',
-                                                                        direction: 'right',
-                                                                        easing: 'cubic-bezier(.7,0,.7,1)',
-                                                                        duration: 250
-
-                                                                    }));
-                                                                    RemovePages(_FloatPanel_AyohaNotification, "isFloatPanel_AyohaNotificationOpen");
-                                                                    //FloatPanel_AyohaNotification_AddCardHide();
-                                                                }
-                                                            },
+                                                          
 
 
 
@@ -363,81 +301,67 @@ function FloatPanel_AyohaNotification() {
                                                   style: 'background-color:transparent',
 
                                                   items: [
-                                                      {
-                                                          xtype: 'list',
-                                                          width: '100%',
-                                                         // height: '98%',
-                                                         // flex: 1,
-                                                          //  store: 'AyohaNotificationLoadBySubscriberAccNoStore',
-                                                          store:_DataStore_AyohaNotificationLoadBySubscriberAccNoStore,
-                                                          id: 'FloatPanel_AyohaNotificationListID',
-                                                          mode: 'SINGLE',
-                                                         // width: '100%',
-                                                          disableSelection: true,
-                                                          scrollable: {
-                                                              direction: 'vertical',
-                                                              indicators: {
-                                                                  y: {
-                                                                      autoHide: true
-                                                                  },
-                                                                  x: {
-                                                                      autoHide: true
-                                                                  }
-                                                              }
-                                                          },
-                                                          style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
-                                                          itemTpl: '<div class="myContent" style="background-color:white;width:104%">' +
+
+
+{
+    xtype: 'list',
+    id: 'FloatPanel_AyohaNotificationListID',
+    width: '100%',
+    height: '100%',
+    store: _DataStore_AyohaNotificationLoadBySubscriberAccNoStore,
+    mode: 'SINGLE',
+    disableSelection: true,
+    scrollable: {
+        direction: 'vertical',
+        indicators: {
+            y: { autoHide: true },
+            x: { autoHide: true }
+        }
+    },
+    style: 'background-color:#ffffff;border-radius:0;',
+    itemTpl: new Ext.XTemplate(
+        '<div style="width:100%;box-sizing:border-box;">',
+            '{ModifiedNotificationCard}',
+        '</div>'
+    ),
+    emptyText: '<div style="padding:24px;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#7b7b7b;background:#fff;">No Notification</div>'
+}
+
+
+
+                                                    //   {
+                                                    //       xtype: 'list',
+                                                    //       width: '100%',
+                                                    //       store:_DataStore_AyohaNotificationLoadBySubscriberAccNoStore,
+                                                    //       id: 'FloatPanel_AyohaNotificationListID',
+                                                    //       mode: 'SINGLE',
+                                                    //      // width: '100%',
+                                                    //       disableSelection: true,
+                                                    //       scrollable: {
+                                                    //           direction: 'vertical',
+                                                    //           indicators: {
+                                                    //               y: {
+                                                    //                   autoHide: true
+                                                    //               },
+                                                    //               x: {
+                                                    //                   autoHide: true
+                                                    //               }
+                                                    //           }
+                                                    //       },
+                                                    //       style: 'background-color:rgba(255,255,255, 10);border-radius: 0px 0px 0px 0px;',
+                                                    //       itemTpl: '<div class="myContent" style="background-color:white;width:104%">' +
+                                                    //          '{ModifiedNotification}'
+
+                                                    //            +'</div>'
+                                                    //        + '<br>'
+                                                        
+                                                    //            + '{ModifiedIsRead}',
+                                                    
+                                                    //       emptyText: '<div class="myContent">No Notification</div>',
+                                                        
                                                          
 
-                                                             //'<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;margin:-10px 0px 0px -13px;height:90px;"><tr><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:20%;vertical-align:center"><img src="{EnterpriseLogoPath}" style="border:1px solid white; width:65px;height:65px;" /></td><td style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;width:80%;vertical-align:center"><b>{EnterpriseName}</b><br><font style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;">{NotificationTitle}<br>Date:{SentDate}</font></td></tr></table>' +
-                                                             '{ModifiedNotification}'
-
-                                                               +'</div>'
-                                                           + '<br>'
-                                                         //+ '<div style="width:100%;text-align:right;margin:-60px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaNotificationManagement_SetRecipient__DeleteSpecificMember({ID})" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 30px;" /></button></div>',
-                                                               + '{ModifiedIsRead}',
-                                                          //height: '100%',
-                                                    
-                                                          emptyText: '<div class="myContent">No Notification</div>',
-                                                          //listeners: {
-                                                          //    itemsingletap: function (list, idx, target, records, evt) {
-
-                                                          //        //var EnterpriseHQAccountNo = records.get('CampaignEnterpriseHQAccNo');
-                                                          //        //var EnterpriseAccountNo = records.get('CampaignEnterpriseAccNo');
-                                                          //        //var MembershipCardCode = records.get('MembershipCardCode');
-                                                          //        //var ID = records.get('ID');
-                                                          //        ////FloatPanel_AyohaNotification_EditCardShow_Edit(ID);
-                                                          //        //FloatPanel_MembershipCardList_UpgradeShow_MyMembershipCard(EnterpriseHQAccountNo, EnterpriseAccountNo, MembershipCardCode, ID);
-                                                          //        //setTimeout(function () {
-                                                          //        //    Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
-                                                          //        //    // Ext.getCmp('containerFloatPanel_MembershipCardList_UpgradeBottom').setHidden(true);
-
-                                                          //        //    Ext.getCmp('htmlFloatPanel_MembershipCardList_Upgrade_TitleHeaderTxt').setHtml('<font size=2 color=white><b>My Membership Card</b></font>');
-                                                          //        //}, 2000);
-
-
-
-                                                          //    },
-                                                          //    deselect: function (list, records) {
-
-                                                          //    }
-                                                          //},
-                                                          listeners: {
-                                                              itemswipe: function (list, idx, target, record, evt) {
-                                                                //  To get the selection you should use getSelection() instead
-                                                                  //////var selected = list.getActiveItem();
-                                                                  //////alert(list.getActiveItem());
-                                                                  //////if (!selected) { return; }
-            
-                                                                  //////var selectedIndex = selected[0];
-                                                                  //////alert([selectedIndex, idx]);
-                                                                  //Ext.Msg.alert('itemswipe', idx);
-
-
-                                                              } // itemswipe
-                                                          }
-
-                                                      },
+                                                    //   },
                                                   ]
                                               },
 
@@ -704,11 +628,8 @@ function FloatPanel_AyohaNotification() {
 
 
     });
-    return _FloatPanel_AyohaNotification;
-
-
-
 }
+
 
 
 
@@ -719,11 +640,35 @@ function FloatPanel_AyohaNotification() {
 
 function FloatPanel_AyohaNotificationShow() {
    
-    Ext.Viewport.remove(_FloatPanel_AyohaNotification);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaNotification());
-    this.overlay.show();
+    // Ext.Viewport.remove(_FloatPanel_AyohaNotification);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaNotification());
+    // this.overlay.show();
+
+
+
+
+
+
+
+FloatPanel_AyohaNotificationCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaNotification.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaNotification', function () {
+ 
+    FloatPanel_AyohaNotificationHide(true);
+  });
+}
+
+
+
+
+
     LoadingPanelShow(getLoadingIcon(), 'Loading...');
-    AddRoutePages("FloatPanel_AyohaNotificationHide()");
+   
     isFloatPanel_AyohaNotificationOpen = 'Y';
   
     document.getElementById("input-FloatPanel_AyohaNotification_SearchTxt").addEventListener("keyup", AyohaNotificationLoadBySubscriberAccNoStoreOnKeyUp);
@@ -731,9 +676,9 @@ function FloatPanel_AyohaNotificationShow() {
     FloatPanel_AyohaNotificationAdjustHeight();
 
    
-    if (globalPNUnread != "0") {
-        Ext.getCmp('btnFloatPanel_AyohaNotification_CardIcon').setBadgeText(globalPNUnread);
-    }
+    // if (globalPNUnread != "0") {
+    //     Ext.getCmp('btnFloatPanel_AyohaNotification_CardIcon').setBadgeText(globalPNUnread);
+    // }
 
 }
 
@@ -741,12 +686,32 @@ function FloatPanel_AyohaNotificationShow() {
 
 
 
-function FloatPanel_AyohaNotificationHide() {
+function FloatPanel_AyohaNotificationHide(animCfg, fromBack) {
     // FloatPanel_AyohaNotification_AddCardHide();
    
-    if (isFloatPanel_AyohaNotificationOpen == "Y") {
-        _FloatPanel_AyohaNotification.hide(); isFloatPanel_AyohaNotificationOpen = 'N';
-        RemovePages("FloatPanel_AyohaNotificationHide()");
+    // if (isFloatPanel_AyohaNotificationOpen == "Y") {
+    //     _FloatPanel_AyohaNotification.hide(); isFloatPanel_AyohaNotificationOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaNotificationHide()");
+    // }
+
+
+    
+    if (isFloatPanel_AyohaNotificationOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaNotification.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaNotification.hide();
+          }
+          isFloatPanel_AyohaNotificationOpen = 'N';
+          _FloatPanel_AyohaNotification.destroy();
+          _FloatPanel_AyohaNotification = null;
+          
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaNotification');
+          }
     }
  
 }
@@ -758,48 +723,25 @@ function FloatPanel_AyohaNotificationLoadBySubscriberAccNoStore() {
 
     _DataStore_AyohaNotificationLoadBySubscriberAccNoStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
     _DataStore_AyohaNotificationLoadBySubscriberAccNoStore.getProxy().setUrl(GetAPIurl() + '/AyohaNotification/AyohaNotificationLoadBySubscriberAccNo');
-    _DataStore_AyohaNotificationLoadBySubscriberAccNoStore.load();
-
-    //Ext.getStore('AyohaNotificationLoadBySubscriberAccNoStore').getProxy().setExtraParams({
-    //    SubscriberAccNo: GetCurrAyohaUserAccountNo()
-    //});
-    //Ext.StoreMgr.get('AyohaNotificationLoadBySubscriberAccNoStore').load();
-
-    var task = Ext.create('Ext.util.DelayedTask', function () {
-
-        //Ext.getStore('AyohaNotificationLoadBySubscriberAccNoStore').getProxy().setExtraParams({
-        //    SubscriberAccNo: GetCurrAyohaUserAccountNo()
-        //});
-
-        //  var myStore = Ext.getStore('MembershipCardLoadByEnterpriseAccNoStore');
-        //  countMembershipCardLoadByEnterpriseAccNoStoreFirst = myStore.getCount();
-        //console.log(countMembershipCardLoadByEnterpriseAccNoStoreFirst)
-
-
-        //_DataStore_AyohaNotificationLoadBySubscriberAccNoStore= Ext.StoreMgr.get('AyohaNotificationLoadBySubscriberAccNoStore').load();
-
-        //var myStore = Ext.getStore('AyohaNotificationLoadBySubscriberAccNoStore');
-      //  _DataStore_AyohaNotificationLoadBySubscriberAccNoStore = Ext.getStore('AyohaNotificationLoadBySubscriberAccNoStore');
-
-        countAyohaNotificationLoadBySubscriberAccNoFirst = _DataStore_AyohaNotificationLoadBySubscriberAccNoStore.getCount();
+    _DataStore_AyohaNotificationLoadBySubscriberAccNoStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+                 countAyohaNotificationLoadBySubscriberAccNoFirst = records.length;
      
       
         Ext.getCmp('FloatPanel_AyohaNotification_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countAyohaNotificationLoadBySubscriberAccNoFirst + ')</b></font>');
-        LoadingPanelHide();
-     
-       
-
-
-
-
-
-
-
-
-
-
+             LoadingPanelHide(false);
+            } else {
+                console.error('Failed to load store data or no record found.');
+                LoadingPanelHide(false);
+            }
+            Ext.Viewport.setMasked(false);
+        }
     });
-    task.delay(1000);
+
+
+
+
 
 
 
@@ -1002,79 +944,79 @@ function FloatPanel_AyohaNotification_DeleteNotification(ID) {
 
 
 
+DeleteMessageOverlay_NotificationShow(ID);
 
 
 
 
 
+    // Swal.fire({
+    //     title: 'Are you sure want to delete?',
+    //     //  text: "Delete this card will effect your customer card. They no longer accessible to this card. Think Carefully before proccedd with delete!",
+    //     //icon: 'warning',
+    //     //showCancelButton: true,
+    //     //confirmButtonColor: '#3085d6',
+    //     //cancelButtonColor: '#d33',
+    //     imageUrl: "resources/icons/attention1.png",
+    //     imageWidth: 150,
+    //     imageHeight: 150,
+    //     showCloseButton: true,
+    //     showCancelButton: false,
+    //     //  confirmButtonColor: '#3085d6',
+    //     confirmButtonColor: '#9932cc',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Yes'
+    // }).then(function (result) {
+    //     if (result.isConfirmed) {
+    //         var objn = {
+    //             "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
+    //             "ID": ID,
+    //             "UserRowStatus": "InActive"
 
-    Swal.fire({
-        title: 'Are you sure want to delete?',
-        //  text: "Delete this card will effect your customer card. They no longer accessible to this card. Think Carefully before proccedd with delete!",
-        //icon: 'warning',
-        //showCancelButton: true,
-        //confirmButtonColor: '#3085d6',
-        //cancelButtonColor: '#d33',
-        imageUrl: "resources/icons/attention1.png",
-        imageWidth: 150,
-        imageHeight: 150,
-        showCloseButton: true,
-        showCancelButton: false,
-        //  confirmButtonColor: '#3085d6',
-        confirmButtonColor: '#9932cc',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
-    }).then(function (result) {
-        if (result.isConfirmed) {
-            var objn = {
-                "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
-                "ID": ID,
-                "UserRowStatus": "InActive"
-
-            };
+    //         };
            
-            var _value = Ext.Ajax.request({
-                type: "POST",
-                url: GetAPIurl() + '/AyohaNotification/AyohaNotificationUserRowStatusUpdate',
-                dataType: "json",
-                data: JSON.stringify(objn),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
+    //         var _value = Ext.Ajax.request({
+    //             type: "POST",
+    //             url: GetAPIurl() + '/AyohaNotification/AyohaNotificationUserRowStatusUpdate',
+    //             dataType: "json",
+    //             data: JSON.stringify(objn),
+    //             headers: {
+    //                 "Content-Type": "application/json; charset=utf-8"
+    //             },
 
-                success: function (result, request) {
+    //             success: function (result, request) {
 
-                    //console.log(result.responseText);
+    //                 //console.log(result.responseText);
 
 
-                    data = Ext.decode(result.responseText.trim());
+    //                 data = Ext.decode(result.responseText.trim());
 
-                    if (data.success == "true") {
-                        if (FloatPanel_AyohaNotification_NotificationIsOpen == "Y") {
-                            FloatPanel_AyohaNotification_NotificationHide();
-                        }
-                        swalFireSuccess("Delete Successfully!");
-                        FloatPanel_AyohaNotificationLoadBySubscriberAccNoStore();
+    //                 if (data.success == "true") {
+    //                     if (FloatPanel_AyohaNotification_NotificationIsOpen == "Y") {
+    //                         FloatPanel_AyohaNotification_NotificationHide();
+    //                     }
+    //                     swalFireSuccess("Delete Successfully!");
+    //                     FloatPanel_AyohaNotificationLoadBySubscriberAccNoStore();
 
                        
-                    }
-                    else {
-                        swalFireFail("Delete Failed!" + result.responseText.trim());
-                    }
+    //                 }
+    //                 else {
+    //                     swalFireFail("Delete Failed!" + result.responseText.trim());
+    //                 }
 
-                    Ext.Viewport.unmask();
+    //                 Ext.Viewport.unmask();
 
-                },
+    //             },
 
-                failure: function (result, request) {
+    //             failure: function (result, request) {
 
-                    Ext.Viewport.unmask();
-                    swalFireFail("Delete Failed!" + result.responseText.trim());
-                }
+    //                 Ext.Viewport.unmask();
+    //                 swalFireFail("Delete Failed!" + result.responseText.trim());
+    //             }
 
-            });
-        }
-    });
+    //         });
+    //     }
+    // });
 
    
 }

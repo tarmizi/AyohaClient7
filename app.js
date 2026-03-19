@@ -133,7 +133,8 @@ Ext.application({
 'AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_ContestCardLoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_EventCardLoyaltyProgram','AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram',
 'AyohaReward.FloatPanel_AyohaReward_MainDashboard','Membership.FloatPanel_Membership_CheckInPage','Membership.FloatPanel_Membership_CheckInPage_Confirmed','AyohaReward.FloatPanel_AyohaReward','Config.CoreFunction','Membership.FloatPanel_Membership_MembershipCardHubsUpgrade',
 'AyohaMerchant.AyohaMerchantReward','Membership.MembershipCardList','Membership.SideMenuMembershipCardList','AyohaMerchant.SideMenuAyohaMerchantReward','CheckOut.FloatPanel_CheckOut_NonMember','CheckOut.FloatPanel_CheckOut_ConfirmedCheckOut','Config.AppStyle','Membership.FloatPanel_CheckInModal',
-'common.OverlayConfirm','common.AyohaBackManager','common.ErrorMessagesOverlay','common.DeleteMessageOverlay','Membership.FloatPanel_CheckOut_MembershipCard','common.FloatPanel_MembershipSuccessModal','AyohaReward.FloatPanel_AyohaReward_PointTransactionDetail'],
+'common.OverlayConfirm','common.AyohaBackManager','common.ErrorMessagesOverlay','common.DeleteMessageOverlay','Membership.FloatPanel_CheckOut_MembershipCard','common.FloatPanel_MembershipSuccessModal','AyohaReward.FloatPanel_AyohaReward_PointTransactionDetail',
+'AyohaNotification.DeleteMessageOverlay_Notification'],
 
 
 

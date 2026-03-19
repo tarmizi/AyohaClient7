@@ -343,7 +343,7 @@ var isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
                         {
                             width: '80%', // 80% width *of the white box*
                             height: 80,
-                            html: '<div class="ayohaMActions"><button onclick="FloatPanel_CheckOut_ConfirmedCheckOutHide()" class="ayohaCheckOutBtn">Done</button></div>',
+                            html: '<div class="ayohaMActions"><button onclick="FloatPanel_CheckOut_ConfirmedCheckOutHide(false)" class="ayohaCheckOutBtn">Done</button></div>',
                         },
                     ]
                    },
@@ -440,11 +440,14 @@ var isFloatPanel_CheckOut_ConfirmedCheckOutOpen = 'N';
 
 function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
 
+   // alert('FloatPanel_CheckOut_ConfirmedCheckOutHide');
+
     if (isFloatPanel_CheckOut_ConfirmedCheckOutOpen == 'Y') {
        
 
 
-
+  Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
+              Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
 
 
         if (animCfg) {

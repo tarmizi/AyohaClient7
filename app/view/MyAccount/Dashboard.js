@@ -687,8 +687,9 @@ style: "background-color: transparent;",
 
       {
         xtype: 'container',
-       // style: "background-color: yellow;",
-        style: ayohaThemeColor_Hero(),
+       style: "background-color: transparent;",
+       id:'containerDashboardAyohaRewardMainContent',
+       // style: ayohaThemeColor_Hero(),
         width:'100%',
         height:700,
         layout: {
@@ -699,218 +700,6 @@ style: "background-color: transparent;",
       },
       items:[
 
-    
-
-      {
-
-        xtype: 'container',
-        width: '100%',
-      height:  ayoha_HeaderHeight(),
-      //zIndex:10,
-        //height: 50,
-        id: 'containerMyAccount_DashboardHeader_MerchantCheckIn',
-        style: "background-color: transparent;",
-    // style:ayohaThemeColor_Header(),
-        layout: {
-            type: 'hbox',
-            pack: 'center',
-            align: 'center',
-        },
-
-        items:
-               [
-
-                //  {
-                //                          xtype: 'button',
-                //                          id: 'btnMyAccount_DashboardHeader_MerchantCheckInUpgradeBack',
-                //                          height: 30,
-                //                          width: 65,
-                //                          margin: '0 0 0 10',
-                //                          // iconCls: 'list',
-                //                          html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
-                //                          ui: 'plain',
-                //                          handler: function () {
-                                         
-
-                //                          }
-                //                      },
-                {
-                            xtype: 'spacer',
-                            width: 10,
-                         },
-                                      // {
-                                      //      margin: '0 15 0 0',                                          
-                                      //      id: 'htmlMyAccount_DashboardHeader_MerchantCheckIn_TitleHeaderTxtLeft',
-                                      //    html: '<div style="font-family:Arial,sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.4px;color:#FFFFFF;">Unlock Premium Perks</div>',
-                                      //     // html:ayohaTheme_HeaderText('Merchant Check-In'),
-                                      //  },
-
-
-
-                                         {
-                                       xtype: 'container',
-                                     margin: '10 0 0 7',
-                                       style: 'background-color:transparent;',
-                                       id: 'containerMyAccount_DashboardHaiUser_MerchantCheckin',
-                                       name: 'namecontainerMyAccount_DashboardHaiUser_MerchantCheckin',
-                                       height: 55,
-                                       width: 205,
-                                       layout: {
-       
-                                           type: 'hbox',
-                                           pack: 'left',
-                                           align: 'left'
-                                       },
-                                       items: [
-                                           //{
-                                           //    xtype: 'panel',
-                                           //    width:1
-                                           //},
-       
-                                           {
-                                               xtype: 'container',
-                                            //    height: 55,
-                                            //    width: 55,
-                                               layout: {
-       
-                                                   type: 'vbox',
-                                                   pack: 'left',
-                                                   align: 'left'
-                                               },
-                                               items: [
-                                                    {
-                                                       // xtype: 'button',
-                                                        id: 'btnMyAccount_DashboardPicProfileIcon_MerchantCheckin',
-                                                        height: 55,
-                                                        width: 55,
-                                                       margin: '0 0 0 0',                                                       
-                                                       
-                                                        html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
-                                                       
-                                                    },
-                                                   
-                                               ]
-                                           },
-       
-                                              {
-                                                  xtype: 'panel',
-                                                  hidden:true,
-                                                  width: 1
-                                              },
-                                           {
-                                               margin: '4 0 0 0',
-                                              id: 'htmlMyAccount_Dashboard_ProfileTitle_MerchantCheckin',                                              
-                                              hidden:true,   
-                                              //ori html: '<div onclick="FloatPanel_MyAccountMasterShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:3px 0px 0px 0px">Good Days!,</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:-25px 0px 0px 0px">Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
-                                               html: '<div onclick="FloatPanel_MyAccountMasterShow()"   style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:0px 0px 0px 0px" >Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:-25px 0px 0px 0px">Welcome Back,Good After Noon!</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
-                                               
-       
-                                           },
-                                           {
-                                            margin: '10 0 0 0',
-                                          id: 'htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin',  
-                                                width:'100%',                                             
-                                            html: '<div  style="width:100%;background-color: transparent;text-align:left;height:40px;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#FFFFFF;" >Hi,Tarmizi</div>'
-                                            
-    
-                                        },
-                                     
-       
-                                       ]
-                                   },
-
-                                      {
-                                          xtype: 'spacer',
-
-                                      },
-
-                                      {
-                                   xtype: 'container',
-                                   id: 'containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
-                                   name: 'namecontainerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
-                                 
-                                  //ori margin: '-10 0 0 0',
-                                   margin: '0 0 0 0',
-                                  width: 50,
-                                  height: 40,
-                                   style: "background-color: transparent",
-                                   //style: "background-color: #F35B57;",
-       
-                                   layout: {
-                                       type: 'vbox',
-                                       pack: 'center',
-                                       align: 'center'
-       
-                                   },
-                                   items: [
-       
-                                        {
-                                       
-                                            // id: 'btn_MyAccount_Dashboard_MenuBottom_Notification',
-                                            // margin: '0 0 0 0',
-       
-                                            // height: 20,
-                                            // width: 20,
-                                            // html: '<img src="resources/icons/Notification.png" width="22" height="22" alt="Company Name">',
-                                         
-                                        
-                                        xtype: 'component',
-  id: 'btn_MyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
-  width: 20,
-  height: 20,
-  style: 'background:transparent; overflow:visible;',   // penting
-  html:
-    '<div class="ayohaNotifWrap">' +
-      '<img src="resources/icons/presentboxwhite.png" class="ayohaNotifIcon" />' +
-      '<div class="ayohaNotifBadge" id="ayohaNotifBadgeUnread_MerchantPerks" style="display:block;">0</div>' +
-    '</div>'
-                                        
-                                        
-                                        
-                                        
-                                        },
-                                        
-       
-       
-                                   ]
-                               },
-{
-                            xtype: 'spacer',
-                            width: 10,
-                         },
-
-
-
-{
-                                                        margin: '15 0 0 0',
-                                                        id:'html_Dashboard_AyohaRewardPts',
-                                                        html:
-                                                        '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow();" style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
-                                                          '<div style="text-align:right;color:white;">' +
-                                                            '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
-                                                            '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
-                                                          '</div>' +
-                                                          '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
-                                                               'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
-                                                               'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
-                                                            'A' +
-                                                          '</div>' +
-                                                        '</div>',
-                                                      },
-
-                         {
-                            xtype: 'spacer',
-                            width: 20,
-                         }
-
-
-
-
-
-               ]
-
-    },
-      
       
   ////// Not CheckIn Info
 
@@ -1123,7 +912,7 @@ items:[
  // zIndex:1,
 
  // height:280,
-  height:760,
+  height:700,
   //hidden:true,
   id:'containerCheckInRewardProgress',
  //style: ayohaThemeColor_Hero(),
@@ -1138,12 +927,230 @@ items:[
 },
 items:[
   
+      {
+
+        xtype: 'container',
+        width: '100%',
+      height:  ayoha_HeaderHeight(),
+      //zIndex:10,
+        //height: 50,
+        id: 'containerMyAccount_DashboardHeader_MerchantCheckIn',
+        style: "background-color: transparent;",
+    // style:ayohaThemeColor_Header(),
+        layout: {
+            type: 'hbox',
+            pack: 'center',
+            align: 'center',
+        },
+
+        items:
+               [
+
+                //  {
+                //                          xtype: 'button',
+                //                          id: 'btnMyAccount_DashboardHeader_MerchantCheckInUpgradeBack',
+                //                          height: 30,
+                //                          width: 65,
+                //                          margin: '0 0 0 10',
+                //                          // iconCls: 'list',
+                //                          html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
+                //                          ui: 'plain',
+                //                          handler: function () {
+                                         
+
+                //                          }
+                //                      },
+                {
+                            xtype: 'spacer',
+                            width: 10,
+                         },
+                                      // {
+                                      //      margin: '0 15 0 0',                                          
+                                      //      id: 'htmlMyAccount_DashboardHeader_MerchantCheckIn_TitleHeaderTxtLeft',
+                                      //    html: '<div style="font-family:Arial,sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.4px;color:#FFFFFF;">Unlock Premium Perks</div>',
+                                      //     // html:ayohaTheme_HeaderText('Merchant Check-In'),
+                                      //  },
+
+
+
+                                         {
+                                       xtype: 'container',
+                                     margin: '10 0 0 7',
+                                       style: 'background-color:transparent;',
+                                       id: 'containerMyAccount_DashboardHaiUser_MerchantCheckin',
+                                       name: 'namecontainerMyAccount_DashboardHaiUser_MerchantCheckin',
+                                       height: 55,
+                                       width: 205,
+                                       layout: {
+       
+                                           type: 'hbox',
+                                           pack: 'left',
+                                           align: 'left'
+                                       },
+                                       items: [
+                                           //{
+                                           //    xtype: 'panel',
+                                           //    width:1
+                                           //},
+       
+                                           {
+                                               xtype: 'container',
+                                            //    height: 55,
+                                            //    width: 55,
+                                               layout: {
+       
+                                                   type: 'vbox',
+                                                   pack: 'left',
+                                                   align: 'left'
+                                               },
+                                               items: [
+                                                    {
+                                                       // xtype: 'button',
+                                                        id: 'btnMyAccount_DashboardPicProfileIcon_MerchantCheckin',
+                                                        height: 55,
+                                                        width: 55,
+                                                       margin: '0 0 0 0',                                                       
+                                                       
+                                                        html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
+                                                       
+                                                    },
+                                                   
+                                               ]
+                                           },
+       
+                                              {
+                                                  xtype: 'panel',
+                                                  hidden:true,
+                                                  width: 1
+                                              },
+                                           {
+                                               margin: '4 0 0 0',
+                                              id: 'htmlMyAccount_Dashboard_ProfileTitle_MerchantCheckin',                                              
+                                              hidden:true,   
+                                              //ori html: '<div onclick="FloatPanel_MyAccountMasterShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:3px 0px 0px 0px">Good Days!,</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:-25px 0px 0px 0px">Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+                                               html: '<div onclick="FloatPanel_MyAccountMasterShow()"   style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:0px 0px 0px 0px" >Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:-25px 0px 0px 0px">Welcome Back,Good After Noon!</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+                                               
+       
+                                           },
+                                           {
+                                            margin: '10 0 0 0',
+                                          id: 'htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin',  
+                                                width:'100%',                                             
+                                            html: '<div  style="width:100%;background-color: transparent;text-align:left;height:40px;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#FFFFFF;" >Hi,Tarmizi</div>'
+                                            
+    
+                                        },
+                                     
+       
+                                       ]
+                                   },
+
+                                   {
+                                      xtype: 'component',
+                                      id: 'htmlMyAccount_Dashboard_MemberStatus_MerchantCheckin',
+                                      hidden:true,
+                                       height: 55,
+                                                        width:110,
+html:'<div class="ayohaChip ayohaChipTopRight isMemberOrange isPulse">Member</div>'
+                                   },
+                                      {
+                                          xtype: 'spacer',
+
+                                      },
+
+                                      {
+                                   xtype: 'container',
+                                   id: 'containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
+                                   name: 'namecontainerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
+                                 
+                                  //ori margin: '-10 0 0 0',
+                                   margin: '0 0 0 0',
+                                  width: 50,
+                                  height: 40,
+                                   style: "background-color: transparent",
+                                   //style: "background-color: #F35B57;",
+       
+                                   layout: {
+                                       type: 'vbox',
+                                       pack: 'center',
+                                       align: 'center'
+       
+                                   },
+                                   items: [
+       
+                                        {
+                                       
+                                            // id: 'btn_MyAccount_Dashboard_MenuBottom_Notification',
+                                            // margin: '0 0 0 0',
+       
+                                            // height: 20,
+                                            // width: 20,
+                                            // html: '<img src="resources/icons/Notification.png" width="22" height="22" alt="Company Name">',
+                                         
+                                        
+                                        xtype: 'component',
+  id: 'btn_MyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
+  width: 20,
+  height: 20,
+  style: 'background:transparent; overflow:visible;',   // penting
+  html:
+    '<div class="ayohaNotifWrap">' +
+      '<img src="resources/icons/presentboxwhite.png" class="ayohaNotifIcon" />' +
+      '<div class="ayohaNotifBadge" id="ayohaNotifBadgeUnread_MerchantPerks" style="display:block;">0</div>' +
+    '</div>'
+                                        
+                                        
+                                        
+                                        
+                                        },
+                                        
+       
+       
+                                   ]
+                               },
+{
+                            xtype: 'spacer',
+                            width: 10,
+                         },
+
+
+
+{
+                                                        margin: '15 0 0 0',
+                                                        id:'html_Dashboard_AyohaRewardPts',
+                                                        html:
+                                                        '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow();" style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+                                                          '<div style="text-align:right;color:white;">' +
+                                                            '<span  style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
+                                                            '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
+                                                          '</div>' +
+                                                          '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
+                                                               'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
+                                                               'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
+                                                            'A' +
+                                                          '</div>' +
+                                                        '</div>',
+                                                      },
+
+                         {
+                            xtype: 'spacer',
+                            width: 20,
+                         }
+
+
+
+
+
+               ]
+
+    },
+      
  {
 xtype: 'container',
   width: '100%',
   margin:'0px 0px 0px 0px',
  
-  height:450,
+  height:480,
  //style: 'background: blue;',
   style: 'background:transparent;',
 
@@ -1152,9 +1159,10 @@ xtype: 'container',
 {
   xtype: 'container',
   width: '100%',
-  //margin:'-380px 0px 0px 0px',
-  margin:'-440px 0px 0px 0px',
- height:610,
+  margin:'-510px 0px 0px 0px',
+   id:'containerCheckInRewardProgress_Inner',
+  //margin:'-440px 0px 0px 0px',
+ height:650,
  // height:550,
  zIndex:10,
 //style: 'background: orange;',
@@ -1406,14 +1414,14 @@ itemTpl: [
   hidden:true,
   id:'containerCheckInRewardProgress_GreetingMembership',
   name: 'namecontainerCheckInRewardProgress_GreetingMembership',
-  //height:120,
- height:180,
+  height:220,
+ //height:180,
 
   style: 'background:transparent;',
   layout: {
 
     type: 'vbox',
-    pack: 'end',
+    pack: 'start',
     align: 'center'
 },
 items:[
@@ -1421,7 +1429,7 @@ items:[
 {
   xtype: 'container',
   width: '100%',
-  height:170,
+  height:155,
   style: 'background:transparent;',
   layout: {
 
@@ -1465,6 +1473,101 @@ items:[
      
 ]
 },
+{
+    xtype: 'container',
+    width: '100%',
+    html:
+        '<div style="width:100%;text-align:center;margin:8px 0 10px 0;">' +
+            '<div class="ayohaPremiumPerksChip" style="display:inline-flex;">' +
+              //  '<div class="ayohaPremiumPerksChipIcon">✦</div>' +
+                '<div>✨ Access Your Membership Perks 🎁</div>' +
+            '</div>' +
+        '</div>'
+},
+
+{
+  xtype: 'container',
+  width: '100%',
+  height:135,
+  style: 'background:transparent;',
+  id: 'containerMyAccount_Dashboard_MembershipCardPerks',
+  hidden:true,
+  layout: {
+
+    type: 'vbox',
+    pack: 'start',
+    align: 'center'
+},
+items:[
+//  {
+//     xtype: 'container',
+//     width: '100%',
+//     html:
+//         '<div style="width:100%;text-align:center;margin:8px 0 10px 0;">' +
+//             '<div class="ayohaPremiumPerksChip" style="display:inline-flex;">' +
+//                 '<div class="ayohaPremiumPerksChipIcon">✦</div>' +
+//                 '<div>Premium Perks</div>' +
+//             '</div>' +
+//         '</div>'
+// },
+  {
+    width: '100%',
+    margin: '0 0 0 0',
+  html:
+    '<div class="ayohaPremiumPerksRowV2">' +
+
+        '<div class="ayohaPremiumPerkCardV2">' +
+            '<div class="ayohaPremiumPerkIconV2">✦</div>' +
+            '<div class="ayohaPremiumPerkTextV2">' +
+                '<div class="ayohaPremiumPerkTitleV2">Stamp Perks</div>' +
+                '<div class="ayohaPremiumPerkSubV2">3 Rewards</div>' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="ayohaPremiumPerkCardV2">' +
+            '<div class="ayohaPremiumPerkIconV2">P</div>' +
+            '<div class="ayohaPremiumPerkTextV2">' +
+                '<div class="ayohaPremiumPerkTitleV2">Point Bonus</div>' +
+                '<div class="ayohaPremiumPerkSubV2">4 Rewards</div>' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="ayohaPremiumPerkCardV2">' +
+            '<div class="ayohaPremiumPerkIconV2">🎁</div>' +
+            '<div class="ayohaPremiumPerkTextV2">' +
+                '<div class="ayohaPremiumPerkTitleV2">Voucher Gift</div>' +
+                '<div class="ayohaPremiumPerkSubV2">2 Vouchers</div>' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="ayohaPremiumPerkCardV2">' +
+            '<div class="ayohaPremiumPerkIconV2">%</div>' +
+            '<div class="ayohaPremiumPerkTextV2">' +
+                '<div class="ayohaPremiumPerkTitleV2">Discount</div>' +
+                '<div class="ayohaPremiumPerkSubV2">10% Discount</div>' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="ayohaPremiumPerkCardV2">' +
+            '<div class="ayohaPremiumPerkIconV2">♛</div>' +
+            '<div class="ayohaPremiumPerkTextV2">' +
+                '<div class="ayohaPremiumPerkTitleV2">Contest Prize</div>' +
+                '<div class="ayohaPremiumPerkSubV2">RM 10k Prize</div>' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="ayohaPremiumPerkCardV2">' +
+            '<div class="ayohaPremiumPerkIconV2">✦</div>' +
+            '<div class="ayohaPremiumPerkTextV2">' +
+                '<div class="ayohaPremiumPerkTitleV2">Member Event</div>' +
+                '<div class="ayohaPremiumPerkSubV2">Hari Raya</div>' +
+            '</div>' +
+        '</div>' +
+
+    '</div>'
+  }
+]
+}
 
 ]
 },
@@ -7362,7 +7465,7 @@ xtype: 'container',
               //store: Store_RecentCheckins, // atau bind: { store: '{RecentCheckins}' }
             
               itemTpl:
-                  '<div class="ayohaFavCard {[xindex==1 ? "isTop" : ""]}">' +
+                  '<div OnClick="FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(`{EnterpriseLogoPath}`,`{EnterpriseName}`,`{EnterpriseAddress}`,`{CheckInCount}`,`{EnterpriseAccNo}`);" class="ayohaFavCard {[xindex==1 ? "isTop" : ""]}">' +
                     '{ModifiedIsMemeber_RecentCheckIn}' +
           
                     '<div class="logoWrap">' +
@@ -7483,7 +7586,7 @@ xtype: 'container',
         //store: Store_RecentCheckins, // atau bind: { store: '{RecentCheckins}' }
       
         itemTpl:
-            '<div class="ayohaFavCard {[xindex==1 ? "isTop" : ""]}">' +
+            '<div  OnClick="FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(`{EnterprisesLogo}`,`{EnterprisesName}`,`{EnterpriseAddress}`,`{TodayCheckInCount}`,`{EnterpriseAccNo}`);"  class="ayohaFavCard {[xindex==1 ? "isTop" : ""]}">' +
               '{ModifiedIsMemeber_FavoriteCheckIn}' +
     
               '<div class="logoWrap">' +
@@ -7660,7 +7763,7 @@ xtype: 'container',
 
 
   itemTpl:
-  '<div class="ayohaRCard" onclick="FloatPanel_RewardDetailShow(\'{RewardCode}\')">' +
+  '<div class="ayohaRCard">' +
 
     '<div class="ayohaRMedia">' +
     '{ModifiedImagePath_Dashboard}' +
@@ -19107,17 +19210,19 @@ function Dashboard_LoadLastCheckIn(){
 
 
     if(record.get('isMember')=="YES"){
+      Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(700);
       Ext.getCmp('Dashboard_MembershipCardTxt').setHtml('<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🌟 Member Privileges Enabled</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Your exclusive perks are active — enjoy the premium experience ✨</div>');
       Ext.getCmp('Dashboard_PerksText').setHtml('<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎉 Your Member Benefits</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Welcome back, member! Your perks are ready to enjoy here 🎁✨</div>');
    
-
+Ext.getCmp('htmlMyAccount_Dashboard_MemberStatus_MerchantCheckin').setHidden(false);
 Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(true);
 Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(false);
-Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(false);
+Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(true);
 Ext.getCmp('containerMyAccount_DashboardHaiUser_MerchantCheckin').setHidden(true);
 Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(true);
 
-
+Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero());
+ Ext.getCmp('containerCheckInRewardProgress_Inner').setMargin('-510px 0px 0px 0px');
 
 
 
@@ -19127,13 +19232,20 @@ Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(true);
     if(record.get('isMember')=="NO"){
       Ext.getCmp('Dashboard_MembershipCardTxt').setHtml('<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🔓 Unlock Premium Access</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Get this store’s membership card for premium access</div>');
       Ext.getCmp('Dashboard_PerksText').setHtml('<div   style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>🎁 Perks you can enjoy here</b></div><br> <div style="margin:-24px 0px 0px 25px;font-size:11px;color:#6b7280;">Collect stamps, earn points & claim vouchers here</div>');
-    
+    Ext.getCmp('htmlMyAccount_Dashboard_MemberStatus_MerchantCheckin').setHidden(true);
 Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(false);
 Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(true);
 Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(true);
 
 Ext.getCmp('containerMyAccount_DashboardHaiUser_MerchantCheckin').setHidden(false);
 Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(true);
+
+ Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(700);
+Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero());
+ Ext.getCmp('containerCheckInRewardProgress_Inner').setMargin('-460px 0px 0px 0px');
+
+
+
     }
    
   
@@ -19318,6 +19430,8 @@ Ext.getCmp('MainMaincontainerDashbord').setHeight(3100);
 
              
               Ext.getCmp('MainMaincontainerDashbord').setHeight(2450);
+              Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
+              Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
            //   Ext.getCmp('Dashboard_Carousel').setHeight(205); 
 //Ext.getCmp('containerCheckInRewardspacer02').setHidden(true); 
 
@@ -19372,7 +19486,7 @@ Ext.getCmp('containerMyAccount_DashboardHeader_MerchantCheckIn').setHidden(true)
 Ext.getCmp('containerMyAccount_DashboardHaiUser_MerchantCheckin').setHidden(true);
 Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(false);
 
-
+  Ext.getCmp('htmlMyAccount_Dashboard_MemberStatus_MerchantCheckin').setHidden(true);
 
 
 

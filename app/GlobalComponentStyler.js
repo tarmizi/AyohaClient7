@@ -35,7 +35,11 @@ function ayohaThemeColor_Hero(){
     //  var value="background: linear-gradient(90deg, #491A7F 0%, #7027A5 100%, #9537C8 50%);";
       return value;
   }
-  
+  function ayohaThemeColor_Hero_Reset(){
+    var value="background: transparent;";
+    //  var value="background: linear-gradient(90deg, #491A7F 0%, #7027A5 100%, #9537C8 50%);";
+      return value;
+  }
 
   function ayohaThemeColor_Card(){
   var value="background: linear-gradient(180deg, #491A7F 0%, #7027A5 50%, #9537C8 100%);border:1px solid white;border-radius:20px";

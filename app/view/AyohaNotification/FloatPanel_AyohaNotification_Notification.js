@@ -3,28 +3,26 @@
 
 var FloatPanel_AyohaNotification_NotificationIsOpen="N";
 
-var _FloatPanel_AyohaNotification_Notification;
-
-function FloatPanel_AyohaNotification_Notification() {
-    _FloatPanel_AyohaNotification_Notification =
-      Ext.create('Ext.Panel', {
-
-          xtype: 'container',
-          height: '100%',
-          width: '100%',
-          id: 'FloatPanel_AyohaNotification_NotificationID',
-          draggable: false,
+var _FloatPanel_AyohaNotification_Notification=null;
 
 
 
-          centered: true,
-          // bottom: 14,
-          zIndex: 60,
-          modal: true,
-          hideOnMaskTap: false,
-          layout: {
-              type: 'fit'
-          },
+
+function FloatPanel_AyohaNotification_NotificationCreateIfNeeded() {
+    if (_FloatPanel_AyohaNotification_Notification && !_FloatPanel_AyohaNotification_Notification.destroyed) return;
+
+ _FloatPanel_AyohaNotification_Notification =
+      Ext.create('Ext.Container', {
+ id: 'FloatPanel_AyohaNotification_NotificationID',
+          floated: true,
+        centered: true,
+        fullscreen: true,
+      //  closeAction: 'hide',
+      closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
           showAnimation: {
               type: 'popIn',
               duration: 250,
@@ -39,92 +37,30 @@ function FloatPanel_AyohaNotification_Notification() {
           style: ' background-color:white;',
 
 
-          listeners: {
-              initialize: function (c) {
-                  this.element.on({
-                      swipe: function (e, node, options) {
-                          //if (e.direction == "up") {
-                          //    LoyaltyCardRedeemListHide();
-                          //}
-                          if (e.direction == "left") {
-                              _FloatPanel_AyohaNotification_Notification.hide(Ext.fx.Animation({
-                                  type: 'slideOut',
-                                  direction: 'left',
-                                  easing: 'cubic-bezier(.7,0,.7,1)',
-                                  duration: 250
+        listeners: {
+ 
 
-                              }));
-                              RemovePages("FloatPanel_AyohaNotification_NotificationHide()");
-                              FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
-                          } if (e.direction == "right") {
-                              _FloatPanel_AyohaNotification_Notification.hide(Ext.fx.Animation({
-                                  type: 'slideOut',
-                                  direction: 'right',
-                                  easing: 'cubic-bezier(.7,0,.7,1)',
-                                  duration: 250
-
-                              }));
-                              FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
-                              RemovePages("FloatPanel_AyohaNotification_NotificationHide()");
-                          }
-                         
-                      }
-                  });
-              }
+            // ✅ kalau user tap mask, close macam standard
+            beforehide: function () {
+              // kalau hide dipanggil bukan dari function kita, block dulu
+              // (optional: boleh allow kalau kau nak)
+              return true;
+            }
           },
 
-          items: {
 
-
-
-
-
-
-          //    xtype: 'container',
-          //   /// style: 'background-color:white;',
-          //    style: 'background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-          //  //  style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-          //    height: '100%',
-          //    width: '100%',
-          //    layout: {
-          //        type: 'vbox',
-          //        //  pack: 'center',
-          //        //  align: 'end'
-          //    },
-
-      
-          xtype: 'container',
-          width: '100%',
-          height: '100%',
-          style: "background-color: transparent;",
-        //  style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-          // style: 'background-image: url("resources/icons/pointbackdrop.png"); background-size: 100% 30%;background-repeat: no-repeat;',
-          layout: {
-              type: 'fit',
-
-          },
-          items: [
+   items: [
 
               {
 
                   xtype: 'container',
                   width: '100%',
                   docked: 'top',
-                  // width: 40,
-
-                  //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                  //hidden: true,
+                   height: ayoha_HeaderHeight(),
+                        style:ayohaThemeColor_Header(),
 
                   id: 'containerFloatPanel_AyohaNotification_NotificationHeader',
-                  //style: {
-                  //    // background: '#D25959',
-                  //    background: 'transparent',
-                  //    // border: '2px'
-                  //},
-                  //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                  style: 'border-bottom:1px solid grey;background-color:transparent;',
-                 // style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-                  // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
+                 
                   layout: {
                       type: 'hbox',
                       pack: 'center',
@@ -140,21 +76,22 @@ function FloatPanel_AyohaNotification_Notification() {
                                            id: 'btnFloatPanel_AyohaNotification_NotificationBack',
                                            margin:'0 0 0 10',
                                            height: 30,
-                                           width: 35,
-                                           // iconCls: 'list',
-                                           html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                          width: 65,
+                                                 margin: '5 0 0 10',
+                                                 // iconCls: 'list',
+                                                 html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                            ui: 'plain',
                                            handler: function () {
+FloatPanel_AyohaNotification_NotificationHide(false);
+                                            //    FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
+                                            //    _FloatPanel_AyohaNotification_Notification.hide(Ext.fx.Animation({
+                                            //        type: 'slideOut',
+                                            //        direction: 'left',
+                                            //        easing: 'cubic-bezier(.7,0,.7,1)',
+                                            //        duration: 250
 
-                                               FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
-                                               _FloatPanel_AyohaNotification_Notification.hide(Ext.fx.Animation({
-                                                   type: 'slideOut',
-                                                   direction: 'left',
-                                                   easing: 'cubic-bezier(.7,0,.7,1)',
-                                                   duration: 250
-
-                                               }));
-                                               RemovePages("FloatPanel_AyohaNotification_NotificationHide()");
+                                            //    }));
+                                            //    RemovePages("FloatPanel_AyohaNotification_NotificationHide()");
                                                //  FloatPanel_AyohaNotification_AddCardHide();
 
                                            }
@@ -167,37 +104,13 @@ function FloatPanel_AyohaNotification_Notification() {
 
 
                                         {
-                                            margin: '0 10 0 0',
+                                              margin: '0 15 0 0',
                                             id: 'htmlFloatPanel_AyohaNotification_Notification_TitleHeaderTxt',
-                                            html: '<font size=2 color=black><b>Notifications</b></font>'
+                                             html:ayohaTheme_HeaderText('Notification'),
                                         },
 
 
-                                              {
-                                                  xtype: 'button',
-                                                  id: 'btnFloatPanel_AyohaNotification_Notification_CardIcon',
-                                                  height: 30,
-                                                  width: 35,
-                                                  hidden:true,
-                                                  // iconCls: 'list',
-                                                  html: '<div ><img src="resources/icons/Notification.png" width="25" height="20" alt="Company Name"></div>',
-                                                  ui: 'plain',
-                                                  handler: function () {
-
-                                                      FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
-
-                                                      _FloatPanel_AyohaNotification_Notification.hide(Ext.fx.Animation({
-                                                          type: 'slideOut',
-                                                          direction: 'right',
-                                                          easing: 'cubic-bezier(.7,0,.7,1)',
-                                                          duration: 250
-
-                                                      }));
-                                                      RemovePages(_FloatPanel_AyohaNotification, "isFloatPanel_AyohaNotificationOpen");
-                                                      //FloatPanel_AyohaNotification_AddCardHide();
-                                                  }
-                                              },
-
+                                              
 
 
 
@@ -313,8 +226,11 @@ function FloatPanel_AyohaNotification_Notification() {
                 
                 }
 
-                ]
-          },
+                ],
+
+
+
+
 
 
            
@@ -331,18 +247,41 @@ function FloatPanel_AyohaNotification_Notification() {
 
 
       });
-    return _FloatPanel_AyohaNotification_Notification;
 }
 
 
 
-function FloatPanel_AyohaNotification_NotificationHide() {
 
-    if (FloatPanel_AyohaNotification_NotificationIsOpen == "Y") {
-        _FloatPanel_AyohaNotification_Notification.hide();
-        FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
-        RemovePages("FloatPanel_AyohaNotification_NotificationHide()");
+
+function FloatPanel_AyohaNotification_NotificationHide(animCfg, fromBack){
+
+    // if (FloatPanel_AyohaNotification_NotificationIsOpen == "Y") {
+    //     _FloatPanel_AyohaNotification_Notification.hide();
+    //     FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaNotification_NotificationHide()");
+    // }
+
+
+
+    
+    if (FloatPanel_AyohaNotification_NotificationIsOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaNotification_Notification.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaNotification_Notification.hide();
+          }
+          FloatPanel_AyohaNotification_NotificationIsOpen = 'N';
+          _FloatPanel_AyohaNotification_Notification.destroy();
+          _FloatPanel_AyohaNotification_Notification = null;
+          
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaNotification_Notification');
+          }
     }
+ 
    
 }
 
@@ -379,14 +318,47 @@ var globalFloatPanel_AyohaNotification_Notification_FB;
 var globalFloatPanel_AyohaNotification_Notification_Insta;
 
 var globalFloatPanel_AyohaNotification_Notification_AdvertisementCode;
+
+
+
+
+
 function FloatPanel_AyohaNotification_NotificationShow(val) {
     
-    Ext.Viewport.remove(_FloatPanel_AyohaNotification_Notification);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaNotification_Notification()); // _GeofenceInfoPanel place in Geofence_fencingstatusAlert class.                         
-    // }
-    this.overlay.show();
+    // Ext.Viewport.remove(_FloatPanel_AyohaNotification_Notification);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaNotification_Notification()); // _GeofenceInfoPanel place in Geofence_fencingstatusAlert class.                         
+    // // }
+    // this.overlay.show();
   
-    AddRoutePages("FloatPanel_AyohaNotification_NotificationHide()");
+    // AddRoutePages("FloatPanel_AyohaNotification_NotificationHide()");
+
+
+
+
+
+FloatPanel_AyohaNotification_NotificationCreateIfNeeded();
+
+
+
+_FloatPanel_AyohaNotification_Notification.show();
+// ✅ push browser back (ikut style kau)
+if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+  AyohaBrowserBack.push('FloatPanel_AyohaNotification_Notification', function () {
+ 
+    FloatPanel_AyohaNotification_NotificationHide(true);
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
     FloatPanel_AyohaNotification_NotificationIsOpen = 'Y';
    
     FloatPanel_AyohaNotification_NotificationAdjustHeight();
@@ -450,17 +422,17 @@ function FloatPanel_AyohaNotification_NotificationShow(val) {
     globalFloatPanel_AyohaNotification_Notification_AdvertisementCode = AdvertisementCode.get('AdvertisementCode');
     
     if (NotificationTypes == "Text") {
-       Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaNotification_DeleteNotification(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-bottom: 2px none white;overflow:hidden;word-break:normal;text-align:center;vertical-align:top;background-color:white;color:#616161" colspan="2"><br><img src="' + EnterpriseLogoPaths + '" style="width: 130px; height: 122px; border:2px none #A2CDF5;  max-width:200px; " /><br><b>' + EnterpriseNames + '</b><br><div style="font-family:Arial, sans-serif;font-size:12px;color:#616161;width:100%;background-color:white;">' + EnterpriseAddresss + '</div><br><div style="margin:-20px 0px 0px;width:100%"><font color="#616161" size="2px">________________________________________________</font></div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;text-decoration:underline;vertical-align:top;text-align:center" colspan="2"><br>' + NotificationTitles + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br>' + ModifiedNotificationBody + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><img src="' + NotificationFooterImages + '"style="width: 100%; height: 172px;  max-height:200px; " /><br><br><b>Visit Us:</b><br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button id="btnNotification_Notification_WhatsApp" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_CallEnterprise(' + EnterprisePhoneNos + ');"><img src="resources/icons/WhatsApp01.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Location" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Insta" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenInsta();"><img src="resources/icons/instagram.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_FB" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_AyohaStore" class="blink_me" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaStoreShow_FromPushNotification();"><img src="https://setkita.com/AyohaImgCard/eStoreLogo/AyohaStoreLogoWithBorder.png" style="float:right;margin-right:0.5em;width: 46px; height: 46px;"><div class="blink_me" style="margin:0px 0px 0px 0px;font-size:10px;color:black;">Ayoha Store</div></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@Ayoha-Reward.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@Ayoha-Reward.com</b></a> </font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
+       Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="DeleteMessageOverlay_NotificationShow(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-bottom: 2px none white;overflow:hidden;word-break:normal;text-align:center;vertical-align:top;background-color:white;color:#616161" colspan="2"><br><img src="' + EnterpriseLogoPaths + '" style="width: 130px; height: 122px; border:2px none #A2CDF5;  max-width:200px; " /><br><b>' + EnterpriseNames + '</b><br><div style="font-family:Arial, sans-serif;font-size:12px;color:#616161;width:100%;background-color:white;">' + EnterpriseAddresss + '</div><br><div style="margin:-20px 0px 0px;width:100%"><font color="#616161" size="2px">________________________________________________</font></div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;text-decoration:underline;vertical-align:top;text-align:center" colspan="2"><br>' + NotificationTitles + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br>' + ModifiedNotificationBody + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><img src="' + NotificationFooterImages + '"style="width: 100%; height: 172px;  max-height:200px; " /><br><br><b>Visit Us:</b><br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button id="btnNotification_Notification_WhatsApp" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_CallEnterprise(' + EnterprisePhoneNos + ');"><img src="resources/icons/WhatsApp01.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Location" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Insta" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenInsta();"><img src="resources/icons/instagram.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_FB" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_AyohaStore" class="blink_me" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaStoreShow_FromPushNotification();"><img src="https://setkita.com/AyohaImgCard/eStoreLogo/AyohaStoreLogoWithBorder.png" style="float:right;margin-right:0.5em;width: 46px; height: 46px;"><div class="blink_me" style="margin:0px 0px 0px 0px;font-size:10px;color:black;">Ayoha Store</div></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@Ayoha-Reward.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@Ayoha-Reward.com</b></a> </font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
        
     }
     if (NotificationTypes == "Image") {
-       Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaNotification_DeleteNotification(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br><img src="' + NotifcationImages + '"style="width: 100%; height: 1050px;  max-height:2050px; " /><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><br>Contact Us:<br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_CallEnterprise(' + EnterprisePhoneNos + ');"><img src="resources/icons/calling.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@BuskartApp.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@BuskartApp.com</b></a></font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
+       Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="DeleteMessageOverlay_NotificationShow(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br><img src="' + NotifcationImages + '"style="width: 100%; height: 1050px;  max-height:2050px; " /><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><br>Contact Us:<br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_CallEnterprise(' + EnterprisePhoneNos + ');"><img src="resources/icons/calling.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@BuskartApp.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@BuskartApp.com</b></a></font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
 
         if (EnterpriseAccNos == "50528-0133376958-NoEnterprise") {
-           Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaNotification_DeleteNotification(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;text-decoration:underline;vertical-align:top;text-align:center" colspan="2"><br>' + NotificationTitles + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br><img src="' + NotifcationImages + '"style="width: 100%; height: 1050px;  max-height:2550px; " /><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><br>Contact/Visit Us:<br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenWebSite();"><img src="resources/icons/websiteblackedit.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@Ayoha-Reward.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@BuskartApp.com</b></a></font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
+           Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="DeleteMessageOverlay_NotificationShow(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;text-decoration:underline;vertical-align:top;text-align:center" colspan="2"><br>' + NotificationTitles + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br><img src="' + NotifcationImages + '"style="width: 100%; height: 1050px;  max-height:2550px; " /><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><br>Contact/Visit Us:<br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenWebSite();"><img src="resources/icons/websiteblackedit.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><button style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-right:0.5em;width: 36px; height: 36px;"></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@Ayoha-Reward.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@BuskartApp.com</b></a></font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
 
         } else {
-           Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="FloatPanel_AyohaNotification_DeleteNotification(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-bottom: 2px none white;overflow:hidden;word-break:normal;text-align:center;vertical-align:top;background-color:white;color:#616161" colspan="2"><br><img src="' + EnterpriseLogoPaths + '" style="width: 130px; height: 122px; border:2px none #A2CDF5;  max-width:200px; " /><br><b>' + EnterpriseNames + '</b><br><div style="font-family:Arial, sans-serif;font-size:12px;color:#616161;width:100%;background-color:white;">' + EnterpriseAddresss + '</div><br><div style="margin:-20px 0px 0px;width:100%"><font color="#616161" size="2px">________________________________________________</font></div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;text-decoration:underline;vertical-align:top;text-align:center" colspan="2"><br>' + NotificationTitles + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br><img src="' + NotifcationImages + '"style="width: 100%; height: 650px;  max-height:650px; " /><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><br><b>Visit Us:</b><br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button id="btnNotification_Notification_WhatsApp" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_CallEnterprise(' + EnterprisePhoneNos + ');"><img src="resources/icons/WhatsApp01.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Location" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Insta" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenInsta();"><img src="resources/icons/instagram.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_FB" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_AyohaStore" class="blink_me" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaStoreShow_FromPushNotification();"><img src="http://setkita.com/AyohaImgCard/eStoreLogo/AyohaStoreLogoWithBorder.png" style="float:right;margin-right:0.5em;width: 46px; height: 46px;"><div class="blink_me" style="margin:0px 0px 0px 0px;font-size:10px;color:black;">Ayoha Store</div></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@Ayoha-Reward.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@Ayoha-Reward.com</b></a> </font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
+           Ext.getCmp('htmlFloatPanel_AyohaNotification_Notification_Content').setHtml('<table style="border-collapse:collapse;border-spacing:0;width:100%;background-color:white;border-style:none;border-width:0px;"><tr><th style="font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:0px 5px;border-top: 1px none black;overflow:hidden;word-break:normal;text-align:center;background-color:white;color:#616161" colspan="2">Notification Date:' + SentDates + '<br><div style="width:100%;text-align:right;margin:0px 0px 0px 0px;"><button OnClick="DeleteMessageOverlay_NotificationShow(' + val + ')" class="buttonsHtmlBgTransparent"><img src="resources/icons/DeletePurple.png" style="width: 23px; height: 23px; margin:0px 0px 0px 10px;" /></button></div></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-bottom: 2px none white;overflow:hidden;word-break:normal;text-align:center;vertical-align:top;background-color:white;color:#616161" colspan="2"><br><img src="' + EnterpriseLogoPaths + '" style="width: 130px; height: 122px; border:2px none #A2CDF5;  max-width:200px; " /><br><b>' + EnterpriseNames + '</b><br><div style="font-family:Arial, sans-serif;font-size:12px;color:#616161;width:100%;background-color:white;">' + EnterpriseAddresss + '</div><br><div style="margin:-20px 0px 0px;width:100%"><font color="#616161" size="2px">________________________________________________</font></div></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;text-decoration:underline;vertical-align:top;text-align:center" colspan="2"><br>' + NotificationTitles + '<br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:12px;padding:0px 5px;border-style:none;border-width:0px;overflow:hidden;word-break:normal" colspan="2"><br><img src="' + NotifcationImages + '"style="width: 100%; height: 650px;  max-height:650px; " /><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 5px;border-style:none;border-width:1px;overflow:hidden;word-break:normal;text-align:center;vertical-align:top" colspan="2"><br><b>Visit Us:</b><br><br></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:0px 1px;border-bottom: 1px none black;overflow:hidden;word-break:normal;text-align:center"><button id="btnNotification_Notification_WhatsApp" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_CallEnterprise(' + EnterprisePhoneNos + ');"><img src="resources/icons/WhatsApp01.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Location" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenLocation();"><img src="resources/icons/gpslocation.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_Insta" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenInsta();"><img src="resources/icons/instagram.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_FB" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaNotification_Notification_OpenFB();"><img src="resources/icons/facebook.png" style="float:left;margin-top:-50px;width: 30px; height: 30px;"></button><button id="btnNotification_Notification_AyohaStore" class="blink_me" style="display:inline-block;background-color: Transparent;border: none;outline:none;" onClick="FloatPanel_AyohaStoreShow_FromPushNotification();"><img src="http://setkita.com/AyohaImgCard/eStoreLogo/AyohaStoreLogoWithBorder.png" style="float:right;margin-right:0.5em;width: 46px; height: 46px;"><div class="blink_me" style="margin:0px 0px 0px 0px;font-size:10px;color:black;">Ayoha Store</div></button><br><font  color="#616161" size="1px">_______________________________________</font><br><br><font  color="#616161" size="1px"><i>You are receiving this notification because you accept term and condition on  product and promotion update.If you feel the nofication inappriorate you may report to us via</i> <a href="mailto:Admin@Ayoha-Reward.com?subject=InAppriroate Push Notification (Notification Code:' + val + ') &body=Hi,I would like to report this Push Notification.TQ"><b>Admin@Ayoha-Reward.com</b></a> </font><br><br><font  color="#616161" size="1px">Powered By:AyohaReward.Com</font></td></tr></table>');
 
             
         }
@@ -488,7 +460,7 @@ function FloatPanel_AyohaNotification_NotificationShow(val) {
         document.getElementById("btnNotification_Notification_Location").style.display = "none";
     }
  
-    LoadingPanelHide();
+    LoadingPanelHide(false);
 }
 
 
@@ -580,14 +552,23 @@ function FloatPanel_AyohaNotification_Notification_UpdateIsRead(ID) {
         "IsRead": "Y"
     };
     console.log(objn);
-    var _value = Ext.Ajax.request({
-        type: "POST",
-        url: GetAPIurl() + '/AyohaNotification/AyohaNotificationIsReadUpdate',
-        dataType: "json",
-        data: JSON.stringify(objn),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+    Ext.Ajax.request({
+        // type: "POST",
+        // url: GetAPIurl() + '/AyohaNotification/AyohaNotificationIsReadUpdate',
+        // dataType: "json",
+        // data: JSON.stringify(objn),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
+
+
+
+
+  url: GetAPIurl() + '/AyohaNotification/AyohaNotificationIsReadUpdate',
+  method: 'POST',
+  jsonData: objn,
+  headers: { 'Content-Type': 'application/json; charset=utf-8' },
+
 
         success: function (result, request) {
 
@@ -598,7 +579,7 @@ function FloatPanel_AyohaNotification_Notification_UpdateIsRead(ID) {
 
             if (data.success == "true") {
                 globalPNUnread = globalPNUnread - 1;
-                StagingSetBadgeText();
+               // StagingSetBadgeText();
                 FloatPanel_AyohaNotificationLoadBySubscriberAccNoStore();
               
 
