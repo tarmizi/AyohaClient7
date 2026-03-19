@@ -596,45 +596,46 @@ return _value;
           
           
           
-          , {
-            name: 'ModifiedEnterprisesNameDesignOneTwo',
-            convert: function (value, record) {
+          ,
+{
+    name: 'ModifiedEnterprisesNameDesignOneTwo',
+    convert: function (value, record) {
 
-                var _value;
-                var str = record.get('EnterprisesName');
-         
-               
+        var str = (record.get('EnterprisesName') || '').trim();
+        var limit = 12;
+        var shortName = '';
 
-
-                if(str){
-
-                    _value = '<div style="margin:0px 0px 0px 0px;font-family:Arial, sans-serif;font-size:10px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str.toUpperCase() + '</div>'; 
-
-                    return _value;
-
-
-
-
-//   if (str.length <= 16) {
-//       _value = '<div style="margin:-29px 0px 0px 33px;font-family:Arial, sans-serif;font-size:10px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str.toUpperCase() + '</div>';
-    
-//       return _value;
-//   }
-//   if (str.length >= 17) {
-//       var str0 = str.substring(0, 16);
-//       var str1 = str.substring(16, str.length);
-//       _value = '<div style="margin:-33px 0px 0px 33px;font-family:Arial, sans-serif;font-size:10px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str0.toUpperCase() + '-</div><br>' +
-//                '<div style="margin:-20px 0px 0px 33px;font-family:Arial, sans-serif;font-size:10px;font-weight:bold;overflow:hidden;padding:0px 0px;text-align:left;vertical-align:top;word-break:normal;color:white;width:100%;">' + str1.toUpperCase() + '</div>';
-//       return _value;
-//   }
-}
-               
-
-
-
-            }
+        if (!str) {
+            return '';
         }
-            , 
+
+        shortName = str.length > limit ? str.substring(0, limit) + '..' : str;
+
+        return '<div style="margin:0;font-family:Arial,sans-serif;font-size:10px;font-weight:bold;overflow:hidden;padding:0;text-align:left;vertical-align:top;color:white;width:92%;white-space:nowrap;text-overflow:ellipsis;display:block;">'
+            + shortName.toUpperCase() +
+            '</div>';
+    }
+},
+
+//         {
+//     name: 'ModifiedEnterprisesNameDesignOneTwo',
+//     convert: function (value, record) {
+
+//         var str = record.get('EnterprisesName') || '';
+//         var shortName = '';
+
+//         if (str) {
+//             shortName = str.length > 12 ? str.substring(0, 12) + '..' : str;
+
+//             return '<div style="margin:0;font-family:Arial,sans-serif;font-size:10px;font-weight:bold;overflow:hidden;padding:0;text-align:left;vertical-align:top;color:white;width:92%;white-space:nowrap;text-overflow:ellipsis;display:block;">'
+//                 + shortName.toUpperCase() +
+//                 '</div>';
+//         }
+
+//         return '';
+//     }
+// }
+            
             // ORI 1/11/2025 {
             //     name: 'ModifiedEnterprisesLogo',
             //     convert: function (value, record) {

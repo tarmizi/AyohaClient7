@@ -736,14 +736,88 @@ style: "background-color: transparent;",
                 //                      },
                 {
                             xtype: 'spacer',
-                            width: 15,
+                            width: 10,
                          },
-                                      {
-                                           margin: '0 15 0 0',                                          
-                                           id: 'htmlMyAccount_DashboardHeader_MerchantCheckIn_TitleHeaderTxtLeft',
-                                         //  html: '<font size=2 color=black><b>Membership Card</b></font>'
-                                           html:ayohaTheme_HeaderText('Merchant Check-In'),
+                                      // {
+                                      //      margin: '0 15 0 0',                                          
+                                      //      id: 'htmlMyAccount_DashboardHeader_MerchantCheckIn_TitleHeaderTxtLeft',
+                                      //    html: '<div style="font-family:Arial,sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.4px;color:#FFFFFF;">Unlock Premium Perks</div>',
+                                      //     // html:ayohaTheme_HeaderText('Merchant Check-In'),
+                                      //  },
+
+
+
+                                         {
+                                       xtype: 'container',
+                                     margin: '10 0 0 7',
+                                       style: 'background-color:transparent;',
+                                       id: 'containerMyAccount_DashboardHaiUser_MerchantCheckin',
+                                       name: 'namecontainerMyAccount_DashboardHaiUser_MerchantCheckin',
+                                       height: 55,
+                                       width: 205,
+                                       layout: {
+       
+                                           type: 'hbox',
+                                           pack: 'left',
+                                           align: 'left'
                                        },
+                                       items: [
+                                           //{
+                                           //    xtype: 'panel',
+                                           //    width:1
+                                           //},
+       
+                                           {
+                                               xtype: 'container',
+                                            //    height: 55,
+                                            //    width: 55,
+                                               layout: {
+       
+                                                   type: 'vbox',
+                                                   pack: 'left',
+                                                   align: 'left'
+                                               },
+                                               items: [
+                                                    {
+                                                       // xtype: 'button',
+                                                        id: 'btnMyAccount_DashboardPicProfileIcon_MerchantCheckin',
+                                                        height: 55,
+                                                        width: 55,
+                                                       margin: '0 0 0 0',                                                       
+                                                       
+                                                        html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
+                                                       
+                                                    },
+                                                   
+                                               ]
+                                           },
+       
+                                              {
+                                                  xtype: 'panel',
+                                                  hidden:true,
+                                                  width: 1
+                                              },
+                                           {
+                                               margin: '4 0 0 0',
+                                              id: 'htmlMyAccount_Dashboard_ProfileTitle_MerchantCheckin',                                              
+                                              hidden:true,   
+                                              //ori html: '<div onclick="FloatPanel_MyAccountMasterShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:3px 0px 0px 0px">Good Days!,</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:-25px 0px 0px 0px">Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+                                               html: '<div onclick="FloatPanel_MyAccountMasterShow()"   style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:0px 0px 0px 0px" >Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:-25px 0px 0px 0px">Welcome Back,Good After Noon!</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+                                               
+       
+                                           },
+                                           {
+                                            margin: '10 0 0 0',
+                                          id: 'htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin',  
+                                                width:'100%',                                             
+                                            html: '<div  style="width:100%;background-color: transparent;text-align:left;height:40px;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#FFFFFF;" >Hi,Tarmizi</div>'
+                                            
+    
+                                        },
+                                     
+       
+                                       ]
+                                   },
 
                                       {
                                           xtype: 'spacer',
@@ -752,8 +826,8 @@ style: "background-color: transparent;",
 
                                       {
                                    xtype: 'container',
-                                   id: 'containerMyAccount_Dashboard_MenuBottom_NotificationX',
-                                   name: 'namecontainerMyAccount_Dashboard_MenuBottom_Notification',
+                                   id: 'containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
+                                   name: 'namecontainerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
                                  
                                   //ori margin: '-10 0 0 0',
                                    margin: '0 0 0 0',
@@ -781,14 +855,14 @@ style: "background-color: transparent;",
                                          
                                         
                                         xtype: 'component',
-  id: 'btn_MyAccount_Dashboard_MenuBottom_NotificationX',
+  id: 'btn_MyAccount_Dashboard_MenuBottom_Notification_MerchantPerks',
   width: 20,
   height: 20,
   style: 'background:transparent; overflow:visible;',   // penting
   html:
     '<div class="ayohaNotifWrap">' +
       '<img src="resources/icons/presentboxwhite.png" class="ayohaNotifIcon" />' +
-      '<div class="ayohaNotifBadge" id="ayohaNotifBadgeUnread" style="display:block;">0</div>' +
+      '<div class="ayohaNotifBadge" id="ayohaNotifBadgeUnread_MerchantPerks" style="display:block;">0</div>' +
     '</div>'
                                         
                                         
@@ -1126,7 +1200,7 @@ xtype: 'container',
 items:[
  {
     width: '100%',
-    height:40,
+    height:50,
    // margin: '0 0 0 30',
     id: 'html_Dashboard_1stline_nonMember',
    html:
@@ -1134,7 +1208,7 @@ items:[
         + 'width:100%;'
       //  + 'min-height:260px;'
     //    + 'box-sizing:border-box;'
-       + 'padding:0px 0px 0px 40px;'
+       + 'padding:0px 0px 0px 30px;'
         + 'position:relative;'
         + 'overflow:hidden;'
       //  + 'background:linear-gradient(180deg,#5B1FA6 0%, #6A28B8 55%, #7A35C7 100%);'
@@ -1163,7 +1237,7 @@ items:[
                         + 'Unlock Premium Perks'
                     + '</div>' +
 
-                    '<div style="'
+                    '<div id="html_Dashboard_nonMember_merchantName" style="'
                         + 'font-family:Arial,sans-serif;'
                         + 'font-size:16px;'
                         + 'font-weight:400;'
@@ -1175,18 +1249,7 @@ items:[
                         + 'at Kopi Surat Cinta'
                     + '</div>' +
 
-                    // '<div style="'
-                    //     + 'font-family:Arial,sans-serif;'
-                    //     + 'font-size:12px;'
-                    //     + 'font-weight:400;'
-                    //     + 'line-height:25px;'
-                    //     + 'color:rgba(255,255,255,0.92);'
-                    //     + 'text-shadow:0 2px 8px rgba(0,0,0,0.22);'
-                    //     + 'margin:0;'
-                    // + '">'
-                    //     + 'Become a Platinum Member for<br>'
-                    //     + 'Special Rewards &amp; Exclusive Offers'
-                    // + '</div>' +
+                 
 
               
 
@@ -1202,6 +1265,67 @@ items:[
    },
  
    
+
+   {
+xtype: 'container',
+  width: '100%',
+  height:325,
+  style: 'background:transparent;',
+  layout: {
+
+    type: 'hbox',
+    pack: 'center',
+    align: 'center'
+},
+items:[
+  {
+xtype: 'container',
+  width: '45%',
+  height:325,
+  style: 'background:transparent;',
+  layout: {
+
+    type: 'vbox',
+    pack: 'start',
+    align: 'right'
+},
+items:[
+{
+xtype: 'component',
+margin:'0 0 0 0',
+html:
+    '<div style="margin-top:12px;max-width:180px;margin-left:15px">' +
+        '<div style="font-family:Arial,sans-serif;font-size:12px;line-height:20px;color:rgba(255,255,255,0.90);font-weight:400;margin-bottom:14px;">' +
+            'Exclusive perks for <br>members only.Get yours today.' +
+        '</div>' +       
+    '</div>',
+
+ //height:80,
+  },
+  {
+    xtype: 'component',
+    html:
+  '<div style="margin-top:4px;">' +
+    '<div class="ayohaPremiumBtn" onclick="Dashboard_UnlockNow()">' +
+      '<span>Unlock Now !</span>' +
+    '</div>' +
+  '</div>'
+  }
+]
+  },
+  
+  {
+    xtype: 'container',
+  width: '55%',
+  height:325,
+  style: 'background:transparent;',
+  layout: {
+
+    type: 'hbox',
+    pack: 'start',
+    align: 'center'
+},
+items:[
 {
   
   id: 'listDashboard_MembershipCard_CheckIn_NonMember_HeroSection',
@@ -1222,7 +1346,7 @@ height: 325,
   width: '93%',
 
 itemTpl: [
-    '<div class="checkIn_ayohaHubRow">',
+    '<div class="checkIn_ayohaHubRow" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
         '<div class="checkIn_ayohaMiniCard" style="background-image:url({MembershipCardBackgroundImg});">',
             
             '<div class="checkIn_ayohaMiniOverlay"></div>',
@@ -1257,88 +1381,7 @@ itemTpl: [
         '</div>',
     '</div>'
 ].join(''),
-// itemTpl: new Ext.XTemplate(
-// '<div class="ayohaCardItem">',
 
-// '<div class="ayohaCardWrap">',
-
-// // ===== CARD FACE =====
-// '<div id="membershipCard_{ID}" class="ayohaCardFace" style="background-image:url({MembershipCardBackgroundImg});background-size:100% 100%;background-position:center center;background-repeat:no-repeat;">',
-
-// '<div class="ayohaCardOverlay"></div>',
-// '<div class="ayohaCardInnerRim"></div>',
-
-// '<div class="ayohaCardContent">',
-
-// '<table class="ayohaCardTable" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
-//   '<tbody>',
-
-//     '<tr>',
-//       '<td class="ayohaCardTop" colspan="3">',
-//         '<div class="ayohaTopRow">',
-//           '<div class="ayohaTopLogo">{ModifiedEnterprisesLogo}</div>',
-//           '<div class="ayohaTopName">{ModifiedEnterprisesName}</div>',
-//         '</div>',
-//       '</td>',
-//     '</tr>',
-
-//     '<tr>',
-//       '<td class="ayohaCardMid" colspan="3"><br>',
-//         '<div class="ayohaCardType">{MembershipCardType}</div>',
-//         '<div class="ayohaCardNo">123 4567</div>',
-//         '<div class="ayohaCardName">YOUR NAME</div>',
-//       '</td>',
-//     '</tr>',
-
-//     '<tr>',
-//       '<td class="ayohaCardColL" colspan="2">',
-//         '<div class="k">Member Since</div>',
-//         '<div class="v">After Approved</div>',
-//       '</td>',
-//       '<td class="ayohaCardColR">',
-//         '<div class="k">Valid Until</div>',
-//         '<div class="v">{ModifiedStrExpiredDate}</div>',
-//       '</td>',
-//     '</tr>',
-
-//   '</tbody>',
-// '</table>',
-
-// '</div>', // end ayohaCardContent
-// '</div>',   // end card face
-
-
-
-// // ===== PRICE ROW (FLEX SIDE-BY-SIDE) =====
-
-
-
-
-
-// '</div>', // ✅ end ayohaCardWrap (tutup selepas priceRow)
-// '</div>',    // end ayohaCardItem
-
-// '<div class="ayohaCardPriceRow" style="width:100%;height:60px; display:flex; align-items:center;  box-sizing:border-box;">' ,
-
-// // Bahagian Kiri (Harga)
-// // Kita buang style pelik-pelik, biar simple
-// '<div class="priceLeft">' ,
-// '<div class="price">RM{MembershipCardFee}</div>' ,
-// '<div class="priceSub">Membership Fees</div>' ,
-// '</div>',
-
-// // Bahagian Kanan (Button)
-// // PENTING: "margin-left: auto" di sini akan memaksa kotak ini pergi sejauh mungkin ke kanan
-// '<div style="margin-left:auto;">' ,
-// '<button class="ayohaCtaGetItNow" ',
-// 'onclick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">' ,
-// '<span class="ayohaCtaText">Get It Now!</span>' ,
-// '<span class="ayohaCtaArrow">→</span>' ,
-// '</button>',
-// '</div>' ,
-
-// '</div>'
-// ),
 
 
 
@@ -1347,6 +1390,12 @@ itemTpl: [
   emptyText: '<div  style="background-color:transparent;width: 100%; height: 400px;margin:20px 0px 0px 0px;padding:5px 10px"><img src="resources/icons/NoMembershipEvent.jpg" style="width: 100%; height: 400px;"/></div>',
 
 },
+]
+  },
+
+]
+   },
+
 ]
 },
 
@@ -19064,6 +19113,7 @@ function Dashboard_LoadLastCheckIn(){
 
 Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(true);
 Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(false);
+Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(false);
 
 
     }
@@ -19075,12 +19125,13 @@ Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(false)
     
 Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(false);
 Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(true);
+Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(true);
     }
    
   
 
 
-
+document.getElementById('html_Dashboard_nonMember_merchantName').innerText ='at ' + record.get('EnterpriseName');
 
 
 
@@ -19404,4 +19455,14 @@ function Ayoha_ToggleFavoriteMerchant() {
       svg.style.fill = 'none';
       svg.style.stroke = '#d946ef';
   }
+}
+
+function Dashboard_UnlockNow(){
+  FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(AppState.MainDashboard.CheckIn_MembershipCardCode
+    ,AppState.MainDashboard.EnterpriseAccNo
+    ,AppState.MainDashboard.isMembershipCardSubscribed
+    ,AppState.MainDashboard.MembershipCardFeePaymentCycle
+    ,AppState.MainDashboard.CountStar
+    ,AppState.MainDashboard.CountReviewer
+  )
 }
