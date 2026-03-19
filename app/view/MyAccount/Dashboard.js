@@ -19114,6 +19114,11 @@ function Dashboard_LoadLastCheckIn(){
 Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(true);
 Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(false);
 Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(false);
+Ext.getCmp('containerMyAccount_DashboardHaiUser_MerchantCheckin').setHidden(true);
+Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(true);
+
+
+
 
 
     }
@@ -19126,6 +19131,9 @@ Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks')
 Ext.getCmp('containerCheckInRewardProgress_PromotingMembershipCard').setHidden(false);
 Ext.getCmp('containerCheckInRewardProgress_GreetingMembership').setHidden(true);
 Ext.getCmp('containerMyAccount_Dashboard_MenuBottom_Notification_MerchantPerks').setHidden(true);
+
+Ext.getCmp('containerMyAccount_DashboardHaiUser_MerchantCheckin').setHidden(false);
+Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(true);
     }
    
   
@@ -19361,7 +19369,8 @@ Ext.getCmp('containerMyAccount_DashboardHeader_MerchantCheckIn').setHidden(true)
 
 
 
-
+Ext.getCmp('containerMyAccount_DashboardHaiUser_MerchantCheckin').setHidden(true);
+Ext.getCmp('containerMyAccount_DashboardHaiUser').setHidden(false);
 
 
 
