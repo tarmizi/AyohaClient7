@@ -602,7 +602,7 @@ return _value;
     convert: function (value, record) {
 
         var str = (record.get('EnterprisesName') || '').trim();
-        var limit = 12;
+        var limit = 16;
         var shortName = '';
 
         if (!str) {

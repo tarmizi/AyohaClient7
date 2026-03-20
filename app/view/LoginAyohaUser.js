@@ -713,12 +713,12 @@ function loadAyohaUserProfileLoginBody() {
               '</div>'
             );
 
+document.getElementById("html_Dashboard_1stline_PromotingMembershipCard_UserName").innerText="Hi ," +AccountName;
 
 
-
-Ext.getCmp('htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin').setHtml(
-              '<div  style="width:100%;background-color: transparent;text-align:left;height:40px;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#FFFFFF;" >Hi,' + AccountName.toUpperCase() + '</div>'
-            );
+// Ext.getCmp('htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin').setHtml(
+//               '<div  style="width:100%;background-color: transparent;text-align:left;height:40px;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#FFFFFF;" >Hi,' + AccountName.toUpperCase() + '</div>'
+//             );
             
 
 
@@ -732,9 +732,9 @@ Ext.getCmp('htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin').setHtm
             
 
 
-  Ext.getCmp('btnMyAccount_DashboardPicProfileIcon_MerchantCheckin').setHtml(
-              '<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>'
-            );
+//   Ext.getCmp('btnMyAccount_DashboardPicProfileIcon_MerchantCheckin').setHtml(
+//               '<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>'
+//             );
 
 
 

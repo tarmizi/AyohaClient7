@@ -1116,20 +1116,20 @@ function FloatPanel_AyohaEnterpriseRewardItem_MembershipCardLoadByMembershipCard
 
         var objn = {
             "MembershipCardCode": MembershipCardCode,
+            "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
         };
         // console.log(objn);
-        var _value = Ext.Ajax.request({
+       Ext.Ajax.request({
 
-            type: "POST",
+          
 
-            url: GetAPIurl() + '/MembershipCard/MembershipCardLoadByMembershipCardCode',
 
-            dataType: "json",
-            data: JSON.stringify(objn),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-
+                      
+   url: GetAPIurl() + '/MembershipCard/MembershipCardLoadByMembershipCardCode',
+   method: 'POST',
+   jsonData: objn,
+   headers: { 'Content-Type': 'application/json; charset=utf-8' },
+ 
             success: function (result, request) {
 
                 //console.log(result.responseText);
@@ -1147,7 +1147,7 @@ function FloatPanel_AyohaEnterpriseRewardItem_MembershipCardLoadByMembershipCard
                       //  MembershipCardFeePaymentCycle= data.results[0].MembershipCardFeePaymentCycle;
 
                      FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(MembershipCardCode,EnterpriseAccNo
-                            ,`NO`,data.results[0].MembershipCardFeePaymentCycle,EnterpriseCountStar,TotalReviewer)
+                            ,data.results[0].isMember,data.results[0].MembershipCardFeePaymentCycle,EnterpriseCountStar,TotalReviewer)
                       
                       //  '<div OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)" style="min-width:88vw; max-width:88vw; margin-right:5vw; box-sizing:border-box; border-radius:15px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.3); display:inline-block;">',
 

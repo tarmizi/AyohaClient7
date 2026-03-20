@@ -226,10 +226,10 @@ function FloatPanel_MembershipCardList_NotYetSubscribedCreateIfNeeded() {
                                       },
 
                                        {
-                                            margin: '0 15 0 0',                                       
+                                                                             
                                            id: 'htmlFloatPanel_MembershipCardList_NotYetSubscribed_TitleHeaderTxt',
                                              html:ayohaTheme_HeaderText('Membership Card'),
-                                         
+                                             margin: '0 15 0 0',   
                                        },
 
                                             
@@ -3379,7 +3379,7 @@ if(CountStar=="NaN"){
     
     FloatPanel_MembershipCardList_NotYetSubscribed_RateAndReview(CountStar,CountReviewer);
     FloatPanel_MembershipCardList_NotYetSubscribed_initEventContainer();
-    FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard();
+    FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard(MembershipCardCode);
 }
 
 
@@ -5741,7 +5741,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_RateAndReview(RateReview
 
 
 
-function FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard() {
+function FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCardORI() {
 
 
  _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore.getProxy().setExtraParam('EnterpriseAccNo', globalFloatPanelMerchantDetailPage_EnterpriseAccNo);
@@ -5760,7 +5760,7 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard() {
  AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('MembershipCardCode');
  
 
-             Ext.getCmp('FloatPanel_MembershipCardList_NotYetSubscribed_Carousel').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
+         //    Ext.getCmp('FloatPanel_MembershipCardList_NotYetSubscribed_Carousel').setStore(_DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore);
             
            
              // setScreenWidthMembershipCardCheckIn(count,jenis)
@@ -5778,3 +5778,50 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard() {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+function FloatPanel_MembershipCardList_NotYetSubscribed_LoadMembershipCard(MembershipCardCode) {
+
+
+    _DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore.getProxy().setExtraParam('EnterpriseAccNo', globalFloatPanelMerchantDetailPage_EnterpriseAccNo);
+    _DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
+    _DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore.getProxy().setExtraParam('MembershipCardCode', MembershipCardCode);
+    _DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore.getProxy().setUrl(GetAPIurl() + '/MembershipCard/MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCode');
+   
+   
+   
+    _DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore.load({
+        callback: function (records, operation, success) {
+            // alert(records.length)
+            // alert(success)
+            if (success && records.length > 0) {
+           
+    var record = records[0]; // Access only the first record
+    AppState.MainDashboard.CheckIn_MembershipCardCode  = record.get('MembershipCardCode');
+    Ext.getCmp('FloatPanel_MembershipCardList_NotYetSubscribed_Carousel').setStore(_DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore);
+               
+              
+                // setScreenWidthMembershipCardCheckIn(count,jenis)
+               setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
+              
+               
+            } else {
+               
+              //  globalisSuccessCheckinController_Dashboard_LoadVoucherPerksOpen="N";
+              
+            }
+        }
+    });
+   
+   
+   
+   }
+   

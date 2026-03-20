@@ -465,7 +465,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
             AyohaBrowserBack.close('FloatPanel_CheckOut_ConfirmedCheckOut');
           }
     }
-
+    FloatPanel_AyohaStore_AyohaStoreLoadLikeStatusStore_Save();
 }
 
 

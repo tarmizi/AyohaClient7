@@ -3,41 +3,28 @@ Ext.define('BuskartApp.view.AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_Loyal
 
 });
 
-var _FloatPanel_AyohaMerchantInfo_LoyaltyProgram;
+var _FloatPanel_AyohaMerchantInfo_LoyaltyProgram=null;
 
 
 var isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'N';
 
 
 
-
-
-
-function FloatPanel_AyohaMerchantInfo_LoyaltyProgram() {
+function FloatPanel_AyohaMerchantInfo_LoyaltyProgramCreateIfNeeded() {
+    if (_FloatPanel_AyohaMerchantInfo_LoyaltyProgram && !_FloatPanel_AyohaMerchantInfo_LoyaltyProgram.destroyed) return;
 
     _FloatPanel_AyohaMerchantInfo_LoyaltyProgram =
     Ext.create('Ext.Container', {
-        zIndex: 50,
-        xtype: 'container',
-        //height: 465,
-        height: '100%',
-        width: '100%',
         id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgramID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
+        floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-          type: 'fit'
-        //   type: 'vbox',
-        //   pack: 'start',
-        //   align: 'center'
-        },
+        fullscreen: true,
+       // closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -57,39 +44,16 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgram() {
         //style: 'border-bottom:1px solid;background-color:#353839;',
         style: 'background-color:white;',
        // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-        listeners: {
-            initialize: function (c) {
-                this.element.on({
-                    swipe: function (e, node, options) {
-                        //if (e.direction == "up") {
-                        //    LoyaltyCardRedeemListHide();
-                        //}
-                        if (e.direction == "left") {
-                            _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'left',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
+       listeners: {
+ 
 
-                            }));
-                            RemovePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
-                            isLoyaltyCardRedeemListOpen = 'N';
-                        } if (e.direction == "right") {
-                            _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'right',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
-
-                            }));
-                            isLoyaltyCardRedeemListOpen = 'N';
-                            RemovePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
-                        }
-                      
-                    }
-                });
-            }
-        },
+        // ✅ kalau user tap mask, close macam standard
+        beforehide: function () {
+          // kalau hide dipanggil bukan dari function kita, block dulu
+          // (optional: boleh allow kalau kau nak)
+          return true;
+        }
+      },
 
         items: [
             {
@@ -97,20 +61,11 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgram() {
                 xtype: 'container',
                 width: '100%',
                 docked: 'top',
-                height: 40,
-                // width: 40,
-
-                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                //hidden: true,
+                height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
 
                 id: 'containerFloatPanel_AyohaMerchantInfo_LoyaltyProgramHeader',
-                style: {
-                    // background: '#D25959',
-                    background: 'transparent',
-                    // border: '2px'
-                },
-                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+              
                 layout: {
                     type: 'hbox',
                     pack: 'center',
@@ -124,24 +79,26 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgram() {
                                      {
                                          xtype: 'button',
                                          id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgramBack',
-                                         margin: '10 0 0 5',
+                                      
                                          height: 30,
-                                         width: 35,
-                                         // iconCls: 'list',
-                                         html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                         width: 65,
+                                         margin: '0 0 0 10',
+                                            // iconCls: 'list',
+                                            html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                          ui: 'plain',
                                          handler: function () {
-                                             // FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide();
-                                             // FloatPanel_AyohaMerchantInfo_LoyaltyProgram_AddCardHide();
-                                             isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'N';
-                                             _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(Ext.fx.Animation({
-                                                 type: 'slideOut',
-                                                 direction: 'left',
-                                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                                 duration: 250
+                                            FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide(false);
+                                            //  // FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide();
+                                            //  // FloatPanel_AyohaMerchantInfo_LoyaltyProgram_AddCardHide();
+                                            //  isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'N';
+                                            //  _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(Ext.fx.Animation({
+                                            //      type: 'slideOut',
+                                            //      direction: 'left',
+                                            //      easing: 'cubic-bezier(.7,0,.7,1)',
+                                            //      duration: 250
 
-                                             }));
-                                             RemovePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
+                                            //  }));
+                                            //  RemovePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
                                              //  FloatPanel_AyohaMerchantInfo_LoyaltyProgram_AddCardHide();
 
                                          }
@@ -152,31 +109,32 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgram() {
 
                                       },
                                       {
-                                        margin: '10 10 0 0',
+                                      
                                         id: 'htmlFloatPanel_AyohaMerchantInfo_LoyaltyProgram_TitleHeaderTxt',
-
-                                        html: '<div style="color:black;text-align: right;font-size:14px;width:100%;"><b>Membership Loyalty Stamp</b></div>'
+                                        html:ayohaTheme_HeaderText('Membership Loyalty Stamp'),
+                                        margin: '0 15 0 0',   
+                                       // html: '<div style="color:black;text-align: right;font-size:14px;width:100%;"><b>Membership Loyalty Stamp</b></div>'
                                     },
-                                      {
-                                        xtype: 'button',
-                                        margin: '10 0 0 -10',
-                                        id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgram_CardIcon',
-                                        height: 35,
-                                        width: 35,
-                                        //hidden:true,
-                                        // iconCls: 'list',
-                                        html: '<div ><img src="resources/icons/stampedFeature01.png" width="25" height="25" alt="Company Name"></div>',
-                                        ui: 'plain',
-                                        handler: function () {
+                                    //   {
+                                    //     xtype: 'button',
+                                    //     margin: '10 0 0 -10',
+                                    //     id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgram_CardIcon',
+                                    //     height: 35,
+                                    //     width: 35,
+                                    //     //hidden:true,
+                                    //     // iconCls: 'list',
+                                    //     html: '<div ><img src="resources/icons/stampedFeature01.png" width="25" height="25" alt="Company Name"></div>',
+                                    //     ui: 'plain',
+                                    //     handler: function () {
 
-                                        }
-                                    },
+                                    //     }
+                                    // },
                                       
 
-                                    {
-                                        xtype: 'spacer',
-                                        width: 10,
-                                    },
+                                    // {
+                                    //     xtype: 'spacer',
+                                    //     width: 10,
+                                    // },
                                           
 
 
@@ -448,7 +406,7 @@ itemTpl: new Ext.XTemplate([
 
 
     });
-    return _FloatPanel_AyohaMerchantInfo_LoyaltyProgram;
+
 
 
 
@@ -461,12 +419,36 @@ itemTpl: new Ext.XTemplate([
 
 
 
+
+
 function FloatPanel_AyohaMerchantInfo_LoyaltyProgramShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaMerchantInfo_LoyaltyProgram);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaMerchantInfo_LoyaltyProgram());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaMerchantInfo_LoyaltyProgram);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaMerchantInfo_LoyaltyProgram());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
+
+
+
+
+
+
+    FloatPanel_AyohaMerchantInfo_LoyaltyProgramCreateIfNeeded();
+
+
+    _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.show();
+   // ✅ push browser back (ikut style kau)
+   if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+     AyohaBrowserBack.push('FloatPanel_AyohaMerchantInfo_LoyaltyProgram', function () {
+    
+        FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide(true);
+     });
+   }
+
+
+
+
+
     isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'Y';
 
     
@@ -482,12 +464,35 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgramShow() {
 
 
 
-function FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide() {
+function FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide(fromBack,animCfg){
     // FloatPanel_AyohaMerchantInfo_LoyaltyProgram_AddCardHide();
-    if (isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen == "Y") {
-        _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(); isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'N';
-        RemovePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
+    // if (isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen == "Y") {
+    //     _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(); isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide()");
+    // }
+
+
+
+    
+    if (isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.hide();
+          }
+          isFloatPanel_AyohaMerchantInfo_LoyaltyProgramOpen = 'N';
+         
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaMerchantInfo_LoyaltyProgram');
+          }
+          _FloatPanel_AyohaMerchantInfo_LoyaltyProgram.destroy();
+          _FloatPanel_AyohaMerchantInfo_LoyaltyProgram = null;
     }
+ 
   
 }
 

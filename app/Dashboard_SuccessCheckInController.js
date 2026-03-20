@@ -2450,7 +2450,7 @@ Ext.getCmp('html_Dashboard_3rdline').setHtml('<div style="color:rgba(255,255,255
                 Ext.getCmp('containerDividerCheckInNonMember').setHidden(false);
              }
              // setScreenWidthMembershipCardCheckIn(count,jenis)
-            setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
+          setScreenWidthMembershipCardCheckIn(records.length,"membershipCard_");
             SuccessCheckinController_DashboardSuccessCheckIn_LoadVIEWMerchantDashboard_StoreActivity();
             
          } else {
@@ -2933,7 +2933,7 @@ function SuccessCheckinController_DasboardEnterprisesOnlineStoreLoadByEnterprise
  _DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore.load({
      callback: function (records, operation, success) {
          if (success && records.length > 0) {
-            // alert('Store loaded successfully, total records: ' + records.length);
+          //  alert('Store loaded successfully, total records: ' + records.length);
  
             Ext.getCmp('listDashboardeCommerce').setStore(_DataStore_EnterprisesOnlineStoreLoadByEnterpriseAccNoStore);   
             // BuskartApp.util.Loading.hide(true);;

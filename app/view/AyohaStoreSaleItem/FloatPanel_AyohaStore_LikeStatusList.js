@@ -536,18 +536,26 @@ function FloatPanel_AyohaStore_AyohaStoreLoadLikeStatusStore_Save() {
         "EnterpriseAccNo": FloatPanel_AyohaStore_getEnterpriseAccNo(),
         "isLike": likedStatus
     };
-    var _value = Ext.Ajax.request({
+    Ext.Ajax.request({
 
-        type: "POST",
+        // type: "POST",
 
-        url: GetAPIurl() + '/AyohaStore_LikeStatus/AyohaStoreLikeStatusInsertUpdate',
+        // url: GetAPIurl() + '/AyohaStore_LikeStatus/AyohaStoreLikeStatusInsertUpdate',
 
-        dataType: "json",
-        data: JSON.stringify(objn),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
+        // dataType: "json",
+        // data: JSON.stringify(objn),
+        // headers: {
+        //     "Content-Type": "application/json; charset=utf-8"
+        // },
 
+
+
+                  
+    url: GetAPIurl() + '/AyohaStore_LikeStatus/AyohaStoreLikeStatusInsertUpdate',
+   method: 'POST',
+   jsonData: objn,
+   headers: { 'Content-Type': 'application/json; charset=utf-8' },
+ 
         success: function (result, request) {
 
             //console.log(result.responseText);
@@ -597,21 +605,23 @@ function FloatPanel_AyohaStore_AyohaStoreLoadLikeStatusStore() {
 
     _DataStore_AyohaStoreLoadLikeStatusStore.getProxy().setExtraParam('EnterpriseAccNo', FloatPanel_AyohaStore_getEnterpriseAccNo());
     _DataStore_AyohaStoreLoadLikeStatusStore.getProxy().setUrl(GetAPIurl() + '/AyohaStore_LikeStatus/AyohaStoreLoadLikeStatus');
-    _DataStore_AyohaStoreLoadLikeStatusStore.load();
-
-
-
-    var task = Ext.create('Ext.util.DelayedTask', function () {
-
-        var count = _DataStore_AyohaStoreLoadLikeStatusStore.getCount();
-        Ext.getCmp('htmlFloatPanel_AyohaStore_LikeStatusList_CountLoveTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:black;margin:4px 0px 0px 0px">' + count + ' Loves</div>');
+   // _DataStore_AyohaStoreLoadLikeStatusStore.load();
+    _DataStore_AyohaStoreLoadLikeStatusStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+            if( isFloatPanel_AyohaStore_LikeStatusListOpen == 'Y'){
+                Ext.getCmp('htmlFloatPanel_AyohaStore_LikeStatusList_CountLoveTxt').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 12px;font-weight:bold;color:black;margin:4px 0px 0px 0px">' + records.length + ' Loves</div>');
+            }
+               
        
-
+                LoadingPanelHide(false);
+            } else {
+                console.error('Failed to load store data or no record found.');
+                LoadingPanelHide(false);
+            }
+        }
     });
-    task.delay(500);
 
-
-    Ext.Viewport.setMasked(false);
 }
 
 

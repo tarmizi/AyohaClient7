@@ -59,6 +59,28 @@ var _DataStore_MembershipCardLoadByEnterpriseAccNo_DashboardMainStore = Ext.crea
 
 
 
+
+var _DataStore_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeStore = Ext.create('Ext.data.Store', {
+
+    model: 'BuskartApp.model.MembershipCard.MembershipCardModel',
+    id: '_MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCodeID',
+    proxy: {
+        type: 'ajax',
+        url: GetAPIurl() + '/MembershipCard/MembershipCard_LoadByEnterpriseAccNo_SubscriberAccNo_MembershipCardCode',
+        actionMethods: {
+            read: 'POST'
+        },
+        reader: {
+            type: 'json',
+            rootProperty: 'results',
+            totalProperty: 'total',
+            successProperty: 'success',
+            messageProperty: 'message'
+        }
+    },
+});
+
+
 var _DataStore_MembershipCard_LoadforCheck_InStore = Ext.create('Ext.data.Store', {
 
     model: 'BuskartApp.model.MembershipCard.MembershipCardModel',

@@ -2765,8 +2765,7 @@ console.log(GetCurrAyohaUserAccountNo())
                     globalFloatPanelMerchantDetailPage_MembershipCard_tinggi = Store.get('CountMembershipCard') * 300;
             
                   
-                  
-            
+               
                     if (Store.get('isLikeStatus') == "Y") {
                         Ext.getCmp('htmlFloatPanel_MerchantDetailPage_EnterpriseLoveUsIcon').setHtml('<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();" ><img src="resources/icons/likeOn.png" width="100%" height="26" alt="Company Name"></div>');
                        
@@ -3691,16 +3690,29 @@ function OnClickhtmlFloatPanel_MerchantDetailPage_MembershipCard_Txt() {
 function FloatPanel_MerchantDetailPage_LikeDislikeStore() {
    countLikeDislikeTap++;
    
-    var likedislike = Ext.getCmp('htmlFloatPanel_MerchantDetailPage_EnterpriseLoveUsIcon').getHtml();
+    var likedislike = Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseLoveUsIcon').getHtml();
  
 
    if (likedislike == '<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();"><img src="resources/icons/unlovepurple.png" width="100%" height="26" alt="Company Name"></div>') {
         countlikes = globalFloatPanel_AyohaStore_CountLike + 1;     
-        Ext.getCmp('htmlFloatPanel_MerchantDetailPage_EnterpriseLoveUsDetails').setHtml('<div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px;padding:0px 6px;">' + countlikes + '</div><br><div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-27px 0px 0px 0px;padding:0px 6px;">Love Us</div>');      
-        Ext.getCmp('htmlFloatPanel_MerchantDetailPage_EnterpriseLoveUsIcon').setHtml('<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();" ><img src="resources/icons/likeOn.png" width="100%" height="26" alt="Company Name"></div>');
+        Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseLoveUsDetails').setHtml('<div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px;padding:0px 6px;">' + countlikes + '</div><br><div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-27px 0px 0px 0px;padding:0px 6px;">Love Us</div>');      
+        Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseLoveUsIcon').setHtml('<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();" ><img src="resources/icons/likeOn.png" width="100%" height="26" alt="Company Name"></div>');
         likedStatus = "Y";
 
         globalFloatPanel_AyohaStore_CountLike = countlikes;
+
+        var img1 = document.getElementById('Dashboard_Favorite_UnFavorite_CheckInRewardProgress');
+        if (img1) {
+            img1.src = 'resources/icons/likeOn.png';
+        }
+
+        var img2 = document.getElementById('Dashboard_Favorite_UnFavorite_CheckInRewardProgressMaxReached');
+        if (img2) {
+            img2.src = 'resources/icons/likeOn.png';
+        }
+
+
+       // Ayoha_ToggleFavoriteMerchant();
         return;
 
    } if (likedislike == '<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();" ><img src="resources/icons/likeOn.png" width="100%" height="26" alt="Company Name"></div>') {
@@ -3708,10 +3720,22 @@ function FloatPanel_MerchantDetailPage_LikeDislikeStore() {
         //Ext.getCmp('htmlFloatPanel_AyohaStore_LikeCount').setHtml('<div style="color:black;text-align: center;font-size:10px;width:100%;font-weight:bold;margin:0px 0px 0px 0px;"><b>' + countlikes + '</b></div>');
         //Ext.getCmp('htmlFloatPanel_AyohaStore_LikeIcon').setHtml('<div ><img src="resources/icons/unlovepurple.png" width="22" height="22" alt="Company Name"></div>');
 
-        Ext.getCmp('htmlFloatPanel_MerchantDetailPage_EnterpriseLoveUsDetails').setHtml('<div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px;padding:0px 6px;">' + countlikes + '</div><br><div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-27px 0px 0px 0px;padding:0px 6px;">Love Us</div>');
-        Ext.getCmp('htmlFloatPanel_MerchantDetailPage_EnterpriseLoveUsIcon').setHtml('<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();"><img src="resources/icons/unlovepurple.png" width="100%" height="26" alt="Company Name"></div>');
+        Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseLoveUsDetails').setHtml('<div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 14px;font-weight:bold;color:black;margin:0px 0px 0px 0px;padding:0px 6px;">' + countlikes + '</div><br><div onclick="FloatPanel_AyohaStore_LikeStatusListShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-size: 10px;font-weight:normal;color:black;margin:-27px 0px 0px 0px;padding:0px 6px;">Love Us</div>');
+        Ext.getCmp('htmlDashboard_MerchantDetailPage_EnterpriseLoveUsIcon').setHtml('<div onclick="FloatPanel_MerchantDetailPage_LikeDislikeStore();"><img src="resources/icons/unlovepurple.png" width="100%" height="26" alt="Company Name"></div>');
 
         likedStatus = "N";
+        //Ayoha_ToggleFavoriteMerchant();
+
+        var img3 = document.getElementById('Dashboard_Favorite_UnFavorite_CheckInRewardProgress');
+        if (img3) {
+            img3.src = 'resources/icons/unlovepurple.png';
+        }
+
+        var img4 = document.getElementById('Dashboard_Favorite_UnFavorite_CheckInRewardProgressMaxReached');
+        if (img4) {
+            img4.src = 'resources/icons/unlovepurple.png';
+        }
+
 
         globalFloatPanel_AyohaStore_CountLike = countlikes;
 
