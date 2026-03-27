@@ -279,18 +279,31 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.StampCardModel', {
                         var _value4;
                         var _value5;
                         var _value6;
+                        var _value;7
                         var _value;                    
                         var ImagePath = record.get('StampContent');  
                         if(ImagePath) {
+if(ImagePath.includes("background-image")) {
+
+    _value= ImagePath.replace("height:100%", "height:200px");
+       return _value;
+}
+else
+{
+
                             _value1= ImagePath.replace("width:70px", "width:100%");
-                            // _value2=_value1.replace("height:70px", "height:250px");
                              _value2=_value1.replace("height:70px", "height:100%;object-fit:cover;");
                              _value3 = _value2.replace("font-size: 35px;", "font-size: 60px;");
                              _value4 = _value3.replace("margin:7px 0px 0px 0px", "margin:70px 0px 0px 0px")
-                             _value5 = _value4.replace("margin:-90px 0px 0px 0px", "margin:-150px 0px 0px 0px")
+                             _value5 = _value4.replace("margin:-90px 0px 0px 0px", "margin:0px 0px 0px 0px")
                              _value6 = _value5.replace('size="3"', 'size="6"')
-                             _value = _value6.replace("border-radius: 50px", "border-radius: 0px")
+                             _value7 = _value6.replace("border-radius: 50px", "border-radius: 0px")
+                             _value = _value7.replace("border-bottom:2px solid #ECF0F1", "border-bottom:16px solid #85929E")
+                         //   console.log('ModifiedStampContent:'+ _value+"<br>"); // Debugging log
                              return _value;
+}
+
+
                         }   else{
                             _value=""; 
                         }                 

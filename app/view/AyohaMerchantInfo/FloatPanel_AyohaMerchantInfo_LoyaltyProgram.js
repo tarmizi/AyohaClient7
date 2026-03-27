@@ -784,7 +784,7 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgramList_AyohaUserStampCard_Merc
     _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.load({
         callback: function (records, operation, success) {
             if (success && records.length > 0) {
-                console.log('Store loaded successfully, total records: ' + records.length);
+              //  alert('Store loaded successfully, total records: ' + records.length);
     
                // var record = records[0]; // Access only the first record
               //  var planCode = record.get('PaymentPlanCode');

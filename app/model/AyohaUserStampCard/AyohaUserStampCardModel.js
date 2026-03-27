@@ -64,7 +64,7 @@
                                  _value = StampContent;
                              }
                             
-                             
+                          //   console.log('ModifiedStampContent:' + _value); // Debugging log
 
                              return _value
                          }
