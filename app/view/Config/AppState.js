@@ -159,7 +159,24 @@ AyohaPoint:null,
 
     AyohaMerchantReview_AddEdit:{
 RateStarGiven:0,
-    }
+    },
+
+
+
+
+    
+    MainDashboard_HomePage:{
+        EnterpriseName: null,
+        EnterpriseLogo: null,
+       EnterpriseAccNo: null,
+       EnterpriseTagLine: null,
+       EnterpriseAddress: null,
+       MembershipCardCode:null,
+       CountStar:null,
+       CountReviewer:null,
+       MembershipCardFeePaymentCycle:null,
+    },
+
 
    
 };

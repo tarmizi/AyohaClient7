@@ -8,7 +8,20 @@ var CoreVariable_CheckOutBoxDesign="background-color: white;border-top:1px none 
 function FloatPanel_AyohaStore_getEnterpriseAccNo() {
    
        var EntAccNo=AppState.MainDashboard.EnterpriseAccNo;
-       return EntAccNo;
+      
+if(EntAccNo){ return EntAccNo;}else{
+    return AppState.MainDashboard_HomePage.EnterpriseAccNo;
+}
+
+
+return;
+
+
+
+
+
+
+
        if (globalFloatPanel_AyohaStore_ModuleTagging == "HotSeatAdvertisement") {
            EntAccNo = globalFloatPanel_PreviewAdvertisement_EnterpriseAccNo;
        }
@@ -77,7 +90,29 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
    
    //alert(globalFloatPanel_AyohaStore_ModuleTagging)
        var EntLogo=AppState.MainDashboard.CheckIn_EnterpriseLogo;
-        return EntLogo;
+
+       
+       if(EntLogo){
+               
+    return EntLogo;
+    } else
+        {
+            return AppState.MainDashboard_HomePage.EnterpriseLogo;
+        }       
+
+
+return;
+
+
+
+
+
+
+
+
+
+
+
        if (globalFloatPanel_AyohaStore_ModuleTagging == "HotSeatAdvertisement") {
            EntLogo = globalFloatPanel_PreviewAdvertisement_EnterpriseLogoPath;
        }
@@ -152,10 +187,16 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
       
    
        var EntName=AppState.MainDashboard.CheckIn_EnterpriseName;
-       return EntName;
+       if(EntName)
+       {
+ return EntName;
+       }else{
+return AppState.MainDashboard_HomePage.EnterpriseName;
+       }
+      
 
 
-
+return;
 
 
 
@@ -234,7 +275,12 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
       
    
        var EntNameFullAddress=AppState.MainDashboard.CheckIn_EnterpriseFullAddress;
-       return EntNameFullAddress;
+       if(EntNameFullAddress){
+        return EntNameFullAddress;
+       }else{
+return AppState.MainDashboard_HomePage_EnterpriseAddress;
+       }
+     
 
 
 
@@ -301,6 +347,25 @@ function FloatPanel_AyohaStore_getEnterpriseAccNo() {
       
    }
 
+
+
+
+function FloatPanel_AyohaStore_getMembershipCardcode() {
+   
+       var MembershipCardcode=AppState.MainDashboard_HomePage_MembershipCardCode;
+      
+if(MembershipCardcode){ return MembershipCardcode;}else{
+    return AppState.MainDashboard.CheckIn_MembershipCardCode;
+}
+
+
+
+
+
+
+
+
+   }
 
 
    function FloatPanel_AyohaStore_getFBLink() {

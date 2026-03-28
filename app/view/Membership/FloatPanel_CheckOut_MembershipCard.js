@@ -2507,16 +2507,24 @@ function FloatPanel_CheckOut_MembershipCard_MembershipsInsertPayFOC() {
     }else{
         globalFloatPanel_MembershipCardList_NotYetSubscribed_price="00.00"
     }
+
+
+
+    if(AppState.MainDashboard.CheckIn_MembershipCardCode){
+
+    }else{
+
+    }
     var objn = {
-        "CampaignEnterpriseAccNo":AppState.MainDashboard.EnterpriseAccNo,
+        "CampaignEnterpriseAccNo":FloatPanel_AyohaStore_getEnterpriseAccNo(),
         "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
         //"MembershipByMethod": "AyohaStoreRequest",
         "MembershipByMethod": 'FromMainPage_HScroller',        
         "ReferalSubscriberAccNo": "NA",
-        "MembershipCardCode": AppState.MainDashboard.CheckIn_MembershipCardCode,
+        "MembershipCardCode": FloatPanel_AyohaStore_getMembershipCardcode(),
         "CreatedBy":GetCurrAyohaUserAccountNo(),
-        "SubscriptionCode": GetCurrAyohaUserAccountNo()+'-'+AppState.MainDashboard.EnterpriseAccNo+'-'+AppState.MainDashboard.CheckIn_MembershipCardCode,
-        "SubscribedPackage":AppState.MainDashboard.MembershipCardFeePaymentCycle,
+        "SubscriptionCode": GetCurrAyohaUserAccountNo()+'-'+FloatPanel_AyohaStore_getEnterpriseAccNo()+'-'+FloatPanel_AyohaStore_getMembershipCardcode(),
+        "SubscribedPackage":global_FloatPanel_MembershipCardList_NotYetSubscribed_CardPaymentPlan,
         "PackagePrice":globalFloatPanel_MembershipCardList_NotYetSubscribed_price,
     };
     console.log(objn);

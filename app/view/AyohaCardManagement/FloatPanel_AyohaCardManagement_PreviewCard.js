@@ -23,7 +23,7 @@ function FloatPanel_AyohaCardManagement_PreviewCardCreateIfNeeded() {
         draggable: false,
         modal: false,
      id: 'FloatPanel_AyohaCardManagement_PreviewCardID',
-        zIndex: 200,
+       // zIndex: 200,
         styleHtmlContent: true,
         layout: 'fit',
 
@@ -5826,6 +5826,16 @@ function FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampedCam
     globalStampCampaignEnterpriseLogo = EnterpriseLogo;
     globalStampCampaignEnterpriseName = EnterpriseName;
     globalStampCampaignEnterpriseAccNo = EnterpriseAccNo;
+
+
+
+AppState.MainDashboard_HomePage.EnterpriseAccNo = EnterpriseAccNo;
+AppState.MainDashboard_HomePage.EnterpriseName = EnterpriseName;
+AppState.MainDashboard_HomePage.EnterpriseLogo = EnterpriseLogo;
+
+
+
+
 
     Load_FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserStampCardLoadByStampCampaignCodeEnterpriseAccNoShowHideSubscriberAccNoStore(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow, EnterpriseLogo, isRequiredStartEndDate, isCampaignExpired, CampaignDayLeft);
   

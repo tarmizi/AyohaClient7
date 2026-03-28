@@ -977,6 +977,7 @@ function FloatPanel_MembershipCardList_MyMembershipCardAdjustHeight() {
 var globalFloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCard_EnterpriseTagLine;
 function FloatPanel_MembershipCardList_MyMembershipCardOpenMembershiCardDetail(EnterpriseHQAccountNo, EnterpriseAccountNo, MembershipCardCode,EnterpriseTagLine, ID) {
   
+                                       
 ///comment 29/9/2024
     // _isFloatPanel_Membership_MembershipCardSaleDetail_loadFirstTime='N';
     // FloatPanel_Membership_MembershipCardSaleDetailShow(EnterpriseAccountNo,MembershipCardCode);

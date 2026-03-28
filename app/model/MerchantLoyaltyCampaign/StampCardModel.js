@@ -254,7 +254,7 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.StampCardModel', {
                   'CountStampCardRowShow',
                   'CountStampCardRowYES',
                   'CountStampYES',
-                  'EnterprisesLogo',
+                  'EnterpriseLogo',
                   'EnterpriseTagLine',
                   'isRequiredStartEndDate',
                   'isCampaignExpired',
@@ -285,7 +285,7 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.StampCardModel', {
                         if(ImagePath) {
 if(ImagePath.includes("background-image")) {
 
-    _value= ImagePath.replace("height:100%", "height:200px");
+    _value= ImagePath.replace("width:70px;height:70px", "width:100%;height:200px;background-size: cover;background-position: center;border-radius: 0px");
        return _value;
 }
 else

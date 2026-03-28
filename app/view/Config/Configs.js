@@ -841,7 +841,7 @@ FloatPanel_MembershipSuccessModalShow({
     logoUrl: 'resources/icons/Logo/AyohaLogofullOrange.png',
     brandTitle: 'AYOHA REWARD',
     brandTagline: 'We Double Your Reward',
-    title:  AppState.MainDashboard.CheckIn_EnterpriseName ,
+    title:  FloatPanel_AyohaStore_getEnterpriseName() ,
     subtitle: 'Your membership is now active',
     badgeText: 'Membership Activated',
     message: 'You’re officially in. Enjoy a more rewarding experience with exclusive member benefits.',
@@ -2530,7 +2530,39 @@ return;
 function is_prompt_setMessage_NotYetMembershipMessage(){
     var value;
 if(MembershipTag == 'NO'){
-    setMessage_NotYetMembershipMessage();
+    //setMessage_NotYetMembershipMessage();
+
+
+FloatPanel_NonMembershipWithJoinShow({
+    logoUrl: 'resources/icons/Logo/AyohaLogofullOrange.png',
+    brandTitle: 'AYOHA REWARD',
+    brandTagline: 'We Double Your Reward',
+    title:  AppState.MainDashboard.CheckIn_EnterpriseName ,
+    subtitle: 'Your membership is now active',
+    badgeText: 'Membership Activated',
+    message: 'You’re officially in. Enjoy a more rewarding experience with exclusive member benefits.',
+    buttonText: 'View My Benefits',
+    onConfirmFn: function () {
+      
+       // Dashboard_LoadLastCheckIn();
+        // FloatPanel_MembershipSuccessModalHide(false) ;
+
+
+
+
+
+            
+    },
+    onCancelFn: function () {
+        // optional
+       // Dashboard_LoadLastCheckIn();
+       // FloatPanel_MembershipSuccessModalHide(false) ;
+    }
+});
+
+
+
+
     value=true;
 }
 if(MembershipTag == 'YES'){

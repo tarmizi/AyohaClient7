@@ -107,8 +107,9 @@ function FloatPanel_MembershipSuccessModalCreateIfNeeded() {
                                 '<div class="ayohaMembershipSuccessSpark spark1">✦</div>' +
                                 '<div class="ayohaMembershipSuccessSpark spark2">✦</div>' +
                                // '<div class="ayohaMembershipSuccessGift">🎁</div>' +
-                                '<div class="ayohaMembershipSuccessGift"><img src="'+AppState.MainDashboard.CheckIn_EnterpriseLogo+'" style="width:90px;height:90px;border-radius:50%;margin:8px 0px 0px 0px;" alt="Company Name"/></div>' +
-                            '</div>'
+                                '<div class="ayohaMembershipSuccessGift"><img src="'+FloatPanel_AyohaStore_getEnterpriseLogo()+'" style="width:90px;height:90px;border-radius:50%;margin:8px 0px 0px 0px;" alt="Company Name"/></div>' +
+                            
+                                '</div>'
                     },
 
                     {
@@ -275,10 +276,10 @@ function FloatPanel_MembershipSuccessModalShow(cfg) {
 
     cfg = cfg || {};
 
-    _FloatPanel_MembershipSuccessModal._data.logoUrl       = cfg.logoUrl || '';
-    _FloatPanel_MembershipSuccessModal._data.brandTitle    = cfg.brandTitle || 'AYOHA REWARD';
+    _FloatPanel_MembershipSuccessModal._data.logoUrl       = FloatPanel_AyohaStore_getEnterpriseLogo();
+    _FloatPanel_MembershipSuccessModal._data.brandTitle    = FloatPanel_AyohaStore_getEnterpriseName();
     _FloatPanel_MembershipSuccessModal._data.brandTagline  = cfg.brandTagline || 'We Double Your Reward';
-    _FloatPanel_MembershipSuccessModal._data.title         = cfg.title || 'Welcome to CheGu Restaurant';
+    _FloatPanel_MembershipSuccessModal._data.title         = 'Welcome to ' + FloatPanel_AyohaStore_getEnterpriseName();
     _FloatPanel_MembershipSuccessModal._data.subtitle      = cfg.subtitle || 'Your membership is now active';
     _FloatPanel_MembershipSuccessModal._data.badgeText     = cfg.badgeText || 'Membership Activated';
     _FloatPanel_MembershipSuccessModal._data.message       = cfg.message || 'A world of rewards, perks, and exclusive privileges is now yours to enjoy.';
@@ -295,9 +296,9 @@ function FloatPanel_MembershipSuccessModalShow(cfg) {
         _FloatPanel_MembershipSuccessModal.down('#cmpMembershipSuccessBrandTitle').setHtml(_FloatPanel_MembershipSuccessModal._data.brandTitle);
         _FloatPanel_MembershipSuccessModal.down('#cmpMembershipSuccessBrandTagline').setHtml(_FloatPanel_MembershipSuccessModal._data.brandTagline);
 
-        if (_FloatPanel_MembershipSuccessModal._data.logoUrl) {
+        if (FloatPanel_AyohaStore_getEnterpriseLogo()) {
             _FloatPanel_MembershipSuccessModal.down('#cmpMembershipSuccessLogo').setHtml(
-                '<img src="' + _FloatPanel_MembershipSuccessModal._data.logoUrl + '" />'
+                '<img src="' + FloatPanel_AyohaStore_getEnterpriseLogo() + '" />'
             );
         } else {
             _FloatPanel_MembershipSuccessModal.down('#cmpMembershipSuccessLogo').setHtml('');
@@ -350,8 +351,8 @@ function FloatPanel_MembershipSuccessModalHide(fromBack, animCfg) {
             AyohaBrowserBack.close('FloatPanel_MembershipSuccessModal');
         }
     }
- //   _FloatPanel_MembershipSuccessModal.destroy();
-  //  _FloatPanel_MembershipSuccessModal = null;
+   _FloatPanel_MembershipSuccessModal.destroy();
+   _FloatPanel_MembershipSuccessModal = null;
    
 }
 

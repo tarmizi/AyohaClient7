@@ -3886,7 +3886,16 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
                    var AyohaUserPhoto = modelRecorded.get('AyohaUserPhoto');
                    var MembershipCardCode = modelRecorded.get('MembershipCardCode');
                    var ModifiedUntilDate = modelRecorded.get('ModifiedUntilDate');
-       
+                     var EnterpriseAddress = modelRecorded.get('EnterpriseAddress');
+ var EnterpriseLogoPath = modelRecorded.get('EnterpriseLogoPath');
+ var EnterpriseName = modelRecorded.get('EnterpriseName');
+
+
+AppState.MainDashboard_HomePage_EnterpriseAddress= EnterpriseAddress;
+AppState.MainDashboard_HomePage_EnterpriseLogo= EnterpriseLogoPath;
+AppState.MainDashboard_HomePage_EnterpriseName= EnterpriseName;
+AppState.MainDashboard_HomePage_EnterpriseAccNo= _FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo;
+AppState.MainDashboard_HomePage_MembershipCardCode= MembershipCardCode;
        
                    MembershipCardName = modelRecorded.get('MembershipCardName');
                    MembershipCardFee= modelRecorded.get('MembershipCardFee');
@@ -3942,9 +3951,8 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
        
                global_FloatPanel_MembershipCardList_NotYetSubscribed_CardName=MembershipCardName;
        global_FloatPanel_MembershipCardList_NotYetSubscribed_CardLevel=MembershipCardType;
-       global_FloatPanel_MembershipCardList_NotYetSubscribed_CardPaymentPlan=MembershipCardFee;
-       global_FloatPanel_MembershipCardList_NotYetSubscribed_CardPrice=MembershipCardFeePaymentCycle;
-       
+       global_FloatPanel_MembershipCardList_NotYetSubscribed_CardPaymentPlan=MembershipCardFeePaymentCycle;
+       global_FloatPanel_MembershipCardList_NotYetSubscribed_CardPrice=MembershipCardFee;
        
        
        

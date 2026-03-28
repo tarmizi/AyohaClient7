@@ -1936,3 +1936,425 @@
     background:transparent !important;
     box-sizing:border-box !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   AYOHA LOYALTY LIST - FINAL
+   logo + enterprise name in group header
+   ========================================================= */
+
+.ayohaLoyaltyListFull,
+.ayohaLoyaltyListFull .x-body-el,
+.ayohaLoyaltyListFull .x-scroll-container,
+.ayohaLoyaltyListFull .x-scroller,
+.ayohaLoyaltyListFull .x-dataview-container {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* group wrapper */
+.ayohaLoyaltyListFull .x-listitemgroup {
+    background: #ffffff !important;
+    margin: 0 0 14px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* slim premium header */
+.ayohaLoyaltyListFull .x-itemheader {
+    width: calc(100% + 28px) !important;
+    margin: 0 -14px 12px -14px !important;
+    min-height: 52px !important;
+    background: linear-gradient(180deg, #f6f1ff 0%, #ece3ff 100%) !important;
+    border: none !important;
+    border-left: 5px solid #6d28d9 !important;
+    border-top: 1px solid #e3d5ff !important;
+    border-bottom: 1px solid #e3d5ff !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+}
+
+/* header text/body */
+.ayohaLoyaltyListFull .x-itemheader-body-el {
+    flex: 1 1 auto !important;
+    min-height: 52px !important;
+    padding: 10px 14px !important;
+    background: transparent !important;
+    color: #1f2937 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 18px !important;
+    letter-spacing: 0.1px !important;
+}
+
+/* logo + name row */
+.ayohaGroupHeaderRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.ayohaGroupHeaderLogoWrap {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.70);
+    border: 1px solid rgba(109, 40, 217, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ayohaGroupHeaderLogo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
+}
+
+.ayohaGroupHeaderName {
+    flex: 1;
+    min-width: 0;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* arrow area */
+.ayohaLoyaltyListFull .x-itemheader-tool-dock,
+.ayohaLoyaltyListFull .x-tool-dock.x-itemheader-tool-dock {
+    width: 40px !important;
+    min-width: 40px !important;
+    padding-right: 38px !important;
+    background: rgba(109, 40, 217, 0.08) !important;
+    border-left: 1px solid rgba(109, 40, 217, 0.10) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+}
+
+.ayohaLoyaltyListFull .x-tool.x-tool-itemheader,
+.ayohaLoyaltyListFull .x-tool-itemheader {
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #6d28d9 !important;
+}
+
+.ayohaLoyaltyListFull .x-tool.x-tool-itemheader *,
+.ayohaLoyaltyListFull .x-tool-itemheader * {
+    color: #6d28d9 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+/* group body */
+.ayohaLoyaltyListFull .x-listitemgroup-body,
+.ayohaLoyaltyListFull .x-listitemgroup-items {
+    background: #ffffff !important;
+    padding: 0 14px 6px 14px !important;
+    margin: 0 !important;
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+/* list item full width */
+.ayohaLoyaltyListFull .x-dataview-item,
+.ayohaLoyaltyListFull .x-listitem,
+.ayohaLoyaltyListFull .x-listitem-inner,
+.ayohaLoyaltyListFull .x-innerhtml,
+.ayohaLoyaltyListFull .ayohaLoyaltyListItem {
+    width: 100% !important;
+    max-width: none !important;
+    background: transparent !important;
+    margin: 0 0 14px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+.ayohaLoyaltyListFull .x-dataview-item:last-child,
+.ayohaLoyaltyListFull .x-listitem:last-child,
+.ayohaLoyaltyListFull .x-listitem-inner:last-child,
+.ayohaLoyaltyListFull .ayohaLoyaltyListItem:last-child {
+    margin-bottom: 0 !important;
+}
+
+.ayohaLoyaltyListFull .x-listitem:before,
+.ayohaLoyaltyListFull .x-listitem:after,
+.ayohaLoyaltyListFull .x-dataview-item:before,
+.ayohaLoyaltyListFull .x-dataview-item:after {
+    display: none !important;
+    content: none !important;
+}
+
+/* card */
+.ayohaLoyaltyListFull .ayohaLoyaltyCard {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 12px 30px rgba(24,39,75,.14), 0 3px 10px rgba(24,39,75,.10) !important;
+}
+
+.ayohaLoyaltyListFull .ayohaLoyaltyCard img {
+    display: block !important;
+    max-width: 100% !important;
+}
+
+/* content */
+.ayohaLoyaltyContent {
+    padding: 18px !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+}
+
+.ayohaLoyaltyStoreRow {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 14px !important;
+    border-bottom: 1px solid #ececf1 !important;
+    box-sizing: border-box !important;
+}
+
+.ayohaLoyaltyLogoWrap {
+    min-width: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 10px !important;
+    border: 1px solid #eeeeee !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #fafafa !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+}
+
+.ayohaLoyaltyLogo {
+    width: 28px !important;
+    height: 28px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.ayohaLoyaltyStoreInfo {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.ayohaLoyaltyStoreName {
+    margin: 0 !important;
+    color: #2b2b2b !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 20px !important;
+}
+
+.ayohaLoyaltyStoreTagline {
+    margin: 4px 0 0 0 !important;
+    color: #7a7a7a !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+}
+
+.ayohaLoyaltyRating {
+    text-align: right !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+.ayohaLoyaltyRatingTop {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 4px !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+
+.ayohaLoyaltyRatingValue {
+    color: #333333 !important;
+    font-weight: 700 !important;
+}
+
+.ayohaLoyaltyRatingStar {
+    color: #f1c40f !important;
+    font-weight: 700 !important;
+}
+
+.ayohaLoyaltyReview {
+    margin-top: 3px !important;
+    color: #9a9a9a !important;
+    font-size: 11px !important;
+    line-height: 14px !important;
+}
+
+.ayohaLoyaltyTitle {
+    margin: 0 0 8px 0 !important;
+    color: #2c3e50 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 26px !important;
+}
+
+.ayohaLoyaltyEndDate {
+    margin: 0 0 16px 0 !important;
+    color: #95a5a6 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+}
+
+.ayohaLoyaltyTags {
+    display: flex !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ayohaLoyaltyTag {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: #edf1f2 !important;
+    color: #7f8c8d !important;
+    padding: 8px 14px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+
+
+
+
+
+.ayohaGroupHeaderRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.ayohaGroupHeaderLogoWrap {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.70);
+    border: 1px solid rgba(109, 40, 217, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ayohaGroupHeaderLogo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
+}
+
+.ayohaGroupHeaderNameWrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.ayohaGroupHeaderName {
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ayohaGroupHeaderCountBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px 5px 5px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #7c3aed 0%, #5b21b6 100%);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(91, 33, 182, 0.18);
+    flex-shrink: 0;
+}
