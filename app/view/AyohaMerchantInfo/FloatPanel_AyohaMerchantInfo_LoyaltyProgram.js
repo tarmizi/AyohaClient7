@@ -580,6 +580,7 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgram_OpenMerchantLoyaltyProgram(
     var StampContentFinal = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.findRecord('ID', val, 0, false, false, true);
     var CountStampYES = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.findRecord('ID', val, 0, false, false, true);
     var EnterprisesLogo = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.findRecord('ID', val, 0, false, false, true);
+  var TodayCheckInCount = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.findRecord('ID', val, 0, false, false, true);
 
 
 var MembershipCardCode = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.findRecord('ID', val, 0, false, false, true);
@@ -614,7 +615,7 @@ AppState.MainDashboard_HomePage.MembershipCardFeePaymentCycle = MembershipCardFe
     var StampContentFinals = StampContents.replace("height:70px", "height:80px");
     var CountStampYESs = CountStampYES.get('CountStampYES');
     var EnterprisesLogos = EnterprisesLogo.get('EnterpriseLogo');
-
+var TodayCheckInCounts = TodayCheckInCount.get('TodayCheckInCount');
 
 
     //var StampCampaignCode = ArrStampCampaignCode[0];
@@ -647,11 +648,14 @@ AppState.MainDashboard_HomePage.MembershipCardFeePaymentCycle = MembershipCardFe
         var StampedYES = strStampedYES.split("/");
         var YESStamped = StampedYES[0];
         var TotalRows = StampedYES[1];
-        localStorage.setItem('StampCampaignCode', StampCampaignCodes);
+        // localStorage.setItem('StampCampaignCode', StampCampaignCodes);
 
-        localStorage.setItem('CountLoyaltyStamped', YESStamped);
-        localStorage.setItem('CountStampCardRowShow', TotalRows);
-        FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampCampaignCodes, EnterpriseAccNos, StartDates, EndDates, SubscriberAccNo, EnterpriseNames, StampRuleRemarkss, StampCampaignNames, YESStamped, TotalRows, EnterprisesLogos);
+        // localStorage.setItem('CountLoyaltyStamped', YESStamped);
+        // localStorage.setItem('CountStampCardRowShow', TotalRows);
+
+Dashboard_SuccessCheckInController_DirectCheckIn(TodayCheckInCounts, EnterpriseAccNos, "MembershipCampaign-LoyaltyStamp","Online")
+
+        //FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(StampCampaignCodes, EnterpriseAccNos, StartDates, EndDates, SubscriberAccNo, EnterpriseNames, StampRuleRemarkss, StampCampaignNames, YESStamped, TotalRows, EnterprisesLogos);
 
     }
 

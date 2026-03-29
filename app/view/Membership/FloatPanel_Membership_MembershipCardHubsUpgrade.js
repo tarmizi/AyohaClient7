@@ -341,7 +341,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded() {
                                 itemTpl: [
                                     '<div class="ayohaHubRow">',
                                      // '<div class="ayohaHubCard" OnClick="FloatPanel_MembershipCardList_NotYetSubscribedShow_FromDashboard_Main(`{MembershipCardCode}`,`{EnterpriseAccNo}`,`{isMembershipCardSubscribed}`,`{MembershipCardFeePaymentCycle}`,`{CountStar}`,`{CountReviewer}`)">',
-                                      '<div class="ayohaHubCard" OnClick="FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(`{EnterprisesLogo}`,`{EnterprisesName}`,`{EnterpriseAddress}`,`{TodayCheckInCount}`,`{EnterpriseAccNo}`)">',
+                                      '<div class="ayohaHubCard" OnClick="FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(`{EnterprisesLogo}`,`{EnterprisesName}`,`{EnterpriseAddress}`,`{TodayCheckInCount}`,`{EnterpriseAccNo}`,`MerchantList`,`Online`)">',
                                   
                                         '<div class="ayohaHubHero" style="background-image:url(\'{MembershipCardBackgroundImg_back}\');">',
                                             '{ModifiedTodayCheckInCount}',
@@ -775,71 +775,79 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShowORI(logo
   
 }
    
-function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl,EnterpriseName,EnterpriseTagline,StrCheckInCount,EnterpiseAccNo) {
-  // var CheckInCount = parseInt(StrCheckInCount, 10) || 0;
+function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl,EnterpriseName,EnterpriseTagline,StrCheckInCount,EnterpiseAccNo,Section,Method) {
+ 
+
+
+Dashboard_SuccessCheckInController_DirectCheckIn(StrCheckInCount, EnterpiseAccNo, Section,Method) 
 
 
 
 
-   var CheckInCount = parseInt(StrCheckInCount);
-   if (CheckInCount <= 2) {
+
+
+
+
+
+  //  var CheckInCount = parseInt(StrCheckInCount);
+  //  if (CheckInCount <= 2) {
  
-       FloatPanel_CheckInModalShow({
-           logoUrl: logoUrl,
-           enterpriseName: EnterpriseName,
-           enterpriseTagline: EnterpriseTagline,
-           enterpriseAccNo: EnterpiseAccNo,
-           checkInCount: CheckInCount,
+  //      FloatPanel_CheckInModalShow({
+  //          logoUrl: logoUrl,
+  //          enterpriseName: EnterpriseName,
+  //          enterpriseTagline: EnterpriseTagline,
+  //          enterpriseAccNo: EnterpiseAccNo,
+  //          checkInCount: CheckInCount,
  
-           onConfirmFn: function(modalView){
-               // ✅ letak code Ajax insert check-in kau sini
-               // var objn = {
-               //     "EnterpriseHQAccNo": EnterpiseAccNo,
-               //     "EnterpriseAccNo": EnterpiseAccNo,
-               //     "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
-               //     "CheckInCode": "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
-               //     "CheckInMethod": "Online",
-               //     "CheckInPage": "MerchantList"
-               // };
+  //          onConfirmFn: function(modalView){
+  //              // ✅ letak code Ajax insert check-in kau sini
+  //              // var objn = {
+  //              //     "EnterpriseHQAccNo": EnterpiseAccNo,
+  //              //     "EnterpriseAccNo": EnterpiseAccNo,
+  //              //     "SubscriberAccNo": GetCurrAyohaUserAccountNo(),
+  //              //     "CheckInCode": "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
+  //              //     "CheckInMethod": "Online",
+  //              //     "CheckInPage": "MerchantList"
+  //              // };
  
-               // Ext.Ajax.request({
-               //     type: "POST",
-               //     url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
-               //     dataType: "json",
-               //     data: JSON.stringify(objn),
-               //     headers: {"Content-Type":"application/json; charset=utf-8"},
+  //              // Ext.Ajax.request({
+  //              //     type: "POST",
+  //              //     url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
+  //              //     dataType: "json",
+  //              //     data: JSON.stringify(objn),
+  //              //     headers: {"Content-Type":"application/json; charset=utf-8"},
  
-               //     success: function (result) {
-               //         var data = Ext.decode((result.responseText || '').trim());
-               //         if (data.success == "true") {
-               //             CheckInCount = CheckInCount + 1;
+  //              //     success: function (result) {
+  //              //         var data = Ext.decode((result.responseText || '').trim());
+  //              //         if (data.success == "true") {
+  //              //             CheckInCount = CheckInCount + 1;
  
-               //             // celebrate + refresh
-               //             Ayoha_CelebrationReward(CheckInCount);
-               //             CoreFunction_DashboardAyohaUser();
+  //              //             // celebrate + refresh
+  //              //             Ayoha_CelebrationReward(CheckInCount);
+  //              //             CoreFunction_DashboardAyohaUser();
  
-               //             // close modal
-               //             FloatPanel_CheckInModalHide();
+  //              //             // close modal
+  //              //             FloatPanel_CheckInModalHide();
  
-               //             // optional: close parent panel
-               //             FloatPanel_Membership_MembershipCardHubsUpgradeHide();
-               //         } else {
-               //             swalFireFail("Fail!->" + (result.responseText || '').trim());
-               //         }
-               //     },
-               //     failure: function (result) {
-               //         swalFireFail("Fail!" + (result.responseText || '').trim());
-               //     }
-               // });
-           },
+  //              //             // optional: close parent panel
+  //              //             FloatPanel_Membership_MembershipCardHubsUpgradeHide();
+  //              //         } else {
+  //              //             swalFireFail("Fail!->" + (result.responseText || '').trim());
+  //              //         }
+  //              //     },
+  //              //     failure: function (result) {
+  //              //         swalFireFail("Fail!" + (result.responseText || '').trim());
+  //              //     }
+  //              // });
+  //          },
  
-           onCancelFn: function(){
-               // optional cancel action
-           }
-       });
+  //          onCancelFn: function(){
+  //              // optional cancel action
+  //          }
+  //      });
  
-       return;
-   }else{
+  //      return;
+  //  }else{
     
  
  
@@ -850,63 +858,62 @@ function FloatPanel_Membership_MembershipCardHubsUpgrade_CheckInPageShow(logoUrl
  
  
    
-   var objn = {
-     EnterpriseHQAccNo: EnterpiseAccNo,
-     EnterpriseAccNo: EnterpiseAccNo,
-     SubscriberAccNo: GetCurrAyohaUserAccountNo(),
-     CheckInCode: "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
-     CheckInMethod: "Online",
-     CheckInPage: "MerchantList"
-   };
+  //  var objn = {
+  //    EnterpriseHQAccNo: EnterpiseAccNo,
+  //    EnterpriseAccNo: EnterpiseAccNo,
+  //    SubscriberAccNo: GetCurrAyohaUserAccountNo(),
+  //    CheckInCode: "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
+  //    CheckInMethod: "Online",
+  //    CheckInPage: "MerchantList"
+  //  };
    
-   Ext.Ajax.request({
-     url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
-     method: 'POST',                 // ✅ betul
-     jsonData: objn,                 // ✅ auto encode JSON + set body
-     headers: {
-       'Content-Type': 'application/json; charset=utf-8'
-     },
-     success: function (response) {  // ✅ Ext pass response
-       var data;
+  //  Ext.Ajax.request({
+  //    url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
+  //    method: 'POST',                 // ✅ betul
+  //    jsonData: objn,                 // ✅ auto encode JSON + set body
+  //    headers: {
+  //      'Content-Type': 'application/json; charset=utf-8'
+  //    },
+  //    success: function (response) {  // ✅ Ext pass response
+  //      var data;
    
-       try {
-         data = Ext.decode((response.responseText || '').trim());
-       } catch (e) {
-         swalFireFail("Fail! Invalid JSON -> " + (response.responseText || ''));
-         Ext.Viewport.unmask();
-         LoadingPanelHide();
-         return;
-       }
+  //      try {
+  //        data = Ext.decode((response.responseText || '').trim());
+  //      } catch (e) {
+  //        swalFireFail("Fail! Invalid JSON -> " + (response.responseText || ''));
+  //        Ext.Viewport.unmask();
+  //        LoadingPanelHide();
+  //        return;
+  //      }
    
-       if (data && (data.success === true || data.success === "true")) {
+  //      if (data && (data.success === true || data.success === "true")) {
    
-        FloatPanel_CheckInModalHide(false); // popOut default
-         CoreFunction_DashboardAyohaUser();
-         FloatPanel_Membership_MembershipCardHubsUpgradeHide(false);
-       //  CoreFunction_DestroyFloatPanel('FloatPanel_Membership_MembershipCardHubsUpgrade_ID');
-         Ayoha_WelcomeBackFans();
+  //       FloatPanel_CheckInModalHide(false); // popOut default
+  //        CoreFunction_DashboardAyohaUser();
+  //        FloatPanel_Membership_MembershipCardHubsUpgradeHide(false);
+  //      //  CoreFunction_DestroyFloatPanel('FloatPanel_Membership_MembershipCardHubsUpgrade_ID');
+  //        Ayoha_WelcomeBackFans();
  
  
    
-       } else {
-         swalFireFail("Fail!->" + (response.responseText || '').trim());
-         LoadingPanelHide(false);
-         Ext.Viewport.unmask();
-         return;
-       }
+  //      } else {
+  //        swalFireFail("Fail!->" + (response.responseText || '').trim());
+  //        LoadingPanelHide(false);
+  //        Ext.Viewport.unmask();
+  //        return;
+  //      }
    
-       Ext.Viewport.unmask();
-     },
-     failure: function (response) {
-       swalFireFail("Fail!" + (response.responseText || '').trim());
-       Ext.Viewport.unmask();
-       LoadingPanelHide(false);
-     }
-   });
+  //      Ext.Viewport.unmask();
+  //    },
+  //    failure: function (response) {
+  //      swalFireFail("Fail!" + (response.responseText || '').trim());
+  //      Ext.Viewport.unmask();
+  //      LoadingPanelHide(false);
+  //    }
+  //  });
  
-   }
+  //  }
  
-   // else flow (CheckInCount > 2) keep as your original
-   // ... existing ajax request ...
+ 
  }
  

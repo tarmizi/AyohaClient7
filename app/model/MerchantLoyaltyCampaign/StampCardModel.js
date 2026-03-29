@@ -269,6 +269,7 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.StampCardModel', {
                   'EnterpriseDescription',
                   'isMember',
                   'StampedRedeemStatus',
+                  'TodayCheckInCount',
                   {
                     name: 'ModifiedStampContent',
                     convert: function (value, record) {

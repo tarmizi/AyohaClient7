@@ -61,7 +61,7 @@ function FloatPanel_MembershipCardList_UpgradeCreateIfNeeded() {
     _FloatPanel_MembershipCardList_Upgrade =
     Ext.create('Ext.Container', {
         id: 'FloatPanel_MembershipCardList_UpgradeID',
-        zIndex: 65,
+       // zIndex: 65,
         floated: true,
         centered: true,
         fullscreen: true,

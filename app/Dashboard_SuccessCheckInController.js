@@ -1945,6 +1945,7 @@ function AyohaSelectLoyaltySeg(type) {
      Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(390);
      Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(400);
      Ext.getCmp('tabpanelDashboard_PerksInfo').setHeight(400);
+     Ext.getCmp('MainMaincontainerDashbord').setHeight(3310);   
  }
  if(type=='points'){
      SuccessCheckinController_Dashboard_LoadPointPerks();
@@ -1954,6 +1955,7 @@ function AyohaSelectLoyaltySeg(type) {
      Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(390);
      Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(400);
      Ext.getCmp('tabpanelDashboard_PerksInfo').setHeight(400);
+    Ext.getCmp('MainMaincontainerDashbord').setHeight(3310);   
  }
  if(type=='vouchers'){
      SuccessCheckinController_Dashboard_LoadVoucherPerks();
@@ -1963,6 +1965,7 @@ function AyohaSelectLoyaltySeg(type) {
    Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(410);
      Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(420);
      Ext.getCmp('tabpanelDashboard_PerksInfo').setHeight(420);
+       Ext.getCmp('MainMaincontainerDashbord').setHeight(3350);   
  }
 
  if(type=='contest'){
@@ -1971,7 +1974,8 @@ function AyohaSelectLoyaltySeg(type) {
      Ext.getCmp('tabpanelDashboard_PerksInfo').setHeight(560);
     // Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(560);
      Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(550);
-     Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(560);     
+     Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(560);   
+      Ext.getCmp('MainMaincontainerDashbord').setHeight(3480);   
      
  }
  if(type=='event'){
@@ -1981,7 +1985,7 @@ function AyohaSelectLoyaltySeg(type) {
     // Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(560);
      Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(550);
      Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(560);     
-     
+     Ext.getCmp('MainMaincontainerDashbord').setHeight(3480);   
  }
 
  if(type=='discount'){
@@ -1990,7 +1994,8 @@ function AyohaSelectLoyaltySeg(type) {
      Ext.getCmp('tabpanelDashboard_PerksInfo').setHeight(560);
     // Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(560);
     Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(550);
-     Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(560);     
+     Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHeight(560);
+         Ext.getCmp('MainMaincontainerDashbord').setHeight(3350); 
      
  }
  
@@ -2223,6 +2228,7 @@ _DataStore_DashboardDiscount_SuccessCheckIn_Load_DiscountPerkStore.load({
 
 
 
+
 function SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo() {
 
  // Helper untuk pastikan integer selamat (elak NaN)
@@ -2326,20 +2332,40 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo()
              
              if (ttlPerks <= 2) {
                  // MODE: SEDIKIT (Tunjuk Vertical List - OutSideTapPanel)
-                 Ext.getCmp('containerDashboardHeader_ButtonPerks_Main3').setHidden(true);
-                 Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHidden(true);
-                 Ext.getCmp('containerDashboard_PerksOutSideTapPanel').setHidden(false);
+                //  Ext.getCmp('containerDashboardHeader_ButtonPerks_Main3').setHidden(false);
+                //  Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHidden(true);
+                //  Ext.getCmp('containerDashboard_PerksOutSideTapPanel').setHidden(false);
+
+
+ Ext.getCmp('containerDashboardHeader_ButtonPerks_Main3').setHidden(false);
+                 Ext.getCmp('containerDashboard_PerksInSideTapPanel').setHidden(false);
+                 Ext.getCmp('containerDashboard_PerksOutSideTapPanel').setHidden(true);
+
+
+
+
+
                  
-                 Ext.getCmp('containerDashboard_PerksOutSideTapPanel').setHeight(currentHeight);
-                 Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(currentHeight + 100);
+                 //Ext.getCmp('containerDashboard_PerksOutSideTapPanel').setHeight(currentHeight);
+               //  Ext.getCmp('containerDashboard_PerksYouCanEnjoyHere').setHeight(currentHeight + 100);
 
                  // Auto Select (Priority Logic)
-                 if (StampPerksCount > 0)      AyohaSelectLoyaltySegNonTab('stamps');
-                 else if (PointPerksCount > 0) AyohaSelectLoyaltySegNonTab('points');
-                 else if (VoucherEntitle > 0)  AyohaSelectLoyaltySegNonTab('vouchers');
-                 else if (AvailableContest > 0) AyohaSelectLoyaltySegNonTab('contest');
-                 else if (AvailableEvent > 0)  AyohaSelectLoyaltySegNonTab('event');
-                 else if (AvailableDiscount > 0) AyohaSelectLoyaltySegNonTab('discount');
+                // alert(StampPerksCount + ' - ' + PointPerksCount + ' - ' + VoucherEntitle + ' - ' + AvailableContest + ' - ' + AvailableEvent + ' - ' + AvailableDiscount)
+                
+                
+                 if (StampPerksCount > 0)      AyohaSelectLoyaltySeg('stamps');
+                 else if (PointPerksCount > 0) AyohaSelectLoyaltySeg('points');
+                 else if (VoucherEntitle > 0)  AyohaSelectLoyaltySeg('vouchers');
+                 else if (AvailableContest > 0) AyohaSelectLoyaltySeg('contest');
+                 else if (AvailableEvent > 0)  AyohaSelectLoyaltySeg('event');
+                 else if (AvailableDiscount > 0) AyohaSelectLoyaltySeg('discount');
+                
+                //  if (StampPerksCount > 0)      AyohaSelectLoyaltySegNonTab('stamps');
+                //  else if (PointPerksCount > 0) AyohaSelectLoyaltySegNonTab('points');
+                //  else if (VoucherEntitle > 0)  AyohaSelectLoyaltySegNonTab('vouchers');
+                //  else if (AvailableContest > 0) AyohaSelectLoyaltySegNonTab('contest');
+                //  else if (AvailableEvent > 0)  AyohaSelectLoyaltySegNonTab('event');
+                //  else if (AvailableDiscount > 0) AyohaSelectLoyaltySegNonTab('discount');
 
              } else {
                  // MODE: BANYAK (Tunjuk Tab Panel - InSideTapPanel)
@@ -2371,7 +2397,6 @@ function SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo()
      }
  });
 }
-
 
 
 function SuccessCheckinController_DashboardSuccessCheckIn_LoadUnLockMemberOnlyPerks() {
@@ -3382,9 +3407,17 @@ function Ayoha_WelcomeBackFans() {
  toast.className = 'ayoha-welcome-toast';
  toast.innerHTML = '<span>🎉</span> Welcome back, Super Fan!';
  wrapper.appendChild(toast);
-
+  
  // Tunjuk toast dengan animasi
- setTimeout(() => { toast.classList.add('show'); }, 100);
+
+ setTimeout(() => { toast.classList.add('show');
+
+ setTimeout(() => { FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
+    }, 1500);
+
+
+
+  }, 500);
 
  // 3. Generate 50 keping confetti (Sikit je supaya ringan)
  const colors = ['#ff4d4d', '#f9cb28', '#7c3aed', '#3b82f6', '#10b981']; // Merah, Kuning, Ungu, Biru, Hijau
@@ -3412,6 +3445,7 @@ function Ayoha_WelcomeBackFans() {
      if(wrapper) {
          wrapper.innerHTML = ''; // Kosongkan wrapper
          // wrapper.remove(); // Boleh uncomment kalau nak buang wrapper terus
+         
      }
  }, 3500);
 }
@@ -3477,6 +3511,7 @@ function spawnConfettiFromCoin(popupEl, count) {
 
 function Dashboard_SuccessCheckInController_Ayoha_CelebrationReward(checkInNo, points) {
  // ✅ fix: string -> number
+  FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTop();
  checkInNo = parseInt(checkInNo, 10) || 0;
  points    = parseInt(points, 10) || 10;
 
@@ -3506,7 +3541,7 @@ function Dashboard_SuccessCheckInController_Ayoha_CelebrationReward(checkInNo, p
          <div class="ayohaSwalConfettiWrap"></div>
        </div>
      `,
-     confirmButtonText: 'NICE!',
+     confirmButtonText: 'Congratulations!',
      showConfirmButton: true,
      buttonsStyling: false,
 
@@ -3514,8 +3549,8 @@ function Dashboard_SuccessCheckInController_Ayoha_CelebrationReward(checkInNo, p
      heightAuto: false,
      position: 'center',
      // auto close optional (boleh buang kalau tak nak)
-     timer: 1800,
-     timerProgressBar: false,
+    //  timer: 3500,
+    //  timerProgressBar: false,
 
      allowOutsideClick: true,
 
@@ -3533,15 +3568,16 @@ function Dashboard_SuccessCheckInController_Ayoha_CelebrationReward(checkInNo, p
        document.documentElement.classList.add('ayohaRewardOverlayOn');
 
        const popup = Swal.getPopup();
-       if (popup) spawnConfettiFromCoin(popup, 30);
+       if (popup) spawnConfettiFromCoin(popup, 100);
      },
 
      willClose: () => {
        document.body.classList.remove('ayohaRewardOverlayOn');
        document.documentElement.classList.remove('ayohaRewardOverlayOn');
+      
      }
    });
- }, 30);
+ }, 500);
 }
 
 
@@ -3636,4 +3672,127 @@ function getMembershipTypeBadgeStyle(cardType) {
                 shadow: '0 4px 10px rgba(0,0,0,0.10)'
             };
     }
+}
+
+
+
+
+
+
+function Dashboard_SuccessCheckInController_DirectCheckIn(StrCheckInCount, EnterpiseAccNo, Section,Method) {
+ FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide(false);
+   var CheckInCount = parseInt(StrCheckInCount);
+  
+                     if (CheckInCount <= 2) {
+ 
+     
+                     
+                        var objn = {
+                            EnterpriseHQAccNo: EnterpiseAccNo,
+                            EnterpriseAccNo: EnterpiseAccNo,
+                            SubscriberAccNo: GetCurrAyohaUserAccountNo(),
+                            CheckInCode: "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
+                            CheckInMethod: Method,
+                            CheckInPage: Section
+                          };
+      
+                          Ext.Ajax.request({
+                            url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
+                            method: 'POST',
+                            jsonData: objn,
+                            headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      
+                            success: function (response) {
+
+
+ FloatPanel_CheckInModalHide(false); // popOut default
+                                  Dashboard_SuccessCheckInController_Ayoha_CelebrationReward(CheckInCount, 10);
+                                  CoreFunction_DashboardAyohaUser();
+                                  FloatPanel_Membership_MembershipCardHubsUpgradeHide(false);
+
+
+
+      
+                             
+                            },
+      
+                            failure: function (response) {
+                              swalFireFail("Fail!" + (response.responseText || '').trim());
+                              Ext.Viewport.unmask();
+                              LoadingPanelHide(false);
+                            }
+                          });
+                    
+                    
+                    
+   }else{
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+   var objn = {
+     EnterpriseHQAccNo: EnterpiseAccNo,
+     EnterpriseAccNo: EnterpiseAccNo,
+     SubscriberAccNo: GetCurrAyohaUserAccountNo(),
+     CheckInCode: "CIC-" + GenerateRandomNo() + '-' + GetCurrAyohaUserAccountNo(),
+     CheckInMethod: Method,
+     CheckInPage:Section
+   };
+   
+   Ext.Ajax.request({
+     url: GetAPIurl() + '/EnterprisesCheckIn/EnterprisesCheckIn_Insert',
+     method: 'POST',                 // ✅ betul
+     jsonData: objn,                 // ✅ auto encode JSON + set body
+     headers: {
+       'Content-Type': 'application/json; charset=utf-8'
+     },
+     success: function (response) {  // ✅ Ext pass response
+
+
+       var data;
+   
+       try {
+         data = Ext.decode((response.responseText || '').trim());
+       } catch (e) {
+         swalFireFail("Fail! Invalid JSON -> " + (response.responseText || ''));
+         Ext.Viewport.unmask();
+         LoadingPanelHide(false);
+         return;
+       }
+   
+       if (data && (data.success === true || data.success === "true")) {
+   
+      
+ 
+   FloatPanel_CheckInModalHide(false); // popOut default
+         CoreFunction_DashboardAyohaUser();
+         FloatPanel_Membership_MembershipCardHubsUpgradeHide(false);
+       //  CoreFunction_DestroyFloatPanel('FloatPanel_Membership_MembershipCardHubsUpgrade_ID');
+         Ayoha_WelcomeBackFans();
+  
+       } else {
+         swalFireFail("Fail!->" + (response.responseText || '').trim());
+         LoadingPanelHide(false);
+         Ext.Viewport.unmask();
+         return;
+       }
+   
+       Ext.Viewport.unmask();
+     },
+     failure: function (response) {
+       swalFireFail("Fail!" + (response.responseText || '').trim());
+       Ext.Viewport.unmask();
+       LoadingPanelHide(false);
+     }
+   });
+ 
+   }
+
+
 }

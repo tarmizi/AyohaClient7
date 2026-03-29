@@ -31,6 +31,8 @@ Ext.define('BuskartApp.model.Merchantperk.Merchantperk_ViewModel', {
                  'BusinessMode',
                  'EnterpriseDescription',
                  'SearchCol',
+                  'TodayCheckInCount',
+                 'EnterpriseAddress',
             //      {
             //       name: 'ModifiedName',
             //       convert: function (value, record) {

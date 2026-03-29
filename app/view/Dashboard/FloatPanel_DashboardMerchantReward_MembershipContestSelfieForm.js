@@ -551,9 +551,17 @@ height:30,
 
                                          {
                                              width: '100%',
-                                             height: 40,
+                                              margin: '-10 0 0 0',
                                              id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_TakeMySelfie',
-                                             html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Take My Selfie!</div></div>'
+
+  html:'<div class="ayohaMActions">' +
+                                            '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();">Take My Selfie!</button>' +        
+                                            '</div>',
+
+
+
+                                                        // html:'<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();">Take My Selfie!</button>',
+                                            // html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Take My Selfie!</div></div>'
                                          },
                                         
 
@@ -607,7 +615,7 @@ height:30,
                                                                              {
 
                                                                                  xtype: 'container',
-                                                                                 width: '90%',
+                                                                                 width: '97%',
                                                                                  hidden: true,
                                                                                  height: 60,
                                                                                  margin: '0 0 0 0',
@@ -623,21 +631,31 @@ height:30,
                                                                                  items: [
 
                                                                                     {
-                                                                                        width: '45%',
-                                                                                        height: 50,
+                                                                                        width: '50%',
+                                                                                       // height: 50,
+                                                                                        margin: '-10 0 0 0',
                                                                                         id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_RetakeSelfie',
-                                                                                        html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();" class="example-2" style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 16px;font-weight:bold;color:white;margin:6px 0px 0px 0px;">Re-Take My Selfie!</div></div>'
+                                                                                      //  html:'<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();">Re-Take My Selfie!</button>',
+                                                                                     
+                                                                                     
+  html:'<div class="ayohaMActions">' +
+                                            '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_ImgProcess_Initialized();">Re-Take My Selfie!</button>' +        
+                                            '</div>',
                                                                                       //  html: '<div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-10px 0px 0px 0px">Submitted Date:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">19/2/2022</div><br><div style="font-size: 10px;font-weight:normal;color:black;text-align:left;vertical-align:middle;margin:-20px 0px 0px 0px">Contest Status:</div><br><div style="font-size: 12px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">You are Winner!</div>'
                                                                                     },
                                                                                     {
                                                                                         xtype: 'spacer',
-                                                                                        width: '5%',
+                                                                                        width: '2%',
                                                                                     },
                                                                                     {
                                                                                         width: '45%',
-                                                                                        height: 40,
+                                                                                       // height: 40,
+                                                                                       margin: '-10 0 0 0',
                                                                                         id: 'htmlFloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_Re-SubmitSelfie',
-                                                                                        html: '<div onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_SubmitMySelfie();"  style="border-right:2px solid #fac;border-left:2px solid #fac;border-bottom:2px solid #fac;border-top:2px solid #fac;background-color: white;border-radius: 20px 20px 20px 20px;width:100%;height:40px;font-size: 12px;font-weight:bold;color:white;text-align:center;vertical-align:middle;"><div style="font-size: 14px;font-weight:bold;color:red;margin:6px 0px 0px 0px;">Submit</div></div>'
+                                                                                         html:'<div class="ayohaMActions">' +
+                                            '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_SubmitMySelfie();">Submit</button>' +        
+                                            '</div>',
+                                                                                       // html: '<button class="ayohaCheckOutBtn" onclick="FloatPanel_DashboardMerchantReward_MembershipContestSelfieForm_FileUpload_SubmitMySelfie();">Submit</button>'
                                                                                     },
                                                                                  ]
                                                                              },

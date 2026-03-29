@@ -3,41 +3,29 @@ Ext.define('BuskartApp.view.AyohaMerchantInfo.FloatPanel_AyohaMerchantInfo_Vouch
 
 });
 
-var _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram;
+var _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram=null;
 
 
 var isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'N';
 
 
 
+function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramCreateIfNeeded() {
+    if (_FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram && !_FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.destroyed) return;
 
-
-
-function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
 
     _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram =
     Ext.create('Ext.Container', {
-        zIndex: 40,
-        xtype: 'container',
-        //height: 465,
-        height: '100%',
-        width: '100%',
-        id: 'FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
+         id: 'FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramID',
+         floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-          type: 'fit'
-        //   type: 'vbox',
-        //   pack: 'start',
-        //   align: 'center'
-        },
+        fullscreen: true,
+       // closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -57,39 +45,16 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
         //style: 'border-bottom:1px solid;background-color:#353839;',
         style: 'background-color:white;',
        // style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
-        listeners: {
-            initialize: function (c) {
-                this.element.on({
-                    swipe: function (e, node, options) {
-                        //if (e.direction == "up") {
-                        //    LoyaltyCardRedeemListHide();
-                        //}
-                        if (e.direction == "left") {
-                            _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'left',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
+         listeners: {
+ 
 
-                            }));
-                            RemovePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
-                            isLoyaltyCardRedeemListOpen = 'N';
-                        } if (e.direction == "right") {
-                            _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'right',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
-
-                            }));
-                            isLoyaltyCardRedeemListOpen = 'N';
-                            RemovePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
-                        }
-                      
-                    }
-                });
-            }
-        },
+        // ✅ kalau user tap mask, close macam standard
+        beforehide: function () {
+          // kalau hide dipanggil bukan dari function kita, block dulu
+          // (optional: boleh allow kalau kau nak)
+          return true;
+        }
+      },
 
         items: [
             {
@@ -97,20 +62,11 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
                 xtype: 'container',
                 width: '100%',
                 docked: 'top',
-                height: 40,
-                // width: 40,
-
-                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                //hidden: true,
+                  height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
 
                 id: 'containerFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHeader',
-                style: {
-                    // background: '#D25959',
-                    background: 'transparent',
-                    // border: '2px'
-                },
-                //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
+               
                 layout: {
                     type: 'hbox',
                     pack: 'center',
@@ -123,25 +79,26 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
 
                                      {
                                          xtype: 'button',
-                                         id: 'btnFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramBack',
-                                         margin: '10 0 0 5',
+                                         id: 'btnFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramBack',                                       
                                          height: 30,
-                                         width: 35,
-                                         // iconCls: 'list',
-                                         html: '<div ><img src="resources/icons/backPurple.png" width="25" height="20" alt="Company Name"></div>',
+                                          width: 65,
+                                         margin: '0 0 0 10',
+                                            // iconCls: 'list',
+                                            html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                          ui: 'plain',
                                          handler: function () {
+                                            FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide(false);
                                              // FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide();
                                              // FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram_AddCardHide();
-                                             isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'N';
-                                             _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(Ext.fx.Animation({
-                                                 type: 'slideOut',
-                                                 direction: 'left',
-                                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                                 duration: 250
+                                            //  isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'N';
+                                            //  _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(Ext.fx.Animation({
+                                            //      type: 'slideOut',
+                                            //      direction: 'left',
+                                            //      easing: 'cubic-bezier(.7,0,.7,1)',
+                                            //      duration: 250
 
-                                             }));
-                                             RemovePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
+                                            //  }));
+                                            //  RemovePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
                                              //  FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram_AddCardHide();
 
                                          }
@@ -152,31 +109,13 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
 
                                       },
                                       {
-                                        margin: '10 10 0 0',
+                                          html:ayohaTheme_HeaderText('Membership Voucher'),
+                                        margin: '0 15 0 0',  
                                         id: 'htmlFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram_TitleHeaderTxt',
 
-                                        html: '<div style="color:black;text-align: right;font-size:14px;width:100%;"><b>Membership Voucher</b></div>'
-                                    },
-                                      {
-                                        xtype: 'button',
-                                        margin: '10 0 0 -10',
-                                        id: 'btnFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram_CardIcon',
-                                        height: 35,
-                                        width: 35,
-                                       // hidden:true,
-                                        // iconCls: 'list',
-                                        html: '<div ><img src="resources/icons/VoucherFeature01.png" width="25" height="25" alt="Company Name"></div>',
-                                        ui: 'plain',
-                                        handler: function () {
-
-                                        }
+                                        
                                     },
                                       
-
-                                    {
-                                        xtype: 'spacer',
-                                        width: 10,
-                                    },
                                           
 
 
@@ -213,7 +152,7 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
                     {
                         xtype: 'list',
                         id: 'FloatPanel_AyohaRewardVoucherList_MerchantLoyaltyCampaignlistID',
-                        width: '95%',
+                        width: '100%',
                         height: '100%',
                         variableHeights: true,
                         grouped: true,
@@ -486,11 +425,19 @@ inset: false,       // make sure inset styling isn’t applied
 
 
     });
-    return _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram;
-
 
 
 }
+
+
+
+// function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram() {
+
+//     return _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram;
+
+
+
+// }
 
 
 
@@ -501,10 +448,35 @@ var countMerchantLoyaltyCampaign_LoadVoucherCardStoreFirst=0;
 
 function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
+
+
+
+
+
+
+
+
+
+   FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramCreateIfNeeded();
+
+
+    _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.show();
+   // ✅ push browser back (ikut style kau)
+   if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+     AyohaBrowserBack.push('FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram', function () {
+    
+        FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide(true);
+     });
+   }
+
+
+
+
+
     isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'Y';
 
     
@@ -547,13 +519,41 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram_MerchantLoyaltyC
 
 
 
-function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide() {
+function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide(fromBack, animCfg) {
     // FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram_AddCardHide();
-    if (isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen == "Y") {
-        _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(); isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'N';
-        RemovePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
-    }
+    // if (isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen == "Y") {
+    //     _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(); isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide()");
+    // }
   
+
+
+
+
+
+    
+    if (isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.hide();
+          }
+          isFloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramOpen = 'N';
+         
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram');
+          }
+          _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram.destroy();
+          _FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgram = null;
+    }
+
+
+
+
 }
 
 

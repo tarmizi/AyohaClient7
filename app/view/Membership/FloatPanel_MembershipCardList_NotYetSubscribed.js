@@ -2290,7 +2290,7 @@ itemConfig: {
 
                                                           //  FloatPanel_ScannedMerchantHide();
 
-                                                         //alert(MembershipTag)
+                                                        // alert(MembershipTag)
                                                             if (MembershipTag == 'YES') {
 
 
@@ -2340,8 +2340,8 @@ itemConfig: {
 
                                                               
                                                                 if (CampaignType == "Stamp Reward Loyalty Card") {                                                                 
-
-                                                                    FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks, EnterpriseLogo, EnterpriseName);
+  FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserCardShow(CampaignCode, EnterpriseHQAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, CampaignName, CountLoyaltyStamped, Stamp, EnterpriseLogo,isRequiredStartEndDate,isCampaignExpired,CampaignDayLeft,"NA");
+                                                                  //  FloatPanel_AyohaCardManagement_PreviewCardShow(CampaignCode, EnterpriseHQAccNo, "NA", StartDate, EndDate, CampaignName, StampRuleRemarks, EnterpriseLogo, EnterpriseName);
                                                                     Ext.getCmp('btnStampCard_FloatPanel_AyohaCardManagement_PreviewCard_CountStamp').setHtml('<font size=5 color=white><b>0/' + Stamp + '</b></font>');
                                                                 }
                                                                 if (CampaignType == "Point Reward Loyalty Card") {

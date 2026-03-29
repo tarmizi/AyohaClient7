@@ -484,11 +484,11 @@ Ext.getCmp('html_Dashboard_AyohaRewardPts').setHtml( '<div  onclick="FloatPanel_
 
                 Ext.getCmp('Dashboard_MyAccount_MembershipPerksList').setStore(_DataStore_VIEW_merchantperk_View_DashboardInitialLoadStore)
                 
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             } else {
                 
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });

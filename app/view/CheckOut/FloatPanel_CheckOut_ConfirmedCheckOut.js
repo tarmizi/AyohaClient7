@@ -446,8 +446,13 @@ function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
        
 
 
-  Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
-              Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
+ 
+
+
+                Ext.getCmp('MainMaincontainerDashbord').setHeight(2450);
+               Ext.getCmp('containerDividerCheckInNonMember').setHeight(10);
+                Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
+                Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
 
 
         if (animCfg) {
@@ -513,7 +518,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOut_DashboardAyohaGoTopOri(){
 
             if (maxPos && maxPos.y > 0) {
                 scroller.scrollTo(0, 0, {
-                    duration: 650
+                    duration: 850
                 });
                 return true;
             }
