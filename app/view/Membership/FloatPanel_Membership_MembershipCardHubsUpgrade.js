@@ -399,9 +399,9 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded() {
                                 xtype: 'container',
                                 margin: '0 0 0 0',
                                docked:'bottom',                    
-                                height: 82,
-                                width: '100%',
-                                style: 'border-top:2px solid rgba(124,58,237,.14);border-bottom:2px none #D25959;border-left:2px none #D25959;border-right:2px none #D25959;background-color:transparent;',
+                                height: ayohaThemeColor_Bottom_SearchBox_Height(),
+                                width: '100%',                               
+                               style:ayohaThemeColor_Bottom_SearchBox(),
                                 layout: {
                                     type: 'vbox',
                                     pack: 'start',
@@ -409,7 +409,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded() {
                                 },
                                 items:[
                                     {
-                                        height: 82,
+                                        height: ayohaThemeColor_Bottom_SearchBox_Height(),
                                         //margin:'-5 0 0 0',
                                         width: '100%',
                                         html:'<div class="ayohaSearchWrap">' +

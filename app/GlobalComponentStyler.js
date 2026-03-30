@@ -363,3 +363,21 @@ function AyohaPatchTrxGroupHeaderLive() {
   // expose manual refresh helper
   window._AyohaPatchTrxGroupHeaderNow = scanAndPatch;
 }
+
+
+
+
+
+
+ function ayohaThemeColor_Bottom_SearchBox(){
+    var value='border-top:2px solid rgba(124,58,237,.14);border-bottom:2px none #D25959;border-left:2px none #D25959;border-right:2px none #D25959;background-color:transparent;';
+    //  var value="background: linear-gradient(90deg, #491A7F 0%, #7027A5 100%, #9537C8 50%);";
+      return value;
+  }
+
+  
+ function ayohaThemeColor_Bottom_SearchBox_Height(){
+    var value=70;
+    //  var value="background: linear-gradient(90deg, #491A7F 0%, #7027A5 100%, #9537C8 50%);";
+      return value;
+  }

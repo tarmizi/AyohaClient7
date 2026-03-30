@@ -401,95 +401,138 @@ function FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramCreateIfNeeded() {
 
 
 
-            {
-                xtype: 'container',
-                id: 'containerFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramTitleOutter',
-                width: '100%',
-                docked: 'bottom',
-               // hidden: true,
-                height: 40,
-                // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
-                // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
-                // style: "background-color: #EAEEF3;",
-
-                layout: {
-                    type: 'hbox',
-                    pack: 'center',
-                    align: 'center'
-
-                },
-                items: [
-
-
-
-
-                      {
-                          xtype: 'button',
-                          id: 'btnFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramListSearch',
-                          // hidden: true,
-                          //  badgeText: '1',
-                          margin: '2 0 0 -5',
-                          height: 40,
-                          width: 40,
-                          html: '<img src="resources/icons/searchPurpleOne.png" width="28" height="28" alt="Company Name">',
-                          ui: 'plain',
-                          handler: function () {
-                              // NotificationsPanelShow();
-
-                              // LoyaltyCardRedeemListShow();
-
-
-                              //  LoyaltyCardRedeemListShow();
-                          }
-                      },
-
+  
+    {
+                       
+                                xtype: 'container',
+                                margin: '0 0 0 0',
+                               docked:'bottom',
+                               id: 'containerFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramTitleOutter',                 
+                                height: ayohaThemeColor_Bottom_SearchBox_Height(),
+                                width: '100%',                               
+                               style:ayohaThemeColor_Bottom_SearchBox(),
+                                layout: {
+                                    type: 'vbox',
+                                    pack: 'center',
+                                    align: 'center'
+                                },
+                                items:[
+                                    {
+                                       // height: ayohaThemeColor_Bottom_SearchBox_Height(),
+                                        margin:'-5 0 0 0',
+                                        width: '100%',
+                                        html:'<div class="ayohaSearchWrap">' +
+                                        '<div class="ayohaSearchBar">' +
+                                    
+                                          '<span class="ayohaSearchIco" aria-hidden="true">' +
+                                            '<svg viewBox="0 0 24 24">' +
+                                              '<path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l3.2 3.2a1 1 0 0 0 1.4-1.4l-3.2-3.2A7.5 7.5 0 0 0 10.5 3Zm0 2a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Z"></path>' +
+                                            '</svg>' +
+                                          '</span>' +
+                                    
+                                          '<input  id="input-FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt" class="ayohaSearchInput" type="search" ' +
+                                            'placeholder="Search" autocomplete="off" />' +
+                                    
+                                      
+                                    
+                                        '</div>' +
+                                      '</div>',
+                                    }
+                              
+                                     
+                                ]
+                           },
 
 
-                     {
-                         id: 'FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt',
-                         margin: '0 0 0 -10',
-                         width: '78%',
-                         height: 20,
-                         html: '<input type="text" id="input-FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt" placeHolder="Search" style="border-color:purple;color:black;width:100%;text-align: center;font-size:12px;">'
-                     },
+            // {
+            //     xtype: 'container',
+            //     id: 'containerFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramTitleOutter',
+            //     width: '100%',
+            //     docked: 'bottom',
+            //    // hidden: true,
+            //     height: 40,
+            //     // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+            //     // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+            //     style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
+            //     // style: "background-color: #EAEEF3;",
 
+            //     layout: {
+            //         type: 'hbox',
+            //         pack: 'center',
+            //         align: 'center'
 
-
-                     {
-                         id: 'FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt',
-                         margin: '0 0 0 0',
-                       //  hidden: true,
-                         height: 20,
-                         html: '<font size=3 color=black>(0)</font>'
-                     },
-                     {
-                         xtype: 'button',
-                         id: 'btnFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramFilter',
-                         hidden: true,
-                         //  badgeText: '1',
-                         margin: '2 0 0 15',
-                         height: 25,
-                         width: 35,
-                         html: '<img src="resources/icons/filterPurpleThree.png" width="25" height="25" alt="Company Name">',
-                         ui: 'plain',
-                         handler: function () {
-                             // NotificationsPanelShow();
-
-                             // LoyaltyCardRedeemListShow();
-
-
-                             //  LoyaltyCardRedeemListShow();
-                         }
-                     },
+            //     },
+            //     items: [
 
 
 
 
+            //           {
+            //               xtype: 'button',
+            //               id: 'btnFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramListSearch',
+            //               // hidden: true,
+            //               //  badgeText: '1',
+            //               margin: '2 0 0 -5',
+            //               height: 40,
+            //               width: 40,
+            //               html: '<img src="resources/icons/searchPurpleOne.png" width="28" height="28" alt="Company Name">',
+            //               ui: 'plain',
+            //               handler: function () {
+            //                   // NotificationsPanelShow();
 
-                ]
+            //                   // LoyaltyCardRedeemListShow();
 
-            },
+
+            //                   //  LoyaltyCardRedeemListShow();
+            //               }
+            //           },
+
+
+
+            //          {
+            //              id: 'FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt',
+            //              margin: '0 0 0 -10',
+            //              width: '78%',
+            //              height: 20,
+            //              html: '<input type="text" id="input-FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt" placeHolder="Search" style="border-color:purple;color:black;width:100%;text-align: center;font-size:12px;">'
+            //          },
+
+
+
+            //          {
+            //              id: 'FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt',
+            //              margin: '0 0 0 0',
+            //            //  hidden: true,
+            //              height: 20,
+            //              html: '<font size=3 color=black>(0)</font>'
+            //          },
+            //          {
+            //              xtype: 'button',
+            //              id: 'btnFloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramFilter',
+            //              hidden: true,
+            //              //  badgeText: '1',
+            //              margin: '2 0 0 15',
+            //              height: 25,
+            //              width: 35,
+            //              html: '<img src="resources/icons/filterPurpleThree.png" width="25" height="25" alt="Company Name">',
+            //              ui: 'plain',
+            //              handler: function () {
+            //                  // NotificationsPanelShow();
+
+            //                  // LoyaltyCardRedeemListShow();
+
+
+            //                  //  LoyaltyCardRedeemListShow();
+            //              }
+            //          },
+
+
+
+
+
+            //     ]
+
+            // },
 
 
 
@@ -562,7 +605,7 @@ function FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramShow() {
   //  FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramAdjustHeight();
     //FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramList_AyohaUserStampCardNearestRedeemItemStore();
     FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_MerchantLoyaltyCampaign_LoadPointCardLoyaltyStore();
-    document.getElementById("input-FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt").addEventListener("keyup", MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp);
+    document.getElementById("input-FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_SearchTxt").addEventListener("keyup", MerchantLoyaltyCampaign_LoadPointCardStoreOnKeyUp);
 
 }
 
@@ -612,7 +655,7 @@ function FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramHide(fromBack, anim
 }
 
 var countMerchantLoyaltyCampaign_LoadPointCardStoreFirst=0;
-function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
+function MerchantLoyaltyCampaign_LoadPointCardStoreOnKeyUp(){
    
 
 
@@ -621,7 +664,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
 
 
         console.log('SearchEnterpriseOnKeyUp');
-        var countMerchantLoyaltyCampaign_LoadStampStore = 0;
+        var countMerchantLoyaltyCampaign_LoadPointCardStore = 0;
     
     
         _DataStore_MerchantLoyaltyCampaign_LoadPointCardLoyaltyStore.clearFilter();
@@ -639,7 +682,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
                     console.log('ada0');
     
                     countMerchantLoyaltyCampaign_LoadStampStore = _DataStore_MerchantLoyaltyCampaign_LoadPointCardLoyaltyStore.getCount();
-                    Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
+                   // Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
                     // Ext.getCmp('htmlSubscriberListTypeLbl').setHtml('<font size="2" color="black"><b>All Cards(' + countEnterprise + ')</b></font>');
                     return true;
     
@@ -651,7 +694,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
             });
             console.log('tiada3');
             countMerchantLoyaltyCampaign_LoadStampStore = _DataStore_MerchantLoyaltyCampaign_LoadPointCardLoyaltyStore.getCount();
-            Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
+          //  Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
     
             //  Ext.getCmp('htmlSubscriberListTypeLbl').setHtml('<font size="2" color="black"><b>All Cards(' + countEnterprise + ')</b></font>');
         }
@@ -660,7 +703,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
         else {
             console.log('tiada2');
             _DataStore_MerchantLoyaltyCampaign_LoadPointCardLoyaltyStore.clearFilter();
-            Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadPointCardStoreFirst + ')</b></font>');
+          //  Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadPointCardStoreFirst + ')</b></font>');
             // Ext.getCmp('htmlSubscriberListTypeLbl').setHtml('<font size="2" color="black"><b>All Cards(' + countEnterpriseSubscribedLoadFirst + ')</b></font>')
             // Ext.getCmp('lblSearchEnterpriseList').setHtml('<font size="2" color="black"><b>Enterprise List (' + countEnterpriseLoanFirst + ')</b></font>');
             return false;
@@ -803,7 +846,7 @@ function FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_MerchantLoyaltyCam
               countMerchantLoyaltyCampaign_LoadPointCardStoreFirst=records.length;
 
               
-              Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadPointCardStoreFirst + ')</b></font>');
+             // Ext.getCmp('FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadPointCardStoreFirst + ')</b></font>');
                // LoadingPanelHide();
             } else {
                 console.error('Failed to load store data or no record found.');

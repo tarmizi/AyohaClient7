@@ -166,91 +166,18 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgramCreateIfNeeded() {
 
                 items: [
 
-{
-    xtype: 'list',
-    id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgramListListID',
-    cls: 'ayohaLoyaltyListFull',
-    itemCls: 'ayohaLoyaltyListItem',
-    width: '100%',
-    height: '100%',
-    variableHeights: true,
-    mode: 'SINGLE',
-    inset: false,
-    grouped: true,
-    pinHeaders: false,
-    disableSelection: true,
-    style: 'background:#fff;border-radius:0;',
-    scrollable: {
-        direction: 'vertical',
-        indicators: {
-            y: { autoHide: true },
-            x: { autoHide: true }
-        }
-    },
-    //  listeners: {
-    //     painted: function (list) {
-    //         Ext.defer(function () {
-    //             AyohaLoyalty_BindGroupHeaderObserver(list);
-    //             AyohaLoyalty_RenderGroupHeaderLogoName(list);
-    //         }, 120);
-    //     },
-    //     refresh: function (list) {
-    //         Ext.defer(function () {
-    //             AyohaLoyalty_RenderGroupHeaderLogoName(list);
-    //         }, 80);
-    //     },
-    //     resize: function (list) {
-    //         Ext.defer(function () {
-    //             AyohaLoyalty_RenderGroupHeaderLogoName(list);
-    //         }, 80);
-    //     }
-    // },
-    store: _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore,
-    itemTpl: new Ext.XTemplate([
-        '<div class="ayohaLoyaltyCard" onclick="FloatPanel_AyohaMerchantInfo_LoyaltyProgram_OpenMerchantLoyaltyProgram({ID})">',
-        '    <div style="position:relative;">',
-        '        {ModifiedStampContent}',
-        '    </div>',
-        '    <div class="ayohaLoyaltyContent">',
-        '        <div class="ayohaLoyaltyStoreRow">',
-        '            <div class="ayohaLoyaltyLogoWrap">',
-        '                <img class="ayohaLoyaltyLogo" src="{EnterpriseLogo}" alt="Store Icon">',
-        '            </div>',
-        '            <div class="ayohaLoyaltyStoreInfo">',
-        '                <p class="ayohaLoyaltyStoreName">{EnterpriseName}</p>',
-        '                <p class="ayohaLoyaltyStoreTagline">{EnterpriseTagLine}</p>',
-        '            </div>',
-        '            <div class="ayohaLoyaltyRating">',
-        '                <div class="ayohaLoyaltyRatingTop">',
-        '                    <span class="ayohaLoyaltyRatingValue">{CountStar}</span>',
-        '                    <span class="ayohaLoyaltyRatingStar">★</span>',
-        '                </div>',
-        '                <div class="ayohaLoyaltyReview">{CountReviewer} Reviews</div>',
-        '            </div>',
-        '        </div>',
-        '        <h2 class="ayohaLoyaltyTitle">{StampContentNote}</h2>',
-        '        <p class="ayohaLoyaltyEndDate">End Date: {EndDate}</p>',
-        '        <div class="ayohaLoyaltyTags">',
-        '            <span class="ayohaLoyaltyTag">{BusinessMode}</span>',
-        '            <span class="ayohaLoyaltyTag">{EnterpriseDescription}</span>',
-        '        </div>',
-        '    </div>',
-        '</div>'
-    ].join(''))
-}
 // {
 //     xtype: 'list',
 //     id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgramListListID',
-  
 //     cls: 'ayohaLoyaltyListFull',
-// itemCls: 'ayohaLoyaltyListItem',
+//     itemCls: 'ayohaLoyaltyListItem',
 //     width: '100%',
 //     height: '100%',
 //     variableHeights: true,
 //     mode: 'SINGLE',
 //     inset: false,
 //     grouped: true,
-//    pinHeaders: false,
+//     pinHeaders: false,
 //     disableSelection: true,
 //     style: 'background:#fff;border-radius:0;',
 //     scrollable: {
@@ -260,7 +187,7 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgramCreateIfNeeded() {
 //             x: { autoHide: true }
 //         }
 //     },
-     
+   
 //     store: _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore,
 //     itemTpl: new Ext.XTemplate([
 //         '<div class="ayohaLoyaltyCard" onclick="FloatPanel_AyohaMerchantInfo_LoyaltyProgram_OpenMerchantLoyaltyProgram({ID})">',
@@ -296,104 +223,212 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgramCreateIfNeeded() {
 // }
 
 
+
+
+
+
+{
+    xtype: 'list',
+    id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgramListListID',
+   // cls: 'ayohaLoyaltyListFull',
+    cls: 'ayohaStampCardListFullWidth',
+   // itemCls: 'ayohaLoyaltyListItem',
+    width: '100%',
+    height: '100%',
+    variableHeights: true,
+    mode: 'SINGLE',
+    inset: false,
+    grouped: true,
+    pinHeaders: false,
+    disableSelection: true,
+    style: 'background-color:rgba(255,255,255,0);border-radius:0;',
+    scrollable: {
+        direction: 'vertical',
+        indicators: {
+            y: { autoHide: true },
+            x: { autoHide: true }
+        }
+    },
+
+    store: _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore,
+
+    itemTpl: new Ext.XTemplate([
+        '<div class="ayohaLoyaltyCard" onclick="FloatPanel_AyohaMerchantInfo_LoyaltyProgram_OpenMerchantLoyaltyProgram({ID})">',
+            '<div style="position:relative;">',
+                '{ModifiedStampContent}',
+            '</div>',
+
+            '<div class="ayohaLoyaltyContent">',
+                '<div class="ayohaLoyaltyStoreRow">',
+
+                    '<div class="ayohaLoyaltyLogoWrap">',
+                        '<img class="ayohaLoyaltyLogo" src="{EnterpriseLogo}" alt="Store Icon">',
+                    '</div>',
+
+                    '<div class="ayohaLoyaltyStoreInfo">',
+                        '<p class="ayohaLoyaltyStoreName">{EnterpriseName}</p>',
+                        '<p class="ayohaLoyaltyStoreTagline">{EnterpriseTagLine}</p>',
+                    '</div>',
+
+                    '<div class="ayohaLoyaltyRating">',
+                        '<div class="ayohaLoyaltyRatingTop">',
+                            '<span class="ayohaLoyaltyRatingValue">{CountStar}</span>',
+                            '<span class="ayohaLoyaltyRatingStar">★</span>',
+                        '</div>',
+                        '<div class="ayohaLoyaltyReview">{CountReviewer} Reviews</div>',
+                    '</div>',
+
+                '</div>',
+
+                '<h2 class="ayohaLoyaltyTitle">{StampContentNote}</h2>',
+                '<p class="ayohaLoyaltyEndDate">End Date: {EndDate}</p>',
+
+                '<div class="ayohaLoyaltyTags">',
+                    '<span class="ayohaLoyaltyTag">{BusinessMode}</span>',
+                    '<span class="ayohaLoyaltyTag">{EnterpriseDescription}</span>',
+                '</div>',
+            '</div>',
+        '</div>'
+    ].join(''))
+}
+
                 ]
             },
 
 
 
+    {
+                       
+                                xtype: 'container',
+                                margin: '0 0 0 0',
+                               docked:'bottom',
+                               id:'containerFloatPanel_AyohaMerchantInfo_LoyaltyProgramSearch',                    
+                                height: ayohaThemeColor_Bottom_SearchBox_Height(),
+                                width: '100%',                               
+                               style:ayohaThemeColor_Bottom_SearchBox(),
+                                layout: {
+                                    type: 'vbox',
+                                    pack: 'center',
+                                    align: 'center'
+                                },
+                                items:[
+                                    {
+                                       // height: ayohaThemeColor_Bottom_SearchBox_Height(),
+                                        margin:'-5 0 0 0',
+                                        width: '100%',
+                                        html:'<div class="ayohaSearchWrap">' +
+                                        '<div class="ayohaSearchBar">' +
+                                    
+                                          '<span class="ayohaSearchIco" aria-hidden="true">' +
+                                            '<svg viewBox="0 0 24 24">' +
+                                              '<path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l3.2 3.2a1 1 0 0 0 1.4-1.4l-3.2-3.2A7.5 7.5 0 0 0 10.5 3Zm0 2a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Z"></path>' +
+                                            '</svg>' +
+                                          '</span>' +
+                                    
+                                          '<input  id="input-FloatPanel_AyohaMerchantInfo_LoyaltyProgram_SearchTxt" class="ayohaSearchInput" type="search" ' +
+                                            'placeholder="Search" autocomplete="off" />' +
+                                    
+                                      
+                                    
+                                        '</div>' +
+                                      '</div>',
+                                    }
+                              
+                                     
+                                ]
+                           },
+
+
+
+            // {
+            //     xtype: 'container',
+            //     id: 'containerFloatPanel_AyohaMerchantInfo_LoyaltyProgramTitleOutter',
+            //     width: '100%',
+            //     docked: 'bottom',
+            //    // hidden: true,
+            //     height: 40,
+            //     // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
+            //     // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
+            //     style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
+            //     // style: "background-color: #EAEEF3;",
+
+            //     layout: {
+            //         type: 'hbox',
+            //         pack: 'center',
+            //         align: 'center'
+
+            //     },
+            //     items: [
 
 
 
 
-            {
-                xtype: 'container',
-                id: 'containerFloatPanel_AyohaMerchantInfo_LoyaltyProgramTitleOutter',
-                width: '100%',
-                docked: 'bottom',
-               // hidden: true,
-                height: 40,
-                // style: "background-color: white;box-shadow: 5px 5px 5px rgba(68,68,68,0.6);",
-                // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid #EAEEF3;',
-                // style: "background-color: #EAEEF3;",
+            //           {
+            //               xtype: 'button',
+            //               id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgramListSearch',
+            //               // hidden: true,
+            //               //  badgeText: '1',
+            //               margin: '2 0 0 -5',
+            //               height: 40,
+            //               width: 40,
+            //               html: '<img src="resources/icons/searchPurpleOne.png" width="28" height="28" alt="Company Name">',
+            //               ui: 'plain',
+            //               handler: function () {
+            //                   // NotificationsPanelShow();
 
-                layout: {
-                    type: 'hbox',
-                    pack: 'center',
-                    align: 'center'
-
-                },
-                items: [
+            //                   // LoyaltyCardRedeemListShow();
 
 
-
-
-                      {
-                          xtype: 'button',
-                          id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgramListSearch',
-                          // hidden: true,
-                          //  badgeText: '1',
-                          margin: '2 0 0 -5',
-                          height: 40,
-                          width: 40,
-                          html: '<img src="resources/icons/searchPurpleOne.png" width="28" height="28" alt="Company Name">',
-                          ui: 'plain',
-                          handler: function () {
-                              // NotificationsPanelShow();
-
-                              // LoyaltyCardRedeemListShow();
-
-
-                              //  LoyaltyCardRedeemListShow();
-                          }
-                      },
+            //                   //  LoyaltyCardRedeemListShow();
+            //               }
+            //           },
 
 
 
-                     {
-                         id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgram_SearchTxt',
-                         margin: '0 0 0 -10',
-                         width: '78%',
-                         height: 20,
-                         html: '<input type="text" id="input-FloatPanel_AyohaMerchantInfo_LoyaltyProgram_SearchTxt" placeHolder="Search" style="border-color:purple;color:black;width:100%;text-align: center;font-size:12px;">'
-                     },
+            //          {
+            //              id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgram_SearchTxt',
+            //              margin: '0 0 0 -10',
+            //              width: '78%',
+            //              height: 20,
+            //              html: '<input type="text" id="input-FloatPanel_AyohaMerchantInfo_LoyaltyProgram_SearchTxt" placeHolder="Search" style="border-color:purple;color:black;width:100%;text-align: center;font-size:12px;">'
+            //          },
 
 
 
-                     {
-                         id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt',
-                         margin: '0 0 0 0',
-                       //  hidden: true,
-                         height: 20,
-                         html: '<font size=3 color=black>(0)</font>'
-                     },
-                     {
-                         xtype: 'button',
-                         id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgramFilter',
-                         hidden: true,
-                         //  badgeText: '1',
-                         margin: '2 0 0 15',
-                         height: 25,
-                         width: 35,
-                         html: '<img src="resources/icons/filterPurpleThree.png" width="25" height="25" alt="Company Name">',
-                         ui: 'plain',
-                         handler: function () {
-                             // NotificationsPanelShow();
+            //          {
+            //              id: 'FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt',
+            //              margin: '0 0 0 0',
+            //            //  hidden: true,
+            //              height: 20,
+            //              html: '<font size=3 color=black>(0)</font>'
+            //          },
+            //          {
+            //              xtype: 'button',
+            //              id: 'btnFloatPanel_AyohaMerchantInfo_LoyaltyProgramFilter',
+            //              hidden: true,
+            //              //  badgeText: '1',
+            //              margin: '2 0 0 15',
+            //              height: 25,
+            //              width: 35,
+            //              html: '<img src="resources/icons/filterPurpleThree.png" width="25" height="25" alt="Company Name">',
+            //              ui: 'plain',
+            //              handler: function () {
+            //                  // NotificationsPanelShow();
 
-                             // LoyaltyCardRedeemListShow();
+            //                  // LoyaltyCardRedeemListShow();
 
 
-                             //  LoyaltyCardRedeemListShow();
-                         }
-                     },
+            //                  //  LoyaltyCardRedeemListShow();
+            //              }
+            //          },
 
 
 
 
 
-                ]
+            //     ]
 
-            },
+            // },
 
 
 
@@ -522,7 +557,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
                     console.log('ada0');
     
                     countMerchantLoyaltyCampaign_LoadStampStore = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.getCount();
-                    Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
+                 //   Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
                     // Ext.getCmp('htmlSubscriberListTypeLbl').setHtml('<font size="2" color="black"><b>All Cards(' + countEnterprise + ')</b></font>');
                     return true;
     
@@ -534,7 +569,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
             });
             console.log('tiada3');
             countMerchantLoyaltyCampaign_LoadStampStore = _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.getCount();
-            Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
+           // Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStore + ')</b></font>');
     
             //  Ext.getCmp('htmlSubscriberListTypeLbl').setHtml('<font size="2" color="black"><b>All Cards(' + countEnterprise + ')</b></font>');
         }
@@ -543,7 +578,7 @@ function MerchantLoyaltyCampaign_LoadStampStoreStoreOnKeyUp(){
         else {
             console.log('tiada2');
             _DataStore_AyohaUserStampCard_MerchantLoyaltyCampaign_LoadStampStore.clearFilter();
-            Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStoreFirst + ')</b></font>');
+            // Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStoreFirst + ')</b></font>');
             // Ext.getCmp('htmlSubscriberListTypeLbl').setHtml('<font size="2" color="black"><b>All Cards(' + countEnterpriseSubscribedLoadFirst + ')</b></font>')
             // Ext.getCmp('lblSearchEnterpriseList').setHtml('<font size="2" color="black"><b>Enterprise List (' + countEnterpriseLoanFirst + ')</b></font>');
             return false;
@@ -810,7 +845,7 @@ function FloatPanel_AyohaMerchantInfo_LoyaltyProgramList_AyohaUserStampCard_Merc
             //    var MembershipCardCode = record.get('MembershipCardCode');
             //    alert('First record MembershipCardCode: ' + MembershipCardCode);
               countMerchantLoyaltyCampaign_LoadStampStoreFirst=records.length;
-              Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStoreFirst + ')</b></font>');
+            //  Ext.getCmp('FloatPanel_AyohaMerchantInfo_LoyaltyProgram_CountSearchTxt').setHtml('<font size=3 color=black><b>(' + countMerchantLoyaltyCampaign_LoadStampStoreFirst + ')</b></font>');
               
       
 //               Ext.defer(function () {

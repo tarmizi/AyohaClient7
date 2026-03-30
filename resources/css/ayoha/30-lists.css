@@ -2554,3 +2554,62 @@
 .pointCardListFullWidth .x-list-group-header {
     box-sizing: border-box;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaLoyaltyCard {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(24,39,75,.14), 0 3px 10px rgba(24,39,75,.10);
+}
+
+.ayohaStampCardListFullWidth,
+.ayohaStampCardListFullWidth .x-list-inner,
+.ayohaStampCardListFullWidth .x-scroll-container {
+    background: transparent !important;
+}
+
+.ayohaStampCardListFullWidth .x-list-item {
+    padding: 0 !important;
+    margin: 0 0 16px 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.ayohaStampCardListFullWidth .x-list-item-body,
+.ayohaStampCardListFullWidth .x-innerhtml,
+.ayohaStampCardListFullWidth .x-dataview-item,
+.ayohaStampCardListFullWidth .x-listitem,
+.ayohaStampCardListFullWidth .x-list-item-label {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.ayohaStampCardListFullWidth .x-list-group-header {
+    box-sizing: border-box;
+}
