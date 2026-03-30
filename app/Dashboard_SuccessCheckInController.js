@@ -3681,6 +3681,11 @@ function getMembershipTypeBadgeStyle(cardType) {
 
 function Dashboard_SuccessCheckInController_DirectCheckIn(StrCheckInCount, EnterpiseAccNo, Section,Method) {
  FloatPanel_AyohaMerchantInfo_LoyaltyProgramHide(false);
+ FloatPanel_AyohaMerchantInfo_PointCardLoyaltyProgramHide(false);
+ FloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgramHide(false);
+ FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramHide(false);
+ FloatPanel_AyohaMerchantInfo_EventCardLoyaltyProgramHide(false);
+ FloatPanel_AyohaMerchantInfo_ContestCardLoyaltyProgramHide(false);
    var CheckInCount = parseInt(StrCheckInCount);
   
                      if (CheckInCount <= 2) {

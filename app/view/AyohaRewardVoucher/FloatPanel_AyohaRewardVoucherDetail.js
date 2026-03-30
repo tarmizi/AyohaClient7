@@ -590,11 +590,15 @@ function Dashboard_SuccessCheckIn_SetTnCByVoucherCode(VoucherCode) {
 
 
 function FloatPanel_AyohaRewardVoucherDetailShow_MerchantPerks(VoucherName, VoucherImage, VoucherEndDate,
-    VoucherDayLeft, VoucherCode, VoucherAmount,VoucherTermAndCondition,MembershipCardCode,EnterpriseCountStar,EnterpriseAccNo,TotalReviewer) {
+    VoucherDayLeft, VoucherCode, VoucherAmount,VoucherTermAndCondition,MembershipCardCode,EnterpriseCountStar,EnterpriseAccNo,TotalReviewer,StrCheckInCount) {
   
   
   
 
+Dashboard_SuccessCheckInController_DirectCheckIn(StrCheckInCount, EnterpriseAccNo, "MembershipCampaign-Voucher","Online")
+
+
+return;
 
  
   

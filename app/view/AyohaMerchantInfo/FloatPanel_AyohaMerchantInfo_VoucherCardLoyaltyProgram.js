@@ -147,137 +147,219 @@ function FloatPanel_AyohaMerchantInfo_VoucherCardLoyaltyProgramCreateIfNeeded() 
 
                 items: [
                 
-                    
-                    
                     {
-                        xtype: 'list',
-                        id: 'FloatPanel_AyohaRewardVoucherList_MerchantLoyaltyCampaignlistID',
-                        width: '100%',
-                        height: '100%',
-                        variableHeights: true,
-                        grouped: true,
-                        mode: 'SINGLE',
-                      //  ui: 'plain',        // removes theme borders
-inset: false,       // make sure inset styling isn’t applied
-//cls: 'list--flat',
-// cls: 'card-list list--centered',
+    xtype: 'list',
+    id: 'FloatPanel_AyohaRewardVoucherList_MerchantLoyaltyCampaignlistID',
+    width: '100%',
+    height: '100%',
+    variableHeights: true,
+    grouped: true,
+    mode: 'SINGLE',
+    inset: false,
+    cls: 'voucherCardListFullWidth',
+    disableSelection: true,
+    scrollable: {
+        direction: 'vertical',
+        indicators: {
+            y: { autoHide: true },
+            x: { autoHide: true }
+        }
+    },
+    style: 'background-color:rgba(255,255,255,0);border-radius:0;',
+    store: _DataStore_AyohaRewardVoucher_EntitledUser_LoadBySubscriberAccNo_MerchantLoyaltyCampaignStore,
+
+    itemTpl: new Ext.XTemplate([
+        '<div onclick="FloatPanel_AyohaRewardVoucherDetailShow_MerchantPerks(`{VoucherName}`,`{VoucherImgPath}`,`{EntitledVoucherEndDate}`,`{DayLeft}`,`{VoucherCode}`,`{VoucherAmount}`,`{VoucherTermAndCondition}`,`{MembershipCardCode}`,`{EnterpriseCountStar}`,`{EnterpriseAccNo}`,`{TotalReviewer}`,`{TodayCheckInCount}`);" ',
+        'style="background:#fff;width:100%;box-sizing:border-box;border-radius:12px;overflow:hidden;margin:0 0 16px 0;border:0;box-shadow:0 12px 30px rgba(24,39,75,.14),0 3px 10px rgba(24,39,75,.10);">',
+
+            '<div style="position:relative;">',
+                '<img src="{VoucherImgPath}" alt="{VoucherName}" style="width:100%;height:auto;display:block;">',
+
+                '<div style="position:absolute;bottom:-25px;right:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;',
+                'width:60px;height:60px;background:orange;color:#fff;border-radius:50%;',
+                'box-shadow:0 4px 8px rgba(0,0,0,0.2);border:2px solid #fff;font-weight:bold;line-height:1;gap:2px;z-index:10;">',
+                    '<span style="font-size:14px;margin:0;">{VoucherAmount}</span>',
+                    '<span style="font-size:14px;margin:0;">RM</span>',
+                '</div>',
+            '</div>',
+
+            '<div style="padding:16px;margin-top:10px;">',
+
+                '<div style="display:flex;align-items:center;margin-bottom:12px;gap:12px;border-bottom:1px solid #e9e9ee;padding-bottom:12px;">',
+
+                    '<div style="min-width:48px;height:48px;border-radius:8px;border:1px solid #eee;display:flex;align-items:center;justify-content:center;background-color:#f9f9f9;">',
+                        '<img style="width:28px;height:28px;" src="{EnterpriseLogo}" alt="Store Icon">',
+                    '</div>',
+
+                    '<div style="flex:1;min-width:0;">',
+                        '<p style="font-weight:600;font-size:15px;margin:0;color:#333;">{EnterpriseName}</p>',
+                        '<p style="font-size:12px;color:#777;margin:2px 0 0 0;">{EnterpriseTagLine}</p>',
+                    '</div>',
+
+                    '<div style="display:flex;align-items:center;gap:12px;">',
+                        '<div style="text-align:right;white-space:nowrap;">',
+                            '<div style="font-size:14px;display:flex;align-items:center;gap:4px;justify-content:flex-end;">',
+                                '<span style="font-weight:bold;color:#333;">{EnterpriseCountStar}</span>',
+                                '<span style="color:#f1c40f;">★</span>',
+                            '</div>',
+                            '<div style="font-size:11px;color:#999;">{TotalReviewer} Reviews</div>',
+                        '</div>',
+                    '</div>',
+
+                '</div>',
+
+                '<h2 style="font-size:20px;font-weight:700;margin:16px 0 4px 0;color:#2c3e50;line-height:1.4;">',
+                    '{VoucherName}',
+                '</h2>',
+
+                '<p style="margin:0 0 16px 0;color:#95a5a6;font-size:12px;">',
+                    'End Date: {EntitledVoucherEndDate}',
+                '</p>',
+
+                '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">',
+                    '<span style="background-color:#ecf0f1;color:#7f8c8d;padding:6px 14px;border-radius:16px;font-size:13px;font-weight:500;">{BusinessMode}</span>',
+                    '<span style="background-color:#ecf0f1;color:#7f8c8d;padding:6px 14px;border-radius:16px;font-size:13px;font-weight:500;">{EnterpriseDescription}</span>',
+                '</div>',
+
+            '</div>',
+
+            '<div style="margin:-20px 0 0 10px;display:none;">',
+                '{ButtonBottomDisplay}',
+            '</div>',
+
+        '</div>'
+    ].join(''))
+}
+                    
+//                     {
+//                         xtype: 'list',
+//                         id: 'FloatPanel_AyohaRewardVoucherList_MerchantLoyaltyCampaignlistID',
+//                         width: '100%',
+//                         height: '100%',
+//                         variableHeights: true,
+//                         grouped: true,
+//                         mode: 'SINGLE',
+//                       //  ui: 'plain',        // removes theme borders
+// inset: false,       // make sure inset styling isn’t applied
+// //cls: 'list--flat',
+// // cls: 'card-list list--centered',
                                          
-                                          //grouped: true,
-                                          disableSelection: true,
-                                          scrollable: {
-                                              direction: 'vertical',
-                                              indicators: {
-                                                  y: {
-                                                      autoHide: true
-                                                  },
-                                                  x: {
-                                                      autoHide: true
-                                                  }
-                                              }
-                                          },
-                                          style: 'background-color:rgba(255,255,255, 0);border-radius: 0px 0px 0px 0px;',
+//                                           //grouped: true,
+//                                           disableSelection: true,
+//                                           scrollable: {
+//                                               direction: 'vertical',
+//                                               indicators: {
+//                                                   y: {
+//                                                       autoHide: true
+//                                                   },
+//                                                   x: {
+//                                                       autoHide: true
+//                                                   }
+//                                               }
+//                                           },
+//                                           style: 'background-color:rgba(255,255,255, 0);border-radius: 0px 0px 0px 0px;',
                 
-                        // Minimal inline store so you can see it render
-                        store:_DataStore_AyohaRewardVoucher_EntitledUser_LoadBySubscriberAccNo_MerchantLoyaltyCampaignStore,
+//                         // Minimal inline store so you can see it render
+//                         store:_DataStore_AyohaRewardVoucher_EntitledUser_LoadBySubscriberAccNo_MerchantLoyaltyCampaignStore,
 
 
 
 
 
                        
-// itemTpl: new Ext.XTemplate([
-    itemTpl: new Ext.XTemplate([
-'    <!-- Main Card Container -->',
-// '   <div style="background-color:#ffffff; width:105%; border-radius:5px; overflow:hidden; margin:0 0 0 -10px; border:0; -webkit-box-shadow:0 18px 48px rgba(0,0,0,.28), 0 8px 20px rgba(0,0,0,.22); box-shadow:0 18px 48px rgba(0,0,0,.28), 0 8px 20px rgba(0,0,0,.22);">',
-'<div onclick="FloatPanel_AyohaRewardVoucherDetailShow_MerchantPerks(`{VoucherName}`,`{VoucherImgPath}`,`{EntitledVoucherEndDate}`,`{DayLeft}`,`{VoucherCode}`,`{VoucherAmount}`,`{VoucherTermAndCondition}`,`{MembershipCardCode}`,`{EnterpriseCountStar}`,`{EnterpriseAccNo}`,`{TotalReviewer}`);" style="background:#fff; width:107%; border-radius:12px; overflow:hidden; margin:0px 0px 0px -12px; border:0; box-shadow:0 12px 30px rgba(24,39,75,.14), 0 3px 10px rgba(24,39,75,.10);">',
-'',
-'        <!-- Image Section -->',
-'        <div style="position: relative;">',
-'            <!-- Placeholder for the main image -->',
-'            <img src="{VoucherImgPath}" alt="Pandan Butter Latte" style="width: 100%; height: auto; display: block;">',
-//'{VoucherImgPath}',
-'            ',
-'            <!-- Discount Tag -->',
-'            <div style="display:flex;position: absolute; top: 12px; left: 12px; background-color: orange; color: white; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: bold;">',
-'                Voucher',
-'            </div>',
-'            ',
-'            <!-- Price Tag -->',
+// // itemTpl: new Ext.XTemplate([
+//     itemTpl: new Ext.XTemplate([
+// '    <!-- Main Card Container -->',
+// // '   <div style="background-color:#ffffff; width:105%; border-radius:5px; overflow:hidden; margin:0 0 0 -10px; border:0; -webkit-box-shadow:0 18px 48px rgba(0,0,0,.28), 0 8px 20px rgba(0,0,0,.22); box-shadow:0 18px 48px rgba(0,0,0,.28), 0 8px 20px rgba(0,0,0,.22);">',
+// '<div onclick="FloatPanel_AyohaRewardVoucherDetailShow_MerchantPerks(`{VoucherName}`,`{VoucherImgPath}`,`{EntitledVoucherEndDate}`,`{DayLeft}`,`{VoucherCode}`,`{VoucherAmount}`,`{VoucherTermAndCondition}`,`{MembershipCardCode}`,`{EnterpriseCountStar}`,`{EnterpriseAccNo}`,`{TotalReviewer}`,`{TodayCheckInCount}`);" style="background:#fff; width:107%; border-radius:12px; overflow:hidden; margin:0px 0px 0px -12px; border:0; box-shadow:0 12px 30px rgba(24,39,75,.14), 0 3px 10px rgba(24,39,75,.10);">',
+// '',
+// '        <!-- Image Section -->',
+// '        <div style="position: relative;">',
+// '            <!-- Placeholder for the main image -->',
+// '            <img src="{VoucherImgPath}" alt="Pandan Butter Latte" style="width: 100%; height: auto; display: block;">',
+// //'{VoucherImgPath}',
+// '            ',
+// '            <!-- Discount Tag -->',
+// // '            <div style="display:flex;position: absolute; top: 12px; left: 12px; background-color: orange; color: white; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: bold;">',
+// // '                Voucher',
+// // '            </div>',
+// '            ',
+// '            <!-- Price Tag -->',
 
-'<div style="display:flex',
-';position:absolute; bottom:-25px; right:20px !important; left:auto !important',
-'display:flex; flex-direction:column; align-items:center; justify-content:center;',
-'width:60px; height:60px;',
-'background:orange; color:#fff; border-radius:50%;',
-'box-shadow:0 4px 8px rgba(0,0,0,0.2); border:2px solid #fff;',
-' font-weight:bold; line-height:1; gap:2px;z-index:10;"><span style="font-size:14px; margin:0;">{VoucherAmount}</span> <span style="font-size:14px; margin:0;">RM</span></div>',
+// '<div style="display:flex',
+// ';position:absolute; bottom:-25px; right:20px !important; left:auto !important',
+// 'display:flex; flex-direction:column; align-items:center; justify-content:center;',
+// 'width:60px; height:60px;',
+// 'background:orange; color:#fff; border-radius:50%;',
+// 'box-shadow:0 4px 8px rgba(0,0,0,0.2); border:2px solid #fff;',
+// ' font-weight:bold; line-height:1; gap:2px;z-index:10;"><span style="font-size:14px; margin:0;">{VoucherAmount}</span> <span style="font-size:14px; margin:0;">RM</span></div>',
 
-// '            <div style="display:{ModifiedVoucherDisplay};position: absolute; bottom: -25px; right: 20px; background-color: #e74c3c; color: white; width: 50px; height: 50px; border-radius: 50%;align-items: center; justify-content: center; font-size: 13px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid white;">',
-// '                {ModifiedAmount}',
+// // '            <div style="display:{ModifiedVoucherDisplay};position: absolute; bottom: -25px; right: 20px; background-color: #e74c3c; color: white; width: 50px; height: 50px; border-radius: 50%;align-items: center; justify-content: center; font-size: 13px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid white;">',
+// // '                {ModifiedAmount}',
+// // '            </div>',
+// '        </div>',
+// '',
+// '        <!-- Content Section -->',
+// '        <div style="padding: 16px; margin-top: 10px;">',
+// '            <!-- Store Info -->',
+// '            <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 12px;border-bottom:1px solid #e9e9ee">',
+// '                <!-- Store Icon -->',
+// '                <div style="min-width: 48px; height: 48px; border-radius: 8px; border: 1px solid #eee; display:flex; align-items:center; justify-content:center; background-color: #f9f9f9;">',
+// '                    <img style="width: 28px; height: 28px;" src="{EnterpriseLogo}" alt="Store Icon">',
+// '                </div>',
+// '                ',
+// '                <!-- Store Name and Subtitle -->',
+// '                <div style="flex-grow: 1;">',
+// '                    <p style="font-weight: 600; font-size: 15px; margin: 0; color: #333;">{EnterpriseName}</p>',
+// '                    <p style="font-size: 12px; color: #777; margin: 2px 0 0 0;">{EnterpriseTagLine}</p>',
+// '                </div>',
+// '                ',
+// '                <!-- Rating and Reward Icon Container -->',
+// '                <div style="display: flex; align-items: center; gap: 12px;">',
+// '                    <!-- Rating -->',
+// '                    <div style="text-align: right; white-space: nowrap;">',
+// '                        <div style="font-size: 14px; display: flex; align-items: center; gap: 4px;">',
+// '                            <span style="font-weight: bold; color: #333;">{EnterpriseCountStar}</span>',
+// '                            <span style="color: #f1c40f;">★</span>',
+// '                        </div>',
+// '                        <div style="font-size: 11px; color: #999;">{TotalReviewer} Reviews</div>',
+// '                    </div>',    
+// '                </div>',
 // '            </div>',
-'        </div>',
-'',
-'        <!-- Content Section -->',
-'        <div style="padding: 16px; margin-top: 10px;">',
-'            <!-- Store Info -->',
-'            <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 12px;border-bottom:1px solid #e9e9ee">',
-'                <!-- Store Icon -->',
-'                <div style="min-width: 48px; height: 48px; border-radius: 8px; border: 1px solid #eee; display:flex; align-items:center; justify-content:center; background-color: #f9f9f9;">',
-'                    <img style="width: 28px; height: 28px;" src="{EnterpriseLogo}" alt="Store Icon">',
-'                </div>',
-'                ',
-'                <!-- Store Name and Subtitle -->',
-'                <div style="flex-grow: 1;">',
-'                    <p style="font-weight: 600; font-size: 15px; margin: 0; color: #333;">{EnterpriseName}</p>',
-'                    <p style="font-size: 12px; color: #777; margin: 2px 0 0 0;">{EnterpriseTagLine}</p>',
-'                </div>',
-'                ',
-'                <!-- Rating and Reward Icon Container -->',
-'                <div style="display: flex; align-items: center; gap: 12px;">',
-'                    <!-- Rating -->',
-'                    <div style="text-align: right; white-space: nowrap;">',
-'                        <div style="font-size: 14px; display: flex; align-items: center; gap: 4px;">',
-'                            <span style="font-weight: bold; color: #333;">{EnterpriseCountStar}</span>',
-'                            <span style="color: #f1c40f;">★</span>',
-'                        </div>',
-'                        <div style="font-size: 11px; color: #999;">{TotalReviewer} Reviews</div>',
-'                    </div>',    
-'                </div>',
-'            </div>',
-'',
-//'            <div style:border:1px solid #e9e9ee;width:100%;height:5px;background-color:#e9e9ee/>',
-'            <h2 style="font-size: 20px; font-weight: 700; margin: 16px 0 4px 0; color: #2c3e50; line-height: 1.4;">',
-'                {VoucherName}',
-'            </h2>',
-// '            <h2 style="font-size: 14px; font-weight: 700; margin: 3px 0 4px 0; color: #2c3e50; line-height: 1.4;">',
-// '                {VoucherTermAndCondition}',
+// '',
+// //'            <div style:border:1px solid #e9e9ee;width:100%;height:5px;background-color:#e9e9ee/>',
+// '            <h2 style="font-size: 20px; font-weight: 700; margin: 16px 0 4px 0; color: #2c3e50; line-height: 1.4;">',
+// '                {VoucherName}',
 // '            </h2>',
-'            ',
-'            <!-- Original Price -->',
-'            <p style="margin: 0 0 16px 0; color: #95a5a6; font-size: 12px;">',
-'                End Date: {EntitledVoucherEndDate}',
-'            </p>',
-'',
-'            <!-- Tags -->',
-'            <div style="display: flex; gap: 8px; margin-bottom: 4px;">',
-'                <span style="background-color: #ecf0f1; color: #7f8c8d; padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 500;">{BusinessMode}</span>',
-'                <span style="background-color: #ecf0f1; color: #7f8c8d; padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 500;">{EnterpriseDescription}</span>',
-'            </div>',
-'            ',
-'        </div>',
-'        ',
-'        <!-- Action Button -->',
-'        <div style="margin: -20px 0px 0px 10px;display:none">',
-'{ButtonBottomDisplay}',
-// '             <button style="width: 97%; background-image: linear-gradient(#ff00de75, #c800ffc9);background-color: #fac; color: white; border: none; padding: 15px; border-radius: 12px; font-size: 14px; font-weight: bold; cursor: pointer; text-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 4px 10px rgba(247, 151, 30, 0.4); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform=\'translateY(-2px)\'; this.style.boxShadow=\'0 6px 12px rgba(247, 151, 30, 0.5)\';" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 10px rgba(247, 151, 30, 0.4)\';">',
-// '                View Membership Voucher',
-// '            </button>',
-'        </div>',
-'',
-'    </div>'
-].join(''),
+// // '            <h2 style="font-size: 14px; font-weight: 700; margin: 3px 0 4px 0; color: #2c3e50; line-height: 1.4;">',
+// // '                {VoucherTermAndCondition}',
+// // '            </h2>',
+// '            ',
+// '            <!-- Original Price -->',
+// '            <p style="margin: 0 0 16px 0; color: #95a5a6; font-size: 12px;">',
+// '                End Date: {EntitledVoucherEndDate}',
+// '            </p>',
+// '',
+// '            <!-- Tags -->',
+// '            <div style="display: flex; gap: 8px; margin-bottom: 4px;">',
+// '                <span style="background-color: #ecf0f1; color: #7f8c8d; padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 500;">{BusinessMode}</span>',
+// '                <span style="background-color: #ecf0f1; color: #7f8c8d; padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 500;">{EnterpriseDescription}</span>',
+// '            </div>',
+// '            ',
+// '        </div>',
+// '        ',
+// '        <!-- Action Button -->',
+// '        <div style="margin: -20px 0px 0px 10px;display:none">',
+// '{ButtonBottomDisplay}',
+// // '             <button style="width: 97%; background-image: linear-gradient(#ff00de75, #c800ffc9);background-color: #fac; color: white; border: none; padding: 15px; border-radius: 12px; font-size: 14px; font-weight: bold; cursor: pointer; text-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 4px 10px rgba(247, 151, 30, 0.4); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform=\'translateY(-2px)\'; this.style.boxShadow=\'0 6px 12px rgba(247, 151, 30, 0.5)\';" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 10px rgba(247, 151, 30, 0.4)\';">',
+// // '                View Membership Voucher',
+// // '            </button>',
+// '        </div>',
+// '',
+// '    </div>'
+// ].join(''),
 
-)},
+// )},
 
 
 

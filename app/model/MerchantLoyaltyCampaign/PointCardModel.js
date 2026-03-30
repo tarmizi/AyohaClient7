@@ -25,7 +25,10 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.PointCardModel', {
                   'isCampaignExpired',
                   'BusinessMode',    
                   'EnterpriseDescription',
-                  'isMember'               
+                  'isMember',
+                  'TodayCheckInCount',
+                'EnterpriseAddress',
+              
                     
                     
         ]

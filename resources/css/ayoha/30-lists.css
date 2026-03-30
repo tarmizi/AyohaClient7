@@ -2358,3 +2358,199 @@
     box-shadow: 0 4px 10px rgba(91, 33, 182, 0.18);
     flex-shrink: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contestCardListFullWidth,
+.contestCardListFullWidth .x-list-inner,
+.contestCardListFullWidth .x-scroll-container {
+    background: transparent !important;
+}
+
+.contestCardListFullWidth .x-list-item {
+    padding: 0 !important;
+    margin: 0 0 16px 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.contestCardListFullWidth .x-list-item-body,
+.contestCardListFullWidth .x-innerhtml,
+.contestCardListFullWidth .x-dataview-item,
+.contestCardListFullWidth .x-listitem,
+.contestCardListFullWidth .x-list-item-label {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.contestCardListFullWidth .x-list-group-header {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+.eventCardListFullWidth,
+.eventCardListFullWidth .x-list-inner,
+.eventCardListFullWidth .x-scroll-container {
+    background: transparent !important;
+}
+
+.eventCardListFullWidth .x-list-item {
+    padding: 0 !important;
+    margin: 0 0 16px 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.eventCardListFullWidth .x-list-item-body,
+.eventCardListFullWidth .x-innerhtml,
+.eventCardListFullWidth .x-dataview-item,
+.eventCardListFullWidth .x-listitem,
+.eventCardListFullWidth .x-list-item-label {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.eventCardListFullWidth .x-list-group-header {
+    box-sizing: border-box;
+}
+
+
+
+
+.voucherCardListFullWidth,
+.voucherCardListFullWidth .x-list-inner,
+.voucherCardListFullWidth .x-scroll-container {
+    background: transparent !important;
+}
+
+.voucherCardListFullWidth .x-list-item {
+    padding: 0 !important;
+    margin: 0 0 16px 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.voucherCardListFullWidth .x-list-item-body,
+.voucherCardListFullWidth .x-innerhtml,
+.voucherCardListFullWidth .x-dataview-item,
+.voucherCardListFullWidth .x-listitem,
+.voucherCardListFullWidth .x-list-item-label {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.voucherCardListFullWidth .x-list-group-header {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+.discountCardListFullWidth,
+.discountCardListFullWidth .x-list-inner,
+.discountCardListFullWidth .x-scroll-container {
+    background: transparent !important;
+}
+
+.discountCardListFullWidth .x-list-item {
+    padding: 0 !important;
+    margin: 0 0 16px 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.discountCardListFullWidth .x-list-item-body,
+.discountCardListFullWidth .x-innerhtml,
+.discountCardListFullWidth .x-dataview-item,
+.discountCardListFullWidth .x-listitem,
+.discountCardListFullWidth .x-list-item-label {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.discountCardListFullWidth .x-list-group-header {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+.pointCardListFullWidth,
+.pointCardListFullWidth .x-list-inner,
+.pointCardListFullWidth .x-scroll-container {
+    background: transparent !important;
+}
+
+.pointCardListFullWidth .x-list-item {
+    padding: 0 !important;
+    margin: 0 0 16px 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.pointCardListFullWidth .x-list-item-body,
+.pointCardListFullWidth .x-innerhtml,
+.pointCardListFullWidth .x-dataview-item,
+.pointCardListFullWidth .x-listitem,
+.pointCardListFullWidth .x-list-item-label {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.pointCardListFullWidth .x-list-group-header {
+    box-sizing: border-box;
+}

@@ -23,6 +23,8 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.DiscountCardModel', {
                   'MembershipCardFeePaymentCycle',
                   'BusinessMode',    
                   'EnterpriseDescription',
+                  'TodayCheckInCount',
+                  'EnterpriseAddress',
                   {
                     name: 'ModifiedDiscountPercent',
                     convert: function (value, record) {

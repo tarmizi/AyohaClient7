@@ -24,7 +24,9 @@ Ext.define('BuskartApp.model.MerchantLoyaltyCampaign.ContestCardModel', {
                   'MembershipCardFeePaymentCycle',
                   'BusinessMode',    
                   'EnterpriseDescription',
-                  'CampaignName',      
+                  'CampaignName',
+                  'TodayCheckInCount',
+                  'EnterpriseAddress',     
                     
                     
         ]

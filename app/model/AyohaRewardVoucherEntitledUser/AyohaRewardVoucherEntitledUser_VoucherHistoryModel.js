@@ -32,6 +32,8 @@
 'EnterpriseAccNo',
 'MembershipCardFeePaymentCycle',
 'SearchCol',
+'TodayCheckInCount',
+'EnterpriseAddress',
        {
            name: 'isThisVoucherUses',
            convert: function (value, record) {
