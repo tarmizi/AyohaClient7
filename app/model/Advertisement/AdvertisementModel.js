@@ -48,6 +48,7 @@
       'AverageRating',
       'TotalReviews',
       'EnterpriseAddress',
+      'TodayCheckInCount',
           {
               name: 'AdvertisementStatusButton',
               convert: function (value, record) {

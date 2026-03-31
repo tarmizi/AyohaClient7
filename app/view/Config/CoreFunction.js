@@ -653,6 +653,7 @@ function CoreFunction_DashboardMembershipLoyaltyProgramMaster_LoadMasterStore() 
 
 function loadAdvertisementloadPremiumAdvertisment() {
     AdvertismentTypeTag = 'PremiumAdvertisement';
+     _DataStore_AdvertisementloadPremiumAdvertisementStore.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
     _DataStore_AdvertisementloadPremiumAdvertisementStore.getProxy().setUrl(GetAPIurl() + '/Advertisement/AdvertisementloadPremiumAdvertisment');   
     _DataStore_AdvertisementloadPremiumAdvertisementStore.load({
         callback: function (records, operation, success) {

@@ -1173,7 +1173,7 @@ xtype: 'container',
   //margin:'-440px 0px 0px 0px',
  //height:650,
  height:750,
- zIndex:10,
+ //zIndex:10,
 //style: 'background: orange;',
 style: 'background:transparent;',
  layout: {
@@ -1185,163 +1185,6 @@ style: 'background:transparent;',
 
 items:[
  
-// {
-// xtype: 'container',
-//   width: '100%',
-//   hidden:true,
- 
-  
-//  height:180,
-
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'left'
-// },
-// items:[
-
-//    {
-// xtype: 'container',
-//   width: '100%',
-//   height:50,
-//   margin: '0 0 0 0',
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'hbox',
-//     pack: 'center',
-//     align: 'center'
-// },
-// items:[
-//  {
-//     width: '100%',
-//     height:50,
-   
-//     id: 'html_Dashboard_1stline_nonMember',
-//    html:
-//     '<div style="'
-//         + 'width:100%;'
-//       //  + 'min-height:260px;'
-//     //    + 'box-sizing:border-box;'
-//        + 'padding:0px 0px 0px 20px;'
-//         + 'position:relative;'
-//         + 'overflow:hidden;'
-//       //  + 'background:linear-gradient(180deg,#5B1FA6 0%, #6A28B8 55%, #7A35C7 100%);'
-//          + 'background:transparent;'
-//        // + 'border-radius:0 0 28px 28px;'
-//           + 'border-radius:0 0 0px 0px;'
-//     + '">' +
-
-      
-
-
-          
-
-               
-
-//                     '<div style="'
-//                         + 'font-family:Arial,sans-serif;text-align:center;'
-//                         + 'font-size:18px;'
-//                         + 'font-weight:800;'
-//                      //   + 'line-height:32px;'
-//                         + 'letter-spacing:-0.4px;'
-//                         + 'color:#FFFFFF;'
-//                        // + 'text-shadow:0 3px 12px rgba(0,0,0,0.30);'
-//                       //  + 'margin:0 0 6px 0;'
-//                     + '">'
-//                         + 'Unlock Premium Perks'
-//                     + '</div>' +
-
-//                     '<div id="html_Dashboard_nonMember_merchantName" style="'
-//                         + 'font-family:Arial,sans-serif;text-align:center;'
-//                         + 'font-size:12px;'
-//                         + 'font-weight:400;'
-//                         + 'line-height:29px;'
-//                         + 'color:#F6F1FF;'
-//                         + 'text-shadow:0 2px 10px rgba(0,0,0,0.25);'
-//                         + 'margin:0 0 6px 0;'
-//                     + '">'
-//                         + 'at Kopi Surat Cinta'
-//                     + '</div>' +
-
-                 
-
-              
-
-           
-
-          
-
-     
-
-//     '</div>'
-//   },
-// ]
-//    },
- 
-   
-
-//    {
-// xtype: 'container',
-//   width: '100%',
-//   height:325,
-//   hidden:true,
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'hbox',
-//     pack: 'center',
-//     align: 'center'
-// },
-// items:[
-//   {
-// xtype: 'container',
-//   width: '42%',
-//   height:325,
-//   style: 'background:transparent;',
-//   layout: {
-
-//     type: 'vbox',
-//     pack: 'start',
-//     align: 'right'
-// },
-// items:[
-// {
-// xtype: 'component',
-// margin:'0 0 0 0',
-// html:
-//     '<div style="margin-top:8px;max-width:180px;margin-left:23px">' +
-//         '<div style="font-family:Arial,sans-serif;font-size:10px;line-height:20px;color:rgba(255,255,255,0.90);font-weight:400;margin-bottom:14px;">' +
-//             'Exclusive perks for <br>members only.Get yours today.' +
-//         '</div>' +       
-//     '</div>',
-
-//  //height:80,
-//   },
-//   {
-//     xtype: 'component',
-   
-//     html:
-//   '<div style="margin-top:0px;">' +
-//     '<div class="ayohaPremiumBtn" onclick="Dashboard_UnlockNow()">' +
-//       '<span>Unlock Now !</span>' +
-//     '</div>' +
-//   '</div>'
-//   }
-// ]
-//   },
-  
- 
-
-// ]
-//    },
-
-// ]
-// },
-
-
 {
   xtype: 'container',
   width: '100%',
@@ -1376,7 +1219,7 @@ items:[
 
  {
     width: '100%',
-    margin: '0 0 0 0',
+    margin: '15 0 0 0',
     height: 65,
     width: 65,
     id: 'html_Dashboard_1stlinePicProfile_PromotingMembershipCard',
@@ -1391,20 +1234,119 @@ items:[
   },
   {
     width: '100%',
+    hidden:true,
     margin: '0 0 0 0',
     id: 'html_Dashboard_1stline_PromotingMembershipCard_1',
     html: '<div style="text-shadow:0 3px 12px rgba(0,0,0,0.30);color:#FFFFFF;text-align:center;font-size:22px;line-height:1.2;font-weight:900;letter-spacing:-0.35px;width:100%;line-height:32px;">Unlock Premium Perks!</div>'
   },
   {
     width: '100%',
-    margin: '0 0 0 0',
+    margin: '5 0 0 0',
     id: 'html_Dashboard_1stline_PromotingMembershipCard_2',
-    html: '<div id="html_Dashboard_nonMember_merchantName" style="text-shadow:0 2px 10px rgba(0,0,0,0.25);color:#F6F1FF;text-align:center;font-size:14px;line-height:19px;font-weight:400;width:100%;">at Kopi Surat Cinta</div>'
+ html:
+'<div id="html_Dashboard_nonMember_merchantName" style="width:100%;text-align:center;">' +
+    '<div style="' +
+        'display:inline-flex;' +
+        'align-items:center;' +
+        'justify-content:center;' +
+        'gap:7px;' +
+        'padding:6px 14px;' +       
+    '">' +
+
+        '<span style="' +
+            'font-size:13px;' +
+            'line-height:13px;' +
+            'color:#FFD77A;' +
+        '">✨🎁</span>' +
+
+        '<span style="' +
+            'font-size:13px;' +
+            'line-height:15px;' +
+            'font-weight:700;' +
+            'color:#FFFFFF;' +
+            'letter-spacing:0.2px;' +
+            'text-shadow:0 2px 8px rgba(0,0,0,0.18);' +
+            'white-space:nowrap;' +
+            'overflow:hidden;' +
+            'text-overflow:ellipsis;' +
+            'max-width:180px;' +
+            'display:inline-block;' +
+        '">Exclusive at Kopi Surat Cinta</span>' +
+    '</div>' +
+'</div>'
+//    html:
+// '<div id="html_Dashboard_nonMember_merchantName" style="width:100%;text-align:center;">' +
+//     '<div style="' +
+//         'display:inline-flex;' +
+//         'align-items:center;' +
+//         'justify-content:center;' +
+//         'gap:10px;' +
+//         'padding:9px 16px 9px 10px;' +
+//         'border-radius:999px;' +
+//         'background:linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 100%);' +
+//         'border:1px solid rgba(255,215,122,0.38);' +
+//         'box-shadow:0 10px 24px rgba(49,10,92,0.22), inset 0 1px 0 rgba(255,255,255,0.18);' +
+//         'backdrop-filter:blur(10px);' +
+//         '-webkit-backdrop-filter:blur(10px);' +
+//         'max-width:92%;' +
+//     '">' +
+
+//         '<div style="' +
+//             'width:30px;' +
+//             'height:30px;' +
+//             'min-width:30px;' +
+//             'border-radius:50%;' +
+//             'overflow:hidden;' +
+//             'background:#ffffff;' +
+//             'display:flex;' +
+//             'align-items:center;' +
+//             'justify-content:center;' +
+//             'box-shadow:0 4px 10px rgba(0,0,0,0.16);' +
+//             'border:1px solid rgba(255,215,122,0.45);' +
+//         '">' +
+//             '<img src="resources/images/merchantlogo.png" style="' +
+//                 'width:100%;' +
+//                 'height:100%;' +
+//                 'object-fit:cover;' +
+//                 'display:block;' +
+//             '">' +
+//         '</div>' +
+
+//         '<div style="text-align:left;min-width:0;">' +
+//             '<div style="' +
+//                 'font-size:10px;' +
+//                 'font-weight:800;' +
+//                 'letter-spacing:1.2px;' +
+//                 'text-transform:uppercase;' +
+//                 'color:#FFD77A;' +
+//                 'line-height:11px;' +
+//                 'margin-bottom:3px;' +
+//                 'text-shadow:0 1px 6px rgba(0,0,0,0.16);' +
+//             '">Featured Merchant</div>' +
+
+//             '<div style="' +
+//                 'color:#FFFFFF;' +
+//                 'font-size:14px;' +
+//                 'line-height:16px;' +
+//                 'font-weight:800;' +
+//                 'letter-spacing:0.2px;' +
+//                 'text-shadow:0 2px 10px rgba(0,0,0,0.22);' +
+//                 'white-space:nowrap;' +
+//                 'overflow:hidden;' +
+//                 'text-overflow:ellipsis;' +
+//                 'max-width:180px;' +
+//             '">Kopi Surat Cinta</div>' +
+//         '</div>' +
+
+//     '</div>' +
+// '</div>'
+    //html: '<div id="html_Dashboard_nonMember_merchantName" style="text-shadow:0 2px 10px rgba(0,0,0,0.25);color:#F6F1FF;text-align:center;font-size:14px;line-height:19px;font-weight:400;width:100%;">at Kopi Surat Cinta</div>'
   },
   {
     xtype: 'container',
     width: '100%',
     height: 115,
+      margin: '10 0 0 0',
     cls: 'checkIn_heroStripPurple',
    
     layout: 'fit',
@@ -1469,7 +1411,7 @@ items:[
     html:
   '<div style="margin-top:5px;">' +
     '<div class="ayohaPremiumBtn" onclick="Dashboard_UnlockNow()">' +
-      '<span>✨ Get The Membership Card Now 🎁</span>' +
+      '<span>Join the Club & Claim Your Perks</span>' +
     '</div>' +
   '</div>'
   },
@@ -8381,7 +8323,7 @@ itemTpl: new Ext.XTemplate(
         deferEmptyText: false,
       
         itemTpl: [
-          '<div class="ayohaDealCard">',
+          '<div class="ayohaDealCard" >',
       
             '<div class="dealMedia">',
               '<div class="dealBadge">{DiscountText}</div>',
@@ -8441,6 +8383,9 @@ itemTpl: new Ext.XTemplate(
               console.log('BUY', record.get('ProductName'));
               return;
             }
+
+            Dashboard_SuccessCheckInController_DirectCheckIn(record.get('TodayCheckInCount')
+            , record.get('EnterpriseAccNo'), 'MembershipExclusiveDeal','Online')
       
             // Klik card (optional)
             // console.log('OPEN DETAIL', record.get('ProductName'));
@@ -19459,7 +19404,43 @@ function Dashboard_LoadLastCheckIn(){
     
    
     
-    document.getElementById("html_Dashboard_nonMember_merchantName").innerText="at " +record.get('EnterpriseName');
+    //document.getElementById("html_Dashboard_nonMember_merchantName").innerText="at " +record.get('EnterpriseName');
+
+
+
+Ext.getCmp('html_Dashboard_1stline_PromotingMembershipCard_2').setHtml('<div id="html_Dashboard_nonMember_merchantName" style="width:100%;text-align:center;">' +
+    '<div style="' +
+        'display:inline-flex;' +
+        'align-items:center;' +
+        'justify-content:center;' +
+        'gap:7px;' +
+        'padding:6px 14px;' +       
+    '">' +
+
+        '<span style="' +
+            'font-size:13px;' +
+            'line-height:13px;' +
+            'color:#FFD77A;' +
+        '">✨🎁</span>' +
+
+        '<span style="' +
+            'font-size:14px;' +
+            'line-height:15px;' +
+            'font-weight:700;' +
+            'color:#FFFFFF;' +
+            'letter-spacing:0.2px;' +
+            'text-shadow:0 2px 8px rgba(0,0,0,0.18);' +
+            'white-space:nowrap;' +
+            'overflow:hidden;' +
+          //  'text-overflow:ellipsis;' +
+          //  'max-width:180px;' +
+            'display:inline-block;' +
+        '">Exclusive at ' + record.get('EnterpriseName') + '</span>' +
+    '</div>' +
+'</div>')
+
+
+
 
 
     if(record.get('isMember')=="YES"){
