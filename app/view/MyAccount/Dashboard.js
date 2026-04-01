@@ -68,12 +68,665 @@ Ext.define('BuskartApp.view.MyAccount.Dashboard', {
                 items: [
 
                   //////////Header///
-                    {
+  //                   {
+
+  //                       xtype: 'container',
+  //                       width: '100%',
+  //                     height:  ayoha_HeaderHeight(),
+  //                     zIndex:10,
+  //                       //height: 50,
+  //                       id: 'containerMyAccount_DashboardHeader',
+  //                    style:ayohaThemeColor_Header(),
+  //                       layout: {
+  //                           type: 'hbox',
+  //                           pack: 'center',
+  //                           align: 'center',
+  //                       },
+       
+  //                       items:
+  //                              [
+       
+                             
+  //                                  {
+  //                                      xtype: 'container',
+  //                                    margin: '10 0 0 7',
+  //                                      style: 'background-color:transparent;',
+  //                                      id: 'containerMyAccount_DashboardHaiUser',
+  //                                      name: 'namecontainerMyAccount_DashboardHaiUser',
+  //                                      height: 55,
+  //                                      width: 145,
+  //                                      layout: {
+       
+  //                                          type: 'hbox',
+  //                                          pack: 'left',
+  //                                          align: 'left'
+  //                                      },
+  //                                      items: [
+  //                                          //{
+  //                                          //    xtype: 'panel',
+  //                                          //    width:1
+  //                                          //},
+       
+  //                                          {
+  //                                              xtype: 'container',
+  //                                           //    height: 55,
+  //                                           //    width: 55,
+  //                                              layout: {
+       
+  //                                                  type: 'vbox',
+  //                                                  pack: 'left',
+  //                                                  align: 'left'
+  //                                              },
+  //                                              items: [
+  //                                                   {
+  //                                                      // xtype: 'button',
+  //                                                       id: 'btnMyAccount_DashboardPicProfileIcon',
+  //                                                       height: 55,
+  //                                                       width: 55,
+  //                                                      margin: '0 0 0 0',                                                       
+  //                                                       // iconCls: 'list',
+  //                                                       //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
+  //                                                       html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
+  //                                                       // ui: 'plain',
+  //                                                       // handler: function () {
+       
+       
+  //                                                       // }
+  //                                                   },
+  //                                                   {
+  //                                                       id: 'btnMyAccount_DashboardRankIconx',
+  //                                                       hidden: true,
+  //                                                       margin: '-20 0 0 30',
+  //                                                       style: 'background-color:transparent;',
+  //                                                       height: 22,
+  //                                                       width: 22,
+  //                                                       zIndex: 100,
+  //                                                       html: '<div style="width:22px;height:22px;background-color:white;border-radius:50%;"><img src="resources/icons/kingclubIcon.png" alt="Image" style="width:15px;height:15px;margin:3px 0px 0px 4px;background-color:white;"></div>',
+       
+       
+  //                                                   }
+  //                                              ]
+  //                                          },
+       
+  //                                             {
+  //                                                 xtype: 'panel',
+  //                                                 hidden:true,
+  //                                                 width: 1
+  //                                             },
+  //                                          {
+  //                                              margin: '4 0 0 0',
+  //                                             id: 'htmlMyAccount_Dashboard_ProfileTitle',                                              
+  //                                             hidden:true,   
+  //                                             //ori html: '<div onclick="FloatPanel_MyAccountMasterShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:3px 0px 0px 0px">Good Days!,</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:-25px 0px 0px 0px">Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+  //                                              html: '<div onclick="FloatPanel_MyAccountMasterShow()"   style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:0px 0px 0px 0px" >Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:-25px 0px 0px 0px">Welcome Back,Good After Noon!</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+                                               
+       
+  //                                          },
+  //                                          {
+  //                                           margin: '0 0 0 0',
+  //                                         id: 'htmlMyAccount_Dashboard_ProfileTitleUpgrade',  
+                                                                                  
+  //                                          //ori html: '<div onclick="FloatPanel_MyAccountMasterShow()" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 11px;font-weight:normal;color:white;margin:3px 0px 0px 0px">Good Days!,</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:-25px 0px 0px 0px">Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+  //                                           html: '<div onclick="FloatPanel_MyAccountMasterShow()"   style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 16px;font-weight:bold;color:white;margin:3px 0px 0px 0px" >Tarmizi Rahim</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:normal;color:white;margin:-25px 0px 0px 0px">Good After Noon!</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 10px;font-weight:bold;color:white;margin:-27px 0px 0px 0px">Non-Ayoha Member</div>'
+                                            
+    
+  //                                       },
+                                     
+       
+  //                                      ]
+  //                                  },
+       
+       
+       
+       
+       
+  //                                             {
+  //                                                 xtype: 'spacer',
+       
+  //                                             },
+                              
+       
+  //                              {
+  //                                  xtype: 'container',
+  //                                  id: 'containerMyAccount_Dashboard_MenuBottom_Notification',
+  //                                  name: 'namecontainerMyAccount_Dashboard_MenuBottom_Notification',
+                                 
+  //                                 //ori margin: '-10 0 0 0',
+  //                                  margin: '0 0 0 0',
+  //                                 width: 50,
+  //                                 height: 40,
+  //                                  style: "background-color: transparent",
+  //                                  //style: "background-color: #F35B57;",
+       
+  //                                  layout: {
+  //                                      type: 'vbox',
+  //                                      pack: 'center',
+  //                                      align: 'center'
+       
+  //                                  },
+  //                                  items: [
+       
+  //                                       {
+                                       
+  //                                           // id: 'btn_MyAccount_Dashboard_MenuBottom_Notification',
+  //                                           // margin: '0 0 0 0',
+       
+  //                                           // height: 20,
+  //                                           // width: 20,
+  //                                           // html: '<img src="resources/icons/Notification.png" width="22" height="22" alt="Company Name">',
+                                         
+                                        
+  //                                       xtype: 'component',
+  // id: 'btn_MyAccount_Dashboard_MenuBottom_Notification',
+  // width: 20,
+  // height: 20,
+  // style: 'background:transparent; overflow:visible;',   // penting
+  // html:
+  //   '<div class="ayohaNotifWrap">' +
+  //     '<img src="resources/icons/Notification.png" class="ayohaNotifIcon" />' +
+  //     '<div class="ayohaNotifBadge" id="ayohaNotifBadgeUnread" style="display:none;">0</div>' +
+  //   '</div>'
+                                        
+                                        
+                                        
+                                        
+  //                                       },
+                                        
+       
+       
+  //                                  ]
+  //                              },
+       
+       
+       
+       
+  //                              {
+  //                               xtype: 'container',
+  //                               id: 'containerMyAccount_Dashboard_MyAccount',
+  //                               name: 'namecontainerMyAccount_Dashboard_MyAccount',
+  //                               hidden: true,
+  //                             //ori  margin: '-10 0 0 0',
+  //                               margin: '0 0 0 0',
+  //                              width: 40,
+  //                              height: 40,
+  //                               style: "background-color: transparent",
+  //                               //style: "background-color: #F35B57;",
+    
+  //                               layout: {
+  //                                   type: 'vbox',
+  //                                   pack: 'center',
+  //                                   align: 'center'
+    
+  //                               },
+  //                               items: [
+    
+  //                                    {
+  //                                        //xtype: 'button',
+  //                                        id: 'btn_MyAccount_Dashboard_MyAccount',
+  //                                        // badgeText: '10',
+  //                                        margin: '0 0 0 -20',
+    
+  //                                        height: 32,
+  //                                        width: 32,
+  //                                        html: '<img src="resources/icons/founderWayang02.jpg"  style="width:32px;height:32px;border-radius:50%;border:2px white solid"  alt="Company Name">',
+  //                                        //ui: 'plain',
+  //                                        //handler: function () {
+  //                                        //    // FloatLoyaltyCardStampShow();
+  //                                        //    //  NotificationIndividualPanelShow();
+  //                                        //    FloatPanel_AyohaNotificationShow();
+  //                                        //}
+  //                                    },
+                                     
+    
+    
+  //                               ]
+  //                           },
+                            
+
+       
+       
+  //                                             /////////new EWALLEt
+  //                                             {
+  //                                              xtype: 'container',
+                                          
+  //                                             //hide on 1-12-2025
+  //                                           //  hidden:true,
+  //                                             // margin: '-8px 10 0 0',
+  //                                              margin: '0 10 0 0',                                          
+  //                                              //zIndex: 100,
+  //                                              id: 'containerMyAccount_DashboardAyohaeWallet',
+  //                                              name: 'namecontainerMyAccount_DashboardAyohaeWallet',
+  //                                             // hidden: true,
+  //                                             style: 'background:transparent;',
+  //                                             //ori  style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 10px 10px 10px 10px;',                                             
+  //                                              height: 35,
+  //                                              width: 90,
+  //                                              //width: 75,
+  //                                              layout: {
+       
+  //                                                  type: 'hbox',
+  //                                                  pack: 'center',
+  //                                                  align: 'center'
+  //                                              },
+  //                                              items: [
+                                                 
+  //                                                  {
+  //                                                      margin: '0 0 0 0',
+  //                                                      hidden:true,
+  //                                                      id: 'htmlMyAccount_Dashboard_TitleHeaderTxtAyohaEwallet',
+  //                                                     // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha e-Wallet</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 16px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">RM 00.00</div>'
+  //                                                      html: '<div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 12px;font-weight:bold;color:black;margin:0px 0px 0px 0px">RM 00.00</div><br><div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 10px;font-weight:normal;color:black;margin:-25px 0px 0px 0px">TOP UP</div>'
+                                                      
+       
+  //                                                  },
+  //                                                  {
+  //                                                      xtype: 'container',
+  //                                                      style: 'background-color:transparent;',
+  //                                                      hidden:true,
+  //                                                         width: 15,
+  //                                                         height: 30,
+  //                                                     },
+  //                                                     {
+  //                                                      xtype: 'container',
+  //                                                      style: 'background-color:grey;',
+  //                                                      hidden:true,
+  //                                                         width: 1,
+  //                                                         height: 28,
+  //                                                     },
+  //                                                     {
+  //                                                      xtype: 'container',
+  //                                                      style: 'background-color:transparent;',
+  //                                                      hidden:true,
+  //                                                         width: 15,
+  //                                                         height: 30,
+  //                                                     },
+  //                                                     {
+  //                                                       margin: '15 0 0 0',
+  //                                                       html:
+  //                                                       '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow()"; style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
+  //                                                         '<div style="text-align:right;color:white;">' +
+  //                                                           '<span id="Dashboard_userPts" style="display:block;font-size:12px;font-weight:800;line-height:1;">400</span>' +
+  //                                                           '<span style="display:block;font-size:10px;">Ayoha Pts</span>' +
+  //                                                         '</div>' +
+  //                                                         '<div style="background:white;color:#d500f9;width:32px;height:32px;border-radius:50%;' +
+  //                                                              'display:flex;align-items:center;justify-content:center;margin-left:8px;' +
+  //                                                              'font-size:12px;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.2);">' +
+  //                                                           'A' +
+  //                                                         '</div>' +
+  //                                                       '</div>',
+  //                                                     },
+  //                                                     {
+  //                                                      margin: '0 0 0 0',
+  //                                                      //hide on 27-11-2025
+  //                                                      hidden:true,
+  //                                                      id: 'htmlMyAccount_Dashboard_TitleHeaderTxtAyohapoint',
+  //                                                     // html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha e-Wallet</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 16px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">RM 00.00</div>'
+  //                                                     // html: '<div id="Dashboard_userPts" onclick="FloatPanel_AyohaReward_PointTransactionsShow()();" style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 12px;font-weight:bold;color:black;margin:0px 0px 0px 0px">2355 pts</div><br><div onclick="FloatPanel_AyohaReward_PointTransactionsShow()();" style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-size: 10px;font-weight:normal;color:black;margin:-26px 0px 0px 0px">Ayoha Points</div>'
+                                                      
+       
+  //                                                  },
+
+                                                   
+  //                                                  // {
+  //                                                  //     xtype: 'container',
+  //                                                  //     id: 'containerMyAccount_Dashboard_AyohaEwalletIcon',
+  //                                                  //     hidden: true,
+  //                                                  //     style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
+  //                                                  //     height: 40,
+  //                                                  //     width: 40,
+  //                                                  //     margin: '0 -2 -2 0',
+  //                                                  //     layout: {
+       
+  //                                                  //         type: 'vbox',
+  //                                                  //         pack: 'center',
+  //                                                  //         align: 'center'
+  //                                                  //     },
+  //                                                  //     items: [
+  //                                                  //         {
+  //                                                  //             //xtype: 'button',
+  //                                                  //             //id: 'btnMyAccount_DashboardEwalletIcon',
+  //                                                  //             height: 20,
+  //                                                  //             width: 20,
+  //                                                  //             margin: '0 0 0 0',
+  //                                                  //             // iconCls: 'list',
+  //                                                  //             //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
+  //                                                  //             html: '<div ><img src="resources/icons/ayohaewallet01.png" style ="width:20px;height:20px;" alt="Company Name"></div>',
+  //                                                  //             // ui: 'plain',
+  //                                                  //             //handler: function () {
+       
+  //                                                  //             //    //_FloatPanel_AyohaEnterpriseAccount.hide(Ext.fx.Animation({
+  //                                                  //             //    //    type: 'slideOut',
+  //                                                  //             //    //    direction: 'left',
+  //                                                  //             //    //    easing: 'cubic-bezier(.7,0,.7,1)',
+  //                                                  //             //    //    duration: 250
+       
+  //                                                  //             //    //}));
+  //                                                  //             //    //isLoyaltyCardRedeemListOpen = 'N';
+  //                                                  //             //}
+  //                                                  //         },
+  //                                                  //     ]
+  //                                                  // },
+                                                   
+       
+  //                                               //    {
+  //                                               //     xtype: 'button',
+  //                                               //     id: 'btnMyAccount_DashboardPicProfileIcon_eWallet',
+  //                                               //     height: 55,
+  //                                               //     width: 55,
+  //                                               //     margin: '-3 0 0 0',
+  //                                               //     // iconCls: 'list',
+  //                                               //     //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
+  //                                               //     html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
+  //                                               //     ui: 'plain',
+  //                                               //     handler: function () {
+       
+       
+  //                                               //     }
+  //                                               // },
+       
+  //                                              ]
+  //                                          },
+       
+                                            
+  //                                             //////////////////////////////////////////////////////////////////////////// Ayoha eWallet top Right
+  //                                             {
+  //                                                 xtype: 'container',
+  //                                                // margin: '20 3 0 0',
+  //                                                 margin: '0 3 0 0',                                        
+  //                                                // zIndex: 200,
+  //                                                 id: 'containerMyAccount_DashboardAyohaeWalletx',
+  //                                                 name: 'namecontainerMyAccount_DashboardAyohaeWallet',
+  //                                                 hidden: true,
+  //                                                // style: 'background-color:rgba(255,255,255, 0.2);border-radius: 25px 25px 25px 25px;',
+  //                                               // style: 'background-color:rgba(255,255,255);border-radius: 25px 25px 25px 25px;',
+  //                                                // style: 'background-color: transparent;',
+  //                                                 //style: 'border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;background: white;border-radius: 10px 0px 0px 10px;box-shadow: 5px 10px 18px #888888;',
+  //                                                 style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 20px 20px 20px 20px;',
+       
+  //                                                 height: 40,
+  //                                                 width: 125,
+  //                                                 layout: {
+       
+  //                                                     type: 'hbox',
+  //                                                     pack: 'right',
+  //                                                     align: 'right'
+  //                                                 },
+  //                                                 items: [
+  //                                                     //{
+  //                                                     //    xtype: 'panel',
+  //                                                     //    width:1
+  //                                                     //},
+  //                                                     {
+  //                                                         margin: '0 0 0 0',
+  //                                                         id: 'htmlMyAccount_Dashboard_TitleHeaderTxtAyohaEwalletx',
+  //                                                         html: '<div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 8px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha e-Wallet</div><br><div style="width:100%;background-color: transparent;text-align:right;border: 1px none white;font-size: 16px;font-weight:bold;color:black;margin:-25px 0px 0px 0px">RM 00.00</div>'
+  //                                                         // html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:0px 0px 0px 0px">Ayoha Reward</div><br><div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 9px;font-weight:normal;color:black;margin:-6px 0px 0px 0px">Client V 1.0</div>'
+       
+       
+  //                                                     },
+       
+  //                                                        {
+  //                                                            xtype: 'panel',
+  //                                                            width: 2
+  //                                                        },
+       
+  //                                                     {
+  //                                                         xtype: 'container',
+  //                                                         id: 'containerMyAccount_Dashboard_AyohaEwalletIcon',
+  //                                                         style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1;background: white;border-radius: 50%;',
+  //                                                         height: 40,
+  //                                                         width: 40,
+  //                                                         margin: '0 -2 -2 0',
+  //                                                         layout: {
+       
+  //                                                             type: 'vbox',
+  //                                                             pack: 'center',
+  //                                                             align: 'center'
+  //                                                         },
+  //                                                         items: [
+  //                                                             {
+  //                                                                 //xtype: 'button',
+  //                                                                 //id: 'btnMyAccount_DashboardEwalletIcon',
+  //                                                                 height: 20,
+  //                                                                 width: 20,
+  //                                                                 margin: '0 0 0 0',
+  //                                                                 // iconCls: 'list',
+  //                                                                 //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
+  //                                                                 html: '<div ><img src="resources/icons/ayohaewallet01.png" style ="width:20px;height:20px;" alt="Company Name"></div>',
+  //                                                                 // ui: 'plain',
+  //                                                                 //handler: function () {
+       
+  //                                                                 //    //_FloatPanel_AyohaEnterpriseAccount.hide(Ext.fx.Animation({
+  //                                                                 //    //    type: 'slideOut',
+  //                                                                 //    //    direction: 'left',
+  //                                                                 //    //    easing: 'cubic-bezier(.7,0,.7,1)',
+  //                                                                 //    //    duration: 250
+       
+  //                                                                 //    //}));
+  //                                                                 //    //isLoyaltyCardRedeemListOpen = 'N';
+  //                                                                 //}
+  //                                                             },
+  //                                                         ]
+  //                                                     },
+                                                      
+       
+  //                                                  //    {
+  //                                                  //     xtype: 'button',
+  //                                                  //     id: 'btnMyAccount_DashboardPicProfileIcon_eWallet',
+  //                                                  //     height: 55,
+  //                                                  //     width: 55,
+  //                                                  //     margin: '-3 0 0 0',
+  //                                                  //     // iconCls: 'list',
+  //                                                  //     //  html: '<div ><img src="resources/icons/CloudRewardLogoWhiteSmallOne.png" width="25" height="25" alt="Company Name"></div>',
+  //                                                  //     html: '<div ><img src="resources/icons/founderWayang02.jpg" style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>',
+  //                                                  //     ui: 'plain',
+  //                                                  //     handler: function () {
+       
+       
+  //                                                  //     }
+  //                                                  // },
+       
+  //                                                 ]
+  //                                             },
+                                              
+       
+  //      //////////////////////////////////////////////////////////end eWallet
+       
+       
+       
+       
+       
+                                         
+       
+       
+       
+       
+       
+  //                              ]
+       
+  //                   },
+
+
+
+
+                     //last setup letak dalam tabpanel ,28/5/2025 off letak dalam ni 
+
+                      {
+                          xtype: 'tabpanel',
+                        style: "background-color: transparent;",
+                        // style: ayohaThemeColor_Hero(),                        
+                        //  style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
+                        //margin: '-60 0 0 0',
+                       margin: '0 0 0 0',
+                          // hidden: true,
+                          //  hidden:true,
+                          id: 'tabpanelMyAccount_Dashboard',
+                          // style: 'border-top:2px solid #ECF0F1;background: white;',
+                          // style: 'background-color: black;',
+                          // margin: '-20 0 0 -26',
+                          // margin: '25 0 0 0',
+
+                          //width: 200,
+                          width: '100%',
+                          height: '100%',
+                          //height: 120,
+                          //height: 50,
+                          //  zIndex: 200,
+                          //  docked: 'bottom',
+                          tabBarPosition: 'top',
+                          ui: 'plain',
+                          // docked: 'bottom',
+
+                        //   initialize: function (c) {
+                        //      // this.getTabBar().hide();
+                        //   },
+
+                          //scrollable: {
+                          //    direction: 'vertical',
+                          //    directionLock: true
+                          //},
+
+
+                          items: [
+
+
+
+
+
+
+
+
+                            ////////////////////////////////////////////****** MAIN PAGE DASH BOARD *****************\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+      {
+        xtype: 'container',
+        id: 'containerMyAccount_DashboardAyohaReward',
+        width: '100%',
+        height: '100%',
+        //style: "background-color: white;border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;border-radius: 50px 50px 50px 50px;",
+       style: "background-color: transparent;",
+       //style: ayohaThemeColor_Hero(),
+
+
+        //style:"background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);",
+        //style: "background-color: #F35B57;",
+        title: 'DashboardAyohaReward',
+        layout: {
+            type: 'vbox',
+            align: 'stretch'
+           // pack: 'start',
+            //pack: 'center',
+           // align: 'top'
+
+        },
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true,
+            indicators: false,
+            bounces: false,
+            outOfBoundRestrictFactor: 0,
+            //threshold: 20,
+            scroller: {
+                listeners: {
+                    scroll: function (scroller, x, y, eOpts) {
+                      //  console.log('[scrollable][on scroll]x=' + x + ', y=' + y);
+                        if (y <= 0) {
+                         
+                           // console.log('sampai scrollable')
+                            scroller.scrollTo({
+                                x: 0,
+                                y: 0
+                            });
+                            return
+                        }
+                    },
+                    //scrollend: function (scroller, x, y, eOpts) {
+                    //    //console.log('[scrollable][on scrollend]x=' + x + ', y=' + y);
+                    //    //if (y <= 0) {
+                    //    //    console.log('sampai')
+                    //    //    scroller.scrollTo({
+                    //    //        x: 0,
+                    //    //        y: 0
+                    //    //    });
+                    //    //}
+
+                       
+                    //}
+                }
+            }
+        },
+    
+        items: [
+
+          
+          
+          
+
+
+////////////////////////////////// MainMain Container/////
+{
+    xtype: 'container',
+    id: 'MainMaincontainerDashbord',
+ // style: 'background: #FAF5FF;',
+//style: ayohaThemeColor_Hero(),
+ 
+style: "background-color: transparent;",
+    //height:4600,
+    height:2780,
+    width:'100%',
+    margin: '0 0 0 0',
+    layout: {
+
+        type: 'vbox',
+        pack: 'start',
+        align: 'center'
+    },
+    items:[
+
+      {
+        xtype: 'container',
+       style: "background-color: transparent;",
+       id:'containerDashboardAyohaRewardMainContent',
+       // style: ayohaThemeColor_Hero(),
+        width:'100%',
+       // height:700,
+         height:700,
+        layout: {
+
+          type: 'vbox',
+          pack: 'start',
+          align: 'center'
+      },
+      items:[
+
+      
+  ////// Not CheckIn Info
+
+{
+    xtype: 'container',
+    width: '100%',
+    margin:'0px 0px 0px 0px',
+   
+   //height:360,
+    height:430,
+    id:'containerCheckInRewardspacer01',
+ style: 'background:transparent;',
+ // style:"background-color:#491A7F;",
+   layout: {
+
+    type: 'vbox',
+    pack: 'start',
+    align: 'center'
+},
+items:[
+  
+       //////////Header///
+   {
 
                         xtype: 'container',
                         width: '100%',
                       height:  ayoha_HeaderHeight(),
-                      zIndex:10,
+                    //  zIndex:10,
                         //height: 50,
                         id: 'containerMyAccount_DashboardHeader',
                      style:ayohaThemeColor_Header(),
@@ -545,188 +1198,25 @@ Ext.define('BuskartApp.view.MyAccount.Dashboard', {
                                ]
        
                     },
-
-
-
-
-                     //last setup letak dalam tabpanel ,28/5/2025 off letak dalam ni 
-
-                      {
-                          xtype: 'tabpanel',
-                        style: "background-color: transparent;",
-                        // style: ayohaThemeColor_Hero(),                        
-                        //  style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-                        //margin: '-60 0 0 0',
-                       margin: '0 0 0 0',
-                          // hidden: true,
-                          //  hidden:true,
-                          id: 'tabpanelMyAccount_Dashboard',
-                          // style: 'border-top:2px solid #ECF0F1;background: white;',
-                          // style: 'background-color: black;',
-                          // margin: '-20 0 0 -26',
-                          // margin: '25 0 0 0',
-
-                          //width: 200,
-                          width: '100%',
-                          height: '100%',
-                          //height: 120,
-                          //height: 50,
-                          //  zIndex: 200,
-                          //  docked: 'bottom',
-                          tabBarPosition: 'top',
-                          ui: 'plain',
-                          // docked: 'bottom',
-
-                        //   initialize: function (c) {
-                        //      // this.getTabBar().hide();
-                        //   },
-
-                          //scrollable: {
-                          //    direction: 'vertical',
-                          //    directionLock: true
-                          //},
-
-
-                          items: [
-
-
-
-
-
-
-
-
-                            ////////////////////////////////////////////****** MAIN PAGE DASH BOARD *****************\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-      {
-        xtype: 'container',
-        id: 'containerMyAccount_DashboardAyohaReward',
-        width: '100%',
-        height: '100%',
-        //style: "background-color: white;border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;border-radius: 50px 50px 50px 50px;",
-       style: "background-color: transparent;",
-       //style: ayohaThemeColor_Hero(),
-
-
-        //style:"background: linear-gradient(180deg, #FFF1F9 0%, #F3E8FF 100%);",
-        //style: "background-color: #F35B57;",
-        title: 'DashboardAyohaReward',
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-           // pack: 'start',
-            //pack: 'center',
-           // align: 'top'
-
-        },
-        scrollable: {
-            direction: 'vertical',
-            directionLock: true,
-            indicators: false,
-            bounces: false,
-            outOfBoundRestrictFactor: 0,
-            //threshold: 20,
-            scroller: {
-                listeners: {
-                    scroll: function (scroller, x, y, eOpts) {
-                      //  console.log('[scrollable][on scroll]x=' + x + ', y=' + y);
-                        if (y <= 0) {
-                         
-                           // console.log('sampai scrollable')
-                            scroller.scrollTo({
-                                x: 0,
-                                y: 0
-                            });
-                            return
-                        }
-                    },
-                    //scrollend: function (scroller, x, y, eOpts) {
-                    //    //console.log('[scrollable][on scrollend]x=' + x + ', y=' + y);
-                    //    //if (y <= 0) {
-                    //    //    console.log('sampai')
-                    //    //    scroller.scrollTo({
-                    //    //        x: 0,
-                    //    //        y: 0
-                    //    //    });
-                    //    //}
-
-                       
-                    //}
-                }
-            }
-        },
-    
-        items: [
-
-      
-
-          
-          
-          
-
-
-////////////////////////////////// MainMain Container/////
-{
-    xtype: 'container',
-    id: 'MainMaincontainerDashbord',
- // style: 'background: #FAF5FF;',
-//style: ayohaThemeColor_Hero(),
- 
-style: "background-color: transparent;",
-    //height:4600,
-    height:2780,
-    width:'100%',
-    margin: '0 0 0 0',
-    layout: {
-
-        type: 'vbox',
-        pack: 'start',
-        align: 'center'
-    },
-    items:[
-
-      {
-        xtype: 'container',
-       style: "background-color: transparent;",
-       id:'containerDashboardAyohaRewardMainContent',
-       // style: ayohaThemeColor_Hero(),
-        width:'100%',
-        height:700,
-        layout: {
-
-          type: 'vbox',
-          pack: 'start',
-          align: 'center'
-      },
-      items:[
-
-      
-  ////// Not CheckIn Info
-
-{
-    xtype: 'container',
-    width: '100%',
-    margin:'0px 0px 0px 0px',
-   
-    height:360,
-    id:'containerCheckInRewardspacer01',
- style: 'background:transparent;',
- // style:"background-color:#491A7F;",
-   layout: {
-
-    type: 'vbox',
-    pack: 'start',
-    align: 'center'
-},
-items:[
 {
   xtype: 'carousel',
 //xtype: 'container',
+id:'carouselMerchantCheckIn',
     width: '100%',
     height: 250,
-    margin:'0px 0px 0px 0px',
+    margin:'-1px 0px 0px 0px',
     style:"background-color:#491A7F;",
     indicator: false,
+     listeners: {
+        initialize: function (carousel) {
+            Ext.defer(function () {
+                Ayoha_UpdateCarouselIndicator(carousel, carousel.getActiveItem());
+            }, 100);
+        },
+        activeitemchange: function (carousel, newActiveItem, oldActiveItem) {
+            Ayoha_UpdateCarouselIndicator(carousel, newActiveItem);
+        }
+    },
  layout: {
 
     type: 'vbox',
@@ -736,55 +1226,234 @@ items:[
 
     items:[
 
+// {
+//                 xtype: 'container',
+//                 width: '100%',
+//                 title:'hero',
+//                height: 230,
+//                 style: 'background-color:transparent;',
+//                 layout: {
+//                   type: 'hbox',
+//                   pack: 'start',
+//                   align: 'center',
+//               },
+//               items:[
+//                 {
+
+//                     xtype: 'container',
+//                     width: '100%',
+//                     margin: '-50 0 0 0',                  
+//                     height: 120,
+//                     style: 'background-color:transparent',
+//                     layout: {
+//                       type: 'vbox',
+//                       pack: 'start',
+//                       align: 'left',
+//                   },items:[
+
+//                     {
+
+//                         margin: '-4 0 0 24',
+//                         // id: 'labelDashboard_LastCheckInTimeStamp',    
+//                        // html: '<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>Merchant Check-In</b></div>',
+//                         height:30,
+//                          html: '<div style="color:white;text-align: left;font-size:20px;width:100%;height:30px;margin:5px 0px 0px 0px"><b>Merchant Check-In</b></div>',
+                        
+//                     },
+//                     {
+//                         margin: '4 0 0 21',
+//                         // id: 'labelDashboard_LastCheckInTimeStamp',    
+//                         // html: '<div  style="color:white;text-align: left;font-size:10px;width:100%;margin:0px 0px 0px 0px;">00:00:00</div>'
+//                          html: '<div style="font-size:10px;color:#3B1A00;background:#F59E0B;border:1px solid #FBBF24;padding:4px 8px;border-radius:999px;white-space:nowrap;">Earn +10 Ayoha Point on every checkin</div>'
+                        
+//                     },
+                  
+//                     {
+//                         margin: '0 0 0 28',
+//                         // id: 'labelDashboard_LastCheckInTimeStamp',    
+//                         // html: '<div  style="color:white;text-align: left;font-size:10px;width:100%;margin:0px 0px 0px 0px;">00:00:00</div>'
+//                          html: '<div style="font-size:8px;color:white;background:transparnt;white-space:nowrap;font-weight:800px">*Max 3x check in per-merchant in a day</div>'
+                        
+//                     },
+
+               
+
+
+//                   ]
+
+
+
+                
+                
+                
+                
+                
+                
+                
+//                 },
+//                 {
+//                     xtype: 'spacer'
+//                 },
+    
+    
+//     {
+//     xtype: 'component',
+//     html:
+//         '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMascotWrap">' +
+
+//             '<div class="ayohaMascotInfoBubble">' +
+//                // '<span class="ayohaMascotInfoText">More Info</span>' +
+//                    '<span class="ayohaMascotInfoText">ℹ More Info</span>' +
+//             '</div>' +
+
+//             '<img src="resources/icons/maskotEarnPoint05.png" ' +
+//                 'class="ayohaMascotImg" ' +
+//                 'alt="Ayoha Mascot" />' +
+
+//         '</div>'
+// }
+          
+//               ]
+//             },
+           
+{
+    xtype: 'container',
+    width: '100%',
+    title:'hero',
+    height: 210,
+    style: 'background-color:transparent;position:relative;',
+    layout: {
+        type: 'hbox',
+        pack: 'start',
+        align: 'center'
+    },
+    items:[
+        {
+            xtype: 'component',
+            width: '95%',
+           // flex: 1,
+            margin: '-62 0 0 0',
+            html:
+                '<div style="padding-left:24px;">' +
+
+                    // '<div style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(255,210,92,0.14);border:1px solid rgba(255,210,92,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);">' +
+                    //     '<span style="font-size:11px;line-height:1;">✨</span>' +
+                    //     '<span style="color:#FFD978;font-size:10px;font-weight:800;letter-spacing:.25px;">AYOHA CHECK-IN CAMPAIGN</span>' +
+                    // '</div>' +
+
+                    '<div style="margin-top:10px;color:#FFFFFF;text-align:left;font-size:22px;line-height:1.08;font-weight:800;letter-spacing:-.2px;text-shadow:0 4px 14px rgba(0,0,0,0.18);">' +
+                        'Merchant Check-In Campaign' +
+                    '</div>' +
+
+                    '<div style="margin-top:8px;color:rgba(255,255,255,0.90);font-size:11px;line-height:1.45;font-weight:600;max-width:245px;">' +
+                        'Check in at participating merchants and collect rewards with every visit.' +
+                    '</div>' +
+
+                    '<div style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-size:10px;color:#3B1A00;background:linear-gradient(135deg,#FFBE2E 0%,#F59E0B 100%);border:1px solid #F6C453;padding:7px 12px;border-radius:999px;white-space:nowrap;font-weight:800;box-shadow:0 10px 20px rgba(245,158,11,.18), inset 0 1px 0 rgba(255,255,255,.26);">' +
+                        '<span style="font-size:11px;line-height:1;">⚡</span>' +
+                        '<span>Earn +10 Ayoha Points on every check-in</span>' +
+                    '</div>' +
+
+                    '<div style="margin-top:3px;color:rgba(255,255,255,0.78);font-size:8px;white-space:nowrap;font-weight:700;letter-spacing:.15px;">' +
+                        'Up to 3 check-ins per merchant per day' +
+                    '</div>' +
+
+                '</div>'
+        },
+        {
+            xtype: 'spacer'
+        },
+        {
+            xtype: 'component',
+            html:
+                '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMascotWrap ayohaMascotWrap--promo">' +
+
+                    '<div class="ayohaMascotInfoBubble ayohaMascotInfoBubble--promo">' +
+                        '<span class="ayohaMascotInfoText">✨ Promo Info</span>' +
+                    '</div>' +
+
+                    '<img src="resources/icons/maskotEarnPoint05.png" ' +
+                        'class="ayohaMascotImg ayohaMascotImg--promo" ' +
+                        'alt="Ayoha Mascot" />' +
+
+                '</div>'
+        }
+    ]
+},
+
 {
                 xtype: 'container',
                 width: '100%',
-                title:'hero',
+                title:'hero_membershipcard_promotion',
                height: 230,
-                style: 'background-color:transparent',
+                style: 'background-color:transparent;',
                 layout: {
                   type: 'hbox',
                   pack: 'start',
                   align: 'center',
               },
               items:[
+
+
+
+    {
+    xtype: 'component',
+    html:
+       '<div  class="ayohaMascotWrap_left">' +
+
+         
+
+            '<img src="resources/icons/HeroSection_MembershipCardHub01.png" ' +
+                'class="ayohaMascotImg_left" ' +
+                'alt="Ayoha Mascot" />' +
+
+       '</div>'
+},
+  {
+                    xtype: 'spacer'
+                },
+
                 {
 
                     xtype: 'container',
-                    width: '100%',
-                    margin: '-50 0 0 0',                  
+                    width: '95%',
+                    margin: '-50 20 0 0',                  
                     height: 120,
                     style: 'background-color:transparent',
                     layout: {
                       type: 'vbox',
                       pack: 'start',
-                      align: 'left',
+                      align: 'end',
                   },items:[
 
                     {
 
-                        margin: '-4 0 0 24',
+                        margin: '-8 20 0 0',
                         // id: 'labelDashboard_LastCheckInTimeStamp',    
                        // html: '<div style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:0px 0px 0px 0px"><b>Merchant Check-In</b></div>',
                         height:30,
-                         html: '<div style="color:white;text-align: left;font-size:20px;width:100%;height:30px;margin:5px 0px 0px 0px"><b>Merchant Check-In</b></div>',
+                         html: '<div style="color:white;text-align: right;font-size:20px;width:100%;height:30px;margin:5px 0px 0px 0px"><b>Membership Card Hub</b></div>',
                         
                     },
-                    {
-                        margin: '4 0 0 21',
-                        // id: 'labelDashboard_LastCheckInTimeStamp',    
-                        // html: '<div  style="color:white;text-align: left;font-size:10px;width:100%;margin:0px 0px 0px 0px;">00:00:00</div>'
-                         html: '<div style="font-size:10px;color:#3B1A00;background:#F59E0B;border:1px solid #FBBF24;padding:4px 8px;border-radius:999px;white-space:nowrap;">Earn +10 Ayoha Point on every checkin</div>'
-                        
-                    },
-                  
-                    {
-                        margin: '0 0 0 28',
-                        // id: 'labelDashboard_LastCheckInTimeStamp',    
-                        // html: '<div  style="color:white;text-align: left;font-size:10px;width:100%;margin:0px 0px 0px 0px;">00:00:00</div>'
-                         html: '<div style="font-size:8px;color:white;background:transparnt;white-space:nowrap;font-weight:800px">*Max 3x check in per-merchant in a day</div>'
-                        
-                    }
+                   {
+    xtype: 'component',
+    margin: '-8 0 0 0',
+    html:
+    '<div style="margin-top:8px;color:rgba(255,255,255,0.88);font-size:11px;line-height:1.45;font-weight:500;max-width:220px;"> Don’t miss exclusive perks, member deals and rewards waiting for you inside.</div>'
+},
+  {
+    xtype: 'component',
+    margin: '15 20 0 0',
+    html:
+'<div class="ayohaMembershipInfoBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();">' +
+    '<span class="ayohaMembershipInfoBtn_icon">→</span>' +
+    '<span class="ayohaMembershipInfoBtn_text">More Info</span>' +
+'</div>'
+  
+}
+               
+
+
                   ]
 
 
@@ -797,29 +1466,12 @@ items:[
                 
                 
                 },
-                {
-                    xtype: 'spacer'
-                },
+              
     
     
-    
-                {
-          
-           
-                 xtype: 'component',
-                 html:
-                 '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="position:absolute;top:-78px;right:5px;background-color:transparent;border-radius:50%;' +
-                      'width:121px;height:141px;z-index:10;display:flex;align-items:center;justify-content:center;">' +
-                   '<img src="resources/icons/maskotEarnPoint05.png" ' +
-                        'style="width:110px;height:141px;display:block;" ' +
-                        'alt="Company Name" />' +
-                 '</div>'
-             },
+         
               ]
             },
-           
-
-
 
 
 
@@ -830,75 +1482,291 @@ items:[
 
 
 
-
 {
   xtype: 'container',
-    width: '90%',
-    zIndex:10,
-    margin: '-70 0 0 0',    
-     height:160,
-    //  style:"border-radius:22px; border:2px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06),    0 18px 44px -18px rgba(17,24,39,.18),    0 48px 120px -64px rgba(124,58,237,.22);",
-     style:"border-radius:22px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 14px 32px -18px rgba(17,24,39,.18), 0 28px 72px -60px rgba(124,58,237,.20);",
-     // style:"border-radius:22px; border:2px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 12px 28px -18px rgba(17,24,39,.16), 0 22px 56px -52px rgba(124,58,237,.18);",
-
-     
-      layout: {
-
-    type: 'vbox',
-    pack: 'start',
+    width: '100%',
+    // zIndex:10,
+    height: 35,
+    margin: '-100 0 0 0',
+    style: 'background-color:transparent;',
+    layout: {
+    type: 'hbox',
+    pack: 'center',
     align: 'center'
 },
 items:[
-  {
-    xtype: 'component',
-      width: '100%',
-     // height:170,
-
-      html:
-      '<div class="ayoha-emptyCard ayoha-emptyCardBorderBold">' +
-    
-        '<div class="ayoha-emptyTop">' +
-          '<div class="ayoha-mapIcon">' +
-            '<div class="ayoha-pinDot"></div>' +
-    
-            '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-              '<path fill="#7c3aed" opacity=".16" d="M3 6.5l6-2 6 2 6-2V18l-6 2-6-2-6 2V6.5z"/>' +
-              '<path fill="#7c3aed" d="M9 4.5v15l-5 1.7V6.2L9 4.5zm6 2v15l-6-2v-15l6 2zm1-.4l5-1.7v14.8L16 20.8V6.1z"/>' +
-            '</svg>' +
-          '</div>' +
-    
-          '<div class="ayoha-emptyText">' +
-            '<div class="ayoha-emptyTitle">No check-in yet today 😊</div>' +
-            '<div class="ayoha-emptySub">Find a nearby merchant and start earning today.</div>' +
-          '</div>' +
-        '</div>' +
-    
-        '<div class="ayoha-ctaRow">' +
-          '<button class="ayoha-ctaBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();">' +
-            '<span class="ayoha-ctaLeft">' +
-              '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-                '<path fill="#ffffff" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>' +
-              '</svg>' +
-              'Find Merchant' +
-            '</span>' +
-    
-            '<span class="ayoha-ptsBadge">+10 pts</span>' +
-          '</button>' +
-        '</div>' +
-    
-      '</div>'
-    
-    
-    
-    
-
-    
-  }
+  
+ {
+                         margin: '-10 0 0 0',
+                        
+  html:
+'<div id="ayohaCarouselIndicator" class="ayohaCarouselIndicator">'+
+  '<span class="ayohaDot active"></span>'+
+  '<span class="ayohaDot"></span>'+
+  '<span class="ayohaDot"></span>'+
+'</div>'
+                    },
 ]
-
 },
 
 
+
+{
+  xtype: 'container',
+  width: '90%',
+  id:'containerMyAccount_Dashboard_MerchantCheckInInfo',
+  margin: '0 0 0 0',
+  height:170,
+  style:"border-radius:22px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 14px 32px -18px rgba(17,24,39,.18), 0 28px 72px -60px rgba(124,58,237,.20);",
+  layout: {
+    type: 'vbox',
+    pack: 'start',
+    align: 'center'
+  },
+  items:[
+    {
+      xtype: 'component',
+      width: '90%',
+      margin: '15 0 0 0',
+      html:
+'<div style="display:flex;align-items:flex-start;gap:14px;">' +
+
+  '<div style="width:64px;height:64px;min-width:64px;border-radius:20px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(109,40,217,0.08);border:1px solid rgba(125,92,255,0.10);position:relative;">' +
+    '<div style="position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%;background:#FF5AA5;box-shadow:0 0 0 3px rgba(255,90,165,0.12);"></div>' +
+    '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:34px;height:34px;">' +
+      '<path fill="#7c3aed" opacity=".16" d="M3 6.5l6-2 6 2 6-2V18l-6 2-6-2-6 2V6.5z"/>' +
+      '<path fill="#7c3aed" d="M9 4.5v15l-5 1.7V6.2L9 4.5zm6 2v15l-6-2v-15l6 2zm1-.4l5-1.7v14.8L16 20.8V6.1z"/>' +
+    '</svg>' +
+  '</div>' +
+
+  '<div style="flex:1;">' +
+    '<div style="color:#17172E;font-size:17px;font-weight:800;line-height:1.15;letter-spacing:-.2px;">Check in &amp; earn Ayoha Points ✨</div>' +
+    '<div style="margin-top:7px;color:#5F6072;font-size:11px;line-height:1.38;font-weight:600;">Join Ayoha’s Merchant Check-In promo and earn +10 points every time you check in.</div>' +
+  '</div>' +
+
+'</div>' +
+
+'<div style="margin-top:14px;">' +
+  '<button onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="width:100%;height:60px;border:none;border-radius:20px;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 16px;cursor:pointer;position:relative;overflow:hidden;background:linear-gradient(135deg,#9622FF 0%,#D52BFF 55%,#FF4DB7 100%);box-shadow:0 14px 26px rgba(166,44,255,.24), inset 0 1px 0 rgba(255,255,255,.22);">' +
+
+    '<span style="position:absolute;top:-18%;left:-30%;width:24%;height:140%;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.14) 25%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.14) 75%,rgba(255,255,255,0) 100%);transform:skewX(-22deg);animation:ayohaMerchantRewardShine 3.2s ease-in-out infinite;pointer-events:none;"></span>' +
+
+    '<span style="position:relative;z-index:2;display:flex;align-items:center;gap:9px;color:#fff;font-size:14px;font-weight:800;letter-spacing:.1px;">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;">' +
+        '<path fill="#ffffff" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>' +
+      '</svg>' +
+      'Explore Nearby Rewards' +
+    '</span>' +
+
+    '<span style="position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-width:80px;height:38px;padding:0 14px;border-radius:999px;background:linear-gradient(135deg,#FFD45C 0%,#FFB938 100%);color:#4B2500;font-size:13px;font-weight:900;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);">+10 pts</span>' +
+  '</button>' +
+'</div>' +
+
+'<style>' +
+'@keyframes ayohaMerchantRewardShine{' +
+  '0%{left:-30%;opacity:0;}' +
+  '10%{opacity:1;}' +
+  '38%{left:108%;opacity:1;}' +
+  '48%{left:120%;opacity:0;}' +
+  '100%{left:120%;opacity:0;}' +
+'}' +
+'</style>'
+      
+      // html:
+      // '<div class="ayoha-emptyCard ayoha-emptyCardBorderBold" style="padding:16px 16px 14px 16px;">' +
+
+      //   // '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#FFF7D6 0%,#FFE9A8 100%);color:#7A4B00;border:1px solid rgba(245,158,11,.22);border-radius:999px;padding:4px 10px;font-size:10px;font-weight:800;box-shadow:0 4px 10px rgba(245,158,11,.10);margin:0 0 10px 0;">' +
+      //   //   '<span style="font-size:11px;">✨</span>' +
+      //   //   '<span>Nearby rewards available</span>' +
+      //   // '</div>' +
+    
+      //   '<div class="ayoha-emptyTop" style="display:flex;align-items:flex-start;gap:14px;">' +
+      //     '<div class="ayoha-mapIcon" style="width:64px;height:64px;min-width:64px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(109,40,217,.08);border:1px solid rgba(125,92,255,.10);position:relative;">' +
+      //       '<div class="ayoha-pinDot" style="position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%;background:#FF5AA5;box-shadow:0 0 0 3px rgba(255,90,165,.12);"></div>' +
+    
+      //       '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:34px;height:34px;">' +
+      //         '<path fill="#7c3aed" opacity=".12" d="M3 6.5l6-2 6 2 6-2V18l-6 2-6-2-6 2V6.5z"/>' +
+      //         '<path fill="#7c3aed" d="M9 4.5v15l-5 1.7V6.2L9 4.5zm6 2v15l-6-2v-15l6 2zm1-.4l5-1.7v14.8L16 20.8V6.1z"/>' +
+      //       '</svg>' +
+      //     '</div>' +
+    
+      //     '<div class="ayoha-emptyText" style="flex:1;">' +
+      //       '<div class="ayoha-emptyTitle" style="color:#17172E;font-size:17px;font-weight:800;line-height:1.15;letter-spacing:-.2px;">Rewards are waiting nearby 👀</div>' +
+      //       '<div class="ayoha-emptySub" style="margin-top:7px;color:#5F6072;font-size:11px;line-height:1.38;font-weight:600;">Don’t miss Ayoha points, perks and limited-time rewards nearby</div>' +
+      //     '</div>' +
+      //   '</div>' +
+    
+      //   '<div class="ayoha-ctaRow" style="margin-top:14px;">' +
+      //     '<button class="ayoha-ctaBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" style="width:100%;height:60px;border:none;border-radius:20px;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 16px;cursor:pointer;position:relative;overflow:hidden;background:linear-gradient(135deg,#9622FF 0%,#D52BFF 55%,#FF4DB7 100%);box-shadow:0 14px 26px rgba(166,44,255,.24), inset 0 1px 0 rgba(255,255,255,.22);">' +
+
+      //       '<span style="position:absolute;top:-18%;left:-30%;width:24%;height:140%;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.14) 25%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.14) 75%,rgba(255,255,255,0) 100%);transform:skewX(-22deg);animation:ayohaMerchantRewardShine 3.2s ease-in-out infinite;pointer-events:none;"></span>' +
+
+      //       '<span class="ayoha-ctaLeft" style="position:relative;z-index:2;display:flex;align-items:center;gap:9px;color:#fff;font-size:14px;font-weight:800;letter-spacing:.1px;">' +
+      //         '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;">' +
+      //           '<path fill="#ffffff" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>' +
+      //         '</svg>' +
+      //         'Explore Nearby Rewards' +
+      //       '</span>' +
+    
+      //       '<span class="ayoha-ptsBadge" style="position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-width:80px;height:38px;padding:0 14px;border-radius:999px;background:linear-gradient(135deg,#FFD45C 0%,#FFB938 100%);color:#4B2500;font-size:13px;font-weight:900;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);">+10 pts</span>' +
+      //     '</button>' +
+      //   '</div>' +
+    
+      // '</div>' +
+
+      // '<style>' +
+      // '@keyframes ayohaMerchantRewardShine{' +
+      //   '0%{left:-30%;opacity:0;}' +
+      //   '10%{opacity:1;}' +
+      //   '38%{left:108%;opacity:1;}' +
+      //   '48%{left:120%;opacity:0;}' +
+      //   '100%{left:120%;opacity:0;}' +
+      // '}' +
+      // '</style>'
+    }
+  ]
+},
+
+// {
+//   xtype: 'container',
+//     width: '90%',
+//     id:'containerMyAccount_Dashboard_MerchantCheckInInfo',
+    
+//    // zIndex:10,
+//    // margin: '-70 0 0 0',    
+//       margin: '0 0 0 0',  
+//      height:160,
+//     //  style:"border-radius:22px; border:2px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06),    0 18px 44px -18px rgba(17,24,39,.18),    0 48px 120px -64px rgba(124,58,237,.22);",
+//      style:"border-radius:22px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 14px 32px -18px rgba(17,24,39,.18), 0 28px 72px -60px rgba(124,58,237,.20);",
+//      // style:"border-radius:22px; border:2px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 12px 28px -18px rgba(17,24,39,.16), 0 22px 56px -52px rgba(124,58,237,.18);",
+
+     
+//       layout: {
+
+//     type: 'vbox',
+//     pack: 'start',
+//     align: 'center'
+// },
+// items:[
+
+   
+//   {
+//     xtype: 'component',
+//       width: '100%',
+//      // height:170,
+
+//       html:
+//       '<div class="ayoha-emptyCard ayoha-emptyCardBorderBold">' +
+    
+//         '<div class="ayoha-emptyTop">' +
+//           '<div class="ayoha-mapIcon">' +
+//             '<div class="ayoha-pinDot"></div>' +
+    
+//             '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+//               '<path fill="#7c3aed" opacity=".16" d="M3 6.5l6-2 6 2 6-2V18l-6 2-6-2-6 2V6.5z"/>' +
+//               '<path fill="#7c3aed" d="M9 4.5v15l-5 1.7V6.2L9 4.5zm6 2v15l-6-2v-15l6 2zm1-.4l5-1.7v14.8L16 20.8V6.1z"/>' +
+//             '</svg>' +
+//           '</div>' +
+    
+//           '<div class="ayoha-emptyText">' +
+//             '<div class="ayoha-emptyTitle">No check-in yet today 😊</div>' +
+//             '<div class="ayoha-emptySub">Find a nearby merchant and start earning today.</div>' +
+//           '</div>' +
+//         '</div>' +
+    
+//         '<div class="ayoha-ctaRow">' +
+//           '<button class="ayoha-ctaBtn" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();">' +
+//             '<span class="ayoha-ctaLeft">' +
+//               '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+//                 '<path fill="#ffffff" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>' +
+//               '</svg>' +
+//               'Find Merchant' +
+//             '</span>' +
+    
+//             '<span class="ayoha-ptsBadge">+10 pts</span>' +
+//           '</button>' +
+//         '</div>' +
+    
+//       '</div>'
+    
+    
+    
+    
+
+    
+//   }
+// ]
+
+// },
+
+{
+  xtype: 'container',
+  width: '90%',
+  id:'containerMyAccount_Dashboard_MembershipCardHubInfo',
+  hidden:true,
+  margin: '0 0 0 0',
+  height:160,
+  style:"border-radius:22px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 14px 32px -18px rgba(17,24,39,.18), 0 28px 72px -60px rgba(124,58,237,.20);",
+  layout: {
+    type: 'vbox',
+    pack: 'start',
+    align: 'center'
+  },
+  items:[
+    {
+      xtype: 'component',
+      width: '100%',
+      html:
+      '<div class="ayoha-emptyCard ayoha-emptyCardBorderBold">' +
+
+        '<div class="ayoha-emptyTop">' +
+          '<div class="ayoha-mapIcon">' +
+            '<div class="ayoha-pinDot"></div>' +
+
+            '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+              '<path fill="#7c3aed" opacity=".12" d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9z"/>' +
+              '<path fill="#7c3aed" d="M5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9A2.5 2.5 0 0 1 5.5 5zm0 1.5A1 1 0 0 0 4.5 7.5v9a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-13z"/>' +
+              '<path fill="#7c3aed" d="M6.8 9.2h6.9v1.7H6.8zm0 3.1h4.4V14H6.8z"/>' +
+              '<path fill="#f59e0b" d="M16.8 8.1l.35.72.8.12-.58.57.14.8-.71-.38-.72.38.14-.8-.58-.57.8-.12z"/>' +
+            '</svg>' +
+          '</div>' +
+
+          '<div class="ayoha-emptyText">' +
+            '<div class="ayoha-emptyTitle">Unlock member perks 👑</div>' +
+            '<div class="ayoha-emptySub" style="font-size:11px;line-height:1.34;">Exclusive rewards, special deals and extra benefits are waiting in your Membership Card Hub.</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="ayoha-ctaRow">' +
+          '<button class="ayoha-ctaBtn" style="position:relative;overflow:hidden;" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();">' +
+
+            '<span style="position:absolute;top:-18%;left:-30%;width:24%;height:140%;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.14) 25%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.14) 75%,rgba(255,255,255,0) 100%);transform:skewX(-22deg);animation:ayohaMembershipHubShine 3.2s ease-in-out infinite;pointer-events:none;"></span>' +
+
+            '<span class="ayoha-ctaLeft" style="position:relative;z-index:2;">' +
+              '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+                '<path fill="#ffffff" d="M12 3l1.55 3.2 3.53.51-2.56 2.5.6 3.52L12 11.1 8.88 12.73l.6-3.52-2.56-2.5 3.53-.51z"/>' +
+              '</svg>' +
+              'Explore Membership Hub' +
+            '</span>' +
+
+            '<span class="ayoha-ptsBadge" style="position:relative;z-index:2;">Now</span>' +
+          '</button>' +
+        '</div>' +
+
+      '</div>' +
+
+      '<style>' +
+      '@keyframes ayohaMembershipHubShine{' +
+        '0%{left:-30%;opacity:0;}' +
+        '10%{opacity:1;}' +
+        '38%{left:108%;opacity:1;}' +
+        '48%{left:120%;opacity:0;}' +
+        '100%{left:120%;opacity:0;}' +
+      '}' +
+      '</style>'
+    }
+  ]
+}
 
     
 ]
@@ -19663,7 +20531,8 @@ Ext.getCmp('MainMaincontainerDashbord').setHeight(3100);
 
              
               Ext.getCmp('MainMaincontainerDashbord').setHeight(2450);
-              Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
+            //  Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
+               Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(430);
               Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
            //   Ext.getCmp('Dashboard_Carousel').setHeight(205); 
 //Ext.getCmp('containerCheckInRewardspacer02').setHidden(true); 
@@ -19822,4 +20691,45 @@ function Dashboard_UnlockNow(){
     ,AppState.MainDashboard.CountStar
     ,AppState.MainDashboard.CountReviewer
   )
+}
+
+
+
+
+function Ayoha_RenderCarouselIndicator(carouselId, indicatorId) {
+    var carousel = Ext.getCmp(carouselId);
+    if (!carousel) return '';
+
+    var items = carousel.getInnerItems ? carousel.getInnerItems() : carousel.getItems().items;
+    var html = '<div id="' + indicatorId + '" class="ayohaCarouselIndicator">';
+
+    for (var i = 0; i < items.length; i++) {
+        html += '<span class="ayohaDot' + (i === 0 ? ' active' : '') + '"></span>';
+    }
+
+    html += '</div>';
+    return html;
+}
+
+function Ayoha_UpdateCarouselIndicator(carousel, activeItem) {
+    var index = 0;
+
+    if (carousel.getActiveIndex && Ext.isFunction(carousel.getActiveIndex)) {
+        index = carousel.getActiveIndex();
+    } else {
+        var items = carousel.getInnerItems ? carousel.getInnerItems() : carousel.getItems().items;
+        index = Ext.Array.indexOf(items, activeItem);
+    }
+
+    var indicatorWrap = document.getElementById('ayohaCarouselIndicator');
+    if (!indicatorWrap) return;
+
+    var dots = indicatorWrap.querySelectorAll('.ayohaDot');
+
+    for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+        if (i === index) {
+            dots[i].classList.add('active');
+        }
+    }
 }
