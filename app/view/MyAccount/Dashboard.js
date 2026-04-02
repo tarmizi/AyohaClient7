@@ -1328,56 +1328,86 @@ id:'carouselMerchantCheckIn',
         align: 'center'
     },
     items:[
-        {
-            xtype: 'component',
-            width: '95%',
-           // flex: 1,
-            margin: '-62 0 0 0',
-            html:
-                '<div style="padding-left:24px;">' +
+//         {
+//             xtype: 'component',
+//             width: '95%',
+//            // flex: 1,
+//             margin: '-62 0 0 0',
+//             html:
+//                 '<div style="padding-left:24px;">' +
 
-                    // '<div style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(255,210,92,0.14);border:1px solid rgba(255,210,92,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);">' +
-                    //     '<span style="font-size:11px;line-height:1;">✨</span>' +
-                    //     '<span style="color:#FFD978;font-size:10px;font-weight:800;letter-spacing:.25px;">AYOHA CHECK-IN CAMPAIGN</span>' +
-                    // '</div>' +
 
-                    '<div style="margin-top:10px;color:#FFFFFF;text-align:left;font-size:22px;line-height:1.08;font-weight:800;letter-spacing:-.2px;text-shadow:0 4px 14px rgba(0,0,0,0.18);">' +
-                        'Merchant Check-In Campaign' +
-                    '</div>' +
+//                     '<div style="margin-top:10px;color:#FFFFFF;text-align:left;font-size:22px;line-height:1.08;font-weight:800;letter-spacing:-.2px;text-shadow:0 4px 14px rgba(0,0,0,0.18);">' +
+//                         'Check-In Campaign' +
+//                     '</div>' +
 
-                    '<div style="margin-top:8px;color:rgba(255,255,255,0.90);font-size:11px;line-height:1.45;font-weight:600;max-width:245px;">' +
-                        'Check in at participating merchants and collect rewards with every visit.' +
-                    '</div>' +
+//                     '<div style="margin-top:8px;color:rgba(255,255,255,0.90);font-size:11px;line-height:1.45;font-weight:600;max-width:245px;">' +
+//                         'Check in at participating merchants and collect rewards with every visit.' +
+//                     '</div>' +
 
-                    '<div style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-size:10px;color:#3B1A00;background:linear-gradient(135deg,#FFBE2E 0%,#F59E0B 100%);border:1px solid #F6C453;padding:7px 12px;border-radius:999px;white-space:nowrap;font-weight:800;box-shadow:0 10px 20px rgba(245,158,11,.18), inset 0 1px 0 rgba(255,255,255,.26);">' +
-                        '<span style="font-size:11px;line-height:1;">⚡</span>' +
-                        '<span>Earn +10 Ayoha Points on every check-in</span>' +
-                    '</div>' +
+//                      '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMascotWrap ayohaMascotWrap--promo">' +
 
-                    '<div style="margin-top:3px;color:rgba(255,255,255,0.78);font-size:8px;white-space:nowrap;font-weight:700;letter-spacing:.15px;">' +
-                        'Up to 3 check-ins per merchant per day' +
-                    '</div>' +
+//                     '<div class="ayohaMembershipInfoBtn" >' +
+//     '<span class="ayohaMembershipInfoBtn_icon">→</span>' +
+//     '<span class="ayohaMembershipInfoBtn_text">More Info</span>' +
+// '</div>' +
+                  
+// '</div>' +
+//                 '</div>'
+//         },
+{
+    xtype: 'component',
+    width: '95%',
+    margin: '-62 0 0 0',
+    html:
+        '<div style="padding-left:24px;">' +
 
-                '</div>'
-        },
-        {
-            xtype: 'spacer'
-        },
-        {
-            xtype: 'component',
-            html:
-                '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMascotWrap ayohaMascotWrap--promo">' +
+            '<div style="margin-top:10px;color:#FFFFFF;text-align:left;font-size:22px;line-height:1.08;font-weight:800;letter-spacing:-.2px;text-shadow:0 4px 14px rgba(0,0,0,0.18);">' +
+                'Check-In Campaign' +
+            '</div>' +
 
-                    '<div class="ayohaMascotInfoBubble ayohaMascotInfoBubble--promo">' +
-                        '<span class="ayohaMascotInfoText">✨ Promo Info</span>' +
-                    '</div>' +
+            '<div style="margin-top:8px;color:rgba(255,255,255,0.90);font-size:11px;line-height:1.45;font-weight:600;max-width:245px;">' +
+                'Check in at participating merchants and collect 10 Ayoha Points with every visit.' +
+            '</div>' +
 
-                    '<img src="resources/icons/maskotEarnPoint05.png" ' +
-                        'class="ayohaMascotImg ayohaMascotImg--promo" ' +
-                        'alt="Ayoha Mascot" />' +
+            '<div style="margin-top:14px;">' +
+                '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMembershipInfoBtn ayohaMembershipInfoBtn--shine" style="display:inline-flex;">' +
+                    '<span class="ayohaMembershipInfoBtn_icon">→</span>' +
+                    '<span class="ayohaMembershipInfoBtn_text">More Info</span>' +
+                '</div>' +
+            '</div>' +
 
-                '</div>'
-        }
+        '</div>'
+},
+{
+    xtype: 'spacer'
+},
+{
+    xtype: 'component',
+    html:
+        '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMascotWrap ayohaMascotWrap--promo">' +
+            '<img src="resources/icons/maskotBigWin03.png" ' +
+                'class="ayohaMascotImg ayohaMascotImg--promo" ' +
+                'alt="Ayoha Mascot" />' +
+        '</div>'
+},
+        // {
+        //     xtype: 'spacer'
+        // },
+       
+        // {
+        //     xtype: 'component',
+        //     html:
+        //         '<div onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();" class="ayohaMascotWrap ayohaMascotWrap--promo">' +
+
+
+
+        //             '<img src="resources/icons/maskotEarnPoint05.png" ' +
+        //                 'class="ayohaMascotImg ayohaMascotImg--promo" ' +
+        //                 'alt="Ayoha Mascot" />' +
+
+        //         '</div>'
+        // }
     ]
 },
 
@@ -1705,7 +1735,7 @@ items:[
   id:'containerMyAccount_Dashboard_MembershipCardHubInfo',
   hidden:true,
   margin: '0 0 0 0',
-  height:160,
+  height:170,
   style:"border-radius:22px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(180deg,#ffffff 0%, #f6efff 100%); box-shadow: 0 2px 6px rgba(17,24,39,.06), 0 14px 32px -18px rgba(17,24,39,.18), 0 28px 72px -60px rgba(124,58,237,.20);",
   layout: {
     type: 'vbox',
@@ -1715,7 +1745,7 @@ items:[
   items:[
     {
       xtype: 'component',
-      width: '100%',
+      width: '95%',
       html:
       '<div class="ayoha-emptyCard ayoha-emptyCardBorderBold">' +
 
@@ -20732,4 +20762,14 @@ function Ayoha_UpdateCarouselIndicator(carousel, activeItem) {
             dots[i].classList.add('active');
         }
     }
+
+
+    if (index === 0) {
+        Ext.getCmp('containerMyAccount_Dashboard_MerchantCheckInInfo').setHidden(false);
+        Ext.getCmp('containerMyAccount_Dashboard_MembershipCardHubInfo').setHidden(true);
+    } else {
+        Ext.getCmp('containerMyAccount_Dashboard_MerchantCheckInInfo').setHidden(true);
+        Ext.getCmp('containerMyAccount_Dashboard_MembershipCardHubInfo').setHidden(false);
+    }
+   
 }
