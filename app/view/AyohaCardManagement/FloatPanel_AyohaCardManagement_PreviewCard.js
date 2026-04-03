@@ -5835,8 +5835,6 @@ AppState.MainDashboard_HomePage.EnterpriseLogo = EnterpriseLogo;
 
 
 
-
-
     Load_FloatPanel_AyohaCardManagement_PreviewCard_AyohaUserStampCardLoadByStampCampaignCodeEnterpriseAccNoShowHideSubscriberAccNoStore(StampedCampaignCode, EnterpriseAccNo, StartDate, EndDate, SubscriberAccNo, EnterpriseName, StampRuleRemarks, StampCampaignName, CountLoyaltyStamped, CountStampCardRowShow, EnterpriseLogo, isRequiredStartEndDate, isCampaignExpired, CampaignDayLeft);
   
     localStorage.setItem('EnterpriseHQAccNo', EnterpriseAccNo);

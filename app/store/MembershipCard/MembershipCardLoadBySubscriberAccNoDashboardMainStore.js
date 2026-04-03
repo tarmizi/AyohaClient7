@@ -103,6 +103,34 @@ var _DataStore_MembershipCard_LoadforCheck_InStore = Ext.create('Ext.data.Store'
 
 
 
+
+
+
+
+var _DataStore_MembershipCard_Load_MembershipCardHub = Ext.create('Ext.data.Store', {
+
+    model: 'BuskartApp.model.MembershipCard.MembershipCardHubListModel',
+    id: '_MembershipCard_MembershipCard_Load_MembershipCardHubID',
+    proxy: {
+        type: 'ajax',
+        url: GetAPIurl() + '/MembershipCard/MembershipCard_LoadforCheck_In',
+        actionMethods: {
+            read: 'POST'
+        },
+        reader: {
+            type: 'json',
+            rootProperty: 'results',
+            totalProperty: 'total',
+            successProperty: 'success',
+            messageProperty: 'message'
+        }
+    },
+});
+
+
+
+
+
 var _DataStore_AyohaStore_CheckOut_LoadByMembershipCardCodeStore = Ext.create('Ext.data.Store', {
 
     model: 'BuskartApp.model.MembershipCard.MembershipCardModel',

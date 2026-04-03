@@ -2613,3 +2613,557 @@
 .ayohaStampCardListFullWidth .x-list-group-header {
     box-sizing: border-box;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.premiumMembershipList{
+    background: transparent !important;
+}
+
+.premiumMembershipList .x-list-item{
+    background: transparent !important;
+    border: none !important;
+    padding: 8px 14px !important;
+}
+
+.premiumMembershipList .x-list-item-body,
+.premiumMembershipList .x-innerhtml{
+    width: 100% !important;
+}
+
+.membershipRowWrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 106px;
+    padding: 12px;
+    border-radius: 24px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.96) 100%);
+    box-shadow:
+        0 10px 28px rgba(81, 31, 145, 0.10),
+        0 2px 8px rgba(81, 31, 145, 0.06),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+    overflow: hidden;
+}
+
+.membershipRowWrap:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    border-radius: 24px 0 0 24px;
+    background: linear-gradient(180deg, #A855F7 0%, #7C3AED 100%);
+}
+
+.membershipThumbWrap{
+    position: relative;
+    width: 118px;
+    min-width: 118px;
+    height: 76px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        0 12px 24px rgba(66, 21, 128, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+    background: linear-gradient(135deg, #ede2ff 0%, #d6bbff 100%);
+}
+
+.membershipThumb{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.membershipThumbGlow{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.00) 45%, rgba(255,255,255,0.10) 100%);
+    pointer-events: none;
+}
+
+.membershipInfoWrap{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px;
+}
+
+.membershipTopRow{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.membershipMerchantName{
+    flex: 1;
+    min-width: 0;
+    color: #24123A;
+    font-size: 17px;
+    line-height: 21px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+}
+
+.membershipFeeBadge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.membershipFeeBadgeFree{
+    color: #0C6B4F;
+    background: linear-gradient(180deg, #DDFCF0 0%, #C2F7E2 100%);
+    border: 1px solid rgba(40, 167, 69, 0.18);
+}
+
+.membershipFeeBadgePaid{
+    color: #7A4B00;
+    background: linear-gradient(180deg, #FFF4CC 0%, #FFE082 100%);
+    border: 1px solid rgba(194, 139, 0, 0.18);
+}
+/* 
+.membershipAddressRow{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.membershipLocationIcon{
+    font-size: 12px;
+    line-height: 1;
+}
+
+.membershipAddressText{
+    color: #7A6E8E;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
+
+
+
+
+
+
+
+.membershipAddressRow{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    width: 100%;
+}
+
+.membershipLocationIcon{
+    flex: 0 0 auto;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.membershipAddressText{
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    color: #7A6E8E;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+/* 
+
+.membershipBottomRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.membershipTypeChip{
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.08);
+    color: #7C3AED;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.membershipFeeText{
+    color: #3B235A;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 800;
+    white-space: nowrap;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.premiumMembershipList{
+    background: transparent !important;
+}
+
+.premiumMembershipList .x-list-item{
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 10px !important;
+}
+
+.premiumMembershipList .x-list-item-body,
+.premiumMembershipList .x-innerhtml{
+    width: 100% !important;
+}
+
+.membershipRowWrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 118px;
+    padding: 14px 14px 14px 12px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.96) 100%);
+    box-shadow:
+        0 10px 24px rgba(86, 37, 160, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+    overflow: hidden;
+}
+
+.membershipRowWrap:before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    width:5px;
+    height:100%;
+    background: linear-gradient(180deg, #8b3dff 0%, #6f2dff 100%);
+    border-radius: 24px 0 0 24px;
+}
+
+.membershipThumbWrap{
+    width: 138px;
+    min-width: 138px;
+    height: 88px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.membershipMiniCard{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+.membershipMiniCardOverlay{
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.20) 100%),
+        linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 45%);
+}
+
+.membershipMiniCardContent{
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.membershipMiniCardTop{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.membershipMiniBrandWrap{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    width: 100%;
+}
+
+.membershipMiniBrandWrap img{
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.membershipMiniBrandName{
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+.membershipMiniCardMid{
+    display: flex;
+    flex-direction: column;
+   margin: 0px 0px 6px 0px;
+}
+
+.membershipMiniType{
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.30);
+}
+
+.membershipMiniNo{
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.30);
+}
+
+.membershipMiniCardBottom{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.membershipMiniMetaLeft,
+.membershipMiniMetaRight{
+    min-width: 0;
+    width: 48%;
+}
+
+.membershipMiniLabel{
+    font-size: 8px;
+    line-height: 10px;
+    opacity: 0.82;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.membershipMiniValue{
+    font-size: 9px;
+    line-height: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.membershipInfoWrap{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.membershipTopRow{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.membershipMerchantName{
+    flex: 1;
+    min-width: 0;
+    color: #20113A;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 900;
+    letter-spacing: -0.2px;
+}
+
+.membershipFeeBadge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.membershipFeeBadgeFree{
+    color: #0e7a58;
+    background: linear-gradient(180deg, #defceb 0%, #c8f5df 100%);
+    border: 1px solid rgba(23, 160, 94, 0.15);
+}
+
+.membershipFeeBadgePaid{
+    color: #7b5200;
+    background: linear-gradient(180deg, #fff2bf 0%, #ffd86b 100%);
+    border: 1px solid rgba(200, 145, 0, 0.18);
+}
+
+.membershipAddressRow{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.membershipLocationIcon{
+    font-size: 12px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.membershipAddressText{
+    color: #7a6e8e;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.membershipBottomRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+/* 
+.membershipTypeChip{
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.08);
+    color: #7C3AED;
+    font-size: 11px;
+    font-weight: 800;
+} */
+
+
+.membershipTypeChip{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    padding: 0 9px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.045);
+    color: #9183AA;
+    font-size: 10px;
+    line-height: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    border: 1px solid rgba(124, 58, 237, 0.05);
+    white-space: nowrap;
+}
+
+
+
+
+.membershipFeeText{
+    color: #2f1650;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 900;
+    white-space: nowrap;
+}

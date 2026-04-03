@@ -2184,7 +2184,7 @@ if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
 
 
         isFloatPanel_CheckOut_MembershipCardOpen = 'Y';
-      
+     
     
         Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_EnterpriseName').setHtml('<div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-size: 16px;font-weight:bold;color:white;margin:0px 0px 0px 0px">' + FloatPanel_AyohaStore_getEnterpriseName() + '</div>');
         Ext.getCmp('htmlFloatPanel_CheckOut_MembershipCard_EnterpriseLogo').setHtml('<div style="width:100%;background-color: transparent;text-align:center;border: 1px none white;font-family:Century Gothic;font-size: 11px;font-weight:normal;color:white;margin:0px 0px 0px 0px"><img src="' + FloatPanel_AyohaStore_getEnterpriseLogo() + '" style="width:72px;height:72px;border-radius:50%"/></div>');

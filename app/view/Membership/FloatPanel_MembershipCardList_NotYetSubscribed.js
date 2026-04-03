@@ -3887,16 +3887,19 @@ function FloatPanel_MembershipCardList_NotYetSubscribed_MembershipCardAyohaUserM
                    var MembershipCardCode = modelRecorded.get('MembershipCardCode');
                    var ModifiedUntilDate = modelRecorded.get('ModifiedUntilDate');
                      var EnterpriseAddress = modelRecorded.get('EnterpriseAddress');
- var EnterpriseLogoPath = modelRecorded.get('EnterpriseLogoPath');
- var EnterpriseName = modelRecorded.get('EnterpriseName');
+ var EnterpriseLogoPath = modelRecorded.get('EnterprisesLogo');
+ var EnterpriseName = modelRecorded.get('EnterprisesName');
 
 
-AppState.MainDashboard_HomePage_EnterpriseAddress= EnterpriseAddress;
-AppState.MainDashboard_HomePage_EnterpriseLogo= EnterpriseLogoPath;
-AppState.MainDashboard_HomePage_EnterpriseName= EnterpriseName;
-AppState.MainDashboard_HomePage_EnterpriseAccNo= _FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo;
-AppState.MainDashboard_HomePage_MembershipCardCode= MembershipCardCode;
-       
+
+
+
+AppState.MainDashboard_HomePage.EnterpriseAddress= EnterpriseAddress;
+AppState.MainDashboard_HomePage.EnterpriseLogo= EnterpriseLogoPath;
+AppState.MainDashboard_HomePage.EnterpriseName= EnterpriseName;
+AppState.MainDashboard_HomePage.EnterpriseAccNo= _FloatPanel_MembershipCardList_NotYetSubscribed_EnterpriseAccNo;
+AppState.MainDashboard_HomePage.MembershipCardCode= MembershipCardCode;
+  
                    MembershipCardName = modelRecorded.get('MembershipCardName');
                    MembershipCardFee= modelRecorded.get('MembershipCardFee');
                    MembershipCardFeePaymentCycle = modelRecorded.get('MembershipCardFeePaymentCycle');

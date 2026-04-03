@@ -124,7 +124,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded() {
     centered: true,
     height: '100%',
     width: '100%',
-    closeAction: 'hide', 
+    closeAction: 'destroy', 
         layout: {
             type: 'vbox',
             pack: 'start',
@@ -211,7 +211,7 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeCreateIfNeeded() {
                                               {
                                                 margin: '0 15 0 0',
                                                 id: 'htmlFloatPanel_Membership_MembershipCardHubsUpgrade_TitleHeaderTxt',
-                                               html:ayohaTheme_HeaderText('Merchant Membership Cards'),
+                                               html:ayohaTheme_HeaderText('Explore Merchants'),
                                                // html: '<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-family:Century Gothic;font-weight:700;font-size:18px;color:white">Ayoha Merchant Review</div>',
                                             },                                
      
@@ -497,7 +497,8 @@ function FloatPanel_Membership_MembershipCardHubsUpgradeHide(fromBack, animCfg) 
 
   isFloatPanel_Membership_MembershipCardHubsUpgradeOpen = 'N';
  // RemovePages("FloatPanel_ForgotPasswordHide()");
-
+_FloatPanel_Membership_MembershipCardHubsUpgrade.destroy();
+_FloatPanel_Membership_MembershipCardHubsUpgrade = null;
   // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
   if (fromBack !== true) {
     AyohaBrowserBack.close('FloatPanel_Membership_MembershipCardHubsUpgrade');

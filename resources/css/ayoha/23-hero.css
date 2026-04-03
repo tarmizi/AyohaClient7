@@ -375,9 +375,9 @@
 
 .ayohaMascotWrap_left{
     position:absolute;
-    top:-88px;
+    top:-90px;
     left:25px;
-    width:131px;
+    width:151px;
     height:151px;
     z-index:20;
     background:transparent;
@@ -390,7 +390,7 @@
     position:absolute;
     left:0;
     bottom:0;
-    width:130px;
+    width:150px;
     height:151px;
     display:block;
     z-index:2;

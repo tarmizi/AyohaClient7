@@ -47,7 +47,7 @@ Ext.application({
     'AyohaStoreCart.AyohaStoreCartReOrderModel','AyohaeWalletTransaction.AyohaeWalletAllTransactionModel','Merchantperk.Merchantperk_ViewModel','MerchantLoyaltyCampaign.StampCardModel','MerchantLoyaltyCampaign.PointCardModel',
 'MerchantLoyaltyCampaign.DiscountCardModel','MerchantLoyaltyCampaign.ContestCardModel','MerchantLoyaltyCampaign.EventCardModel','DiscountCampaign.DiscountCampaignModel',
 'PointCampaignRedeem.PointCampaignRedeemModel','DashboardAyohaUser.SuccessCheckInModel','ViewMerchantDashboard.StoreActivityModel','EnterprisesFavorite.EnterprisesFavoriteModel',
-'MembershipLoyaltyProgramMaster.MembershipLoyaltyProgramMasterModel'],
+'MembershipLoyaltyProgramMaster.MembershipLoyaltyProgramMasterModel','MembershipCard.MembershipCardHubListModel'],
 
     stores: ['Notifications.NotificationsCountTypeNNStore', 'Notifications.NotificationsCountTypeRStore', 'Enterprises.EnterprisesLoadByMerchantCategoryStore',
     'EnterpriseSubscriber.EnterpriseSubscribergetBySubcriberAccNoSearchReceiptStore','RedeemItem.RedeemItemgetByEnterpriseAccNoStore', 'LoyaltyStamp.LoyaltyStampLoadByEnterpriseAccNoStore', 'LoyaltyStamp.LoyaltyStampLoadBySubscriberAccNoAndEnterpriseAccNoStore',
@@ -134,7 +134,7 @@ Ext.application({
 'AyohaReward.FloatPanel_AyohaReward_MainDashboard','Membership.FloatPanel_Membership_CheckInPage','Membership.FloatPanel_Membership_CheckInPage_Confirmed','AyohaReward.FloatPanel_AyohaReward','Config.CoreFunction','Membership.FloatPanel_Membership_MembershipCardHubsUpgrade',
 'AyohaMerchant.AyohaMerchantReward','Membership.MembershipCardList','Membership.SideMenuMembershipCardList','AyohaMerchant.SideMenuAyohaMerchantReward','CheckOut.FloatPanel_CheckOut_NonMember','CheckOut.FloatPanel_CheckOut_ConfirmedCheckOut','Config.AppStyle','Membership.FloatPanel_CheckInModal',
 'common.OverlayConfirm','common.AyohaBackManager','common.ErrorMessagesOverlay','common.DeleteMessageOverlay','Membership.FloatPanel_CheckOut_MembershipCard','common.FloatPanel_MembershipSuccessModal','AyohaReward.FloatPanel_AyohaReward_PointTransactionDetail',
-'AyohaNotification.DeleteMessageOverlay_Notification','common.FloatPanel_NonMembershipWithJoin'],
+'AyohaNotification.DeleteMessageOverlay_Notification','common.FloatPanel_NonMembershipWithJoin','Membership.FloatPanel_Membership_CardMembershipHubList'],
 
 
 

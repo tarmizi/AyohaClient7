@@ -1433,7 +1433,7 @@ id:'carouselMerchantCheckIn',
 
          
 
-            '<img src="resources/icons/HeroSection_MembershipCardHub01.png" ' +
+            '<img src="resources/icons/HeroSection_MembershipCardHub03.png" ' +
                 'class="ayohaMascotImg_left" ' +
                 'alt="Ayoha Mascot" />' +
 
@@ -1585,7 +1585,7 @@ items:[
       '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;">' +
         '<path fill="#ffffff" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>' +
       '</svg>' +
-      'Explore Nearby Rewards' +
+      'Explore Merchants' +
     '</span>' +
 
     '<span style="position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-width:80px;height:38px;padding:0 14px;border-radius:999px;background:linear-gradient(135deg,#FFD45C 0%,#FFB938 100%);color:#4B2500;font-size:13px;font-weight:900;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);">+10 pts</span>' +
@@ -1768,7 +1768,7 @@ items:[
         '</div>' +
 
         '<div class="ayoha-ctaRow">' +
-          '<button class="ayoha-ctaBtn" style="position:relative;overflow:hidden;" onclick="FloatPanel_Membership_MembershipCardHubsUpgradeShow();">' +
+          '<button class="ayoha-ctaBtn" style="position:relative;overflow:hidden;" onclick="FloatPanel_Membership_CardMembershipHubListShow();">' +
 
             '<span style="position:absolute;top:-18%;left:-30%;width:24%;height:140%;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.14) 25%,rgba(255,255,255,.48) 50%,rgba(255,255,255,.14) 75%,rgba(255,255,255,0) 100%);transform:skewX(-22deg);animation:ayohaMembershipHubShine 3.2s ease-in-out infinite;pointer-events:none;"></span>' +
 
