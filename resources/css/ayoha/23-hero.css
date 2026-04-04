@@ -500,112 +500,119 @@
 
 
 
+.ayohaMembershipInfoBtn{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    padding:7px 12px !important;
+    border-radius:999px !important;
+    cursor:pointer !important;
+    user-select:none !important;
 
-
-.ayohaBtnMembershipHub{
-    position:relative;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:6px 12px;
-    border-radius:999px;
-    overflow:hidden;
-    cursor:pointer;
-    user-select:none;
-
-    background:linear-gradient(135deg,#8F2DFF 0%, #C33CFF 52%, #FF4FC3 100%);
-    color:#FFFFFF;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.2px;
-    text-shadow:0 1px 6px rgba(0,0,0,0.18);
-
+    background:rgba(255,255,255,0.10) !important;
+    border:none !important;
+    outline:none !important;
     box-shadow:
-        0 12px 24px rgba(126, 40, 255, 0.28),
-        inset 0 1px 0 rgba(255,255,255,0.24);
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 6px 14px rgba(34, 0, 70, 0.16) !important;
 
-    transition:transform .22s ease, box-shadow .22s ease;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    -webkit-appearance:none !important;
+    appearance:none !important;
+
+    color:#F6EDFF !important;
+    font-size:11px !important;
+    font-weight:700 !important;
+    letter-spacing:.12px !important;
+    transition:transform .2s ease, opacity .2s ease !important;
 }
 
-.ayohaBtnMembershipHub:hover{
-    transform:translateY(-2px);
+.ayohaMembershipInfoBtn:hover,
+.ayohaMembershipInfoBtn:focus,
+.ayohaMembershipInfoBtn:active{
+    background:rgba(255,255,255,0.13) !important;
+    border:none !important;
+    outline:none !important;
     box-shadow:
-        0 16px 28px rgba(126, 40, 255, 0.34),
-        inset 0 1px 0 rgba(255,255,255,0.28);
+        inset 0 1px 0 rgba(255,255,255,0.14),
+        0 8px 16px rgba(34, 0, 70, 0.18) !important;
+    opacity:.98 !important;
+    transform:translateY(-1px) !important;
 }
 
-.ayohaBtnMembershipHub:active{
-    transform:translateY(0);
+.ayohaMembershipInfoBtn:before,
+.ayohaMembershipInfoBtn:after{
+    content:none !important;
+    display:none !important;
 }
 
-.ayohaBtnMembershipHub .ayohaBtnMembershipHub_text{
-    position:relative;
-    z-index:2;
-    white-space:nowrap;
+.ayohaMembershipInfoBtn_icon{
+    width:22px !important;
+    height:22px !important;
+    min-width:22px !important;
+    border-radius:999px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:rgba(255,255,255,0.10) !important;
+    border:none !important;
+    outline:none !important;
+    box-shadow:none !important;
+
+    color:#FFFFFF !important;
+    font-size:12px !important;
+    font-weight:700 !important;
+    line-height:1 !important;
+
+    animation:ayohaArrowPulse 1.15s ease-in-out infinite !important;
+    transform-origin:center !important;
 }
 
-.ayohaBtnMembershipHub .ayohaBtnMembershipHub_icon{
-    position:relative;
-    z-index:2;
-    font-size:13px;
-    line-height:1;
+.ayohaMembershipInfoBtn_text{
+    white-space:nowrap !important;
+    color:#F6EDFF !important;
+    font-size:11px !important;
+    font-weight:700 !important;
+    line-height:1 !important;
 }
 
-.ayohaBtnMembershipHub:before{
-    content:"";
-    position:absolute;
-    top:-20%;
-    left:-38%;
-    width:34%;
-    height:140%;
-    z-index:1;
-
-    background:linear-gradient(
-        90deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.12) 25%,
-        rgba(255,255,255,0.55) 50%,
-        rgba(255,255,255,0.12) 75%,
-        rgba(255,255,255,0) 100%
-    );
-
-    transform:skewX(-24deg);
-    animation:ayohaMembershipBtnShine 2.8s ease-in-out infinite;
-    pointer-events:none;
-}
-
-.ayohaBtnMembershipHub:after{
-    content:"";
-    position:absolute;
-    inset:1px;
-    border-radius:999px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 55%, rgba(0,0,0,0.04) 100%);
-    z-index:0;
-    pointer-events:none;
-}
-
-@keyframes ayohaMembershipBtnShine{
+@keyframes ayohaArrowPulse{
     0%{
-        left:-42%;
-        opacity:0;
-    }
-    8%{
+        transform:scale(1);
         opacity:1;
     }
-    35%{
-        left:108%;
-        opacity:1;
-    }
-    45%{
-        left:118%;
-        opacity:0;
+    50%{
+        transform:scale(1.16);
+        opacity:.80;
     }
     100%{
-        left:118%;
-        opacity:0;
+        transform:scale(1);
+        opacity:1;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -620,55 +627,110 @@
 
 
 .ayohaMembershipInfoBtn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:9px 14px;
-    border-radius:999px;
-    cursor:pointer;
-    user-select:none;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+    padding:8px 12px !important;
+    border-radius:999px !important;
+    cursor:pointer !important;
+    user-select:none !important;
 
-    background:rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.16);
+    background:transparent !important;
+    border:none !important;
+    outline:none !important;
+    box-shadow:none !important;
 
-    color:#F6EDFF;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.15px;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    -webkit-appearance:none !important;
+    appearance:none !important;
 
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-
-    box-shadow:
-        0 8px 20px rgba(22, 0, 44, 0.18),
-        inset 0 1px 0 rgba(255,255,255,0.16);
-
-    transition:all .22s ease;
+    color:#F6EDFF !important;
+    font-size:12px !important;
+    font-weight:700 !important;
+    letter-spacing:.15px !important;
+    transition:transform .2s ease, opacity .2s ease !important;
 }
 
-.ayohaMembershipInfoBtn:hover{
-    transform:translateY(-1px);
-    background:rgba(255,255,255,0.16);
-    box-shadow:
-        0 12px 24px rgba(22, 0, 44, 0.22),
-        inset 0 1px 0 rgba(255,255,255,0.20);
+.ayohaMembershipInfoBtn:hover,
+.ayohaMembershipInfoBtn:focus,
+.ayohaMembershipInfoBtn:active{
+    background:transparent !important;
+    border:none !important;
+    outline:none !important;
+    box-shadow:none !important;
+    opacity:.96 !important;
+    transform:translateY(-1px) !important;
+}
+
+.ayohaMembershipInfoBtn:before,
+.ayohaMembershipInfoBtn:after{
+    content:none !important;
+    display:none !important;
 }
 
 .ayohaMembershipInfoBtn_icon{
-    width:20px;
-    height:20px;
-    border-radius:999px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(255,255,255,0.14);
-    font-size:11px;
-    line-height:1;
+    width:26px !important;
+    height:26px !important;
+    min-width:26px !important;
+    border-radius:999px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:rgba(255,255,255,0.10) !important;
+    border:none !important;
+    outline:none !important;
+    box-shadow:none !important;
+
+    color:#FFFFFF !important;
+    font-size:14px !important;
+    font-weight:700 !important;
+    line-height:1 !important;
+
+    animation:ayohaArrowPulse 1.15s ease-in-out infinite !important;
+    transform-origin:center !important;
 }
 
 .ayohaMembershipInfoBtn_text{
-    white-space:nowrap;
+    white-space:nowrap !important;
+    color:#F6EDFF !important;
+    font-size:12px !important;
+    font-weight:700 !important;
+    line-height:1 !important;
 }
+
+@keyframes ayohaArrowPulse{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:scale(1.16);
+        opacity:.78;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -683,10 +745,10 @@
 
 .ayohaMascotWrap--promo{
     position:absolute;
-    top:-84px;
-    right:16px;
-    width:136px;
-    height:160px;
+    top:-90px;
+    right:10px;
+    width:126px;
+    height:150px;
     z-index:20;
     background:transparent;
     display:block;
@@ -698,8 +760,8 @@
     position:absolute;
     right:0;
     bottom:0;
-    width:126px;
-    height:151px;
+    width:116px;
+    height:141px;
     display:block;
     z-index:2;
     filter:drop-shadow(0 12px 20px rgba(31, 0, 56, 0.18));
@@ -870,3 +932,401 @@
         opacity:0;
     }
 } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaHeroPremium{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  min-height:330px;
+  border-radius:0 0 34px 34px;
+  padding:28px 22px 26px 22px;
+  box-sizing:border-box;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(255,210,90,0.22), transparent 20%),
+    radial-gradient(circle at 18% 82%, rgba(255,72,176,0.18), transparent 25%),
+    linear-gradient(135deg, #3c0b78 0%, #5a189a 38%, #6f1dbe 68%, #4c0f88 100%);
+  box-shadow:
+    inset 0 -18px 40px rgba(255,255,255,0.04),
+    inset 0 12px 30px rgba(255,255,255,0.03);
+}
+
+.ayohaHeroBgGlow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(18px);
+  pointer-events:none;
+}
+
+.ayohaHeroBgGlow.glow1{
+  width:220px;
+  height:220px;
+  top:-40px;
+  right:-40px;
+  background:rgba(255,191,73,0.18);
+}
+
+.ayohaHeroBgGlow.glow2{
+  width:180px;
+  height:180px;
+  bottom:-50px;
+  left:-30px;
+  background:rgba(255,0,153,0.12);
+}
+
+.ayohaHeroSpark{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(255,223,120,0.9);
+  box-shadow:0 0 12px rgba(255,223,120,0.9);
+  opacity:.9;
+}
+
+.ayohaHeroSpark.spark1{ top:42px; right:118px; }
+.ayohaHeroSpark.spark2{ top:78px; right:78px; width:5px; height:5px; }
+.ayohaHeroSpark.spark3{ top:116px; right:138px; width:6px; height:6px; }
+
+.ayohaHeroContent{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.ayohaHeroLeft{
+  flex:1;
+  min-width:0;
+  padding-top:4px;
+}
+
+.ayohaHeroTopBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    0 8px 20px rgba(0,0,0,0.12);
+  color:#FBEFFF;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.2px;
+  backdrop-filter:blur(8px);
+}
+
+.ayohaHeroTopBadgeIcon{
+  font-size:12px;
+  line-height:1;
+}
+
+.ayohaHeroTitle{
+  margin-top:18px;
+  color:#FFFFFF;
+  font-size:25px;
+  line-height:1.08;
+  font-weight:900;
+  letter-spacing:-0.4px;
+  text-shadow:0 6px 18px rgba(0,0,0,0.22);
+}
+
+.ayohaHeroSubtitle_extended{
+  margin-top:6px;
+  max-width:236px;
+  color:rgba(255,255,255,0.90);
+  font-size:10px;
+  line-height:1.5;
+  font-weight:500;
+}
+.ayohaHeroSubtitle{
+  margin-top:12px;
+  max-width:290px;
+  color:#5F6072;
+  font-size:10px;
+  line-height:1.5;
+  font-weight:500;
+}
+
+.ayohaHeroSubtitle b{
+  color:#3A0ca3;
+  font-weight:800;
+}
+
+.ayohaHeroPillWrap{
+  margin-top:16px;
+}
+
+.ayohaHeroPill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg, #FFA800 0%, #FFB800 55%, #FF8F1F 100%);
+  color:#692400;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.1px;
+  box-shadow:
+    0 12px 24px rgba(255,168,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.34);
+}
+
+.ayohaHeroMiniNote{
+  margin-top:8px;
+  color:rgba(255,255,255,0.68);
+  font-size:11px;
+  line-height:1.4;
+  font-weight:600;
+  letter-spacing:.15px;
+}
+
+.ayohaHeroActionRow{
+  margin-top:22px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.ayohaHeroPrimaryBtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-width:188px;
+  padding:15px 22px;
+  border-radius:999px;
+  background:linear-gradient(135deg, #B517FF 0%, #E239D2 58%, #FF5EA8 100%);
+  color:#FFFFFF;
+  font-size:15px;
+  font-weight:900;
+  box-shadow:
+    0 14px 30px rgba(212,62,255,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.ayohaHeroPrimaryBtnIcon{
+  font-size:16px;
+  line-height:1;
+}
+
+.ayohaHeroSecondaryBtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-width:135px;
+  padding:14px 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.10);
+  color:#F7ECFF;
+  font-size:15px;
+  font-weight:800;
+  backdrop-filter:blur(10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    0 10px 24px rgba(0,0,0,0.14);
+}
+
+.ayohaHeroSecondaryBtnIcon{
+  width:28px;
+  height:28px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,0.12);
+  font-size:14px;
+  line-height:1;
+}
+
+.ayohaHeroRight{
+  position:relative;
+  width:190px;
+  min-width:190px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.ayohaHeroRewardBubble{
+  position:absolute;
+  top:12px;
+  right:6px;
+  z-index:3;
+  padding:10px 16px;
+  border-radius:999px;
+  background:linear-gradient(135deg, #FFD84D 0%, #FFBF2F 100%);
+  color:#5D2A00;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:
+    0 14px 28px rgba(255,200,60,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.36);
+}
+
+.ayohaHeroVisualCard{
+  position:relative;
+  width:170px;
+  height:195px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    0 18px 40px rgba(0,0,0,0.16);
+  backdrop-filter:blur(10px);
+}
+
+.ayohaHeroVisualCard:before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,0.06);
+  pointer-events:none;
+}
+
+.ayohaHeroMascot{
+  position:relative;
+  z-index:2;
+  width:155px;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 14px 24px rgba(0,0,0,0.22))
+         drop-shadow(0 0 18px rgba(255,206,86,0.18));
+}
+
+/* optional hover */
+.ayohaHeroPrimaryBtn,
+.ayohaHeroSecondaryBtn,
+.ayohaHeroPill{
+  transition:transform .20s ease, box-shadow .20s ease, opacity .20s ease;
+}
+
+.ayohaHeroPrimaryBtn:active,
+.ayohaHeroSecondaryBtn:active,
+.ayohaHeroPill:active{
+  transform:scale(.98);
+}
+
+/* small screen */
+@media (max-width:420px){
+  .ayohaHeroPremium{
+    min-height:315px;
+    padding:24px 18px 24px 18px;
+  }
+
+  .ayohaHeroContent{
+    gap:10px;
+  }
+
+  .ayohaHeroTitle{
+    font-size:23px;
+  }
+
+  .ayohaHeroSubtitle{
+    max-width:235px;
+    font-size:10px;
+  }
+
+  .ayohaHeroRight{
+    width:155px;
+    min-width:155px;
+  }
+
+  .ayohaHeroVisualCard{
+    width:142px;
+    height:180px;
+  }
+
+  .ayohaHeroMascot{
+    width:132px;
+  }
+
+  .ayohaHeroRewardBubble{
+    font-size:12px;
+    padding:9px 14px;
+  }
+
+  .ayohaHeroPrimaryBtn{
+    min-width:172px;
+    padding:14px 18px;
+    font-size:14px;
+  }
+
+  .ayohaHeroSecondaryBtn{
+    min-width:118px;
+    padding:13px 16px;
+    font-size:14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaCheckinLimitWrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:10px;
+}
+
+.ayohaCheckinLimitNote{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0;
+  border-radius:999px;
+  background:transparent;
+  border:none;
+  width:auto;
+  text-align:center;
+}
+
+.ayohaCheckinLimitIcon{
+  color:#8F3DFF;
+  font-size:10px;
+  line-height:1;
+}
+
+.ayohaCheckinLimitText{
+  color:#6E4D8F;
+  font-size:9px;
+  font-weight:700;
+  line-height:1.2;
+  text-align:center;
+}

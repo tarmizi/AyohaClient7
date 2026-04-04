@@ -1277,6 +1277,13 @@ function GetDomainName() {
     return _value;  
 }
 
+
+// function GetDomainName() {
+//     return window.location.origin + '/';
+// }
+
+
+
 function GetAPIurl_Web() {
 
     var _value = 'https://setkita.com/AYOHA_M_API/';
