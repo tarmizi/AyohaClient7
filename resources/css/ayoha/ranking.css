@@ -1,0 +1,1405 @@
+
+/* =========================
+   AYOHA PREMIUM RANKING
+   ========================= */
+
+.ayohaRankPremiumWrap{
+    width:100%;
+    box-sizing:border-box;
+    padding:0 10px;
+}
+/* 
+.ayohaRankPremiumCard{
+    background:
+        linear-gradient(180deg, #ffffff 0%, #fcf9ff 100%);
+    border:1px solid rgba(121,59,224,0.08);
+    border-radius:30px;
+    padding:12px 10px 10px 10px;
+    box-sizing:border-box;
+    box-shadow:
+        0 14px 34px rgba(73,26,127,0.07),
+        0 4px 12px rgba(73,26,127,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+} */
+
+
+
+.ayohaRankPremiumCard{
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(251,245,255,0.98) 100%);
+    border:1px solid rgba(121,59,224,0.10);
+    border-radius:30px;
+    padding:12px 10px 10px 10px;
+    box-sizing:border-box;
+    box-shadow:
+        0 14px 34px rgba(73,26,127,0.08),
+        0 4px 12px rgba(73,26,127,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+
+
+
+
+
+.ayohaRankPremiumHeader{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 6px 10px 6px;
+}
+
+.ayohaRankPremiumTitle{
+    color:#2E1A7F;
+    font-size:20px;
+    line-height:24px;
+    font-weight:900;
+    letter-spacing:-0.3px;
+}
+
+.ayohaRankPremiumSubTitle{
+    color:#8B7FB0;
+    font-size:11px;
+    line-height:13px;
+    font-weight:600;
+    margin-top:2px;
+}
+
+.ayohaRankPremiumChip{
+    height:28px;
+    padding:0 12px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#7A3BE0 0%, #B56FE4 100%);
+    color:#fff;
+    line-height:28px;
+    font-size:11px;
+    font-weight:800;
+    box-shadow:0 8px 18px rgba(122,59,224,0.20);
+}
+
+.ayohaRankPremiumList{
+    background:white !important;
+}
+
+.ayohaRankPremiumList .x-list-item{
+    background:white !important;
+    border:none !important;
+}
+
+.ayohaRankPremiumList .x-list-item-body,
+.ayohaRankPremiumList .x-innerhtml{
+    padding:0 !important;
+    background:white !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaRankPremiumRow{
+    width:100%;
+    min-height:86px;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 10px;
+    border-radius:22px;
+    position:relative;
+    overflow:visible;
+}
+
+.ayohaRankPremiumRow + .ayohaRankPremiumRow{
+    margin-top:8px;
+}
+
+.ayohaRankPremiumRow.top1{
+    background:linear-gradient(90deg, rgba(255,221,120,0.18) 0%, rgba(255,255,255,0.85) 72%);
+    box-shadow:inset 0 0 0 1px rgba(245,192,35,0.14);
+}
+
+.ayohaRankPremiumRow.top2{
+    background:linear-gradient(90deg, rgba(225,229,240,0.45) 0%, rgba(255,255,255,0.9) 72%);
+    box-shadow:inset 0 0 0 1px rgba(180,188,210,0.18);
+}
+
+.ayohaRankPremiumRow.top3{
+    background:linear-gradient(90deg, rgba(239,188,144,0.22) 0%, rgba(255,255,255,0.9) 72%);
+    box-shadow:inset 0 0 0 1px rgba(211,138,87,0.14);
+}
+
+.ayohaRankPremiumRow.me{
+    background:linear-gradient(90deg, rgba(122,59,224,0.08) 0%, rgba(198,132,224,0.07) 100%);
+    box-shadow:inset 0 0 0 1px rgba(122,59,224,0.10);
+    min-height:78px;
+}
+
+.ayohaRankPremiumRow.me:before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:14px;
+    bottom:14px;
+    width:4px;
+    border-radius:0 10px 10px 0;
+    background:linear-gradient(180deg,#7A3BE0 0%, #C97BDF 100%);
+}
+
+.ayohaRankPremiumLeft{
+    display:flex;
+    align-items:center;
+    min-width:0;
+    flex:1;
+}
+
+.ayohaRankPremiumAvatarWrap{
+    width:58px;
+    min-width:58px;
+    height:58px;
+    position:relative;
+    margin-right:14px;
+}
+
+.ayohaRankPremiumAvatarRing{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ffffff 0%, #e7d7ff 100%);
+    box-shadow:
+        0 5px 14px rgba(73,26,127,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    padding:2px;
+    box-sizing:border-box;
+}
+
+.ayohaRankPremiumRow.top1 .ayohaRankPremiumAvatarRing{
+    background:linear-gradient(135deg,#FFE787 0%, #F7C433 100%);
+}
+
+.ayohaRankPremiumAvatar{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    border:2px solid rgba(255,255,255,0.85);
+    box-sizing:border-box;
+}
+
+.ayohaRankPremiumCrown{
+    position:absolute;
+    top:-8px;
+    right:-3px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:linear-gradient(180deg,#FFD95F 0%, #FFB500 100%);
+    color:#8B5600;
+    font-size:12px;
+    line-height:22px;
+    text-align:center;
+    font-weight:900;
+    box-shadow:0 6px 12px rgba(255,181,0,0.24);
+    z-index:3;
+}
+
+.ayohaRankPremiumText{
+    min-width:0;
+    flex:1;
+}
+
+.ayohaRankPremiumName{
+    color:#1F2340;
+    font-size:14px;
+    line-height:20px;
+    font-weight:900;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    letter-spacing:-0.2px;
+}
+
+.ayohaRankPremiumPoints{
+    color:#6E35E5;
+    font-size:12px;
+    line-height:15px;
+    font-weight:700;
+    margin-top:3px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.ayohaRankPremiumPointsLight{
+    color:#33384E;
+    font-weight:600;
+}
+
+.ayohaRankPremiumGap{
+    color:#9A8CB6;
+    font-size:11px;
+    line-height:13px;
+    font-weight:600;
+    margin-top:4px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.ayohaRankPremiumRight{
+    width:72px;
+    min-width:72px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+}
+
+.ayohaRankPremiumRosette{
+    position:relative;
+    width:52px;
+    height:51px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.ayohaRankPremiumRosette:before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0) 61%),
+        repeating-conic-gradient(
+            from 0deg,
+            var(--rosette-dark) 0deg 10deg,
+            var(--rosette-main) 10deg 20deg
+        );
+    box-shadow:
+        inset 0 -2px 0 rgba(0,0,0,0.08),
+        0 5px 10px rgba(0,0,0,0.12);
+}
+
+.ayohaRankPremiumRosetteCenter{
+    position:relative;
+    z-index:2;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,var(--center-light) 0%, var(--center-main) 100%);
+    color:var(--number-color);
+    font-size:19px;
+    line-height:19px;
+    font-weight:900;
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,0.08);
+}
+
+.ayohaRankPremiumRosette:after{
+    content:'';
+    position:absolute;
+    left:50%;
+    /* bottom:-7px;
+    width:26px;
+    height:18px; */
+
+
+      bottom:-5px;
+    width:26px;
+    height:8px;
+    transform:translateX(-50%);
+    background:
+        linear-gradient(135deg, #EA3E47 0 50%, transparent 50% 100%) left top/50% 100% no-repeat,
+        linear-gradient(225deg, #F3514A 0 50%, transparent 50% 100%) right top/50% 100% no-repeat;
+    z-index:1;
+}
+
+.ayohaRankPremiumRosette.r1{
+    --rosette-main:#F3B500;
+    --rosette-dark:#D99800;
+    --center-light:#FFE46C;
+    --center-main:#F7C52C;
+    --number-color:#8C5800;
+}
+
+.ayohaRankPremiumRosette.r2{
+    --rosette-main:#D7DDEA;
+    --rosette-dark:#BEC6D8;
+    --center-light:#F6F8FC;
+    --center-main:#D8DDE9;
+    --number-color:#65708B;
+}
+
+.ayohaRankPremiumRosette.r3{
+    --rosette-main:#E0A06E;
+    --rosette-dark:#C98554;
+    --center-light:#F4C39B;
+    --center-main:#DEA06A;
+    --number-color:#7B4724;
+}
+
+.ayohaRankPremiumMePill{
+    display:inline-block;
+    margin-top:6px;
+    height:20px;
+    line-height:20px;
+    padding:0 10px;
+    border-radius:999px;
+    background:rgba(122,59,224,0.08);
+    color:#7A3BE0;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:0.2px;
+}
+
+.ayohaRankPremiumFooter{
+    padding:14px 2px 2px 2px;
+}
+
+.ayohaRankPremiumBtn{
+    width:100%;
+    height:52px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#7A3BE0 0%, #A95CDE 55%, #C785DE 100%);
+    color:#fff;
+    text-align:center;
+    line-height:52px;
+    font-size:16px;
+    font-weight:900;
+    letter-spacing:-0.2px;
+    box-shadow:
+        0 12px 22px rgba(122,59,224,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.26);
+}
+
+.ayohaRankPremiumBtnArrow{
+    display:inline-block;
+    margin-left:8px;
+    font-size:18px;
+    vertical-align:middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   AYOHA PURPLE LEADERBOARD
+   ========================= */
+
+.ayohaLbPurpleWrap{
+    width:100%;
+    box-sizing:border-box;
+    padding:0 10px;
+}
+
+.ayohaLbPurpleCard{
+    background: linear-gradient(180deg, #9647D6 0%, #8B3FD0 45%, #8339CA 100%);
+    border-radius: 32px;
+    padding: 18px 14px 12px 14px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        0 14px 30px rgba(91, 21, 152, 0.20);
+}
+
+.ayohaLbPurpleList{
+    background: transparent !important;
+}
+
+.ayohaLbPurpleList .x-list-item{
+    background: transparent !important;
+    border: none !important;
+}
+
+.ayohaLbPurpleList .x-list-item-body,
+.ayohaLbPurpleList .x-innerhtml{
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.ayohaLbPurpleRow{
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 14px;
+    box-sizing: border-box;
+    position: relative;
+    background: transparent;
+}
+
+.ayohaLbPurpleRow + .ayohaLbPurpleRow{
+    border-top: 1px solid rgba(58, 10, 103, 0.22);
+}
+
+.ayohaLbPurpleRow.me{
+    min-height: 76px;
+}
+
+.ayohaLbPurpleLeft{
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    flex: 1;
+}
+
+.ayohaLbPurpleBadgeWrap{
+    width: 46px;
+    min-width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 10px;
+}
+
+.ayohaLbPurpleBadge{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.10);
+}
+
+.ayohaLbPurpleBadge.gold{
+    background: linear-gradient(135deg, #FFD861 0%, #FFB100 100%);
+    color: #8A5600;
+}
+
+.ayohaLbPurpleBadge.silver{
+    background: linear-gradient(135deg, #F2F4FA 0%, #D0D6E6 100%);
+    color: #6F7892;
+}
+
+.ayohaLbPurpleBadge.bronze{
+    background: linear-gradient(135deg, #F0BF95 0%, #D38A57 100%);
+    color: #79441F;
+}
+
+.ayohaLbPurpleRank{
+    color: rgba(190,164,216,0.88);
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+}
+
+.ayohaLbPurpleText{
+    min-width: 0;
+    flex: 1;
+}
+
+.ayohaLbPurpleName{
+    color: #FFFFFF;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ayohaLbPurpleSub{
+    color: rgba(202, 177, 225, 0.82);
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 600;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ayohaLbPurplePoints{
+    color: #FFC61A;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 800;
+    margin-left: 10px;
+    flex: 0 0 auto;
+    letter-spacing: -0.2px;
+}
+
+.ayohaLbPurpleRow.me .ayohaLbPurplePoints{
+    color: #FFFFFF;
+}
+
+.ayohaLbPurpleDivider{
+    height: 1px;
+    background: rgba(58,10,103,0.24);
+    margin: 2px 10px 0 10px;
+}
+
+.ayohaLbPurpleBtnWrap{
+    padding: 16px 10px 12px 10px;
+}
+
+.ayohaLbPurpleBtn{
+    width: 100%;
+    height: 58px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(196,140,225,0.45) 0%, rgba(198,149,226,0.33) 100%);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #FFC61A;
+    text-align: center;
+    line-height: 58px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+}
+
+.ayohaLbPurpleBtnArrow{
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaMiniRankingCard{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border-radius:22px;
+  padding:16px;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(255,210,90,0.22), transparent 20%),
+    linear-gradient(135deg,#4a148c 0%, #7b1fd1 100%);
+  color:#fff;
+  box-shadow:0 16px 32px rgba(106,27,177,0.25);
+}
+
+.ayohaMiniRankingLabel{
+  font-size:12px;
+  font-weight:700;
+  color:rgba(255,255,255,0.75);
+}
+
+.ayohaMiniRankingValue{
+  margin-top:4px;
+  font-size:30px;
+  font-weight:900;
+  line-height:1;
+}
+
+.ayohaMiniRankingHint{
+  margin-top:8px;
+  font-size:11px;
+  color:#FFD95A;
+  font-weight:700;
+}
+
+.ayohaMiniRankingPoints{
+  font-size:14px;
+  font-weight:900;
+  text-align:right;
+}
+
+.ayohaMiniRankingBtn{
+  margin-top:10px;
+  padding:9px 14px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#FFD45C 0%,#FFB938 100%);
+  color:#4B2500;
+  font-size:11px;
+  font-weight:900;
+  text-align:center;
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   AYOHA PREMIUM WIDTH FIX
+   letak paling bawah sekali
+   ========================= */
+
+/* paksa semua wrapper list full width */
+.ayohaRankPremiumList,
+.ayohaRankPremiumList .x-list-item,
+.ayohaRankPremiumList .x-list-item-body,
+.ayohaRankPremiumList .x-innerhtml,
+.ayohaRankPremiumList .x-dataview-item{
+    width:100% !important;
+    min-width:100% !important;
+    display:block !important;
+    box-sizing:border-box !important;
+}
+
+/* row semua sama width */
+.ayohaRankPremiumRow{
+    width:100% !important;
+    min-width:100% !important;
+    max-width:100% !important;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-sizing:border-box;
+}
+
+/* kiri dan kanan lock supaya nama panjang tak ubah lebar card */
+.ayohaRankPremiumLeft{
+    display:flex;
+    align-items:center;
+    flex:1 1 auto;
+    min-width:0;
+    width:calc(100% - 72px);
+    max-width:calc(100% - 72px);
+    box-sizing:border-box;
+}
+
+.ayohaRankPremiumRight{
+    /* width:32px;
+    min-width:32px;
+    max-width:32px;
+    flex:0 0 32px; */
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    box-sizing:border-box;
+}
+
+/* avatar column kekal fixed */
+.ayohaRankPremiumAvatarWrap{
+    width: 55px;
+    min-width:55px;
+    max-width:55px;
+    flex:0 0 55px;
+    margin-right:12px;
+}
+
+/* text area ambil baki ruang */
+.ayohaRankPremiumText{
+    flex:1 1 auto;
+    min-width:0;
+    max-width:100%;
+    overflow:hidden;
+}
+
+/* elak nama / points tolak badge kanan */
+.ayohaRankPremiumName,
+.ayohaRankPremiumPoints,
+.ayohaRankPremiumGap{
+    display:block;
+    width:100%;
+    max-width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* kalau current user row, bagi ruang rank #22 */
+.ayohaRankPremiumRow.me .ayohaRankPremiumLeft{
+    width:calc(100% - 72px);
+    max-width:calc(100% - 72px);
+}
+
+
+.ayohaRankPremiumList .x-list-item-container{
+    width:100% !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   DATAVIEW GAP FIX
+   ========================= */
+
+.ayohaRankPremiumList{
+    background: transparent !important;
+}
+
+/* wrapper setiap item dataview */
+.ayohaRankPremiumList .x-dataview-item{
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 0 10px 0 !important;   /* gap antara item */
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}
+
+.ayohaRankPremiumList .x-dataview-item:last-child{
+    margin-bottom: 0 !important;
+}
+
+/* row card */
+.ayohaRankPremiumRow{
+    margin: 0 !important;
+    min-height: 6px !important;   /* kecilkan tinggi row */
+    padding: 10px 12px !important; /* kecilkan dalam row */
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* current user row sikit tinggi sebab ada subtext */
+.ayohaRankPremiumRow.me{
+    min-height: 88px !important;
+}
+
+/* kalau avatar nampak terlalu besar relative dgn row */
+.ayohaRankPremiumAvatarWrap{
+    margin-right: 12px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   AYOHA LEADERBOARD SUMMARY CARD - IMPROVED
+   ========================================= */
+/* .ayohaLeaderboardCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 28px;
+    box-sizing: border-box;
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 28%),
+        linear-gradient(135deg, #fffaf4 0%, #fbf6ef 36%, #f6efff 72%, #f3ebff 100%);
+    border: 1px solid rgba(233, 201, 123, 0.60);
+    box-shadow:
+        0 8px 22px rgba(125, 71, 189, 0.07),
+        0 2px 6px rgba(228, 185, 76, 0.07),
+        inset 0 1px 0 rgba(255,255,255,0.92);
+}
+
+.ayohaLeaderboardCard:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        conic-gradient(
+            from 24deg at 50% 44%,
+            rgba(181,108,255,.030) 0deg 30deg,
+            transparent 30deg 70deg,
+            rgba(255,205,74,.028) 70deg 98deg,
+            transparent 98deg 142deg,
+            rgba(181,108,255,.024) 142deg 180deg,
+            transparent 180deg 228deg,
+            rgba(255,205,74,.024) 228deg 262deg,
+            transparent 262deg 316deg,
+            rgba(181,108,255,.022) 316deg 360deg
+        );
+    pointer-events: none;
+}
+
+.ayohaLeaderboardTopAccent {
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 4px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(90deg, #efc34a 0%, #b45cff 100%);
+    opacity: .92;
+}
+
+.ayohaLeaderboardInner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 12px 18px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.ayohaLeaderboardAvatarRing {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 4px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #efbd32 0%, #ffffff 42%, #ffffff 58%, #c387ff 100%);
+    box-shadow:
+        0 5px 12px rgba(170, 104, 255, 0.07),
+        0 2px 6px rgba(239, 189, 50, 0.07);
+    margin-top: 6px;
+}
+
+.ayohaLeaderboardAvatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #efe5fb;
+    border: 2px solid rgba(255,255,255,0.96);
+    box-sizing: border-box;
+}
+
+.ayohaLeaderboardUserName {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    text-transform: uppercase;
+    color: #312b59;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ayohaLeaderboardLabel {
+    margin-top: 7px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(130, 62, 205, 0.06);
+    border: 1px solid rgba(130, 62, 205, 0.08);
+    color: #6940c8;
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+}
+
+.ayohaLeaderboardRank {
+    margin-top: 8px;
+    font-size: 44px;
+    line-height: .92;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    color: #6131d2;
+    text-shadow: 0 2px 8px rgba(116, 61, 214, 0.05);
+}
+
+.ayohaLeaderboardPointsInline {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 800;
+    color: #312b59;
+}
+
+.ayohaLeaderboardPointsInline .value {
+    color: #6131d2;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -.2px;
+    margin-right: 4px;
+}
+
+.ayohaLeaderboardFomoText {
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 700;
+    color: #8a6c18;
+    opacity: .95;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
+
+
+
+
+
+
+
+
+.ayohaLeaderboardCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* border-radius: 28px;
+    box-sizing: border-box;
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 28%),
+        linear-gradient(135deg, #fffaf4 0%, #fbf6ef 36%, #f6efff 72%, #f3ebff 100%);
+    border: 1px solid rgba(233, 201, 123, 0.60);
+    box-shadow:
+        0 8px 22px rgba(125, 71, 189, 0.07),
+        0 2px 6px rgba(228, 185, 76, 0.07),
+        inset 0 1px 0 rgba(255,255,255,0.92); */
+}
+
+.ayohaLeaderboardCard:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        conic-gradient(
+            from 24deg at 50% 44%,
+            rgba(181,108,255,.030) 0deg 30deg,
+            transparent 30deg 70deg,
+            rgba(255,205,74,.028) 70deg 98deg,
+            transparent 98deg 142deg,
+            rgba(181,108,255,.024) 142deg 180deg,
+            transparent 180deg 228deg,
+            rgba(255,205,74,.024) 228deg 262deg,
+            transparent 262deg 316deg,
+            rgba(181,108,255,.022) 316deg 360deg
+        );
+    pointer-events: none;
+}
+
+/* .ayohaLeaderboardTopAccent {
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 4px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(90deg, #efc34a 0%, #b45cff 100%);
+    opacity: .92;
+} */
+
+.ayohaLeaderboardBottomAccent {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 16px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #efc34a 0%, #b45cff 100%);
+    opacity: .92;
+}
+
+.ayohaLeaderboardInnerAlt {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 22px 18px 28px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ayohaLeaderboardTopRow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* padding: 18px 6px 0 6px; */
+}
+
+.ayohaLeaderboardLeftCol {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 8px;
+}
+
+.ayohaLeaderboardRightCol {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: flex-start;
+}
+
+.ayohaLeaderboardAvatarRing {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    padding: 4px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #efbd32 0%, #ffffff 42%, #ffffff 58%, #c387ff 100%);
+    box-shadow:
+        0 5px 12px rgba(170, 104, 255, 0.07),
+        0 2px 6px rgba(239, 189, 50, 0.07);
+}
+
+.ayohaLeaderboardAvatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #efe5fb;
+    border: 2px solid rgba(255,255,255,0.96);
+    box-sizing: border-box;
+}
+
+.ayohaLeaderboardUserName {
+    margin-top: 12px;
+     margin-left: 20px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    text-transform: uppercase;
+    color: #312b59;
+    text-align: left;
+}
+
+.ayohaLeaderboardUserLine {
+    width: 64px;
+    height: 1px;
+    margin-top: 7px;
+    background: rgba(93, 44, 207, 0.18);
+    border-radius: 999px;
+}
+
+.ayohaLeaderboardLabel {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(130, 62, 205, 0.06);
+    border: 1px solid rgba(130, 62, 205, 0.08);
+    color: #6940c8;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+}
+
+.ayohaLeaderboardRank {
+    margin-top: 8px;
+    font-size: 60px;
+    line-height: .92;
+    font-weight: 900;
+    letter-spacing: -1.6px;
+    color: #6131d2;
+    text-shadow: 0 2px 8px rgba(116, 61, 214, 0.05);
+}
+
+.ayohaLeaderboardBottomInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.ayohaLeaderboardPointsInline {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 800;
+    color: #312b59;
+    text-align: center;
+}
+
+.ayohaLeaderboardPointsInline .value {
+    color: #6131d2;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: -.2px;
+    margin-right: 4px;
+}
+
+.ayohaLeaderboardFomoText {
+    margin-top: 6px;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 700;
+    color: #8a6c18;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ayohaTop3PillWrap{
+    width:100%;
+    text-align:left;
+}
+
+.ayohaTop3Pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px 8px 12px;
+    border-radius:999px;
+    background:
+        linear-gradient(135deg, rgba(255,250,243,.96) 0%, rgba(246,239,255,.96) 100%);
+    border:1px solid rgba(229, 201, 121, 0.70);
+    box-shadow:
+        0 6px 14px rgba(125, 71, 189, 0.08),
+        0 2px 6px rgba(228, 185, 76, 0.10),
+        inset 0 1px 0 rgba(255,255,255,0.92);
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.ayohaTop3Pill:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:999px;
+    padding:1px;
+    background: linear-gradient(90deg, rgba(239,195,74,.55) 0%, rgba(180,92,255,.50) 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events:none;
+}
+
+.ayohaTop3PillIcon{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(135deg, #ffd54a 0%, #f2b300 100%);
+    color:#7a4a00;
+    font-size:12px;
+    box-shadow: 0 4px 10px rgba(242,179,0,.18);
+    flex:0 0 22px;
+}
+
+.ayohaTop3PillText{
+    font-size:12px;
+    line-height:14px;
+    font-weight:800;
+    letter-spacing:.2px;
+    color:#342f5d;
+    white-space:nowrap;
+}
+
+.ayohaTop3PillText b{
+    color:#6533d1;
+    font-weight:900;
+}
+
+
+
+
+
+
+
+
+
+
+
