@@ -9055,14 +9055,15 @@ xtype: 'container',
 
                     '<div class="ayohaLeaderboardLeftCol">' +
                         '<div class="ayohaLeaderboardLabel">My Rank</div>' +
-                        '<div class="ayohaLeaderboardRank">24</div>' +
+                        '<div id="Dashboard_RankingRank" class="ayohaLeaderboardRank">0</div>' +
                     '</div>' +
 
                     '<div class="ayohaLeaderboardRightCol">' +
                         '<div class="ayohaLeaderboardAvatarRing">' +
-                            '<div class="ayohaLeaderboardAvatar" style="background-image:url(resources/images/user/farah.jpg);"></div>' +
+                            '<div id="Dashboard_RankingAvatar"  class="ayohaLeaderboardAvatar" style="background-image:url(resources/images/user/farah.jpg);"></div>' +
                         '</div>' +
-                        '<div class="ayohaLeaderboardUserName">FARAH</div>' +
+                        '<div id="Dashboard_RankingUserName" class="ayohaLeaderboardUserName">ianMizi</div>' +
+                         '<div class="ayohaLeaderboardUserLine0"></div>' +
                         '<div class="ayohaLeaderboardUserLine"></div>' +
                     '</div>' +
 
@@ -9070,7 +9071,7 @@ xtype: 'container',
 
                 '<div class="ayohaLeaderboardBottomInfo">' +
                     '<div class="ayohaLeaderboardPointsInline">' +
-                        '<span class="value">158</span> Ayoha Points' +
+                        '<span id="Dashboard_RankingAyohaPoints" class="value">0</span> Ayoha Points' +
                     '</div>' +
                     '<div class="ayohaLeaderboardFomoText">Only a few check-ins away from climbing higher</div>' +
                 '</div>' +
@@ -9122,7 +9123,7 @@ xtype: 'container',
         {
             xtype: 'dataview',
             id: 'listAyohaRankingPremium',
-            store: 'AyohaRankingPremiumStore',
+         //   store: 'AyohaRankingPremiumStore',
            cls: 'ayohaRankPremiumList',
             scrollable: false,
             disableSelection: true,
@@ -9130,43 +9131,33 @@ xtype: 'container',
             height: 280,
 
             itemTpl: new Ext.XTemplate(
-    '<div onclick="FloatPanel_AyohaReward_ViewMyRankingShow();" class="ayohaRankPremiumRow {[this.getRowCls(values)]}">',
+    '<div onclick="FloatPanel_AyohaReward_ViewMyRankingShow();" class="{ModifiedRowNumber}">',
         '<div class="ayohaRankPremiumLeft">',
             '<div class="ayohaRankPremiumAvatarWrap">',
                 '<div class="ayohaRankPremiumAvatarRing">',
-                    '<div class="ayohaRankPremiumAvatar" style="background-image:url({photo});"></div>',
+                    '<div class="ayohaRankPremiumAvatar" style="background-image:url(&quot;{Photo}&quot;);"></div>',
                 '</div>',
-                '<tpl if="rank == 1">',
-                    '<div class="ayohaRankPremiumCrown">👑</div>',
-                '</tpl>',
+                '{CrownDisplay}',
+                // '<tpl if="{RowNumber} == 1">',
+                //     '<div class="ayohaRankPremiumCrown">👑</div>',
+                // '</tpl>',
             '</div>',
 
             '<div class="ayohaRankPremiumText">',
-                '<div class="ayohaRankPremiumName">{name}</div>',
+                '<div class="ayohaRankPremiumName">{AccountName}</div>',
                 '<div class="ayohaRankPremiumPoints">' +
-                    '{[this.formatPoints(values.points)]} <span class="ayohaRankPremiumPointsLight">Ayoha Points</span>' +
+                    '{ModifiedAyohaPoint} <span class="ayohaRankPremiumPointsLight">Ayoha Points</span>' +
                 '</div>',
             '</div>',
         '</div>',
 
         '<div class="ayohaRankPremiumRight">',
-            '<div class="ayohaRankPremiumRosette r{rank}">',
-                '<div class="ayohaRankPremiumRosetteCenter">{rank}</div>',
+            '<div class="ayohaRankPremiumRosette r{RowNumber}">',
+                '<div class="ayohaRankPremiumRosetteCenter">{RowNumber}</div>',
             '</div>',
         '</div>',
     '</div>',
-    {
-        formatPoints: function(points){
-            points = parseInt(points || 0, 10);
-            return Ext.util.Format.number(points, '0,000');
-        },
-        getRowCls: function(values){
-            if(values.rank === 1){ return 'top1'; }
-            if(values.rank === 2){ return 'top2'; }
-            if(values.rank === 3){ return 'top3'; }
-            return '';
-        }
-    }
+   
 )
         },
         // {
@@ -19182,7 +19173,7 @@ function DashboardAyohaUserMainStore() {
             document.getElementById("Dashboard_AyohaRewardPoint").textContent = AyohaPoint;
            // alert("AyohaPoint:" + AyohaPoint);
             document.getElementById('Dashboard_userPts').textContent = `${AyohaPoint.toLocaleString('en-MY')}`;
-            
+             document.getElementById('Dashboard_RankingAyohaPoints').textContent = `${AyohaPoint.toLocaleString('en-MY')}`;
 AppState.MainDashboard.AyohaPoint=AyohaPoint;
 Ext.getCmp('html_Dashboard_AyohaRewardPts').setHtml( '<div  onclick="FloatPanel_AyohaReward_PointTransactionsShow();" style="margin-bottom:15px;display:flex;align-items:center;justify-content:flex-end;">' +
                                                           '<div style="text-align:right;color:white;">' +

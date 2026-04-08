@@ -47,7 +47,7 @@ Ext.application({
     'AyohaStoreCart.AyohaStoreCartReOrderModel','AyohaeWalletTransaction.AyohaeWalletAllTransactionModel','Merchantperk.Merchantperk_ViewModel','MerchantLoyaltyCampaign.StampCardModel','MerchantLoyaltyCampaign.PointCardModel',
 'MerchantLoyaltyCampaign.DiscountCardModel','MerchantLoyaltyCampaign.ContestCardModel','MerchantLoyaltyCampaign.EventCardModel','DiscountCampaign.DiscountCampaignModel',
 'PointCampaignRedeem.PointCampaignRedeemModel','DashboardAyohaUser.SuccessCheckInModel','ViewMerchantDashboard.StoreActivityModel','EnterprisesFavorite.EnterprisesFavoriteModel',
-'MembershipLoyaltyProgramMaster.MembershipLoyaltyProgramMasterModel','MembershipCard.MembershipCardHubListModel','Ranking.LeaderboardMiniModel'],
+'MembershipLoyaltyProgramMaster.MembershipLoyaltyProgramMasterModel','MembershipCard.MembershipCardHubListModel'],
 
     stores: ['Notifications.NotificationsCountTypeNNStore', 'Notifications.NotificationsCountTypeRStore', 'Enterprises.EnterprisesLoadByMerchantCategoryStore',
     'EnterpriseSubscriber.EnterpriseSubscribergetBySubcriberAccNoSearchReceiptStore','RedeemItem.RedeemItemgetByEnterpriseAccNoStore', 'LoyaltyStamp.LoyaltyStampLoadByEnterpriseAccNoStore', 'LoyaltyStamp.LoyaltyStampLoadBySubscriberAccNoAndEnterpriseAccNoStore',

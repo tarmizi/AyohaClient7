@@ -337,7 +337,7 @@ function CoreFunction_DashboardAyohaUser() {
              // document.getElementById("Dashboard_AyohaRewardPoint").textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
               document.getElementById('Dashboard_userPts').textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
            //   document.getElementById('Dashboard_userPts_CheckIn').textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
-
+  document.getElementById('Dashboard_RankingAyohaPoints').textContent = `${AyohaPoint.toLocaleString('en-MY')} pts`;
 
 
 
@@ -554,11 +554,13 @@ function CoreFunction_DashboardEnterprises_LoadRecentlyCheckIn() {
             if (success && records.length > 0) {
                
               
-                Ext.getCmp('DataView_RecentCheckins').setStore(_DataStore_EnterprisesLoadRecentlyCheckInStore)
+                Ext.getCmp('DataView_RecentCheckins').setStore(_DataStore_EnterprisesLoadRecentlyCheckInStore);
+                CoreFunction_AyohaRewardPointRewardRankingStore_Top3();
                 
                 LoadingPanelHide(false);
             } else {
                 console.error('Failed to load store data or no record found.');
+                   CoreFunction_AyohaRewardPointRewardRankingStore_Top3();
                 LoadingPanelHide(false);
             }
         }
@@ -2339,3 +2341,50 @@ function CoreFunctionFloatPanel_MerchantDetailPage_LikeDislikeStore() {
  
  }
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+function CoreFunction_AyohaRewardPointRewardRankingStore_Top3() {
+    _DataStore_AyohaRewardPointRewardRankingStore_Top3.getProxy().setExtraParam('RankingLevel', 'Top3');
+      _DataStore_AyohaRewardPointRewardRankingStore_Top3.getProxy().setExtraParam('SubscriberAccNo', GetCurrAyohaUserAccountNo());
+    _DataStore_AyohaRewardPointRewardRankingStore_Top3.getProxy().setUrl(GetAPIurl() + '/AyohaRewardPoint/AyohaRewardPointRewardRanking');
+
+    _DataStore_AyohaRewardPointRewardRankingStore_Top3.load({
+        callback: function (records, operation, success) {
+          
+
+            if (!success || !records || records.length === 0) {
+               
+                Ext.Viewport.setMasked(false);
+                return;
+            }
+   var modelRecord =  records[0];
+           
+              var MyRanking = modelRecord.get('MyRanking');
+         Ext.getCmp('listAyohaRankingPremium').setStore(_DataStore_AyohaRewardPointRewardRankingStore_Top3);
+        
+         document.getElementById("Dashboard_RankingRank").innerText=MyRanking;
+            Ext.Viewport.setMasked(false);
+        }
+    });
+}

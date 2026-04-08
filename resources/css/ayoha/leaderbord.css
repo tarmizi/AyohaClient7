@@ -1,0 +1,207 @@
+.lb-screen {
+    min-height: 100%;
+    background:
+        radial-gradient(circle at top center, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 26%),
+        linear-gradient(180deg, #4a127c 0%, #61209d 45%, #7a25c0 100%);
+}
+
+.lb-back-button .x-button-label,
+.lb-back-button .x-button-icon {
+    display: none;
+}
+
+.lb-back-button-inner {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.lb-title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.lb-current-card {
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 14px 30px rgba(34, 0, 59, 0.18), inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.lb-current-avatar-wrap {
+    position: relative;
+    width: 88px;
+    height: 88px;
+}
+
+.lb-current-avatar-badge {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 2;
+    min-width: 34px;
+    padding: 5px 6px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffe074 0%, #f4b515 100%);
+    color: #361056;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+}
+
+.lb-current-avatar-img {
+    width: 76px;
+    height: 76px;
+    margin: 8px 0 0 8px;
+    object-fit: cover;
+    display: block;
+}
+
+.lb-current-rank {
+    color: #ffc83a;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.lb-current-rank-label {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.lb-current-points {
+    color: rgba(255,255,255,0.95);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.lb-progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(55, 22, 84, 0.40);
+}
+
+.lb-progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffd449 0%, #f5aa14 100%);
+    box-shadow: 0 0 16px rgba(255, 212, 73, 0.24);
+}
+
+.lb-progress-hint {
+    color: rgba(255,255,255,0.88);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lb-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.lb-section-icon {
+    color: #ffc83a;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.lb-podium-card {
+    min-height: 140px;
+    padding: 18px 12px 14px 12px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.11);
+    border: 1px solid rgba(255,255,255,0.14);
+}
+
+.lb-podium-card-center {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 28px rgba(255, 204, 82, 0.16);
+}
+
+.lb-podium-medal {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.lb-podium-medal-center {
+    width: 34px;
+    height: 34px;
+}
+
+.lb-podium-name {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lb-podium-points {
+    color: #ffc83a;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.lb-near-row {
+    padding: 16px 18px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.11);
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.lb-near-row-current {
+    background: rgba(255, 200, 58, 0.14);
+    border-color: rgba(255, 200, 58, 0.34);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 18px rgba(255, 200, 58, 0.10);
+}
+
+.lb-near-row-current .lb-near-rank,
+.lb-near-row-current .lb-near-name,
+.lb-near-row-current .lb-near-points {
+    color: #ffc83a;
+}
+
+.lb-near-rank {
+    min-width: 44px;
+    color: rgba(255,255,255,0.46);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.lb-near-name {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lb-near-points {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}

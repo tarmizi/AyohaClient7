@@ -53,3 +53,34 @@ var _DataStore_AyohaRewardPointRewardRankingStore = Ext.create('Ext.data.Store',
     //autoLoad: true
 
 });
+
+
+
+
+
+
+
+var _DataStore_AyohaRewardPointRewardRankingStore_Top3 = Ext.create('Ext.data.Store', {
+
+    model: 'BuskartApp.model.AyohaRewardPoint.AyohaRewardPointModel',
+    id: '_AyohaRewardPointRewardRankingStore_Top3ID',
+    proxy: {
+        type: 'ajax',
+        url: GetAPIurl() + '/AyohaRewardPoint/AyohaRewardPointRewardRanking',
+        actionMethods: {
+            read: 'GET'
+        },
+        reader: {
+            type: 'json',
+            rootProperty: 'results',
+            totalProperty: 'total',
+            successProperty: 'success',
+            messageProperty: 'message'
+        }
+    },
+
+
+
+    //autoLoad: true
+
+});

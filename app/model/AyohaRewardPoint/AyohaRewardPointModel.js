@@ -26,7 +26,8 @@
       'AyohaPointRedemptionItem',
       'ModifiedDateTime',
        { name: 'CreatedDate_MonthYear', type: 'string' },
-    { name: 'Month', type: 'int' },     
+    { name: 'Month', type: 'int' },
+     { name: 'RowNumber', type: 'int' },     
       'ItemCartCode',
       'MembershipCardCode_AyohaStore_Order',
       'OrderNo',
@@ -387,7 +388,67 @@ console.log(CampaignCode);
       'OrderNo',
       'MembershipCardImg',
       'MembershipCardName',
-      'PaymentNote'
+      'PaymentNote',
+      'MyRanking',
+       {
+          name: 'ModifiedRowNumber',
+          convert: function (value, record) {
+              var _value;
+
+              var str = record.get('RowNumber');
+
+   if (str == "1") {
+     return "ayohaRankPremiumRow top1";
+   }
+ if (str == "2") {
+     return "ayohaRankPremiumRow top2";
+   }
+    if (str == "3") {
+         return "ayohaRankPremiumRow top3";
+   }
+
+          
+
+
+          }
+      },
+       {
+          name: 'ModifiedAyohaPoint',
+          convert: function (value, record) {
+           
+              var str = record.get('AyohaPoint');
+
+               var points = parseInt(str || 0, 10);
+            return Ext.util.Format.number(points, '0,000');
+
+
+          
+
+
+          }
+      },
+
+
+       {
+          name: 'CrownDisplay',
+          convert: function (value, record) {
+           
+             var str = record.get('RowNumber');
+
+   if (str == "1") {
+     return '<div class="ayohaRankPremiumCrown">👑</div>';
+   }
+ if (str == "2") {
+     return '<div class="ayohaRankPremiumCrown"></div>';
+   }
+    if (str == "3") {
+         return '<div class="ayohaRankPremiumCrown"></div>';
+   }
+          
+
+
+          }
+      },
         ]
    // }
 });

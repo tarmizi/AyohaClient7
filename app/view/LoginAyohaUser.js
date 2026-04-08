@@ -714,7 +714,7 @@ function loadAyohaUserProfileLoginBody() {
             );
 
 document.getElementById("html_Dashboard_1stline_PromotingMembershipCard_UserName").innerText="Hi ," +AccountName;
-
+document.getElementById("Dashboard_RankingUserName").innerText=AccountName;
 
 // Ext.getCmp('htmlMyAccount_Dashboard_ProfileTitleUpgrade_MerchantCheckin').setHtml(
 //               '<div  style="width:100%;background-color: transparent;text-align:left;height:40px;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#FFFFFF;" >Hi,' + AccountName.toUpperCase() + '</div>'
@@ -730,7 +730,10 @@ document.getElementById("html_Dashboard_1stline_PromotingMembershipCard_UserName
               '<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>'
             );
             
-
+Ext.get('Dashboard_RankingAvatar').setStyle(
+    'background-image',
+    'url("' + encodeURI(data.results[0].Photo) + '")'
+);
 
 //   Ext.getCmp('btnMyAccount_DashboardPicProfileIcon_MerchantCheckin').setHtml(
 //               '<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>'
@@ -972,9 +975,16 @@ function loadUserProfileWithOutLogOut() {
                       
                       
                         // Ext.getCmp('btnMyAccount_DashboardPicProfile').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 20px 20px 20px 20px;width:33px;height:33px" ><img src="' + data.results[0].Photo + '"      style="width: 30px; height: 30px; border:2px none grey; border-radius: 50%; max-width:32px; margin:-1px 0px 0px 2px"></div>');
-                        Ext.getCmp('btnMyAccount_DashboardPicProfileIcon').setHtml('<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>');
+                       
 
-
+            Ext.getCmp('btnMyAccount_DashboardPicProfileIcon').setHtml(
+              '<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>'
+            );
+            
+Ext.get('Dashboard_RankingAvatar').setStyle(
+    'background-image',
+    'url("' + encodeURI(data.results[0].Photo) + '")'
+);
 
                         localStorage.setItem('AyohaVersion', data.results[0].AyohaVersion);
                         localStorage.setItem('AyohaUserGroupCode',data.results[0].AyohaUserGroupCode);
@@ -1419,6 +1429,11 @@ function loadAyohaUserProfileLoginBodyAfterCreatedAccount(valUserName,valKataLal
                         Ext.getCmp('btnMyAccount_DashboardPicProfileIcon').setHtml('<div ><img src="' + data.results[0].Photo + '"  style ="width:45px;height:45px;border-radius:50%;border:2px solid white;" alt="Company Name"></div>');
 
 
+            
+Ext.get('Dashboard_RankingAvatar').setStyle(
+    'background-image',
+    'url("' + encodeURI(data.results[0].Photo) + '")'
+);
 
                         localStorage.setItem('AyohaVersion', data.results[0].AyohaVersion);
                         localStorage.setItem('AyohaUserGroupCode',data.results[0].AyohaUserGroupCode);
