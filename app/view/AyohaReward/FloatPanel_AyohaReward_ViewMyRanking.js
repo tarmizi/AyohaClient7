@@ -2,37 +2,26 @@
 
 });
 
-var _FloatPanel_AyohaReward_ViewMyRanking;
+var _FloatPanel_AyohaReward_ViewMyRanking= null;
 
 
 var isFloatPanel_AyohaReward_ViewMyRankingOpen = 'N';
 
-
-
-
-
-function FloatPanel_AyohaReward_ViewMyRanking() {
-
-    _FloatPanel_AyohaReward_ViewMyRanking =
+function FloatPanel_AyohaReward_ViewMyRankingCreateIfNeeded() {
+     if (_FloatPanel_AyohaMerchantInfo_EventCardLoyaltyProgram && !_FloatPanel_AyohaMerchantInfo_EventCardLoyaltyProgram.destroyed) return;
+  _FloatPanel_AyohaReward_ViewMyRanking =
     Ext.create('Ext.Panel', {
-        zIndex: 111,
-        xtype: 'container',
-        //height: 465,
-        //  height: '100%',
-        width: '100%',
+      
         id: 'FloatPanel_AyohaReward_ViewMyRankingID',
-        draggable: false,
-
-        styleHtmlContent: true,
-
+            floated: true,
         centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-            type: 'fit'
-        },
+        fullscreen: true,
+       // closeAction: 'hide',
+       closeAction: 'destroy',
+        draggable: false,
+        modal: false,
+        styleHtmlContent: true,
+        layout: 'fit',
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -53,39 +42,16 @@ function FloatPanel_AyohaReward_ViewMyRanking() {
         // style: 'border-bottom:1px solid;background-color:white;',
         //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)',
         style: ' background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-        listeners: {
-            initialize: function (c) {
-                this.element.on({
-                    swipe: function (e, node, options) {
-                        //if (e.direction == "up") {
-                        //    LoyaltyCardRedeemListHide();
-                        //}
-                        if (e.direction == "left") {
-                            isFloatPanel_AyohaReward_ViewMyRankingOpen = 'N';
-                            RemovePages("FloatPanel_AyohaReward_ViewMyRankingHide()");
-                            _FloatPanel_AyohaReward_ViewMyRanking.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'left',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
+         listeners: {
+ 
 
-                            }));
-                        } if (e.direction == "right") {
-                            isFloatPanel_AyohaReward_ViewMyRankingOpen = 'N';
-                            RemovePages("FloatPanel_AyohaReward_ViewMyRankingHide()");
-                            _FloatPanel_AyohaReward_ViewMyRanking.hide(Ext.fx.Animation({
-                                type: 'slideOut',
-                                direction: 'right',
-                                easing: 'cubic-bezier(.7,0,.7,1)',
-                                duration: 250
-
-                            }));
-                        }
-                       
-                    }
-                });
-            }
-        },
+        // ✅ kalau user tap mask, close macam standard
+        beforehide: function () {
+          // kalau hide dipanggil bukan dari function kita, block dulu
+          // (optional: boleh allow kalau kau nak)
+          return true;
+        }
+      },
 
         items: [
 
@@ -1765,11 +1731,18 @@ function FloatPanel_AyohaReward_ViewMyRanking() {
 
 
     });
-    return _FloatPanel_AyohaReward_ViewMyRanking;
-
-
-
 }
+
+
+
+// function FloatPanel_AyohaReward_ViewMyRanking() {
+
+  
+//     return _FloatPanel_AyohaReward_ViewMyRanking;
+
+
+
+// }
 
 
 
@@ -1780,10 +1753,49 @@ function FloatPanel_AyohaReward_ViewMyRanking() {
 
 function FloatPanel_AyohaReward_ViewMyRankingShow() {
 
-    Ext.Viewport.remove(_FloatPanel_AyohaReward_ViewMyRanking);
-    this.overlay = Ext.Viewport.add(FloatPanel_AyohaReward_ViewMyRanking());
-    this.overlay.show();
-    AddRoutePages("FloatPanel_AyohaReward_ViewMyRankingHide()");
+    // Ext.Viewport.remove(_FloatPanel_AyohaReward_ViewMyRanking);
+    // this.overlay = Ext.Viewport.add(FloatPanel_AyohaReward_ViewMyRanking());
+    // this.overlay.show();
+    // AddRoutePages("FloatPanel_AyohaReward_ViewMyRankingHide()");
+
+
+
+
+
+
+
+
+
+   FloatPanel_AyohaReward_ViewMyRankingCreateIfNeeded();
+
+
+    _FloatPanel_AyohaReward_ViewMyRanking.show();
+   // ✅ push browser back (ikut style kau)
+   if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+     AyohaBrowserBack.push('FloatPanel_AyohaReward_ViewMyRanking', function () {
+    
+        FloatPanel_AyohaReward_ViewMyRankingHide(true);
+     });
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     isFloatPanel_AyohaReward_ViewMyRankingOpen = 'Y';
     FloatPanel_AyohaReward_ViewMyRankingAdjustHeight();
     FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore();
@@ -1833,11 +1845,40 @@ function FloatPanel_AyohaReward_ViewMyRankingShow() {
 
 
 
-function FloatPanel_AyohaReward_ViewMyRankingHide() {
+function FloatPanel_AyohaReward_ViewMyRankingHide(fromBack, animCfg){
     // FloatPanel_AyohaReward_ViewMyRanking_AddCardHide();
-    if (isFloatPanel_AyohaReward_ViewMyRankingOpen == "Y") {
-        _FloatPanel_AyohaReward_ViewMyRanking.hide(); isFloatPanel_AyohaReward_ViewMyRankingOpen = 'N';
-        RemovePages("FloatPanel_AyohaReward_ViewMyRankingHide()");
+    // if (isFloatPanel_AyohaReward_ViewMyRankingOpen == "Y") {
+    //     _FloatPanel_AyohaReward_ViewMyRanking.hide(); isFloatPanel_AyohaReward_ViewMyRankingOpen = 'N';
+    //     RemovePages("FloatPanel_AyohaReward_ViewMyRankingHide()");
+    // }
+
+
+
+
+
+
+
+
+
+    
+    
+    if (isFloatPanel_AyohaReward_ViewMyRankingOpen == 'Y') {
+       
+      
+
+        if (animCfg) {
+            _FloatPanel_AyohaReward_ViewMyRanking.hide(Ext.fx.Animation(animCfg));
+          } else {
+            _FloatPanel_AyohaReward_ViewMyRanking.hide();
+          }
+          isFloatPanel_AyohaReward_ViewMyRankingOpen = 'N';
+         
+          // ✅ kalau bukan sebab browser BACK, kita sync history supaya state tak tinggal
+          if (fromBack !== true) {
+            AyohaBrowserBack.close('FloatPanel_AyohaReward_ViewMyRanking');
+          }
+          _FloatPanel_AyohaReward_ViewMyRanking.destroy();
+          _FloatPanel_AyohaReward_ViewMyRanking = null;
     }
  
 }
@@ -1871,7 +1912,373 @@ var myRankingNo;
 var myRankingContestantName;
 var myRankingContestantImge;
 var myRankingContestantPoint;
+
+
+
 function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore() {
+
+
+    var ii = 1;
+
+
+    _DataStore_AyohaRewardPointRewardRankingStore.getProxy().setExtraParam('RankingLevel', "ALL");
+    _DataStore_AyohaRewardPointRewardRankingStore.getProxy().setUrl(GetAPIurl() + '/AyohaRewardPoint/AyohaRewardPointRewardRanking');
+    _DataStore_AyohaRewardPointRewardRankingStore.load();
+
+
+    _DataStore_AyohaRewardPointRewardRankingStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+  
+             
+  for (i = 0; i < records.length; i++) {
+           var modelRecord = records[i]; 
+            var AccountName = modelRecord.get('AccountName');
+            var Photo = modelRecord.get('Photo');
+            var AyohaPoint = modelRecord.get('AyohaPoint');
+            var SubscriberAccNo = modelRecord.get('SubscriberAccNo');
+
+
+
+            if (ii < 4 && i < 3) {
+                Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Image').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:40px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + Photo + '"  style="width: 40px; height: 40px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+                Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Name').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 12px;font-weight:bold;color:black;height:40px">' + AccountName + '<br><div style="width:100%;height:40px;font-size: 10px;font-weight:normal;color:black;margin:-5px 0px 0px 0px;" >' + AyohaPoint + ' Ayoha Points</div></div>');
+
+                
+
+
+            }
+
+
+            if ((ii >= 4 && i >= 3) && (ii < 11 && i < 10) ) {
+              
+                Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Image').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:40px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + Photo + '"  style="width: 40px; height: 40px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+                Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Name').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 12px;font-weight:bold;color:black;height:40px">' + AccountName + '<br><div style="width:100%;height:40px;font-size: 10px;font-weight:normal;color:black;margin:-5px 0px 0px 0px;" >' + AyohaPoint + ' Ayoha Points</div></div>');
+                // Ext.getCmp('htmlDashboard_User_AyohaRewardRanking0' + ii + '_AyohaPoint').setHtml('<div style="color:white;text-align: center;font-size:10px;width:100%;"><b>' + AyohaPoint + ' Point</b></div>');
+
+
+
+            }
+
+            if (SubscriberAccNo == GetCurrAyohaUserAccountNo()) {
+
+                var TodayDateSvr= localStorage.getItem("TodayDateSvr");
+                var EndDateContest = localStorage.getItem("EndDateContest");
+                var  WinnerAnnoucementStatus=localStorage.getItem("WinnerAnnoucementStatus");
+
+
+
+                myRankingNo = ii;
+                if (myRankingNo < 4) {
+                    
+                    myRankingContestantName = AccountName.toUpperCase();
+                    myRankingContestantImge = Photo;
+                    myRankingContestantPoint = AyohaPoint;
+                    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Image').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:40px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + myRankingContestantImge + '"  style="width: 40px; height: 40px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+                    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Name').setHtml('<div  class="blink_me" style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 12px;font-weight:bold;color:black;height:40px">' + myRankingContestantName + '<br><div style="width:100%;height:40px;font-size: 10px;font-weight:normal;color:black;margin:-5px 0px 0px 0px;" >' + myRankingContestantPoint + ' Ayoha Points</div></div>');
+                    if (myRankingNo == 1)
+                    {
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Image').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:50px;height:50px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + myRankingContestantImge + '"  style="width: 50px; height: 50px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking01_Txt').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:50px;height:50px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/firstRank01.png"  style="width: 45px; height: 45px; border:2px none white;   margin:0px 0px 0px 0px"></div>');
+                        Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo + 'TagHighlight').setStyle('background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)');
+                        Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo).setStyle('border-bottom:2px solid #fac;border-top:2px solid #fac ;background-color: #FAD6DE;');
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo+'_Spacer').setWidth(25);                       
+
+
+                        if (TodayDateSvr == EndDateContest) {
+                            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;" >Congratulations!!<br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 8px;" >1st Ranking</div></div><br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-85px 0px 0px 5px;" ><img src="resources/icons/ayohaReward01.gif"  style="width: 110px; height: 110px;margin:0px 0px 0px -20px;"></div>');
+                            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/firstRank01.png"  style="width: 36px; height: 36px;">');
+                            if (WinnerAnnoucementStatus == "Y") {
+                                stagingCongratulationShow();
+                            }
+                           
+                        } else {
+                            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/firstRank01.png"  style="width: 36px; height: 36px;">');
+                            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div  style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:transparent;text-align:left;margin:0px 0px 0px -20px;" >Hooray!,1st Ranking<br><div style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;" >PLEASE MAINTAIN your Ranking until end of this contest! </div></div><br><div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-80px 0px 0px -30px;" ><img src="resources/icons/enterContest-removebg-preview.png"  style="width: 100px; height: 100px;"></div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-25px 0px 0px -20px;text-align:center" >Contest End Date:</div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-60px 0px 0px -20px;text-align:center" >' + EndDateContest + ' 12:00AM </div>');
+
+                        }
+                     
+                    }
+                    if (myRankingNo == 2) {
+                       // Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking02_Txt').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:35px;height:35px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/secondRank01.png"  style="width: 35px; height: 35px; border:2px none white;   margin:0px 0px 0px 0px"></div>');
+
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Image').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:50px;height:50px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + myRankingContestantImge + '"  style="width: 50px; height: 50px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking02_Txt').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:50px;height:50px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/secondRank01.png"  style="width: 45px; height: 45px; border:2px none white;   margin:0px 0px 0px 0px"></div>');
+
+
+                        Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo + 'TagHighlight').setStyle('background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)');
+                        Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo).setStyle('border-bottom:2px solid #fac;border-top:2px solid #fac ;background-color: #FAD6DE;');
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Spacer').setWidth(25);
+
+
+
+                        //Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;" >Congratulations!!<br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 8px;" >2nd Ranking</div></div><br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-85px 0px 0px 5px;" ><img src="resources/icons/contestLogo01.png"  style="width: 110px; height: 110px;margin:0px 0px 0px -20px;"></div>');
+                        //Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/secondRank01.png"  style="width: 36px; height: 36px;">');
+                        //stagingCongratulationShow();
+
+
+                        if (TodayDateSvr == EndDateContest) {
+                            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;" >Congratulations!!<br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 8px;" >2nd Ranking</div></div><br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-85px 0px 0px 5px;" ><img src="resources/icons/ayohaReward01.gif"  style="width: 110px; height: 110px;margin:0px 0px 0px -20px;"></div>');
+                            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/secondRank01.png"  style="width: 36px; height: 36px;">');
+                            if (WinnerAnnoucementStatus == "Y") {
+                                stagingCongratulationShow();
+                            }
+
+                        } else {
+                            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/secondRank01.png"  style="width: 36px; height: 36px;">');
+                            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div  style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:transparent;text-align:left;margin:0px 0px 0px -20px;" >Hooray!,2nd Ranking<br><div style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;" >PLEASE MAINTAIN your Ranking until end of this contest! </div></div><br><div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-80px 0px 0px -30px;" ><img src="resources/icons/enterContest-removebg-preview.png"  style="width: 100px; height: 100px;"></div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-25px 0px 0px -20px;text-align:center" >Contest End Date:</div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-60px 0px 0px -20px;text-align:center" >' + EndDateContest + ' 12:00AM </div>');
+
+                        }
+
+                    }
+                    if (myRankingNo == 3) {
+                       // Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking03_Txt').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:35px;height:35px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/thirdRank01.png"  style="width: 35px; height: 35px; border:2px none white;   margin:0px 0px 0px 0px"></div>');
+
+
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Image').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:50px;height:50px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + myRankingContestantImge + '"  style="width: 50px; height: 50px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking03_Txt').setHtml('<div class="blink_me" style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:50px;height:50px;font-size: 10px;font-weight:normal;color:black;" ><img src="resources/icons/thirdRank01.png"  style="width: 45px; height: 45px; border:2px none white;   margin:0px 0px 0px 0px"></div>');
+
+
+                        Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo + 'TagHighlight').setStyle('background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)');
+                        Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo).setStyle('border-bottom:2px solid #fac;border-top:2px solid #fac ;background-color: #FAD6DE;');
+                        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + myRankingNo + '_Spacer').setWidth(25);
+
+                     
+                    
+
+
+
+                        if (TodayDateSvr == EndDateContest) {
+                            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;" >Congratulations!!<br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 8px;" >3rd Ranking</div></div><br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-85px 0px 0px 5px;" ><img src="resources/icons/ayohaReward01.gif"  style="width: 110px; height: 110px;margin:0px 0px 0px -20px;"></div>');
+                            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/thirdRank01.png"  style="width: 36px; height: 36px;">');
+                            if (WinnerAnnoucementStatus == "Y") {
+                                stagingCongratulationShow();
+                            }
+
+                        } else {
+                            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/thirdRank01.png"  style="width: 36px; height: 36px;">');
+                            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div  style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:transparent;text-align:left;margin:0px 0px 0px -20px;" >Hooray!,3rd Ranking<br><div style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;" >PLEASE MAINTAIN your Ranking until end of this contest! </div></div><br><div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-80px 0px 0px -30px;" ><img src="resources/icons/enterContest-removebg-preview.png"  style="width: 100px; height: 100px;"></div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-25px 0px 0px -20px;text-align:center" >Contest End Date:</div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-60px 0px 0px -20px;text-align:center" >' + EndDateContest + ' 12:00AM </div>');
+
+                        }
+                    }
+
+                }
+
+                if (myRankingNo >= 4 && myRankingNo <= 10 ){
+                    myRankingContestantName = AccountName.toUpperCase();
+                    myRankingContestantImge = Photo;
+                    myRankingContestantPoint = AyohaPoint;
+                    Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo + 'TagHighlight').setStyle('background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9)');
+                    Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo).setStyle('border-bottom:2px solid #fac;border-top:2px solid #fac ;background-color: #FAD6DE;');
+                    
+                    Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHidden(true);
+                   
+
+
+                    if (TodayDateSvr == EndDateContest) {
+                        Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;" >Congratulations!!<br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;" >In top 7 ranking</div></div><br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-85px 0px 0px 5px;" ><img src="resources/icons/contestLogo01.png"  style="width: 110px; height: 110px;margin:0px 0px 0px -20px;"></div>');
+                        Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/thirdRank01.png"  style="width: 0px; height: 0px;">');
+                        if (WinnerAnnoucementStatus == "Y") {
+                            stagingCongratulationShow();
+                        }
+
+                    } else {
+                        Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div  style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:transparent;text-align:left;margin:0px 0px 0px -20px;" >Hooray!,Top 10 Ranking<br><div style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;" >PLEASE MAINTAIN your Ranking until end of this contest! </div></div><br><div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-80px 0px 0px -30px;" ><img src="resources/icons/enterContest-removebg-preview.png"  style="width: 100px; height: 100px;"></div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-25px 0px 0px -20px;text-align:center" >Contest End Date:</div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-60px 0px 0px -20px;text-align:center" >' + EndDateContest + ' 12:00AM </div>');
+
+                    }
+                    
+                }
+                if (myRankingNo >= 11) {
+                    myRankingContestantName = AccountName.toUpperCase();
+                    myRankingContestantImge = Photo;
+                    myRankingContestantPoint = AyohaPoint;
+                  //  Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;display:none" >Congratulations!!<br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;display:none" >In top 7 ranking</div></div><br><div style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-85px 0px 0px 5px;display:none" ><img src="resources/icons/contestLogo01.png"  style="width: 110px; height: 110px;margin:0px 0px 0px -20px;"></div>');
+                    //Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHtml('<img src="resources/icons/thirdRank01.png"  style="width: 0px; height: 0px;">');
+                    Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div  style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:white;text-align:left;margin:0px 0px 0px -20px;" >Hurry Up!,Be In Top 10<br><div style="background: transparent;width:120px;height:100px;font-size: 10px;font-weight:bold;color:white;margin:-2px 0px 0px 0px;" >Ranking to win worth prizes! </div></div><br><div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-80px 0px 0px -30px;" ><img src="resources/icons/enterContest-removebg-preview.png"  style="width: 100px; height: 100px;"></div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-25px 0px 0px -20px;text-align:center" >Contest End Date:</div><br><div class="blink_me" style="background: transparent;width:120px;height:50px;font-size: 10px;font-weight:bold;color:white;margin:-60px 0px 0px -20px;text-align:center" >' + EndDateContest + ' 12:00AM </div>');
+                    Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHidden(true);
+                   
+                }
+
+
+
+
+
+                if (myRankingNo <= 10) {
+                    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingHeaderJoinedDate').setHtml('<div style="color:#FDFEFE;text-align: center;font-size:9px;width:100%;">Joined Date:' + globalJoinDate + '</div>');
+
+                    var containerView = Ext.ComponentQuery.query('container[name=namecontainerFloatPanel_AyohaReward_ViewMyRankingList0' + myRankingNo + ']')[0];
+                    var containerViewEl = containerView.element;
+                    containerViewEl.on('tap',
+                      function (event, node, options, eOpts) {
+                         
+                          //FloatPanel_AyohaReward_CongratulationsShow();
+                          stagingCongratulation02Show();
+                        
+                      }
+                    );
+
+
+                    
+                }
+
+
+
+            }
+
+
+
+            ii++;
+
+        }
+
+        Ext.getCmp('htmlRangkingContestantImg').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:100px;height:100px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + myRankingContestantImge + '"  style="width: 100px; height: 100px; border:2px solid white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+        Ext.getCmp('htmlRangkingContestantName').setHtml('<font size=2 color=white><b>' + myRankingContestantName + '</b></font>');
+        Ext.getCmp('htmlYourRangking').setHtml('<div style="color:white;text-align: center;font-size:70px;width:100%;"><b>' + myRankingNo + '</b></div>');
+        Ext.getCmp('htmlRankingAyohaPointCount').setHtml('<font size=2 color=white><b>' + myRankingContestantPoint + ' Ayoha Points</b></font>');
+
+
+        if (globalIsContestant == "N") {
+            Ext.getCmp('htmlRangkingContestantImg').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:100px;height:100px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + GetAyohaUserPicProfile() + '"  style="width: 100px; height: 100px; border:2px solid white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
+            Ext.getCmp('htmlRangkingContestantName').setHtml('<font size=2 color=white><b>' + GetAyohaUserAccountNames() + '</b></font>');
+            Ext.getCmp('htmlYourRangking').setHtml('<div style="color:white;text-align: center;font-size:70px;width:100%;"><b>-</b></div>');
+            Ext.getCmp('htmlRankingAyohaPointCount').setHtml('<font size=2 color=white><b>0 Ayoha Points</b></font>');
+            Ext.getCmp('htmlRankingTopTenCongrulationRankImg').setHidden(true);
+            Ext.getCmp('htmlYourRangkingTxt').setHtml('<div style="color:white;text-align: center;font-size:12px;width:100%;">You are Not Contestant!</div>');
+            Ext.getCmp('htmlRankingTopTenCongrulation').setHtml('<div class="blink_me" style="background: transparent;width:120px;height:100px;font-size: 11px;font-weight:bold;color:white;" >Hurry Up Buddy,Joint<br><div style="background: transparent;width:120px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-2px 0px 0px 8px;" >the contest Now.!</div></div><br><div class="blink_me" style="background: transparent;width:100px;height:100px;font-size: 11px;font-weight:bold;color:white;margin:-105px 0px 0px 5px;" ><img src="resources/icons/enterContest-removebg-preview.png"  style="width: 100px; height: 100px;"></div>');
+         
+
+
+
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //     for (i = 0; i < records.length; i++) {
+                  
+            //     var modelRecord = records[i]; 
+            //     var AccountName = modelRecord.get('AccountName');
+            // var Photo = modelRecord.get('Photo');
+            // var AyohaPoint = modelRecord.get('AyohaPoint');
+            // var SubscriberAccNo = modelRecord.get('SubscriberAccNo');
+            // var JoinDate_DateOnly = modelRecord.get('JoinDate_DateOnly');
+            // var JoinDate_TimeOnly = modelRecord.get('JoinDate_TimeOnly');
+
+        
+        
+        
+            //         if (ii < 4 && i < 3) {
+            //             if (ii == 1) {
+        
+        
+            //                 Ext.getCmp('imgDashboard_User_AyohaRewardRanking0' + ii).setHtml('<img src="' + Photo + '"  style="width: 80px; height: 80px; border:1px solid white; border-radius: 50%;  margin:0px 0px 0px 0px;">');
+            //                 Ext.getCmp('htmlDashboard_User_AyohaRewardRanking0' + ii + '_Name').setHtml('<div style="color:black;text-align: center;font-size:12px;width:100%;"><b>' + AccountName + '</b></div>');
+            //                 Ext.getCmp('htmlDashboard_User_AyohaRewardRanking0' + ii + '_AyohaPoint').setHtml('<div style="color:black;text-align: center;font-size:10px;width:100%;"><b>' + AyohaPoint + ' Point</b></div>');
+            //             } else {
+            //                 Ext.getCmp('imgDashboard_User_AyohaRewardRanking0' + ii).setHtml('<img src="' + Photo + '"  style="width: 70px; height: 70px; border:1px solid white; border-radius: 50%;  margin:0px 0px 0px 0px;">');
+            //                 Ext.getCmp('htmlDashboard_User_AyohaRewardRanking0' + ii + '_Name').setHtml('<div style="color:black;text-align: center;font-size:12px;width:100%;"><b>' + AccountName + '</b></div>');
+            //                 Ext.getCmp('htmlDashboard_User_AyohaRewardRanking0' + ii + '_AyohaPoint').setHtml('<div style="color:black;text-align: center;font-size:10px;width:100%;"><b>' + AyohaPoint + ' Point</b></div>');
+            //             }
+        
+        
+            //         }
+        
+        
+        
+            //         if (SubscriberAccNo == GetCurrAyohaUserAccountNo()) {
+        
+            //            myRankingNo = ii;
+            //             // alert(JoinDate);
+        
+            //             globalJoinDate = JoinDate_DateOnly + ' ' + JoinDate_TimeOnly;
+            //             //Ext.getCmp('htmlJoinContestDate').setHtml('<div style="color:black;text-align: center;font-size:10px;width:100%;">Joined Date:' + JoinDate_DateOnly + '' + JoinDate_TimeOnly + '</div>');
+        
+        
+            //             if (myRankingNo <= 10) {
+        
+            //                 if (myRankingNo == 1) {
+            //                     //Ext.getCmp('imgDashboard_User_AyohaRewardRanking01').setHtml('<img src="' + Photo + '"  style="width: 80px; height: 80px; border:1px solid white; border-radius: 50%;  margin:0px 0px 0px 0px;" class="example-1">');
+            //                     Ext.getCmp('imgDashboard_User_AyohaRewardRanking01').setHtml('<img src="' + Photo + '"  style="width: 80px; height: 80px; border:2px solid grey; border-radius: 50%;  margin:0px 0px 0px 0px;" >');
+            //                 }
+        
+            //                 if (myRankingNo == 2) {
+            //                     //Ext.getCmp('imgDashboard_User_AyohaRewardRanking02').setHtml('<img src="' + Photo + '"  style="width: 70px; height: 70px; border:1px solid white; border-radius: 50%;  margin:0px 0px 0px 0px;" class="example-1">');
+            //                     Ext.getCmp('imgDashboard_User_AyohaRewardRanking02').setHtml('<img src="' + Photo + '"  style="width: 70px; height: 70px; border:2px grey; border-radius: 50%;  margin:0px 0px 0px 0px;">');
+            //                 }
+            //                 if (myRankingNo == 3) {
+            //                     // Ext.getCmp('imgDashboard_User_AyohaRewardRanking03').setHtml('<img src="' + Photo + '"  style="width: 70px; height: 70px; border:1px solid white; border-radius: 50%;  margin:0px 0px 0px 0px;"  class="example-1">');
+            //                     Ext.getCmp('imgDashboard_User_AyohaRewardRanking03').setHtml('<img src="' + Photo + '"  style="width: 70px; height: 70px; border:2px solid grey; border-radius: 50%;  margin:0px 0px 0px 0px;">');
+            //                 }
+            //                 Ext.getCmp('htmlContestYourRanking').setHtml('<div  class="blink_me" style="color:black;text-align: center;font-size:10px;width:100%;margin:70px 0px 0px 0px;">Hooray You in Ranking !</div>');
+            //                 Ext.getCmp('htmlContestYourRankingNo').setHtml('<div class="blink_me" style="color:black;text-align: center;font-size:40px;font-weight:bold;width:100%;margin:-10px 0px 0px 0px;">' + myRankingNo + '</div>');
+        
+            //             } else {
+            //                 Ext.getCmp('htmlContestYourRankingNo').setHtml('<div style="color:black;text-align: center;font-size:40px;font-weight:bold;width:100%;margin:-10px 0px 0px 0px;">' + myRankingNo + '</div>');
+            //                 Ext.getCmp('htmlContestYourRanking').setHtml('<div style="color:black;text-align: center;font-size:10px;width:100%;margin:70px 0px 0px 0px;">Your Ranking !</div>');
+            //             }
+        
+        
+            //         }
+        
+            //         ii++;
+        
+            //     }
+
+
+
+
+
+
+
+
+            } else {
+               // SuccessCheckinController_DashboardSuccessCheckIn_LoadPerkCanEnjoyInfo();
+                //alert('Failed to load store data or no record found.');
+               // LoadingPanelHide();
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStoreORI() {
 
 
     var ii = 1;
@@ -1879,6 +2286,16 @@ function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore
         RankingLevel: "ALL",
     });
     Ext.StoreMgr.get('AyohaRewardPointRewardRankingStore').load();
+
+
+
+
+
+
+
+
+
+
 
 
     var task = Ext.create('Ext.util.DelayedTask', function () {
@@ -1904,20 +2321,6 @@ function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore
                 Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Name').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 12px;font-weight:bold;color:black;height:40px">' + AccountName + '<br><div style="width:100%;height:40px;font-size: 10px;font-weight:normal;color:black;margin:-5px 0px 0px 0px;" >' + AyohaPoint + ' Ayoha Points</div></div>');
 
                 
-                //if (ii == 1) {
-                //    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Image').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:45px;height:45px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + Photo + '"  style="width: 45px; height: 45px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
-                //    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Name').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 12px;font-weight:bold;color:black;height:40px">' + AccountName + '<br><div style="width:100%;height:40px;font-size: 10px;font-weight:normal;color:black;margin:-5px 0px 0px 0px;" >' + AyohaPoint + ' Ayoha Points</div></div>');
-
-                //} else {
-                //    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Image').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 0px 0px 0px 0px;width:40px;height:40px;font-size: 10px;font-weight:normal;color:black;" ><img src="' + Photo + '"  style="width: 40px; height: 40px; border:2px none white; border-radius: 50%;  margin:-6px 0px 0px 0px"></div>');
-                //    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking0' + ii + '_Name').setHtml('<div style="width:100%;background-color: transparent;text-align:left;border: 1px none white;font-size: 12px;font-weight:bold;color:black;height:40px">' + AccountName + '<br><div style="width:100%;height:40px;font-size: 10px;font-weight:normal;color:black;margin:-5px 0px 0px 0px;" >' + AyohaPoint + ' Ayoha Points</div></div>');
-
-                //}
-
-
-
-                // Ext.getCmp('htmlDashboard_User_AyohaRewardRanking0' + ii + '_AyohaPoint').setHtml('<div style="color:white;text-align: center;font-size:10px;width:100%;"><b>' + AyohaPoint + ' Point</b></div>');
-             
 
 
             }

@@ -32,7 +32,7 @@
 var _DataStore_AyohaRewardPointRewardRankingStore = Ext.create('Ext.data.Store', {
 
     model: 'BuskartApp.model.AyohaRewardPoint.AyohaRewardPointModel',
-    id: '__AyohaRewardPointRewardRankingStoreID',
+    id: '_AyohaRewardPointRewardRankingStoreID',
     proxy: {
         type: 'ajax',
         url: GetAPIurl() + '/AyohaRewardPoint/AyohaRewardPointRewardRanking',

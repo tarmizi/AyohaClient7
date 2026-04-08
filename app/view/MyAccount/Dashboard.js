@@ -8963,6 +8963,268 @@ xtype: 'container',
 
 
 
+
+////// Rankings
+{
+  xtype: 'container',
+  width: '100%',
+  height: 740,
+ // hidden: false,
+  id:'containerDashboard_Your_Ranking',
+ // margin: '0 0 0 0',
+ margin: '0 0 0 0',
+  // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
+  //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+  style: 'background-color:transparent',
+  //style: "background-color: white;",
+  layout: {
+      type: 'vbox',
+      pack: 'start',
+      align: 'center',
+  },
+  items:[
+      {
+      xtype: 'container',
+      width: '100%',
+    //  height: 40,
+     // hidden: false,
+      id:'containerDashboard_RankingTitle',
+     // margin: '0 0 0 0',
+     margin: '0 0 0 0',
+      // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
+      //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
+      style: 'background-color:transparent',
+      //style: "background-color: white;",
+      layout: {
+          type: 'hbox',
+          pack: 'center',
+          align: 'center',
+      },
+      items: [
+           {
+              
+              //  margin: '10 0 0 14',
+              //  //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
+              // html: '<div  style="color:black;text-align: left;font-size:14px;width:100%;margin:0px 0px 0px 0px"><b>Check-In Rewards</b></div><br><div style="color:black;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">Tap “Check-In” to redeem at<b> <u>kopi surat cinta-putrajaya!</u></b></div>'
+              // html: '<span style="font-size:10px;color:#16a34a;background:#ecfdf5;border:1px solid #bbf7d0;padding:3px 6px;border-radius:999px;white-space:nowrap;">Get available perks in selected Check-In Merchant!</span><br><div style="color:white;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">One Hub • Double Reward,Get your exiciting perks!</div>'
+              margin: '0 0 0 14',
+              //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
+             html: '<div    style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:10px 0px 0px 10px"><b>🏆 Check-In Ranking</b></div><br> <div style="margin:-21px 0px 0px 12px;font-size:11px;color:#6b7280;">Rise up the leaderboard and own the spotlight</div>'
+     
+           },
+         
+           {
+               xtype: 'spacer'
+           },
+             
+    {
+       html:
+    '<div onclick="FloatPanel_AyohaReward_ViewMyRankingShow();" ' +
+         'style="' +
+            'color:#3E22A8;' +
+            'text-align:right;' +
+            'font-size:12px;' +
+            'font-weight:500;' +
+            'width:100%;' +
+            'padding-right:8px;' +
+            'font-family:Arial, sans-serif;' +
+            'cursor:pointer;margin-top:25px;' +
+         '">' +
+         '<span style="border-bottom:2px solid rgba(62,34,168,0.18);padding-bottom:1px;">View Top 10</span>' +
+         '<span style="margin-left:6px;font-size:10px;">→</span>' +
+    '</div>'
+    }
+    
+      ]
+    },
+
+
+
+    
+{
+    xtype: 'component',
+    width: 320,
+    height: 250,
+    html:
+        '<div class="ayohaLeaderboardCard">' +
+            '<div class="ayohaLeaderboardTopAccent"></div>' +
+
+            '<div class="ayohaLeaderboardInner ayohaLeaderboardInnerAlt">' +
+
+                '<div class="ayohaLeaderboardTopRow">' +
+
+                    '<div class="ayohaLeaderboardLeftCol">' +
+                        '<div class="ayohaLeaderboardLabel">My Rank</div>' +
+                        '<div class="ayohaLeaderboardRank">24</div>' +
+                    '</div>' +
+
+                    '<div class="ayohaLeaderboardRightCol">' +
+                        '<div class="ayohaLeaderboardAvatarRing">' +
+                            '<div class="ayohaLeaderboardAvatar" style="background-image:url(resources/images/user/farah.jpg);"></div>' +
+                        '</div>' +
+                        '<div class="ayohaLeaderboardUserName">FARAH</div>' +
+                        '<div class="ayohaLeaderboardUserLine"></div>' +
+                    '</div>' +
+
+                '</div>' +
+
+                '<div class="ayohaLeaderboardBottomInfo">' +
+                    '<div class="ayohaLeaderboardPointsInline">' +
+                        '<span class="value">158</span> Ayoha Points' +
+                    '</div>' +
+                    '<div class="ayohaLeaderboardFomoText">Only a few check-ins away from climbing higher</div>' +
+                '</div>' +
+
+            '</div>' +
+
+            '<div class="ayohaLeaderboardBottomAccent"></div>' +
+        '</div>'
+},
+{
+    xtype: 'component',
+    margin: '-30 0 0 0',
+      width: '100%',
+      height: 30,
+    html:
+        '<div class="ayohaTop3PillWrap">' +
+            '<div class="ayohaTop3Pill">' +
+                '<div >🎉</div>' +
+                '<div class="ayohaTop3PillText">Celebrate Our <b>TOP 3 </b> Champions🥳</div>' +
+            '</div>' +
+        '</div>'
+},
+
+{
+    xtype: 'container',
+     width: '100%',
+      height: 15,
+},
+ {
+    xtype: 'container',
+    cls: 'ayohaRankPremiumWrap',
+    // margin: '10 0 0 0',
+    width: '100%',
+    items: [
+
+        // {
+        //     xtype: 'component',
+        //     html:
+        //         '<div class="ayohaRankPremiumCard">' +
+        //             '<div class="ayohaRankPremiumHeader">' +
+        //                 '<div>' +
+        //                     '<div class="ayohaRankPremiumTitle">Top Rankers</div>' +
+        //                     '<div class="ayohaRankPremiumSubTitle">Top point earners today</div>' +
+        //                 '</div>' +
+        //                 '<div class="ayohaRankPremiumChip">Ayoha Elite</div>' +
+        //             '</div>' +
+        //         '</div>'
+        // },
+        {
+            xtype: 'dataview',
+            id: 'listAyohaRankingPremium',
+            store: 'AyohaRankingPremiumStore',
+           cls: 'ayohaRankPremiumList',
+            scrollable: false,
+            disableSelection: true,
+            pressedCls: '',
+            height: 280,
+
+            itemTpl: new Ext.XTemplate(
+    '<div onclick="FloatPanel_AyohaReward_ViewMyRankingShow();" class="ayohaRankPremiumRow {[this.getRowCls(values)]}">',
+        '<div class="ayohaRankPremiumLeft">',
+            '<div class="ayohaRankPremiumAvatarWrap">',
+                '<div class="ayohaRankPremiumAvatarRing">',
+                    '<div class="ayohaRankPremiumAvatar" style="background-image:url({photo});"></div>',
+                '</div>',
+                '<tpl if="rank == 1">',
+                    '<div class="ayohaRankPremiumCrown">👑</div>',
+                '</tpl>',
+            '</div>',
+
+            '<div class="ayohaRankPremiumText">',
+                '<div class="ayohaRankPremiumName">{name}</div>',
+                '<div class="ayohaRankPremiumPoints">' +
+                    '{[this.formatPoints(values.points)]} <span class="ayohaRankPremiumPointsLight">Ayoha Points</span>' +
+                '</div>',
+            '</div>',
+        '</div>',
+
+        '<div class="ayohaRankPremiumRight">',
+            '<div class="ayohaRankPremiumRosette r{rank}">',
+                '<div class="ayohaRankPremiumRosetteCenter">{rank}</div>',
+            '</div>',
+        '</div>',
+    '</div>',
+    {
+        formatPoints: function(points){
+            points = parseInt(points || 0, 10);
+            return Ext.util.Format.number(points, '0,000');
+        },
+        getRowCls: function(values){
+            if(values.rank === 1){ return 'top1'; }
+            if(values.rank === 2){ return 'top2'; }
+            if(values.rank === 3){ return 'top3'; }
+            return '';
+        }
+    }
+)
+        },
+        // {
+        //     xtype: 'component',
+        //     margin: '10 12 0 12',
+        //     html:
+        //         '<div class="ayohaRankPremiumBtn" onclick="Ayoha_ViewFullLeaderboard()">' +
+        //             'View Full Leaderboard <span class="ayohaRankPremiumBtnArrow">›</span>' +
+        //         '</div>'
+        // }
+    ]
+},
+{
+    xtype: 'component',
+    width:300,
+    height: 74,
+   html:
+    '<div onclick="FloatPanel_AyohaReward_ViewMyRankingShow();" class="ayohaLeaderboardGlassBtnWrap">' +
+        '<div class="ayohaLeaderboardGlassBtnShine"></div>' +
+
+        '<div class="ayohaLeaderboardGlassBtnCenter">' +
+            '<div class="ayohaLeaderboardGlassBtnIconWrap">' +
+               '🎖️' +
+              
+            '</div>' +
+
+            '<div class="ayohaLeaderboardGlassBtnTextWrap">' +
+                '<div class="ayohaLeaderboardGlassBtnTitle">View Top 10 Leaderboard</div>' +
+                '<div class="ayohaLeaderboardGlassBtnSub">See who leads now</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>'
+},
+
+
+
+{
+    xtype: 'component',
+    width: '100%',
+    margin: '-6 0 0 0',
+    html:
+    '<div class="ayohaTop10FomoWrap">' +
+        '<div class="ayohaTop10FomoLine1">*Don’t drop from the <span>Top 10</span></div>' +
+        '<div class="ayohaTop10FomoLine2">stay ahead to unlock <span>exclusive quarterly prizes</span>🎁.</div>' +
+    '</div>'
+    // html:
+    //     '<div class="ayohaTop10FomoWrap">' +
+    //         '<div class="ayohaTop10FomoLine1">Stay in the <span>Top 10</span></div>' +
+    //         '<div class="ayohaTop10FomoLine2">and stand a chance to win <span>exclusive quarterly prizes</span>.</div>' +
+    //     '</div>'
+}
+
+  ]
+},
+
+
+
+
 //// Your Activity
 
 {
@@ -9326,306 +9588,6 @@ xtype: 'container',
 
   ]
 },
-
-
-////// Rankings
-{
-  xtype: 'container',
-  width: '100%',
-  height: 560,
- // hidden: false,
-  id:'containerDashboard_Your_Ranking',
- // margin: '0 0 0 0',
- margin: '0 0 0 0',
-  // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
-  //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-  style: 'background-color:transparent',
-  //style: "background-color: white;",
-  layout: {
-      type: 'vbox',
-      pack: 'start',
-      align: 'center',
-  },
-  items:[
-      {
-      xtype: 'container',
-      width: '100%',
-    //  height: 40,
-     // hidden: false,
-      id:'containerDashboard_RankingTitle',
-     // margin: '0 0 0 0',
-     margin: '0 0 0 0',
-      // style: 'border-right:2px solid #ECF0F1;border-left:2px solid #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px solid #ECF0F1 ;background: white;border-radius: 0px 15px 15px 0px;',
-      //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-      style: 'background-color:transparent',
-      //style: "background-color: white;",
-      layout: {
-          type: 'hbox',
-          pack: 'center',
-          align: 'center',
-      },
-      items: [
-           {
-              
-              //  margin: '10 0 0 14',
-              //  //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
-              // html: '<div  style="color:black;text-align: left;font-size:14px;width:100%;margin:0px 0px 0px 0px"><b>Check-In Rewards</b></div><br><div style="color:black;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">Tap “Check-In” to redeem at<b> <u>kopi surat cinta-putrajaya!</u></b></div>'
-              // html: '<span style="font-size:10px;color:#16a34a;background:#ecfdf5;border:1px solid #bbf7d0;padding:3px 6px;border-radius:999px;white-space:nowrap;">Get available perks in selected Check-In Merchant!</span><br><div style="color:white;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">One Hub • Double Reward,Get your exiciting perks!</div>'
-              margin: '0 0 0 14',
-              //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
-             html: '<div    style="color:#3A0ca3;text-align: left;font-size:18px;width:100%;margin:10px 0px 0px 10px"><b>👑 Check-In Leaderboard</b></div><br> <div style="margin:-21px 0px 0px 12px;font-size:11px;color:#6b7280;">Rise up the leaderboard and own the spotlight</div>'
-     
-           },
-         
-           {
-               xtype: 'spacer'
-           },
-           {
-    
-              margin: '0 14 0 14',
-              hidden:true,
-              html: '<div onclick="FloatPanel_AyohaEnterpriseRewardItemShow();" style="background-color: transparent; color: white; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 10px; padding: 3px 6px; border-radius: 50px; display: inline-block; text-align: center; white-space: nowrap;margin:5px 0px 0px 0px;"><u>View All</u></div>'
-          
-          },
-         
-    
-    
-      ]
-    },
-
-// {
-//     xtype: 'component',
-//     width: 320,
-//     height: 250,
-//     html:
-//         '<div class="ayohaLeaderboardCard">' +
-//             '<div class="ayohaLeaderboardTopAccent"></div>' +
-//             '<div class="ayohaLeaderboardInner">' +
-//                 '<div class="ayohaLeaderboardAvatarRing">' +
-//                     '<div class="ayohaLeaderboardAvatar" style="background-image:url(resources/images/user/farah.jpg);"></div>' +
-//                 '</div>' +
-//                 '<div class="ayohaLeaderboardUserName">FARAH</div>' +
-//                 '<div class="ayohaLeaderboardLabel">My Rank</div>' +
-//                 '<div class="ayohaLeaderboardRank">24</div>' +
-//                 '<div class="ayohaLeaderboardPointsInline"><span class="value">158</span>Ayoha Points</div>' +
-//                 '<div class="ayohaLeaderboardFomoText">Only a few check-ins away from climbing higher</div>' +
-//             '</div>' +
-//         '</div>'
-// },
-
-
-
-{
-    xtype: 'component',
-    width: 320,
-    height: 250,
-    html:
-        '<div class="ayohaLeaderboardCard">' +
-            '<div class="ayohaLeaderboardTopAccent"></div>' +
-
-            '<div class="ayohaLeaderboardInner ayohaLeaderboardInnerAlt">' +
-
-                '<div class="ayohaLeaderboardTopRow">' +
-
-                    '<div class="ayohaLeaderboardLeftCol">' +
-                        '<div class="ayohaLeaderboardLabel">My Rank</div>' +
-                        '<div class="ayohaLeaderboardRank">24</div>' +
-                    '</div>' +
-
-                    '<div class="ayohaLeaderboardRightCol">' +
-                        '<div class="ayohaLeaderboardAvatarRing">' +
-                            '<div class="ayohaLeaderboardAvatar" style="background-image:url(resources/images/user/farah.jpg);"></div>' +
-                        '</div>' +
-                        '<div class="ayohaLeaderboardUserName">FARAH</div>' +
-                        '<div class="ayohaLeaderboardUserLine"></div>' +
-                    '</div>' +
-
-                '</div>' +
-
-                '<div class="ayohaLeaderboardBottomInfo">' +
-                    '<div class="ayohaLeaderboardPointsInline">' +
-                        '<span class="value">158</span> Ayoha Points' +
-                    '</div>' +
-                    '<div class="ayohaLeaderboardFomoText">Only a few check-ins away from climbing higher</div>' +
-                '</div>' +
-
-            '</div>' +
-
-            '<div class="ayohaLeaderboardBottomAccent"></div>' +
-        '</div>'
-},
-{
-    xtype: 'component',
-    margin: '-30 0 0 30',
-      width: '100%',
-      height: 30,
-    html:
-        '<div class="ayohaTop3PillWrap">' +
-            '<div class="ayohaTop3Pill">' +
-                '<div class="ayohaTop3PillIcon">★</div>' +
-                '<div class="ayohaTop3PillText"><b>TOP 3</b> Check-In Points</div>' +
-            '</div>' +
-        '</div>'
-},
-
-{
-    xtype: 'container',
-     width: '100%',
-      height: 30,
-},
- {
-    xtype: 'container',
-    cls: 'ayohaRankPremiumWrap',
-    // margin: '10 0 0 0',
-    width: '100%',
-    items: [
-        // {
-        //     xtype: 'component',
-        //     html:
-        //         '<div class="ayohaRankPremiumCard">' +
-        //             '<div class="ayohaRankPremiumHeader">' +
-        //                 '<div>' +
-        //                     '<div class="ayohaRankPremiumTitle">Top Rankers</div>' +
-        //                     '<div class="ayohaRankPremiumSubTitle">Top point earners today</div>' +
-        //                 '</div>' +
-        //                 '<div class="ayohaRankPremiumChip">Ayoha Elite</div>' +
-        //             '</div>' +
-        //         '</div>'
-        // },
-        {
-            xtype: 'dataview',
-            id: 'listAyohaRankingPremium',
-            store: 'AyohaRankingPremiumStore',
-           cls: 'ayohaRankPremiumList',
-            scrollable: false,
-            disableSelection: true,
-            pressedCls: '',
-            height: 456,
-
-            itemTpl: new Ext.XTemplate(
-    '<div class="ayohaRankPremiumRow {[this.getRowCls(values)]}">',
-        '<div class="ayohaRankPremiumLeft">',
-            '<div class="ayohaRankPremiumAvatarWrap">',
-                '<div class="ayohaRankPremiumAvatarRing">',
-                    '<div class="ayohaRankPremiumAvatar" style="background-image:url({photo});"></div>',
-                '</div>',
-                '<tpl if="rank == 1">',
-                    '<div class="ayohaRankPremiumCrown">★</div>',
-                '</tpl>',
-            '</div>',
-
-            '<div class="ayohaRankPremiumText">',
-                '<div class="ayohaRankPremiumName">{name}</div>',
-                '<div class="ayohaRankPremiumPoints">' +
-                    '{[this.formatPoints(values.points)]} <span class="ayohaRankPremiumPointsLight">Ayoha Points</span>' +
-                '</div>',
-            '</div>',
-        '</div>',
-
-        '<div class="ayohaRankPremiumRight">',
-            '<div class="ayohaRankPremiumRosette r{rank}">',
-                '<div class="ayohaRankPremiumRosetteCenter">{rank}</div>',
-            '</div>',
-        '</div>',
-    '</div>',
-    {
-        formatPoints: function(points){
-            points = parseInt(points || 0, 10);
-            return Ext.util.Format.number(points, '0,000');
-        },
-        getRowCls: function(values){
-            if(values.rank === 1){ return 'top1'; }
-            if(values.rank === 2){ return 'top2'; }
-            if(values.rank === 3){ return 'top3'; }
-            return '';
-        }
-    }
-)
-            // itemTpl: new Ext.XTemplate(
-            //     '<div class="ayohaRankPremiumRow {[this.getRowCls(values)]}">',
-            //         '<div class="ayohaRankPremiumLeft">',
-            //             '<div class="ayohaRankPremiumAvatarWrap">',
-            //                 '<div class="ayohaRankPremiumAvatarRing">',
-            //                     '<div class="ayohaRankPremiumAvatar" style="background-image:url({photo});"></div>',
-            //                 '</div>',
-            //                 '<tpl if="rank == 1 && isCurrentUser != true">',
-            //                     '<div class="ayohaRankPremiumCrown">★</div>',
-            //                 '</tpl>',
-            //             '</div>',
-            //             '<div class="ayohaRankPremiumText">',
-            //                 '<div class="ayohaRankPremiumName">{name}</div>',
-            //                 '<div class="ayohaRankPremiumPoints">' +
-            //                     '{[this.formatPoints(values.points)]} <span class="ayohaRankPremiumPointsLight">Ayoha Points</span>' +
-            //                 '</div>',
-            //                 '<tpl if="isCurrentUser == true">',
-            //                     '<div class="ayohaRankPremiumGap">{gapText}</div>',
-            //                     '<div class="ayohaRankPremiumMePill">YOUR CURRENT RANK</div>',
-            //                 '</tpl>',
-            //             '</div>',
-            //         '</div>',
-            //         '<div class="ayohaRankPremiumRight">',
-            //             '<tpl if="isCurrentUser == true">',
-            //                 '<div class="ayohaRankPremiumRosette r1" style="opacity:.16; transform:scale(.92); display:none;"></div>',
-            //                 '<div style="color:#7A3BE0;font-size:22px;font-weight:900;letter-spacing:-0.3px;">#{rank}</div>',
-            //             '<tpl else>',
-            //                 '<div class="ayohaRankPremiumRosette r{rank}">',
-            //                     '<div class="ayohaRankPremiumRosetteCenter">{rank}</div>',
-            //                 '</div>',
-            //             '</tpl>',
-            //         '</div>',
-            //     '</div>',
-            //     {
-            //         formatPoints: function(points){
-            //             points = parseInt(points || 0, 10);
-            //             return Ext.util.Format.number(points, '0,000');
-            //         },
-            //         getRowCls: function(values){
-            //             if(values.isCurrentUser === true){ return 'me'; }
-            //             if(values.rank === 1){ return 'top1'; }
-            //             if(values.rank === 2){ return 'top2'; }
-            //             if(values.rank === 3){ return 'top3'; }
-            //             return '';
-            //         }
-            //     }
-            // )
-        },
-        {
-            xtype: 'component',
-            margin: '10 12 0 12',
-            html:
-                '<div class="ayohaRankPremiumBtn" onclick="Ayoha_ViewFullLeaderboard()">' +
-                    'View Full Leaderboard <span class="ayohaRankPremiumBtnArrow">›</span>' +
-                '</div>'
-        }
-    ]
-},
-// {
-//     xtype: 'component',
-//     width: '95%',
-//     margin: '10 0 0 0',
-//     html:
-//         '<div class="ayohaMiniRankingCard">' +
-
-//             '<div class="ayohaMiniRankingLeft">' +
-//                 '<div class="ayohaMiniRankingLabel">🏆 Your Ranking</div>' +
-//                 '<div class="ayohaMiniRankingValue">#22</div>' +
-//                 '<div class="ayohaMiniRankingHint">Only 120 pts to Top 20</div>' +
-//             '</div>' +
-
-//             '<div class="ayohaMiniRankingRight">' +
-//                 '<div class="ayohaMiniRankingPoints">14,694 pts</div>' +
-//                 '<div onclick="openLeaderboard();" class="ayohaMiniRankingBtn">View Ranking</div>' +
-//             '</div>' +
-
-//         '</div>'
-// },
-
-
-  ]
-},
-
-
-
 
 
   ///////////////////////////////////CheckIn Reward////////
