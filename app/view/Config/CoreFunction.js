@@ -2371,7 +2371,7 @@ function CoreFunction_AyohaRewardPointRewardRankingStore_Top3() {
 
     _DataStore_AyohaRewardPointRewardRankingStore_Top3.load({
         callback: function (records, operation, success) {
-          
+        //  alert('success: ' + success + ', records: ' + (records ? records.length : 'null') + ', operation: ' + (operation ? operation.getRequest().getUrl() : 'null'));    
 
             if (!success || !records || records.length === 0) {
                
@@ -2382,7 +2382,7 @@ function CoreFunction_AyohaRewardPointRewardRankingStore_Top3() {
            
               var MyRanking = modelRecord.get('MyRanking');
          Ext.getCmp('listAyohaRankingPremium').setStore(_DataStore_AyohaRewardPointRewardRankingStore_Top3);
-        
+      //  alert(MyRanking);
          document.getElementById("Dashboard_RankingRank").innerText=MyRanking;
             Ext.Viewport.setMasked(false);
         }
