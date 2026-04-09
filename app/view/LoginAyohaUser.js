@@ -649,7 +649,7 @@ var globalLogginAyohaUser_UserVerifiedDate;
 // }
 
 function loadAyohaUserProfileLoginBody() {
-
+ LoadingPanelShow(getLoadingIcon(), 'Loading....');
   var UN = document.getElementById('ip2').value;
   var PWD = document.getElementById('ip3').value;
 

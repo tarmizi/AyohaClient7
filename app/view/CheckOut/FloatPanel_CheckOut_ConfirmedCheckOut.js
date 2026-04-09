@@ -449,8 +449,8 @@ function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
  
 
 
-                Ext.getCmp('MainMaincontainerDashbord').setHeight(2450);
-               Ext.getCmp('containerDividerCheckInNonMember').setHeight(10);
+                Ext.getCmp('MainMaincontainerDashbord').setHeight(2860);
+               Ext.getCmp('containerDividerCheckInNonMember').setHeight(1);
                 Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(430);
                 Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
 
@@ -469,6 +469,7 @@ function FloatPanel_CheckOut_ConfirmedCheckOutHide(fromBack, animCfg) {
           if (fromBack !== true) {
             AyohaBrowserBack.close('FloatPanel_CheckOut_ConfirmedCheckOut');
           }
+          LoadingPanelShow(getLoadingIcon(), 'Loading....');
     }
     FloatPanel_AyohaStore_AyohaStoreLoadLikeStatusStore_Save();
 }

@@ -10673,7 +10673,8 @@ itemTpl: new Ext.XTemplate(
 
 
 {
-  width: '90%',   
+  width: '90%',
+  hidden:true,  
   //  margin: '10 0 0 14',
   //  //   html: '<table style="border-collapse:collapse;border-spacing:0;table-layout: fixed; width: 100%" class="tg"><colgroup><col style="width: auto;height:60px"></colgroup><thead><tr><th style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:0px 0px;text-align:center;vertical-align:top;word-break:normal"><div style="color:black;text-align: center;font-size:18px;width:100%;">Tarmizi Rahim</div><br><div style="color:black;text-align: center;font-size:12px;width:100%;margin:-27px 0px 0px 0px;">Ayoha Legendry Card</div><img src="resources/icons/editProfileWhite.png" width="30" height="30" alt="Company Name"></tr></thead></table>',
   // html: '<div  style="color:black;text-align: left;font-size:14px;width:100%;margin:0px 0px 0px 0px"><b>Check-In Rewards</b></div><br><div style="color:black;text-align: left;font-size:10px;width:100%;margin:-25px 0px 0px 0px;">Tap “Check-In” to redeem at<b> <u>kopi surat cinta-putrajaya!</u></b></div>'
@@ -10690,6 +10691,7 @@ itemTpl: new Ext.XTemplate(
   width: '100%',
   height:60,
   margin: '5 0 0 0',
+    hidden:true, 
   id: 'containerDashboard_NeoDataXLogo',
   style: 'background-color:transparent',
   layout: {
@@ -21419,6 +21421,11 @@ Ext.getCmp('containerDashboard_MembershipInsight').setHidden(true);
 Ext.getCmp('Dashboard_MyAccount_MembershipPerksList').setHidden(true); 
 Ext.getCmp('containerDashboard_AyohaMerchantMembershipCardList').setHidden(true); 
 Ext.getCmp('Dashboard_MyAccount_UnSubscribedMembershipCardList_front').setHidden(true); 
+Ext.getCmp('containerDashboard_Your_Ranking').setHidden(true); 
+
+
+
+
 //Ext.getCmp('containerSelectedPremiumperksbyAyoha').setHidden(true); 
 //Ext.getCmp('Dashboard_premiumperksByAyoha').setHidden(true); 
 // Ext.getCmp('containerDashboard_AyohaMerchantLoyaltyCampaignList').setHidden(true); 
@@ -21481,7 +21488,8 @@ Ext.getCmp('MainMaincontainerDashbord').setHeight(3100);
              // alert('Failed to load store data or no record found.');
 
              
-              Ext.getCmp('MainMaincontainerDashbord').setHeight(2450);
+             // Ext.getCmp('MainMaincontainerDashbord').setHeight(2450);
+                  Ext.getCmp('MainMaincontainerDashbord').setHeight(2860);
             //  Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(365);
                Ext.getCmp('containerDashboardAyohaRewardMainContent').setHeight(430);
               Ext.getCmp('containerDashboardAyohaRewardMainContent').setStyle(ayohaThemeColor_Hero_Reset());
@@ -21513,11 +21521,11 @@ Ext.getCmp('Dashboard_MyAccount_MembershipPerksList').setHidden(false);
 Ext.getCmp('containerDashboard_AyohaMerchantMembershipCardList').setHidden(false); 
 Ext.getCmp('Dashboard_MyAccount_UnSubscribedMembershipCardList_front').setHidden(false); 
 Ext.getCmp('containerDashboard_Your_Activity').setHidden(false); 
-Ext.getCmp('containerDashboard_MembershipLoyaltyProgramReward').setHidden(false); 
+Ext.getCmp('containerDashboard_MembershipLoyaltyProgramReward').setHidden(true); 
 Ext.getCmp('containerDashboard_MembershipExclusiveDeal').setHidden(false); 
-
-Ext.getCmp('htmlDashboard_NeoDataXInfoBottom').setHidden(false); 
-Ext.getCmp('containerDashboard_NeoDataXLogo').setHidden(false); 
+Ext.getCmp('containerDashboard_Your_Ranking').setHidden(false);
+Ext.getCmp('htmlDashboard_NeoDataXInfoBottom').setHidden(true); 
+Ext.getCmp('containerDashboard_NeoDataXLogo').setHidden(true); 
 
 
 //Ext.getCmp('containerSelectedPremiumperksbyAyoha').setHidden(false); 

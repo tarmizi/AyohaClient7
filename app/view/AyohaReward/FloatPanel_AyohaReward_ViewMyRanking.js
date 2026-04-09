@@ -31,6 +31,48 @@ function FloatPanel_AyohaReward_ViewMyRankingFormatPoints(value) {
     return Ext.util.Format.number(FloatPanel_AyohaReward_ViewMyRankingNumber(value), '0,000');
 }
 
+function FloatPanel_AyohaReward_ViewMyRankingAnimateValue(cmpId, value, cssClass, suffix, duration) {
+    var cmp = Ext.getCmp(cmpId);
+    var finalValue = Math.max(0, Math.round(FloatPanel_AyohaReward_ViewMyRankingNumber(value)));
+    var animationDuration = duration || 800;
+    var frameCount = 24;
+    var frameDuration = Math.max(20, Math.floor(animationDuration / frameCount));
+    var currentFrame = 0;
+
+    if (!cmp) {
+        return;
+    }
+
+    if (cmp._countTimer) {
+        clearInterval(cmp._countTimer);
+    }
+
+    function updateHtml(displayValue) {
+        cmp.setHtml('<div class="' + cssClass + '">' + FloatPanel_AyohaReward_ViewMyRankingFormatPoints(displayValue) + (suffix || '') + '</div>');
+    }
+
+    updateHtml(0);
+
+    cmp._countTimer = setInterval(function () {
+        currentFrame++;
+
+        if (!cmp || cmp.destroyed) {
+            clearInterval(cmp._countTimer);
+            cmp._countTimer = null;
+            return;
+        }
+
+        if (currentFrame >= frameCount) {
+            updateHtml(finalValue);
+            clearInterval(cmp._countTimer);
+            cmp._countTimer = null;
+            return;
+        }
+
+        updateHtml(Math.round((finalValue * currentFrame) / frameCount));
+    }, frameDuration);
+}
+
 function FloatPanel_AyohaReward_ViewMyRankingBuildCircleImage(photo, size, highlighted) {
     var imageSource = photo || FloatPanel_AyohaReward_ViewMyRankingDefaultAvatar();
     var borderStyle = highlighted ? '3px solid rgba(255,255,255,0.72)' : '2px solid rgba(255,255,255,0.40)';
@@ -42,14 +84,22 @@ function FloatPanel_AyohaReward_ViewMyRankingBuildCurrentUserImage(photo) {
     var imageSource = photo || FloatPanel_AyohaReward_ViewMyRankingDefaultAvatar();
 
     return '<div class="lb-current-avatar-wrap">' +
-        '<div class="lb-current-avatar-badge">+10 APts</div>' +
         '<img src="' + imageSource + '" class="lb-current-avatar-img">' +
         '</div>';
 }
 
 function FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard(suffix, cls, medalIcon, avatarSize) {
+    var crownHtml = '';
+    var ribbonHtml = '';
+
+    if (suffix === '01') {
+        crownHtml = '<div class="lb-podium-crown">&#128081;</div>';
+        ribbonHtml = '<div class="lb-podium-ribbon">Champion</div>';
+    }
+
     return {
         xtype: 'container',
+        id: 'containerFloatPanel_AyohaReward_ViewMyRankingPodium' + suffix,
         flex: 1,
         cls: cls,
         layout: {
@@ -59,8 +109,18 @@ function FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard(suffix, cls, medalI
         },
         items: [
             {
+                hidden: suffix !== '01',
+                id: 'htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Crown',
+                html: crownHtml
+            },
+            {
+                hidden: suffix !== '01',
+                id: 'htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Ribbon',
+                html: ribbonHtml
+            },
+            {
                 id: 'htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Medal',
-                html: '<img src="' + medalIcon + '" class="lb-podium-medal ' + (suffix === '01' ? 'lb-podium-medal-center' : '') + '">'
+                html: '<div class="lb-podium-medal-wrap"><img src="' + medalIcon + '" class="lb-podium-medal ' + (suffix === '01' ? 'lb-podium-medal-center' : '') + '"></div>'
             },
             {
                 id: 'htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Image',
@@ -317,6 +377,25 @@ function FloatPanel_AyohaReward_ViewMyRankingCreateIfNeeded() {
                                 html: '<div class="lb-section-title"><span class="lb-section-icon">&#127942;</span><span>Top 3</span></div>'
                             },
                             {
+                                id: 'htmlFloatPanel_AyohaReward_ViewMyRankingConfetti',
+                                hidden: true,
+                                margin: '10 18 -26 18',
+                                html: '<div class="lb-confetti-field">' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                    '<span class="lb-confetti-piece"></span>' +
+                                '</div>'
+                            },
+                            {
                                 xtype: 'container',
                                 id: 'containerFloatPanel_AyohaReward_ViewMyRankingBar',
                                 padding: '14 18 0 18',
@@ -326,13 +405,17 @@ function FloatPanel_AyohaReward_ViewMyRankingCreateIfNeeded() {
                                     align: 'end'
                                 },
                                 items: [
-                                    Ext.apply(FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard('02', 'lb-podium-card lb-podium-side-left', 'resources/icons/secondRank01.png', 54), { margin: '18 8 0 0' }),
-                                    Ext.apply(FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard('01', 'lb-podium-card lb-podium-card-center', 'resources/icons/firstRank01.png', 64), { margin: '0 8 0 8' }),
-                                    Ext.apply(FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard('03', 'lb-podium-card lb-podium-side-right', 'resources/icons/thirdRank01.png', 54), { margin: '18 0 0 8' })
+                                    Ext.apply(FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard('02', 'lb-podium-card lb-podium-side-left lb-podium-enter-left', 'resources/icons/secondRank01.png', 54), { margin: '18 8 0 0' }),
+                                    Ext.apply(FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard('01', 'lb-podium-card lb-podium-card-center lb-podium-enter-center', 'resources/icons/firstRank01.png', 64), { margin: '0 8 0 8' }),
+                                    Ext.apply(FloatPanel_AyohaReward_ViewMyRankingBuildPodiumCard('03', 'lb-podium-card lb-podium-side-right lb-podium-enter-right', 'resources/icons/thirdRank01.png', 54), { margin: '18 0 0 8' })
                                 ]
                             },
+                                {
+                                    margin: '30 18 0 18',
+                                    html: '<div class="lb-fomo-banner"><div class="lb-fomo-text">*Don&rsquo;t drop from the Top 10,stay ahead to unlock exclusive quarterly prizes&#127873;.</div></div>'
+                                },
                             {
-                                margin: '30 18 0 18',
+                                margin: '16 18 0 18',
                                 html: '<div class="lb-section-title"><span class="lb-section-icon">&#8599;</span><span>Near You</span></div>'
                             },
                             {
@@ -374,6 +457,8 @@ function FloatPanel_AyohaReward_ViewMyRankingCreateIfNeeded() {
 }
 
 function FloatPanel_AyohaReward_ViewMyRankingShow() {
+    LoadingPanelShow(getLoadingIcon(), 'Loading....');
+
     FloatPanel_AyohaReward_ViewMyRankingCreateIfNeeded();
 
     _FloatPanel_AyohaReward_ViewMyRanking.show();
@@ -452,6 +537,75 @@ function FloatPanel_AyohaReward_ViewMyRankingResetNearRows() {
     }
 }
 
+function FloatPanel_AyohaReward_ViewMyRankingResetTopThreeCelebration() {
+    var suffixes = ['01', '02', '03'];
+    var index;
+
+    for (index = 0; index < suffixes.length; index++) {
+        var podiumCmp = Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingPodium' + suffixes[index]);
+
+        if (podiumCmp) {
+            podiumCmp.removeCls('lb-podium-card-user');
+            podiumCmp.removeCls('lb-podium-card-winning');
+
+            if (podiumCmp._winningTimer) {
+                clearTimeout(podiumCmp._winningTimer);
+                podiumCmp._winningTimer = null;
+            }
+        }
+    }
+
+    if (Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingConfetti')) {
+        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingConfetti').removeCls('lb-confetti-active');
+        Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingConfetti').setHidden(true);
+    }
+}
+
+function FloatPanel_AyohaReward_ViewMyRankingApplyTopThreeCelebration(rank) {
+    var suffix = rank < 10 ? '0' + rank : '' + rank;
+    var podiumCmp;
+
+    FloatPanel_AyohaReward_ViewMyRankingResetTopThreeCelebration();
+
+    if (!(rank >= 1 && rank <= 3)) {
+        return;
+    }
+
+    podiumCmp = Ext.getCmp('containerFloatPanel_AyohaReward_ViewMyRankingPodium' + suffix);
+    if (podiumCmp) {
+        podiumCmp.addCls('lb-podium-card-user');
+
+        if (podiumCmp._winningTimer) {
+            clearTimeout(podiumCmp._winningTimer);
+        }
+
+        podiumCmp._winningTimer = setTimeout(function () {
+            if (podiumCmp && !podiumCmp.destroyed) {
+                podiumCmp.addCls('lb-podium-card-winning');
+            }
+        }, 900);
+    }
+
+    if (Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingConfetti')) {
+        var confettiCmp = Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingConfetti');
+
+        confettiCmp.setHidden(false);
+        confettiCmp.removeCls('lb-confetti-active');
+        confettiCmp.addCls('lb-confetti-active');
+
+        if (confettiCmp._confettiTimer) {
+            clearTimeout(confettiCmp._confettiTimer);
+        }
+
+        confettiCmp._confettiTimer = setTimeout(function () {
+            if (confettiCmp && !confettiCmp.destroyed) {
+                confettiCmp.removeCls('lb-confetti-active');
+                confettiCmp.setHidden(true);
+            }
+        }, 2400);
+    }
+}
+
 function FloatPanel_AyohaReward_ViewMyRankingSetPodium(suffix, record, avatarSize) {
     if (!record) {
         return;
@@ -463,8 +617,12 @@ function FloatPanel_AyohaReward_ViewMyRankingSetPodium(suffix, record, avatarSiz
     Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Name').setHtml(
         '<div class="lb-podium-name">' + FloatPanel_AyohaReward_ViewMyRankingSafeText(record.AccountName) + '</div>'
     );
-    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Txt').setHtml(
-        '<div class="lb-podium-points">' + FloatPanel_AyohaReward_ViewMyRankingFormatPoints(record.AyohaPoint) + '</div>'
+    FloatPanel_AyohaReward_ViewMyRankingAnimateValue(
+        'htmlFloatPanel_AyohaReward_ViewMyRanking' + suffix + '_Txt',
+        record.AyohaPoint,
+        'lb-podium-points',
+        '',
+        900
     );
 }
 
@@ -482,8 +640,12 @@ function FloatPanel_AyohaReward_ViewMyRankingSetCurrentUserCard(record, pointsGa
     );
     Ext.getCmp('htmlYourRangking').setHtml('<div class="lb-current-rank">#' + record.Rank + '</div>');
     Ext.getCmp('htmlYourRangkingTxt').setHtml('<div class="lb-current-rank-label">Your Rank</div>');
-    Ext.getCmp('htmlRankingAyohaPointCount').setHtml(
-        '<div class="lb-current-points">' + FloatPanel_AyohaReward_ViewMyRankingFormatPoints(record.AyohaPoint) + ' APts</div>'
+    FloatPanel_AyohaReward_ViewMyRankingAnimateValue(
+        'htmlRankingAyohaPointCount',
+        record.AyohaPoint,
+        'lb-current-points',
+        ' APts',
+        950
     );
 
     if (targetRank > 0 && pointsGap > 0) {
@@ -500,6 +662,8 @@ function FloatPanel_AyohaReward_ViewMyRankingSetCurrentUserCard(record, pointsGa
 }
 
 function FloatPanel_AyohaReward_ViewMyRankingSetNonContestantCard() {
+    FloatPanel_AyohaReward_ViewMyRankingResetTopThreeCelebration();
+
     myRankingNo = '-';
     myRankingContestantName = GetAyohaUserAccountNames();
     myRankingContestantImge = GetAyohaUserPicProfile();
@@ -510,7 +674,13 @@ function FloatPanel_AyohaReward_ViewMyRankingSetNonContestantCard() {
     );
     Ext.getCmp('htmlYourRangking').setHtml('<div class="lb-current-rank">#-</div>');
     Ext.getCmp('htmlYourRangkingTxt').setHtml('<div class="lb-current-rank-label">Not a Contestant</div>');
-    Ext.getCmp('htmlRankingAyohaPointCount').setHtml('<div class="lb-current-points">0 APts</div>');
+    FloatPanel_AyohaReward_ViewMyRankingAnimateValue(
+        'htmlRankingAyohaPointCount',
+        0,
+        'lb-current-points',
+        ' APts',
+        400
+    );
     Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingProgress').setHtml(
         '<div class="lb-progress-bar"><div class="lb-progress-fill" style="width:0%;"></div></div>'
     );
@@ -541,8 +711,12 @@ function FloatPanel_AyohaReward_ViewMyRankingSetNearRow(slot, record, isCurrentU
     Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingNearRow' + slot + '_Name').setHtml(
         '<div class="lb-near-name">' + displayName + '</div>'
     );
-    Ext.getCmp('htmlFloatPanel_AyohaReward_ViewMyRankingNearRow' + slot + '_Points').setHtml(
-        '<div class="lb-near-points">' + FloatPanel_AyohaReward_ViewMyRankingFormatPoints(record.AyohaPoint) + '</div>'
+    FloatPanel_AyohaReward_ViewMyRankingAnimateValue(
+        'htmlFloatPanel_AyohaReward_ViewMyRankingNearRow' + slot + '_Points',
+        record.AyohaPoint,
+        'lb-near-points',
+        '',
+        700
     );
 }
 
@@ -565,7 +739,9 @@ function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore
 
             if (!success || !records || records.length === 0) {
                 FloatPanel_AyohaReward_ViewMyRankingSetNonContestantCard();
-                Ext.Viewport.setMasked(false);
+                Ext.defer(function () {
+                    LoadingPanelHide(false);
+                }, 250);
                 return;
             }
 
@@ -589,6 +765,7 @@ function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore
             FloatPanel_AyohaReward_ViewMyRankingSetPodium('01', rankingData[0], 64);
             FloatPanel_AyohaReward_ViewMyRankingSetPodium('02', rankingData[1], 54);
             FloatPanel_AyohaReward_ViewMyRankingSetPodium('03', rankingData[2], 54);
+            FloatPanel_AyohaReward_ViewMyRankingResetTopThreeCelebration();
 
             if (currentUserRankIndex >= 0) {
                 var currentUserRecord = rankingData[currentUserRankIndex];
@@ -601,6 +778,7 @@ function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore
                 }
 
                 FloatPanel_AyohaReward_ViewMyRankingSetCurrentUserCard(currentUserRecord, pointsGap, targetRank);
+                FloatPanel_AyohaReward_ViewMyRankingApplyTopThreeCelebration(currentUserRecord.Rank);
             } else {
                 FloatPanel_AyohaReward_ViewMyRankingSetNonContestantCard();
             }
@@ -633,7 +811,9 @@ function FloatPanel_AyohaReward_ViewMyRanking_AyohaRewardPointRewardRankingStore
                 slotCounter++;
             }
 
-            Ext.Viewport.setMasked(false);
+            Ext.defer(function () {
+                LoadingPanelHide(false);
+            }, 350);
         }
     });
 }
