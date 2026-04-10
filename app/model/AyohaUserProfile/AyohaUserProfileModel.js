@@ -1,6 +1,6 @@
 ﻿Ext.define('BuskartApp.model.AyohaUserProfile.AyohaUserProfileModel', {
     extend: 'Ext.data.Model',
-    config: {
+    //config: {
         fields: [
      'ID',
       'AccountNo',
@@ -38,6 +38,6 @@
       'Hobby',
       'States'
         ]
-    }
+  //  }
 });
 

@@ -533,11 +533,11 @@ function FloatPanel_OrderCart_AyohaStoreCartLoadCartAyohaStore(ItemCartStatus) {
     
         globalFloatPanel_OrderCart_GrandTotal = result.toFixed(2);
            
-           
+           LoadingPanelHide(false);
            
             } else {
                 console.error('Failed to load store data or no record found.');
-                LoadingPanelHide();
+                LoadingPanelHide(false);
             }
         }
     });

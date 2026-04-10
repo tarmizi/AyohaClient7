@@ -3,38 +3,326 @@ Ext.define('BuskartApp.view.Subscriber.FloatPanel_SubscriberMaster', {
 
 });
 
-var _FloatPanel_SubscriberMaster;
+var _FloatPanel_SubscriberMaster = null;
 
 
 var isFloatPanel_SubscriberMasterOpen = 'N';
 var isbtnFloatPanel_SubscriberMaster_SaveEdit = "Edit";
 
+function FloatPanel_SubscriberMasterSafeText(value, fallbackValue) {
+    if (value === undefined || value === null || value === '') {
+        return fallbackValue || '';
+    }
+
+    return Ext.String.htmlEncode(String(value));
+}
+
+function FloatPanel_SubscriberMasterHeroStyle() {
+    return 'background:transparent;overflow:visible;position:relative;z-index:1;';
+}
+
+function FloatPanel_SubscriberMasterAvatarHtml(imageSource) {
+    var avatarSource = imageSource || 'resources/icons/profileIconWhiteOne.png';
+
+    return [
+        '<div style="position:relative;width:132px;height:132px;margin:0 auto;">',
+        '<div style="width:132px;height:132px;padding:6px;border-radius:38px;background:#ffffff;box-shadow:0 16px 36px rgba(15,23,42,0.16);">',
+        '<div style="width:120px;height:120px;border-radius:30px;overflow:hidden;background:#dbeafe;">',
+        '<img src="', avatarSource, '" style="width:100%;height:100%;object-fit:cover;"/>',
+        '</div>',
+        '</div>',
+        '<div style="position:absolute;right:-4px;bottom:-4px;width:42px;height:42px;border-radius:18px;background:#4f46e5;border:3px solid #ffffff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px rgba(79,70,229,0.28);">',
+        '<img src="resources/icons/editProfileWhite02.png" style="width:18px;height:18px;filter:brightness(0) invert(1);"/>',
+        '</div>',
+        '</div>'
+    ].join('');
+}
+
+function FloatPanel_SubscriberMasterHeroNameHtml(name, isVerified) {
+    var badgeHtml = isVerified === true
+        ? '<img src="resources/icons/VerifiedUser.png" style="width:18px;height:18px;vertical-align:middle;margin-left:8px;"/>'
+        : '';
+
+    return '<div style="text-align:center;color:#0f172a;font-size:26px;font-weight:900;line-height:1.04;letter-spacing:0.01em;">' + FloatPanel_SubscriberMasterSafeText(name, 'Subscriber') + badgeHtml + '</div>';
+}
+
+function FloatPanel_SubscriberMasterHeroRoleHtml(role) {
+    return '<div style="text-align:center;color:#5f799d;font-size:12px;font-weight:600;line-height:1.4;">' + FloatPanel_SubscriberMasterSafeText(role, 'Profile Member') + '</div>';
+}
+
+function FloatPanel_SubscriberMasterSectionTitleHtml(title) {
+    return '<div style="display:flex;align-items:center;gap:10px;margin:0 0 14px 0;"><div style="width:5px;height:30px;border-radius:999px;background:#5a4de6;"></div><div style="color:#1e293b;font-size:17px;font-weight:800;line-height:1.2;">' + FloatPanel_SubscriberMasterSafeText(title) + '</div></div>';
+}
+
+function FloatPanel_SubscriberMasterBottomTabIconHtml(iconPath, isActive) {
+    var iconWrapperStyle = isActive
+        ? 'background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);box-shadow:0 10px 24px rgba(79,70,229,0.18);'
+        : 'background:transparent;';
+    var iconFilter = isActive ? '' : 'opacity:0.55;filter:grayscale(0.15);';
+
+    return [
+        '<div style="width:48px;height:48px;border-radius:16px;display:flex;align-items:center;justify-content:center;', iconWrapperStyle, '">',
+        '<img src="', iconPath, '" style="width:24px;height:24px;', iconFilter, '"/>',
+        '</div>'
+    ].join('');
+}
+
+function FloatPanel_SubscriberMasterBottomTabTextHtml(lineOne, lineTwo, isActive) {
+    var labelColor = isActive ? '#4338ca' : '#94a3b8';
+    var weight = isActive ? '800' : '700';
+
+    return [
+        '<div style="text-align:center;line-height:1.12;letter-spacing:0.08em;text-transform:uppercase;color:', labelColor, ';font-size:10px;font-weight:', weight, ';">',
+        '<div>', FloatPanel_SubscriberMasterSafeText(lineOne), '</div>',
+        '<div style="margin-top:2px;">', FloatPanel_SubscriberMasterSafeText(lineTwo), '</div>',
+        '</div>'
+    ].join('');
+}
+
+function FloatPanel_SubscriberMasterRefreshBottomTabs(activeIndex) {
+    var profileActive = activeIndex === 0;
+    var bankActive = activeIndex === 1;
+    var securityActive = activeIndex === 2;
+    var profileButton = Ext.getCmp('btn_FloatPanel_SubscriberMaster_MenuBottom_MyProfile');
+    var profileText = Ext.getCmp('containerFloatPanel_SubscriberMaster_MenuBottom_MyProfileTxt');
+    var bankButton = Ext.getCmp('btn_FloatPanel_SubscriberMaster_MenuBottom_BankAccount');
+    var bankText = Ext.getCmp('containerFloatPanel_SubscriberMaster_MenuBottom_BankAccountTxt');
+    var securityButton = Ext.getCmp('btn_FloatPanel_SubscriberMaster_MenuBottom_ChangePassword');
+    var securityText = Ext.getCmp('containerFloatPanel_SubscriberMaster_MenuBottom_ChangePasswordTxt');
+
+    if (profileButton) {
+        profileButton.setHtml(FloatPanel_SubscriberMasterBottomTabIconHtml('resources/icons/MyAccountPurpleOne.png', profileActive));
+    }
+    if (profileText) {
+        profileText.setHtml(FloatPanel_SubscriberMasterBottomTabTextHtml('My', 'Profile', profileActive));
+    }
+    if (bankButton) {
+        bankButton.setHtml(FloatPanel_SubscriberMasterBottomTabIconHtml('resources/icons/transferewallet.png', bankActive));
+    }
+    if (bankText) {
+        bankText.setHtml(FloatPanel_SubscriberMasterBottomTabTextHtml('Bank', 'Info', bankActive));
+    }
+    if (securityButton) {
+        securityButton.setHtml(FloatPanel_SubscriberMasterBottomTabIconHtml('resources/icons/security.png', securityActive));
+    }
+    if (securityText) {
+        securityText.setHtml(FloatPanel_SubscriberMasterBottomTabTextHtml('Security', 'Key', securityActive));
+    }
+}
+
+function FloatPanel_SubscriberMasterCommitProfileChanges() {
+    Ext.getCmp('btnFloatPanel_SubscriberMaster_Edit').setHidden(false);
+    Ext.getCmp('btnFloatPanel_SubscriberMaster_Save').setHidden(true);
+    Ext.getCmp('btnFloatPanel_SubscriberMaster_Delete').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterAccountName').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterAccountName_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterEmail').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterEmail_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterPhoneNo').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterPhoneNo_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterDOB').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterDOB_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterGender').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterGender_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterStreetAddress').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterStreetAddress_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterTown').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterTown_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterPostCode').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterPostCode_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterState').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterState_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterCountry').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterCountry_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterProfession').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterProfession_edit').setHidden(true);
+
+    Ext.getCmp('FloatPanel_SubscriberMasterHobby').setHidden(false);
+    Ext.getCmp('FloatPanel_SubscriberMasterHobby_edit').setHidden(true);
+
+    FloatPanel_SubscriberMaster_SaveMyAccount();
+    isbtnFloatPanel_SubscriberMaster_SaveEdit = "Edit";
+    FloatPanel_SubscriberMasterApplyTheme();
+}
+
+function FloatPanel_SubscriberMasterSaveActiveSection() {
+    var profileTab = Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner');
+    var activeIndex = 0;
+
+    if (profileTab && profileTab.getInnerItems && profileTab.getActiveItem) {
+        activeIndex = profileTab.getInnerItems().indexOf(profileTab.getActiveItem());
+        if (activeIndex < 0) {
+            activeIndex = 0;
+        }
+    }
+
+    if (activeIndex === 0) {
+        FloatPanel_SubscriberMasterCommitProfileChanges();
+        return;
+    }
+
+    if (activeIndex === 1) {
+        FloatPanel_SubscriberMaster_SaveMyAccount_BankInfo();
+        FloatPanel_SubscriberMasterApplyTheme();
+        return;
+    }
+
+    FloatPanel_SubscriberMaster_UpdatePasswordMyAccount();
+}
+
+function FloatPanel_SubscriberMasterSyncTabPanelHeight() {
+    var profileTab = Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner');
+    var activeItem;
+
+    if (!profileTab || !profileTab.getActiveItem) {
+        return;
+    }
+
+    activeItem = profileTab.getActiveItem();
+    if (!activeItem) {
+        return;
+    }
+
+    Ext.defer(function () {
+        var refreshedTab = Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner');
+        var currentItem = refreshedTab && refreshedTab.getActiveItem ? refreshedTab.getActiveItem() : null;
+        var activeDom = currentItem && currentItem.element ? currentItem.element.dom : null;
+        var measuredHeight;
+
+        if (!refreshedTab || !currentItem || !activeDom) {
+            return;
+        }
+
+        measuredHeight = activeDom.scrollHeight || activeDom.offsetHeight || 0;
+
+        if (measuredHeight > 0) {
+            refreshedTab.setHeight(measuredHeight + 32);
+        }
+    }, 60);
+}
+
+function FloatPanel_SubscriberMasterApplyTheme() {
+    var panel = Ext.getCmp('FloatPanel_SubscriberMasterID');
+    var themedCards = [
+        'tabpanelFloatPanel_SubscriberMaster_inner',
+        'containerFloatPanel_SubscriberMasterChangePassword'
+    ];
+    var cardIndex;
+
+    for (cardIndex = 0; cardIndex < themedCards.length; cardIndex++) {
+        if (Ext.getCmp(themedCards[cardIndex]) && Ext.getCmp(themedCards[cardIndex]).element) {
+            Ext.getCmp(themedCards[cardIndex]).element.setStyle({
+                'background-color': '#ffffff',
+                'border-radius': '28px',
+                'box-shadow': '0 8px 28px rgba(15,23,42,0.06)',
+                'border': '1px solid #e5e7eb'
+            });
+        }
+    }
+
+    if (!panel || !panel.element) {
+        return;
+    }
+
+    var dom = panel.element.dom;
+    var fields = dom.querySelectorAll('input, select');
+    var index;
+
+    for (index = 0; index < fields.length; index++) {
+        var field = fields[index];
+        var isReadOnly = field.readOnly || field.disabled;
+
+        field.style.width = '100%';
+        field.style.height = '54px';
+        field.style.padding = field.tagName.toLowerCase() === 'select' ? '0 16px' : '0 16px';
+        field.style.boxSizing = 'border-box';
+        field.style.border = '1px solid #dbe2ea';
+        field.style.borderRadius = '16px';
+        field.style.backgroundColor = '#ffffff';
+        field.style.color = '#1e3a5f';
+        field.style.fontSize = '12px';
+        field.style.fontWeight = isReadOnly ? '600' : '500';
+        field.style.textAlign = 'left';
+        field.style.boxShadow = '0 1px 3px rgba(15,23,42,0.05)';
+        field.style.outline = 'none';
+    }
+
+    var fontNodes = dom.querySelectorAll('font');
+    for (index = 0; index < fontNodes.length; index++) {
+        var fontNode = fontNodes[index];
+        var fontSize = fontNode.getAttribute('size');
+
+        if (fontSize === '2') {
+            fontNode.style.color = '#64748b';
+            fontNode.style.fontSize = '12px';
+            fontNode.style.fontWeight = '700';
+            fontNode.style.letterSpacing = '0.08em';
+            fontNode.style.textTransform = 'uppercase';
+        }
+
+        if (fontSize === '4') {
+            fontNode.style.color = '#1e293b';
+            fontNode.style.fontSize = '18px';
+            fontNode.style.fontWeight = '800';
+        }
+    }
+
+    var profileTab = Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner');
+    var activeIndex = 0;
+    if (profileTab && profileTab.element) {
+        profileTab.element.setStyle({
+            'padding': '18px 14px 24px 14px',
+            'background-color': 'transparent',
+            'box-shadow': 'none',
+            'border': 'none'
+        });
+
+        if (profileTab.getInnerItems && profileTab.getActiveItem) {
+            activeIndex = profileTab.getInnerItems().indexOf(profileTab.getActiveItem());
+            if (activeIndex < 0) {
+                activeIndex = 0;
+            }
+        }
+    }
+
+    FloatPanel_SubscriberMasterRefreshBottomTabs(activeIndex);
+    FloatPanel_SubscriberMasterSyncTabPanelHeight();
+}
 
 
 
-
-function FloatPanel_SubscriberMaster() {
+function FloatPanel_SubscriberMasterCreateIfNeeded() {
+    if (_FloatPanel_SubscriberMaster && !_FloatPanel_SubscriberMaster.destroyed) {
+        return;
+    }
 
     _FloatPanel_SubscriberMaster =
     Ext.create('Ext.Container', {
-        zIndex: 350,
-        xtype: 'container',
-        //height: 465,
-        height: '100%',
-        width: '100%',
-        id: 'FloatPanel_SubscriberMasterID',
+         id: 'FloatPanel_SubscriberMasterID',
+        floated: true,
+        centered: false,
+        fullscreen: true,
+        closeAction: 'destroy',
         draggable: false,
-        indicators: false,
+        modal: false,
         styleHtmlContent: true,
-
-        centered: true,
-        //bottom: 64,
-        // zIndex: 100,
-        modal: true,
-        // hideOnMaskTap: true,
-        layout: {
-            type: 'fit'
-        },
+         layout: 'fit',
+        // layout: {
+        //     type: 'vbox',
+        //     pack: 'start',
+        //     align: 'stretch'
+        // },
         showAnimation: {
             type: 'popIn',
             duration: 250,
@@ -42,37 +330,34 @@ function FloatPanel_SubscriberMaster() {
         },
         hideAnimation: {
             type: 'popOut',
-            //direction: 'up',
-            //easing: 'cubic-bezier(.7,0,.7,1)',
-            duration: 250
+            duration: 250,
+            easing: 'ease-out'
         },
         //style: 'border-bottom:1px solid;background-color:#353839;',
-        style: 'background-color:white;',
+        style: 'background-color:#f3f6fb;',
         //style: ' background-color: #fac;background-image: linear-gradient(#ff00de75, #c800ffc9);',
        // style: 'background-color: #fac;background-image: linear-gradient(#c800ffc9,#ff00de75);',
-    
+    listeners: {
+            beforehide: function () {
+                return true;
+            }
+        },
 
         items: [
 
-            {
+               {
 
                 xtype: 'container',
                 width: '100%',
-                height:40,
-                docked:'top',
-                // width: 40,
+                docked: 'top',
+                  height: ayoha_HeaderHeight(),
+                    style:ayohaThemeColor_Header(),
 
-                //  title: '<font size="3" color="white">Live Tracking Map</font>',
-                //hidden: true,
 
-                id: 'containerFloatPanel_SubscriberMasterHeader',
-                // style: {
-                //     // background: '#D25959',
-                //     background: 'transparent',
-                //     // border: '2px'
-                // },
+             //   id: 'containerFloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgramHeader',
+               
                 //  style: 'border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none #ECF0F1 ;background: red;',
-             style: 'border-bottom:1px solid #ccc;background-color:transparent',
+                // style: 'border-bottom:2px solid #D25959;background-color:transparent',
                 layout: {
                     type: 'hbox',
                     pack: 'center',
@@ -85,61 +370,52 @@ function FloatPanel_SubscriberMaster() {
 
                                      {
                                          xtype: 'button',
-                                         id: 'btnFloatPanel_SubscriberMasterBack',
+                                       //  id: 'btnFloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgramBack',
+                                         margin: '10 0 0 5',
                                          height: 30,
-                                         width: 35,
-                                         // iconCls: 'list',
-                                         html: '<div ><img src="resources/icons/backwhite03.png" width="25" height="20" alt="Company Name"></div>',
+                                         width: 65,
+                                         margin: '0 0 0 10',
+                                            // iconCls: 'list',
+                                            html: '<div ><img src="resources/icons/backwhite03Ori.png" width="25" height="20" alt="Company Name"></div>',
                                          ui: 'plain',
                                          handler: function () {
-
-                                             _FloatPanel_SubscriberMaster.hide(Ext.fx.Animation({
-                                                 type: 'slideOut',
-                                                 direction: 'left',
-                                                 easing: 'cubic-bezier(.7,0,.7,1)',
-                                                 duration: 250
-
-                                             }));
-                                             isFloatPanel_SubscriberMasterOpen = 'N';
-                                             RemovePages("FloatPanel_SubscriberMasterHide()");
+                                           // FloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgramHide(false);
+                                           FloatPanel_SubscriberMasterHide(false)
                                          }
                                      },
-                                    
+
                                       {
                                           xtype: 'spacer',
 
                                       },
-                                       {
-                                           margin: '0 0 0 0',
-                                           id: 'htmlFloatPanel_SubscriberMaster_TitleHeaderTxt',
-                                           html: '<font size=2 color=black><b>My Account</b></font>'
-                                       },
-                                          {
-                                              xtype: 'button',
-                                              id: 'btnFloatPanel_SubscriberMaster_TitleHeaderIcon',
-                                              height: 30,
-                                              width: 35,
-                                              // iconCls: 'list',
-                                              html: '<div ><img src="resources/icons/editProfileWhite02.png" width="25" height="20" alt="Company Name"></div>',
-                                              ui: 'plain',
-                                              handler: function () {
-                                                  _FloatPanel_SubscriberMaster.hide(Ext.fx.Animation({
-                                                      type: 'slideOut',
-                                                      direction: 'right',
-                                                      easing: 'cubic-bezier(.7,0,.7,1)',
-                                                      duration: 250
+                                      {
+                                       html:ayohaTheme_HeaderText('My Account'),
+                                        margin: '0 15 0 0',   
+                                        id: 'htmlFloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgram_TitleHeaderTxt',
 
-                                                  }));
-                                                  isFloatPanel_SubscriberMasterOpen = 'N';
-                                                  RemovePages("FloatPanel_SubscriberMasterHide()");
+                                        //html: '<div style="color:black;text-align: right;font-size:14px;width:100%;"><b>Membership Discount</b></div>'
+                                    },
+                                    //   {
+                                    //     xtype: 'button',
+                                    //     margin: '10 0 0 -10',
+                                    //     id: 'btnFloatPanel_AyohaMerchantInfo_DiscountCardLoyaltyProgram_CardIcon',
+                                    //     height: 35,
+                                    //     width: 35,
+                                    //    // hidden:true,
+                                    //     // iconCls: 'list',
+                                    //     html: '<div ><img src="resources/icons/MembershipFeature01.png" width="25" height="25" alt="Company Name"></div>',
+                                    //     ui: 'plain',
+                                    //     handler: function () {
 
-                                              }
-                                          },
-                                     
+                                    //     }
+                                    // },
+                                      
 
-                                           
-                                   
-                                           
+                                    // {
+                                    //     xtype: 'spacer',
+                                    //     width: 10,
+                                    // },
+                                          
 
 
 
@@ -152,8 +428,7 @@ function FloatPanel_SubscriberMaster() {
                        ]
 
             },
-
-            
+        
 
 
 
@@ -165,13 +440,13 @@ function FloatPanel_SubscriberMaster() {
                     // width: 40,
                     docked: 'bottom',
                     margin: '0 0 0 0',
-                    height: 65,
+                    height: 88,
                     //  title: '<font size="3" color="white">Live Tracking Map</font>',
                     //hidden: true,
 
                     id: 'containerFloatPanel_SubscriberMaster_MenuBottom',
                     // style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;',
-                    style: 'background-image: url("resources/icons/border5.png"); background-size: 100% 100%;border-top:1px solid grey;',
+                    style: 'background-color:#ffffff;border-top:1px solid #e2e8f0;box-shadow:0 -8px 30px rgba(15,23,42,0.08);',
                     // style: "background-color: #EAEEF3;",
 
                     layout: {
@@ -190,7 +465,7 @@ function FloatPanel_SubscriberMaster() {
                                    xtype: 'container',
                                    width: '100%',
                                    style: "background-color: transparent",
-                                   height: 65,
+                                   height: 88,
                                    layout: {
                                        type: 'hbox',
                                        pack: 'center',
@@ -208,10 +483,10 @@ function FloatPanel_SubscriberMaster() {
                                            //width: 500,
                                            width: '100%',
                                            style: "background-color: transparent",
-                                           height: 55,
+                                           height: 72,
                                            layout: {
                                                type: 'hbox',
-                                               pack: 'center',
+                                               pack: 'justify',
                                                align: 'center',
                                            },
                                            items: [
@@ -241,11 +516,10 @@ function FloatPanel_SubscriberMaster() {
                                                             xtype: 'button',
                                                             id: 'btn_FloatPanel_SubscriberMaster_MenuBottom_MyProfile',
                                                             //  badgeText: '1',
-                                                            margin: '0 0 0 0',
-
-                                                            height: 36,
-                                                            width: 36,
-                                                            html: '<img src="resources/icons/MyAccountPurpleOne.png" width="26" height="26" alt="Company Name">',
+                                                            margin: '0 0 6 0',
+                                                            height: 50,
+                                                            width: 54,
+                                                            html: FloatPanel_SubscriberMasterBottomTabIconHtml('resources/icons/MyAccountPurpleOne.png', true),
                                                             ui: 'plain',
                                                             handler: function () {
                                                                 Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner').setActiveItem(0);
@@ -264,6 +538,8 @@ function FloatPanel_SubscriberMaster() {
                                                                     Ext.getCmp('btnFloatPanel_SubscriberMaster_Edit').setHidden(false);
                                                                     Ext.getCmp('btnFloatPanel_SubscriberMaster_Save').setHidden(true);
                                                                 }
+                                                                FloatPanel_SubscriberMasterRefreshBottomTabs(0);
+                                                                FloatPanel_SubscriberMasterApplyTheme();
                                                               
                                                             }
                                                         },
@@ -271,24 +547,7 @@ function FloatPanel_SubscriberMaster() {
                                                             xtype: 'container',
                                                             id: 'containerFloatPanel_SubscriberMaster_MenuBottom_MyProfileTxt',
                                                             width: '100%',
-                                                            layout: {
-                                                                type: 'vbox',
-                                                                pack: 'start',
-                                                                align: 'center'
-
-                                                            },
-                                                            items: [
-                                                                {
-                                                                    margin: '-12 0 0 0',
-                                                                    // id: 'htmlStampHistoryTxt',
-                                                                    html: '<font size=1 color=grey>My</font>'
-                                                                },
-                                                                {
-                                                                    margin: '-12 0 0 0',
-                                                                    // id: 'htmlStampHistoryTxt',
-                                                                    html: '<font size=1 color=grey>Profile</font>'
-                                                                },
-                                                            ]
+                                                            html: FloatPanel_SubscriberMasterBottomTabTextHtml('My', 'Profile', true)
 
                                                         },
 
@@ -319,11 +578,11 @@ function FloatPanel_SubscriberMaster() {
                                                       xtype: 'button',
                                                       id: 'btn_FloatPanel_SubscriberMaster_MenuBottom_BankAccount',
                                                       //  badgeText: '1',
-                                                      margin: '0 0 0 0',
+                                                      margin: '0 0 6 0',
 
-                                                      height: 36,
-                                                      width: 36,
-                                                      html: '<img src="resources/icons/transferewallet.png" width="26" height="26" alt="Company Name">',
+                                                      height: 50,
+                                                      width: 54,
+                                                      html: FloatPanel_SubscriberMasterBottomTabIconHtml('resources/icons/transferewallet.png', false),
                                                       ui: 'plain',
                                                       handler: function () {
                                                           Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner').setActiveItem(1);
@@ -338,6 +597,10 @@ function FloatPanel_SubscriberMaster() {
                                                         
                                                           FloatPanel_SubscriberMaster_BankInfo_LoadBySubscriberAccNo();
 
+                                                          FloatPanel_SubscriberMasterRefreshBottomTabs(1);
+
+                                                          FloatPanel_SubscriberMasterApplyTheme();
+
                                                         
                                                       }
                                                   },
@@ -345,24 +608,7 @@ function FloatPanel_SubscriberMaster() {
                                                       xtype: 'container',
                                                       id: 'containerFloatPanel_SubscriberMaster_MenuBottom_BankAccountTxt',
                                                       width: '100%',
-                                                      layout: {
-                                                          type: 'vbox',
-                                                          pack: 'start',
-                                                          align: 'center'
-
-                                                      },
-                                                      items: [
-                                                          {
-                                                              margin: '-12 0 0 0',
-                                                              // id: 'htmlStampHistoryTxt',
-                                                              html: '<font size=1 color=grey>Bank Account</font>'
-                                                          },
-                                                          {
-                                                              margin: '-12 0 0 0',
-                                                              // id: 'htmlStampHistoryTxt',
-                                                              html: '<font size=1 color=grey>Info</font>'
-                                                          },
-                                                      ]
+                                                      html: FloatPanel_SubscriberMasterBottomTabTextHtml('Bank', 'Info', false)
 
                                                   },
 
@@ -393,11 +639,11 @@ function FloatPanel_SubscriberMaster() {
                                                      xtype: 'button',
                                                      id: 'btn_FloatPanel_SubscriberMaster_MenuBottom_ChangePassword',
                                                      //  badgeText: '1',
-                                                     margin: '0 0 0 0',
+                                                     margin: '0 0 6 0',
 
-                                                     height: 36,
-                                                     width: 36,
-                                                     html: '<img src="resources/icons/security.png" width="26" height="26" alt="Company Name">',
+                                                     height: 50,
+                                                     width: 54,
+                                                     html: FloatPanel_SubscriberMasterBottomTabIconHtml('resources/icons/security.png', false),
                                                      ui: 'plain',
                                                      handler: function () {
                                                          Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner').setActiveItem(2);
@@ -410,6 +656,8 @@ function FloatPanel_SubscriberMaster() {
                                                         Ext.getCmp('btnFloatPanel_SubscriberMaster_SaveBankAccount').setHidden(true);
                                                         Ext.getCmp('FloatPanel_SubscriberMasterTitle').setHtml('<font size=4 color=black><b>Change Password</b></font>');
                                                         Ext.getCmp('btnFloatPanel_SubscriberMasterChangePassword_Save').setHidden(false);
+                                                        FloatPanel_SubscriberMasterRefreshBottomTabs(2);
+                                                        FloatPanel_SubscriberMasterApplyTheme();
                                                       
 
                                                        
@@ -419,24 +667,7 @@ function FloatPanel_SubscriberMaster() {
                                                      xtype: 'container',
                                                      id: 'containerFloatPanel_SubscriberMaster_MenuBottom_ChangePasswordTxt',
                                                      width: '100%',
-                                                     layout: {
-                                                         type: 'vbox',
-                                                         pack: 'start',
-                                                         align: 'center'
-
-                                                     },
-                                                     items: [
-                                                         {
-                                                             margin: '-12 0 0 0',
-                                                             // id: 'htmlStampHistoryTxt',
-                                                             html: '<font size=1 color=grey>Change</font>'
-                                                         },
-                                                         {
-                                                             margin: '-12 0 0 0',
-                                                             // id: 'htmlStampHistoryTxt',
-                                                             html: '<font size=1 color=grey>Password</font>'
-                                                         },
-                                                     ]
+                                                     html: FloatPanel_SubscriberMasterBottomTabTextHtml('Security', 'Key', false)
 
                                                  },
 
@@ -461,40 +692,81 @@ function FloatPanel_SubscriberMaster() {
                 xtype: 'container',
              
                  width: '100%',
-                 height: '100%', 
+                 height: '100%',
+              //  margin: '18 0 0 0',
+                //padding: '0 12 0 12',
+                style: 'background-color:transparent;',
                 layout: {
                     type: 'vbox',
                     pack: 'start',
                     align: 'center'
-
                 },
+               
                 items: [
                   /////////////////
 
                   {
                     xtype: 'container',
-                    margin: '2 0 0 0',                                 
-                    height: 160,
-                    width: 160,
+                    margin: '18 0 0 0',
+                    width: '100%',
+                    height: 900,
+                    style: {
+                        background: 'transparent',
+
+                    },
+                     scrollable: {
+                    direction: 'vertical',
+                    directionLock: true,
+                    indicators: false
+
+                },
+                     layout: {
+                    type: 'vbox',
+                    pack: 'start',
+                    align: 'center'
+                },
+                items:[
+                    
+                  {
+                    xtype: 'container',
+                    margin: '0 0 0 0',                                 
+                    height: 148,
+                    width: '100%',
                     id: 'FloatPanel_SubscriberMasterPicProfile',
                     name: 'namecontainerFloatPanel_SubscriberMasterPicProfile',                                  
+                                        style: 'background-color:transparent;position:relative;z-index:30;overflow:visible;',
                     layout: {
-                        type: 'vbox',
-                        pack: 'start',
+                        type: 'hbox',
+                        pack: 'center',
                         align: 'center'
        
                     },
                     items: [
                         {
                             margin: '0 0 0 0',
-                            height: 160,
-                            width: 160,
+                            height: 148,
+                            width: 132,
                             id:'htmlFloatPanel_SubscriberMasterPicProfile',
-                            html: '<img src="resources/icons/profileIconWhiteOne.png" width="160" height="160"/>',
+                            style: 'position:relative;z-index:31;overflow:visible;',
+                            html: FloatPanel_SubscriberMasterAvatarHtml(),
                         },
        
                     ]
        
+                },
+                {
+                    xtype: 'container',
+                    id: 'htmlFloatPanel_SubscriberMasterHeroAccountName',
+                    width: '100%',
+                    margin: '20 0 0 0',
+                    html: FloatPanel_SubscriberMasterHeroNameHtml('Subscriber', false)
+                },
+                {
+                    xtype: 'container',
+                    id: 'htmlFloatPanel_SubscriberMasterHeroAccountRole',
+                    width: '100%',
+                    margin: '8 0 0 0',
+                    html: FloatPanel_SubscriberMasterHeroRoleHtml('Software Architect')
                 },
        
                 
@@ -516,10 +788,17 @@ function FloatPanel_SubscriberMaster() {
                                  },
        
                                  {
-                                    margin: '15 0 0 0',
+                                    hidden: true,
+                                    margin: '20 0 0 0',
                             id:'FloatPanel_SubscriberMasterTitle',
-                                    html: '<font size=4 color=black><b>My Profile </b></font>',
+                                    html: '<div style="text-align:center;color:#0f172a;font-size:19px;font-weight:800;line-height:1.2;">My Profile</div>',
                             
+                                },
+                                {
+                                    xtype: 'container',
+                                    hidden: true,
+                                    margin: '6 0 0 0',
+                                    html: '<div style="text-align:center;color:#64748b;font-size:13px;line-height:1.5;">Personal information, address details and account activity.</div>'
                                 },
        
        
@@ -537,7 +816,7 @@ function FloatPanel_SubscriberMaster() {
        
                                  {
                                      xtype: 'container',
-                                     margin: '-12 0 0 0',
+                                     margin: '18 0 0 0',
                                      width: '100%',
                                      style: {
        
@@ -557,8 +836,8 @@ function FloatPanel_SubscriberMaster() {
                                hidden: true,
                                //  badgeText: '1',
                                margin: '0 0 0 0',
-                               height: 40,
-                               width: 40,
+                               height: 46,
+                               width: 46,
                               // html: '<img src="resources/icons/deleteWhiteTwo.png" width="30" height="30" alt="Company Name">',
                                ui: 'plain',
                                handler: function () {
@@ -570,68 +849,14 @@ function FloatPanel_SubscriberMaster() {
        id: 'btnFloatPanel_SubscriberMaster_Save',
        hidden: true,
        //  badgeText: '1',
-       margin: '0 0 0 0',
-       height: 40,
-       width: 40,
-       html: '<img src="resources/icons/saveWhiteOne.png" width="30" height="30" alt="Company Name">',
+    margin: '0 0 0 0',
+    height: 46,
+    width: 46,
+    html: '<div style="width:46px;height:46px;border-radius:16px;background:#111827;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(15,23,42,0.18);"><img src="resources/icons/saveWhiteOne.png" width="22" height="22" alt="Company Name"></div>',
        ui: 'plain',
-       handler: function () {
-       Ext.getCmp('btnFloatPanel_SubscriberMaster_Edit').setHidden(false);
-       Ext.getCmp('btnFloatPanel_SubscriberMaster_Save').setHidden(true);
-       Ext.getCmp('btnFloatPanel_SubscriberMaster_Delete').setHidden(true);
-       
-       
-       Ext.getCmp('FloatPanel_SubscriberMasterAccountName').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterAccountName_edit').setHidden(true);
-       
-       
-       Ext.getCmp('FloatPanel_SubscriberMasterEmail').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterEmail_edit').setHidden(true);
-       
-       
-       Ext.getCmp('FloatPanel_SubscriberMasterPhoneNo').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterPhoneNo_edit').setHidden(true);
-       
-       Ext.getCmp('FloatPanel_SubscriberMasterDOB').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterDOB_edit').setHidden(true);
-
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterGender').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterGender_edit').setHidden(true);
-
-       Ext.getCmp('FloatPanel_SubscriberMasterStreetAddress').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterStreetAddress_edit').setHidden(true);
-
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterTown').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterTown_edit').setHidden(true);
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterPostCode').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterPostCode_edit').setHidden(true);
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterState').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterState_edit').setHidden(true);
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterCountry').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterCountry_edit').setHidden(true);
-
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterProfession').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterProfession_edit').setHidden(true);
-
-
-       Ext.getCmp('FloatPanel_SubscriberMasterHobby').setHidden(false);
-       Ext.getCmp('FloatPanel_SubscriberMasterHobby_edit').setHidden(true);
-
-       FloatPanel_SubscriberMaster_SaveMyAccount();
-       isbtnFloatPanel_SubscriberMaster_SaveEdit = "Edit";
-       }
+    handler: function () {
+    FloatPanel_SubscriberMasterCommitProfileChanges();
+    }
        },
        
                              {
@@ -639,9 +864,9 @@ function FloatPanel_SubscriberMaster() {
                                  id: 'btnFloatPanel_SubscriberMaster_Edit',
                                  //  badgeText: '1',
                                  margin: '0 0 0 0',
-                                 height: 40,
-                                 width: 40,
-                                 html: '<div class="blink_me"><img src="resources/icons/editProfile.png" width="30" height="30" alt="Company Name"></div>',
+                                 height: 46,
+                                 width: 46,
+                                 html: '<div style="width:46px;height:46px;border-radius:16px;background:#4f46e5;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(79,70,229,0.25);"><img src="resources/icons/editProfile.png" width="22" height="22" alt="Company Name"></div>',
                                  ui: 'plain',
                                  handler: function () {
        
@@ -700,6 +925,8 @@ function FloatPanel_SubscriberMaster() {
                               
                                      Ext.getCmp('FloatPanel_SubscriberMasterHobby').setHidden(true);
                                      Ext.getCmp('FloatPanel_SubscriberMasterHobby_edit').setHidden(false);
+
+                                     FloatPanel_SubscriberMasterApplyTheme();
        
        
        
@@ -714,12 +941,13 @@ function FloatPanel_SubscriberMaster() {
                                  hidden: true,
                                  //  badgeText: '1',
                                  margin: '0 0 0 0',
-                                 height: 40,
-                                 width: 40,
-                                 html: '<img src="resources/icons/saveWhiteOne.png" width="30" height="30" alt="Company Name">',
+                                 height: 46,
+                                 width: 46,
+                                 html: '<div style="width:46px;height:46px;border-radius:16px;background:#111827;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(15,23,42,0.18);"><img src="resources/icons/saveWhiteOne.png" width="22" height="22" alt="Company Name"></div>',
                                  ui: 'plain',
                                  handler: function () {
                                      FloatPanel_SubscriberMaster_SaveMyAccount_BankInfo();
+                                     FloatPanel_SubscriberMasterApplyTheme();
        
                                  }
                              },
@@ -728,9 +956,9 @@ function FloatPanel_SubscriberMaster() {
                                 id: 'btnFloatPanel_SubscriberMasterChangePassword_Save',
                                 hidden: true,
                                 margin: '0 0 0 0',
-                                height: 40,
-                                width: 40,
-                                html: '<img src="resources/icons/saveWhiteOne.png" width="30" height="30" alt="Company Name">',
+                                height: 46,
+                                width: 46,
+                                html: '<div style="width:46px;height:46px;border-radius:16px;background:#4f46e5;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(79,70,229,0.25);"><img src="resources/icons/saveWhiteOne.png" width="22" height="22" alt="Company Name"></div>',
                                 ui: 'plain',
                                 handler: function () {
                                 
@@ -746,14 +974,16 @@ function FloatPanel_SubscriberMaster() {
     //  hidden:true,
     id: 'tabpanelFloatPanel_SubscriberMaster_inner',
     // style: 'border-top:2px solid #ECF0F1;background: white;',
-  style: 'background-color: transparent;',
+    style: 'background-color: #ffffff;border-radius:30px;',
     // margin: '-20 0 0 -26',
     // margin: '25 0 0 0',
 //flex:1,
     //width: 200,
-    width: '95%',
+    width: '100%',
+    maxWidth: '100%',
     //height: '66%',
-     height: 375,
+    minHeight: 240,
+    margin: '20 0 18 0',
    // height: '100%',
     //height: 50,
     //  zIndex: 200,
@@ -761,12 +991,6 @@ function FloatPanel_SubscriberMaster() {
     tabBarPosition: 'top',
     ui: 'plain',
     // docked: 'bottom',
-
-    initialize: function (c) {
-        //this.getTabBar().hide();
-
-
-    },
     
     items: [
      
@@ -796,20 +1020,20 @@ function FloatPanel_SubscriberMaster() {
 {
 xtype: 'container',
 width: '100%',
-height:'100%',    
 style: "background-color: transparent;",
 layout: {
 type: 'vbox',
 pack: 'start',
 align: 'left'
 
-}, 
-scrollable: {
-    direction: 'vertical',
-    directionLock: true,
-    indicators: false
 },
 items:[
+
+{
+xtype: 'container',
+margin: '6 0 10 0',
+html: FloatPanel_SubscriberMasterSectionTitleHtml('Personal Information')
+},
    
 {
 margin: '-5 0 0 0',
@@ -959,6 +1183,12 @@ html:'<select name="gender" id="input-FloatPanel_SubscriberMasterGender_edit" st
 
 
 
+},
+
+{
+xtype: 'container',
+margin: '24 0 10 0',
+html: FloatPanel_SubscriberMasterSectionTitleHtml('Address Details')
 },
 
 {
@@ -1148,6 +1378,12 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterProfession_edit" 
 
 
 
+
+{
+xtype: 'container',
+margin: '24 0 10 0',
+html: FloatPanel_SubscriberMasterSectionTitleHtml('Account & Activity')
+},
 
 {
     margin: '5 0 0 0',
@@ -1427,103 +1663,91 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
 
        },
        
-      //  scrollable: {
-      //      direction: 'vertical',
-      //      directionLock: true,
-      //      indicators: false
-      //  },
-       items: [
+            //  scrollable: {
+            //      direction: 'vertical',
+            //      directionLock: true,
+            //      indicators: false
+        items: [
+            {
+                xtype: 'container',
+                width: '95%',
+                margin:'15 0 0 0',
+                height:35,
+                style: ' background-color:transparent',
+                layout: {
+                    type: 'hbox',
+                    pack: 'start',
+                    align: 'center'
 
-                    
+                },
+                items: [
 
-     {
-         xtype: 'container',
-         width: '95%',
-         height:35,
-        
-         style: ' background-color:transparent',
-         layout: {
-             type: 'hbox',
-             pack: 'start',
-             align: 'center'
+                    {
+                        xtype: 'container',
 
-         },
-         items: [
+                        width: '100%',
+                        style: {
 
-                  {
-                      xtype: 'container',
-                      width: '100%',
-                      style: {
-                          background: 'transparent',
+                            background: 'transparent',
 
-                      },
-                      layout: {
-                          type: 'vbox',
-                          pack: 'left',
-                          align: 'left'
+                        },
+                        layout: {
+                            type: 'vbox',
+                            pack: 'left',
+                            align: 'left'
 
-                      },
-                      items: [
+                        },
+                        items: [
 
 
-                          {
-                              xtype: 'container',
+                            {
+                                xtype: 'container',
 
-                              width: '100%',
-                              style: {
+                                width: '100%',
+                                style: {
 
-                                  background: 'transparent',
+                                    background: 'transparent',
 
-                              },
-                              layout: {
-                                  type: 'hbox',
-                                  pack: 'start',
-                                  align: 'center'
+                                },
+                                layout: {
+                                    type: 'hbox',
+                                    pack: 'start',
+                                    align: 'center'
 
-                              },
-                              items: [
-                               {
-                                   margin: '3 0 0 0',
+                                },
+                                items: [
+                                 {
+                                     margin: '3 0 0 0',
 
-                                   html: '<font size=2 color=black>*Bank Name</font>',
+                                     html: '<font size=2 color=black>*Bank Name</font>',
 
-                               },
+                                 },
 
 
-                              ]
-                          },
+                                ]
+                            },
 
 
 
 
-     {
-         margin: '-2 0 0 0',
-         //id: 'FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BusinessMode',
-         //width: '100%',
-         //height: 20,
-         //html: '<input type="text" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BusinessMode"  style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
+                            {
+                                margin: '-2 0 0 0',
+                                id: 'FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BankInfoAccountName',
+                                width: '100%',
+                                height: 20,
+                                html: '<input  onclick="FloatPanel_BankAccountNameShow()" type="text" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BankInfoAccountName"  readOnly style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
 
-         id: 'FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BankInfoAccountName',
-         width: '100%',
-         height: 20,
-         html: '<input  onclick="FloatPanel_BankAccountNameShow()" type="text" id="input-FloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BankInfoAccountName"  readOnly style="border-color:black;color:black;width:100%;text-align: left;font-size:12px;">'
-
-     },
+                            },
 
 
-                      ]
+                        ]
 
-                  },
+                    },
 
 
-                   //{
-                   //    xtype:'container'
-
-                   //},
                      {
                          xtype: 'button',
                          id: 'btnFloatPanel_AyohaEnterpriseAccount_EnterpriseDetails_BankAccountNameList',
-                         //  badgeText: '1',
                          zIndex:500,
                          margin: '0 0 0 0',
                          height: 35,
@@ -1533,11 +1757,11 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
                          handler: function () {
                              FloatPanel_BankAccountNameShow();
                          }
-                     },
+                     }
 
-         ]
+                ]
 
-     },
+            },
 
 
                      {
@@ -1730,10 +1954,10 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
                             align: 'center'
               
                         },
-                        scrollable: {
-                            direction: 'vertical',
-                            directionLock: true,
-                            indicators: false
+                        listeners: {
+                            painted: function () {
+                                FloatPanel_SubscriberMasterSyncTabPanelHeight();
+                            }
                         },
               
                         //listeners: {
@@ -1814,6 +2038,12 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
               
               },
               items: [
+              {
+                  xtype: 'container',
+                  width: '100%',
+                  margin: '4 0 18 0',
+                  html: FloatPanel_SubscriberMasterSectionTitleHtml('Change Password')
+              },
               //{
               //    margin: '-5 0 0 0',
               //    id: 'htmlCurrentPasswordLabel',
@@ -2272,109 +2502,24 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
         
     ]
 
+},
+{
+    xtype: 'button',
+    id: 'btnFloatPanel_SubscriberMaster_SaveAllChangesBottom',
+    margin: '0 0 28 0',
+    width: '100%',
+    height: 76,
+    ui: 'plain',
+    html: '<div style="width:100%;height:76px;border-radius:22px;background:#151d33;color:#ffffff;display:flex;align-items:center;justify-content:center;gap:14px;font-size:18px;font-weight:800;box-shadow:0 14px 30px rgba(21,29,51,0.18);"><img src="resources/icons/saveWhiteOne.png" width="24" height="24" alt="Save"><span>Save All Changes</span></div>',
+    handler: function () {
+        FloatPanel_SubscriberMasterSaveActiveSection();
+    }
+
 },                    
 
 
-                      //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                   
-
-
-
-
-
-                      ////////////////////////
-    //                   {
-    //                       xtype: 'tabpanel',
-    //                       // hidden: true,
-    //                       //  hidden:true,
-    //                       id: 'tabpanelFloatPanel_SubscriberMaster',
-    //                       // style: 'border-top:2px solid #ECF0F1;background: white;',
-    //                       // style: 'background-color: black;',
-    //                       // margin: '-20 0 0 -26',
-    //                       // margin: '25 0 0 0',
-
-    //                       //width: 200,
-    //                       width: '96%',
-    //                       height: '100%',
-    //                       //height: 120,
-    //                       //height: 50,
-    //                       //  zIndex: 200,
-    //                       //  docked: 'bottom',
-    //                       tabBarPosition: 'top',
-    //                       ui: 'plain',
-    //                       // docked: 'bottom',
-
-    //                       initialize: function (c) {
-    //                           //this.getTabBar().hide();
-
-                             
-    //                       },
-
-                         
-
-    //                       items: [
-
-
-
-    // //   {
-    // //       xtype: 'container',
-    // //       id: 'containerFloatPanel_SubscriberMasterMaster',
-    // //       width: '100%',
-    // //       height: '94%',
-    // //       //style: "background-color: white;border-right:2px solid #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px solid #ECF0F1;border-top:2px #ECF0F1 white;border-radius: 50px 50px 50px 50px;",
-    // //       style: "background-color: transparent;",
-    // //       //style: "background-color: #F35B57;",
-    // //       title: 'FloatPanel_SubscriberMasterMaster',
-        
-    
-    // //       layout: {
-    // //           type: 'vbox',
-    // //           pack: 'start',
-    // //           align: 'center'
-
-    // //       },
-       
-
-    // //       items: [
-
-
-
-
-                
-             
-
-
-
-
-
-
-
-
-
-
-
-
-    // //       ]
-
-    // //   },
-
-
-
-
-
-     
-
-
-
-
-
-    //                       ]
-
-    //                       //}
-    //                   },
-
-
+                ]
+                  },
 
 
 
@@ -2401,7 +2546,9 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
 
 
     });
-    return _FloatPanel_SubscriberMaster;
+
+
+
 
 
 
@@ -2414,17 +2561,47 @@ html: '<input type="text" id="input-FloatPanel_SubscriberMasterVerifiedDate"  re
 
 
 
+
 function FloatPanel_SubscriberMasterShow() {
 
-    Ext.Viewport.remove(_FloatPanel_SubscriberMaster);
-    this.overlay = Ext.Viewport.add(FloatPanel_SubscriberMaster());
-    this.overlay.show();
+    // Ext.Viewport.remove(_FloatPanel_SubscriberMaster);
+    // this.overlay = Ext.Viewport.add(FloatPanel_SubscriberMaster());
+    // this.overlay.show();
+
+
+
+
+
+
+
+FloatPanel_SubscriberMasterCreateIfNeeded();
+
+    _FloatPanel_SubscriberMaster.show();
+
+    if (typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.push) {
+        AyohaBrowserBack.push('FloatPanel_SubscriberMaster', function () {
+            FloatPanel_SubscriberMasterHide(true);
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
     isFloatPanel_SubscriberMasterOpen = 'Y';
     // AddRoutePages("FloatPanel_SubscriberMasterHide()");
     // Ext.getCmp('tabpanelFloatPanel_SubscriberMaster').getTabBar().hide();
     Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner').getTabBar().hide();
     FloatPanel_SubscriberMasterAdjustHeight();
     isbtnFloatPanel_SubscriberMaster_SaveEdit = "Edit";
+    FloatPanel_SubscriberMasterRefreshBottomTabs(0);
+    FloatPanel_SubscriberMasterApplyTheme();
     //Ext.getCmp('htmlRedeemHistoryTxt').setHtml('<font size=1 color=grey><b>Redeem History</b></font>');
     //Ext.getCmp('htmlChangePasswordTxt').setHtml('<font size=1 color=grey><b>Stamp History</b></font>');
     //Ext.getCmp('htmlPointHistoryTxt').setHtml('<font size=1 color=grey><b>Point History</b></font>');
@@ -2446,6 +2623,9 @@ function FloatPanel_SubscriberMasterShow() {
 
 
     document.getElementById("input-FloatPanel_SubscriberMasterChangePassword_CurrentPassword").addEventListener("keyup", OnKeyUp_FloatPanel_SubscriberMasterChangePassword_CurrentPassword);
+    Ext.defer(function () {
+        FloatPanel_SubscriberMasterApplyTheme();
+    }, 120);
    
 
     FloatPanel_SubscriberMaster_AyohaUserProfileLoadProfileStore();
@@ -2459,19 +2639,43 @@ function FloatPanel_SubscriberMasterAdjustHeight() {
 
  //   var newHeights = x - 80;
     // globalFloatPanel_AyohaNotificationManagement_ViewMessageAdjustHeight = newHeights;
-    Ext.getCmp('tabpanelFloatPanel_SubscriberMaster_inner').setHeight(x-350);
+         FloatPanel_SubscriberMasterSyncTabPanelHeight();
     //Ext.getCmp('FloatPanel_MembershipCardList_MyMembershipCardID').setHeight(x + 40);
   //  Ext.getCmp('FloatPanel_MembershipCardList_MyMembershipCardListID').setHeight(newHeights);
 
 
 }
 
-function FloatPanel_SubscriberMasterHide() {
+function FloatPanel_SubscriberMasterHide(fromBack, animCfg) {
     // FloatPanel_MyAccountRankDescription_AddCardHide();
-    if (isFloatPanel_SubscriberMasterOpen == "Y") {
-        _FloatPanel_SubscriberMaster.hide(); isFloatPanel_SubscriberMasterOpen = 'N';
-        RemovePages("FloatPanel_SubscriberMasterHide()");
+    // if (isFloatPanel_SubscriberMasterOpen == "Y") {
+    //     _FloatPanel_SubscriberMaster.hide(); isFloatPanel_SubscriberMasterOpen = 'N';
+    //     RemovePages("FloatPanel_SubscriberMasterHide()");
+    // }
+
+
+
+
+
+
+       if (isFloatPanel_SubscriberMasterOpen == 'Y') {
+        if (animCfg) {
+            _FloatPanel_SubscriberMaster.hide(Ext.fx.Animation(animCfg));
+        } else {
+            _FloatPanel_SubscriberMaster.hide();
+        }
+
+        isFloatPanel_SubscriberMasterOpen = 'N';
+
+        if (fromBack !== true && typeof AyohaBrowserBack !== 'undefined' && AyohaBrowserBack.close) {
+            AyohaBrowserBack.close('FloatPanel_SubscriberMaster');
+        }
+
+        _FloatPanel_SubscriberMaster.destroy();
+        _FloatPanel_SubscriberMaster = null;
     }
+
+
 
 }
 
@@ -2495,6 +2699,7 @@ function OnKeyUp_FloatPanel_SubscriberMasterChangePassword_CurrentPassword() {
             Ext.getCmp('btnFloatPanel_SubscriberMasterChangePassword_Save').setHidden(false);
             document.getElementById("input-FloatPanel_SubscriberMasterChangePassword_NewPassword").addEventListener("keyup", OnKeyUp_FloatPanel_SubscriberMasterChangePassword_NewPassword);
             document.getElementById("input-FloatPanel_SubscriberMasterChangePassword_ConfirmPassword").addEventListener("keyup", OnKeyUp_FloatPanel_SubscriberMasterChangePassword_ConfirmPassword);
+            FloatPanel_SubscriberMasterApplyTheme();
 
             
             
@@ -2510,6 +2715,7 @@ function OnKeyUp_FloatPanel_SubscriberMasterChangePassword_CurrentPassword() {
           //  Ext.getCmp('btnFloatPanel_SubscriberMasterChangePassword_Save').setHidden(true);
             document.getElementById("input-FloatPanel_SubscriberMasterChangePassword_NewPassword").removeEventListener("keyup", OnKeyUp_FloatPanel_SubscriberMasterChangePassword_NewPassword);
             document.getElementById("input-FloatPanel_SubscriberMasterChangePassword_ConfirmPassword").removeEventListener("keyup", OnKeyUp_FloatPanel_SubscriberMasterChangePassword_ConfirmPassword);
+                        FloatPanel_SubscriberMasterApplyTheme();
           
         }
         Ext.getCmp('btFloatPanel_SubscriberMasterChangePassword_CurrentPassword_MessageIcon').setHidden(false);
@@ -2523,10 +2729,13 @@ function OnKeyUp_FloatPanel_SubscriberMasterChangePassword_CurrentPassword() {
         Ext.getCmp('htmFloatPanel_SubscriberMasterChangePassword_CurrentPassword_Message').setHtml('<div style="color:black;text-align: right;font-size:11px;width:100%;">Current Password is Required!</div>');
         Ext.getCmp('FloatPanel_SubscriberMasterChangePassword_NewPassword').setHtml('<input type="password" id="input-FloatPanel_SubscriberMasterChangePassword_NewPassword" readOnly style="border-color:black;color:black;width:100%;text-align: left;font-size:20px;font-weight:bold;">');
         Ext.getCmp('FloatPanel_SubscriberMasterChangePassword_ConfirmPassword').setHtml('<input type="password" id="input-FloatPanel_SubscriberMasterChangePassword_ConfirmPassword" readOnly style="border-color:black;color:black;width:100%;text-align: left;font-size:20px;font-weight:bold;">');
+        FloatPanel_SubscriberMasterApplyTheme();
         //Ext.getCmp('btnFloatPanel_SubscriberMasterChangePassword_Save').setHidden(true);
 
 
     }
+
+    FloatPanel_SubscriberMasterApplyTheme();
 
 
 }
@@ -2678,6 +2887,8 @@ function OnKeyUp_FloatPanel_SubscriberMasterChangePassword_ConfirmPassword() {
 
 
     }
+
+    FloatPanel_SubscriberMasterApplyTheme();
 }
 
 
@@ -2812,8 +3023,9 @@ function inputImgFloatPanel_SubscriberMasterUploadedPhoto() {
 
                   
                     //  Ext.getCmp('htmlFloatPanel_SubscriberMasterPicProfile').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 20px 20px 20px 20px;width:33px;height:33px" ><img src="' + globalFloatPanel_SubscriberMasterImg64 + '"      style="width: 30px; height: 30px; border:2px none grey; border-radius: 50%; max-width:32px; margin:-1px 0px 0px 2px"></div>');
-                    Ext.getCmp('htmlFloatPanel_SubscriberMasterPicProfile').setHtml('<img src="' + globalFloatPanel_SubscriberMasterImg64 + '"  style="width: 200px; height: 200px; border:2px solid white; border-radius: 50%; "/>');
+                    Ext.getCmp('htmlFloatPanel_SubscriberMasterPicProfile').setHtml(FloatPanel_SubscriberMasterAvatarHtml(globalFloatPanel_SubscriberMasterImg64));
                     FloatPanel_SubscriberMasterUploadedPhoto_ResizeImage();
+                    FloatPanel_SubscriberMasterApplyTheme();
 
                     //html: '<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;border-radius: 50px;width:90px;height:90px;color:black;vertical-align: bottom; text-align:center;font-family: Lucida Console, Courier, monospace;font-size: 35px;background-image: url(resources/icons/freecup1Inactive.png); background-size: 100% 100%;" id="divContentFloatLoyaltyCardStamp11" ></div>',
 
@@ -2897,41 +3109,23 @@ function FloatPanel_SubscriberMasterUploadedPhoto_ResizeImage() {
 
 function FloatPanel_SubscriberMaster_AyohaUserProfileLoadProfileStore() {
 
-    Ext.getStore('AyohaUserProfileLoadProfileStore').getProxy().setExtraParams({
-        AccountNo: GetCurrAyohaUserAccountNo()
-    });
-    Ext.StoreMgr.get('AyohaUserProfileLoadProfileStore').load();
-    var task = Ext.create('Ext.util.DelayedTask', function () {
-        Ext.getStore('AyohaUserProfileLoadProfileStore').getProxy().setExtraParams({
-            AccountNo: GetCurrAyohaUserAccountNo()
-        });
-        Ext.StoreMgr.get('AyohaUserProfileLoadProfileStore').load();
-        var myStore = Ext.getStore('AyohaUserProfileLoadProfileStore');
-        var modelRecord = myStore.getAt(0);
-        
 
-     //   'ID',
-     //'AccountNo',
-     //'AccountName',
-     //'Email',
-     //'PhoneNo',
-     //'Photo',
-     //'Gender',
-     //'DOB',
-     //'RowStatus',
-     //'CreatedDate',
-     //'ModifiedDate',
-     //'UserName',
-     //'Katalaluan',
-     //'LastLoginDate',
-     //'PhotoName',
-     //'GUID',
-     //'isUserVerified',
-     //'VerifyString',
-     //'AyohaVersion',
 
-       // Ext.getCmp('btnFloatPanel_SubscriberMasterPicProfile').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 20px 20px 20px 20px;width:33px;height:33px" ><img src="' + modelRecord.get('Photo') + '"      style="width: 30px; height: 30px; border:2px none grey; border-radius: 50%; max-width:32px; margin:-1px 0px 0px 2px"></div>');
-        Ext.getCmp('htmlFloatPanel_SubscriberMasterPicProfile').setHtml('<img src="' + modelRecord.get('Photo') + '"  style="width: 160px; height: 160px; border:2px solid white; border-radius: 50%; "/>');
+
+
+
+    
+   
+    _DataStore_AyohaUserProfileLoadProfileStore.getProxy().setExtraParam('AccountNo', GetCurrAyohaUserAccountNo());
+    _DataStore_AyohaUserProfileLoadProfileStore.getProxy().setUrl(GetAPIurl() + '/AyohaUserProfile/AyohaUserProfileLoadProfile');
+    _DataStore_AyohaUserProfileLoadProfileStore.load({
+        callback: function (records, operation, success) {
+            if (success && records.length > 0) {
+              
+  var modelRecord = records[0]; // Access only the first record
+            Ext.getCmp('htmlFloatPanel_SubscriberMasterPicProfile').setHtml(FloatPanel_SubscriberMasterAvatarHtml(modelRecord.get('Photo')));
+        Ext.getCmp('htmlFloatPanel_SubscriberMasterHeroAccountName').setHtml(FloatPanel_SubscriberMasterHeroNameHtml(modelRecord.get('AccountName'), modelRecord.get('isUserVerified') == 'YES'));
+        Ext.getCmp('htmlFloatPanel_SubscriberMasterHeroAccountRole').setHtml(FloatPanel_SubscriberMasterHeroRoleHtml(modelRecord.get('Profession')));
         //Ext.getCmp('htmlFloatPanel_SubscriberMasterHaiUser').setHtml('<font size=2 color=black><b>Hi '+modelRecord.get('AccountName')+'!</b></font>');
 
 
@@ -2996,22 +3190,71 @@ function FloatPanel_SubscriberMaster_AyohaUserProfileLoadProfileStore() {
     
         }
 
-       
-      //  Ext.getCmp('btnMyAccount_DashboardPicProfile').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 20px 20px 20px 20px;width:33px;height:33px" ><img src="' + modelRecord.get('Photo') + '"      style="width: 30px; height: 30px; border:2px none grey; border-radius: 50%; max-width:32px; margin:-1px 0px 0px 2px"></div>');
-       
-
-       
-        Ext.Viewport.setMasked(false);
-
-
-
-
-
-
-
-
+      FloatPanel_SubscriberMasterApplyTheme();
+      
+           
+           LoadingPanelHide(false);
+           
+            } else {
+                console.error('Failed to load store data or no record found.');
+                LoadingPanelHide(false);
+            }
+        }
     });
-    task.delay(800);
+
+
+    // Ext.getStore('AyohaUserProfileLoadProfileStore').getProxy().setExtraParams({
+    //     AccountNo: GetCurrAyohaUserAccountNo()
+    // });
+    // Ext.StoreMgr.get('AyohaUserProfileLoadProfileStore').load();
+    // var task = Ext.create('Ext.util.DelayedTask', function () {
+    //     Ext.getStore('AyohaUserProfileLoadProfileStore').getProxy().setExtraParams({
+    //         AccountNo: GetCurrAyohaUserAccountNo()
+    //     });
+    //     Ext.StoreMgr.get('AyohaUserProfileLoadProfileStore').load();
+    //     var myStore = Ext.getStore('AyohaUserProfileLoadProfileStore');
+    //     var modelRecord = myStore.getAt(0);
+        
+
+    //  //   'ID',
+    //  //'AccountNo',
+    //  //'AccountName',
+    //  //'Email',
+    //  //'PhoneNo',
+    //  //'Photo',
+    //  //'Gender',
+    //  //'DOB',
+    //  //'RowStatus',
+    //  //'CreatedDate',
+    //  //'ModifiedDate',
+    //  //'UserName',
+    //  //'Katalaluan',
+    //  //'LastLoginDate',
+    //  //'PhotoName',
+    //  //'GUID',
+    //  //'isUserVerified',
+    //  //'VerifyString',
+    //  //'AyohaVersion',
+
+    //    // Ext.getCmp('btnFloatPanel_SubscriberMasterPicProfile').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 20px 20px 20px 20px;width:33px;height:33px" ><img src="' + modelRecord.get('Photo') + '"      style="width: 30px; height: 30px; border:2px none grey; border-radius: 50%; max-width:32px; margin:-1px 0px 0px 2px"></div>');
+       
+       
+    //   //  Ext.getCmp('btnMyAccount_DashboardPicProfile').setHtml('<div style="border-right:2px none #ECF0F1;border-left:2px none #ECF0F1;border-bottom:2px none #ECF0F1;border-top:2px none white;background: transparent;border-radius: 20px 20px 20px 20px;width:33px;height:33px" ><img src="' + modelRecord.get('Photo') + '"      style="width: 30px; height: 30px; border:2px none grey; border-radius: 50%; max-width:32px; margin:-1px 0px 0px 2px"></div>');
+       
+
+       
+    //     Ext.Viewport.setMasked(false);
+   
+
+
+
+
+
+
+
+
+    // });
+    // task.delay(800);
 
 }
 
