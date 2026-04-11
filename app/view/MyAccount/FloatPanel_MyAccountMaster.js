@@ -290,25 +290,27 @@ function FloatPanel_MyAccountMasterCreateIfNeeded() {
                                                         items: [
                                                             {
                                                                 xtype: 'component',
+                                                                id: 'FloatPanel_MyAccountMaster_NotVerifiedPill',
+                                                               
                                                                 html:
     '<div class="ayohaVerifyPill ayohaVerifyPillPremium">' +
         '<span class="ayohaVerifyPillShield">' +
             '<span class="ayohaVerifyPillShieldInner">⛨</span>' +
         '</span>' +
-        '<span class="ayohaVerifyPillLabel">Account Not Verified Yet</span>' +
+        '<span class="ayohaVerifyPillLabel">Account Not Verified</span>' +
     '</div>'
                                                             },
-                                                            // {
-                                                            //     html: '<div style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.25);margin-right:6px;"></div>'
-                                                            // },
-                                                            // {
-                                                            //     html: '<span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.50);letter-spacing:0.06em;">Log Masuk</span>'
-                                                            // },
-                                                            // {
-                                                            //     id: 'FloatPanel_MyAccountMaster_LastLoginPill',
-                                                            //     margin: '0 0 0 4',
-                                                            //     html: '<span style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.75);">-</span>'
-                                                            // }
+                                                            {
+                                                                xtype: 'component',
+                                                                id: 'FloatPanel_MyAccountMaster_VerifiedPill',
+                                                                 hidden: true,
+                                                           html:
+    '<div class="ayohaVerifiedEliteBadge">' +
+        '<span class="ayohaVerifiedEliteBadge_shield"></span>' +
+        '<span class="ayohaVerifiedEliteBadge_text">Verified Elite</span>' +
+    '</div>'
+                                                            },
+                                                         
                                                         ]
                                                     }
                                                 ]
@@ -327,7 +329,7 @@ function FloatPanel_MyAccountMasterCreateIfNeeded() {
                                 layout: { type: 'vbox', pack: 'start', align: 'stretch' },
                                 items: [
                                     {
-                                        xtype: 'component',
+                                        xtype: 'component',                                      
                                         html:
     '<div class="ayohaMembershipCard50">' +
         '<div class="ayohaMembershipCard50_inner">' +
@@ -357,74 +359,144 @@ function FloatPanel_MyAccountMasterCreateIfNeeded() {
                 '<div class="ayohaMembershipCard50_featureItem">Points Multiplier</div>' +
             '</div>' +
 
-            '<div class="ayohaMembershipCard50_btnWrap">' +
+            '<div class="ayohaMembershipCard50_btnWrap ayohaUpgradeBtnLuxuryPulse">' +
                 '<div class="ayohaMembershipCard50_btn">UPGRADE TO PREMIUM <span>›</span></div>' +
             '</div>' +
 
-            '<div class="ayohaMembershipCard50_footer">START YOUR REWARDING JOURNEY TODAY</div>' +
+            // '<div class="ayohaMembershipCard50_footer">START YOUR REWARDING JOURNEY TODAY</div>' +
 
         '</div>' +
     '</div>'
+                                    },
+                                  {
+    xtype: 'component',
+    width: '100%',
+     hidden: true,
+    cls: 'ayohaEliteMembershipWrap',
+    html:
+        '<div class="ayohaEliteMembershipCard">' +
+
+            '<div class="ayohaEliteGlow"></div>' +
+
+            '<div class="ayohaEliteHeader">' +
+                '<div class="ayohaEliteIconBox">♛</div>' +
+
+                '<div class="ayohaEliteTitleWrap">' +
+                    '<div class="ayohaEliteKicker">AYOHA MEMBERSHIP</div>' +
+                    '<div class="ayohaEliteTitleRow">' +
+                        '<div class="ayohaEliteTitle">Elite</div>' +
+                        '<div class="ayohaEliteSpark">✦</div>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="ayohaElitePointBadge">' +
+                    '<div class="ayohaElitePointBadgeValue">12,450</div>' +
+                    '<div class="ayohaElitePointBadgeLabel">POINTS</div>' +
+                '</div>' +
+            '</div>' +
+
+            '<div class="ayohaEliteInfoCard">' +
+                '<div class="ayohaEliteInfoGrid">' +
+                    '<div class="ayohaEliteInfoItem">' +
+                        '<div class="ayohaEliteLabel">CURRENT RANK</div>' +
+                        '<div class="ayohaEliteValue"><span class="ayohaEliteMiniIcon">★</span> Gold Tier</div>' +
+                    '</div>' +
+
+                    '<div class="ayohaEliteInfoItem">' +
+                        '<div class="ayohaEliteLabel">MEMBER SINCE</div>' +
+                        '<div class="ayohaEliteValue">October 2023</div>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="ayohaEliteDivider"></div>' +
+
+                '<div class="ayohaEliteInfoItem ayohaEliteInfoItemFull">' +
+                    '<div class="ayohaEliteLabel">MEMBERSHIP NUMBER</div>' +
+                    '<div class="ayohaEliteMemberNo">AYO-8842-991</div>' +
+                '</div>' +
+            '</div>' +
+
+            // '<div class="ayohaEliteProgressWrap">' +
+            //     '<div class="ayohaEliteProgressTop">' +
+            //         '<div class="ayohaEliteProgressLabel">Lucky Draw Qualification</div>' +
+            //         '<div class="ayohaEliteProgressValue">12,450 / 10,000 pts</div>' +
+            //     '</div>' +
+
+            //     '<div class="ayohaEliteProgressBar">' +
+            //         '<div class="ayohaEliteProgressFill" style="width:100%;"></div>' +
+            //     '</div>' +
+
+            //     '<div class="ayohaEliteLuckyDrawNote">' +
+            //         'Reach 10,000 Ayoha Points to qualify for lucky draw selection. You are currently eligible.' +
+            //     '</div>' +
+            // '</div>' +
+
+            '<div class="ayohaEliteBtnWrap">' +
+                '<div class="ayohaEliteBtn">VIEW ELITE BENEFITS </div>' +
+            '</div>' +
+
+        '</div>'
+},
+                                    {
+                                        xtype: 'container',
+                                        width: '100%',
+                                        hidden: true,
+                                        padding: '20 20 20 20',
+                                        style: 'background:linear-gradient(135deg,rgba(124,58,237,0.65) 0%,rgba(168,85,247,0.55) 100%);backdrop-filter:blur(24px);border:1.5px solid rgba(255,255,255,0.22);border-radius:26px;box-shadow:0 16px 40px rgba(76,15,136,0.25);',
+                                        layout: { type: 'vbox', pack: 'start', align: 'stretch' },
+                                        items: [
+                                            // Top row: crown icon + membership info + upgrade button
+                                            {
+                                                xtype: 'container',
+                                                width: '100%',
+                                                layout: { type: 'hbox', pack: 'start', align: 'center' },
+                                                items: [
+                                                    {
+                                                        xtype: 'container',
+                                                        width: 52,
+                                                        height: 52,
+                                                        html: '<div style="width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;"><img src="resources/icons/Achievements01.png" width="28" height="28" style="filter:brightness(1.1);" alt="Crown"></div>'
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        flex: 1,
+                                                        margin: '0 0 0 14',
+                                                        layout: { type: 'vbox', pack: 'center', align: 'stretch' },
+                                                        items: [
+                                                            {
+                                                                html: '<div style="font-size:10px;font-weight:800;letter-spacing:0.16em;color:rgba(255,255,255,0.7);text-transform:uppercase;">Ayoha Membership</div>'
+                                                            },
+                                                            {
+                                                                id: 'FloatPanel_MyAccountMaster_AccountNo',
+                                                                margin: '4 0 0 0',
+                                                                html: '<div style="font-size:17px;font-weight:900;color:#ffffff;line-height:1.2;">Not Ayoha Member</div>'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        width: 110,
+                                                        layout: { type: 'vbox', pack: 'center', align: 'end' },
+                                                        items: [
+                                                            {
+                                                                id: 'FloatPanel_MyAccountMaster_VerificationStatusBox',
+                                                                name: 'nameFloatPanel_MyAccountMaster_VerificationStatusBox',
+                                                                html: '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 18px;height:40px;background:#ffffff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.12);font-size:13px;font-weight:800;color:#1e293b;">Upgrade <span style="font-size:16px;">&#8594;</span></div>'
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            // Verification alert banner
+                                            {
+                                                xtype: 'container',
+                                                id: 'FloatPanel_MyAccountMaster_VerificationBanner',
+                                                width: '100%',
+                                                margin: '16 0 0 0',
+                                                html: '<div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:16px;background:rgba(251,146,60,0.22);border:1.5px solid rgba(251,146,60,0.35);"><div style="min-width:28px;height:28px;border-radius:50%;background:rgba(251,146,60,0.25);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="color:#ffffff;font-size:13px;font-weight:800;line-height:1.3;">Join Ayoha Membership Now!</span><span style="font-size:10px;font-weight:800;letter-spacing:0.08em;color:#fb923c;text-transform:uppercase;">Join Premium Membership</span></div><div style="color:rgba(255,255,255,0.65);font-size:11px;font-weight:500;line-height:1.5;margin-top:4px;">Step into a new generation of rewarding with exclusive perks, premium privileges, and special prize opportunities reserved for Ayoharian members.</div></div></div>'
+                                            }
+                                        ]
                                     }
-                                    // {
-                                    //     xtype: 'container',
-                                    //     width: '100%',
-                                    //     padding: '20 20 20 20',
-                                    //     style: 'background:linear-gradient(135deg,rgba(124,58,237,0.65) 0%,rgba(168,85,247,0.55) 100%);backdrop-filter:blur(24px);border:1.5px solid rgba(255,255,255,0.22);border-radius:26px;box-shadow:0 16px 40px rgba(76,15,136,0.25);',
-                                    //     layout: { type: 'vbox', pack: 'start', align: 'stretch' },
-                                    //     items: [
-                                    //         // Top row: crown icon + membership info + upgrade button
-                                    //         {
-                                    //             xtype: 'container',
-                                    //             width: '100%',
-                                    //             layout: { type: 'hbox', pack: 'start', align: 'center' },
-                                    //             items: [
-                                    //                 {
-                                    //                     xtype: 'container',
-                                    //                     width: 52,
-                                    //                     height: 52,
-                                    //                     html: '<div style="width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;"><img src="resources/icons/Achievements01.png" width="28" height="28" style="filter:brightness(1.1);" alt="Crown"></div>'
-                                    //                 },
-                                    //                 {
-                                    //                     xtype: 'container',
-                                    //                     flex: 1,
-                                    //                     margin: '0 0 0 14',
-                                    //                     layout: { type: 'vbox', pack: 'center', align: 'stretch' },
-                                    //                     items: [
-                                    //                         {
-                                    //                             html: '<div style="font-size:10px;font-weight:800;letter-spacing:0.16em;color:rgba(255,255,255,0.7);text-transform:uppercase;">Ayoha Membership</div>'
-                                    //                         },
-                                    //                         {
-                                    //                             id: 'FloatPanel_MyAccountMaster_AccountNo',
-                                    //                             margin: '4 0 0 0',
-                                    //                             html: '<div style="font-size:17px;font-weight:900;color:#ffffff;line-height:1.2;">Not Ayoha Member</div>'
-                                    //                         }
-                                    //                     ]
-                                    //                 },
-                                    //                 {
-                                    //                     xtype: 'container',
-                                    //                     width: 110,
-                                    //                     layout: { type: 'vbox', pack: 'center', align: 'end' },
-                                    //                     items: [
-                                    //                         {
-                                    //                             id: 'FloatPanel_MyAccountMaster_VerificationStatusBox',
-                                    //                             name: 'nameFloatPanel_MyAccountMaster_VerificationStatusBox',
-                                    //                             html: '<div style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 18px;height:40px;background:#ffffff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.12);font-size:13px;font-weight:800;color:#1e293b;">Upgrade <span style="font-size:16px;">&#8594;</span></div>'
-                                    //                         }
-                                    //                     ]
-                                    //                 }
-                                    //             ]
-                                    //         },
-                                    //         // Verification alert banner
-                                    //         {
-                                    //             xtype: 'container',
-                                    //             id: 'FloatPanel_MyAccountMaster_VerificationBanner',
-                                    //             width: '100%',
-                                    //             margin: '16 0 0 0',
-                                    //             html: '<div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:16px;background:rgba(251,146,60,0.22);border:1.5px solid rgba(251,146,60,0.35);"><div style="min-width:28px;height:28px;border-radius:50%;background:rgba(251,146,60,0.25);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="color:#ffffff;font-size:13px;font-weight:800;line-height:1.3;">Join Ayoha Membership Now!</span><span style="font-size:10px;font-weight:800;letter-spacing:0.08em;color:#fb923c;text-transform:uppercase;">Join Premium Membership</span></div><div style="color:rgba(255,255,255,0.65);font-size:11px;font-weight:500;line-height:1.5;margin-top:4px;">Step into a new generation of rewarding with exclusive perks, premium privileges, and special prize opportunities reserved for Ayoharian members.</div></div></div>'
-                                    //         }
-                                    //     ]
-                                    // }
                                 ]
                             }
                         ]
